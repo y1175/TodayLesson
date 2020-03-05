@@ -14,12 +14,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('메일로 임시 비밀번호가 전송완료되었습니다.');
-	location.href="/TodayLesson_UserPage/hs_us_main_sec_login";
+	location.href="/hs_us_main_sec_login";
 	}
 else
 	{
 	alert('메일 전송 실패');
-	location.href="/TodayLesson_UserPage/hm_find_pwd";
+	location.href="/hm_find_pwd";
 	}
 </script>
 </body>

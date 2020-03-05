@@ -144,9 +144,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
      //혜미 내 정보 관리 1차 비밀번호 인증받기
         else if("/hm_us_mymanage2".equals(strUri))
              return false; 
-     //   
-        
-        
+     //혜미 내 정보 수정 완료 될 시 가는 페이지
+        else if("/hm_us_mymanageupdate".equals(strUri))
+        	return false;
+        //혜미 관리자 회원관리 페이지
+        else if("/admin_hm_memmanage".equals(strUri))
+        	return false;
    //은지
         
         
