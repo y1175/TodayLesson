@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>게시글 목록</title>
 </head>
 <body>
 <table class="table">
@@ -28,13 +27,42 @@
 
 </c:forEach>
 </table>
+<form method="get" action="freeboard?currpage=${page.startBlock }">
+<select name="search">
+<option value="all">전체</option>
+<option value="member_nick">닉네임</option>
+<option value="freeboard_title">제목</option>
+<option value="freeboard_content">내용</option>
+</select>
+<input type="text" name="searchtxt">
+<input type="submit" value="검색">
 
-  <sec:authorize access="isAuthenticated()">
+</form>
+<c:if test="${page.prev }">
+<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+</c:if>
+
+<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+<c:if test="${index!= page.currPage }">
+</c:if>
+<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+</c:forEach>
+
+<c:if test="${page.next }">
+<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+</c:if>
+</body>
+</html>
+
+
+
+
+
+
+<%--   <sec:authorize access="isAuthenticated()">
                  <!--  <form action="/logout" method='post'> -->
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                      <a href="freeboard_write">글쓰기</a><span style="margin-left: 10px;">
                  <!--  </form> -->
-               </sec:authorize>
+               </sec:authorize> --%>
 
-</body>
-</html>

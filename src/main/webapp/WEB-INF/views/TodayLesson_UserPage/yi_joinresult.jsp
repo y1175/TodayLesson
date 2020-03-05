@@ -14,12 +14,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('가입이 완료되었습니다.');
-	location.href="/alluser";
+	location.href="/todaylesson";
 	}
 else
 	{
 	alert('가입 실패');
-	location.href="/alluser";
+	location.href="/todaylesson";
 	}
 </script>
 </body>

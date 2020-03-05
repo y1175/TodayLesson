@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.User_YI_FreeBoard_Mapper">
+<parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
 <resultMap type="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO" id="freeboardMap">
 <result column="freeboard_category" property="freeboard_category"/>
 <result column="freeboard_no" property="freeboard_no"/>
@@ -17,11 +18,50 @@
 </resultMap>
 
 
-<select id="freeboard_list" resultMap="freeboardMap">
+<select id="list" resultMap="freeboardMap">
 select freeboard_category,member_nick,freeboard_no,freeboard_title,freeboard_writedate
 from freeboard join member
 on freeboard.member_id = member.member_id
+ <include refid="search"></include> 
+limit   #{startrow}, 15 
 </select>
+
+<sql id="search">
+<if test="searchtxt!=null and searchtxt!=''">
+<where>
+<choose>
+<when test="search=='member_nick'">
+and member_nick=#{searchtxt}
+</when>
+<when test="search=='freeboard_content'">
+and freeboard_content like '%'||upper(#{searchtxt})||'%'
+</when>
+<when test="search=='freeboard_title'">
+and freeboard_title like '%'||upper(#{searchtxt})||'%'
+</when>
+
+</choose>
+</where>
+</if>
+</sql> 
+
+
+
+
+
+
+
+
+<!-- 02_02. 게시글 레코드 갯수 -->
+	<select id="getCount" resultType="int">
+		select COUNT(*) 
+		from freeboard join member
+		on freeboard.member_id = member.member_id
+		<!-- WHERE절을 include 태그로 삽입 -->
+		 <include refid="search"></include> 
+	</select>
+
+
 
 <select id="freeboard_detail" parameterType="int" resultMap="freeboardMap">
 select freeboard_category,member_nick,freeboard_no
