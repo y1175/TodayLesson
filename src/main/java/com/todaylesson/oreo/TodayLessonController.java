@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
+import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.MailSendService;
 //MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
@@ -32,8 +33,8 @@ public class TodayLessonController {
    @Resource(name="loginService")
    private LoginService loginService;
    
- /*  @Autowired
-   private MailSendService mailSender;*/
+   @Autowired
+   private Hm_Us_MailSendService mailSender;
    
    
    @RequestMapping("/todaylessonadmin")
@@ -229,6 +230,28 @@ public class TodayLessonController {
             return result;
          }
   
+         //pwd 찾기
+         @RequestMapping("/findPw")
+     	public String findPw()
+     	{
+     		
+     		return "/TodayLesson_UserPage/hm_find_pwd";
+     	}
+
+     	
+     	@RequestMapping(value="/findPassword",method=RequestMethod.POST)
+     	@ResponseBody
+     	public String findPassword(@RequestParam("inputId_2")String member_id,
+                 @RequestParam("inputEmail_2") String member_email
+                 ,HttpServletRequest request
+                 ,Model model){
+     		
+     		int result = mailSender.mailSendWithPassword(member_id, member_email, request);
+     		System.out.println(member_email);
+     		model.addAttribute("result",result);
+     		
+     		return "/TodayLesson_UserPage/hm_us_search_pwd";
+     	}
 /*         pwd 찾기
          @RequestMapping(value="/searchPassword",method=RequestMethod.POST)
          @ResponseBody
