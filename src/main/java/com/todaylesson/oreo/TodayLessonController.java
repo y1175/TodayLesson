@@ -1,4 +1,4 @@
-package com.oreo.todaylesson;
+package com.todaylesson.oreo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
