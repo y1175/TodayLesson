@@ -104,11 +104,11 @@ public class CsrfTokenAdder implements Filter {
 
 		
 
-		// 필터대상 에서 제외할 목록
+		// 필터대상 에서 제외할 목록 (Spring Security 제외한 항목 넣기)
 
-		final String[] EXCLUDE_URL_LIST = {"/webjars", "/favicon.ico","/fileupload", "/filedownload", "/css", "/js", "/images", "/fonts", "/ckeditor", "/WEB-INF" };
+		//final String[] EXCLUDE_URL_LIST = {"/webjars", "/favicon.ico","/fileupload", "/filedownload", "/CSS", "/JS", "/IMG", "/FONT", "/ckeditor", "/WEB-INF" };
 
-		
+		final String[] EXCLUDE_URL_LIST = {"/CSS", "/JS", "/IMG", "/FONT"};
 
 		String paramName = null;
 
