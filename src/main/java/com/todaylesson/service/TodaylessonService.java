@@ -11,7 +11,7 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.Mapper.TodayLessonMapper;
 
 @Service(value="todaylessonService")
-public class TodayLessonService {
+public class TodaylessonService {
 	
 	@Autowired
 	private TodayLessonMapper mapper;

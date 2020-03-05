@@ -5,13 +5,13 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.todaylesson.Mapper.MemberMapper;
+import com.todaylesson.Mapper.TodayLessonMapper;
 
 @Service(value="loginService")
 public class LoginServiceImple implements LoginService {
 
 	@Autowired
-	private MemberMapper mapper;
+	private TodayLessonMapper mapper;
 	
 	@Override
 	public int idCheck(String member_id) {

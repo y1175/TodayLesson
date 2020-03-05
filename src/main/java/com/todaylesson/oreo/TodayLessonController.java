@@ -18,14 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
+import com.todaylesson.service.LoginService;
 //MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
-import com.todaylesson.service.TodayLessonService;
+import com.todaylesson.service.TodaylessonService;
 
 @Controller
 public class TodayLessonController {
    
    @Resource(name="todaylessonService")
-   private TodayLessonService todaylessonService;
+   private TodaylessonService todaylessonService;
 
    @Resource(name="loginService")
    private LoginService loginService;
