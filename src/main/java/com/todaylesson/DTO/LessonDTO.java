@@ -36,6 +36,7 @@ public class LessonDTO {
 	private String lesson_senior_title;
 	private String lesson_senior_content;
 	private int lesson_zipcode;
+	private int senior_no;
 	
 	
 	
