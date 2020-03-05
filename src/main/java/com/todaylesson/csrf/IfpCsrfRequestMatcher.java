@@ -9,6 +9,10 @@ import com.todaylesson.DTO.MemberDTO;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+//새로추가한거
+import java.util.regex.Pattern;
+import org.springframework.stereotype.Component;
+import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 /**
 
  * IfpCsrfRequestMatcher.java
@@ -62,11 +66,15 @@ import org.apache.commons.logging.LogFactory;
 
  */
 
-
+@Component  //새로 추가한거
 public class IfpCsrfRequestMatcher implements RequestMatcher {
 	
 
   final Log logger = LogFactory.getLog( IfpAccessDeniedHandler.class );
+  
+      private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$"); //새로 추가한거
+
+      private RegexRequestMatcher unprotectedMatcher = new RegexRequestMatcher("/unprotected", null); //새로 추가한거
 
 	
 
@@ -84,8 +92,6 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
 
     	String contentType = request.getContentType() == null ? "" : request.getContentType();
     	
-    	MemberDTO dto=new MemberDTO();
-
  
 
     	//---------------------------------------------------------
@@ -173,13 +179,18 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/senior_request".equals(strUri))    
        	 	return false;
         //시니어 지원 팝업
-        else if (strUri.equals("senior_request_form/{member_id}"))    
-       	 	return false;
+        //else if (strUri.equals("senior_request_form/{member_id}"))    
+       	 	//return false;
         //시니어 지원 폼(시니어 닉, 이런거 쓰는곳)
        /* else if ("/senior_switch/{member_id}".equals(strUri))    
        	 	return false;*/
         
         
+       else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거
+
+            return false;   //새로 추가한거
+
+        }
         
         
         
@@ -196,7 +207,10 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
 
         }
 
-        return true;
+       // return true;
+        
+        //시큐리티 권한 해제에 대한 권한을 준거임(에이작까지 처리되는지는 아직 확인 못함.. 두개 합친거라서 따로따로 분리해서 확인필요함)
+        return !unprotectedMatcher.matches(request);   //새로 추가한거
 
     }
 }
