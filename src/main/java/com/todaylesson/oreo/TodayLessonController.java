@@ -141,7 +141,7 @@ public class TodayLessonController {
                 System.out.println(result.get("code")); // REST API 에러코드
                 System.out.println(result.get("message")); // 에러메시지
               }
-           return "/todaylesson_joinform";
+           return "TodayLesson_UserPage/todaylesson_joinform";
        }
        
        @RequestMapping("/joinresult")
@@ -191,7 +191,7 @@ public class TodayLessonController {
 			 int result=todaylessonService.insert(dto);
 			 model.addAttribute("result",result);
 			 
-			 return "yi_joinresult";
+			 return "TodayLesson_UserPage/yi_joinresult";
 		 } 
        
        
@@ -199,7 +199,7 @@ public class TodayLessonController {
        @RequestMapping("/findId")
        public String findId()
        {
-          return "yi_find_id";
+          return "TodayLesson_UserPage/yi_find_id";
        }
        
        /*id중복 체크*/
