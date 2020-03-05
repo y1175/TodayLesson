@@ -29,7 +29,7 @@ public class User_HM_Mymanage_Controller {
 	public String hm_us_mymanage1()
 	{
 
-		return "hm_us_mymanage";
+		return "TodayLesson_UserPage/hm_us_mymanage";
 	}
 	//내 정보관리 비밀번호 인증 후 true일 때 내 정보 수정
 	@RequestMapping("/hm_us_mymanage2")
@@ -50,11 +50,11 @@ public class User_HM_Mymanage_Controller {
 		{
 			MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
 			model.addAttribute("dto",dto);
-			return "hm_us_mymanageupdate";
+			return "TodayLesson_UserPage/hm_us_mymanageupdate";
 		}
 		else {
 
-			return "hm_us_mymanage";
+			return "TodayLesson_UserPage/hm_us_mymanage";
 		}
 	}
 
@@ -96,7 +96,7 @@ public class User_HM_Mymanage_Controller {
 		int result = hm_mymanageservice.MyInfoupdate(dto);
 		model.addAttribute("result",result);
 
-		return "hm_us_mymanageupdateresult";
+		return "TodayLesson_UserPage/hm_us_mymanageupdateresult";
 	}
 
 }

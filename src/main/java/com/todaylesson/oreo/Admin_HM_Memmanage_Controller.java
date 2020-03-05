@@ -23,7 +23,7 @@ public class Admin_HM_Memmanage_Controller {
 		
 		List<MemberDTO> list =service.adminmemberlist();
 		model.addAttribute("list",list);
-		return "hm_ad_user_memmanage";
+		return "TodayLesson_AdminPage/hm_ad_user_memmanage";
 		
 	}
 	
