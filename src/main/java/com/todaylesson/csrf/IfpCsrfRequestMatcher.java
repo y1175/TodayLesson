@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
+import com.todaylesson.DTO.MemberDTO;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -81,6 +83,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
     	String queryString = request.getQueryString() == null ? "" : request.getQueryString();
 
     	String contentType = request.getContentType() == null ? "" : request.getContentType();
+    	
+    	MemberDTO dto=new MemberDTO();
 
  
 
@@ -169,11 +173,11 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/senior_request".equals(strUri))    
        	 	return false;
         //시니어 지원 팝업
-        else if ("/senior_request_form/{member_id}".equals(strUri))    
-       	 	return false; 
+        else if (strUri.equals("senior_request_form/{member_id}"))    
+       	 	return false;
         //시니어 지원 폼(시니어 닉, 이런거 쓰는곳)
-        else if ("/senior_switch/{member_id}".equals(strUri))    
-       	 	return false; 
+       /* else if ("/senior_switch/{member_id}".equals(strUri))    
+       	 	return false;*/
         
         
         
