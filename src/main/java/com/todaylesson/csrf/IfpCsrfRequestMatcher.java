@@ -114,7 +114,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/logout".equals(strUri))                   return false;
         
       
-
+ 
         
         
   //용인
@@ -133,7 +133,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //게시글상세보기
         else if ("/detail/{freeboard_no}".equals(strUri))                   return false;   
         
-        
+         
         
    //혜미
       //혜미비번찾기 
