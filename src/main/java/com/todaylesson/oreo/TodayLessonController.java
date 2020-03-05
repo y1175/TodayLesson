@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.service.LoginService;
+import com.todaylesson.service.MailSendService;
 //MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
 import com.todaylesson.service.TodaylessonService;
 
@@ -31,8 +32,8 @@ public class TodayLessonController {
    @Resource(name="loginService")
    private LoginService loginService;
    
-   @Autowired
-   private MailSendService mailSender;
+ /*  @Autowired
+   private MailSendService mailSender;*/
    
    
    @RequestMapping("/todaylessonadmin")
@@ -228,7 +229,7 @@ public class TodayLessonController {
             return result;
          }
   
-         /*pwd 찾기*/
+/*         pwd 찾기
          @RequestMapping(value="/searchPassword",method=RequestMethod.POST)
          @ResponseBody
          public String passwordSearch(@RequestParam("inputId_2")String member_id,
@@ -239,6 +240,6 @@ public class TodayLessonController {
             return "/userSearchPassword";
   
          }
-         
+         */
 
 }
