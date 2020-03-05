@@ -162,6 +162,19 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //진영주소팝업
         else if ("/jusoPopup".equals(strUri))    
         	 return false;   
+      //진영 레슨 리스트 
+        else if ("/lesson_list".equals(strUri))    
+       	 	return false;   
+        //시니어 지원 버튼
+        else if ("/senior_request".equals(strUri))    
+       	 	return false;
+        //시니어 지원 팝업
+        else if ("/senior_request_form/{member_id}".equals(strUri))    
+       	 	return false; 
+        //시니어 지원 폼(시니어 닉, 이런거 쓰는곳)
+        else if ("/senior_switch/{member_id}".equals(strUri))    
+       	 	return false; 
+        
         
         
         
