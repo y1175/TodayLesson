@@ -25,19 +25,19 @@ public class JY_US_LessonController {
 	public String list(Model model){
 		List<LessonDTO> list = lessonservice.list();
 		model.addAttribute("list",list);
-		return "jy_lesson_list";
+		return "TodayLesson_SeniorPage/jy_sn_lesson_list";
 	}
 	
 	
 	
 	@RequestMapping("/lesson_write")
 	public String write() {
-		return "jy_lesson_write";
+		return "TodayLesson_SeniorPage/jy_sn_lesson_write";
 	}
 	
 	@RequestMapping("/jusoPopup")
 	public String jusoPopup() {
-		return "jy_jusoPopup";
+		return "TodayLesson_SeniorPage/jy_sn_jusoPopup";
 	}	
 	
 	
@@ -53,7 +53,7 @@ public class JY_US_LessonController {
 		
 		model.addAttribute("result",result);
 		
-		return "jy_insertresult";
+		return "TodayLesson_SeniorPage/jy_sn_insertresult";
 	}
 	
 	
