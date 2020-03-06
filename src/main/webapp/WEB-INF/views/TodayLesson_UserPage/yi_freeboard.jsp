@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>게시글 목록</title>
 </head>
 <body>
@@ -12,9 +12,10 @@
 <tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
 </tr>
 </thead>
+<tbody>
 <c:forEach var="item" items="${list }">
 
-<tbody>
+
 <tr>
 <td>${item.freeboard_category }</td>
 <td>${item.freeboard_no}</td>
@@ -23,18 +24,17 @@
 <td><c:out value=" ${item.freeboard_writedate }"></c:out></td>
 <td><c:out value=" ${item.freeboard_readno }"></c:out></td>
 </tr>
-</tbody>
-
 </c:forEach>
+</tbody>
 </table>
-<form method="get" action="freeboard?currpage=${page.startBlock }">
+<form method="get" action="freeboard?currPage=${page.startBlock }">
 <select name="search">
 <option value="all">전체</option>
 <option value="member_nick">닉네임</option>
 <option value="freeboard_title">제목</option>
 <option value="freeboard_content">내용</option>
 </select>
-<input type="text" name="searchtxt">
+<input type="text" name="searchtxt" >
 <input type="submit" value="검색">
 
 </form>

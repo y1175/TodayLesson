@@ -17,58 +17,70 @@
 
 </resultMap>
 
-
-<select id="list" resultMap="freeboardMap">
-select freeboard_category,member_nick,freeboard_no,freeboard_title,freeboard_writedate
-from freeboard join member
-on freeboard.member_id = member.member_id
- <include refid="search"></include> 
-limit   #{startrow}, 15 
-</select>
-
-<sql id="search">
-<if test="searchtxt!=null and searchtxt!=''">
-<where>
-<choose>
-<when test="search=='member_nick'">
-and member_nick=#{searchtxt}
-</when>
-<when test="search=='freeboard_content'">
-and freeboard_content like '%'||upper(#{searchtxt})||'%'
-</when>
-<when test="search=='freeboard_title'">
-and freeboard_title like '%'||upper(#{searchtxt})||'%'
-</when>
-
-</choose>
-</where>
-</if>
-</sql> 
-
-
-
-
-
-
-
-
-<!-- 02_02. 게시글 레코드 갯수 -->
-	<select id="getCount" resultType="int">
+<!-- 게시물 카운트  -->
+	<select id="getCount" resultType="int" parameterType="java.util.HashMap">
 		select COUNT(*) 
 		from freeboard join member
 		on freeboard.member_id = member.member_id
 		<!-- WHERE절을 include 태그로 삽입 -->
-		 <include refid="search"></include> 
-	</select>
+<include refid="search_select"></include>
+</select>
+
+<!-- 게시물 전체보기 -->
+<select id="list" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO" parameterType="java.util.HashMap">
+select freeboard_category,member_nick,freeboard_no,freeboard_title,freeboard_writedate,freeboard_readno
+from freeboard join member
+on freeboard.member_id = member.member_id
+<!-- WHERE절을 include 태그로 삽입 -->
+  <include refid="search_select"></include>
+  order by freeboard_no desc
+limit   #{startrow}, 15
+
+</select>
 
 
-
-<select id="freeboard_detail" parameterType="int" resultMap="freeboardMap">
-select freeboard_category,member_nick,freeboard_no
+<!-- 게시물 상세보기 -->
+<select id="freeboard_detail" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+select freeboard_category,member_nick,freeboard_readno
 ,freeboard_title,freeboard_writedate,freeboard_content
 from freeboard join member
 on freeboard.member_id = member.member_id
 where freeboard_no=#{freeboard_no}
 </select>
+
+<!-- 조회수 증가 -->
+<update id="freeboard_readnoUp" parameterType="int">
+update freeboard
+set freeboard_readno=IFNULL(freeboard_readno,0)+1
+where freeboard_no=#{freeboard_no}
+</update>
+
+
+<!-- 검색기능 쿼리문 -->
+<sql id="search_select">
+<if test='searchtxt!=null and searchtxt!=""'>
+<choose>
+<when test='search.equals("all")'>
+				where 
+					member_nick like CONCAT('%', #{searchtxt}, '%')
+				or 
+					freeboard_content like CONCAT('%', #{searchtxt}, '%')
+				or 
+					freeboard_title like CONCAT('%', #{searchtxt}, '%')
+					
+			</when>
+<when test='search.equals("member_nick")'>
+where member_nick like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("freeboard_content")'>
+where freeboard_content like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("freeboard_title")'>
+where freeboard_title like CONCAT('%', #{searchtxt}, '%')
+</when>
+</choose>
+</if>
+</sql> 
+
 
 </mapper>

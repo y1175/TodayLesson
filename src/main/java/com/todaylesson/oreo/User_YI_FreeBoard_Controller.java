@@ -31,9 +31,9 @@ public class User_YI_FreeBoard_Controller {
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
-			,Model model) throws Exception {
+			,Model model)  {
 		
-	Pattern p=Pattern.compile("(^[0-9]*$)");
+/*	Pattern p=Pattern.compile("(^[0-9]*$)");
 		if(search=="member_nick"|| "member_nick".equals(search))
 		{
 			Matcher m=p.matcher(searchtxt);
@@ -49,6 +49,7 @@ public class User_YI_FreeBoard_Controller {
 				
 			}
 		}
+		model.addAttribute("searchtxt",searchtxt);*/
 		
 		int totalCount= service.totalCount(search, searchtxt);
 		int pageSize=15;
@@ -56,22 +57,28 @@ public class User_YI_FreeBoard_Controller {
 		
 		
 		Freeboard_PageMaker page=new Freeboard_PageMaker(currPage,totalCount,pageSize,blockSize);
+		
+
 		List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt
 										,page.getStartRow()
 										,page.getEndRow());
 		
 			model.addAttribute("list",list);
 			model.addAttribute("page",page);
-/*			model.addAttribute("search",search);
-			model.addAttribute("searchtxt",searchtxt);*/
+			model.addAttribute("search",search);
+			model.addAttribute("searchtxt",searchtxt);
 		
+		System.out.println(search);
+		System.out.println(searchtxt);
+		System.out.println(totalCount);
 		return "TodayLesson_UserPage/yi_freeboard";
 	}
 		
 
 	@RequestMapping("/detail/{freeboard_no}")
 	public String detail(@PathVariable int freeboard_no,Model model)
-	{
+	{	
+		service.freeboard_readnoUp(freeboard_no);
 		SQLjoin_Member_FreeBoardDTO dto= service.freeboard_detail(freeboard_no);
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_detail";

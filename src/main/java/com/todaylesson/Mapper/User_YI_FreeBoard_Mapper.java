@@ -12,17 +12,17 @@ import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 @Mapper
 public interface User_YI_FreeBoard_Mapper {
 
-public List<SQLjoin_Member_FreeBoardDTO> freeboard_list(int start, int end, String searchOption, String keyword);
+//페이징 카운트
+public int getCount(HashMap<String, Object> hm);	
 
-public SQLjoin_Member_FreeBoardDTO freeboard_detail(int freeboard_no);
-
-public int countArticle(String searchOption, String keyword);
-
-public List<SQLjoin_Member_FreeBoardDTO> freeboard_listPaging(String string, Map<String, Object> map);
-
+//게시물 전체보기
 public List<SQLjoin_Member_FreeBoardDTO> list(HashMap<String, Object> hm);
 
-public int getCount(HashMap<String, Object> hm);
+//게시물 상세보기
+public SQLjoin_Member_FreeBoardDTO freeboard_detail(int freeboard_no);
+
+//게시물 조회수 증가
+public void freeboard_readnoUp(int freeboard_no);
 
 
 
