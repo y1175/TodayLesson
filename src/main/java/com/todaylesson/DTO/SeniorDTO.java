@@ -12,11 +12,12 @@ import lombok.Setter;
 public class SeniorDTO {
 
 	private int senior_no;
-	private int lesson_no;
-	private String senior_account;
+	private String member_id;
 	private String senior_email;
 	private String senior_phone;
-	private String senior_cmo;
+	private String senior_crno;
 	private String senior_nick;
-	private String member_id;
+	private String senior_bank_name;
+	private String senior_account_name;
+	private String senior_account_num;
 }
