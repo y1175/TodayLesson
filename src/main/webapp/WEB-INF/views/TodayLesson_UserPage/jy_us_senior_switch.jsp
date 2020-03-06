@@ -28,7 +28,7 @@ function checkDisable()
 <h2>시니어 지원하기</h2>
 <form method="post" action="${pageContext.request.contextPath}/plus_senior" name="frm">
 
-<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.contextPath}">
+<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
 
 <label>시니어 닉네임</label>
 <input type="text" id="senior_nick" name="senior_nick" required="required">
@@ -54,8 +54,8 @@ function checkDisable()
 <input type="text" id="senior_account_num" name="senior_account_num" required="required">
 
 
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
+<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+ --%>
 <input type="submit" value="전송">
 <input type="reset" value="취소">
 

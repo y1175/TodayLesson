@@ -10,4 +10,25 @@ insert into senior(member_id) value(#{member_id})
 
 </insert>
 
+<update id="member_level_up" parameterType="java.lang.String">
+
+update member set member_level = 2
+where member_id = #{member_id}
+
+</update>
+
+<update id="plus_senior" parameterType="com.todaylesson.DTO.SeniorDTO">
+
+update senior
+set senior_email = #{senior_email}, 
+senior_phone = #{senior_phone}, 
+senior_crno = #{senior_crno}, 
+senior_nick = #{senior_nick}, 
+senior_bank_name = #{senior_bank_name}, 
+senior_account_name = #{senior_account_name}, 
+senior_account_num = #{senior_account_num}
+where member_id = #{member_id}
+
+</update>
+
 </mapper>

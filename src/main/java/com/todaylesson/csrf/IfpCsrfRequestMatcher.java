@@ -178,12 +178,18 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //시니어 지원 버튼
         else if ("/senior_request".equals(strUri))    
        	 	return false;
+        
         //시니어 지원 팝업
         //else if (strUri.equals("senior_request_form/{member_id}"))    
        	 	//return false;
+        
         //시니어 지원 폼(시니어 닉, 이런거 쓰는곳)
        /* else if ("/senior_switch/{member_id}".equals(strUri))    
        	 	return false;*/
+        
+        // 시니어 지원폼 쓴 다음 넘어가는 곳
+        else if ("/plus_senior".equals(strUri))    
+       	 	return false;
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거
