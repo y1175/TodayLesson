@@ -34,16 +34,24 @@ width:500px; height:auto;
 
 <c:choose>
 
-<c:when test="${item.lesson_type == 1}">
-<td><c:out value="원데이 클래스"/></td>
+<c:when test="${item.lesson_category == 1}">
+<td><c:out value="운동"/></td>
 </c:when>
 
-<c:when test="${item.lesson_type == 2}">
-<td><c:out value="다회성 클래스"/></td>
+<c:when test="${item.lesson_category == 2}">
+<td><c:out value="교육"/></td>
+</c:when>
+
+<c:when test="${item.lesson_category == 3}">
+<td><c:out value="핸드메이드"/></td>
+</c:when>
+
+<c:when test="${item.lesson_category == 4}">
+<td><c:out value="it"/></td>
 </c:when>
 
 <c:otherwise>
-<td><c:out value="온라인 클래스"/></td>
+<td><c:out value="요리"/></td>
 </c:otherwise>
 
 </c:choose>

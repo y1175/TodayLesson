@@ -166,7 +166,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 <label for="lesson_category">카테고리</label><br>
 <select name="lesson_category">
-  <option value="0" selected="selected">---</option>
+  <option value="0" disabled>---</option>
   <option value="1">운동</option>
   <option value="2">교육</option>
   <option value="3">핸드메이드</option>
@@ -186,7 +186,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 <label for="lesson_type">레슨타입</label><br>
 <select id="lesson_type" name="lesson_type">
-  <option value="0">---</option>
+  <option value="0" disabled>---</option>
   <option value="1">원데이 레슨</option>
   <option value="2">다회성 레슨</option>
   <option value="3">온라인 레슨</option>
