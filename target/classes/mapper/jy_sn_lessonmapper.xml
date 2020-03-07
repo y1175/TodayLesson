@@ -5,7 +5,7 @@
 <mapper namespace="com.todaylesson.Mapper.JY_US_LessonMapper">
 
 
-<select id="list" resultType="com.todaylesson.DTO.LessonDTO">
+<select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO">
 
 select lesson_no, lesson_title, lesson_type, lesson_senior_title
 from lesson
@@ -15,23 +15,36 @@ from lesson
 
 <!-- 현재 실험 때문에 lesson썸넬 뺐음 -->
 
-<insert id="insert" parameterType="com.todaylesson.DTO.LessonDTO">
+<insert id="insert_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
 
 insert into lesson(lesson_title, lesson_content,lesson_cost, 
 lesson_member_max,lesson_category,  
 lesson_register_date,lesson_open_period, lesson_close_period, lesson_number, 
 lesson_type, lesson_result, lesson_readno, lesson_junior_count,
 lesson_senior_title, lesson_senior_content, 
-lesson_zipcode, lesson_addr, lesson_lat, lesson_long, lesson_time)
+lesson_zipno, lesson_addr, lesson_lat, lesson_long, lesson_time,senior_no)
 
 values(#{lesson_title},#{lesson_content},#{lesson_cost},
 #{lesson_member_max},#{lesson_category},
 sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
 #{lesson_type},0,0,0,
 #{lesson_senior_title},#{lesson_senior_content},
-#{lesson_zipcode},#{lesson_addr},#{lesson_lat},#{lesson_long},#{lesson_time})
+#{lesson_zipno},#{lesson_addr},#{lesson_lat},#{lesson_long},#{lesson_time},#{senior_no})
 
 </insert>
 
+<select id="select_senior_no" parameterType="java.lang.String" resultType="int">
+
+select senior_no 
+from senior
+where member_id=#{member_id}
+
+</select>
+
+<select id="detail_lesson" parameterType="int" resultType="com.todaylesson.DTO.LessonDTO">
+
+select * from lesson where lesson_no = #{lesson_no}
+
+</select>
 
 </mapper>

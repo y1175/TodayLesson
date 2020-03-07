@@ -150,8 +150,10 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
-    
-    
+
+<!-- 멤버 아이디 -->    
+<input type="hidden" id="senior_no" name="senior_no" value="${senior_no}">
+ 
 <label for="lesson_title">레슨명</label><br>
 <input type="text" id="lesson_title" name="lesson_title"><br>
 

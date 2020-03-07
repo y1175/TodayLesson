@@ -191,6 +191,10 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/plus_senior".equals(strUri))    
        	 	return false;
         
+        // 레슨 작성 완료
+        else if ("/insert_result".equals(strUri))    
+       	 	return false;
+        
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거
 

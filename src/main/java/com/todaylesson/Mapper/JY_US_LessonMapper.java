@@ -10,9 +10,15 @@ import com.todaylesson.DTO.LessonDTO;
 @Mapper
 public interface JY_US_LessonMapper {
 
-	public int insert(LessonDTO dto);
+	public int insert_lesson(LessonDTO dto);
 
 	
-	public List<LessonDTO> list();
+	public List<LessonDTO> list_lesson();
+
+
+	public int select_senior_no(String member_id);
+
+
+	public LessonDTO detail_lesson(int lesson_no);
 
 }

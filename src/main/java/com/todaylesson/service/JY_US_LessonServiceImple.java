@@ -15,13 +15,23 @@ public class JY_US_LessonServiceImple implements JY_US_LessonService {
 	public JY_US_LessonMapper mapper;
 	
 	@Override
-	public int insertLesson(LessonDTO dto) {	
-		return mapper.insert(dto);
+	public int insert_Lesson(LessonDTO dto) {	
+		return mapper.insert_lesson(dto);
 	}
 
 	@Override
 	public List<LessonDTO> list() {
-		return mapper.list();
+		return mapper.list_lesson();
+	}
+
+	@Override
+	public int select_senior_no(String member_id) {
+		return mapper.select_senior_no(member_id);
+	}
+
+	@Override
+	public LessonDTO detail_lesson(int lesson_no) {
+		return mapper.detail_lesson(lesson_no);
 	}
 
 	

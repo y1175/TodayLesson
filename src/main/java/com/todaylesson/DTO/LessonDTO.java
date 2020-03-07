@@ -20,7 +20,7 @@ public class LessonDTO {
 	private int lesson_cost;
 	private int lesson_member_max;
 	private int lesson_category;
-	//private String lesson_thumb;
+	private String lesson_thumb;
 	private String lesson_register_date;
 	private String lesson_open_period;
 	private String lesson_close_period;
@@ -35,7 +35,7 @@ public class LessonDTO {
 	private int lesson_readno;
 	private String lesson_senior_title;
 	private String lesson_senior_content;
-	private int lesson_zipcode;
+	private int lesson_zipno;
 	private int senior_no;
 	
 	
@@ -44,13 +44,13 @@ public class LessonDTO {
 	public LessonDTO(String lesson_title, String lesson_content, int lesson_cost, int lesson_member_max,
 			int lesson_category, String lesson_thumb, String lesson_open_period,
 			String lesson_close_period, int lesson_number, int lesson_type, int lesson_junior_count, int lesson_result,int lesson_readno,
-			String lesson_senior_title, String lesson_senior_content) {
+			String lesson_senior_title, String lesson_senior_content,int senior_no) {
 		this.lesson_title = lesson_title;
 		this.lesson_content = lesson_content;
 		this.lesson_cost = lesson_cost;
 		this.lesson_member_max = lesson_member_max;
 		this.lesson_category = lesson_category;
-		//this.lesson_thumb = lesson_thumb;
+		this.lesson_thumb = lesson_thumb;
 		this.lesson_open_period = lesson_open_period;
 		this.lesson_close_period = lesson_close_period;
 		this.lesson_number = lesson_number;
@@ -60,6 +60,7 @@ public class LessonDTO {
 		this.lesson_readno = lesson_readno;
 		this.lesson_senior_title = lesson_senior_title;
 		this.lesson_senior_content = lesson_senior_content;
+		this.senior_no=senior_no;
 	}
 	
 	
