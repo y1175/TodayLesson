@@ -8,6 +8,8 @@ public interface JY_US_SeniorService {
 
 	public int plus_senior(SeniorDTO dto);
 
+	public int check_senior(String member_id);
+
 
 	
 	

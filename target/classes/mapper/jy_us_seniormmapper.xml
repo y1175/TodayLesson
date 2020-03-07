@@ -31,4 +31,12 @@ where member_id = #{member_id}
 
 </update>
 
+<select id="check_senior" parameterType="java.lang.String" resultType="int">
+
+select member_level
+from member
+where member_id=#{member_id}
+
+</select>
+
 </mapper>

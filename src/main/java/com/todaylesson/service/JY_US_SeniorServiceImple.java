@@ -32,6 +32,12 @@ public class JY_US_SeniorServiceImple implements JY_US_SeniorService {
 	}
 
 
+	@Override
+	public int check_senior(String member_id) {
+		return mapper.check_senior(member_id);
+	}
+
+
 	
 	
 }

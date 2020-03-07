@@ -13,9 +13,16 @@
 <script>
 	
 	function senior_switch(){
-		opener.location.href="${pageContext.request.contextPath}/senior_switch/${pageContext.request.userPrincipal.name}";
 		
-		self.close();
+		if (${mem_level}==1) {
+			opener.location.href="${pageContext.request.contextPath}/senior_switch/${pageContext.request.userPrincipal.name}";
+			self.close();
+		} else {
+			opener.location.href="${pageContext.request.contextPath}/you_are_senior";
+			self.close();
+		}
+				
+		
 	}	
 
 </script>
