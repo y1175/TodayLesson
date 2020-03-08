@@ -160,3 +160,29 @@
 	  height: auto;
 	  width: auto\9; /* ie8 */
    }
+   
+   
+/* 마이페이지  나중에 옮기기*/   
+   
+   .hs_us_mypage_box{
+     width: 100%;
+   }
+   .hs_us_mypage_div{
+      width: 80%;
+      display: inline-block;
+   }
+   .hs_us_mypage_navdiv{
+      width: 80%;
+      margin : auto;
+      
+   }
+   .hs_us_mypage_nav{
+      margin: 20px;
+   }
+   .hs_us_mypage_nav a{
+      text-decoration: none;
+      font-weight: 800;
+      color: #757575;
+      margin-right: 20px;
+      
+   }
