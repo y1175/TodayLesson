@@ -23,7 +23,14 @@ where member_id = #{member_id}
 <update id="adminmemberauthupdate" parameterType="HashMap">
 update member_auth a inner join member b
 on a.member_id = b.member_id
-set member_auth = 
+<choose>
+<when test='#{member_level}==0'>
+set a.member_auth = 'ROLE_ADMIN'
+</when>
+<when test='#{member_level}==2'>
+set a.member_auth = 'ROLE_SENIOR'
+</when>
+</choose>
 where member_id = #{member_id}
 </update>
  

@@ -10,8 +10,8 @@
 <body>
 <script>
 var result = ${result}
-
-if(result>0)
+var authresult = ${authresult}
+if(result>0 && authresult>0)
 {
 alert('등급이 수정되었습니다.');
 location.href="/admin_hm_memmanage";
