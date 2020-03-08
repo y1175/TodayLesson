@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import com.todaylesson.DTO.Freeboard_PageMaker;
+import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.service.User_YI_FreeBoard_Service;
 
@@ -33,24 +34,6 @@ public class User_YI_FreeBoard_Controller {
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,Model model)  {
 		
-/*	Pattern p=Pattern.compile("(^[0-9]*$)");
-		if(search=="member_nick"|| "member_nick".equals(search))
-		{
-			Matcher m=p.matcher(searchtxt);
-			if(!m.find())
-			{
-				searchtxt="";
-				model.addAttribute("searchtxt","");
-				
-			}
-			else
-			{
-				model.addAttribute("searchtxt",searchtxt);
-				
-			}
-		}
-		model.addAttribute("searchtxt",searchtxt);*/
-		
 		int totalCount= service.totalCount(search, searchtxt);
 		int pageSize=15;
 		int blockSize=5;
@@ -58,7 +41,9 @@ public class User_YI_FreeBoard_Controller {
 		
 		Freeboard_PageMaker page=new Freeboard_PageMaker(currPage,totalCount,pageSize,blockSize);
 		
-
+		List<NoticeDTO> notice=service.notice();
+		model.addAttribute("notice",notice);
+		
 		List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt
 										,page.getStartRow()
 										,page.getEndRow());
@@ -82,6 +67,15 @@ public class User_YI_FreeBoard_Controller {
 		SQLjoin_Member_FreeBoardDTO dto= service.freeboard_detail(freeboard_no);
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_detail";
+	}
+	
+	@RequestMapping("/notice_detail/{notice_no}")
+	public String notice_detail(@PathVariable int notice_no,Model model)
+	{	
+		service.notice_readnoUp(notice_no);
+		NoticeDTO dto= service.notice_detail(notice_no);
+		model.addAttribute("dto",dto);
+		return "TodayLesson_UserPage/yi_notice_detail";
 	}
 
 

@@ -13,6 +13,18 @@
 </tr>
 </thead>
 <tbody>
+<c:forEach var="notice" items="${notice }">
+<tr>
+<td>${notice.notice_category }</td>
+<td>${notice.notice_no }</td>
+<td><a href="notice_detail/${notice.notice_no }">${notice.notice_title }</a></td>
+<td>${notice.member_nick }</td>
+<td>${notice.notice_writedate }</td>
+<td>${notice.notice_readno }</td>
+</tr>
+</c:forEach>
+</tbody>
+<tbody>
 <c:forEach var="item" items="${list }">
 
 

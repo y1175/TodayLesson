@@ -10,13 +10,12 @@
 <body>
 <c:set var="item" value="${dto }"></c:set>
 글내용
-글번호 : ${item.freeboard_no } <br>
+글번호 : ${item.notice_no } <br>
 작성자 : ${item.member_nick } <br>
-조회수 : ${item.freeboard_readno } <br>
-제목 : ${item.freeboard_title } <br>
-내용 : ${item.freeboard_content } <br>
+조회수 : ${item.notice_readno } <br>
+제목 : ${notice_title } <br>
+내용 : ${item.notice_content } <br>
 
-댓글 : <br>
 <a href="/freeboard">목록으로</a>
 
 </body>

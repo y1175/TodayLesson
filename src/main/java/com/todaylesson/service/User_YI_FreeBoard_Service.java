@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.todaylesson.DTO.FreeBoardDTO;
 import com.todaylesson.DTO.Freeboard_PageMaker;
+import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 
 public interface User_YI_FreeBoard_Service {
@@ -16,6 +17,9 @@ public interface User_YI_FreeBoard_Service {
 	public SQLjoin_Member_FreeBoardDTO freeboard_detail(int freeboard_no);
 	//조회수 증가
 	public void freeboard_readnoUp(int freeboard_no);
+	public List<NoticeDTO> notice();
+	public void notice_readnoUp(int notice_no);
+	public NoticeDTO notice_detail(int notice_no);
 
 	
 

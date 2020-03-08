@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.Mapper.User_YI_FreeBoard_Mapper;
 
@@ -51,6 +52,24 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 	public void freeboard_readnoUp(int freeboard_no) {
 		mapper.freeboard_readnoUp(freeboard_no);
 		
+	}
+
+	@Override
+	public List<NoticeDTO> notice() {
+		// TODO Auto-generated method stub
+		return mapper.notice();
+	}
+
+	@Override
+	public void notice_readnoUp(int notice_no) {
+		// TODO Auto-generated method stub
+		mapper.notice_readnoUp(notice_no);
+	}
+
+	@Override
+	public NoticeDTO notice_detail(int notice_no) {
+		// TODO Auto-generated method stub
+		return mapper.notice_detail(notice_no);
 	}
 
 

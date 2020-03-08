@@ -32,12 +32,19 @@ select freeboard_category,member_nick,freeboard_no,freeboard_title,freeboard_wri
 from freeboard join member
 on freeboard.member_id = member.member_id
 <!-- WHERE절을 include 태그로 삽입 -->
-  <include refid="search_select"></include>
+<include refid="search_select"></include>
   order by freeboard_no desc
 limit   #{startrow}, 15
 
 </select>
-
+<!-- 공지사항 -->
+<select id='notice' resultType="com.todaylesson.DTO.NoticeDTO">
+select notice_category,member_nick,notice_no,notice_title,notice_writedate,notice_readno
+from notice join member
+on notice.member_id=member.member_id
+order by notice_no desc
+limit 0,5
+</select>
 
 <!-- 게시물 상세보기 -->
 <select id="freeboard_detail" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
@@ -48,6 +55,16 @@ on freeboard.member_id = member.member_id
 where freeboard_no=#{freeboard_no}
 </select>
 
+
+<!-- 공지 상세보기 -->
+<select id="notice_detail" parameterType="int" resultType="com.todaylesson.DTO.NoticeDTO">
+select notice_category,member_nick,notice_readno
+,notice_title,notice_writedate,notice_content
+from notice join member
+on notice.member_id = member.member_id
+where notice_no=#{notice_no}
+</select>
+
 <!-- 조회수 증가 -->
 <update id="freeboard_readnoUp" parameterType="int">
 update freeboard
@@ -55,6 +72,11 @@ set freeboard_readno=IFNULL(freeboard_readno,0)+1
 where freeboard_no=#{freeboard_no}
 </update>
 
+<update id="notice_readnoUp" parameterType="int">
+update notice
+set notice_readno=IFNULL(notice_readno,0)+1
+where notice_no=#{notice_no}
+</update>
 
 <!-- 검색기능 쿼리문 -->
 <sql id="search_select">

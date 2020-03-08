@@ -18,4 +18,5 @@ public class NoticeDTO {
 	private int notice_category;
 	private int notice_readno;
 	private String member_id;
+	private String member_nick;
 }
