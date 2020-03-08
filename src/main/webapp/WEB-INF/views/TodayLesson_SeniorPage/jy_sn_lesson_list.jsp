@@ -28,9 +28,8 @@ width:500px; height:auto;
 <c:forEach var="item" items="${list}">
 <tr>
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
-<c:set var="type" value="${item.lesson_category}"/>
 
 <c:choose>
 
@@ -57,7 +56,6 @@ width:500px; height:auto;
 </c:choose>
 
 
-<c:set var="type" value="${item.lesson_type}"/>
 
 <c:choose>
 
