@@ -14,6 +14,8 @@ public interface Admin_HM_MemmanageMapper {
 
 	public int adminlevelupdate(HashMap<String, Object> map);
 
+	public int adminmemberauthupdate(HashMap<String, Object> map);
+
 
 	
 	

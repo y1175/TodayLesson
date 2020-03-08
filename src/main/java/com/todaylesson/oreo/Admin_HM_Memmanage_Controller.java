@@ -40,9 +40,18 @@ public class Admin_HM_Memmanage_Controller {
 		map.put("member_level", member_level);
 		int result = service.adminlevelupdate(map);
 		model.addAttribute("result",result);
+		if(result>0)
+		{
+			int authresult = service.adminmemberauthupdate(map);
+			model.addAttribute("authresult",authresult);
+			return "TodayLesson_AdminPage/hm_ad_levelupdateresult";
+		}
+		else{
+			
+			return "TodayLesson_AdminPage/hm_ad_levelupdateresult";	
+		}
 		
 		
-		return "TodayLesson_AdminPage/hm_ad_levelupdateresult";
 	}
 	/*@RequestMapping("/member_levelupdate")
 	public void member_levelupdate(

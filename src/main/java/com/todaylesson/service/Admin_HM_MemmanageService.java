@@ -11,4 +11,6 @@ public interface Admin_HM_MemmanageService {
 
 	public int adminlevelupdate(HashMap<String, Object> map);
 
+	public int adminmemberauthupdate(HashMap<String, Object> map);
+
 }

@@ -28,4 +28,10 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 		return mapper.adminlevelupdate(map);
 	}
 
+	@Override
+	public int adminmemberauthupdate(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.adminmemberauthupdate(map);
+	}
+
 }
