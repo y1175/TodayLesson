@@ -19,7 +19,7 @@
 <td>${item.member_name}</td>
 <td>${item.member_nick}</td>
 <td>${item.member_point}</td>
-<form method="post" action="member_levelupdate">
+<form method="post" action="adminmember_levelupdate">
 <td>
 <input type="hidden" name="member_id" id="member_id" value="${item.member_id}">
 <select id="member_level" name="member_level" id="member_level">

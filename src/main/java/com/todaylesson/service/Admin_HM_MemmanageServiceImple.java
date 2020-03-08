@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,6 +20,12 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 	public List<MemberDTO> adminmemberlist() {
 		// TODO Auto-generated method stub
 		return mapper.adminmemberlist();
+	}
+
+	@Override
+	public int adminlevelupdate(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.adminlevelupdate(map);
 	}
 
 }
