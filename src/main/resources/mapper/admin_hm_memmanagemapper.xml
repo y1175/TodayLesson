@@ -18,4 +18,14 @@ update member
 set member_level = #{member_level}
 where member_id = #{member_id}
 </update>
+
+<!-- 회원 레벨이 변경됐을 시 회원 등급별 권한 변경 -->
+<update id="adminmemberauthupdate" parameterType="HashMap">
+update member_auth a inner join member b
+on a.member_id = b.member_id
+set member_auth = 
+where member_id = #{member_id}
+</update>
+ 
+ 
 </mapper>
