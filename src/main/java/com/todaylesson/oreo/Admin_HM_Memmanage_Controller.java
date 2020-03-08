@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,6 +30,20 @@ public class Admin_HM_Memmanage_Controller {
 		
 	}
 	
+	@RequestMapping("/adminmember_levelupdate")
+	public String member_levelupdate(@RequestParam("member_id") String member_id
+									,@RequestParam("member_level") int member_level
+									,Model model)
+	{
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("member_level", member_level);
+		int result = service.adminlevelupdate(map);
+		model.addAttribute("result",result);
+		
+		
+		return "TodayLesson_AdminPage/hm_ad_levelupdateresult";
+	}
 	/*@RequestMapping("/member_levelupdate")
 	public void member_levelupdate(
 			@RequestParam("member_id") String member_id
