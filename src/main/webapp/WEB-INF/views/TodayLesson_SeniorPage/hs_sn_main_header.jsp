@@ -19,7 +19,7 @@
             <form action="/logout" method='post'>
                <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                <span class="hs_sn_mainheader_namelogout">
-                  <a href="">올에오님(닉네임)</a><span style="margin-left: 10px; color: white;">|</span><a href="/logout">로그아웃</a>
+                  <a href="">${pageContext.request.userPrincipal.name}님</a><span style="margin-left: 10px; color: white;">|</span><a href="/logout">로그아웃</a>
                </span>
             </form>
          </sec:authorize>

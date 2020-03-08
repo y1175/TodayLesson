@@ -44,7 +44,7 @@ public class TodayLessonController {
     
    @RequestMapping("/todaylessonsenior")
    public String senior() {
-       return "/todaylesson_sec/todaylesson_sec_senior"; 
+       return "/TodayLesson_SeniorPage/hs_sn_main"; 
     }
        
     @RequestMapping("/todaylessonmember")
