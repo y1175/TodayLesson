@@ -39,7 +39,7 @@
 <form method="post" action="adminmember_levelupdate">
 <td><span>
 <input type="hidden" name="member_id" id="member_id" value="${item.member_id}">
-<select id="member_level" name="member_level" id="member_level">
+<select id="member_level" name="member_level">
 <option value="">${item.member_level} 레벨</option>
 <option value="0">0 관리자</option>
 <option value="1">1 주니어</option>
