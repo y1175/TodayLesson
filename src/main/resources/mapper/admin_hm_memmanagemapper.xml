@@ -36,12 +36,19 @@ on a.member_id = b.member_id
 <choose>
 <when test='member_level==0'>
 set a.member_auth = 'ROLE_ADMIN'
+	,b.enabled = '1'
 </when>
 <when test='member_level==1'>
-set a.member_auth = 'ROLE_USER' 
+set a.member_auth = 'ROLE_USER'
+	,b.enabled = '1' 
 </when>
 <when test='member_level==2'>
 set a.member_auth = 'ROLE_SENIOR'
+	,b.enabled = '1'
+</when>
+<when test="member_level==3">
+set a.member_auth = 'ROLE_ERROR'
+	,b.enabled = '0'
 </when>
 </choose>
 where a.member_id = #{member_id}

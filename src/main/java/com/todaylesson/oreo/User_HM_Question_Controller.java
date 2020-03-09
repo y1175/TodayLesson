@@ -13,6 +13,16 @@ public class User_HM_Question_Controller {
 	@Resource(name="user_hm_question_service")
 	private User_HM_Question_Service service;
 	
+	@RequestMapping("/hm_us_question")
+	private String hm_us_question()
+	{
+		
+		return "/TodayLesson_UserPage/hm_us_question";
+		
+		
+		
+		
+	}
 	
 	//문의 등록페이지 이동
 	@RequestMapping("/hm_question_insert")

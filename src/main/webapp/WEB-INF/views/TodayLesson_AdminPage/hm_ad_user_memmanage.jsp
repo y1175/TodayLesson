@@ -44,6 +44,7 @@
 <option value="0">0 관리자</option>
 <option value="1">1 주니어</option>
 <option value="2">2 시니어</option>
+<option value="3">3 블   락</option>
 </select> 
 <input type="submit" value="수정">
 </span>
