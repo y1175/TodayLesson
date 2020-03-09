@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>      
 <!DOCTYPE>
 <html>
 <head>
@@ -32,15 +34,18 @@
 </head>
 <body>
    <header>
-      <jsp:include page="hs_sn_main_header.jsp"/>
+      <tiles:insertAttribute name="hs_sn_main_header"/>
    </header>
+   
    <section>
       <aside>
-         <jsp:include page="hs_sn_main_leftaside_nav.jsp"/>
+         <tiles:insertAttribute name="hs_sn_main_leftaside_nav"/>
       </aside>
+      <tiles:insertAttribute name="hs_sn_main_section"/>
    </section>
+   
    <footer>
-      <jsp:include page="hs_all_main_footer.jsp"/>
+      <tiles:insertAttribute name="hs_sn_main_footer"/>
    </footer>
 </body>
 </html>

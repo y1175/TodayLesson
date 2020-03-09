@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>         
 <!DOCTYPE>
@@ -14,7 +14,7 @@
 
 <!-- viewport -->
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-<!-- viewport / shrink-to-fit=no ì‚¬íŒŒë¦¬ ë¸Œë¼ìš°ì €ì— ì˜í–¥ì„ ë¯¸ì¹˜ëŠ” ì†ì„± -->
+<!-- viewport / shrink-to-fit=no »çÆÄ¸® ºê¶ó¿ìÀú¿¡ ¿µÇâÀ» ¹ÌÄ¡´Â ¼Ó¼º -->
 
 <!-- Bootstrap -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -32,20 +32,21 @@
 <!-- font style -->
 
 </head>
+
 <body>
    <header>
-      <tiles:insertAttribute name="hs_ad_main_header"/>
-   </header>
-   
+      <tiles:insertAttribute name="hs_us_my_header"/>
+   </header> 
    <section>
-      <aside>
-         <tiles:insertAttribute name="hs_ad_main_leftaside_nav"/>
-      </aside>
-      <tiles:insertAttribute name="hs_ad_main_section"/>
+      <nav>
+         <tiles:insertAttribute name="hs_us_my_nav"/>
+      </nav>
+      <tiles:insertAttribute name="hs_us_my_section"/>
    </section>
    
    <footer>
-      <tiles:insertAttribute name="hs_ad_main_footer"/>
-   </footer>
+      <tiles:insertAttribute name="hs_us_my_footer"/>
+   </footer> 
+   
 </body>
 </html>

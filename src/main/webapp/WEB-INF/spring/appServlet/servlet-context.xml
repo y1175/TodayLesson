@@ -23,19 +23,32 @@
 	
 	<context:component-scan base-package="com.todaylesson.oreo" />
  	
-		<!-- 업로드 패스 설정  -->
-<beans:bean class="java.lang.String" id="uploadPath">
- <beans:constructor-arg value="C:\javadb\project_lesson17\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TodayLesson\resources" /> 
-</beans:bean>
+ 	<!-- Tiles viewResolver --> 
+    <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <beans:property name="definitions">
+            <beans:list>
+                <beans:value>/WEB-INF/tiles/*.xml</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>        
+    <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+        <beans:property name="order" value="2" />
+    </beans:bean>  
+    <!-- Tiles viewResolver -->
+ 	
+    <!-- 업로드 패스 설정  -->
+    <beans:bean class="java.lang.String" id="uploadPath">
+       <beans:constructor-arg value="C:\javadb\project_lesson17\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TodayLesson\resources" /> 
+    </beans:bean>
+    <!-- 업로드 패스 설정  -->
 
-<!-- 일반 파일 업로드 경로 -->
-<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+    <!-- 일반 파일 업로드 경로 -->
+    <resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
 
-<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
- <beans:property name="maxUploadSize" value="10485760"/>
-</beans:bean>
-	 
-	
-	
+    <beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+       <beans:property name="maxUploadSize" value="10485760"/>
+    </beans:bean>
+    <!-- 일반 파일 업로드 경로 -->
 	
 </beans:beans>

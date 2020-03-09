@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+   <!-- UserPage - 기본 HomePage -->
+   <definition name="hs_us_main" template="/WEB-INF/views/TodayLesson_UserPage/hs_us_main.jsp">
+      <put-attribute name="hs_us_main_header" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_main_header.jsp"/>
+      <put-attribute name="hs_us_main_section" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_home_content.jsp"/>
+      <put-attribute name="hs_us_main_footer" value="/WEB-INF/hs_all_main_footer.jsp"/>
+   </definition>
+   
+   <definition name="*.us__main_section" extends="hs_us_main">
+      <put-attribute name="hs_us_main_section" value="/WEB-INF/views/{1}.jsp"/>
+   </definition>
+   
+   <definition name="*/*.us__main_section" extends="hs_us_main">
+      <put-attribute name="hs_us_main_section" value="/WEB-INF/views/{1}/{2}.jsp"/>
+   </definition>
+      
+   <definition name="*/*/*.us__main_section" extends="hs_us_main">
+      <put-attribute name="hs_us_main_section" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+   </definition>   
+   <!-- UserPage - 기본 HomePage -->
+   
+   <!-- UserMyPage - UserMyPage -->
+   <definition name="hs_us_mypage" template="/WEB-INF/views/TodayLesson_UserPage/hs_us_mypage.jsp">
+      <put-attribute name="hs_us_my_header" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_main_header.jsp"/>
+      <put-attribute name="hs_us_my_nav" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_mypage_nav.jsp"/>
+      <put-attribute name="hs_us_my_section"/>
+      <put-attribute name="hs_us_my_footer" value="/WEB-INF/hs_all_main_footer.jsp"/>
+   </definition>
+   
+   <definition name="*.us__my_section" extends="hs_us_my">
+      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/{1}.jsp"/>
+   </definition>
+   
+   <definition name="*/*.us__my_section" extends="hs_us_my">
+      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/{1}/{2}.jsp"/>
+   </definition>
+      
+   <definition name="*/*/*.us__my_section" extends="hs_us_my">
+      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+   </definition>  
+   <!-- UserMyPage - UserMyPage -->
+   
+   <!-- SeniorPage - SeniorPage -->
+   <definition name="hs_sn_main" template="/WEB-INF/views/TodayLesson_SeniorPage/hs_sn_main.jsp">
+      <put-attribute name="hs_sn_main_header" value="/WEB-INF/views/TodayLesson_SeniorPage/hs_sn_main_header.jsp"/>
+      <put-attribute name="hs_sn_main_leftaside_nav" value="/WEB-INF/views/TodayLesson_SeniorPage/hs_sn_main_leftaside_nav.jsp"/>
+      <put-attribute name="hs_sn_main_section"/>
+      <put-attribute name="hs_sn_main_footer" value="/WEB-INF/views/hs_all_main_footer.jsp"/>
+   </definition>
+   
+   <definition name="*.sn__main_section" extends="hs_sn_main">
+      <put-attribute name="hs_sn_main_section" value="/WEB-INF/views/{1}.jsp"/>
+   </definition>
+   
+   <definition name="*/*.sn__main_section" extends="hs_sn_main">
+      <put-attribute name="hs_sn_main_section" value="/WEB-INF/views/{1}/{2}.jsp"/>
+   </definition>
+      
+   <definition name="*/*/*.sn__main_section" extends="hs_sn_main">
+      <put-attribute name="hs_sn_main_section" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+   </definition> 
+   <!-- SeniorPage - SeniorPage -->
+   
+   <!-- AdminPage - AdminPage -->
+   <definition name="hs_ad_main" template="/WEB-INF/views/TodayLesson_AdminPage/hs_ad_main.jsp">
+      <put-attribute name="hs_ad_main_header" value="/WEB-INF/views/TodayLesson_AdminPage/hs_ad_main_header.jsp"/>
+      <put-attribute name="hs_ad_main_leftaside_nav" value="/WEB-INF/views/TodayLesson_AdminPage/hs_ad_main_leftaside_nav.jsp"/>
+      <put-attribute name="hs_ad_main_section"/>
+      <put-attribute name="hs_ad_main_footer" value="/WEB-INF/hs_all_main_footer.jsp"/>
+   </definition>
+   
+   <definition name="*.hs_ad_main_section" extends="hs_ad_main">
+      <put-attribute name="hs_ad_main_section" value="/WEB-INF/views/{1}.jsp"/>
+   </definition>
+   
+   <definition name="*/*.hs_ad_main_section" extends="hs_ad_main">
+      <put-attribute name="hs_ad_main_section" value="/WEB-INF/views/{1}/{2}.jsp"/>
+   </definition>
+      
+   <definition name="*/*/*.hs_ad_main_section" extends="hs_ad_main">
+      <put-attribute name="hs_ad_main_section" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
+   </definition> 
+   <!-- AdminPage - AdminPage -->
+   
+   <!-- header footer 필요없는  Page -->
+
+
+</tiles-definitions>
+
+
+
+
+
+
+

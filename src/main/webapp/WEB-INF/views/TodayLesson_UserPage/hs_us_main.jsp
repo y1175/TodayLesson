@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>            
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>           
 <!DOCTYPE>
 <html>
 <head>
@@ -33,20 +34,15 @@
 </head>
 <body>
    <header>
-      <jsp:include page="hs_us_main_header.jsp"/>
+      <tiles:insertAttribute name="hs_us_main_header"/>
    </header>
+   
    <section>
-      <c:set var="hs_us_section_page" scope="page" value="${param.page}"/>
-      <c:out value="${hs_us_section_page} dddd"></c:out>
-         <c:if test="${hs_us_section_page}!=null">
-            <jsp:include page="${hs_us_section_page}"/>
-         </c:if>
-         <c:if test="${hs_us_section_page}==null || ${hs_us_section_page}=='' " >
-            <jsp:include page="hs_us_home_content.jsp"/>
-         </c:if>
+      <tiles:insertAttribute name="hs_us_main_section"/>
    </section>
+   
    <footer>
-      <jsp:include page="hs_all_main_footer.jsp"/>
+      <tiles:insertAttribute name="hs_us_main_footer"/>
    </footer>
 </body>
 </html>

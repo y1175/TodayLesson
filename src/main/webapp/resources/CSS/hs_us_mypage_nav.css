@@ -1,0 +1,23 @@
+@charset "utf-8";
+   .hs_us_mypage_box{
+     width: 100%;
+   }
+   .hs_us_mypage_div{
+      width: 80%;
+      display: inline-block;
+   }
+   .hs_us_mypage_navdiv{
+      width: 80%;
+      margin : auto;
+      
+   }
+   .hs_us_mypage_nav{
+      margin: 20px;
+   }
+   .hs_us_mypage_nav a{
+      text-decoration: none;
+      font-weight: 800;
+      color: #757575;
+      margin-right: 20px;
+      
+   }

@@ -42,29 +42,23 @@ public class TodayLessonController {
    
    @RequestMapping("/todaylessonadmin")
    public String admin() { 
-	   return "TodayLesson_AdminPage/hs_ad_main";
+	   return "hs_ad_main";
    }
     
    @RequestMapping("/todaylessonsenior")
    public String senior() {
-       return "/TodayLesson_SeniorPage/hs_sn_main"; 
-    }
+       return "hs_sn_main"; 
+   }
        
-    @RequestMapping("/todaylessonmember")
-    public String member(){
-       return "/todaylesson_sec/todaylesson_sec_member";
-    }
-       
-       
-       @RequestMapping("/todaylesson")
-       public String all(){
-          return "/TodayLesson_UserPage/hs_us_main";
-       }
-       
-    /*@RequestMapping("/todaylesson")
-    public String all(Locale locale,HttpServletRequest request, HttpServletResponse response, Model model){
-       return "/TodayLesson_UserPage/hs_us_main";
-    }*/
+   @RequestMapping("/todaylessonmember")
+   public String member(){
+      return "hs_us_mypage";
+   } 
+    
+   @RequestMapping("/todaylesson")
+   public String all(){
+      return "hs_us_main";
+   }
           
        @RequestMapping("/error")
        public String error()
@@ -83,7 +77,7 @@ public class TodayLessonController {
              model.addAttribute("logout","logout");
           
           
-          return "/TodayLesson_UserPage/hs_us_main_sec_login";
+          return "/TodayLesson_UserPage/hs_us_main_sec_login.us__main_section";
        }
        
        /*  모달창 실험했던거... 나중에 다시 하기*/
