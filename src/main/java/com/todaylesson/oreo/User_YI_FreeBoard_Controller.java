@@ -73,15 +73,26 @@ public class User_YI_FreeBoard_Controller {
 	//∏Æ«√√¢ json
 	@ResponseBody
 	@RequestMapping("/freeboard_detailjson/{freeboard_no}")
-	public SQLjoin_Member_FreeBoardDTO detailjson(@PathVariable int freeboard_no)
+	public SQLjoin_Member_FreeBoardDTO detailjson(@PathVariable int freeboard_no
+			,@RequestParam String boardreply_content
+			,@RequestParam String member_id
+			,Model model)
 	{
-		SQLjoin_Member_FreeBoardDTO dto = service.freeboard_detail(freeboard_no);
+		SQLjoin_Member_FreeBoardDTO dto = new SQLjoin_Member_FreeBoardDTO();
+		
+		dto.setFreeboard_no(freeboard_no);
+		dto.setMember_id(member_id);
+		dto.setBoardreply_content(boardreply_content);
+		int insertResult=service.insert_reply(dto);
+		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(dto);
+		model.addAttribute("rep_list",list);
 		return dto;
 	}
 	
 	@RequestMapping("/insert_replyresult")
 	public String rep_detail(SQLjoin_Member_FreeBoardDTO dto)
 	{
+		
 		service.insert_reply(dto);
 		return "redirect:/freeboard_detail"+dto.getFreeboard_no();
 	}

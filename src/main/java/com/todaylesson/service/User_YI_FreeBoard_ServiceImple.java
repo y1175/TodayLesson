@@ -80,9 +80,15 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 	}
 
 	@Override
-	public void insert_reply(SQLjoin_Member_FreeBoardDTO dto) {
+	public int insert_reply(SQLjoin_Member_FreeBoardDTO dto) {
 		// TODO Auto-generated method stub 
-		
+		return mapper.insert_reply(dto);
+	}
+
+	@Override
+	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(SQLjoin_Member_FreeBoardDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.boardreply_list(dto);
 	}
 
 

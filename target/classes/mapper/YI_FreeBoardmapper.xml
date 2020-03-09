@@ -104,5 +104,16 @@ where freeboard_title like CONCAT('%', #{searchtxt}, '%')
 </if>
 </sql> 
 
+<insert id="insert_reply"  parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+insert into boardreply(boardreply_content,boardreply_writedate,member_id,freeboard_no)
+values(#{boardreply_content},now(),#{member_id},#{freeboard_no})
+</insert>
+
+<select id="boardreply_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+select boardreply_no,freeboard_no,member_nick,boardreply_content,boardreply_writedate
+from boardreply join member
+on boardreply.member_id=member.member_id
+where boardreply.freeboard_no=#{freeboard_no}
+</select>
 
 </mapper>
