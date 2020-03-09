@@ -50,7 +50,7 @@ $(document).ready(function() {
  				console.log(jsonObj.freeboard_no);	
 				let repdetail="<td>${jsonObj.member_nick}</td>";
 				repdetail+="<td>${jsonObj.boardreply_content}</td>";
-				repdetail+="<td>${djsonObj.boardreply_writedate}</td>";
+				repdetail+="<td>${jsonObj.boardreply_writedate}</td>";
 				repdetail+="<td><a href=''>삭제</a></td>";
 				$('.add_reply').append(repdetail);
 			},error:function(data,status,jqXHR){
@@ -98,6 +98,7 @@ $(document).ready(function() {
 <tbody>
 <tr>
 <c:forEach var='item' items='${rep_list}'>
+<td>${rep_list.boardreply_no}</td>
 <td>${rep_list.member_nick}</td>
 				<td>${rep_list.boardreply_content}</td>
 				<td>${rep_list.boardreply_writedate}</td>
