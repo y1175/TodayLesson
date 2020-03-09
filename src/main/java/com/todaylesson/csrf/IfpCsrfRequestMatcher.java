@@ -164,7 +164,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if("/adminmember_levelupdate".equals(strUri))
         	return false;
         //혜미 관리자 회원 디테일
-        else if("/detail".equals(strUri))
+        else if("/hm_memmanagedetail".equals(strUri))
         	return false;
    //은지
         

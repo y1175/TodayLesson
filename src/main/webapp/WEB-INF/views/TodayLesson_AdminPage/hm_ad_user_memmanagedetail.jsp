@@ -14,7 +14,37 @@
 <c:out value="${dto.member_no}"></c:out>
 </li>
 <li>
-
+<c:out value="${dto.member_id}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_name}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_birth}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_phone}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_addr}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_zipcode}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_point}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_level}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_email}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_nick}"></c:out>
+</li>
+<li>
+<c:out value="${dto.member_join_date}"></c:out>
 </li>
 </ul>
 </body>
