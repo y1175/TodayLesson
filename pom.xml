@@ -102,7 +102,7 @@
 
 		<!-- db연결을 위해 추가하기 -->
 
-		<!-- file upload - Apache Commons FileUpload / Apache Commons IO 추가 -->
+		<!-- file upload - Apache Commons FileUpload / Apache Commons IO 추가  / thumbnail -->
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -116,11 +116,14 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
-		<!-- file upload - Apache Commons FileUpload / Apache Commons IO 추가 -->
-
-
-
-
+		
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.8</version>
+        </dependency>  
+		<!-- file upload - Apache Commons FileUpload / Apache Commons IO / thumbnail 추가 -->
 
 		<!-- spring security 추가 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
@@ -173,7 +176,7 @@
 			<version>2.2</version>
 		</dependency>
 		<!--은지 sms보내기 -->
-
+		
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
