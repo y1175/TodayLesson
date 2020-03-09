@@ -5,10 +5,9 @@
 <mapper namespace="com.todaylesson.Mapper.JY_US_LessonMapper">
 
 
-<select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO">
+<select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO" parameterType="int">
 
-select *
-from lesson
+select * from lesson 
 where senior_no = #{senior_no}
 
 </select>

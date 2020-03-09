@@ -25,7 +25,6 @@ $(document).ready(function() {
 	
 	// 썸머노트로 작성한 부분을 html코드로 변환해서 가져옴
 	$('#summer').html();
-
 	
 	
 	
@@ -140,6 +139,47 @@ ${dto.lesson_content}
 ${dto.lesson_senior_content}
 </div>
 
-<a href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}">목록으로</a>
+
+
+
+--------------------------<br>
+
+시니어 아이디
+<c:out value="${dto.member_id}"/><br>
+
+시니어 이메일
+<c:out value="${dto.senior_email}"/><br>
+
+시니어 사업자 번호
+<c:out value="${dto.senior_crno}"/><br>
+
+시니어 닉네임
+<c:out value="${dto.senior_nick}"/><br>
+
+<%-- 현재까지 오픈한 레슨 명
+<c:out value="${dto.senior_nick}"/><br>
+
+현재까지 오픈한 레슨 수
+<c:out value="${dto.senior_nick}"/><br> 
+여긴 추후 추가
+--%>
+
+은행 명
+<c:out value="${dto.senior_bank_name}"/><br>
+
+예금 주
+<c:out value="${dto.senior_account_name}"/><br>
+
+계좌 번호
+<c:out value="${dto.senior_account_num}"/><br>
+
+
+<a href="${pageContext.request.contextPath }/alllesson">목록으로</a>
+<br>
+<input type = button id="lesson_result_update" 
+onclick="window.open('${pageContext.request.contextPath}/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=420')" value="심사하기">
+
 </body>
+
+
 </html>

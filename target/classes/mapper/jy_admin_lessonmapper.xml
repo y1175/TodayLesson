@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.JY_Admin_LessonMapper">
+
+<select id="all_lesson" resultType="com.todaylesson.DTO.AllLessonDTO">
+
+select *
+from lesson join senior
+on lesson.senior_no = senior.senior_no
+
+</select>
+
+
+<select id="select_lesson" resultType="com.todaylesson.DTO.AllLessonDTO" parameterType="int">
+
+select *
+from lesson join senior
+on lesson.senior_no = senior.senior_no
+where lesson_no = #{lesson_no}
+
+</select>
+
+<!-- <select id="select_lesson_list" resultType="com.todaylesson.DTO.LessonDTO" parameterType="int">
+
+
+</select> -->
+
+
+<update id="lesson_approve" parameterType="int">
+
+update lesson 
+set lesson_result = 1 
+where lesson_no = #{lesson_no}
+
+</update>
+
+<update id="lesson_reject" parameterType="int">
+
+update lesson 
+set lesson_result = 2
+where lesson_no = #{lesson_no}
+
+</update>
+
+
+<select id="wait_lesson" resultType="com.todaylesson.DTO.AllLessonDTO">
+
+select * 
+from lesson join senior 
+on lesson.senior_no = senior.senior_no 
+where lesson_result=0
+
+</select>
+
+
+</mapper>
