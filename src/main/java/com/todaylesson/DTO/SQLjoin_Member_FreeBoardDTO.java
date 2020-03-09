@@ -40,5 +40,9 @@ public class SQLjoin_Member_FreeBoardDTO {
 	private int freeboard_readno;
 
 	
+	//boardreply
+	private int boardreply_no;
+	private String boardreply_content;
+	private String boardreply_writedate;
 	
 }

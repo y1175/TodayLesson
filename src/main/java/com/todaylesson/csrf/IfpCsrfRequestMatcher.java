@@ -138,7 +138,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/freeboard".equals(strUri))                   return false;
       //게시글상세보기
         else if ("/detail/{freeboard_no}".equals(strUri))                   return false;   
-        
+      //리플달기 json
+        else if ("/detailjson/{freeboard_no}".equals(strUri)) return false;
          
         
    //혜미

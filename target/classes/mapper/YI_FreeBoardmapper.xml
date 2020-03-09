@@ -48,7 +48,7 @@ limit 0,5
 
 <!-- 게시물 상세보기 -->
 <select id="freeboard_detail" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
-select freeboard_category,member_nick,freeboard_readno
+select freeboard_no,freeboard_category,member_nick,freeboard_readno
 ,freeboard_title,freeboard_writedate,freeboard_content
 from freeboard join member
 on freeboard.member_id = member.member_id
@@ -58,7 +58,7 @@ where freeboard_no=#{freeboard_no}
 
 <!-- 공지 상세보기 -->
 <select id="notice_detail" parameterType="int" resultType="com.todaylesson.DTO.NoticeDTO">
-select notice_category,member_nick,notice_readno
+select notice_no,notice_category,member_nick,notice_readno
 ,notice_title,notice_writedate,notice_content
 from notice join member
 on notice.member_id = member.member_id
