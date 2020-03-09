@@ -4,24 +4,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 
-<mapper namespace="com.bitcamp.mapper.EJ_US_ProductMapper">
+<mapper namespace="com.todaylesson.Mapper.EJ_US_ProductMapper">
 
 
 
-<select id="allData" resultType="com.bitcamp.dto.ProductDTO">
+<select id="allData" resultType="com.todaylesson.DTO.ProductDTO">
 select *
 from product
 </select>
 
 
 <!-- 게시판 insert -->
-<insert id="insertBoard" parameterType="com.bitcamp.dto.ProductDTO">
+<insert id="insertBoard" parameterType="com.todaylesson.DTO.ProductDTO">
 INSERT INTO product (product_name, product_cost, product_stock, product_content, product_img, product_thumb)
 				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb})
 </insert>
 
 
-<select id="selectBoard" parameterType="int" resultType="com.bitcamp.dto.ProductDTO">
+<select id="selectBoard" parameterType="int" resultType="com.todaylesson.DTO.ProductDTO">
 select *
 from product
 where product_no=#{product_no}
