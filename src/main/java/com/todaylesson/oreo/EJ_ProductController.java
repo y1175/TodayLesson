@@ -26,7 +26,7 @@ public class EJ_ProductController {
 	
 	@Resource(name="service")
 	private EJ_All_Product_Service service;
-	//?뜽?꽟
+	//
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
@@ -62,8 +62,8 @@ public class EJ_ProductController {
 		dto.setProduct_thumb(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		String img=dto.getProduct_img();
 		String imgthumb=dto.getProduct_thumb();
-		System.out.println("?씠誘몄?: "+img);
-		System.out.println("?뜽?꽟: "+imgthumb);
+		System.out.println("이미지경로: "+img);
+		System.out.println("썸네일이미지경로: "+imgthumb);
 		int result = service.insertBoard(dto);
 		model.addAttribute("result", result);
 		

@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/js/summernote/summernote-lite.js"></script>
-<script src="/js/summernote/lang/summernote-ko-KR.js"></script>
+<script src="resources/JS/summernote-lite.js"></script>
+<script src="resources/JS/summernote-ko-KR.js"></script>
 
-<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
+<!-- <link rel="stylesheet" href="resources/CSS/summernote-lite.css"> -->
 </head>
 
 <table>
