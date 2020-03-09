@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-import com.todaylesson.DTO.Freeboard_PageMaker;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.service.User_YI_FreeBoard_Service;
@@ -39,7 +39,7 @@ public class User_YI_FreeBoard_Controller {
 		int blockSize=5;
 		
 		
-		Freeboard_PageMaker page=new Freeboard_PageMaker(currPage,totalCount,pageSize,blockSize);
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
 		List<NoticeDTO> notice=service.notice();
 		model.addAttribute("notice",notice);

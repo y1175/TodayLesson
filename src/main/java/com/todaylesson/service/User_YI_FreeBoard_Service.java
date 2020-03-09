@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.todaylesson.DTO.FreeBoardDTO;
-import com.todaylesson.DTO.Freeboard_PageMaker;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 

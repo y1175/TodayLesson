@@ -73,23 +73,4 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 	}
 
 
-
-
-
-
-
-	//총 게시글 수 확인
-	/*@Override
-	public int getBoardListCnt() throws Exception {
-		// TODO Auto-generated method stub
-		return mapper.getBoardListCnt();
-
-	}
-
-	@Override
-	public Object getBoardList(Freeboard_PageMaker pageMaker) {
-		// TODO Auto-generated method stub
-		return mapper.getBoardList(pageMaker);
-	}*/
-
 }

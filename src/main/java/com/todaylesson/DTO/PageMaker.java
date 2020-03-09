@@ -1,6 +1,6 @@
 package com.todaylesson.DTO;
 
-public class Freeboard_PageMaker {
+public class PageMaker {
 
 	private int currPage;
 	private int totalCount;
@@ -17,7 +17,7 @@ public class Freeboard_PageMaker {
 	private boolean next;
 
 		
-		public Freeboard_PageMaker(int currPage,int totalCount, int pageSize, int blockSize)
+		public PageMaker(int currPage,int totalCount, int pageSize, int blockSize)
 		{
 			this.currPage=currPage;
 			this.totalCount=totalCount;
