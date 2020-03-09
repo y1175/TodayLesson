@@ -15,7 +15,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
-<script src="resources/JS/summernote-ko-KR.js"></script>
+<script src="/resources/JS/summernote-ko-KR.js"></script>
 
 
 <style type="text/css">
@@ -204,12 +204,12 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <label>레슨주소</label><br>
 우편번호<br>
 <input type="hidden" id="confmKey" name="confmKey" value="devU01TX0FVVEgyMDIwMDIyNzEwMzUzNTEwOTUwMDM="> 
-<input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px" value=""> 
+<input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px"> 
 <input type="button"value="주소검색" onclick="goPopup();">
 <br>	
 		
 도로명주소<br>
-<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" value="">
+<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly">
 <p class="map"></p>
 </div>
 

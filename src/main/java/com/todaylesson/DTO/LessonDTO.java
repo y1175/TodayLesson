@@ -35,7 +35,7 @@ public class LessonDTO {
 	private int lesson_readno;
 	private String lesson_senior_title;
 	private String lesson_senior_content;
-	private int lesson_zipno;
+	private String lesson_zipno;
 	private int senior_no;
 	
 	

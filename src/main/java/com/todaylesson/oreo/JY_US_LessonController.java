@@ -49,13 +49,18 @@ public class JY_US_LessonController {
 	@RequestMapping("/insert_result")
 	public String insertresult(LessonDTO dto, Model model) {
 		
-	
+		System.out.println(dto.toString());
+		
+		if (dto.getLesson_type()==3) {
+			int result =lessonservice.insert_Online_Lesson(dto);
+			model.addAttribute("result",result);
+		} else {
+			int result =lessonservice.insert_Lesson(dto);
+			model.addAttribute("result",result);
+		}
+		
 		System.out.println("                     " +dto.toString());
-		
-		int result =lessonservice.insert_Lesson(dto);
-		
-		model.addAttribute("result",result);
-		
+					
 		return "TodayLesson_SeniorPage/jy_sn_insertresult";
 	}
 	

@@ -47,4 +47,20 @@ select * from lesson where lesson_no = #{lesson_no}
 
 </select>
 
+<insert id="insert_online_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
+
+insert into lesson(lesson_title, lesson_content,lesson_cost, 
+lesson_member_max,lesson_category,  
+lesson_register_date,lesson_open_period, lesson_close_period, lesson_number, 
+lesson_type, lesson_result, lesson_readno, lesson_junior_count,
+lesson_senior_title, lesson_senior_content,senior_no)
+
+values(#{lesson_title},#{lesson_content},#{lesson_cost},
+#{lesson_member_max},#{lesson_category},
+sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
+#{lesson_type},0,0,0,
+#{lesson_senior_title},#{lesson_senior_content},#{senior_no})
+
+</insert>
+
 </mapper>

@@ -14,6 +14,8 @@ public interface JY_US_LessonService {
 
 	public LessonDTO detail_lesson(int lesson_no);
 
+	public int insert_Online_Lesson(LessonDTO dto);
+
 	
 
 
