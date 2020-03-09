@@ -81,7 +81,7 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 
 	@Override
 	public void insert_reply(SQLjoin_Member_FreeBoardDTO dto) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		
 	}
 
