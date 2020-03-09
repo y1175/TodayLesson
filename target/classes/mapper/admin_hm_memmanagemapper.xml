@@ -27,6 +27,9 @@ on a.member_id = b.member_id
 <when test='member_level==0'>
 set a.member_auth = 'ROLE_ADMIN'
 </when>
+<when test='member_level==1'>
+set a.member_auth = 'ROLE_USER' 
+</when>
 <when test='member_level==2'>
 set a.member_auth = 'ROLE_SENIOR'
 </when>

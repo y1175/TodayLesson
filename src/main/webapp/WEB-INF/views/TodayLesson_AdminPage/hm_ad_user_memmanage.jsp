@@ -25,8 +25,8 @@
 <select id="member_level" name="member_level" id="member_level">
 <option value="">${item.member_level} 레벨</option>
 <option value="0">0 관리자</option>
+<option value="1">1 주니어</option>
 <option value="2">2 시니어</option>
-<option value="3">3 불량회원</option>
 </select> 
 <input type="submit" value="수정">
 </td>
