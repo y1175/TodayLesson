@@ -10,11 +10,15 @@ import com.todaylesson.DTO.MemberDTO;
 @Mapper
 public interface Admin_HM_MemmanageMapper {
 
-	public List<MemberDTO> adminmemberlist();
+	public List<MemberDTO> adminmemberlist(HashMap<String, Object> hm);
 
 	public int adminlevelupdate(HashMap<String, Object> map);
 
 	public int adminmemberauthupdate(HashMap<String, Object> map);
+
+	public int getCount(HashMap<String, Object> hm);
+
+	public MemberDTO detail(int member_no);
 
 
 	

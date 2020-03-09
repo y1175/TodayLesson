@@ -6,8 +6,24 @@
 <head>
  <meta charset="utf-8">
 <title>Insert title here</title>
+<script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_user_memmanagelist.js"></script>
 </head>
 <body>
+ 
+ <form method ="get" action="admin_hm_memmanage?currPage=${page.startBlock }">
+ <select name="search">
+ <option value="all">전체</option>
+ <option value="member_id">아이디</option>
+ <option value="member_name">이름</option>
+ <option value="member_nick">닉네임</option>
+ </select>
+ <input type="text" name="searchtxt">
+ <input type="submit" value="검색">
+ </form>
+ 
+ 
+ 
  
 <table>
 <thead><tr><th>no</th><th>Id</th><th>이름</th>
@@ -31,14 +47,26 @@
 <input type="submit" value="수정">
 </td>
 </form>
-<td>${item.member_join_date}</td></tr>
+<td>${item.member_join_date}</td>
+<td><input type="button" name="detailbutton" id="detailbutton" value="상세보기"></td></tr>
 </c:forEach>
-
-
-
-
 </tbody>
 </table> 
+
+<c:if test="${page.prev }">
+<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+</c:if>
+
+<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+<c:if test="${index!= page.currPage }">
+</c:if>
+<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+</c:forEach>
+
+<c:if test="${page.next }">
+<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+</c:if>
+
 
 
 </body>
