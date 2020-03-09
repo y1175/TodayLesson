@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
@@ -52,10 +53,18 @@ public class TodayLessonController {
        return "/todaylesson_sec/todaylesson_sec_member";
     }
        
+      /* @RequestMapping("/todaylesson")
+       public ModelAndView all(){
+    	   ModelAndView mav=new ModelAndView();
+    	   mav.setViewName("/TodayLesson_UserPage/hs_us_main");
+          return mav;
+       }*/
+       
        @RequestMapping("/todaylesson")
        public String all(){
           return "/TodayLesson_UserPage/hs_us_main";
        }
+       
           
        @RequestMapping("/error")
        public String error()
