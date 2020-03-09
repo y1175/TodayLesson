@@ -174,6 +174,24 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if("/hm_question_insert".equals(strUri))
         	return false;
    //은지
+        //은지 관리자 상품조회
+        else if ("/ej_ad_product_productlist".equals(strUri))                   
+       	 return false; 
+        //은지 관리자 상품디테일
+        else if ("/ej_ad_product_productdetail".equals(strUri))                   
+          	 return false; 
+        //은지 관리자 상품등록
+        else if ("/ej_ad_product_productregister".equals(strUri))                   
+       	 return false; 
+        //은지 관리자 상품등록시 나오는 창(추가성공/실패)
+        else if ("/ej_ad_product_insertresult".equals(strUri))                   
+        	 return false; 
+        //은지 스토어 디테일
+        else if ("/ej_store_detail".equals(strUri))                   
+        	 return false; 
+        //은지스토어 메인
+        else if ("/ej_store_main".equals(strUri))                   
+        	 return false; 
         
         
         

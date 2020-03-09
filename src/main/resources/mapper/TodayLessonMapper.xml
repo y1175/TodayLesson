@@ -32,10 +32,10 @@
 		</selectKey>
 		insert into member(member_no, member_id, member_pwd, member_name, 
 		                   member_birth, member_phone, member_addr, member_zipcode, 
-		                   member_email, member_nick, member_img, member_join_date)
+		                   member_email, member_nick, member_img, member_join_date, enabled)
 		                   values(#{member_no}, #{member_id}, #{member_pwd}, #{member_name}, 
 		                          #{member_birth}, #{member_phone}, #{member_addr}, #{member_zipcode},
-		                          #{member_email}, #{member_nick}, 'user',now())
+		                          #{member_email}, #{member_nick}, 'user',now(),1)
 	</insert>
 	<!-- TEST AUTH --> <!-- 진짜도 동일 -->
 	<insert id="insertMemberSub" parameterType="com.todaylesson.DTO.MemberDTO">
