@@ -36,7 +36,7 @@
       <jsp:include page="hs_us_main_header.jsp"/>
    </header>
    <section>
-      <c:set var="hs_us_section_page" value="${param.page}"/>
+      <c:set var="hs_us_section_page" scope="page" value="${param.page}"/>
       <c:out value="${hs_us_section_page} dddd"></c:out>
          <c:if test="${hs_us_section_page}!=null">
             <jsp:include page="${hs_us_section_page}"/>

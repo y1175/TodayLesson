@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.BoardReplyDTO;
 import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.Mapper.User_YI_FreeBoard_Mapper;
@@ -70,6 +71,24 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 	public NoticeDTO notice_detail(int notice_no) {
 		// TODO Auto-generated method stub
 		return mapper.notice_detail(notice_no);
+	}
+
+	@Override
+	public SQLjoin_Member_FreeBoardDTO rep_detail(int freeboard_no) {
+		// TODO Auto-generated method stub
+		return mapper.rep_detail(freeboard_no);
+	}
+
+	@Override
+	public int insert_reply(SQLjoin_Member_FreeBoardDTO dto) {
+		// TODO Auto-generated method stub 
+		return mapper.insert_reply(dto);
+	}
+
+	@Override
+	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(SQLjoin_Member_FreeBoardDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.boardreply_list(dto);
 	}
 
 

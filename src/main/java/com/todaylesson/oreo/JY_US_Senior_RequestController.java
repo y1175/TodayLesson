@@ -29,10 +29,18 @@ public class JY_US_Senior_RequestController {
 	// 시니어 지원 버튼 팝업 > 예 누르면 시니어로 전환됨
 	@RequestMapping("senior_request_form/{member_id}")
 	public String senior_Request_Button(@PathVariable String member_id, Model model) {
-		// 주니어 레벨을 가져옴 > 시니어인지 확인해야하니까
 		int mem_level=seniorservice.check_senior(member_id);
-		model.addAttribute("mem_level",mem_level);
 		
+		if (mem_level == 1) {
+			// 시니어로 레벨업됨
+			seniorservice.new_senior(member_id);
+			model.addAttribute("mem_level",mem_level);
+
+		} else {
+			model.addAttribute("mem_level",mem_level);
+		}
+
+
 		return "TodayLesson_UserPage/jy_us_senior_form";
 
 	}

@@ -3,9 +3,11 @@ package com.todaylesson.oreo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
@@ -52,10 +55,16 @@ public class TodayLessonController {
        return "/todaylesson_sec/todaylesson_sec_member";
     }
        
+       
        @RequestMapping("/todaylesson")
        public String all(){
           return "/TodayLesson_UserPage/hs_us_main";
        }
+       
+    /*@RequestMapping("/todaylesson")
+    public String all(Locale locale,HttpServletRequest request, HttpServletResponse response, Model model){
+       return "/TodayLesson_UserPage/hs_us_main";
+    }*/
           
        @RequestMapping("/error")
        public String error()

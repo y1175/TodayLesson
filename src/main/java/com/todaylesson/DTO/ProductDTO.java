@@ -20,5 +20,7 @@ public class ProductDTO {
 	private int product_category;
 	private int product_sale;
 	private String product_thumb;
+	private String product_img;
 	private int product_option;
+	
 }

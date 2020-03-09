@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.PageMaker;
+import com.todaylesson.DTO.BoardReplyDTO;
 import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.service.User_YI_FreeBoard_Service;
@@ -26,7 +27,7 @@ public class User_YI_FreeBoard_Controller {
 
 	@Resource(name="user_YI_FreeBoard_Service")
 	private User_YI_FreeBoard_Service service;
-	
+	//리스트
 	@RequestMapping(value="/freeboard")
 	public String getBoardList(
 			@RequestParam(required=false, defaultValue="") String search
@@ -59,16 +60,44 @@ public class User_YI_FreeBoard_Controller {
 		return "TodayLesson_UserPage/yi_freeboard";
 	}
 		
-
-	@RequestMapping("/detail/{freeboard_no}")
+	//글 상세보기
+	@RequestMapping("/freeboard_detail/{freeboard_no}")
 	public String detail(@PathVariable int freeboard_no,Model model)
 	{	
 		service.freeboard_readnoUp(freeboard_no);
 		SQLjoin_Member_FreeBoardDTO dto= service.freeboard_detail(freeboard_no);
+		
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_detail";
 	}
+	//리플창 json
+	@ResponseBody
+	@RequestMapping("/freeboard_detailjson/{freeboard_no}")
+	public SQLjoin_Member_FreeBoardDTO detailjson(@PathVariable int freeboard_no
+			,@RequestParam String boardreply_content
+			,@RequestParam String member_id
+			,Model model)
+	{
+		SQLjoin_Member_FreeBoardDTO dto = new SQLjoin_Member_FreeBoardDTO();
+		
+		dto.setFreeboard_no(freeboard_no);
+		dto.setMember_id(member_id);
+		dto.setBoardreply_content(boardreply_content);
+		int insertResult=service.insert_reply(dto);
+		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(dto);
+		model.addAttribute("rep_list",list);
+		return dto;
+	}
 	
+	@RequestMapping("/insert_replyresult")
+	public String rep_detail(SQLjoin_Member_FreeBoardDTO dto)
+	{
+		
+		service.insert_reply(dto);
+		return "redirect:/freeboard_detail"+dto.getFreeboard_no();
+	}
+	
+	//공지 상세보기
 	@RequestMapping("/notice_detail/{notice_no}")
 	public String notice_detail(@PathVariable int notice_no,Model model)
 	{	

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.todaylesson.DTO.BoardReplyDTO;
 import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 
@@ -29,6 +30,13 @@ public List<NoticeDTO> notice();
 public void notice_readnoUp(int notice_no);
 
 public NoticeDTO notice_detail(int notice_no);
+
+public SQLjoin_Member_FreeBoardDTO rep_detail(int freeboard_no);
+
+public int insert_reply(SQLjoin_Member_FreeBoardDTO dto);
+
+public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(SQLjoin_Member_FreeBoardDTO dto);
+
 
 
 

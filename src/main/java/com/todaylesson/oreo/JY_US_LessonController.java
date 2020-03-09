@@ -22,9 +22,10 @@ public class JY_US_LessonController {
 
 	
 	
-	@RequestMapping("/lesson_list")
-	public String list(Model model){
-		List<LessonDTO> list = lessonservice.list();
+	@RequestMapping("/lesson_list/{member_id}")
+	public String list(Model model,@PathVariable String member_id){
+		int senior_no = lessonservice.select_senior_no(member_id);
+		List<LessonDTO> list = lessonservice.list(senior_no);
 		model.addAttribute("list",list);
 		return "TodayLesson_SeniorPage/jy_sn_lesson_list";
 	}

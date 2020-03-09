@@ -13,7 +13,7 @@ public interface JY_US_LessonMapper {
 	public int insert_lesson(LessonDTO dto);
 
 	
-	public List<LessonDTO> list_lesson();
+	public List<LessonDTO> list_lesson(int senior_no);
 
 
 	public int select_senior_no(String member_id);

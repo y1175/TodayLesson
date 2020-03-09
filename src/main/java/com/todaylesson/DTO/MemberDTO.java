@@ -31,6 +31,7 @@ public class MemberDTO {
 	private String member_key;
 	private String member_value;
 	private String member_img;
+	private boolean enabled;
 	private List<Member_AuthDTO> authList;
 	
 	

@@ -50,6 +50,8 @@
 		});	
 		
 		
+		//
+
 		
 	});
 	
@@ -146,7 +148,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 
 
-<form method="post" action="${pageContext.request.contextPath }/insert_result"> 
+<form method="post" action="${pageContext.request.contextPath }/insert_result" name="form"> 
 
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
@@ -183,6 +185,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 <label for="lesson_close_period">종료일</label><br>
 <input type="date" id="lesson_close_period" name="lesson_close_period"><br>
+
 
 <label for="lesson_type">레슨타입</label><br>
 <select id="lesson_type" name="lesson_type">
@@ -225,6 +228,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <textarea id="lesson_senior_content" name="lesson_senior_content" ></textarea><br>
 
 
+<h1>한번 신청한 레슨은 변경, 삭제가 불가능하므로 신중해주시길 바라겠습닏.</h1>
 
 
 <input type="submit" value="글 작성"/>

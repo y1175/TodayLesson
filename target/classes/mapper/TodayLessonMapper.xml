@@ -7,7 +7,7 @@
 	  <result property="member_id" column="member_id"/> 
 	  <result property="member_pwd" column="member_pwd"/> 
 	  <result property="member_name" column="member_name"/>
-	 <!-- <result property="enabled" column="enabled"/>     쓸수있는 아이디인지 아닌지... -->
+	  <result property="enabled" column="enabled"/>    <!-- 쓸수있는 아이디인지 아닌지... -->
 	  <collection property="authList" resultMap="authMap"/> 
 	</resultMap>  <!-- 쿼리문이랑 같은 이름 -->
 	  <resultMap type="com.todaylesson.DTO.Member_AuthDTO"  id="authMap"> 
@@ -63,27 +63,28 @@
 	</insert>
     <!-- 시큐리티 나중에 냅둠 위에는 바꿔야함-->
     <select id="getUserById" parameterType="string" resultMap="memberMap">
-         select  member.member_id, member_pwd, member_name, member_auth
+         select  member.member_id, member_pwd, member_name, enabled ,member_auth
          from member left outer join member_auth 
          on member.member_id=member_auth.member_id
          where member.member_id=#{member_id}
-         
+        
     </select>
-<select id="idCheck" parameterType="String" resultType="Integer">
-select count(*) 
-from member
-where member_id=#{member_id}
+   
+   
+    <select id="idCheck" parameterType="String" resultType="Integer">
+         select count(*) 
+         from member
+         where member_id=#{member_id}
+    </select>
 
-</select>
-
-<!-- 아이디 찾기 -->
+    <!-- 아이디 찾기 -->
 	<select id="searchId" resultType="String" parameterType="HashMap">
 		select ifnull(member_id, 0)
 		from member
         where member_name = #{member_name} and member_phone = #{member_phone}
 	</select>
 
-<!-- 회원 임시 비밀번호-->
+    <!-- 회원 임시 비밀번호-->
 	<update id="searchPassword" parameterType="Map">
 		update member
 		set member_pwd = #{param3} 

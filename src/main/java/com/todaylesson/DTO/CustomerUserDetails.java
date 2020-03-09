@@ -46,25 +46,29 @@ public class CustomerUserDetails implements UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return true;
+		//return true;
+		return dto.isEnabled();
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return true;
+		//return true;
+		return dto.isEnabled();
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return true;
+		//return true;
+		return dto.isEnabled();
 	}
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		//return true;
+		return dto.isEnabled();
 	}
 
 	/*@Override
