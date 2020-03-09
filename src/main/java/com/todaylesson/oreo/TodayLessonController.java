@@ -3,9 +3,11 @@ package com.todaylesson.oreo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,18 +55,16 @@ public class TodayLessonController {
        return "/todaylesson_sec/todaylesson_sec_member";
     }
        
-      /* @RequestMapping("/todaylesson")
-       public ModelAndView all(){
-    	   ModelAndView mav=new ModelAndView();
-    	   mav.setViewName("/TodayLesson_UserPage/hs_us_main");
-          return mav;
-       }*/
        
        @RequestMapping("/todaylesson")
        public String all(){
           return "/TodayLesson_UserPage/hs_us_main";
        }
        
+    /*@RequestMapping("/todaylesson")
+    public String all(Locale locale,HttpServletRequest request, HttpServletResponse response, Model model){
+       return "/TodayLesson_UserPage/hs_us_main";
+    }*/
           
        @RequestMapping("/error")
        public String error()
