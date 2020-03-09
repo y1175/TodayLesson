@@ -20,8 +20,8 @@ public class JY_US_LessonServiceImple implements JY_US_LessonService {
 	}
 
 	@Override
-	public List<LessonDTO> list() {
-		return mapper.list_lesson();
+	public List<LessonDTO> list(int senior_no) {
+		return mapper.list_lesson(senior_no);
 	}
 
 	@Override

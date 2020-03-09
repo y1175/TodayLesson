@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+</head>
+<body>
+
+
 <script>
 
 if (${result} > 0) {
@@ -14,14 +18,14 @@ if (${result} > 0) {
 	
 	<h3>추가 완료</h3>
 	<h5>내부 검토 후 등록 여부를 알려드리겠습니다!</h5>
-	<a href="${pageContext.request.contextPath }/lesson_list">목록으로</a>
+	<a href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}">목록으로</a>
 	
 	<script>
 } else {
 	
 
 	alert("추가 실패!");
-	location.href="${pageContext.request.contextPath }/lesson_list";
+	location.href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}";
 	
 }
 </script>
@@ -29,8 +33,5 @@ if (${result} > 0) {
 
 
 
-</script>
-</head>
-<body>
 </body>
 </html>

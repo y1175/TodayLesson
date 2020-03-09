@@ -7,8 +7,9 @@
 
 <select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO">
 
-select lesson_no, lesson_title, lesson_type, lesson_senior_title
+select *
 from lesson
+where senior_no = #{senior_no}
 
 </select>
 
