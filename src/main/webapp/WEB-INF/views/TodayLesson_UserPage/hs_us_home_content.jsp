@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>나와라..0</h1>
-<div>
+<div style="background-color: red;">
 ㄴㄴㅇㅁㄹㅇㄴㄴㅇㄹ
 </div>
 </body>

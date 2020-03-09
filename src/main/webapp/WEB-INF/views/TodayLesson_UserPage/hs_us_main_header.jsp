@@ -88,7 +88,7 @@ header javascript -->
    
    
    
-   
+  <%--  
    
    <div class="hs_us_mypage_box">
       <div class="hs_us_mypage_div">
@@ -129,7 +129,7 @@ header javascript -->
          </nav>
       </div>           
    </div>
-   
+    --%>
    
 </body>
 </html>

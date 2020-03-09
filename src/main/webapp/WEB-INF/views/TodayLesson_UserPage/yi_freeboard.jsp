@@ -31,7 +31,7 @@
 <tr>
 <td>${item.freeboard_category }</td>
 <td>${item.freeboard_no}</td>
-<td><a href="detail/${item.freeboard_no }">${item.freeboard_title }</a></td>
+<td><a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }</a></td>
 <td><c:out value=" ${item.member_nick }"></c:out></td>
 <td><c:out value=" ${item.freeboard_writedate }"></c:out></td>
 <td><c:out value=" ${item.freeboard_readno }"></c:out></td>

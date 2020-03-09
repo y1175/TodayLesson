@@ -138,7 +138,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/freeboard".equals(strUri))                   return false;
       //게시글상세보기
         else if ("/detail/{freeboard_no}".equals(strUri))                   return false;   
-        
+      //리플달기 json
+        else if ("/detailjson/{freeboard_no}".equals(strUri)) return false;
          
         
    //혜미
@@ -162,6 +163,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         	return false;
         //혜미 관리자 레벨 수정 페이지
         else if("/adminmember_levelupdate".equals(strUri))
+        	return false;
+        //혜미 관리자 회원 디테일
+        else if("/detail".equals(strUri))
         	return false;
    //은지
         

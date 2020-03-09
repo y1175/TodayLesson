@@ -17,9 +17,14 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 	private Admin_HM_MemmanageMapper mapper;
 	
 	@Override
-	public List<MemberDTO> adminmemberlist() {
+	public List<MemberDTO> adminmemberlist(String search, String searchtxt, int startRow, int endRow) {
 		// TODO Auto-generated method stub
-		return mapper.adminmemberlist();
+		HashMap<String, Object>hm = new HashMap<String,Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startrow", startRow);
+		hm.put("endrow", endRow);
+		return mapper.adminmemberlist(hm);
 	}
 
 	@Override
@@ -32,6 +37,21 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 	public int adminmemberauthupdate(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
 		return mapper.adminmemberauthupdate(map);
+	}
+
+	@Override
+	public int totalCount(String search, String searchtxt) {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> hm=new HashMap<String,Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		return mapper.getCount(hm);
+	}
+
+	@Override
+	public MemberDTO detail(int member_no) {
+		// TODO Auto-generated method stub
+		return mapper.detail(member_no);
 	}
 
 }

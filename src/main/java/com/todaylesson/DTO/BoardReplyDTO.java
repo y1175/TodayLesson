@@ -16,4 +16,5 @@ public class BoardReplyDTO {
 	private String boardreply_content;
 	private String boardreply_writedate;
 	private String member_id;
+	private String member_nick;
 }

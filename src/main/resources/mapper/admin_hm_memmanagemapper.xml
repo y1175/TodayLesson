@@ -4,11 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_HM_MemmanageMapper">
 
+<!-- 회원카운트 -->
+<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+select COUNT(*)
+from member
+<include refid="search_select"></include>
+</select>
+
+
 <!-- 관리자 회원리스트 출력 -->
-<select id="adminmemberlist" resultType="com.todaylesson.DTO.MemberDTO">
+<select id="adminmemberlist" resultType="com.todaylesson.DTO.MemberDTO" parameterType="java.util.HashMap">
 select member_no,member_id,member_name,member_nick,member_point,member_level,member_join_date
 from member
+<include refid="search_select"></include>
 order by member_no
+limit #{startrow}, 15
 </select>
 
 
@@ -27,12 +37,47 @@ on a.member_id = b.member_id
 <when test='member_level==0'>
 set a.member_auth = 'ROLE_ADMIN'
 </when>
+<when test='member_level==1'>
+set a.member_auth = 'ROLE_USER' 
+</when>
 <when test='member_level==2'>
 set a.member_auth = 'ROLE_SENIOR'
 </when>
 </choose>
 where a.member_id = #{member_id}
 </update>
- 
+
+
+<sql id="search_select">
+<if test='searchtxt!=null and searchtxt!=""'>
+<choose>
+<when test='search.equals("all")'>
+where member_id like CONCAT('%',#{searchtxt},'%')
+or
+member_name like CONCAT('%',#{searchtxt},'%')
+or
+member_nick like CONCAT('%',#{searchtxt},'%')
+</when>
+<when test='search.equals("member_id")'>
+where member_id like CONCAT('%',#{searchtxt},'%')
+</when>
+<when test='search.equals("member_name")'>
+where member_name like CONCAT('%',#{searchtxt},'%')
+</when>
+<when test='search.equals("member_nick")'>
+where member_nick like CONCAT('%',#{searchtxt},'%')
+</when>
+</choose>
+</if>
+</sql>
+
+
+<!-- 디테일 페이지 -->
+<select id="detail" resultType="com.todaylesson.DTO.MemberDTO" parameterType="int"> 
+select member_no,member_id,member_name,member_birth,member_phone,member_addr,member_zipcode,member_point
+		,member_level, member_email, member_nick, member_join_date
+from member
+where member_no = #{member_no}
+</select>
  
 </mapper>

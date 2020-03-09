@@ -14,9 +14,10 @@
    <bean id="ifpAccessDeniedHandler" class="com.todaylesson.csrf.IfpAccessDeniedHandler"/>
 
    <security:http use-expressions="true">
-
+     
       <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
       <security:intercept-url pattern="/todaylessonsenior" access="hasRole('ROLE_SENIOR')"/>  <!-- 시니어 -->
+       <security:intercept-url pattern="/todaylessonmember" access="hasRole('ROLE_USER')"/>  <!-- USER -->
       <security:intercept-url pattern="/todaylessonmember" access="isAuthenticated()"/>  <!-- 로그인한 사람 -->
       <security:intercept-url pattern="/todaylesson" access="permitAll"/>
       <security:access-denied-handler error-page="/error"/>
