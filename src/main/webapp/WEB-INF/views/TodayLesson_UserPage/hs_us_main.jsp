@@ -37,10 +37,11 @@
    </header>
    <section>
       <c:set var="hs_us_section_page" value="${param.page}"/>
+      <c:out value="${hs_us_section_page} dddd"></c:out>
          <c:if test="${hs_us_section_page}!=null">
             <jsp:include page="${hs_us_section_page}"/>
          </c:if>
-         <c:if test="${hs_us_section_page}==null">
+         <c:if test="${hs_us_section_page}==null || ${hs_us_section_page}=='' " >
             <jsp:include page="hs_us_home_content.jsp"/>
          </c:if>
    </section>
