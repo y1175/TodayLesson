@@ -195,6 +195,14 @@
 		</dependency>
 		<!--은지 sms보내기 -->
 		
+		<!-- 후기(댓글)에이작스  -->
+		<dependency>
+           <groupId>org.codehaus.jackson</groupId>
+           <artifactId>jackson-mapper-asl</artifactId>
+           <version>1.9.13</version>
+        </dependency>
+		<!-- 후기(댓글)에이작스  -->
+		
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

@@ -13,7 +13,7 @@
   <h2><c:out value="${error}"/></h2>
   <h2><c:out value="${logout}"/></h2>
 
-  <form method='post' action="/login">
+  <form method='post' action="/todaylesson">
 
   <div>
     <input type='text' name='username' placeholder="아이디 입력하시오">
@@ -29,8 +29,7 @@
   <div>
     <input type='submit'>
   </div>
-    <input type="hidden" name="${_csrf.parameterName}"
-    value="${_csrf.token}" />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
   </form>
 

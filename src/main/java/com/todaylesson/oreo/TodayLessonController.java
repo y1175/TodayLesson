@@ -57,7 +57,7 @@ public class TodayLessonController {
     
    @RequestMapping("/todaylessonmypage")
    public String usermypage() {
-	   return "hs_us_mypage";
+	   return "hs_us_my";
    }
    
    @RequestMapping("/todaylesson")
@@ -71,7 +71,7 @@ public class TodayLessonController {
            return "/todaylesson_sec__error";
        }
               
-       @RequestMapping("/customlogin")
+       @RequestMapping("/todaylessonlogin")
        public String login(String error, String logout, Model model)
        { 
     	   

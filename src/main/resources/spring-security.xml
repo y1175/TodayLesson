@@ -21,12 +21,12 @@
       <security:intercept-url pattern="/todaylessonsenior" access="hasRole('ROLE_SENIOR')"/>  <!-- 시니어 -->
       <security:intercept-url pattern="/todaylessonmypage" access="hasRole('ROLE_USER')"/>  <!-- USER -->   <!-- USER / ERROR  관련해서는 시큐리티 수정이 필요할듯 -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
-      <security:intercept-url pattern="/todaylessonmember" access="isAuthenticated()"/>  <!-- 로그인한 사람 -->
+      <security:intercept-url pattern="/todaylesson" access="isAuthenticated()"/>  <!-- 로그인한 사람 -->
       <security:intercept-url pattern="/todaylesson" access="permitAll"/>
       <security:access-denied-handler error-page="/error"/>
  
-      <security:form-login login-page="/customlogin"/> 
-      <security:logout  logout-success-url="/customlogin" logout-url="/logout" invalidate-session="true"  delete-cookies="id"/>
+      <security:form-login login-page="/todaylessonlogin" login-processing-url="/todaylesson" default-target-url="/todaylesson"/> 
+      <security:logout  logout-success-url="/todaylessonlogin" logout-url="/logout" invalidate-session="true"  delete-cookies="id"/>
       <security:remember-me  remember-me-cookie="id" token-validity-seconds="300"/>
       
       <security:csrf request-matcher-ref="ifpCsrfRequestMatcher"/>

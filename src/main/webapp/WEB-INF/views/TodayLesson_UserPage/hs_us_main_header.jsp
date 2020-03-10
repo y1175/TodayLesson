@@ -36,7 +36,7 @@ header javascript -->
             <!-- 모든사람들이 다 --><span class="hs_us_mainheader_topdiv_cartloginsearchbox">
                <a href=""><i class="fa fa-shopping-cart"></i></a>
                <sec:authorize access="isAnonymous()">  
-                  <a href="/customlogin" class="hs_us_mainheader_login" onclick="openModal();">로그인 </a><span style="margin-left: 10px;">|</span><a href="">회원가입</a>
+                  <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a><span style="margin-left: 10px;">|</span><a href="">회원가입</a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
                <sec:authorize access="isAuthenticated()">
