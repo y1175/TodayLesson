@@ -40,18 +40,17 @@ $(document).ready(function() {
 	$('.reply_submit').on('click', function () {
 		let freeboard_no=$('.freeboard_no').html();
 		var formData = $("#repdetail").serialize();
-		console.log(freeboard_no);
 		$.ajax({
 			url:'/freeboard_detailjson/'+freeboard_no
 			,dataType:'json'
 			,data: formData
 			,success:function(data){
-				var jsonObj = JSON.parse(data);
- 				console.log(jsonObj.freeboard_no);	
-				let repdetail="<td>${jsonObj.member_nick}</td>";
-				repdetail+="<td>${jsonObj.boardreply_content}</td>";
-				repdetail+="<td>${jsonObj.boardreply_writedate}</td>";
-				repdetail+="<td><a href=''>삭제</a></td>";
+				 /* var jsonObj = JSON.parse(formData); */
+ 				console.log(data.freeboard_no);	
+				console.log(data.member_nick);
+				let repdetail="<tr><td>"+data.member_nick+"</td>";
+				repdetail+="<td>"+data.boardreply_content+"</td>";
+				repdetail+="<td><a href=''>삭제</a></td></tr>";
 				$('.add_reply').append(repdetail);
 			},error:function(data,status,jqXHR){
 				console.log('실패',data);
@@ -92,25 +91,21 @@ $(document).ready(function() {
 
 <table>
 <thead>
-<tr><th>댓글번호</th><th>작성자</th><th>내용</th><th>작성일</th><th>삭제</th>
+<tr><th>작성자</th><th>내용</th><th>삭제</th>
 </tr>
 </thead>
 <tbody>
+
+<c:forEach var='rep_list' items='${rep_list}'>
 <tr>
-<c:forEach var='item' items='${rep_list}'>
-<td>${rep_list.boardreply_no}</td>
 <td>${rep_list.member_nick}</td>
 				<td>${rep_list.boardreply_content}</td>
-				<td>${rep_list.boardreply_writedate}</td>
 				<td><a href=''>삭제</a></td>
+</tr>
 </c:forEach>
-</tr>
-<tr class="add_reply">
-
-
-</tr>
 
 </tbody>
+<tbody class="add_reply"></tbody>
 </table><br>
 <a href="/freeboard">목록으로</a>
 

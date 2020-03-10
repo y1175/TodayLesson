@@ -54,7 +54,11 @@ from freeboard join member
 on freeboard.member_id = member.member_id
 where freeboard_no=#{freeboard_no}
 </select>
-
+<select id="freeboard_replycount" parameterType="int" resultType="int">
+select count(*)
+from boardreply
+where freeboard_no=#{hidden_freeboard_no}
+</select>
 
 <!-- 공지 상세보기 -->
 <select id="notice_detail" parameterType="int" resultType="com.todaylesson.DTO.NoticeDTO">
@@ -103,6 +107,12 @@ where freeboard_title like CONCAT('%', #{searchtxt}, '%')
 </choose>
 </if>
 </sql> 
+<select id="getNick_reply" parameterType="String" resultType="String">
+select member_nick
+from member
+where member_id=#{member_id}
+</select>
+
 
 <insert id="insert_reply"  parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
 insert into boardreply(boardreply_content,boardreply_writedate,member_id,freeboard_no)

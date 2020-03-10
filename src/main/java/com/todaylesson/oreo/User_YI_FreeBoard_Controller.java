@@ -33,6 +33,7 @@ public class User_YI_FreeBoard_Controller {
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="1") int hidden_freeboard_no
 			,Model model)  {
 		
 		int totalCount= service.totalCount(search, searchtxt);
@@ -44,6 +45,9 @@ public class User_YI_FreeBoard_Controller {
 		
 		List<NoticeDTO> notice=service.notice();
 		model.addAttribute("notice",notice);
+		
+		int replycount= service.freeboard_replycount(hidden_freeboard_no);
+		model.addAttribute("replycount",replycount);
 		
 		List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt
 										,page.getStartRow()
@@ -67,6 +71,11 @@ public class User_YI_FreeBoard_Controller {
 		service.freeboard_readnoUp(freeboard_no);
 		SQLjoin_Member_FreeBoardDTO dto= service.freeboard_detail(freeboard_no);
 		
+		
+		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(freeboard_no);
+		model.addAttribute("rep_list",list);
+		
+		
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_detail";
 	}
@@ -80,22 +89,29 @@ public class User_YI_FreeBoard_Controller {
 	{
 		SQLjoin_Member_FreeBoardDTO dto = new SQLjoin_Member_FreeBoardDTO();
 		
+		String member_nick=service.getNick_reply(member_id);
+		
 		dto.setFreeboard_no(freeboard_no);
 		dto.setMember_id(member_id);
+		dto.setMember_nick(member_nick);
 		dto.setBoardreply_content(boardreply_content);
+		
+		
 		int insertResult=service.insert_reply(dto);
-		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(dto);
-		model.addAttribute("rep_list",list);
+/*		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(dto);
+		model.addAttribute("rep_list",list);*/
 		return dto;
 	}
 	
-	@RequestMapping("/insert_replyresult")
+
+	
+/*	@RequestMapping("/insert_replyresult")
 	public String rep_detail(SQLjoin_Member_FreeBoardDTO dto)
 	{
 		
 		service.insert_reply(dto);
 		return "redirect:/freeboard_detail"+dto.getFreeboard_no();
-	}
+	}*/
 	
 	//공지 상세보기
 	@RequestMapping("/notice_detail/{notice_no}")
