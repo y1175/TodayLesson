@@ -24,25 +24,6 @@
       <put-attribute name="hs_us_main_section" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
    </definition>   
    <!-- UserPage - 기본 HomePage -->
-   <definition name="hs_us_my" template="/WEB-INF/views/TodayLesson_UserPage/mypagetest.jsp">
-      <put-attribute name="hs_us_my_nav" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_mypage_nav.jsp"/>
-      <put-attribute name="hs_us_my_section"/>
-      <put-attribute name="hs_us_my_footer" value="/WEB-INF/hs_all_main_footer.jsp"/>
-   
-   </definition>
-   
-   <definition name="*.us_my_section" extends="hs_us_mypage">
-      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/{1}.jsp"/>
-   </definition>
-   
-   <definition name="*/*.us_my_section" extends="hs_us_mypage">
-      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/{1}/{2}.jsp"/>
-   </definition>
-      
-   <definition name="*/*/*.us_my_section" extends="hs_us_mypage">
-      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
-   </definition>  
-   
    
    <!-- UserMyPage - UserMyPage -->
    <definition name="hs_us_mypage" template="/WEB-INF/views/TodayLesson_UserPage/mypagetest.jsp">

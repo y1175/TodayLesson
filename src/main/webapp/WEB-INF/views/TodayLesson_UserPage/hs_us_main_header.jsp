@@ -10,7 +10,7 @@
 
 
 <!--header style-->
-<link rel="stylesheet" href="resources/CSS/hs_us_main_header.css?ver=1">
+<link rel="stylesheet" href="resources/CSS/hs_us_main_header.css?ver=2">
 <!--header style-->
 
 <!-- header javascript 
@@ -64,7 +64,7 @@ header javascript -->
                   
       <div class="hs_us_mainheader_center">
          <a href="/alluser">
-            <img src="resources/IMG/User_Logo.png" alt="User_Logo" style="width: 11%;">
+            <img src="resources/IMG/User_Logo.png" alt="User_Logo" style="width: 12%;">
          </a>
          <span class="hs_us_mainheader_center_senior">
             <a href="">

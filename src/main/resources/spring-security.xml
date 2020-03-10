@@ -17,11 +17,10 @@
 
    <security:http use-expressions="true">
      
-      <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
+      <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN','ROLE_SENIOR')"/>  <!-- 관리자 -->
       <security:intercept-url pattern="/todaylessonsenior" access="hasRole('ROLE_SENIOR')"/>  <!-- 시니어 -->
-      <security:intercept-url pattern="/todaylessonmypage" access="hasRole('ROLE_USER')"/>  <!-- USER -->   <!-- USER / ERROR  관련해서는 시큐리티 수정이 필요할듯 -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
-      <security:intercept-url pattern="/todaylesson" access="isAuthenticated()"/>  <!-- 로그인한 사람 -->
+      <security:intercept-url pattern="/todaylesson" access="isAuthenticated(),hasRole('ROLE_USER')"/>  <!-- 로그인한 사람 -->
       <security:intercept-url pattern="/todaylesson" access="permitAll"/>
       <security:access-denied-handler error-page="/error"/>
  
