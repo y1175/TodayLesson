@@ -114,6 +114,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/todaylessonadmin".equals(strUri))                   return false;  
      //시니어화면
         else if ("/todaylessonsenior".equals(strUri))                   return false;   
+     //마이페이지
+        else if ("/todaylessonmypage".equals(strUri))                   return false; 
      //로그인
         else if ("/customlogin".equals(strUri))                   return false;
      //로그아웃

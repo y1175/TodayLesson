@@ -8,7 +8,9 @@
    <security:http pattern="/resources/CSS/**" security="none"/>
    <security:http pattern="/resources/FONT/**" security="none"/>
    <security:http pattern="/resources/IMG/**" security="none"/>
+   <security:http pattern="/resources/imgUpload/**" security="none"/>
    <security:http pattern="/resources/JS/**" security="none"/>
+   
    
    <bean id="ifpCsrfRequestMatcher" class="com.todaylesson.csrf.IfpCsrfRequestMatcher"/>
    <bean id="ifpAccessDeniedHandler" class="com.todaylesson.csrf.IfpAccessDeniedHandler"/>
@@ -17,7 +19,7 @@
      
       <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
       <security:intercept-url pattern="/todaylessonsenior" access="hasRole('ROLE_SENIOR')"/>  <!-- 시니어 -->
-      <security:intercept-url pattern="/todaylessonmember" access="hasRole('ROLE_USER')"/>  <!-- USER -->   <!-- USER / ERROR  관련해서는 시큐리티 수정이 필요할듯 -->
+      <security:intercept-url pattern="/todaylessonmypage" access="hasRole('ROLE_USER')"/>  <!-- USER -->   <!-- USER / ERROR  관련해서는 시큐리티 수정이 필요할듯 -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
       <security:intercept-url pattern="/todaylessonmember" access="isAuthenticated()"/>  <!-- 로그인한 사람 -->
       <security:intercept-url pattern="/todaylesson" access="permitAll"/>

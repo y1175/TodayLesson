@@ -32,21 +32,21 @@
 <!-- font style -->
 
 </head>
-
 <body>
+
    <header>
       <tiles:insertAttribute name="hs_us_my_header"/>
    </header> 
    <section>
-      <nav>
+      <%-- <nav>
          <tiles:insertAttribute name="hs_us_my_nav"/>
-      </nav>
+      </nav> --%>
       <tiles:insertAttribute name="hs_us_my_section"/>
    </section>
    
    <footer>
       <tiles:insertAttribute name="hs_us_my_footer"/>
-   </footer> 
-   
+   </footer>
+
 </body>
 </html>

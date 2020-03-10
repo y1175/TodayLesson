@@ -55,6 +55,11 @@ public class TodayLessonController {
       return "hs_us_mypage";
    } 
     
+   @RequestMapping("/todaylessonmypage")
+   public String usermypage() {
+	   return "hs_us_mypage";
+   }
+   
    @RequestMapping("/todaylesson")
    public String all(){
       return "hs_us_main";
@@ -77,7 +82,7 @@ public class TodayLessonController {
              model.addAttribute("logout","logout");
           
           
-          return "/TodayLesson_UserPage/hs_us_main_sec_login.us__main_section";
+          return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
        }
        
        /*  모달창 실험했던거... 나중에 다시 하기*/
