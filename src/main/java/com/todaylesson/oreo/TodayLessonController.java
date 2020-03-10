@@ -105,7 +105,7 @@ public class TodayLessonController {
        
        @RequestMapping("/logout")
        public String logout() {
-    	   return "redirect:/todaylesson";
+    	   return "redirect:/todaylessonlogin";
        }	   
     		   
     		   
