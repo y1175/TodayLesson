@@ -12,7 +12,7 @@ import com.todaylesson.Mapper.User_HM_QuestionMapper;
 
 @Service(value="user_hm_question_service")
 public class User_HM_Question_ServiceImple implements User_HM_Question_Service {
-
+/*
 	@Resource(name="user_HM_Question_Mapper")
 	private User_HM_QuestionMapper mapper;
 	
@@ -22,5 +22,6 @@ public class User_HM_Question_ServiceImple implements User_HM_Question_Service {
 		
 		mapper.questioninsert(map);
 	}
+	*/
 
 }

@@ -13,6 +13,7 @@ import com.todaylesson.service.User_HM_Question_Service;
 @Controller
 public class User_HM_Question_Controller {
 
+	/*
 	@Resource(name="user_hm_question_service")
 	private User_HM_Question_Service service;
 	
@@ -51,5 +52,6 @@ public class User_HM_Question_Controller {
 		
 		return "/TodayLesson_UserPage/hm_us_question";
 	}
+	*/
 	
 }
