@@ -3,30 +3,35 @@ package com.todaylesson.oreo;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.google.common.util.concurrent.ExecutionError;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.service.JY_US_LessonService;
 
 
 @Controller
-public class JY_US_LessonController {
+public class JY_US_Lesson_Controller {
 
 	
 	@Resource(name="lessonservice")
 	private JY_US_LessonService lessonservice;
 
-	
+	 
 	
 	@RequestMapping("/lesson_list/{member_id}")
 	public String list(Model model,@PathVariable String member_id){
 		int senior_no = lessonservice.select_senior_no(member_id);
 		List<LessonDTO> list = lessonservice.list(senior_no);
 		model.addAttribute("list",list);
+	
 		return "TodayLesson_SeniorPage/jy_sn_lesson_list";
 	}
 	

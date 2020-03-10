@@ -12,8 +12,6 @@ if (${result} > 0) {
 	alert("추가 성공!");
 	location.href="${pageContext.request.contextPath }/senior_request";
 } else {
-	
-
 	alert("추가 실패!");
 	location.href="${pageContext.request.contextPath }/senior_request";
 	

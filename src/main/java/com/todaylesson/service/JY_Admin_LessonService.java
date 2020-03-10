@@ -17,7 +17,9 @@ public interface JY_Admin_LessonService {
 
 	public List<AllLessonDTO> wait_lesson();
 
-	//public List<LessonDTO> select_lesson_list(int senior_no);
+	public List<LessonDTO> select_lesson_list(int senior_no);
+
+
 
 
 }
