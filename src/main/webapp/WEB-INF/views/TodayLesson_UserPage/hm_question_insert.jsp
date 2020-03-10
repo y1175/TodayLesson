@@ -6,16 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js"></script>
 </head>
 <body>
 <h2>1:1문의 등록</h2>
-<form method="post" action="hm_question_create">
+<form name="hm_question_insert" method="post" action="hm_question_create">
 <ul>
 <input type ="hidden" id="member_id" name ="member_id" value="${pageContext.request.userPrincipal.name}">
 <li>
 <label>문의 분류</label>
 <select id="question_group" name="question_group">
-<option value="">전체</option>
+<option selected>문의 유형을 선택하세요</option>
 <option value ="0">레   슨</option>
 <option value ="1">시니어</option>
 <option value ="2">스토어</option>

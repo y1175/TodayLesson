@@ -175,6 +175,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //혜미 사용자 1:1문의 등록 페이지로 이동
         else if("/hm_question_insert".equals(strUri))
         	return false;
+        //혜미 1:1문의 등록
+        else if("/hm_question_create".equals(strUri))
+			return false;
    //은지
         //은지 관리자 상품조회
         else if ("/ej_ad_product_productlist".equals(strUri))                   

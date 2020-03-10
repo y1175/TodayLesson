@@ -17,13 +17,31 @@
 <p>CALL CENTER  010-9988-2728</p>
 <p>서비스 운영시간 : 오전 9시 ~ 오후 6시 월 ~ 금(토,일 ,공휴일 제외)</p>
 </div>
+<%-- 
 
+<c:if test="${!empty list}" > 
 <table>
 <thead><tr><th>번호</th><th>제목</th><th>처리상태</th><th>문의일</th></tr></thead>
 <tbody>
-<tr></tr>
+<c:forEach var="item" items="${list}">
+<tr>
+<td>
+${item.question_group}
+</td>
+<td>
+${item.question_title}
+</td>
+<td>
+${item.question_situation}
+</td>
+<td>
+${item.question_writedate}
+</td>
+</tr>
+</c:forEach>
 </tbody>
 </table>
+</c:if> --%>
 <input type ="button" id="question_btn" value="문의하기">
 </body>
 </html>
