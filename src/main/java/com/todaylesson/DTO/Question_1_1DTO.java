@@ -1,5 +1,7 @@
 package com.todaylesson.DTO;
 
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +18,7 @@ public class Question_1_1DTO {
 	private String question_title;
 	private String question_content;
 	private String question_answer;
+	private int question_situation;
+	private String question_writedate;
 	private String member_id;
 }
