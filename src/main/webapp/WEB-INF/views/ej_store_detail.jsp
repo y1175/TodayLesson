@@ -19,7 +19,7 @@ border: 1px solid silver;
 width:400px;
 
 } 
-#ej_sdetail_top span{
+#ej_sdetail_top{
 border: 1px solid silver;
 }
 #ej_sdetail_right{
@@ -27,9 +27,8 @@ border: 1px solid silver;
 width:400px;
 float:right;
 }
-#top{
-/* display:inline-block; */
-/* float:left; */}
+#ej_top{
+border: 1px solid silver;}
 
 </style>
 
@@ -37,10 +36,12 @@ float:right;
 <body>
 
 
-<span id="top">
-<img src="${pageContext.request.contextPath }/${dto.product_img }" id="ej_sdetail_topimg">
+<span id="ej_topimg">
+<!--썸네일 이미지와 동일. 크기는 큼 -->
+<img src="${dto.product_img }" id="ej_sdetail_topimg" width="600">
+</span>
 
-<div id="ej_sdetail_right">
+<nav id="ej_sdetail_right">
 카테고리<br>
 상품명: <c:out value="${dto.product_name}"></c:out><br>
 가격: <c:out value="${dto.product_cost}"></c:out><br>
@@ -49,22 +50,19 @@ float:right;
 배송비 무료<br>
 수량<br>
 하트랑 장바구니 <button> 구매하기</button>
-</div>
-</span>
-<div id="ej_sdetail_top">
+</nav>
 
-
-
-
-<span>
+<nav id="ej_sdetail_top">
+<span id="ej_top">
 상품소개
 </span>
-<span>
+<span id="ej_top">
 후기</span>
-<span>
+<span id="ej_top">
 배송/교환/환불
 </span>
-</div>
+</nav>
+
 상품소개
 <hr>
 <div id="content">
@@ -73,6 +71,7 @@ ${dto.product_content}
 
 </div>
 
+<!-- 후기 -->
 <br>
 후기
 <hr>

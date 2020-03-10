@@ -27,8 +27,8 @@ $(document).ready(function(){
 <div id="content">
 
 ${dto.product_content}
-<img src="${pageContext.request.contextPath }/${dto.product_thumb}" alt="\${pageContext.request.contextPath }\${dto.product_thumb}"><br>
-
+<img src="${dto.product_thumb}" alt="thumb"><br>
+<!-- "${pageContext.request.contextPath }\${dto.product_thumb}" -->
 </div>
 <%-- <c:out value="이미지경로1: ${dto.product_thumb}"/>
 <c:out value="이미지경로 pageContext.request.contextPath => ${pageContext.request.contextPath }"/><br> --%>

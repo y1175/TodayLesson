@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="resources/JS/summernote-lite.js"></script>
-<script src="resources/JS/summernote-ko-KR.js"></script>
-
+<!-- <script src="resources/JS/summernote-lite.js"></script> -->
+<!-- <script src="/JS/summernote-lite.js"></script> -->
+<!-- <script src="resources/JS/summernote-ko-KR.js"></script> -->
+<!-- <script src="/JS/summernote-ko-KR.js"></script> -->
 <!-- <link rel="stylesheet" href="resources/CSS/summernote-lite.css"> -->
+<!--  <link rel="stylesheet" href="/CSS/summernote-lite.css"> -->
 <style>
 #thumb{
 display:inline-block;
@@ -17,20 +19,21 @@ width:30%}
 </style>
 </head>
 
-
+<body>
  
 
+${pageContext.request.contextPath}
 
-
-
+<c:out value="${pageContext.request.contextPath}"/>
 
 
 
 
 <c:forEach var="item" items="${list}"> 
 <div id="thumb">
-<a href="ej_store_detail/${item.product_no}"><img src="${pageContext.request.contextPath }/${item.product_thumb}" alt="\${pageContext.request.contextPath }\${item.product_thumb}"></a><br>
+<a href="ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a><br>
 ${item.product_sale }%<br>
+
 ${item.product_category}<br>
 <a href="ej_store_detail/${item.product_no}">${item.product_name}</a><br>
 <hr>

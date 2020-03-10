@@ -101,7 +101,7 @@
   });
  </script>
  <input type="submit" value="제품 등록"/>
-  <%=request.getRealPath("/") %> 
+  <%-- <%=request.getRealPath("/") %>  --%>
 </div>
 			
 		</form>
