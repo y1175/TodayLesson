@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>게시글 목록</title>
 </head>
 <body>
+<sec:authentication property="principal" var="pinfo"/>	
 <table class="table">
 <thead>
 <tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
@@ -17,7 +19,9 @@
 <tr>
 <td>${notice.notice_category }</td>
 <td>${notice.notice_no }</td>
-<td><a href="notice_detail/${notice.notice_no }">${notice.notice_title }</a></td>
+<td>			
+<a href="notice_detail/${notice.notice_no }" >${notice.notice_title }</a>
+</td>
 <td>${notice.member_nick }</td>
 <td>${notice.notice_writedate }</td>
 <td>${notice.notice_readno }</td>
@@ -30,7 +34,14 @@
 <tr>
 <td>${item.freeboard_category }</td>
 <td>${item.freeboard_no}</td>
-<td><a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }		[${replist[status.index]}]</a></td>
+<td>
+<sec:authorize access="isAuthenticated()">
+<a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }		[${replist[status.index]}]</a>
+</sec:authorize>
+<sec:authorize access="isAnonymous()">
+${item.freeboard_title }		[${replist[status.index]}]
+</sec:authorize>
+</td>
 <td><c:out value=" ${item.member_nick }"></c:out></td>
 <td><c:out value=" ${item.freeboard_writedate }"></c:out></td>
 <td><c:out value=" ${item.freeboard_readno }"></c:out></td>
@@ -49,6 +60,11 @@
 <input type="submit" value="검색">
 
 </form>
+
+<sec:authorize access="isAuthenticated()">
+<input type="button" id="write" value="글쓰기"><br>
+</sec:authorize>
+
 <c:if test="${page.prev }">
 <a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>
