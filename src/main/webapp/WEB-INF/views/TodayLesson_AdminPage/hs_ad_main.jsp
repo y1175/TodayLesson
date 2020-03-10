@@ -33,19 +33,26 @@
 
 </head>
 <body>
+
    <header>
       <tiles:insertAttribute name="hs_ad_main_header"/>
    </header>
    
-   <section>
-      <aside>
-         <tiles:insertAttribute name="hs_ad_main_leftaside_nav"/>
+   <section style="width: 100%;">
+      
+      <aside style="width: 10%; float: left;">
+      <tiles:insertAttribute name="hs_ad_main_leftaside_nav"/>
       </aside>
+      
+      <section style="width: 90%; float: right ;">
       <tiles:insertAttribute name="hs_ad_main_section"/>
+      </section>
+   
    </section>
    
    <footer>
       <tiles:insertAttribute name="hs_ad_main_footer"/>
    </footer>
+
 </body>
 </html>

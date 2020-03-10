@@ -12,7 +12,7 @@
 
 </head>
 <body>
-   <nav class="hs_ad_main_asidenav_nav" style="width: 10%;">
+   <nav class="hs_ad_main_asidenav_nav">
    
       <b>회원관리</b>
       <br>

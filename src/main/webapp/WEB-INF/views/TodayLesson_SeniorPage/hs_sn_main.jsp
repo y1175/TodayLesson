@@ -33,15 +33,21 @@
 
 </head>
 <body>
+
    <header>
       <tiles:insertAttribute name="hs_sn_main_header"/>
    </header>
    
-   <section>
-      <aside>
+   <section style="width: 100%;">
+      
+      <aside  style="width: 10%; float: left;">
          <tiles:insertAttribute name="hs_sn_main_leftaside_nav"/>
       </aside>
+      
+      <section style="width: 90%; float: right ;">
       <tiles:insertAttribute name="hs_sn_main_section"/>
+      </section>
+   
    </section>
    
    <footer>

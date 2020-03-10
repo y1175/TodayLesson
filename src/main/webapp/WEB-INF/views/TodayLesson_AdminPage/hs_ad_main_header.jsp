@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <!--header style-->
-<link rel="stylesheet" href="resources/CSS/hs_ad_main_header.css">
+<link rel="stylesheet" href="resources/CSS/hs_ad_main_header.css?ver=1">
 <!--header style-->
 
 </head>
