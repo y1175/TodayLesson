@@ -16,5 +16,8 @@ public class PdReviewDTO {
 	private String pdreview_filepath;
 	private String pdreview_content;
 	private String pdreview_date;
+	//memberÅ×ÀÌºí²¨
+	private String member_id;
+	private String product_no;
 	
 }

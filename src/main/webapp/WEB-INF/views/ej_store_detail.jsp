@@ -13,6 +13,34 @@ $(document).ready(function(){
 });
 
 </script>
+<script> 
+function replyList(){
+ var gdsNum = ${dto.product_no};
+/*  $.getJSON("/ej_store_detail/replyList" + "?no=" + gdsNum, function(data){ */
+	 $.getJSON("/ej_store_detail/${dto.product_no}/replyList", function(data){
+  var str = "";
+  
+  $(data).each(function(){
+   
+   console.log(data);
+   
+   var repDate = new Date(this.repDate);
+   repDate = repDate.toLocaleDateString("ko-US")
+   //테이블에 저장된 날짜 데이터와 컨트롤러에서 뷰로 보낼때의 날짜 데이터 형식이 다르기 때문에, 컨트롤러에서 toLocaleDateString() 를 이용해 1차적으로 데이터를 가공
+   str += "<li data-gdsNum='" + this.gdsNum + "'>"
+     + "<div class='userInfo'>"
+     + "<span class='userName'>" + this.userName + "</span>"
+     + "<span class='date'>" + repDate + "</span>"
+     + "</div>"
+     + "<div class='replyContent'>" + this.repCon + "</div>"
+     + "</li>";           
+  });
+  
+  $("section.replyList ol").html(str);
+ });
+}
+</script>
+
 <style>
  #ej_sdetail_top{
 border: 1px solid silver;
@@ -75,7 +103,45 @@ ${dto.product_content}
 <br>
 후기
 <hr>
+<script>
+ replyList();
+</script>
+<section class="replyForm">
+<form role="form" method="post" autocomplete="off">
+<input type="text" name="gdsNum" id="gdsNum" value="${dto.product_no }">
 
+<div class="input_area">
+	<textarea name="repCon" id="repCon"></textarea>
+</div>
+
+<div class="input_area">
+<button type="button" id="reply_btn">후기 남기기</button>
+<script>
+ $("#reply_btn").click(function(){
+  
+  var formObj = $(".replyForm form[role='form']");
+  var gdsNum = $("#gdsNum").val();
+  var repCon = $("#repCon").val()
+  
+  var data = {
+    gdsNum : gdsNum,
+    repCon : repCon
+    };
+  
+  $.ajax({/* "/shop/view/registReply" */
+   url :"/ej_store_detail/${dto.product_no}/registReply ",
+   type : "post",
+   data : data,
+   success : function(){
+    replyList();
+    $("#repCon").val("");//textarea초기화
+   }
+  });
+ });
+</script>
+</div>
+</form>
+</section>
 
 <!--  -->
 배송/교환/환불
