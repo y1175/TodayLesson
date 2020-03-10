@@ -86,10 +86,24 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 	}
 
 	@Override
-	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(SQLjoin_Member_FreeBoardDTO dto) {
+	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no) {
 		// TODO Auto-generated method stub
-		return mapper.boardreply_list(dto);
+		return mapper.boardreply_list(freeboard_no);
 	}
+
+	@Override
+	public String getNick_reply(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.getNick_reply(member_id);
+	}
+
+	@Override
+	public int freeboard_replycount(int hidden_freeboard_no) {
+		// TODO Auto-generated method stub
+		return mapper.freeboard_replycount(hidden_freeboard_no);
+	}
+
+
 
 
 }

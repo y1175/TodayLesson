@@ -23,7 +23,9 @@ public interface User_YI_FreeBoard_Service {
 	public NoticeDTO notice_detail(int notice_no);
 	public SQLjoin_Member_FreeBoardDTO rep_detail(int freeboard_no);
 	public int insert_reply(SQLjoin_Member_FreeBoardDTO dto);
-	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(SQLjoin_Member_FreeBoardDTO dto);
+	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no);
+	public String getNick_reply(String member_id);
+	public int freeboard_replycount(int hidden_freeboard_no);
 
 	
 
