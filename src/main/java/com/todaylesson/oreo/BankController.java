@@ -72,7 +72,7 @@ public class BankController {
 				System.out.println("getToken==>>"+getToken.get("access_token") );
 				_token = (String)getToken.get("access_token");
 			}
-
+ 
 		}catch(Exception e){
 			e.printStackTrace();
 			_token = "";
