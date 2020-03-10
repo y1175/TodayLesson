@@ -38,7 +38,8 @@ public class SQLjoin_Member_FreeBoardDTO {
 	private String freeboard_writedate;
 	private int freeboard_category;
 	private int freeboard_readno;
-
+	
+	private int replycount;
 	
 	//boardreply
 	private int boardreply_no;

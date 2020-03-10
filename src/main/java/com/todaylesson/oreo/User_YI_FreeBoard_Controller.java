@@ -1,6 +1,7 @@
 package com.todaylesson.oreo;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.regex.Matcher;
@@ -36,6 +37,7 @@ public class User_YI_FreeBoard_Controller {
 			,@RequestParam(required=false, defaultValue="1") int hidden_freeboard_no
 			,Model model)  {
 		
+		//총 게시글 수
 		int totalCount= service.totalCount(search, searchtxt);
 		int pageSize=15;
 		int blockSize=5;
@@ -43,24 +45,33 @@ public class User_YI_FreeBoard_Controller {
 		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
+		//공지 리스트
 		List<NoticeDTO> notice=service.notice();
 		model.addAttribute("notice",notice);
 		
-		int replycount= service.freeboard_replycount(hidden_freeboard_no);
-		model.addAttribute("replycount",replycount);
 		
+		//게시물 리스트
 		List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt
 										,page.getStartRow()
 										,page.getEndRow());
 		
-			model.addAttribute("list",list);
-			model.addAttribute("page",page);
-			model.addAttribute("search",search);
-			model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
 		
-		System.out.println(search);
-		System.out.println(searchtxt);
-		System.out.println(totalCount);
+		//게시물 옆 답글 숫자 표시
+		List<Integer> replist=new ArrayList<>();
+		for(int i=0; i<list.size();i++)
+		{
+			int replycount=service.freeboard_replycount(list.get(i).getFreeboard_no());
+			replist.add(replycount);
+		}
+		
+		
+			model.addAttribute("replist",replist);
+
+		
 		return "TodayLesson_UserPage/yi_freeboard";
 	}
 		
@@ -100,6 +111,9 @@ public class User_YI_FreeBoard_Controller {
 		int insertResult=service.insert_reply(dto);
 /*		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(dto);
 		model.addAttribute("rep_list",list);*/
+		
+	
+		
 		return dto;
 	}
 	

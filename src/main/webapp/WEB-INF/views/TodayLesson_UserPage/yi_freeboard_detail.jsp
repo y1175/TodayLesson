@@ -39,6 +39,22 @@ $(document).ready(function() {
 	}); */
 	$('.reply_submit').on('click', function () {
 		let freeboard_no=$('.freeboard_no').html();
+		
+
+		let today = new Date();
+		let day = today.getDate();
+		let month = today.getMonth()+1; //January is 0!
+		let yyyy = today.getFullYear();
+
+		if (month < 10) 
+		var mm="0"+month;
+		else
+			mm=month;
+		if (day <10) 
+		var dd="0"+day;
+		else
+			dd=day;
+		
 		var formData = $("#repdetail").serialize();
 		$.ajax({
 			url:'/freeboard_detailjson/'+freeboard_no
@@ -50,6 +66,7 @@ $(document).ready(function() {
 				console.log(data.member_nick);
 				let repdetail="<tr><td>"+data.member_nick+"</td>";
 				repdetail+="<td>"+data.boardreply_content+"</td>";
+			    repdetail+="<td>"+yyyy+"-"+mm+"-"+dd+"</td>";
 				repdetail+="<td><a href=''>삭제</a></td></tr>";
 				$('.add_reply').append(repdetail);
 			},error:function(data,status,jqXHR){
@@ -77,7 +94,6 @@ $(document).ready(function() {
 제목 : ${item.freeboard_title } <br>
 내용 : ${item.freeboard_content } <br>
 
-<input type="button" id="reply_form_button" value="댓글달기">
 <div class="rep_form">
 <form method='post' action='/freeboard_detailjson' id='repdetail'>
 <input type='hidden' name='freeboard_no' value="${item.freeboard_no }"><br>
@@ -91,7 +107,7 @@ $(document).ready(function() {
 
 <table>
 <thead>
-<tr><th>작성자</th><th>내용</th><th>삭제</th>
+<tr><th>작성자</th><th>내용</th><th>작성일</th><th>삭제</th>
 </tr>
 </thead>
 <tbody>
@@ -100,6 +116,7 @@ $(document).ready(function() {
 <tr>
 <td>${rep_list.member_nick}</td>
 				<td>${rep_list.boardreply_content}</td>
+				<td>${rep_list.boardreply_writedate }</td>
 				<td><a href=''>삭제</a></td>
 </tr>
 </c:forEach>
