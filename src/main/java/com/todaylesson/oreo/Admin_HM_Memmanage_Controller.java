@@ -48,7 +48,7 @@ public class Admin_HM_Memmanage_Controller {
 		System.out.println(searchtxt);
 		System.out.println(totalCount);
 		
-		return "/TodayLesson_AdminPage/hm_ad_user_memmanage";
+		return "/TodayLesson_AdminPage/hm_ad_user_memmanage.hs_ad_main_section";
 		
 	}
 	
@@ -66,11 +66,11 @@ public class Admin_HM_Memmanage_Controller {
 		{
 			int authresult = service.adminmemberauthupdate(map);
 			model.addAttribute("authresult",authresult);
-			return "TodayLesson_AdminPage/hm_ad_levelupdateresult";
+			return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";
 		}
 		else{
 			
-			return "TodayLesson_AdminPage/hm_ad_levelupdateresult";	
+			return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";	
 		}
 		
 		
@@ -85,7 +85,7 @@ public class Admin_HM_Memmanage_Controller {
 		MemberDTO dto = service.detail(member_no);
 		model.addAttribute("dto",dto);
 		
-		return "TodayLesson_AdminPage/hm_ad_user_memmanagedetail";
+		return "TodayLesson_AdminPage/hm_ad_user_memmanagedetail.hs_ad_main_section";
 	}
 	
 	

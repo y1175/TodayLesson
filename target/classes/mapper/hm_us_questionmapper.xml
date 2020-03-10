@@ -12,11 +12,8 @@ where a_member_id = #{member_id}
 
 
 <insert id="questioninsert" parameterType="HashMap">
-insert into question_1_1(question_group,question_title,question_content,question_wirtedate,member_id)
-values(#{question_group},#{question_title},#{question_content}, sysdate ,#{member_id})
+insert into question_1_1(question_group,question_title,question_content,question_writedate,member_id)
+values(#{question_group},#{question_title},#{question_content}, NOW() ,#{member_id})
 </insert>
-<!-- <insert id="questioninsert" parameterType="HashMap">
-insert into question_1_1(     )
 
-</insert>  -->
 </mapper>

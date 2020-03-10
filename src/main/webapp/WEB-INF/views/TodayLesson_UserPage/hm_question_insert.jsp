@@ -7,17 +7,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js"></script> 
+<script>
+$(document).ready(function(){
+	
+	function chcek_selectbox()
+	{
+		var f = document.hmquestionform;
+		
+		if(f.question_group.value==''){
+			alert('문의 유형을 선택해 주세요');
+			f.question_group.focus();
+			return false;
+		}
+		return true;
+	}
+});
+</script>
 </head>
 <body>
 <h2>1:1문의 등록</h2>
-<form name="hm_question_insert" method="post" action="hm_question_create">
+<form name ="hmquestionform" method="post" action="hm_question_create">
 <ul>
 <input type ="hidden" id="member_id" name ="member_id" value="${pageContext.request.userPrincipal.name}">
 <li>
 <label>문의 분류</label>
 <select id="question_group" name="question_group">
-<option selected>문의 유형을 선택하세요</option>
+<option value ="">문의 유형을 선택하세요</option>
 <option value ="0">레   슨</option>
 <option value ="1">시니어</option>
 <option value ="2">스토어</option>
