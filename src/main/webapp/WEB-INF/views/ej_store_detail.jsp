@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
 $(document).ready(function(){
@@ -22,17 +23,17 @@ function replyList(){
   
   $(data).each(function(){
    
-   console.log(data);
-   
-   var repDate = new Date(this.repDate);
-   repDate = repDate.toLocaleDateString("ko-US")
+   alert(this);
+/*    var repDate = new Date(this.repDate);
+   repDate = repDate.toLocaleDateString("ko-US") */
    //테이블에 저장된 날짜 데이터와 컨트롤러에서 뷰로 보낼때의 날짜 데이터 형식이 다르기 때문에, 컨트롤러에서 toLocaleDateString() 를 이용해 1차적으로 데이터를 가공
-   str += "<li data-gdsNum='" + this.gdsNum + "'>"
-     + "<div class='userInfo'>"
-     + "<span class='userName'>" + this.userName + "</span>"
-     + "<span class='date'>" + repDate + "</span>"
-     + "</div>"
-     + "<div class='replyContent'>" + this.repCon + "</div>"
+   //this.gdsNum this.userName repDate repCon으로 되잇음
+   str += "<li data-gdsNum='" + this.product_no + "'>"
+    /*  + "<div class='userInfo'>" */
+    /*  + "<span class='userName'>" + this.userName + "</span>" */
+     /* + "<span class='date'>" + repDate + "</span>" */
+   /*   + "</div>" */
+     + "<div class='replyContent'>" + this.product_content + "</div>"
      + "</li>";           
   });
   
@@ -118,14 +119,16 @@ ${dto.product_content}
 <button type="button" id="reply_btn">후기 남기기</button>
 <script>
  $("#reply_btn").click(function(){
-  
+  alert('replye_btn');
   var formObj = $(".replyForm form[role='form']");
   var gdsNum = $("#gdsNum").val();
   var repCon = $("#repCon").val()
   
   var data = {
-    gdsNum : gdsNum,
-    repCon : repCon
+    /* gdsNum : gdsNum,
+    repCon : repCon */
+		 product_no : gdsNum,
+		 pdreview_content : repCon
     };
   
   $.ajax({/* "/shop/view/registReply" */
@@ -133,9 +136,13 @@ ${dto.product_content}
    type : "post",
    data : data,
    success : function(){
-    replyList();
-    $("#repCon").val("");//textarea초기화
+    alert('success');
+	   replyList();
+  $("#repCon").val("");//textarea초기화
    }
+   ,error: function(){
+	   console.log(data);
+	   alert('error');}
   });
  });
 </script>

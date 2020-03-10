@@ -105,7 +105,7 @@ public class EJ_ProductController {
 	@ResponseBody
 	@RequestMapping(value = "/ej_store_detail/{product_no}/replyList", method = RequestMethod.GET)
 	public List<PdReviewDTO> getReplyList(@RequestParam("product_no") int product_no) throws Exception {
-
+//원래는 RequestParam임 pathvariable로 해
 	   
 	 List<PdReviewDTO> reply = service.replyList(product_no);
 	 
