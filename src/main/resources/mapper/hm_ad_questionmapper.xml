@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_HM_QuestionMapper">
+<!-- 카운트 -->
+<select id="hmgetCount" resultType="int" parameterType="java.util.HashMap">
+select COUNT(*)
+from question_1_1
+<include refid="search_select"></include>
+</select>
+
+<select id="hm_ad_questionlist" resultType="com.todaylesson.DTO.Question_1_1DTO" parameterType="java.util.HashMap">
+select question_no,question_group,member_id,question_title,question_situation,question_writedate
+from question_1_1
+<include refid="search_select"></include>
+order by question_no
+limit #{startrow}, 15
+</select>
+
+<sql id="search_select">
+<if test='searchtxt!=null and searchtxt!=""'>
+<choose>
+<when test='search.equals("all")'>
+where member_id like CONCAT('%',#{searchtxt},'%')
+or
+question_title like CONCAT('%',#{searchtxt},'%')
+</when>
+<when test='search.equals("member_id")'>
+where member_id like CONCAT('%',#{searchtxt},'%')
+</when>
+<when test='search.equals("question_title")'>
+where question_title like CONCAT('%',#{searchtxt},'%')
+</when>
+</choose>
+</if>
+</sql>
+</mapper>
