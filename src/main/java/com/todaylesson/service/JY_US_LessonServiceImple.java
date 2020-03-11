@@ -39,6 +39,16 @@ public class JY_US_LessonServiceImple implements JY_US_LessonService {
 		return mapper.insert_online_lesson(dto);
 	}
 
+	@Override
+	public int update_lesson(LessonDTO dto) {
+		return mapper.update_lesson(dto);
+	}
+
+	@Override
+	public int delete_lesson(int lesson_no) {
+		return mapper.delete_lesson(lesson_no);
+	}
+
 	
 	
 

@@ -63,4 +63,34 @@ sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
 
 </insert>
 
+
+<update id="update_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
+
+update lesson
+set 
+lesson_title = #{lesson_title}, 
+lesson_content = #{lesson_content},
+lesson_cost = #{lesson_cost}, 
+lesson_member_max = #{lesson_member_max},
+lesson_category= #{lesson_category},  
+lesson_register_date = sysdate(),
+lesson_open_period = #{lesson_open_period},
+lesson_close_period = #{lesson_close_period}, 
+lesson_number = #{lesson_number}, 
+lesson_type = #{lesson_type}, 
+lesson_junior_count = #{lesson_junior_count},
+lesson_senior_title = #{lesson_senior_title}, 
+lesson_senior_content = #{lesson_senior_content}
+where lesson_no = #{lesson_no}
+
+
+</update>
+
+
+<delete id="delete_lesson" parameterType="int">
+
+delete from lesson where lesson_no = #{lesson_no}
+
+</delete>
+
 </mapper>

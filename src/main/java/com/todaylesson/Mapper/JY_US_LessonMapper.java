@@ -24,4 +24,10 @@ public interface JY_US_LessonMapper {
 
 	public int insert_online_lesson(LessonDTO dto);
 
+
+	public int update_lesson(LessonDTO dto);
+
+
+	public int delete_lesson(int lesson_no);
+
 }

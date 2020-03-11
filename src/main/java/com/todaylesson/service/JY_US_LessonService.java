@@ -16,6 +16,10 @@ public interface JY_US_LessonService {
 
 	public int insert_Online_Lesson(LessonDTO dto);
 
+	public int update_lesson(LessonDTO dto);
+
+	public int delete_lesson(int lesson_no);
+
 	
 
 

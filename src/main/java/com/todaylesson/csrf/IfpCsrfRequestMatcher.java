@@ -305,6 +305,22 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         // 관리자 시니어 관리
         else if ("/all_senior".equals(strUri))    
        	 	return false; 
+       
+        //레슨 수정
+        /* else if ("/lesson_update/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+          
+        //레슨 업데이트 결과
+        else if ("/lesson_update_result".equals(strUri))    
+       	 	return false; 
+        
+        //레슨 삭제
+        /* else if ("/lesson_delete/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+        
+        //레슨 삭제 결과
+        else if ("/lesson_delete_result".equals(strUri))    
+       	 	return false; 
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거

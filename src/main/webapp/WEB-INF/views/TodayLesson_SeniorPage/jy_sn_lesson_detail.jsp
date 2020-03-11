@@ -163,6 +163,7 @@ ${dto.lesson_senior_content}
 
 
 <a href="${pageContext.request.contextPath }/lesson_update/${dto.lesson_no}">수정하기</a>
+<a href="${pageContext.request.contextPath }/lesson_delete/${dto.lesson_no}">삭제하기</a>
 <a href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}">목록으로</a>
 </body>
 </html>

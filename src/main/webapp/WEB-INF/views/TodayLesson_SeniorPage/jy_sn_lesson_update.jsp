@@ -30,10 +30,7 @@
 		});		
 	
 		
-		if (${dto.lesson_result} != 0) {
-			alert("신청 완료 상태인 레슨만 수정할 수 있습니다!");
-			location.href="${pageContext.request.contextPath}/lesson_list/${pageContext.request.userPrincipal.name}";
-		}
+
 
 
 		if (${dto.lesson_type} == 3) {
@@ -55,11 +52,13 @@
 			});
 		
 		
-		if (${dto.lesson_addr != null} && ${dto.lesson_zipno != null}) {
-			document.getElementById('lesson_addr').value= ${dto.lesson_addr}
-			document.getElementById('lesson_zipno').value = ${dto.lesson_zipno}
-		}	
 		
+		
+		
+		document.form.lesson_category.value = ${dto.lesson_category};
+		document.form.lesson_type.value = ${dto.lesson_type};
+
+	
 		
 		
 	});
@@ -78,6 +77,10 @@
 
 
 <script>
+
+
+
+
 
 function addr(roadAddrPart1) {
 
@@ -149,7 +152,13 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 	addr(roadAddrPart1);
 
 	}
+	
+//document.form.lesson_addr.value= ${dto.lesson_addr};
+//document.form.lesson_zipno.value = ${dto.lesson_zipno};
+
+
 </script>
+
 
 
 
@@ -161,7 +170,6 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 
-<!-- 멤버 아이디 -->    
 <input type="hidden" id="lesson_no" name="lesson_no" value="${dto.lesson_no}">
  
 <label for="lesson_title">레슨명</label><br>
@@ -215,12 +223,12 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <label>레슨주소</label><br>
 우편번호<br>
 <input type="hidden" id="confmKey" name="confmKey" value="devU01TX0FVVEgyMDIwMDIyNzEwMzUzNTEwOTUwMDM="> 
-<input type="text" id="lesson_zipno" name="lesson_zipno" value="${dto.lesson_zipno}" readonly style="width: 100px"> 
+<input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px"> 
 <input type="button"value="주소검색" onclick="goPopup();">
 <br>	
 		
 도로명주소<br>
-<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" value="${dto.lesson_addr}">
+<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" >
 <p class="map"></p>
 </div>
 

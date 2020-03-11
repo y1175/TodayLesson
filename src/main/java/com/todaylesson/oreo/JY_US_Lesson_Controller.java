@@ -67,7 +67,7 @@ public class JY_US_Lesson_Controller {
 		
 		System.out.println("                     " +dto.toString());
 					
-		return "TodayLesson_SeniorPage/jy_sn_insertresult";
+		return "TodayLesson_SeniorPage/jy_sn_insert_result";
 	}
 	
 	@RequestMapping("/lesson_detail/{lesson_no}")
@@ -80,14 +80,36 @@ public class JY_US_Lesson_Controller {
 	@RequestMapping("/lesson_update/{lesson_no}")
 	public String lesson_update(@PathVariable int lesson_no, Model model) {
 		LessonDTO dto = lessonservice.detail_lesson(lesson_no);
-		model.addAttribute("dto",dto);
-		return "TodayLesson_SeniorPage/jy_sn_lesson_update";
-		 
+		if (dto.getLesson_result() != 0) {
+			return "TodayLesson_SeniorPage/jy_sn_lesson_can_not_update";
+		} else {
+			model.addAttribute("dto",dto);
+			return "TodayLesson_SeniorPage/jy_sn_lesson_update";
+		} 
+	}
+	
+	@RequestMapping("/lesson_delete/{lesson_no}")
+	public String lesson_delete(@PathVariable int lesson_no, Model model) {
+		LessonDTO dto = lessonservice.detail_lesson(lesson_no);
+		if (dto.getLesson_result() != 0) {
+			return "TodayLesson_SeniorPage/jy_sn_lesson_can_not_delete";
+		} else {
+			int result = lessonservice.delete_lesson(lesson_no);
+			model.addAttribute("result",result);
+			return "TodayLesson_SeniorPage/jy_sn_delete_result";
+		} 
+	}
+	
+	
+	
+	@RequestMapping("/lesson_update_result")
+	public String lesson_update_result (LessonDTO dto, Model model) {
+		
+		int result = lessonservice.update_lesson(dto);
+		model.addAttribute("result",result);
+		return "TodayLesson_SeniorPage/jy_sn_update_result";
 	}
 
-	
-
-	
 	
 	
 	
