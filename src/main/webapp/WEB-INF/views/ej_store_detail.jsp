@@ -82,8 +82,9 @@ border: 1px solid silver;}
 <input type="hidden" name="product_cost" value="${dto.product_cost }"/>
 
 배송비 무료<br>
-수량: <input type=text size="1" name="pdcount" placeholder="1" ><br>
+수량: <input type=text size="1" name="pdcount" placeholder="1" required="required"><br>
 하트랑 장바구니
+<input type="text" name="memberid" value="${pageContext.request.userPrincipal.name}">
 <%-- <a href="http://localhost:9080/ej_us_orderform"+"?product_no="+"${dto.product_no }" >구매</a> --%>
 <input type="submit">
 </nav>
@@ -171,6 +172,7 @@ ${dto.product_content}
 
 <%-- <a href="${pageContext.request.contextPath }/list">목록으로</a> --%>
 
+    
 
 </body>
 </html>
