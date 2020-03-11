@@ -133,6 +133,20 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 		return mapper.freeboard_insert(dto);
 	}
 
+	@Override
+	public SQLjoin_Member_FreeBoardDTO modify_placehold(int freeboard_no) {
+		// TODO Auto-generated method stub
+		return mapper.modify_placehold(freeboard_no);
+	}
+
+	@Override
+	public int modify_result(SQLjoin_Member_FreeBoardDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.modify_result(dto);
+	}
+
+
+
 
 
 

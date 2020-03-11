@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:set var="item" value="${dto }"></c:set>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -72,7 +73,10 @@ $(document).ready(function() {
 로그인 하세요.
 </sec:authorize>		
 <sec:authorize access="isAuthenticated()">
-<c:set var="item" value="${dto }"></c:set>
+카테고리 : <c:choose>
+<c:when test="${item.freeboard_category eq 1 }">자유글</c:when>
+<c:when test="${item.freeboard_category eq 2 }">질문과답변</c:when>
+</c:choose><br>
 글번호 : <div class="freeboard_no">${item.freeboard_no }</div> <br>
 작성자 : ${item.member_nick } <br>
 조회수 : ${item.freeboard_readno } <br>
@@ -114,6 +118,8 @@ onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href=
 </tbody>
 </table><br>
 <c:if test="${item.member_id eq pageContext.request.userPrincipal.name }">
+<input type="button" class="freeboard_modify" value="글수정" 
+onclick="location.href='/freeboard_modify/${item.freeboard_no}'">
 <input type="button" class="freeboard_delete" value="글삭제"
 onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/freeboard_delete/${item.freeboard_no}'">
 </c:if>

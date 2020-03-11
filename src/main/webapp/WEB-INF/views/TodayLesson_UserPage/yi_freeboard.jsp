@@ -17,7 +17,7 @@
 <tbody>
 <c:forEach var="notice" items="${notice }">
 <tr>
-<td>${notice.notice_category }</td>
+<td>공지사항</td>
 <td>${notice.notice_no }</td>
 <td>			
 <a href="notice_detail/${notice.notice_no }" >${notice.notice_title }</a>
@@ -32,7 +32,12 @@
 <c:forEach var="item" items="${list }" varStatus="status">
 
 <tr>
-<td>${item.freeboard_category }</td>
+<td>
+<c:choose>
+<c:when test="${item.freeboard_category eq 1 }">자유글</c:when>
+<c:when test="${item.freeboard_category eq 2 }">질문과답변</c:when>
+</c:choose>
+</td>
 <td>${item.freeboard_no}</td>
 <td>
 <sec:authorize access="isAuthenticated()">

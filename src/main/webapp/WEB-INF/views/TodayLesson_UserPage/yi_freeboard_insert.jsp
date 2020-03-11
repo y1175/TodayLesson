@@ -26,7 +26,9 @@
 <textarea rows="15" cols="100" name="freeboard_content" id="freeboard_content" required="required">
 </textarea>
 </li>
-<li><input type="submit" value="작성">
+<li>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<input type="submit" value="작성">
 <input type="button" onclick="location.href='/freeboard'" value="목록으로">
 </li>
 </ul>

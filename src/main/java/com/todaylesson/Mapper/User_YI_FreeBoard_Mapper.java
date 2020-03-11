@@ -51,6 +51,10 @@ public int freeboard_delete(int freeboard_no);
 
 public int freeboard_insert(SQLjoin_Member_FreeBoardDTO dto);
 
+public SQLjoin_Member_FreeBoardDTO modify_placehold(int freeboard_no);
+
+public int modify_result(SQLjoin_Member_FreeBoardDTO dto);
+
 
 
 

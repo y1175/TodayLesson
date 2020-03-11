@@ -15,12 +15,12 @@ var result=${result}
 
 if (result>0)
 	{
-	alert('작성완료');
-	location.href="/freeboard";
+	alert('수정완료');
+	history.go(-2);
 	}
 else
 	{
-	alert('입력실패');
+	alert('수정실패');
 	location.href="/freeboard";
 	}
 </script>

@@ -81,8 +81,6 @@ public class User_YI_FreeBoard_Controller {
 	{	
 		service.freeboard_readnoUp(freeboard_no);
 		SQLjoin_Member_FreeBoardDTO dto= service.freeboard_detail(freeboard_no);
-		/*int boardreply_no=service.boardreply_noGet(freeboard_no);*/
-		/*dto.setBoardreply_no(boardreply_no);*/
 		
 		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(freeboard_no);
 		model.addAttribute("rep_list",list);
@@ -114,6 +112,35 @@ public class User_YI_FreeBoard_Controller {
 		model.addAttribute("result",result);
 		
 		return "TodayLesson_UserPage/yi_freeboard_insertresult";
+	}
+	
+	@RequestMapping("/freeboard_modify/{freeboard_no}")
+	public String boardModifyForm(@PathVariable int freeboard_no,Model model)
+	{
+		SQLjoin_Member_FreeBoardDTO dto =service.modify_placehold(freeboard_no);
+		model.addAttribute("dto",dto);
+		return "TodayLesson_UserPage/yi_freeboard_modify";
+	}
+	
+	@RequestMapping("/freeboard_modifyresult")
+	public String boardModifyresult(@RequestParam String member_id
+								   ,@RequestParam int freeboard_no
+								   ,@RequestParam int freeboard_category
+								   ,@RequestParam String freeboard_title
+								   ,@RequestParam String freeboard_content
+								   ,Model model)
+	{
+		SQLjoin_Member_FreeBoardDTO dto = new SQLjoin_Member_FreeBoardDTO();
+		dto.setMember_id(member_id);
+		dto.setFreeboard_category(freeboard_category);
+		dto.setFreeboard_content(freeboard_content);
+		dto.setFreeboard_title(freeboard_title);
+		dto.setFreeboard_no(freeboard_no);				
+		int result=service.modify_result(dto);
+		
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_UserPage/yi_freeboard_modifyresult";
 	}
 	
 	
