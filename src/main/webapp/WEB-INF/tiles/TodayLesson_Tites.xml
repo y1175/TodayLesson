@@ -51,7 +51,7 @@
       <put-attribute name="hs_sn_main_header" value="/WEB-INF/views/TodayLesson_SeniorPage/hs_sn_main_header.jsp"/>
       <put-attribute name="hs_sn_main_leftaside_nav" value="/WEB-INF/views/TodayLesson_SeniorPage/hs_sn_main_leftaside_nav.jsp"/>
       <put-attribute name="hs_sn_main_section" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_home_content.jsp"/>
-      <put-attribute name="hs_sn_main_footer" value="/WEB-INF/views/hs_all_main_footer.jsp"/>
+      <put-attribute name="hs_sn_main_footer" value="/WEB-INF/hs_all_main_footer.jsp"/>
    </definition>
    
    <definition name="*.sn_main_section" extends="hs_sn_main">
