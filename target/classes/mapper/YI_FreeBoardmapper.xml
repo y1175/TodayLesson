@@ -127,6 +127,23 @@ where boardreply.freeboard_no=#{freeboard_no}
 order by boardreply_no
 </select>
 
+<insert id="freeboard_insert" parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+insert into freeboard
+(freeboard_category,member_id,freeboard_title,freeboard_content,freeboard_writedate,freeboard_readno)
+values
+(#{freeboard_category},#{member_id},#{freeboard_title},#{freeboard_content},now(),0)
+</insert>
+
+<delete id="freeboard_delete" parameterType="int">
+delete from freeboard
+where freeboard_no=#{freeboard_no}
+</delete>
+
+<delete id="delete_reply" parameterType="int">
+delete from boardreply
+where boardreply_no=#{boardreply_no}
+</delete>
+
 <!-- <select id="boardreply_noGet" parameterType="int" resultType="int">
       
 select max(boardreply_no)

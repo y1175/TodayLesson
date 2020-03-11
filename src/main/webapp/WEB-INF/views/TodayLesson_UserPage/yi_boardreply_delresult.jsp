@@ -9,17 +9,17 @@
 </head>
 <body>
 <script>
-var result=${result}
+var result=${deleteResult}
 
 if (result>0)
 	{
-	alert('작성완료');
-	location.href="/freeboard";
+	alert('삭제완료');
+	history.back();
 	}
 else
 	{
-	alert('작성실패');
-	location.href="/freeboard";
+	alert('삭제실패');
+	history.back();
 	}
 </script>
 </body>

@@ -62,7 +62,7 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </form>
 
 <sec:authorize access="isAuthenticated()">
-<input type="button" id="write" value="글쓰기"><br>
+<input type="button" id="write" value="글쓰기" onclick="location.href='/freeboard_insert'"><br>
 </sec:authorize>
 
 <c:if test="${page.prev }">

@@ -105,7 +105,7 @@ $(document).ready(function() {
 <td>${rep_list.boardreply_writedate }</td>
 <td>
 <c:if test="${rep_list.member_id eq pageContext.request.userPrincipal.name }">
-<input type="button" class="delete" value="삭제" 
+<input type="button" class="reply_delete" value="삭제" 
 onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/boardreply_delete/${rep_list.boardreply_no}'">
 </c:if>
 </td></tr>
@@ -114,7 +114,8 @@ onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href=
 </tbody>
 </table><br>
 <c:if test="${item.member_id eq pageContext.request.userPrincipal.name }">
-<input type="button" class="delete" value="삭제">
+<input type="button" class="freeboard_delete" value="글삭제"
+onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/freeboard_delete/${item.freeboard_no}'">
 </c:if>
 <a href="/freeboard">목록으로</a>
 </sec:authorize>
