@@ -103,6 +103,18 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 		return mapper.freeboard_replycount(hidden_freeboard_no);
 	}
 
+	@Override
+	public int boardreply_noGet(int freeboard_no) {
+		// TODO Auto-generated method stub
+		return mapper.boardreply_noGet(freeboard_no);
+	}
+
+	@Override
+	public List<SQLjoin_Member_FreeBoardDTO> ajax_data(int boardreply_no) {
+		// TODO Auto-generated method stub
+		return mapper.ajax_list(boardreply_no);
+	}
+
 
 
 

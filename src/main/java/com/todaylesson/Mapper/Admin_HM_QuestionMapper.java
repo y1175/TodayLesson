@@ -14,4 +14,6 @@ public interface Admin_HM_QuestionMapper {
 
 	public int hmgetCount(HashMap<String, Object> hm);
 
+	public Question_1_1DTO hm_ad_question_detail(int question_no);
+
 }

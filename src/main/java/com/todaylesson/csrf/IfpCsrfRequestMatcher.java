@@ -141,8 +141,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //게시글상세보기
         else if ("/freeboard_detail/{freeboard_no}".equals(strUri))                   return false;   
       //리플달기 json
-        else if ("/freeboard_detailjson/{freeboard_no}".equals(strUri)) return false;
-         
+        else if ("/freeboard_detailjson/{freeboard_no}".equals(strUri)) 	return false;
+       //리플달기 
+        else if ("/insert_boardreply/".equals(strUri)) 	return false;
         
    //혜미
       //혜미비번찾기 
@@ -180,6 +181,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
 			return false;
         //혜미 관리자 1:1문의 관리페이지 이동
         else if("/hm_ad_question".equals(strUri))
+        	return false;
+        //혜미 관리자 1:1문의 디테일 페이지 이동
+        else if("hm_ad_question_detail".equals(strUri))
         	return false;
    //은지
         //은지 관리자 상품조회
