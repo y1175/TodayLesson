@@ -59,7 +59,7 @@ public class Admin_HM_Question_Controller {
 		Question_1_1DTO dto = service.hm_ad_question_detail(question_no);
 		model.addAttribute("dto",dto);
 		
-		return "TodayLesson_AdminPage/hm_ad_question_detail.hs_ad_main_section";
+		return "/TodayLesson_AdminPage/hm_ad_question_detail.hs_ad_main_section";
 		
 	}
 	
