@@ -17,7 +17,7 @@
 
    <security:http use-expressions="true">
      
-      <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN','ROLE_SENIOR')"/>  <!-- 관리자 -->
+      <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
       <security:intercept-url pattern="/todaylessonsenior" access="hasRole('ROLE_SENIOR')"/>  <!-- 시니어 -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
       <security:intercept-url pattern="/todaylesson" access="isAuthenticated(),hasRole('ROLE_USER')"/>  <!-- 로그인한 사람 -->
@@ -27,6 +27,11 @@
       <security:form-login login-page="/todaylessonlogin" login-processing-url="/todaylesson" default-target-url="/todaylesson"/> 
       <security:logout  logout-success-url="/todaylessonlogin" logout-url="/logout" invalidate-session="true"  delete-cookies="id"/>
       <security:remember-me  remember-me-cookie="id" token-validity-seconds="300"/>
+      
+      <!-- 로그인 중복방지 // 자동로그아웃되어 로그인창가게 했음 나중에 로그아웃됐다고 알림띄우기 -->
+      <security:session-management>
+         <security:concurrency-control max-sessions="1" expired-url="/todaylessonlogin"/>
+      </security:session-management>
       
       <security:csrf request-matcher-ref="ifpCsrfRequestMatcher"/>
       <security:access-denied-handler ref="ifpAccessDeniedHandler"/>

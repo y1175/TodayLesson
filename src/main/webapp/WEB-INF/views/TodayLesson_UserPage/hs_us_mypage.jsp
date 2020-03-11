@@ -41,7 +41,9 @@
       <nav>
          <tiles:insertAttribute name="hs_us_my_nav"/>
       </nav>
+      <section>
       <tiles:insertAttribute name="hs_us_my_section"/>
+      </section>
    </section>
    
    <footer>

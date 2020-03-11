@@ -11,7 +11,7 @@
 
 </head>
 <body>
-   <nav class="hs_sn_main_asidenav_nav" style="width: 10%;">
+   <nav class="hs_sn_main_asidenav_nav">
    
       <b>레슨</b>
       <br>

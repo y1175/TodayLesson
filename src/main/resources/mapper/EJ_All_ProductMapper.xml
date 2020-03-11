@@ -28,4 +28,22 @@ where product_no=#{product_no}
 </select>
 
 
+ <select id="allReply" resultType="com.todaylesson.DTO.PdReviewDTO">
+select pdreview_content, pdreview_date, member.member_id ,product_no
+from pdreview, orderlist, member
+where pdreview.orderlist_no=orderlist.orderlist_no
+and orderlist.member_id=member.member_id
+and product_no=#{product_no}
+</select> 
+
+
+<insert id="registReply" parameterType="com.todaylesson.DTO.PdReviewDTO">
+ <selectKey resultType="int" keyProperty="orderlist_no" order="BEFORE">
+ 	select orderlist_no from orderlist 
+ 	where product_no=#{product_no} and member_id=#{member_id}
+ </selectKey>
+ insert into pdreview(orderlist_no, pdreview_content, pdreview_date)
+ values (#{orderlist_no},#{pdreview_content},sysdate)
+</insert>
+
 </mapper> 

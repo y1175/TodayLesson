@@ -22,10 +22,13 @@ where lesson_no = #{lesson_no}
 
 </select>
 
-<!-- <select id="select_lesson_list" resultType="com.todaylesson.DTO.LessonDTO" parameterType="int">
+<select id="select_lesson_list" resultType="com.todaylesson.DTO.LessonDTO" parameterType="int">
 
+select lesson_title, lesson_result,lesson_no
+from lesson
+where senior_no = #{senior_no}
 
-</select> -->
+</select>
 
 
 <update id="lesson_approve" parameterType="int">

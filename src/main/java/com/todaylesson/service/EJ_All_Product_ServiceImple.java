@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.Mapper.EJ_US_ProductMapper;
 
@@ -28,5 +29,18 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	@Override
 	public ProductDTO select(int product_no) {
 		return mapper.selectBoard(product_no);
+	}
+
+	@Override
+	public List<PdReviewDTO> replyList(int product_no) {
+		// TODO Auto-generated method stub
+		return mapper.allReply(product_no);
+	}
+
+	@Override
+	public int registReply(PdReviewDTO reply) {
+
+		return mapper.registReply(reply);
+		
 	}
 }

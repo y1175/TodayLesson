@@ -6,10 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- KAKAO LOGIN JS --> 
+   <script type="text/javascript" src="resources/JS/hs_us_main_sec_login.js"></script>
+   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<!-- KAKAO LOGIN JS --> 
+
+<!-- NAVER LOGIN JS --> 
+
+<!-- NAVER LOGIN JS --> 
+
+<!--  -->
+
+<!--  -->
+
+<!--  -->
+
+<!--  -->
+
 </head>
 <body>
 
-  <h1>Custom Login Page</h1>
+ <%--  <h1>Custom Login Page</h1>
   <h2><c:out value="${error}"/></h2>
   <h2><c:out value="${logout}"/></h2>
 
@@ -31,10 +50,10 @@
   </div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-  </form>
+  </form> --%>
 
 
-<%--    <div>
+  <div style="width: 50%; margin: auto; text-align: center;">
       <form method="post" action="/todaylesson">
          <div class="hs_us_mainheader_loginmodalform_div">
             <b>오늘의 레슨에 오신것을 환영합니다!</b>
@@ -44,10 +63,10 @@
                <span><c:out value="${error}"/></span>
                <span><c:out value="${logout}"/></span>
                <label>ID</label>
-               <input type='text' name='member_id' placeholder="아이디 입력하시오" required="required">
+               <input type='text' name='username' placeholder="아이디 입력하시오" required="required">
                <br>
                <label>PW</label>
-               <input type='password' name='member_pwd' placeholder="비밀번호를 입력하시오" required="required">
+               <input type='password' name='password' placeholder="비밀번호를 입력하시오" required="required">
                <br>
                <label>
                <input type='checkbox' name='remember-me'> Remember me
@@ -61,7 +80,7 @@
             <div class=""></div>
            
                <div>
-                  <a>카카오</a>
+                  <a href="http://developers.kakao.com/logout"  id="kakao-login-btn" ></a>
                   <a>네이버</a>
                   <a>구글</a>
                   <a>페이스북</a>
@@ -78,10 +97,9 @@
             </div>
    
          </div>
-             <!-- security_form에 넣어줘야하는거(안넣어주면 에러 남) -->
          
       </form>
-   </div> --%>
+   </div>
 
 </body>
 </html>

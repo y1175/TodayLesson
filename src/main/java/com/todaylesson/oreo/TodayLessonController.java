@@ -57,7 +57,7 @@ public class TodayLessonController {
     
    @RequestMapping("/todaylessonmypage")
    public String usermypage() {
-	   return "hs_us_my";
+	   return "hs_us_mypage";
    }
    
    @RequestMapping("/todaylesson")
@@ -105,8 +105,8 @@ public class TodayLessonController {
        
        @RequestMapping("/logout")
        public String logout() {
-    	   return "redirect:/customlogin";
-       }
+    	   return "redirect:/todaylessonlogin";
+       }	   
     		   
     		   
        @RequestMapping("/join")

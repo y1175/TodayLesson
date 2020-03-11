@@ -20,7 +20,7 @@ function checkBankHolder(){
 	$.ajax({
 		method: 'get',
 		url: 'https://api.iamport.kr/vbanks/holder',
-	    headers: { "Authorization": "76b4afd84bf30db7c243a3e501760cd6e29f934c"}, 
+	    headers: { "Authorization": "d64de63b64de68f54a00cc6fb6ce0b5e81d01a65"}, 
 		data : {
 			bank_code : "004",
 			bank_num : "91295121565"
@@ -28,9 +28,14 @@ function checkBankHolder(){
 	}).done(
 					function(msg) {
 						console.log(msg);
-						let adn = msg.documents[0].bank_holder;
+					/* 	let adn = msg.documents[0].bank_holder;
 						console.log
-						(adn);
+						(adn); */
+
+						let bank = msg.response;
+						//let name = bank.parse().bank_holder;
+						console.log(bank);
+						console.log(bank["bank_holder"]);
 					});
 }
 	

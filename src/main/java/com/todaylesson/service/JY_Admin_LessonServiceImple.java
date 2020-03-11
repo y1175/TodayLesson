@@ -46,10 +46,10 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 	}
 
 
-	/*@Override
+	@Override
 	public List<LessonDTO> select_lesson_list(int senior_no) {
 		return mapper.select_lesson_list(senior_no);
-	}*/
+	}
 
 
 
