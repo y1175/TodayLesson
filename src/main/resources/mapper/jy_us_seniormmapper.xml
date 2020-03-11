@@ -6,7 +6,7 @@
 
 <insert id="new_senior" parameterType="java.lang.String">
 
-insert into senior(member_id) value(#{member_id})
+insert into senior(member_id,senior_register_date) value(#{member_id},sysdate())
 
 </insert>
 

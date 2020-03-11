@@ -46,7 +46,7 @@ public class AllLessonDTO {
 	private String senior_bank_name;
 	private String senior_account_name;
 	private String senior_account_num;
-	
+	private String senior_register_date;
 	
 	
 }

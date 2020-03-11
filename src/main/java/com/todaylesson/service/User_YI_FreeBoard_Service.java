@@ -26,6 +26,11 @@ public interface User_YI_FreeBoard_Service {
 	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no);
 	public String getNick_reply(String member_id);
 	public int freeboard_replycount(int hidden_freeboard_no);
+/*	public int boardreply_noGet(int freeboard_no);
+	public List<SQLjoin_Member_FreeBoardDTO> ajax_data(int boardreply_no);*/
+	public int delete_reply(int boardreply_no);
+	public int freeboard_delete(int freeboard_no);
+	public int freeboard_insert(SQLjoin_Member_FreeBoardDTO dto);
 
 	
 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
+import com.todaylesson.DTO.MemberDTO;
+import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -83,17 +88,40 @@ public class EJ_ProductController {
 	public String slist(Model model) {
 		List<ProductDTO> list = service.selectAll();
 		model.addAttribute("list",list);
+		//.us_main_section
 		return "ej_store_main";
 	}
+	
+	
 	@RequestMapping("/ej_store_detail/{product_no}")
 	public String sdetail(@PathVariable("product_no") int product_no, Model model) {
 		
 		ProductDTO dto = service.select(product_no);
 		model.addAttribute("dto",dto);
-		
+		//.us_main_section
 		return "ej_store_detail";
 	}
-
-
+	// 상품 소감(댓글) 목록 /view/replyList엿음..replyList
+	@ResponseBody
+	@RequestMapping(value = "/ej_store_detail/{product_no}/replyList", method = RequestMethod.GET)
+	public List<PdReviewDTO> getReplyList(@RequestParam("product_no") int product_no) throws Exception {
+//원래는 RequestParam임 pathvariable로 해
+	   
+	 List<PdReviewDTO> reply = service.replyList(product_no);
+	 
+	 return reply;
+	} 
 	
+	// 상품 소감(댓글) 작성 registReply
+	@ResponseBody
+	@RequestMapping(value = "/ej_store_detail/{product_no}/registReply", method = RequestMethod.POST)
+	public void registReply(PdReviewDTO reply,  HttpSession session) throws Exception {
+	
+	 
+	 MemberDTO member = (MemberDTO)session.getAttribute("member");
+	 reply.setMember_id(member.getMember_id());
+	 
+	 service.registReply(reply);
+	
+}
 }

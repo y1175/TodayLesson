@@ -13,13 +13,13 @@ var result=${result}
 
 if (result>0)
 	{
-	alert('가입이 완료되었습니다.');
-	location.href="/todaylesson";
+	alert('작성완료');
+	location.href="/freeboard";
 	}
 else
 	{
-	alert('가입 실패');
-	location.href="/todaylesson";
+	alert('작성실패');
+	location.href="/freeboard";
 	}
 </script>
 </body>

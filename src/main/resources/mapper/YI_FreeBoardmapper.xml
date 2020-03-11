@@ -28,7 +28,7 @@
 
 <!-- 게시물 전체보기 -->
 <select id="list" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO" parameterType="java.util.HashMap">
-select freeboard_category,member_nick,freeboard_no,freeboard_title,freeboard_writedate,freeboard_readno
+select freeboard_category,member_nick,freeboard.member_id,freeboard_no,freeboard_title,freeboard_writedate,freeboard_readno
 from freeboard join member
 on freeboard.member_id = member.member_id
 <!-- WHERE절을 include 태그로 삽입 -->
@@ -39,7 +39,7 @@ limit   #{startrow}, 15
 </select>
 <!-- 공지사항 -->
 <select id='notice' resultType="com.todaylesson.DTO.NoticeDTO">
-select notice_category,member_nick,notice_no,notice_title,notice_writedate,notice_readno
+select notice_category,member_nick,notice.member_id,notice_no,notice_title,notice_writedate,notice_readno
 from notice join member
 on notice.member_id=member.member_id
 order by notice_no desc
@@ -48,7 +48,7 @@ limit 0,5
 
 <!-- 게시물 상세보기 -->
 <select id="freeboard_detail" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
-select freeboard_no,freeboard_category,member_nick,freeboard_readno
+select freeboard_no,freeboard_category,member_nick,freeboard.member_id,freeboard_readno
 ,freeboard_title,freeboard_writedate,freeboard_content
 from freeboard join member
 on freeboard.member_id = member.member_id
@@ -62,7 +62,7 @@ where freeboard_no=#{hidden_freeboard_no}
 
 <!-- 공지 상세보기 -->
 <select id="notice_detail" parameterType="int" resultType="com.todaylesson.DTO.NoticeDTO">
-select notice_no,notice_category,member_nick,notice_readno
+select notice_no,notice_category,member_nick,notice.member_id,notice_readno
 ,notice_title,notice_writedate,notice_content
 from notice join member
 on notice.member_id = member.member_id
@@ -120,10 +120,42 @@ values(#{boardreply_content},now(),#{member_id},#{freeboard_no})
 </insert>
 
 <select id="boardreply_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
-select boardreply_no,freeboard_no,member_nick,boardreply_content,boardreply_writedate
+select boardreply_no,freeboard_no,member_nick,boardreply_content,boardreply_writedate,boardreply.member_id
 from boardreply join member
 on boardreply.member_id=member.member_id
 where boardreply.freeboard_no=#{freeboard_no}
+order by boardreply_no
 </select>
+
+<insert id="freeboard_insert" parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+insert into freeboard
+(freeboard_category,member_id,freeboard_title,freeboard_content,freeboard_writedate,freeboard_readno)
+values
+(#{freeboard_category},#{member_id},#{freeboard_title},#{freeboard_content},now(),0)
+</insert>
+
+<delete id="freeboard_delete" parameterType="int">
+delete from freeboard
+where freeboard_no=#{freeboard_no}
+</delete>
+
+<delete id="delete_reply" parameterType="int">
+delete from boardreply
+where boardreply_no=#{boardreply_no}
+</delete>
+
+<!-- <select id="boardreply_noGet" parameterType="int" resultType="int">
+      
+select max(boardreply_no)
+from boardreply 
+where freeboard_no=#{freeboard_no}
+</select> -->
+
+<!-- <select id="ajax_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+select boardreply_no,freeboard_no,member_nick,boardreply_content,boardreply_writedate,boardreply.member_id
+from boardreply join member
+on boardreply.member_id=member.member_id
+where boardreply.freeboard_no=#{boardreply_no}
+</select> -->
 
 </mapper>
