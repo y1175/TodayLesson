@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -29,6 +30,43 @@ public class User_HS_KakaoLoginService {
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		postParams.add(new BasicNameValuePair("client_id", "250c99d78fb89584382252365272f520")); // REST API KEY
 		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:9080/todaylesson")); // 리다이렉트 URI
+=======
+import javax.servlet.http.HttpSession;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.todaylesson.DTO.MemberDTO;
+
+@Service(value="kakaologinservice")
+public class User_HS_KakaoLoginService {
+	
+/*	private final static String K_CLIENT_ID = "자기꺼 REST API키 복붙"; //이런식으로 REDIRECT_URI를 써넣는다. // // 
+	private final static String K_REDIRECT_URI = "http://localhost:8080/myfinal/kakaologin.do"; 
+	
+	public static String getAuthorizationUrl(HttpSession session) {
+		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + 
+				           "&redirect_uri=" + K_REDIRECT_URI + "&response_type=code"; return kakaoUrl; 
+	}
+*/
+
+	
+	public static JsonNode getAccessToken(String autorize_code) {
+		final String RequestUrl = "https://kauth.kakao.com/oauth/token";
+
+		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
+		postParams.add(new BasicNameValuePair("client_id", "250c99d78fb89584382252365272f520")); // REST API KEY
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:9080/todaylessonlogin")); // 리다이렉트 URI
+>>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
 		final HttpClient client = HttpClientBuilder.create().build();

@@ -37,6 +37,7 @@ where question_title like CONCAT('%',#{searchtxt},'%')
 </sql>
 
 
+
 <!-- 디테일 정보 -->
 <select id="hm_ad_question_detail" parameterType="int" resultType="com.todaylesson.DTO.Question_1_1DTO">
 select question_no,question_group,question_title,question_content,question_answer,member_id,question_situation,question_writedate

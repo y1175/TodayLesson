@@ -76,7 +76,15 @@ public class TodayLessonController {
        {
            return "/todaylesson_sec__error";
        }
+<<<<<<< HEAD
               
+=======
+       
+       
+       
+       
+       
+>>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
        @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
     		           method = {RequestMethod.GET, RequestMethod.POST})
        public String login(//@RequestParam("code") String code,
@@ -104,8 +112,13 @@ public class TodayLessonController {
  	          kakao_name = kakao_account.path("name").asText();
  	          kakao_gender = kakao_account.path("gender").asText();
  	          kakao_birthday = kakao_account.path("birthday").asText();
+<<<<<<< HEAD
  	          kakao_age = kakao_account.path("age").asText();*/
     	   
+=======
+ 	          kakao_age = kakao_account.path("age").asText();
+    	   */
+>>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
  	       session.setAttribute("kakao_email", kakao_email);
  	       session.setAttribute("kakao_name", kakao_name);
  	       session.setAttribute("kakao_gender", kakao_gender);
