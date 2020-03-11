@@ -77,7 +77,12 @@ public class JY_US_Lesson_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_lesson_detail";
 	}
 	
-	
+	@RequestMapping("/lesson_update/{lesson_no}")
+	public String lesson_update(@PathVariable int lesson_no, Model model) {
+		LessonDTO dto = lessonservice.detail_lesson(lesson_no);
+		model.addAttribute("dto",dto);
+		return "TodayLesson_SeniorPage/jy_sn_lesson_update";
+	}
 
 	
 

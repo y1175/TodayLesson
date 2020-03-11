@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,14 +17,6 @@
 <!-- include summernote-ko-KR -->
 <script src="/resources/JS/summernote-ko-KR.js"></script>
 
-
-<style type="text/css">
-
-.layer { display: none; }
-
-</style>
-
-
 <script>
 	$(document).ready(function() {
 		
@@ -38,18 +30,37 @@
 		});		
 	
 		
-		
-		$('#lesson_type').change(function() {
-		let state = $('#lesson_type option:selected').val();
-		console.log(state);
-		if ( state == 3 ) {
+		if (${dto.lesson_result} != 0) {
+			alert("신청 완료 상태인 레슨만 수정할 수 있습니다!");
+			location.href="${pageContext.request.contextPath}/lesson_list/${pageContext.request.userPrincipal.name}";
+		}
+
+
+		if (${dto.lesson_type} == 3) {
 			$('.layer').hide();
 		} else {
 			$('.layer').show();
 		}
-		});	
 		
-
+		
+		
+		$('#lesson_type').change(function() {
+			let state = $('#lesson_type option:selected').val();
+			console.log(state);
+			if ( state == 3 ) {
+				$('.layer').hide();
+			} else {
+				$('.layer').show();
+			}
+			});
+		
+		
+		if (${dto.lesson_addr != null} && ${dto.lesson_zipno != null}) {
+			document.getElementById('lesson_addr').value= ${dto.lesson_addr}
+			document.getElementById('lesson_zipno').value = ${dto.lesson_zipno}
+		}	
+		
+		
 		
 	});
 	
@@ -59,15 +70,14 @@
 
 
 
-
 </head>
 
 <body>
 
 
 
-<script>
 
+<script>
 
 function addr(roadAddrPart1) {
 
@@ -111,6 +121,8 @@ function addr(roadAddrPart1) {
 
 
 
+
+
 function goPopup() {
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 	var pop = window.open("${pageContext.request.contextPath }/jusoPopup", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
@@ -121,13 +133,14 @@ function goPopup() {
 
 
 
+
+
 /** API 서비스 제공항목 확대 (2017.02) **/
 function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 		roadAddrPart2, jibunAddr, zipNo) {
 	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 	
 	console.log(roadFullAddr);
-	
 	
 	document.getElementById('lesson_addr').value= roadFullAddr;
 	document.getElementById('lesson_zipno').value = zipNo;
@@ -136,36 +149,34 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 	addr(roadAddrPart1);
 
 	}
-
-
-
-	  
-	  
-
 </script>
 
 
 
-<form method="post" action="${pageContext.request.contextPath }/insert_result" name="form"> 
+
+
+
+<form method="post" action="${pageContext.request.contextPath }/lesson_update_result" name="form"> 
 
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 
 <!-- 멤버 아이디 -->    
-<input type="hidden" id="senior_no" name="senior_no" value="${senior_no}">
+<input type="hidden" id="lesson_no" name="lesson_no" value="${dto.lesson_no}">
  
 <label for="lesson_title">레슨명</label><br>
-<input type="text" id="lesson_title" name="lesson_title"><br>
+<input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title }><br>
+
 
 <label for="lesson_content">레슨 내용</label><br>
-<textarea id="summernote" name="lesson_content"></textarea><br>
+<textarea id="summernote" name="lesson_content" ><c:out value="${dto.lesson_content}"/></textarea><br>
 
 <label for="lesson_member_max">수강생수</label><br>
-<input type="number" id="lesson_member_max" name="lesson_member_max"><br>
+<input type="number" id="lesson_member_max" name="lesson_member_max" value="${dto.lesson_member_max}"><br>
 
 <label for="lesson_category">카테고리</label><br>
-<select name="lesson_category">
-  <option value="0" selected="selected">---</option>
+<select name="lesson_category" >
+  <option value="0">---</option>
   <option value="1">운동</option>
   <option value="2">교육</option>
   <option value="3">핸드메이드</option>
@@ -175,18 +186,18 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <br>
 
 <label for="lesson_cost">가격</label><br>
-<input type="number" id="lesson_cost" name="lesson_cost"><br>
+<input type="number" id="lesson_cost" name="lesson_cost" value="${dto.lesson_cost}"><br>
 
 <label for="lesson_open_period">시작일</label><br>
-<input type="date" id="lesson_open_period" name="lesson_open_period"><br>
+<input type="date" id="lesson_open_period" name="lesson_open_period" value="${dto.lesson_open_period }"><br>
 
 <label for="lesson_close_period">종료일</label><br>
-<input type="date" id="lesson_close_period" name="lesson_close_period"><br>
+<input type="date" id="lesson_close_period" name="lesson_close_period" value="${dto.lesson_close_period }"><br>
 
 
 <label for="lesson_type">레슨타입</label><br>
 <select id="lesson_type" name="lesson_type">
-  <option value="0" selected="selected">---</option>
+  <option value="0">---</option>
   <option value="1">원데이 레슨</option>
   <option value="2">다회성 레슨</option>
   <option value="3">온라인 레슨</option>
@@ -199,30 +210,30 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 
 <label for="lesson_time">레슨시간</label><br>
-<input type="time" id="lesson_time" name="lesson_time"><br>
+<input type="time" id="lesson_time" name="lesson_time" value="${dto.lesson_time}"><br>
 
 <label>레슨주소</label><br>
 우편번호<br>
 <input type="hidden" id="confmKey" name="confmKey" value="devU01TX0FVVEgyMDIwMDIyNzEwMzUzNTEwOTUwMDM="> 
-<input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px"> 
+<input type="text" id="lesson_zipno" name="lesson_zipno" value="${dto.lesson_zipno}" readonly style="width: 100px"> 
 <input type="button"value="주소검색" onclick="goPopup();">
 <br>	
 		
 도로명주소<br>
-<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly">
+<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" value="${dto.lesson_addr}">
 <p class="map"></p>
 </div>
 
 
 <label for="lesson_number">총강의수</label><br>
-<input type="number" id="lesson_number" name="lesson_number"><br>
+<input type="number" id="lesson_number" name="lesson_number" value="${dto.lesson_number}"><br>
 
 
 <label for="lesson_senior_title">시니어명</label><br>
-<input type="text" id="lesson_senior_title" name="lesson_senior_title"><br>
+<input type="text" id="lesson_senior_title" name="lesson_senior_title" value="${dto.lesson_senior_title}"><br>
 
 <label for="lesson_senior_content">시니어소개</label><br>
-<textarea id="lesson_senior_content" name="lesson_senior_content" ></textarea><br>
+<textarea id="lesson_senior_content" name="lesson_senior_content" ><c:out value="${dto.lesson_senior_content}"/></textarea><br>
 
 
 <h1>한번 신청한 레슨은 변경, 삭제가 불가능하므로 신중해주시길 바라겠습닏.</h1>
@@ -232,6 +243,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <input type="reset" value="글 취소"/>
 
 </form>
+
 
 
 

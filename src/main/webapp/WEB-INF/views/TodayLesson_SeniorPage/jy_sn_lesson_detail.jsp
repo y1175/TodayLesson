@@ -162,7 +162,7 @@ ${dto.lesson_senior_content}
 </c:choose>
 
 
-
+<a href="${pageContext.request.contextPath }/lesson_update/${dto.lesson_no}">수정하기</a>
 <a href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}">목록으로</a>
 </body>
 </html>

@@ -6,10 +6,9 @@
 
 
 
-<select id="all_senior" resultType="com.todaylesson.DTO.AllLessonDTO">
+<select id="all_senior" resultType="com.todaylesson.DTO.SeniorDTO">
 
-select * from lesson join senior
-on lesson.senior_no = senior.senior_no
+select * from senior
 
 </select>
 

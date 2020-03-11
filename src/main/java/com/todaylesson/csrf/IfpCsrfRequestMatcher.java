@@ -286,7 +286,6 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         /* else if ("/admin_wait_lesson_detail/{lesson_no}".equals(strUri))    
    	 	return false;*/
         
-        
         // 레슨 디테일
         /* else if ("/admin_lesson_detail/{lesson_no}".equals(strUri))    
    	 	return false;*/
@@ -303,8 +302,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         /* else if ("/lesson_reject/{lesson_no}".equals(strUri))    
    	 	return false;*/
         
-        
-
+        // 관리자 시니어 관리
+        else if ("/all_senior".equals(strUri))    
+       	 	return false; 
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거

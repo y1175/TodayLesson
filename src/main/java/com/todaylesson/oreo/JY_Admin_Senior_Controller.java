@@ -8,8 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.todaylesson.DTO.AllLessonDTO;
-import com.todaylesson.service.JY_Admin_LessonService;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_Admin_SeniorService;
 
 @Controller
@@ -22,10 +21,10 @@ public class JY_Admin_Senior_Controller {
 	@RequestMapping("all_senior")
 	public String all_senior(Model model) {
 		
-		List<AllLessonDTO> list = ad_senior_service.all_senior();
+		List<SeniorDTO> list = ad_senior_service.all_senior();
+		model.addAttribute("list",list);
 		
-		
-		return "";
+		return "TodayLesson_AdminPage/jy_ad_senior_list";
 	}
 	
 	
