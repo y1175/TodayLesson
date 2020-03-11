@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.ProductDTO;
 
@@ -21,5 +22,7 @@ public interface EJ_US_ProductMapper {
 	public List<PdReviewDTO> allReply(int product_no);
 
 	public int registReply(PdReviewDTO reply);
+
+	public MemberDTO selectMember(String member_id);
 
 }

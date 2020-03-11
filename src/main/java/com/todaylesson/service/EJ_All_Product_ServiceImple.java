@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.Mapper.EJ_US_ProductMapper;
@@ -42,5 +43,11 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 
 		return mapper.registReply(reply);
 		
+	}
+
+	@Override
+	public MemberDTO selectm(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.selectMember(member_id);
 	}
 }

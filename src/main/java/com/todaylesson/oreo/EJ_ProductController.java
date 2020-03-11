@@ -130,6 +130,7 @@ public class EJ_ProductController {
 			,@RequestParam("pdcount") int pdcount
 			,@RequestParam("product_name") String product_name
 			,@RequestParam("product_cost") int product_cost
+			,@RequestParam("memberid") String member_id
 			,Model model){
 		System.out.println("주문페이지에서 상풍번호:"+product_no);
 		System.out.println("주문페이지에서 수량:"+pdcount);
@@ -137,6 +138,13 @@ public class EJ_ProductController {
 		model.addAttribute("product_name",product_name);
 		model.addAttribute("product_cost",product_cost);
 		model.addAttribute("pdcount",pdcount);
+		model.addAttribute("member_id",member_id);
+		MemberDTO mdto = service.selectm(member_id);
+		model.addAttribute("mdto",mdto);
+		
+		ProductDTO dto = service.select(product_no);
+		model.addAttribute("pdto",dto);
+		
 		return "TodayLesson_UserPage/ej_us_orderform";
 	}
 	}

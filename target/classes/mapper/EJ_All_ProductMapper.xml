@@ -46,4 +46,9 @@ and product_no=#{product_no}
  values (#{orderlist_no},#{pdreview_content},sysdate)
 </insert>
 
+<select id="selectMember" parameterType="String" resultType="com.todaylesson.DTO.MemberDTO">
+select *
+from member
+where member_id=#{member_id}
+</select>
 </mapper> 
