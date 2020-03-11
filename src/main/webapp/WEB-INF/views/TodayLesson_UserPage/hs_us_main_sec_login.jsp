@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   --%>   
 <!DOCTYPE>
 <html>
 <head>
@@ -21,9 +21,9 @@
 
 <!--  -->
 
-<!--  -->
-
-<!--  -->
+<!-- FaceBook LOGIN JS -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v6.0&appId=2903951876333746&autoLogAppEvents=1"></script>
+<!-- FaceBook LOGIN JS -->
 
 </head>
 <body>
@@ -60,8 +60,10 @@
             <br>
             <span>오늘의 레슨은 서로간의 재능을 연결해 모두의 경쟁력을 높이는 플랫폼 서비스입니다.</span>           
             <div>
+               <%-- 
                <span><c:out value="${error}"/></span>
-               <span><c:out value="${logout}"/></span>
+               <span><c:out value="${logout}"/></span> 
+               --%>
                <label>ID</label>
                <input type='text' name='username' placeholder="아이디 입력하시오" required="required">
                <br>
@@ -80,10 +82,31 @@
             <div class=""></div>
            
                <div>
-                  <a href="http://developers.kakao.com/logout"  id="kakao-login-btn" ></a>
-                  <a>네이버</a>
-                  <a>구글</a>
-                  <a>페이스북</a>
+                  <!-- 카카오 -->
+                     <a href="https://kauth.kakao.com/oauth/authorize
+                              ?client_id=250c99d78fb89584382252365272f520
+                              &redirect_uri=http://localhost:9080/todaylesson
+                              &response_type=code"
+                        id="kakao-login-btn"> 
+                        <!-- <img alt="" src="resources/IMG/kakao_account_login_btn_medium_narrow.png"> -->
+                     </a> 
+
+                  <!-- 카카오 -->
+                  <!-- 네이버-->
+                  <a href="">
+                     <img width="222" style="height: 49px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+                  </a> 
+                  <!-- 네이버-->
+                  <!-- 구글 -->
+                  <a>구글</a> 
+                  <!-- 구글 -->
+                  <!-- 페이스북 -->
+                  <a href="" id="fb-root">
+                     <span class="fb-login-button" data-width="222" data-size="large" data-button-type="login_with" 
+                                                   data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+                     </span>
+                  </a>
+                  <!-- 페이스북 -->  
                </div>
            
             <div class="hs_us_mainheader_findidpw">
