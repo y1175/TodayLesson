@@ -81,8 +81,8 @@ public class User_YI_FreeBoard_Controller {
 	{	
 		service.freeboard_readnoUp(freeboard_no);
 		SQLjoin_Member_FreeBoardDTO dto= service.freeboard_detail(freeboard_no);
-		int boardreply_no=service.boardreply_noGet(freeboard_no);
-		dto.setBoardreply_no(boardreply_no);
+		/*int boardreply_no=service.boardreply_noGet(freeboard_no);*/
+		/*dto.setBoardreply_no(boardreply_no);*/
 		
 		List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(freeboard_no);
 		model.addAttribute("rep_list",list);
@@ -97,7 +97,6 @@ public class User_YI_FreeBoard_Controller {
 	public SQLjoin_Member_FreeBoardDTO detailjson(@PathVariable int freeboard_no
 			,@RequestParam String boardreply_content
 			,@RequestParam String member_id
-			,@RequestParam int boardreply_no
 			,Model model)
 	{
 		SQLjoin_Member_FreeBoardDTO dto = new SQLjoin_Member_FreeBoardDTO();
@@ -111,18 +110,27 @@ public class User_YI_FreeBoard_Controller {
 		
 		
 		int insertResult=service.insert_reply(dto);
-		
-		
-		dto.setBoardreply_no(boardreply_no);
-		
-		List<SQLjoin_Member_FreeBoardDTO> list=service.ajax_data(boardreply_no);
-		model.addAttribute("ajax_data",list);
-		
-	
-		
+
 		return dto;
 	}
 	
+	@RequestMapping("/insert_boardreply/")
+	public String insert_reply(@RequestParam int freeboard_no
+			,@RequestParam String boardreply_content
+			,@RequestParam String member_id
+			,Model model)
+	{
+		SQLjoin_Member_FreeBoardDTO dto = new SQLjoin_Member_FreeBoardDTO();
+		dto.setFreeboard_no(freeboard_no);
+		dto.setMember_id(member_id);
+		dto.setBoardreply_content(boardreply_content);
+		
+		int insertResult=service.insert_reply(dto);
+		model.addAttribute("insertResult",insertResult);
+		model.addAttribute("freeboard_no",freeboard_no);
+		
+		return "/TodayLesson_UserPage/yi_boardreply_insertresult";
+	}
 
 	
 	@RequestMapping("/notice_detail/{notice_no}")

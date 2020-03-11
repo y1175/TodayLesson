@@ -127,18 +127,18 @@ where boardreply.freeboard_no=#{freeboard_no}
 order by boardreply_no
 </select>
 
-<select id="boardreply_noGet" parameterType="int" resultType="int">
+<!-- <select id="boardreply_noGet" parameterType="int" resultType="int">
       
 select max(boardreply_no)
 from boardreply 
 where freeboard_no=#{freeboard_no}
-</select>
+</select> -->
 
-<select id="ajax_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+<!-- <select id="ajax_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
 select boardreply_no,freeboard_no,member_nick,boardreply_content,boardreply_writedate,boardreply.member_id
 from boardreply join member
 on boardreply.member_id=member.member_id
 where boardreply.freeboard_no=#{boardreply_no}
-</select>
+</select> -->
 
 </mapper>

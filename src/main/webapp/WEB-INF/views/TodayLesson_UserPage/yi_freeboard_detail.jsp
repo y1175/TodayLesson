@@ -81,13 +81,13 @@ $(document).ready(function() {
 
 
 <div class="rep_form">
-<form method='post' action='/freeboard_detailjson' id='repdetail'>
+<form method='post' action='/insert_boardreply/' id='repdetail'>
 <input type='hidden' name='freeboard_no' value="${item.freeboard_no }"><br>
 <input type='hidden' id='member_id' name='member_id' value='${pageContext.request.userPrincipal.name}'><br>
-<input type="hidden" id="boardreply_no" name="boardreply_no" value='${item.boardreply_no+1 }'><br>
 <label for='boardreply_content'>내용</label>
 <input type='text' name='boardreply_content' id='boardreply_content' class='form-control'>
-<input type='button' class='reply_submit' value='입력'>
+<!-- <input type='button' class='reply_submit' value='입력'> -->
+<input type='submit' value='입력'>
 </form>
 
 </div>
