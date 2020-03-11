@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -10,18 +10,18 @@
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js"></script> 
 <script>
 $(document).ready(function(){
+
+function chcek_selectbox()
+{
+	var f = document.hmquestionform;
 	
-	function chcek_selectbox()
-	{
-		var f = document.hmquestionform;
-		
-		if(f.question_group.value==''){
-			alert('문의 유형을 선택해 주세요');
-			f.question_group.focus();
-			return false;
-		}
-		return true;
+	if(f.question_group.value==''){
+		alert('문의 유형을 선택해 주세요');
+		f.question_group.focus();
+		return false;
 	}
+	return true;
+}
 });
 </script>
 </head>
@@ -47,7 +47,7 @@ $(document).ready(function(){
 </li>
 <li>
 <label>문의 내용</label>
-<textarea rows="20" cols="90" id="question_content" name="question_content">문의 내용을 입력하세요</textarea>
+<textarea rows="20" cols="90" id="question_content" name="question_content" placeholder="문의 내용을 입력하세요"></textarea>
 </li>
 <li>
 <input type="submit" value="등록">

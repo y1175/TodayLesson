@@ -10,7 +10,8 @@ $(document).ready(function(){
 $("#question_answerbtn").click(function(){
 		
 		let no = $('#questiondetail_no').html();
-		location.href="hm_ad_question_update/"+no;
+		
+		location.href="/hm_ad_question_update/"+no;
 		
 	})
 });

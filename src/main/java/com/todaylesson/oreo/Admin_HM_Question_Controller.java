@@ -69,9 +69,10 @@ public class Admin_HM_Question_Controller {
 	private String hm_ad_question_update(@PathVariable int no
 								,@RequestParam("question_answer") String question_answer)
 	{
-		int question_no = no;
+	    int question_no = no;
 		System.out.println(question_no);
-		System.out.println(question_answer);
+		System.out
+		.println(question_answer);
 		HashMap<String, Object>map = new HashMap<>();
 		map.put("question_no", question_no);
 		map.put("question_answer", question_answer);
@@ -79,7 +80,7 @@ public class Admin_HM_Question_Controller {
 		service.hm_ad_question_update(map);
 		
 		
-		return "/TodayLesson_AdminPage/hm_ad_question_detail.hs_ad_main_section";
+		return "/TodayLesson_AdminPage/hm_ad_question_detail/question_no.hs_ad_main_section";
 	}
 
 }

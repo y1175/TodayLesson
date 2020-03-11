@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,15 +12,15 @@
 <body>
 <h2>1:1문의 관리 페이지</h2>
 
- <form method ="get" action="hm_ad_question?currPage=${page.startBlock }">
- <select name="search">
- <option value="all">전체</option>
- <option value="question_title">제목</option>
- <option value="member_id">아이디</option>
- </select>
- <input type="text" name="searchtxt">
- <input type="submit" value="검색">
- </form>
+<form method ="get" action="hm_ad_question?currPage=${page.startBlock }">
+<select name="search">
+<option value="all">전체</option>
+<option value="question_title">제목</option>
+<option value="member_id">아이디</option>
+</select>
+<input type="text" name="searchtxt">
+<input type="submit" value="검색">
+</form>
 
 <table>
 <thead>
@@ -30,10 +30,33 @@
 <c:forEach var="item" items="${list}">
 <tr>
 <td><span class="questiondetailno">${item.question_no}</span></td>
-<td><span>${item.question_group}</span></td>
+<c:choose>
+<c:when test="${item.question_group eq '0'}">
+<td><p>레  슨</p></td>
+</c:when>
+<c:when test="${item.question_group eq '1'}">
+<td><p>시니어</p></td>
+</c:when>
+<c:when test="${item.question_group eq '2'}">
+<td><p>스토어</p></td>
+</c:when>  
+<c:when test="${item.question_group eq '3'}">
+<td><p>주  문</p></td>
+</c:when>
+<c:when test="${item.question_group eq '4'}">
+<td><p>기  타</p></td>
+</c:when>
+</c:choose>
 <td><span>${item.member_id}</span></td>
 <td><span>${item.question_title}</span></td>
-<td><span>${item.question_situation}</span></td>
+<c:choose>
+<c:when test="${item.question_situation eq '0' }">
+<td><p>답변대기</p></td>
+</c:when>
+<c:when test="${item.question_situation eq '1' }">
+<td><p>답변완료</p></td>
+</c:when>
+</c:choose>
 <td><span>${item.question_writedate}</span></td>
 <td><input type="button" name="questionbtn" id="questionbtn" class="questionbtn" value="상세보기"></td>
 </tr>

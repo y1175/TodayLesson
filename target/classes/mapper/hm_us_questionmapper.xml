@@ -15,12 +15,10 @@ insert into question_1_1(question_group,question_title,question_content,question
 values(#{question_group},#{question_title},#{question_content}, NOW() ,#{member_id})
 </insert>
 
-
-<!-- 디테일 정보 -->
-<select id="hm_ad_question_detail" parameterType="int" resultType="com.todaylesson.DTO.Question_1_1DTO">
-select question_no,question_group,question_title,question_content,question_answer,member_id,question_situation,question_writedate
-from question_1_1
+<update id="hm_ad_question_update" parameterType="HashMap">
+update question_1_1
+set question_answer = #{question_answer}
 where question_no = #{question_no}
-</select>
+</update>
 
 </mapper>

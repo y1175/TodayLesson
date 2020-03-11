@@ -13,23 +13,56 @@
 <div>
 <ul>
 <li>
-<span id="questiondetail_no"><c:out value="${dto.question_no}"/></span>
+글번호 : <span id="questiondetail_no"><c:out value="${dto.question_no}"/></span>
 </li>
 <li>
-<c:out value="${dto.member_id}"></c:out>
+아이디 : <c:out value="${dto.member_id}"></c:out>
 </li>
+<c:choose>
+<c:when test="${dto.question_group eq '0'}">
 <li>
-<c:out value="${dto.question_group}"></c:out>
+<p>레  슨</p>
 </li>
+</c:when>
+<c:when test="${dto.question_group eq '0'}">
+<li>
+<p>시니어</p>
+</li>
+</c:when>
+<c:when test="${dto.question_group eq '0'}">
+<li>
+<p>스토어</p>
+</li>
+</c:when>
+<c:when test="${dto.question_group eq '0'}">
+<li>
+<p>주  문</p>
+</li>
+</c:when>
+<c:when test="${dto.question_group eq '0'}">
+<li>
+<p>기  타</p>
+</li>
+</c:when>
+</c:choose>
 <li>
 <c:out value="${dto.question_title}"></c:out>
 </li>
 <li>
 <c:out value="${dto.question_content}"></c:out>
 </li>
+<c:choose>
+<c:when test = "${dto.question_situation eq '0'}">
 <li>
-<c:out value="${dto.question_situation}"></c:out>
+<p>답변대기</p>
 </li>
+</c:when>
+<c:when test = "${dto.question_situation eq '1'}">
+<li>
+<p>답변완료</p>
+</li>
+</c:when>
+</c:choose>
 <li>
 <c:out value="${dto.question_writedate}"></c:out>
 </li>
