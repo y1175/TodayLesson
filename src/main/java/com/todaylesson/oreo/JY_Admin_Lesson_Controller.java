@@ -86,7 +86,15 @@ public class JY_Admin_Lesson_Controller {
 	}
 	
 	
-	// 승인이 필요한 레슨들 조회
+	// 신청 완료에서 심사중으로 넘기는 페이지
+	@RequestMapping("apply_lesson")
+	public String apply_lesson(Model model) {
+		//List<E>
+		return "TodayLesson_AdminPage/jy_ad_apply_lesson";
+	}
+	
+	
+	// 심사 필요한 레슨들 조회
 	@RequestMapping("wait_lesson")
 	public String wait_lesson(Model model) {
 		List<AllLessonDTO> list = adminservice.wait_lesson();

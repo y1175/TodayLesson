@@ -213,8 +213,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지스토어 메인
         else if ("/ej_store_main".equals(strUri))                   
         	 return false; 
-        
-        
+        //은지 주문폼
+        else if ("/ej_us_orderform".equals(strUri))                   
+       	 return false; 
         
         
    //진영
