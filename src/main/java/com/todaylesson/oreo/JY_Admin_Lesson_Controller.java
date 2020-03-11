@@ -97,7 +97,7 @@ public class JY_Admin_Lesson_Controller {
 	}
 	
 	
-	
+    // ·¹½¼À» ½É»çÁßÀ¸·Î ³Ñ±â±â
 	@RequestMapping("admin_apply_exam")
 	public String apply_exam(HttpServletRequest request, Model model) {
 	
@@ -158,7 +158,7 @@ public class JY_Admin_Lesson_Controller {
 		
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);
-		
+		 
 		return "TodayLesson_AdminPage/jy_ad_wait_lesson_detail";
 	}
 	
@@ -178,13 +178,14 @@ public class JY_Admin_Lesson_Controller {
 		return "TodayLesson_AdminPage/jy_ad_lesson_detail";
 	}
 	
-	
+    // ·¹½¼ ½É»ç ÆË¾÷
 	@RequestMapping("lesson_result_update/{lesson_no}")
 	public String lesson_result_update(@PathVariable int lesson_no,Model model) {
 		model.addAttribute("lesson_no",lesson_no);
 		return "TodayLesson_AdminPage/jy_ad_lesson_result_update";
 	}
 	
+	// ·¹½¼ ¼ö¶ô
 	@RequestMapping("lesson_approve/{lesson_no}")
 	public String lesson_approve(@PathVariable int lesson_no, Model model) {
 		int result = adminservice.approve(lesson_no);
@@ -193,7 +194,7 @@ public class JY_Admin_Lesson_Controller {
 	}
 	
 	
-	
+    // ·¹½¼ °ÅÀý
 	@RequestMapping("lesson_reject/{lesson_no}")
 	public String lesson_reject(@PathVariable int lesson_no, Model model) {
 		int result = adminservice.reject(lesson_no);

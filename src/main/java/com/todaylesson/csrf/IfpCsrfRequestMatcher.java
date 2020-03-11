@@ -219,26 +219,44 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         
         
    //진영
-      //진영글쓰기
-        else if ("/lesson_write".equals(strUri))                   
-        	 return false;  
-      //진영주소팝업
+     
+        //진영주소팝업
         else if ("/jusoPopup".equals(strUri))    
         	 return false;   
-      //진영 레슨 리스트 
-        else if ("/lesson_list".equals(strUri))    
-       	 	return false;   
+     
+        //진영 레슨 리스트 
+        /*else if (strUri.equals("/lesson_list/{member_id}"))    
+   	 		return false; */
+        
+        //레슨 작성
+        /*else if (strUri.equals("/lesson_write/{member_id}"))    
+       	 	return false;*/
+        
+        //레슨 insert결과
+        else if ("/insert_result".equals(strUri))    
+       	 	return false;  
+        
+        //레슨 디테일
+        /*else if (strUri.equals("/lesson_detail/{member_id}"))    
+       	 	return false;*/
+        
+        
+        
         //시니어 지원 버튼
         else if ("/senior_request".equals(strUri))    
        	 	return false;
         
         //시니어 지원 팝업
-        //else if (strUri.equals("senior_request_form/{member_id}"))    
-       	 	//return false;
+        /*else if (strUri.equals("senior_request_form/{member_id}"))    
+       	 	return false; */
         
         //시니어 지원 폼(시니어 닉, 이런거 쓰는곳)
-       /* else if ("/senior_switch/{member_id}".equals(strUri))    
+        /* else if ("/senior_switch/{member_id}".equals(strUri))    
        	 	return false;*/
+        
+        // 이미 시니어일 때
+        else if ("/you_are_senior".equals(strUri))    
+       	 	return false;
         
         // 시니어 지원폼 쓴 다음 넘어가는 곳
         else if ("/plus_senior".equals(strUri))    
@@ -248,9 +266,45 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/insert_result".equals(strUri))    
        	 	return false;
        
+        // 전체 레슨 조회
+        else if ("/alllesson".equals(strUri))    
+       	 	return false; 
+        
+        // 신청 완료에서 심사중으로 넘기는 페이지
+        else if ("/apply_list".equals(strUri))    
+       	 	return false; 
+        
         // 레슨을 심사중으로 넘기기
         else if ("/admin_apply_exam".equals(strUri))    
        	 	return false;
+        
+        // 심사 필요한 레슨 조회
+        else if ("/wait_lesson".equals(strUri))    
+       	 	return false; 
+        
+        // 승인해줘야하는 레슨 디테일
+        /* else if ("/admin_wait_lesson_detail/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+        
+        
+        // 레슨 디테일
+        /* else if ("/admin_lesson_detail/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+        
+        // 레슨 심사 팝업
+        /* else if ("/lesson_result_update/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+        
+        // 레슨 수락
+        /* else if ("/lesson_approve/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+        
+        // 레슨 거절
+        /* else if ("/lesson_reject/{lesson_no}".equals(strUri))    
+   	 	return false;*/
+        
+        
+
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거
