@@ -87,6 +87,7 @@ border: 1px solid silver;}
 <%-- <a href="http://localhost:9080/ej_us_orderform"+"?product_no="+"${dto.product_no }" >구매</a> --%>
 <input type="submit">
 </nav>
+안녕
 <!-- </form> -->
 
 <nav id="ej_sdetail_top">
