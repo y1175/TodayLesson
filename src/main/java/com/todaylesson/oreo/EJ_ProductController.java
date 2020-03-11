@@ -147,5 +147,10 @@ public class EJ_ProductController {
 		
 		return "TodayLesson_UserPage/ej_us_orderform";
 	}
+	@RequestMapping("/ejpay")
+	public String pay()
+	{
+		return "ej_paymenttest";
+	}
 	}
 	
