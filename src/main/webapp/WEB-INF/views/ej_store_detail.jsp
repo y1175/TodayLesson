@@ -15,10 +15,11 @@ $(document).ready(function(){
 
 </script>
 <script> 
+/* alert('${dto.product_no}'); */
 function replyList(){
  var gdsNum = ${dto.product_no};
 /*  $.getJSON("/ej_store_detail/replyList" + "?no=" + gdsNum, function(data){ */
-	 $.getJSON("/ej_store_detail/${dto.product_no}/replyList", function(data){
+	 $.getJSON("/ej_store_detail/replyList"+"?product_no="+gdsNum, function(data){
   var str = "";
   
   $(data).each(function(){
@@ -70,16 +71,23 @@ border: 1px solid silver;}
 <img src="${dto.product_img }" id="ej_sdetail_topimg" width="600">
 </span>
 
+<form action="/ej_us_orderform" method="post">
 <nav id="ej_sdetail_right">
 카테고리<br>
 상품명: <c:out value="${dto.product_name}"></c:out><br>
 가격: <c:out value="${dto.product_cost}"></c:out><br>
 할인율 옆에 표기<br>
+<input type="hidden" name="product_no" value="${dto.product_no }"/>
+<input type="hidden" name="product_name" value="${dto.product_name }"/>
+<input type="hidden" name="product_cost" value="${dto.product_cost }"/>
 
 배송비 무료<br>
-수량<br>
-하트랑 장바구니 <button> 구매하기</button>
+수량: <input type=text size="1" name="pdcount" placeholder="1" ><br>
+하트랑 장바구니
+<%-- <a href="http://localhost:9080/ej_us_orderform"+"?product_no="+"${dto.product_no }" >구매</a> --%>
+<input type="submit">
 </nav>
+<!-- </form> -->
 
 <nav id="ej_sdetail_top">
 <span id="ej_top">
@@ -104,9 +112,14 @@ ${dto.product_content}
 <br>
 후기
 <hr>
+<section class="replyList">
+<ol>
+</ol>
+
 <script>
  replyList();
 </script>
+</section>
 <section class="replyForm">
 <form role="form" method="post" autocomplete="off">
 <input type="text" name="gdsNum" id="gdsNum" value="${dto.product_no }">
@@ -119,7 +132,7 @@ ${dto.product_content}
 <button type="button" id="reply_btn">후기 남기기</button>
 <script>
  $("#reply_btn").click(function(){
-  alert('replye_btn');
+/*   alert('replye_btn'); */
   var formObj = $(".replyForm form[role='form']");
   var gdsNum = $("#gdsNum").val();
   var repCon = $("#repCon").val()
@@ -132,7 +145,7 @@ ${dto.product_content}
     };
   
   $.ajax({/* "/shop/view/registReply" */
-   url :"/ej_store_detail/${dto.product_no}/registReply ",
+   url :"/ej_store_detail/registReply ",
    type : "post",
    data : data,
    success : function(){
@@ -142,7 +155,8 @@ ${dto.product_content}
    }
    ,error: function(){
 	   console.log(data);
-	   alert('error');}
+	   console.log('error');
+	   }
   });
  });
 </script>
