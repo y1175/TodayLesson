@@ -82,6 +82,7 @@ public class JY_US_Lesson_Controller {
 		LessonDTO dto = lessonservice.detail_lesson(lesson_no);
 		model.addAttribute("dto",dto);
 		return "TodayLesson_SeniorPage/jy_sn_lesson_update";
+		 
 	}
 
 	
