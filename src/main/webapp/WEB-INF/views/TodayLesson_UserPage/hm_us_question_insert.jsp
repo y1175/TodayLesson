@@ -47,7 +47,7 @@ $(document).ready(function(){
 </li>
 <li>
 <label>문의 내용</label>
-<textarea rows="20" cols="90" id="question_content" name="question_content"></textarea>
+<textarea rows="20" cols="90" id="question_content" name="question_content">문의 내용을 입력하세요</textarea>
 </li>
 <li>
 <input type="submit" value="등록">

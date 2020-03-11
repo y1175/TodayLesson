@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.todaylesson.Mapper.Admin_HM_QuestionMapper">
+<mapper namespace="com.todaylesson.Mapper.User_HM_QuestionMapper">
 <select id="hm_question_list" parameterType="String" resultType="com.todaylesson.DTO.Question_1_1DTO">
 select question_group,question_title,question_situation,question_writedate
 from question_1_1
@@ -15,10 +15,5 @@ insert into question_1_1(question_group,question_title,question_content,question
 values(#{question_group},#{question_title},#{question_content}, NOW() ,#{member_id})
 </insert>
 
-<!-- 디테일 정보 -->
-<select id="hm_ad_question_detail" parameterType="int" resultType="com.todaylesson.DTO.Question_1_1DTO">
-select question_no,question_group,question_title,question_content,question_answer,member_id,question_situation,question_writedate
-from question_1_1
-where question_no = #{question_no}
-</select>
+
 </mapper>

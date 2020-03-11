@@ -1,5 +1,6 @@
 package com.todaylesson.oreo;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -50,7 +51,7 @@ public class Admin_HM_Question_Controller {
 		
 		return "/TodayLesson_AdminPage/hm_ad_question.hs_ad_main_section";
 	}
-	
+
 	@RequestMapping("/hm_ad_question_detail/{no}")
 	private String hm_ad_question_detail(@PathVariable int no, Model model)
 	{
@@ -63,4 +64,20 @@ public class Admin_HM_Question_Controller {
 		
 	}
 	
+	@RequestMapping("/hm_ad_question_update/{no}")
+	private String hm_ad_question_update(@PathVariable int no
+								,@RequestParam("question_answer") String question_answer)
+	{
+		int question_no = no;
+		System.out.println(question_no);
+		System.out.println(question_answer);
+		HashMap<String, Object>map = new HashMap<>();
+		map.put("question_no", question_no);
+		map.put("question_answer", question_answer);
+		
+		service.hm_ad_question_update(map);
+		
+		
+		return "/TodayLesson_AdminPage/hm_ad_question_detail.hs_ad_main_section";
+	}
 }

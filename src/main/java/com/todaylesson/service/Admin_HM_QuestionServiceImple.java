@@ -35,10 +35,17 @@ public class Admin_HM_QuestionServiceImple implements Admin_HM_QuestionService {
 		hm.put("searchtxt", searchtxt);
 		return mapper.hmgetCount(hm);
 	}
-
+	
 	@Override
 	public Question_1_1DTO hm_ad_question_detail(int question_no) {
 		// TODO Auto-generated method stub
 		return mapper.hm_ad_question_detail(question_no);
 	}
+
+	@Override
+	public void hm_ad_question_update(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		mapper.hm_ad_question_update(map);
+	}
+
 }
