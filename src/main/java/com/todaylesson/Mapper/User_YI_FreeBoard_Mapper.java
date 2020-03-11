@@ -45,6 +45,12 @@ public int boardreply_noGet(int freeboard_no);
 
 public List<SQLjoin_Member_FreeBoardDTO> ajax_list(int boardreply_no);
 
+public int delete_reply(int boardreply_no);
+
+public int freeboard_delete(int freeboard_no);
+
+public int freeboard_insert(SQLjoin_Member_FreeBoardDTO dto);
+
 
 
 

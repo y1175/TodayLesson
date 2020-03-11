@@ -191,7 +191,7 @@ $(document).ready(function() {
 
 	현재까지 오픈한 레슨 명<br>
 	<c:forEach var="list" items="${list}">
-	<c:if test="${list.lesson_result == '1'}">
+	<c:if test="${list.lesson_result == '2'}">
 	<c:out value="${list.lesson_title}"/><br>
 	<c:out value="${list.lesson_no}"/><br>
 	</c:if>	
@@ -202,7 +202,7 @@ $(document).ready(function() {
 	
 	현재까지 거절된 레슨 명<br>
 	<c:forEach var="list" items="${list}">
-	<c:if test="${list.lesson_result == '2'}">
+	<c:if test="${list.lesson_result == '3'}">
 	<c:out value="${list.lesson_title}"/><br>
 	<c:out value="${list.lesson_no}"/><br>
 	</c:if>	
@@ -212,7 +212,7 @@ $(document).ready(function() {
 	
 	승인 대기중인 레슨 명<br>
 	<c:forEach var="list" items="${list}">
-	<c:if test="${list.lesson_result == '0'}">
+	<c:if test="${list.lesson_result == '1'}">
 	<c:out value="${list.lesson_title}"/><br>
 	<c:out value="${list.lesson_no}"/><br>
 	</c:if>	

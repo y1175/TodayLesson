@@ -91,6 +91,40 @@ public class User_YI_FreeBoard_Controller {
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_detail";
 	}
+	
+	@RequestMapping("/freeboard_insert")
+	public String freeboard_insert()
+	{
+		return "TodayLesson_UserPage/yi_freeboard_insert";
+	}
+	@RequestMapping("/freeboard_insertresult")
+	public String freeboard_insertresult(@RequestParam String member_id
+			,@RequestParam String freeboard_title
+			,@RequestParam String freeboard_content
+			,@RequestParam int freeboard_category
+			,Model model)
+	{
+		SQLjoin_Member_FreeBoardDTO dto=new SQLjoin_Member_FreeBoardDTO();
+		dto.setMember_id(member_id);
+		dto.setFreeboard_title(freeboard_title);
+		dto.setFreeboard_content(freeboard_content);
+		dto.setFreeboard_category(freeboard_category);
+		int result=service.freeboard_insert(dto);
+		
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_UserPage/yi_freeboard_insertresult";
+	}
+	
+	
+	@RequestMapping("/freeboard_delete/{freeboard_no}")
+	public String boardDelete(@PathVariable int freeboard_no,Model model) 
+	{
+		int result=service.freeboard_delete(freeboard_no);
+		model.addAttribute("result",result);
+		return "TodayLesson_UserPage/yi_freeboard_delresult";
+	}
+	
 	//∏Æ«√√¢ json
 	@ResponseBody
 	@RequestMapping("/freeboard_detailjson/{freeboard_no}")
@@ -131,7 +165,15 @@ public class User_YI_FreeBoard_Controller {
 		
 		return "/TodayLesson_UserPage/yi_boardreply_insertresult";
 	}
-
+	
+	@RequestMapping("/boardreply_delete/{boardreply_no}")
+	public String replydelete(@PathVariable int boardreply_no,Model model)
+	{
+		int deleteResult=service.delete_reply(boardreply_no);
+		model.addAttribute("deleteResult",deleteResult);
+		
+		return "/TodayLesson_UserPage/yi_boardreply_delresult";
+	}
 	
 	@RequestMapping("/notice_detail/{notice_no}")
 	public String notice_detail(@PathVariable int notice_no,Model model)

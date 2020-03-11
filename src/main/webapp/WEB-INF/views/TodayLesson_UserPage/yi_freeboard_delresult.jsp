@@ -13,15 +13,14 @@ var result=${result}
 
 if (result>0)
 	{
-	alert('작성완료');
+	alert('삭제완료');
 	location.href="/freeboard";
 	}
 else
 	{
-	alert('작성실패');
+	alert('삭제실패');
 	location.href="/freeboard";
 	}
 </script>
 </body>
 </html>
-
