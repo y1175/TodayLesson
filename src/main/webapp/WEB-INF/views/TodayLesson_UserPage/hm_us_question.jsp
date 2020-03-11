@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -73,7 +73,7 @@ ${item.question_writedate}
 </c:forEach>
 </tbody>
 </table>
- </c:if> 
+</c:if> 
 
 
 <input type ="button" id="question_btn" value="문의하기">

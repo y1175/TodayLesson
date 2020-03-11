@@ -31,13 +31,13 @@
 <th>닉네임</th><th>적립금</th><th>회원등급</th><th>가입일</th></tr></thead>
 <tbody>
 <c:forEach var="item" items="${list}">
-<tr><td><span class="detailno">${item.member_no}</span></td>
-<td><span>${item.member_id}</span></td>
-<td><span>${item.member_name}</span></td>
-<td><span>${item.member_nick}</span></td>
-<td><span>${item.member_point}</span></td>
+<tr><td>${item.member_no}</td>
+<td>${item.member_id}</td>
+<td>${item.member_name}</td>
+<td>${item.member_nick}</td>
+<td>${item.member_point}</td>
 <form method="post" action="adminmember_levelupdate">
-<td><span>
+<td>
 <input type="hidden" name="member_id" id="member_id" value="${item.member_id}">
 <select id="member_level" name="member_level">
 <option value="">${item.member_level} 레벨</option>
@@ -47,10 +47,10 @@
 <option value="3">3 블   락</option>
 </select> 
 <input type="submit" value="수정">
-</span>
+
 </td>
 </form>
-<td><span>${item.member_join_date}</span></td>
+<td>${item.member_join_date}</td>
 <td><input type="button" name="detailbutton" id="detailbutton" class="detailbutton" value="상세보기"></td></tr>
 </c:forEach>
 </tbody>
