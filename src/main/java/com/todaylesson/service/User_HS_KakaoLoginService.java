@@ -97,28 +97,4 @@ public class User_HS_KakaoLoginService {
 		return returnNode;
 
 	}
-	/*
-	//정보승인했을때 넘기는 값인듯 -- > 추후확인필요
-	public static MemberDTO changeData(JsonNode userInfo) {
-		MemberDTO dto = new MemberDTO();
-		
-		dto.setMember_id(userInfo.path("id").asText());
-		//vo.setUser_snsId(userInfo.path("id").asText()); // id -> vo 넣기
-
-		if (userInfo.path("kaccount_email_verified").asText().equals("true")) { // 이메일 받기 허용 한 경우
-			//vo.setUser_email(userInfo.path("kaccount_email").asText()); // email -> vo 넣기
-			dto.setMember_email(userInfo.path("kaccount_email").asText());
-
-		} else { // 이메일 거부 할 경우 코드 추후 개발
-
-		}
-
-		JsonNode properties = userInfo.path("properties"); // 추가정보 받아오기
-		if (properties.has("nickname"))
-			//vo.setUser_name(properties.path("nickname").asText());
-			//vo.setUser_profileImagePath(properties.path("profile_image").asText());
-			//return vo;
-			dto.setMember_nick(properties.path("nickname").asText());
-		return dto;
-	}*/
 }

@@ -1,5 +1,6 @@
 package com.todaylesson.oreo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -78,33 +79,33 @@ public class TodayLessonController {
               
        @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
     		           method = {RequestMethod.GET, RequestMethod.POST})
-       public String login(@RequestParam String code,
+       public String login(@RequestParam("code") String code,
     		               HttpServletRequest request,
     		               HttpServletResponse response,
     		               HttpSession session,
     		               String error, String logout, Model model
-    		             )
+    		             )throws IOException
        { 
     	   //결과값을 node에 담아줌
-    	   /*JsonNode node = hs_kakaologinservice.getAccessToken(code);*/
+    	   JsonNode node = hs_kakaologinservice.getAccessToken(code);
     	   //accessToken에 사용자가 로그인한 모든 정보가 들어있음
-    	  /* JsonNode accessToken = node.get("access_token");*/
+    	   JsonNode accessToken = node.get("access_token");
     	   //사용자 정보
-    	   /*JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);*/
+    	   JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
     	      String kakao_email = null;
     	      String kakao_name = null;
     	      String kakao_gender = null;
     	      String kakao_birthday = null;
     	      String kakao_age = null;
     	   //유저정보 카카오에서 가져오기 Get properties
-    	   /*JsonNode properties = KakaoUserInfo.path("properties"); 
+    	   JsonNode properties = KakaoUserInfo.path("properties"); 
     	   JsonNode kakao_account = KakaoUserInfo.path("kakao_account");
     	      kakao_email = kakao_account.path("email").asText(); 
  	          kakao_name = kakao_account.path("name").asText();
  	          kakao_gender = kakao_account.path("gender").asText();
  	          kakao_birthday = kakao_account.path("birthday").asText();
  	          kakao_age = kakao_account.path("age").asText();
-    	      */
+    	   
  	       session.setAttribute("kakao_email", kakao_email);
  	       session.setAttribute("kakao_name", kakao_name);
  	       session.setAttribute("kakao_gender", kakao_gender);
