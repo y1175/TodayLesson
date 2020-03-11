@@ -1,3 +1,4 @@
+
 package com.todaylesson.DTO;
 
 import lombok.AllArgsConstructor;
@@ -30,3 +31,6 @@ public class SeniorDTO {
 	
 	
 }
+
+
+
