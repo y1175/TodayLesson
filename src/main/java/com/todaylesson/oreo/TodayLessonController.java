@@ -75,10 +75,51 @@ public class TodayLessonController {
        public String error()
        {
            return "/todaylesson_sec__error";
+<<<<<<< HEAD
        }      
        @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
     		           method = {RequestMethod.GET, RequestMethod.POST})
        public String login() {
+=======
+       }
+
+       @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
+    		           method = {RequestMethod.GET, RequestMethod.POST})
+       public String login(//@RequestParam("code") String code,
+
+    		               HttpServletRequest request,
+    		               HttpServletResponse response,
+    		               HttpSession session,
+    		               String error, String logout, Model model
+    		             )throws IOException
+       { 
+    	   //결과값을 node에 담아줌
+    	   //JsonNode node = hs_kakaologinservice.getAccessToken(code);
+    	   //accessToken에 사용자가 로그인한 모든 정보가 들어있음
+    	  // JsonNode accessToken = node.get("access_token");
+    	   //사용자 정보
+    	   //JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
+    	      String kakao_email = null;
+    	      String kakao_name = null;
+    	      String kakao_gender = null;
+    	      String kakao_birthday = null;
+    	      String kakao_age = null;
+    	   //유저정보 카카오에서 가져오기 Get properties
+   /* 	   JsonNode properties = KakaoUserInfo.path("properties"); 
+    	   JsonNode kakao_account = KakaoUserInfo.path("kakao_account");
+    	      kakao_email = kakao_account.path("email").asText(); 
+ 	          kakao_name = kakao_account.path("name").asText();
+ 	          kakao_gender = kakao_account.path("gender").asText();
+ 	          kakao_birthday = kakao_account.path("birthday").asText();
+ 	          kakao_age = kakao_account.path("age").asText();*/
+    	   
+
+ 	       session.setAttribute("kakao_email", kakao_email);
+ 	       session.setAttribute("kakao_name", kakao_name);
+ 	       session.setAttribute("kakao_gender", kakao_gender);
+ 	       session.setAttribute("kakao_birthday", kakao_birthday);   
+ 	       session.setAttribute("kakao_age", kakao_age);
+>>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
  	      
  	       //아이디비번 잘못입력시 에러.. 
     	  /*if (error !=null)
