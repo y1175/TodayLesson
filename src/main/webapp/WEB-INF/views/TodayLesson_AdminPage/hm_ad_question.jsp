@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question.js"></script>
 </head>
 <body>
 <h2>1:1문의 관리 페이지</h2>
@@ -27,7 +29,7 @@
 <tbody>
 <c:forEach var="item" items="${list}">
 <tr>
-<td><span>${item.question_no}</span></td>
+<td><span class="questiondetailno">${item.question_no}</span></td>
 <td><span>${item.question_group}</span></td>
 <td><span>${item.member_id}</span></td>
 <td><span>${item.question_title}</span></td>

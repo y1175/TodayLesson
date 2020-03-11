@@ -10,4 +10,6 @@ public interface Admin_HM_QuestionService {
 
 	public int hmtotalCount(String search, String searchtxt);
 
+	public Question_1_1DTO hm_ad_question_detail(int question_no);
+
 }

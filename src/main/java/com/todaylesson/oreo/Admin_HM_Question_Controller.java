@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,6 +48,19 @@ public class Admin_HM_Question_Controller {
 		System.out.println(searchtxt);
 		System.out.println(totalCount);
 		
-		return "/TodayLesson_AdminPage/hm_ad_question";
+		return "/TodayLesson_AdminPage/hm_ad_question.hs_ad_main_section";
 	}
+	
+	@RequestMapping("/hm_ad_question_detail/{no}")
+	private String hm_ad_question_detail(@PathVariable int no, Model model)
+	{
+		int question_no = no;
+		System.out.println(question_no);
+		Question_1_1DTO dto = service.hm_ad_question_detail(question_no);
+		model.addAttribute("dto",dto);
+		
+		return "TodayLesson_AdminPage/hm_ad_question_detail.hs_ad_main_section";
+		
+	}
+	
 }
