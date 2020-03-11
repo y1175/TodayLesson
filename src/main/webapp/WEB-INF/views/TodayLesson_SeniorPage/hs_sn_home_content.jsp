@@ -7,20 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h1>나와</h1>
-
-<h1>나와</h1>
-
-<h1>나와</h1>
-
-<h1>나와</h1>
-
-<h1>나와</h1>
-
-<h1>나와</h1>
-
-<h1>나와</h1>
-
+ddddddddddddddddddd
 </body>
 </html>

@@ -2,7 +2,7 @@ package com.todaylesson.service;
 
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+/*import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,22 +19,21 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.todaylesson.DTO.MemberDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;*/
 
 @Service(value="kakaologinservice")
 public class User_HS_KakaoLoginService {
 	
-/*	private final static String K_CLIENT_ID = "자기꺼 REST API키 복붙"; //이런식으로 REDIRECT_URI를 써넣는다. // // 
-	private final static String K_REDIRECT_URI = "http://localhost:8080/myfinal/kakaologin.do"; 
+	/*private final static String K_CLIENT_ID = "250c99d78fb89584382252365272f520"; //이런식으로 REDIRECT_URI를 써넣는다. // // 
+	private final static String K_REDIRECT_URI = "http://localhost:9080/todaylessonlogin"; 
 	
 	public static String getAuthorizationUrl(HttpSession session) {
 		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + 
-				           "&redirect_uri=" + K_REDIRECT_URI + "&response_type=code"; return kakaoUrl; 
+				           "&redirect_uri=" + K_REDIRECT_URI + "&response_type=code"; 
+		return kakaoUrl; 
 	}
-*/
 
-	
+
 	public static JsonNode getAccessToken(String autorize_code) {
 		final String RequestUrl = "https://kauth.kakao.com/oauth/token";
 
@@ -52,7 +51,7 @@ public class User_HS_KakaoLoginService {
 		try {
 			post.setEntity(new UrlEncodedFormEntity(postParams));
 			final HttpResponse response = client.execute(post);
-			final int responseCode = response.getStatusLine().getStatusCode();
+			final int responseCode = response.getStatusLine().getStatusCode();  //에러코드
 
 			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
 			System.out.println("Post parameters : " + postParams);
@@ -90,7 +89,7 @@ public class User_HS_KakaoLoginService {
 
 		try {
 			final HttpResponse response = client.execute(post);
-			final int responseCode = response.getStatusLine().getStatusCode();
+			final int responseCode = response.getStatusLine().getStatusCode();//에러코드
 
 			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
 			System.out.println("Response Code : " + responseCode);
@@ -110,5 +109,5 @@ public class User_HS_KakaoLoginService {
 		}
 		return returnNode;
 
-	}
+	}*/
 }

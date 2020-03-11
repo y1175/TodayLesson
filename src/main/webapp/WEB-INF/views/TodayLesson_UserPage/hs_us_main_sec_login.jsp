@@ -83,16 +83,6 @@
            
                <div>
                   <!-- 카카오 -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-                     <a href="https://kauth.kakao.com/oauth/authorize
-                              ?client_id=250c99d78fb89584382252365272f520
-                              &redirect_uri=http://localhost:9080/todaylesson
-                              &response_type=code"
-                        id="kakao-login-btn"> 
-                        <!-- <img alt="" src="resources/IMG/kakao_account_login_btn_medium_narrow.png"> -->
-                     </a> 
-=======
                     <!--  <a href="https://kauth.kakao.com/oauth/authorize
                               ?client_id=250c99d78fb89584382252365272f520
                               &redirect_uri=http://localhost:9080/todaylesson
@@ -102,76 +92,29 @@
                         href="javascript:loginWithKakao()"
                         >
                      </a>    -->
-                     <a id="custom-login-btn" href="https://kauth.kakao.com/oauth/authorize
-                              ?client_id=250c99d78fb89584382252365272f520
-                              &redirect_uri=http://localhost:9080/todaylesson
-                              &response_type=code">   
+                     <a id="custom-login-btn" href="javascript:loginWithKakao()">   
                         <img alt="" src="resources/IMG/kakao_account_login_btn_medium_narrow.png">
                      </a> 
-                   <!--   <script type="text/javascript">
-                   //<![CDATA[
-                     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-                     Kakao.init('9f3f9d25f7971214c15ec68bb10baddc');
-                     function loginWithKakao() {
-                       // 로그인 창을 띄웁니다.
-                       Kakao.Auth.login({
-                         success: function(authObj) {
-                           alert(JSON.stringify(authObj));
-                         },
-                         fail: function(err) {
-                           alert(JSON.stringify(err));
-                         }
-                       });
-                     };
-                   //]]> -->
-                     
-                     </script>
-                      -->
-=======
-                     <a href="https://kauth.kakao.com/oauth/authorize
-                              ?client_id=250c99d78fb89584382252365272f520
-                              &redirect_uri=http://localhost:9080/todaylesson
-                              &response_type=code"
-                        id="kakao-login-btn"> 
-                        <!-- <img alt="" src="resources/IMG/kakao_account_login_btn_medium_narrow.png"> -->
-                     </a> 
-=======
-                    <!--  <a href="https://kauth.kakao.com/oauth/authorize
-                              ?client_id=250c99d78fb89584382252365272f520
-                              &redirect_uri=http://localhost:9080/todaylesson
-                              &response_type=code"
-                        id="kakao-login-btn"
-                        
-                        href="javascript:loginWithKakao()"
-                        >
-                     </a>    -->
-                     <a id="custom-login-btn" href="https://kauth.kakao.com/oauth/authorize
-                              ?client_id=250c99d78fb89584382252365272f520
-                              &redirect_uri=http://localhost:9080/todaylesson
-                              &response_type=code">   
-                        <img alt="" src="resources/IMG/kakao_account_login_btn_medium_narrow.png">
-                     </a> 
-                   <!--   <script type="text/javascript">
-                   //<![CDATA[
-                     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-                     Kakao.init('9f3f9d25f7971214c15ec68bb10baddc');
-                     function loginWithKakao() {
-                       // 로그인 창을 띄웁니다.
-                       Kakao.Auth.login({
-                         success: function(authObj) {
-                           alert(JSON.stringify(authObj));
-                         },
-                         fail: function(err) {
-                           alert(JSON.stringify(err));
-                         }
-                       });
-                     };
-                   //]]> -->
-                     
-                     </script>
-                      -->
->>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
->>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
+                      
+                   <script type="text/javascript">
+                 //<![CDATA[
+                   // 사용할 앱의 JavaScript 키를 설정해 주세요.
+                   Kakao.init('9f3f9d25f7971214c15ec68bb10baddc');
+                   function loginWithKakao() {
+                     // 로그인 창을 띄웁니다.
+                     Kakao.Auth.login({  
+                       success: function(authObj) {
+                         alert(JSON.stringify(authObj));
+                       },
+                       fail: function(err) {
+                         alert(JSON.stringify(err));
+                       }
+                     });
+                   };
+                 //]]> 
+               	           
+                   </script>
+                   
 
                   <!-- 카카오 -->
                   <!-- 네이버-->

@@ -26,7 +26,6 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
-import com.todaylesson.service.MailSendService;
 //MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
 import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
@@ -77,49 +76,51 @@ public class TodayLessonController {
            return "/todaylesson_sec__error";
            }
 
-       @RequestMapping(value = "/todaylessonlogin", produces = "application/json" 
-    		           /*method = {RequestMethod.GET, RequestMethod.POST}*/)
-       public String login(//@RequestParam("code") String code,
-
+       @RequestMapping("/todaylessonlogin")
+       public String login( String error, String logout, Model model)
+       { 
+    	   
+    	   /*  //throws IOException
+    	    *  , produces = "application/json" ,
+    		           method = {RequestMethod.GET, RequestMethod.POST}
+    	    * @RequestParam(value="code", required=false) String code,
     		               HttpServletRequest request,
     		               HttpServletResponse response,
     		               HttpSession session,
-    		               String error, String logout, Model model
-    		             )throws IOException
-       { 
+    	    * 
+    	    * 
     	   //결과값을 node에 담아줌
-    	   //JsonNode node = hs_kakaologinservice.getAccessToken(code);
+    	   JsonNode node = hs_kakaologinservice.getAccessToken(code);
     	   //accessToken에 사용자가 로그인한 모든 정보가 들어있음
-    	  // JsonNode accessToken = node.get("access_token");
+    	   JsonNode accessToken = node.get("access_token");
     	   //사용자 정보
-    	   //JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
+    	   JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
     	      String kakao_email = null;
     	      String kakao_name = null;
     	      String kakao_gender = null;
     	      String kakao_birthday = null;
     	      String kakao_age = null;
     	   //유저정보 카카오에서 가져오기 Get properties
-   /* 	   JsonNode properties = KakaoUserInfo.path("properties"); 
+    	   JsonNode properties = KakaoUserInfo.path("properties"); 
     	   JsonNode kakao_account = KakaoUserInfo.path("kakao_account");
     	      kakao_email = kakao_account.path("email").asText(); 
  	          kakao_name = kakao_account.path("name").asText();
  	          kakao_gender = kakao_account.path("gender").asText();
  	          kakao_birthday = kakao_account.path("birthday").asText();
- 	          kakao_age = kakao_account.path("age").asText();*/
-    	   
+ 	          kakao_age = kakao_account.path("age").asText();
 
  	       session.setAttribute("kakao_email", kakao_email);
  	       session.setAttribute("kakao_name", kakao_name);
  	       session.setAttribute("kakao_gender", kakao_gender);
  	       session.setAttribute("kakao_birthday", kakao_birthday);   
- 	       session.setAttribute("kakao_age", kakao_age);
+ 	       session.setAttribute("kakao_age", kakao_age);*/
  	      
  	       //아이디비번 잘못입력시 에러.. 
-    	  /*if (error !=null)
+    	  if (error !=null)
              model.addAttribute("error", "Please check your ID or Password");
              
           if(logout !=null)
-             model.addAttribute("logout","logout");*/
+             model.addAttribute("logout","logout");
           
           
           return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
