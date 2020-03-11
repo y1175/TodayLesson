@@ -75,10 +75,10 @@ public class TodayLessonController {
        public String error()
        {
            return "/todaylesson_sec__error";
-       }
+           }
 
-       @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
-    		           method = {RequestMethod.GET, RequestMethod.POST})
+       @RequestMapping(value = "/todaylessonlogin", produces = "application/json" 
+    		           /*method = {RequestMethod.GET, RequestMethod.POST}*/)
        public String login(//@RequestParam("code") String code,
 
     		               HttpServletRequest request,
@@ -115,11 +115,11 @@ public class TodayLessonController {
  	       session.setAttribute("kakao_age", kakao_age);
  	      
  	       //아이디비번 잘못입력시 에러.. 
-    	  if (error !=null)
+    	  /*if (error !=null)
              model.addAttribute("error", "Please check your ID or Password");
              
           if(logout !=null)
-             model.addAttribute("logout","logout");
+             model.addAttribute("logout","logout");*/
           
           
           return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
