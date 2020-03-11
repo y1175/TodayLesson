@@ -22,4 +22,8 @@ public interface JY_Admin_LessonMapper {
 
 	public List<LessonDTO> select_lesson_list(int senior_no);
 
+	public List<AllLessonDTO> apply_lesson();
+
+	public int apply_lesson_result(List<Integer> checkvalue);
+
 }

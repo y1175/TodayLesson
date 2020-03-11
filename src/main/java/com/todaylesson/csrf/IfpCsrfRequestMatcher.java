@@ -247,6 +247,10 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         // 레슨 작성 완료
         else if ("/insert_result".equals(strUri))    
        	 	return false;
+       
+        // 레슨을 심사중으로 넘기기
+        else if ("/admin_apply_exam".equals(strUri))    
+       	 	return false;
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거

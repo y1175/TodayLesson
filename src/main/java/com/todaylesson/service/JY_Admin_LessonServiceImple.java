@@ -52,6 +52,19 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 	}
 
 
+	@Override
+	public List<AllLessonDTO> apply_lesson() {
+		return mapper.apply_lesson();
+	}
+
+
+	@Override
+	public int apply_lesson_result(List<Integer> checkvalue) {
+		return mapper.apply_lesson_result(checkvalue);
+	}
+
+	
+
 
 
 

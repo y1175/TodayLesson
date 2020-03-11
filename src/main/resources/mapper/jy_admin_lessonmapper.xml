@@ -31,6 +31,19 @@ where senior_no = #{senior_no}
 </select>
 
 
+<update id="apply_lesson_result" parameterType="int" >
+
+update lesson
+set lesson_result = 1
+where lesson_no in
+
+<foreach item='item' collection='list' index='index' open='(' separator=',' close= ')' >
+#{item}
+</foreach>
+
+</update>
+
+
 <update id="lesson_approve" parameterType="int">
 
 update lesson 
@@ -57,5 +70,14 @@ where lesson_result= 1
 
 </select>
 
+
+<select id="apply_lesson" resultType="com.todaylesson.DTO.AllLessonDTO">
+
+select * 
+from lesson join senior 
+on lesson.senior_no = senior.senior_no 
+where lesson_result= 0
+
+</select>
 
 </mapper>

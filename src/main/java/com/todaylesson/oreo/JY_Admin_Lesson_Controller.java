@@ -3,8 +3,10 @@ package com.todaylesson.oreo;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -89,9 +91,37 @@ public class JY_Admin_Lesson_Controller {
 	// 신청 완료에서 심사중으로 넘기는 페이지
 	@RequestMapping("apply_lesson")
 	public String apply_lesson(Model model) {
-		//List<E>
-		return "TodayLesson_AdminPage/jy_ad_apply_lesson";
+		List<AllLessonDTO> list = adminservice.apply_lesson();
+		model.addAttribute("list", list);
+		return "TodayLesson_AdminPage/jy_ad_apply_lesson_list";
 	}
+	
+	
+	
+	@RequestMapping("admin_apply_exam")
+	public String apply_exam(HttpServletRequest request, Model model) {
+	
+		String[] checkvalue = request.getParameterValues("check");
+		
+		List<Integer> list = new ArrayList<>();
+		
+		for (int i = 0; i < checkvalue.length; i++) {
+			int num = Integer.parseInt(checkvalue[i]);
+			list.add(num);
+		}
+		
+		
+		System.out.println(list);
+		
+		
+		int result = adminservice.apply_lesson_result(list);
+		model.addAttribute("result",result);
+		return "TodayLesson_AdminPage/jy_ad_apply_exam_result";
+	}
+	
+	
+	
+	
 	
 	
 	// 심사 필요한 레슨들 조회
@@ -101,6 +131,8 @@ public class JY_Admin_Lesson_Controller {
 		model.addAttribute("list",list);
 		return "TodayLesson_AdminPage/jy_ad_wait_lesson";
 	}
+	
+	
 	
 
 
