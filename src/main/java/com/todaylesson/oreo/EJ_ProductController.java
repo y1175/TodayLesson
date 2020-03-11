@@ -103,7 +103,7 @@ public class EJ_ProductController {
 	}
 	// 상품 소감(댓글) 목록 /view/replyList엿음..replyList
 	@ResponseBody
-	@RequestMapping(value = "/ej_store_detail/{product_no}/replyList", method = RequestMethod.GET)
+	@RequestMapping(value = "/ej_store_detail/replyList", method = RequestMethod.GET)
 	public List<PdReviewDTO> getReplyList(@RequestParam("product_no") int product_no) throws Exception {
 //원래는 RequestParam임 pathvariable로 해
 	   
@@ -114,14 +114,30 @@ public class EJ_ProductController {
 	
 	// 상품 소감(댓글) 작성 registReply
 	@ResponseBody
-	@RequestMapping(value = "/ej_store_detail/{product_no}/registReply", method = RequestMethod.POST)
-	public void registReply(PdReviewDTO reply,  HttpSession session) throws Exception {
+	@RequestMapping(value = "/ej_store_detail/registReply", method = RequestMethod.POST)
+	public void registReply (PdReviewDTO reply,  HttpSession session) throws Exception {
 	
 	 
 	 MemberDTO member = (MemberDTO)session.getAttribute("member");
+	 System.out.println(session.getAttribute("member"));
 	 reply.setMember_id(member.getMember_id());
 	 
 	 service.registReply(reply);
 	
 }
-}
+	@RequestMapping("/ej_us_orderform")
+	public String order(@RequestParam("product_no") int product_no
+			,@RequestParam("pdcount") int pdcount
+			,@RequestParam("product_name") String product_name
+			,@RequestParam("product_cost") int product_cost
+			,Model model){
+		System.out.println("주문페이지에서 상풍번호:"+product_no);
+		System.out.println("주문페이지에서 수량:"+pdcount);
+		model.addAttribute("product_no",product_no);
+		model.addAttribute("product_name",product_name);
+		model.addAttribute("product_cost",product_cost);
+		model.addAttribute("pdcount",pdcount);
+		return "TodayLesson_UserPage/ej_us_orderform";
+	}
+	}
+	
