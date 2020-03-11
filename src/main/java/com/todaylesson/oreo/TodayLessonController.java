@@ -75,16 +75,10 @@ public class TodayLessonController {
        public String error()
        {
            return "/todaylesson_sec__error";
-<<<<<<< HEAD
-       }      
-       @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
-    		           method = {RequestMethod.GET, RequestMethod.POST})
-       public String login() {
-=======
-       }
+           }
 
-       @RequestMapping(value = "/todaylessonlogin", produces = "application/json", 
-    		           method = {RequestMethod.GET, RequestMethod.POST})
+       @RequestMapping(value = "/todaylessonlogin", produces = "application/json" 
+    		           /*method = {RequestMethod.GET, RequestMethod.POST}*/)
        public String login(//@RequestParam("code") String code,
 
     		               HttpServletRequest request,
@@ -119,7 +113,6 @@ public class TodayLessonController {
  	       session.setAttribute("kakao_gender", kakao_gender);
  	       session.setAttribute("kakao_birthday", kakao_birthday);   
  	       session.setAttribute("kakao_age", kakao_age);
->>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
  	      
  	       //아이디비번 잘못입력시 에러.. 
     	  /*if (error !=null)
