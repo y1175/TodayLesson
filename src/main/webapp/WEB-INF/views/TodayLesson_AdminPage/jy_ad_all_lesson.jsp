@@ -84,15 +84,19 @@ width:500px; height:auto;
 <c:choose>
 
 <c:when test="${item.lesson_result == 0}">
-<td><c:out value="심사중"/></td>
+<td><c:out value="신청완료"/></td>
 </c:when>
 
 <c:when test="${item.lesson_result == 1}">
-<td><c:out value="완료"/></td>
+<td><c:out value="심사중"/></td>
+</c:when>
+
+<c:when test="${item.lesson_result == 2}">
+<td><c:out value="레슨승인"/></td>
 </c:when>
 
 <c:otherwise>
-<td><c:out value="거절"/></td>
+<td><c:out value="레슨거절"/></td>
 </c:otherwise>
 
 </c:choose>

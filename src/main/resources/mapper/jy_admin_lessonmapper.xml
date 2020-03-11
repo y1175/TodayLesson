@@ -34,7 +34,7 @@ where senior_no = #{senior_no}
 <update id="lesson_approve" parameterType="int">
 
 update lesson 
-set lesson_result = 1 
+set lesson_result = 2
 where lesson_no = #{lesson_no}
 
 </update>
@@ -42,7 +42,7 @@ where lesson_no = #{lesson_no}
 <update id="lesson_reject" parameterType="int">
 
 update lesson 
-set lesson_result = 2
+set lesson_result = 3
 where lesson_no = #{lesson_no}
 
 </update>
@@ -53,7 +53,7 @@ where lesson_no = #{lesson_no}
 select * 
 from lesson join senior 
 on lesson.senior_no = senior.senior_no 
-where lesson_result=0
+where lesson_result= 1
 
 </select>
 

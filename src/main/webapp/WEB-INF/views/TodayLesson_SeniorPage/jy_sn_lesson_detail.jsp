@@ -140,6 +140,29 @@ ${dto.lesson_content}
 ${dto.lesson_senior_content}
 </div>
 
+
+<c:choose>
+
+<c:when test="${dto.lesson_result == 0}">
+<td><c:out value="신청완료"/></td>
+</c:when>
+
+<c:when test="${dto.lesson_result == 1}">
+<td><c:out value="심사중"/></td>
+</c:when>
+
+<c:when test="${dto.lesson_result == 2}">
+<td><c:out value="레슨승인"/></td>
+</c:when>
+
+<c:otherwise>
+<td><c:out value="레슨거절"/></td>
+</c:otherwise>
+
+</c:choose>
+
+
+
 <a href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}">목록으로</a>
 </body>
 </html>
