@@ -8,7 +8,7 @@ import com.todaylesson.DTO.LessonDTO;
 
 
 @Mapper
-public interface JY_US_LessonMapper {
+public interface JY_SN_LessonMapper {
 
 	public int insert_lesson(LessonDTO dto);
 

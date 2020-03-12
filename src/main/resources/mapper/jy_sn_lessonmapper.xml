@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.todaylesson.Mapper.JY_US_LessonMapper">
+<mapper namespace="com.todaylesson.Mapper.JY_SN_LessonMapper">
 
 
 <select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO" parameterType="int">

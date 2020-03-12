@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.todaylesson.DTO.LessonDTO;
-import com.todaylesson.Mapper.JY_US_LessonMapper;
+import com.todaylesson.Mapper.JY_SN_LessonMapper;
 
 @Service(value="lessonservice")
-public class JY_US_LessonServiceImple implements JY_US_LessonService {
+public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 
 	@Autowired
-	public JY_US_LessonMapper mapper;
+	public JY_SN_LessonMapper mapper;
 	
 	@Override
 	public int insert_Lesson(LessonDTO dto) {	
