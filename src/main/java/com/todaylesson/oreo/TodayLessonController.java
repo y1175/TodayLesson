@@ -74,7 +74,10 @@ public class TodayLessonController {
    }
    
    @RequestMapping("/todaylesson")
-   public String all(){
+   public String all(Member_AuthDTO authdto,Model model){
+	  
+	   model.addAttribute("authdto", authdto);
+	   
       return "hs_us_main";
    }
           

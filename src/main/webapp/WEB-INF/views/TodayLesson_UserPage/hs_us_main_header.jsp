@@ -34,16 +34,29 @@ header javascript -->
          <div class="hs_us_mainheader_topdiv_width">
             <span>지금 당신의 취미를 찾아보세요</span>
             <!-- 모든사람들이 다 --><span class="hs_us_mainheader_topdiv_cartloginsearchbox">
-               <a href=""><i class="fa fa-shopping-cart"></i></a>
+               
                <sec:authorize access="isAnonymous()">  
+                  <a href=""><i class="fa fa-shopping-cart"></i></a>
                   <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a><span style="margin-left: 10px;">|</span><a href="">회원가입</a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
                <sec:authorize access="isAuthenticated()">
-                 <!--  <form action="/logout" method='post'> -->
+                  <form action="/logout" method='post'> 
+                     <%-- <c:if test="${authdto.member_auth==ROLE_ADMIN}">
+                     <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
-                     <a href="">마이페이지</a><span style="margin-left: 10px;">|</span><a href="/logout">로그아웃</a>
-                 <!--  </form> -->
+                     <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a href="/logout">로그아웃</a>
+                     </c:if> --%>
+                     
+                     <%-- <c:if test="${authdto.member_auth!=ROLE_ADMIN}"> --%>
+                     <a href=""><i class="fa fa-shopping-cart"></i></a>
+                     <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
+                     <a href="/todaylessonmypage">마이페이지</a><span style="margin-left: 10px;">|</span><a href="/logout">로그아웃</a>
+                     <%-- </c:if> --%>
+                     
+                  
+                     
+                  </form>
                </sec:authorize>
                <a href=""><i class='fas fa-search'></i></a>
             </span>
