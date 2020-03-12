@@ -93,23 +93,6 @@ public class TodayLessonController {
           return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
        }
        
-       /*  모달창 실험했던거... 나중에 다시 하기*/
-       /*@RequestMapping("/customlogin")
-       @ResponseBody
-       public String login(String error, String logout,
-    		             HttpServletRequest request, Model model)
-       { 
-    	   
-    	  if (error !=null)
-             model.addAttribute("error", "Please check your ID or Password");
-             
-          if(logout !=null)
-             model.addAttribute("logout","logout");
-          
-          
-          //return "/TodayLesson_UserPage/hs_us_main_sec_login";
-          return "/TodayLesson_UserPage/hs_us_main_sec_logintest";
-       }*/
        //kakao 로그인 창 url 정보넘기기
        @RequestMapping(value = "/kakaologinurl", method = RequestMethod.GET)
        public ModelAndView kakaoLoginURL(HttpSession session) {
@@ -170,7 +153,8 @@ public class TodayLessonController {
  	       
     	   return mv;
        }
-              
+       
+       //네이버로그인 
        
        @RequestMapping("/logout")
        public String logout() {

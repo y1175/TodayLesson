@@ -57,11 +57,11 @@
            
                <div>
                   <!-- 카카오 -->
-                     <a href="${kakaologin_URL}"id="kakao-login-btn"></a> 
+                  <a href="${kakaologin_URL}"id="kakao-login-btn"></a> 
                   <!-- 카카오 -->
                   <!-- 네이버-->
                   <a href="">
-                     <img width="222" style="height: 49px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+                     <img width="222" style="height: 49px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/> <!-- 버튼 -->
                   </a> 
                   <!-- 네이버-->
                   <!-- 구글 -->
