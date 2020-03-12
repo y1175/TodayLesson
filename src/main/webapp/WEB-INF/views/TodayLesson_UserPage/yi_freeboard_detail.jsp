@@ -12,6 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function() {
+	/*리플달기 ajax */
 	$('.reply_submit').on('click', function () {
 		let freeboard_no=$('.freeboard_no').html();
 		

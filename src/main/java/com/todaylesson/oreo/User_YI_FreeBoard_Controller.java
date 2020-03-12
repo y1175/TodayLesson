@@ -89,12 +89,13 @@ public class User_YI_FreeBoard_Controller {
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_detail";
 	}
-	
+	//글 쓰기
 	@RequestMapping("/freeboard_insert")
 	public String freeboard_insert()
 	{
 		return "TodayLesson_UserPage/yi_freeboard_insert";
 	}
+	//글 쓰기
 	@RequestMapping("/freeboard_insertresult")
 	public String freeboard_insertresult(@RequestParam String member_id
 			,@RequestParam String freeboard_title
@@ -113,7 +114,7 @@ public class User_YI_FreeBoard_Controller {
 		
 		return "TodayLesson_UserPage/yi_freeboard_insertresult";
 	}
-	
+	//게시글 수정
 	@RequestMapping("/freeboard_modify/{freeboard_no}")
 	public String boardModifyForm(@PathVariable int freeboard_no,Model model)
 	{
@@ -121,7 +122,7 @@ public class User_YI_FreeBoard_Controller {
 		model.addAttribute("dto",dto);
 		return "TodayLesson_UserPage/yi_freeboard_modify";
 	}
-	
+	//게시글 수정
 	@RequestMapping("/freeboard_modifyresult")
 	public String boardModifyresult(@RequestParam String member_id
 								   ,@RequestParam int freeboard_no
@@ -143,7 +144,7 @@ public class User_YI_FreeBoard_Controller {
 		return "TodayLesson_UserPage/yi_freeboard_modifyresult";
 	}
 	
-	
+	//게시글 삭제
 	@RequestMapping("/freeboard_delete/{freeboard_no}")
 	public String boardDelete(@PathVariable int freeboard_no,Model model) 
 	{
@@ -152,7 +153,7 @@ public class User_YI_FreeBoard_Controller {
 		return "TodayLesson_UserPage/yi_freeboard_delresult";
 	}
 	
-	//리플창 json
+	//리플창 json . 사용 보류
 	@ResponseBody
 	@RequestMapping("/freeboard_detailjson/{freeboard_no}")
 	public SQLjoin_Member_FreeBoardDTO detailjson(@PathVariable int freeboard_no
@@ -174,7 +175,7 @@ public class User_YI_FreeBoard_Controller {
 
 		return dto;
 	}
-	
+	//댓글 달기
 	@RequestMapping("/insert_boardreply/")
 	public String insert_reply(@RequestParam int freeboard_no
 			,@RequestParam String boardreply_content
@@ -192,7 +193,7 @@ public class User_YI_FreeBoard_Controller {
 		
 		return "/TodayLesson_UserPage/yi_boardreply_insertresult";
 	}
-	
+	//댓글 삭제
 	@RequestMapping("/boardreply_delete/{boardreply_no}")
 	public String replydelete(@PathVariable int boardreply_no,Model model)
 	{
@@ -201,7 +202,7 @@ public class User_YI_FreeBoard_Controller {
 		
 		return "/TodayLesson_UserPage/yi_boardreply_delresult";
 	}
-	
+	//공지 보기
 	@RequestMapping("/notice_detail/{notice_no}")
 	public String notice_detail(@PathVariable int notice_no,Model model)
 	{	
