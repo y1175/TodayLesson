@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_Admin_LessonService;
 
 @Controller
@@ -179,7 +180,9 @@ public class JY_Admin_Lesson_Controller {
     // ·¹½¼ ½É»ç ÆË¾÷
 	@RequestMapping("lesson_result_update/{lesson_no}")
 	public String lesson_result_update(@PathVariable int lesson_no,Model model) {
+		SeniorDTO dto = adminservice.get_senior_info(lesson_no);
 		model.addAttribute("lesson_no",lesson_no);
+		model.addAttribute("dto",dto);
 		return "TodayLesson_AdminPage/jy_ad_lesson_result_update";
 	}
 	

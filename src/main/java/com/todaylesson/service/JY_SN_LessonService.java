@@ -20,6 +20,8 @@ public interface JY_SN_LessonService {
 
 	public int delete_lesson(int lesson_no);
 
+	public List<LessonDTO> reject_lesson_list(int senior_no);
+
 	
 
 

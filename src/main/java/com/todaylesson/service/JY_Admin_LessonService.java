@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 
 public interface JY_Admin_LessonService {
 
@@ -22,6 +23,8 @@ public interface JY_Admin_LessonService {
 	public List<AllLessonDTO> apply_lesson();
 
 	public int apply_lesson_result(List<Integer> list);
+
+	public SeniorDTO get_senior_info(int lesson_no);
 
 
 

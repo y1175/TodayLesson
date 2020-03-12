@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 
 @Mapper
 public interface JY_Admin_LessonMapper {
@@ -25,5 +26,9 @@ public interface JY_Admin_LessonMapper {
 	public List<AllLessonDTO> apply_lesson();
 
 	public int apply_lesson_result(List<Integer> checkvalue);
+
+	public SeniorDTO get_senior_info(int lesson_no);
+
+	public int get_senior_no(int lesson_no);
 
 }

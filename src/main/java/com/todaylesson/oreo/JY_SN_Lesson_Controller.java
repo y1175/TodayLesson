@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.common.util.concurrent.ExecutionError;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SeniorDTO;
+import com.todaylesson.service.JY_Admin_LessonService;
 import com.todaylesson.service.JY_SN_LessonService;
 import com.todaylesson.service.JY_US_SeniorService;
 
@@ -26,10 +27,6 @@ public class JY_SN_Lesson_Controller {
 	@Resource(name="lessonservice")
 	private JY_SN_LessonService lesson_service;
 	
-	@Resource(name="senior_service")
-	private JY_US_SeniorService senior_service;
-
-	 
 	
 	@RequestMapping("/lesson_list/{member_id}")
 	public String list(Model model,@PathVariable String member_id){
@@ -45,8 +42,13 @@ public class JY_SN_Lesson_Controller {
 	@RequestMapping("/lesson_write/{member_id}")
 	public String write(@PathVariable String member_id,Model model) {
 		int senior_no = lesson_service.select_senior_no(member_id);
-		model.addAttribute("senior_no",senior_no);
-		return "TodayLesson_SeniorPage/jy_sn_lesson_write";
+		List<LessonDTO> list = lesson_service.reject_lesson_list(senior_no);
+		if (list.size() > 5) {
+			return "TodayLesson_SeniorPage/jy_sn_you_cant_write_lesson";
+		} else {
+			model.addAttribute("senior_no",senior_no);
+			return "TodayLesson_SeniorPage/jy_sn_lesson_write";
+		}
 	}
 	
 	@RequestMapping("/jusoPopup")

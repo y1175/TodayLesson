@@ -93,4 +93,11 @@ delete from lesson where lesson_no = #{lesson_no}
 
 </delete>
 
+<select id="reject_lesson_list" parameterType="int" resultType="com.todaylesson.DTO.LessonDTO">
+
+select * from lesson
+where lesson_result = 3 and senior_no = #{senior_no}
+
+</select>
+
 </mapper>

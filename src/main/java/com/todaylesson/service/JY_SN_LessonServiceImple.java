@@ -49,6 +49,11 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 		return mapper.delete_lesson(lesson_no);
 	}
 
+	@Override
+	public List<LessonDTO> reject_lesson_list(int senior_no) {
+		return mapper.reject_lesson_list(senior_no);
+	}
+
 	
 	
 

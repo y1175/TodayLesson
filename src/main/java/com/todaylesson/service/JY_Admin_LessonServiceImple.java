@@ -4,12 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.Mapper.JY_Admin_LessonMapper;
 
 @Service(value="adminservice")
+@Transactional(rollbackFor={Exception.class} , propagation=Propagation.REQUIRED , isolation=Isolation.DEFAULT)
 public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 
 	@Autowired
@@ -62,6 +67,14 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 	public int apply_lesson_result(List<Integer> checkvalue) {
 		return mapper.apply_lesson_result(checkvalue);
 	}
+
+
+	@Override
+	public SeniorDTO get_senior_info(int lesson_no) {
+		int senior_no = mapper.get_senior_no(lesson_no);
+		return mapper.get_senior_info(senior_no);
+	}
+
 
 	
 

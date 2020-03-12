@@ -80,4 +80,20 @@ where lesson_result= 0
 
 </select>
 
+
+<select id="get_senior_no" resultType="int">
+
+select senior_no 
+from lesson
+where lesson_no = #{lesson_no}
+
+</select>
+
+
+<select id="get_senior_info" resultType="com.todaylesson.DTO.SeniorDTO">
+
+select * from senior
+where senior_no = #{senior_no}
+
+</select>
 </mapper>
