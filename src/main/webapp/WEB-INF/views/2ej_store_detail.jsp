@@ -18,16 +18,14 @@ $(document).ready(function(){
 /* alert('${dto.product_no}'); */
 function replyList(){
  var gdsNum = ${dto.product_no};
- var member_id='${pageContext.request.userPrincipal.name}';
+ var member_id=${pageContext.request.userPrincipal.name};
  var repCon = $("#repCon").val();
  alert('replyList()');
- 
-  $.getJSON("/ej_store_detail/replyList" +"?product_no="+gdsNum+"&member_id="+member_id+"&pdreview_content="+repCon, function(data){
+  $.getJSON("/ej_store_detail/replyList" + "?product_no="+gdsNum+"&member_id="+member_id+"&pdreview_content="+repCon, function(data){
 	/*   $.getJSON("/ej_store_detail/replyList",function(data){ */
 		/* $.getJSON("/ej_store_detail/registReply", function(data){ */
   var str = "";
 	alert('funtion');
-	alert(data);
   $(data).each(function(){
    alert(data+"<=data");//data 는 컨트롤러에서 list매서드가 리턴한 리스트임.
    alert(this+"<=thiss");//this 는 컨트롤러에서 list매서드가 리턴한 리스트임.
@@ -159,7 +157,7 @@ ${dto.product_content}
     };
   
   $.ajax({/* "/shop/view/registReply" */
-   url :"/ej_store_detail/registReply",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/ej_store_detail/registReply ",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -193,4 +191,45 @@ ${dto.product_content}
     
 
 </body>
+<!--컨트롤러  -->
+<!-- // 상품 소감(댓글) 목록 /view/replyList엿음..replyList        
+	/*List<PdReviewDTO>*/
+	@ResponseBody
+	@RequestMapping(value = "/ej_store_detail/replyList", method = RequestMethod.GET)
+	public  List<PdReviewDTO>getReplyList(@RequestParam("product_no") int product_no) throws Exception {
+//원래는 RequestParam임 pathvariable로 해
+	   
+	 List<PdReviewDTO> reply = service.replyList(product_no);
+	 System.out.println("getReplyListController");
+	 return reply;
+		/*return 3;*/
+		//여기서 리턴한게 replyList()함수에서 data로 받아지네
+		
+	} 
+// 상품 소감(댓글) 작성 registReply
+	@ResponseBody
+	@RequestMapping(value = "/ej_store_detail/registReply", method = RequestMethod.POST)
+	public void registReply (/*PdReviewDTO reply*/
+			@RequestParam String member_id,
+			@RequestParam String pdreview_content ,
+			@RequestParam int product_no,
+			HttpSession session) throws Exception {
+	
+	 
+	/* MemberDTO member = (MemberDTO)session.getAttribute("member");*/
+		PdReviewDTO pdreviewdto=new PdReviewDTO();
+		pdreviewdto.setMember_id(member_id);
+		pdreviewdto.setProduct_no(product_no);
+		pdreviewdto.setPdreview_content(pdreview_content);
+		
+		int result=service.registReply(pdreviewdto);
+	 System.out.println("registReply Controller");
+/*	 reply.setMember_id(member.getMember_id());
+	 
+	 service.registReply(reply)*/;
+	
+} -->
 </html>
+
+
+

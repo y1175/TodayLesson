@@ -69,6 +69,7 @@ public class EJ_ProductController {
 		String imgthumb=dto.getProduct_thumb();
 		System.out.println("이미지경로: "+img);
 		System.out.println("썸네일이미지경로: "+imgthumb);
+		
 		int result = service.insertBoard(dto);
 		model.addAttribute("result", result);
 		
@@ -101,30 +102,87 @@ public class EJ_ProductController {
 		//.us_main_section
 		return "ej_store_detail";
 	}
-	// 상품 소감(댓글) 목록 /view/replyList엿음..replyList
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 상품 소감(댓글) 목록 /view/replyList엿음..replyList        
+	/*List<PdReviewDTO>*/
 	@ResponseBody
 	@RequestMapping(value = "/ej_store_detail/replyList", method = RequestMethod.GET)
-	public List<PdReviewDTO> getReplyList(@RequestParam("product_no") int product_no) throws Exception {
+	public  List<PdReviewDTO>getReplyList(@RequestParam("product_no") int product_no
+			,@RequestParam("member_id") String member_id
+			,@RequestParam("pdreview_content") String pdreview_content) throws Exception {
 //원래는 RequestParam임 pathvariable로 해
 	   
 	 List<PdReviewDTO> reply = service.replyList(product_no);
-	 
+	 System.out.println("reply object:"+reply);
+	 System.out.println("getReplyListController");
+		int i = 0;
+
+	/*	while ( i < reply.size()) {*/
+
+			System.out.println("reply list:"+reply.get(2));
+/*
+			i++;
+
+		}*/
+
+
+
+
 	 return reply;
+		/*return 3;*/
+		//여기서 리턴한게 replyList()함수에서 data로 받아지네
+		
 	} 
+	
 	
 	// 상품 소감(댓글) 작성 registReply
 	@ResponseBody
 	@RequestMapping(value = "/ej_store_detail/registReply", method = RequestMethod.POST)
-	public void registReply (PdReviewDTO reply,  HttpSession session) throws Exception {
+	public void registReply (/*PdReviewDTO reply*/
+			@RequestParam String member_id,
+			@RequestParam String pdreview_content ,
+			@RequestParam int product_no,
+			HttpSession session) throws Exception {
 	
 	 
-	 MemberDTO member = (MemberDTO)session.getAttribute("member");
-	 System.out.println(session.getAttribute("member"));
-	 reply.setMember_id(member.getMember_id());
+	/* MemberDTO member = (MemberDTO)session.getAttribute("member");*/
+		PdReviewDTO pdreviewdto=new PdReviewDTO();
+		pdreviewdto.setMember_id(member_id);
+		pdreviewdto.setProduct_no(product_no);
+		pdreviewdto.setPdreview_content(pdreview_content);
+		
+		int result=service.registReply(pdreviewdto);
+	 System.out.println("registReply Controller");
+/*	 reply.setMember_id(member.getMember_id());
 	 
-	 service.registReply(reply);
+	 service.registReply(reply)*/;
 	
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/ej_us_orderform")
 	public String order(@RequestParam("product_no") int product_no
 			,@RequestParam("pdcount") int pdcount
@@ -147,10 +205,6 @@ public class EJ_ProductController {
 		
 		return "TodayLesson_UserPage/ej_us_orderform";
 	}
-	@RequestMapping("/ejpay")
-	public String pay()
-	{
-		return "ej_paymenttest";
-	}
+
 	}
 	

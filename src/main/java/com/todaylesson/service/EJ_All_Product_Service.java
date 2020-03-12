@@ -12,7 +12,7 @@ public interface EJ_All_Product_Service {
 
 	public List<ProductDTO> selectAll();
 
-	public int insertBoard(ProductDTO dto);
+	public int insertBoard(ProductDTO     dto);
 
 	public ProductDTO select(int product_no);
 
@@ -21,6 +21,7 @@ public interface EJ_All_Product_Service {
 	public int registReply(PdReviewDTO reply);
 
 	public MemberDTO selectm(String member_id);
+
 
 
 

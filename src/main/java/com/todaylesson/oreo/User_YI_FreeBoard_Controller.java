@@ -45,7 +45,7 @@ public class User_YI_FreeBoard_Controller {
 		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
-		//공지 리스트
+		//공지 리스트 
 		List<NoticeDTO> notice=service.notice();
 		model.addAttribute("notice",notice);
 		

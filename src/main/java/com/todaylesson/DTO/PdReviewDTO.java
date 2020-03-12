@@ -18,6 +18,6 @@ public class PdReviewDTO {
 	private String pdreview_date;
 	//memberÅ×ÀÌºí²¨
 	private String member_id;
-	private String product_no;
+	private int product_no;
 	
 }
