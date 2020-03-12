@@ -26,10 +26,13 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
-//MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
+
 import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
 
+
+
+//MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
 @Controller
 public class TodayLessonController {
    
@@ -78,43 +81,7 @@ public class TodayLessonController {
 
        @RequestMapping("/todaylessonlogin")
        public String login( String error, String logout, Model model)
-       { 
-    	   
-    	   /*  //throws IOException
-    	    *  , produces = "application/json" ,
-    		           method = {RequestMethod.GET, RequestMethod.POST}
-    	    * @RequestParam(value="code", required=false) String code,
-    		               HttpServletRequest request,
-    		               HttpServletResponse response,
-    		               HttpSession session,
-    	    * 
-    	    * 
-    	   //결과값을 node에 담아줌
-    	   JsonNode node = hs_kakaologinservice.getAccessToken(code);
-    	   //accessToken에 사용자가 로그인한 모든 정보가 들어있음
-    	   JsonNode accessToken = node.get("access_token");
-    	   //사용자 정보
-    	   JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
-    	      String kakao_email = null;
-    	      String kakao_name = null;
-    	      String kakao_gender = null;
-    	      String kakao_birthday = null;
-    	      String kakao_age = null;
-    	   //유저정보 카카오에서 가져오기 Get properties
-    	   JsonNode properties = KakaoUserInfo.path("properties"); 
-    	   JsonNode kakao_account = KakaoUserInfo.path("kakao_account");
-    	      kakao_email = kakao_account.path("email").asText(); 
- 	          kakao_name = kakao_account.path("name").asText();
- 	          kakao_gender = kakao_account.path("gender").asText();
- 	          kakao_birthday = kakao_account.path("birthday").asText();
- 	          kakao_age = kakao_account.path("age").asText();
-
- 	       session.setAttribute("kakao_email", kakao_email);
- 	       session.setAttribute("kakao_name", kakao_name);
- 	       session.setAttribute("kakao_gender", kakao_gender);
- 	       session.setAttribute("kakao_birthday", kakao_birthday);   
- 	       session.setAttribute("kakao_age", kakao_age);*/
- 	      
+       {     
  	       //아이디비번 잘못입력시 에러.. 
     	  if (error !=null)
              model.addAttribute("error", "Please check your ID or Password");
@@ -143,6 +110,67 @@ public class TodayLessonController {
           //return "/TodayLesson_UserPage/hs_us_main_sec_login";
           return "/TodayLesson_UserPage/hs_us_main_sec_logintest";
        }*/
+       //kakao 로그인 창 url 정보넘기기
+       @RequestMapping(value = "/kakaologinurl", method = RequestMethod.GET)
+       public ModelAndView kakaoLoginURL(HttpSession session) {
+    	   ModelAndView mv = new ModelAndView();
+    	   
+    	   //kakao login url 호출
+    	   String kakaologin_URL = hs_kakaologinservice.getAuthorizationUrl(session);
+    	   
+    	   //생성한 인증 URL을 View(hs_us_main_sec_login.jsp)로 전달
+    	   mv.setViewName("hs_us_main_sec_login");
+    	   
+    	   //카카오 로그인
+    	   mv.addObject("kakaologin_URL", kakaologin_URL);
+    	   
+    	   return mv;
+       }
+       
+       @RequestMapping(value = "/todaylessonkakaologin", produces = "application/json" ,
+	                   method = {RequestMethod.GET, RequestMethod.POST})
+       public ModelAndView KakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
+    		                          HttpServletResponse response, HttpSession session) throws IOException{
+    	   ModelAndView mv = new ModelAndView();
+    	   
+    	   //결과값을 node에 담아줌
+    	   JsonNode node = hs_kakaologinservice.getAccessToken(code);
+    	   //accessToken에 사용자가 로그인한 모든 정보가 들어있음
+    	   JsonNode accessToken = node.get("access_token");
+    	   
+    	   System.out.println("Kakao_Code = " +code);
+    	   System.out.println("Kakao_AccessToken = " + accessToken);
+    	   
+    	   //사용자 정보
+    	   JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
+    	      String kakao_email = null;
+    	      String kakao_name = null;
+    	      String kakao_gender = null;
+    	      String kakao_birthday = null;
+    	      String kakao_age = null;
+    	   //유저정보 카카오에서 가져오기 Get properties
+    	   JsonNode properties = KakaoUserInfo.path("properties"); 
+    	   JsonNode kakao_account = KakaoUserInfo.path("kakao_account");
+    	      kakao_email = kakao_account.path("email").asText(); 
+ 	          kakao_name = kakao_account.path("name").asText();
+ 	          kakao_gender = kakao_account.path("gender").asText();
+ 	          kakao_birthday = kakao_account.path("birthday").asText();
+ 	          kakao_age = kakao_account.path("age").asText();
+ 	          
+ 	          System.out.println("kakao_name = "+kakao_name);
+
+ 	       session.setAttribute("kakao_email", kakao_email);
+ 	       session.setAttribute("kakao_name", kakao_name);
+ 	       session.setAttribute("kakao_gender", kakao_gender);
+ 	       session.setAttribute("kakao_birthday", kakao_birthday);   
+ 	       session.setAttribute("kakao_age", kakao_age);
+    	   
+ 	       //생성한 로그인정보를 View(hs_us_main_sec_login.jsp)로 전달
+ 	       mv.setViewName("hs_us_main_sec_login");
+ 	       
+    	   return mv;
+       }
+              
        
        @RequestMapping("/logout")
        public String logout() {

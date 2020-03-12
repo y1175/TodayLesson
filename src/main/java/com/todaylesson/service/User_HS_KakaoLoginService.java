@@ -2,7 +2,7 @@ package com.todaylesson.service;
 
 import org.springframework.stereotype.Service;
 
-/*import java.io.IOException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,19 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;*/
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.apache.http.util.EntityUtils;
+import org.apache.http.HttpEntity;
 
 @Service(value="kakaologinservice")
 public class User_HS_KakaoLoginService {
 	
-	/*private final static String K_CLIENT_ID = "250c99d78fb89584382252365272f520"; //이런식으로 REDIRECT_URI를 써넣는다. // // 
-	private final static String K_REDIRECT_URI = "http://localhost:9080/todaylessonlogin"; 
+	private final static String K_CLIENT_ID = "250c99d78fb89584382252365272f520"; // REDIRECT_URI 
+	private final static String K_REDIRECT_URI = "http://localhost:9080/todaylessonkakaologin"; 
 	
 	public static String getAuthorizationUrl(HttpSession session) {
 		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + 
@@ -40,8 +44,7 @@ public class User_HS_KakaoLoginService {
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		postParams.add(new BasicNameValuePair("client_id", "250c99d78fb89584382252365272f520")); // REST API KEY
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:9080/todaylessonlogin")); // 리다이렉트 URI
-
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:9080/todaylessonkakaologin")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
 		final HttpClient client = HttpClientBuilder.create().build();
@@ -51,7 +54,7 @@ public class User_HS_KakaoLoginService {
 		try {
 			post.setEntity(new UrlEncodedFormEntity(postParams));
 			final HttpResponse response = client.execute(post);
-			final int responseCode = response.getStatusLine().getStatusCode();  //에러코드
+			final int responseCode = response.getStatusLine().getStatusCode();  //결과코드
 
 			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
 			System.out.println("Post parameters : " + postParams);
@@ -89,10 +92,19 @@ public class User_HS_KakaoLoginService {
 
 		try {
 			final HttpResponse response = client.execute(post);
-			final int responseCode = response.getStatusLine().getStatusCode();//에러코드
+			final int responseCode = response.getStatusLine().getStatusCode(); //결과코드
+			final String responseMSG = response.getStatusLine().getReasonPhrase(); //결과 메세지
 
 			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
 			System.out.println("Response Code : " + responseCode);
+			System.out.println("Response MSG : " + responseMSG);
+			
+			//이 주석처리 되어있는 코드 = 오류가 나는 상황이라면 없애고 실행하기 무슨오류인지 알려준다
+			/*HttpEntity entity = response.getEntity();  
+            String responseString = EntityUtils.toString(entity, "UTF-8");
+            Logger.getLogger("responseString----->"+responseString);*/
+            
+			
 
 			// JSON 형태 반환값 처리
 			ObjectMapper mapper = new ObjectMapper();
@@ -109,5 +121,5 @@ public class User_HS_KakaoLoginService {
 		}
 		return returnNode;
 
-	}*/
+	}
 }

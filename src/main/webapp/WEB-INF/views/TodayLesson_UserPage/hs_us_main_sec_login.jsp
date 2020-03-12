@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   --%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE>
 <html>
 <head>
@@ -27,32 +27,6 @@
 
 </head>
 <body>
-
- <%--  <h1>Custom Login Page</h1>
-  <h2><c:out value="${error}"/></h2>
-  <h2><c:out value="${logout}"/></h2>
-
-  <form method='post' action="/todaylesson">
-
-  <div>
-    <input type='text' name='username' placeholder="아이디 입력하시오">
-  </div>
-  <div>
-    <input type='password' name='password' placeholder="비밀번호를 입력하시오">
-  </div>
-
-  <div>
-    <input type='checkbox' name='remember-me'> Remember Me
-  </div>
-
-  <div>
-    <input type='submit'>
-  </div>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
-  </form> --%>
-
-
   <div style="width: 50%; margin: auto; text-align: center;">
       <form method="post" action="/todaylesson">
          <div class="hs_us_mainheader_loginmodalform_div">
@@ -83,39 +57,7 @@
            
                <div>
                   <!-- 카카오 -->
-                    <!--  <a href="https://kauth.kakao.com/oauth/authorize
-                              ?client_id=250c99d78fb89584382252365272f520
-                              &redirect_uri=http://localhost:9080/todaylesson
-                              &response_type=code"
-                        id="kakao-login-btn"
-                        
-                        href="javascript:loginWithKakao()"
-                        >
-                     </a>    -->
-                     <a id="custom-login-btn" href="javascript:loginWithKakao()">   
-                        <img alt="" src="resources/IMG/kakao_account_login_btn_medium_narrow.png">
-                     </a> 
-                      
-                   <script type="text/javascript">
-                 //<![CDATA[
-                   // 사용할 앱의 JavaScript 키를 설정해 주세요.
-                   Kakao.init('9f3f9d25f7971214c15ec68bb10baddc');
-                   function loginWithKakao() {
-                     // 로그인 창을 띄웁니다.
-                     Kakao.Auth.login({  
-                       success: function(authObj) {
-                         alert(JSON.stringify(authObj));
-                       },
-                       fail: function(err) {
-                         alert(JSON.stringify(err));
-                       }
-                     });
-                   };
-                 //]]> 
-               	           
-                   </script>
-                   
-
+                     <a href="${kakaologin_URL}"id="kakao-login-btn"></a> 
                   <!-- 카카오 -->
                   <!-- 네이버-->
                   <a href="">
