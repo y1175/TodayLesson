@@ -97,6 +97,7 @@ ${dto.member_id} 님 안녕하세요.
 <input type="submit" id="question_answerbtn" value="답변달기">
 </li>
 </ul>
+<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 </div>
 

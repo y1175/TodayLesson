@@ -79,7 +79,7 @@ public class Admin_HM_Question_Controller {
 		model.addAttribute("result",result);
 		model.addAttribute("question_no",question_no);
 		
-		return "/TodayLesson_AdminPage/hm_ad_question_updateresult/question_no.hs_ad_main_section";
+		return "/TodayLesson_AdminPage/hm_ad_question_updateresult.hs_ad_main_section";
 	}
 
 }
