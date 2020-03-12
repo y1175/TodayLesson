@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_YI_FreeBoard_Mapper">
+
+<!-- 게시물 카운트  -->
+	<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+		select COUNT(*) 
+		from freeboard join member
+		on freeboard.member_id = member.member_id
+		<!-- WHERE절을 include 태그로 삽입 -->
+<include refid="search_select"></include>
+</select>
+
+<!-- 게시물 전체보기 -->
+<select id="list" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO" parameterType="java.util.HashMap">
+select freeboard_category,member_nick,freeboard.member_id,freeboard_no,freeboard_title,freeboard_content,freeboard_writedate,freeboard_readno
+from freeboard join member
+on freeboard.member_id = member.member_id
+<!-- WHERE절을 include 태그로 삽입 -->
+<include refid="search_select"></include>
+  order by freeboard_no desc
+limit   #{startrow}, 15
+
+</select>
+<!-- 공지사항 -->
+<select id='notice' resultType="com.todaylesson.DTO.NoticeDTO">
+select notice_category,member_nick,notice.member_id,notice_no,notice_title,notice_content,notice_writedate,notice_readno
+from notice join member
+on notice.member_id=member.member_id
+order by notice_no desc
+limit 0,5
+</select>
+
+<!-- 게시물 상세보기 -->
+<select id="freeboard_detail" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+select freeboard_no,freeboard_category,member_nick,freeboard.member_id,freeboard_readno
+,freeboard_title,freeboard_writedate,freeboard_content
+from freeboard join member
+on freeboard.member_id = member.member_id
+where freeboard_no=#{freeboard_no}
+</select>
+<select id="freeboard_replycount" parameterType="int" resultType="int">
+select count(*)
+from boardreply
+where freeboard_no=#{hidden_freeboard_no}
+</select>
+
+<!-- 공지 상세보기 -->
+<select id="notice_detail" parameterType="int" resultType="com.todaylesson.DTO.NoticeDTO">
+select notice_no,notice_category,member_nick,notice.member_id,notice_readno
+,notice_title,notice_writedate,notice_content
+from notice join member
+on notice.member_id = member.member_id
+where notice_no=#{notice_no}
+</select>
+
+<!-- 조회수 증가 -->
+<update id="freeboard_readnoUp" parameterType="int">
+update freeboard
+set freeboard_readno=IFNULL(freeboard_readno,0)+1
+where freeboard_no=#{freeboard_no}
+</update>
+
+<update id="notice_readnoUp" parameterType="int">
+update notice
+set notice_readno=IFNULL(notice_readno,0)+1
+where notice_no=#{notice_no}
+</update>
+
+<!-- 검색기능 쿼리문 -->
+<sql id="search_select">
+<if test='searchtxt!=null and searchtxt!=""'>
+<choose>
+<when test='search.equals("all")'>
+				where 
+					member_nick like CONCAT('%', #{searchtxt}, '%')
+				or 
+					freeboard_content like CONCAT('%', #{searchtxt}, '%')
+				or 
+					freeboard_title like CONCAT('%', #{searchtxt}, '%')
+					
+			</when>
+<when test='search.equals("member_nick")'>
+where member_nick like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("freeboard_content")'>
+where freeboard_content like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("freeboard_title")'>
+where freeboard_title like CONCAT('%', #{searchtxt}, '%')
+</when>
+</choose>
+</if>
+</sql> 
+<select id="getNick_reply" parameterType="String" resultType="String">
+select member_nick
+from member
+where member_id=#{member_id}
+</select>
+
+
+<insert id="insert_reply"  parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+insert into boardreply(boardreply_content,boardreply_writedate,member_id,freeboard_no)
+values(#{boardreply_content},now(),#{member_id},#{freeboard_no})
+</insert>
+
+<select id="boardreply_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+select boardreply_no,freeboard_no,member_nick,boardreply_content,boardreply_writedate,boardreply.member_id
+from boardreply join member
+on boardreply.member_id=member.member_id
+where boardreply.freeboard_no=#{freeboard_no}
+order by boardreply_no
+</select>
+
+<insert id="freeboard_insert" parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+insert into freeboard
+(freeboard_category,member_id,freeboard_title,freeboard_content,freeboard_writedate,freeboard_readno)
+values
+(#{freeboard_category},#{member_id},#{freeboard_title},#{freeboard_content},now(),0)
+</insert>
+
+<delete id="freeboard_delete" parameterType="int">
+delete from freeboard
+where freeboard_no=#{freeboard_no}
+</delete>
+
+<select id="modify_placehold" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+select freeboard_category,member_id,freeboard_title,freeboard_content,freeboard_no
+from freeboard
+where freeboard_no=#{freeboard_no}
+</select>
+
+<update id="modify_result" parameterType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">
+update freeboard
+set 
+	freeboard_category=#{freeboard_category}
+   ,freeboard_title=#{freeboard_title}
+   ,freeboard_content=#{freeboard_content}
+where freeboard_no=#{freeboard_no}
+
+</update>
+
+<delete id="delete_reply" parameterType="int">
+delete from boardreply
+where boardreply_no=#{boardreply_no}
+</delete>
+
+</mapper>
