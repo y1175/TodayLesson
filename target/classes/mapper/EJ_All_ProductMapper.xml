@@ -28,12 +28,10 @@ where product_no=#{product_no}
 </select>
 
 
- <select id="allReply" resultType="com.todaylesson.DTO.PdReviewDTO">
-select pdreview_content, pdreview_date, member.member_id ,product_no
+ <select id="selectReply" resultType="com.todaylesson.DTO.PdReviewDTO">
+select pdreview_content, pdreview_date, orderlist.member_id ,orderlist.product_no
 from pdreview, orderlist, member
-where pdreview.orderlist_no=orderlist.orderlist_no
-and orderlist.member_id=#{member_id}
-and product_no=#{product_no}
+where product_no=#{product_no}
 </select> 
 
 

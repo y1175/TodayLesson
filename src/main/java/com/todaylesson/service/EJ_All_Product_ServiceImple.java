@@ -35,7 +35,7 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	@Override
 	public List<PdReviewDTO> replyList(int product_no) {
 		// TODO Auto-generated method stub
-		return mapper.allReply(product_no);
+		return mapper.selectReply(product_no);
 	}
 
 	@Override

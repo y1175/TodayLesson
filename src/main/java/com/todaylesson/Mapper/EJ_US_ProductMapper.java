@@ -19,10 +19,10 @@ public interface EJ_US_ProductMapper {
 
 	public ProductDTO selectBoard(int product_no);
 
-	public List<PdReviewDTO> allReply(int product_no);
-
 	public int registReply(PdReviewDTO reply);
 
 	public MemberDTO selectMember(String member_id);
+
+	public List<PdReviewDTO> selectReply(int product_no);
 
 }

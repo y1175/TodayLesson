@@ -99,6 +99,8 @@ public class EJ_ProductController {
 		
 		ProductDTO dto = service.select(product_no);
 		model.addAttribute("dto",dto);
+		List<PdReviewDTO> reply = service.replyList(product_no);
+		 System.out.println("reply object:"+reply);
 		//.us_main_section
 		return "ej_store_detail";
 	}
@@ -119,17 +121,22 @@ public class EJ_ProductController {
 	@RequestMapping(value = "/ej_store_detail/replyList", method = RequestMethod.GET)
 	public  List<PdReviewDTO>getReplyList(@RequestParam("product_no") int product_no
 			,@RequestParam("member_id") String member_id
-			,@RequestParam("pdreview_content") String pdreview_content) throws Exception {
+			/*,@RequestParam("pdreview_content") String pdreview_content*/) throws Exception {
 //원래는 RequestParam임 pathvariable로 해
 	   
+
+	 System.out.println("getReplyListController");
 	 List<PdReviewDTO> reply = service.replyList(product_no);
 	 System.out.println("reply object:"+reply);
-	 System.out.println("getReplyListController");
+	 System.out.println(product_no);
+	 System.out.println(member_id);
+	
+	// System.out.println(pdreview_content);
 		int i = 0;
 
 	/*	while ( i < reply.size()) {*/
 
-			System.out.println("reply list:"+reply.get(2));
+			/*System.out.println("reply list:"+reply.get(2));*/
 /*
 			i++;
 

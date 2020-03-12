@@ -14,12 +14,14 @@ $(document).ready(function(){
 });
 
 </script>
+
 <script> 
 /* alert('${dto.product_no}'); */
 function replyList(){
  var gdsNum = ${dto.product_no};
  var member_id='${pageContext.request.userPrincipal.name}';
  var repCon = $("#repCon").val();
+ 
  alert('replyList()');
  
   $.getJSON("/ej_store_detail/replyList" +"?product_no="+gdsNum+"&member_id="+member_id+"&pdreview_content="+repCon, function(data){
@@ -29,8 +31,8 @@ function replyList(){
 	alert('funtion');
 	alert(data);
   $(data).each(function(){
-   alert(data+"<=data");//data 는 컨트롤러에서 list매서드가 리턴한 리스트임.
-   alert(this+"<=thiss");//this 는 컨트롤러에서 list매서드가 리턴한 리스트임.
+  /*  alert(data+"<=data");//data 는 컨트롤러에서 list매서드가 리턴한 리스트임.
+   alert(this+"<=thiss"); *///this 는 컨트롤러에서 list매서드가 리턴한 리스트임.
    //this가 data네
    
 /*    var repDate = new Date(this.repDate);
@@ -46,7 +48,7 @@ function replyList(){
      + "</li>";           
   });
   
-  $("section.replyList ol").html(str);
+  $("section.replyList ol").append(str);
  });
 }
 </script>
@@ -122,14 +124,15 @@ ${dto.product_content}
 <br>
 후기
 <hr>
-<!-- <section class="replyList">
+ <section class="replyList">
+ <!--foreach로 db에서 불러오면 되네  -->
 <ol>
 </ol>
 
 <script>
  replyList();
 </script>
-</section> -->
+</section> 
 <div id="replyListTest">
 </div>
 <section class="replyForm">
@@ -142,7 +145,12 @@ ${dto.product_content}
 
 <div class="input_area">
 <button type="button" id="reply_btn">후기 남기기</button>
+
+</div>
+</form>
+</section>
 <script>
+/* $(document).ready(function(){ */
  $("#reply_btn").click(function(){
 /*   alert('replye_btn'); */
   var formObj = $(".replyForm form[role='form']");
@@ -167,10 +175,36 @@ ${dto.product_content}
     console.log('success');
     console.log(data);
     $("#repCon").val("");
-	   replyList();
+	  /*  replyList(); */
 	  // $("#replyListTest").html(data);
  //textarea초기화
+ //
+    var str = "";
+/* 	alert('funtion');
+	alert(data); */
+  $(data).each(function(){
+/*    alert(data+"<=data");//data 는 컨트롤러에서 list매서드가 리턴한 리스트임.
+   alert(this+"<=thiss");//this 는 컨트롤러에서 list매서드가 리턴한 리스트임. */
+   //this가 data네
+   
+/*    var repDate = new Date(this.repDate);
+   repDate = repDate.toLocaleDateString("ko-US") */
+   //테이블에 저장된 날짜 데이터와 컨트롤러에서 뷰로 보낼때의 날짜 데이터 형식이 다르기 때문에, 컨트롤러에서 toLocaleDateString() 를 이용해 1차적으로 데이터를 가공
+   //this.gdsNum this.userName repDate repCon으로 되잇음
+   str += "<li data-product_no='" + this.product_no + "'>"
+    /*  + "<div class='userInfo'>" */
+    /*  + "<span class='userName'>" + this.userName + "</span>" */
+     /* + "<span class='date'>" + repDate + "</span>" */
+   /*   + "</div>" */
+     + "<div class='replyContent'>" + this.pdreview_content + "</div>"
+     + "</li>";           
+  
+  
+  $("section.replyList ol").append(str);
+  
+   });
    }
+   
   
   
    ,error: function(){
@@ -179,10 +213,8 @@ ${dto.product_content}
 	   }
   });
  });
+
 </script>
-</div>
-</form>
-</section>
 
 <!--  -->
 배송/교환/환불
