@@ -49,8 +49,9 @@ where question_no = #{question_no}
 <update id="hm_ad_question_update" parameterType="HashMap">
 update question_1_1
 set question_answer = #{question_answer}
-
-
+,question_answerwritedate = NOW()
+,question_situation = 1
+where question_no = #{question_no}
 </update>
 
 </mapper>

@@ -10,8 +10,10 @@ import com.todaylesson.DTO.Question_1_1DTO;
 @Mapper
 public interface User_HM_QuestionMapper {
 
-	List<Question_1_1DTO> hm_question_list(String member_id);
+	public List<Question_1_1DTO> hm_question_list(String member_id);
 
     public void questioninsert(HashMap<String, Object> map);
+
+	public Question_1_1DTO hm_question_detail(int question_no);
 
 }

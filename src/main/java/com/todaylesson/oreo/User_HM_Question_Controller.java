@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,7 +34,7 @@ public class User_HM_Question_Controller {
 		model.addAttribute("list",list);
 		
 	
-		return "/TodayLesson_UserPage/hm_us_question";
+		return "/TodayLesson_UserPage/hm_us_question.us_my_section";
 		
 	}
 	
@@ -53,7 +54,7 @@ public class User_HM_Question_Controller {
 	private String hm_question_insert()
 	{
 		
-		return "/TodayLesson_UserPage/hm_us_question_insert";
+		return "/TodayLesson_UserPage/hm_us_question_insert.us_my_section";
 	}
 	
 	@RequestMapping("/hm_question_create")
@@ -61,7 +62,8 @@ public class User_HM_Question_Controller {
 			@RequestParam("member_id")String member_id
 			,@RequestParam("question_group") int question_group
 			,@RequestParam("question_title") String question_title
-			,@RequestParam("question_content") String question_content)
+			,@RequestParam("question_content") String question_content
+			,Model model)
 	{
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("member_id", member_id);
@@ -71,9 +73,25 @@ public class User_HM_Question_Controller {
 		
 		service.hm_question_insert(map);
 		
+		List<Question_1_1DTO> list = service.hm_question_list(member_id);
+		model.addAttribute("list",list);
 		
-		return "/TodayLesson_UserPage/hm_us_question";
+		
+		return "/TodayLesson_UserPage/hm_us_question.us_my_section";
 
+	}
+	
+	@RequestMapping("/hm_us_question_detail/{no}")
+	private String hm_us_question_detail(@PathVariable int no , Model model)
+	{
+		int question_no = no;
+		Question_1_1DTO dto = service.hm_question_detail(question_no);
+		model.addAttribute("dto",dto);
+		
+		
+		return "/TodayLesson_UserPage/hm_us_question_detail.us_my_secti++"
+				+ "+++on";
+		
 	}
 	
 	

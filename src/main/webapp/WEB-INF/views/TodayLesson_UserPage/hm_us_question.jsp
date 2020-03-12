@@ -24,6 +24,9 @@ pageEncoding="UTF-8"%>
 <tbody>
 <c:forEach var="item" items="${list}">
 <tr>
+<td>
+<input type="hidden" id="question_no" class = "question_no" value="${item.question_no}">
+</td>
 <c:choose>
 <c:when test="${item.question_group eq '0'}">
 <td>
@@ -69,8 +72,11 @@ ${item.question_title}
 <td>
 ${item.question_writedate}
 </td>
+<td>
+<input type ="button" class ="hm_us_questiondetailbtn" id="hm_us_questiondetailbtn" value="상세보기">
+</td>
 </tr>
-</c:forEach>
+</c:forEach> 
 </tbody>
 </table>
 </c:if> 

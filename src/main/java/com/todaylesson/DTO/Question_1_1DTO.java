@@ -21,4 +21,5 @@ public class Question_1_1DTO {
 	private int question_situation;
 	private String question_writedate;
 	private String member_id;
+	private String question_answerwritedate;
 }

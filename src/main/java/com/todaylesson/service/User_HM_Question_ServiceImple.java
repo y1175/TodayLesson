@@ -35,4 +35,13 @@ public class User_HM_Question_ServiceImple implements User_HM_Question_Service {
 	}
 
 
+
+
+	@Override
+	public Question_1_1DTO hm_question_detail(int question_no) {
+		// TODO Auto-generated method stub
+		return mapper.hm_question_detail(question_no);
+	}
+
+
 }
