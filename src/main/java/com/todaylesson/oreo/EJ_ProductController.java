@@ -97,13 +97,20 @@ public class EJ_ProductController {
 	@RequestMapping("/ej_store_detail/{product_no}")
 	public String sdetail(@PathVariable("product_no") int product_no, Model model) {
 		
-		ProductDTO dto = service.select(product_no);
-		model.addAttribute("dto",dto);
+	
 		List<PdReviewDTO> reply = service.replyList(product_no);
 		 System.out.println("reply object:"+reply);
+		 model.addAttribute("reply",reply);
+		//reply가 jsp에 왜 안넘어갈까?????????????
+		 //System.out.println(reply.get(3));
+			ProductDTO dto = service.select(product_no);
+			model.addAttribute("dto",dto);
+			
+			
 		//.us_main_section
 		return "ej_store_detail";
 	}
+
 	
 	
 	
@@ -113,15 +120,14 @@ public class EJ_ProductController {
 	
 	
 	
-	
-	
+	/*
 	// 상품 소감(댓글) 목록 /view/replyList엿음..replyList        
-	/*List<PdReviewDTO>*/
+	List<PdReviewDTO>
 	@ResponseBody
 	@RequestMapping(value = "/ej_store_detail/replyList", method = RequestMethod.GET)
-	public  List<PdReviewDTO>getReplyList(@RequestParam("product_no") int product_no
+	public  List<PdReviewDTO> getReplyList(@RequestParam("product_no") int product_no
 			,@RequestParam("member_id") String member_id
-			/*,@RequestParam("pdreview_content") String pdreview_content*/) throws Exception {
+			,@RequestParam("pdreview_content") String pdreview_content) throws Exception {
 //원래는 RequestParam임 pathvariable로 해
 	   
 
@@ -134,23 +140,23 @@ public class EJ_ProductController {
 	// System.out.println(pdreview_content);
 		int i = 0;
 
-	/*	while ( i < reply.size()) {*/
+		while ( i < reply.size()) {
 
-			/*System.out.println("reply list:"+reply.get(2));*/
-/*
+			System.out.println("reply list:"+reply.get(2));
+
 			i++;
 
-		}*/
+		}
 
 
 
 
 	 return reply;
-		/*return 3;*/
+		return 3;
 		//여기서 리턴한게 replyList()함수에서 data로 받아지네
 		
 	} 
-	
+	*/
 	
 	// 상품 소감(댓글) 작성 registReply
 	@ResponseBody

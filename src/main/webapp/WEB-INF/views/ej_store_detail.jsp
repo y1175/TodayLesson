@@ -15,43 +15,7 @@ $(document).ready(function(){
 
 </script>
 
-<script> 
-/* alert('${dto.product_no}'); */
-function replyList(){
- var gdsNum = ${dto.product_no};
- var member_id='${pageContext.request.userPrincipal.name}';
- var repCon = $("#repCon").val();
- 
- alert('replyList()');
- 
-  $.getJSON("/ej_store_detail/replyList" +"?product_no="+gdsNum+"&member_id="+member_id+"&pdreview_content="+repCon, function(data){
-	/*   $.getJSON("/ej_store_detail/replyList",function(data){ */
-		/* $.getJSON("/ej_store_detail/registReply", function(data){ */
-  var str = "";
-	alert('funtion');
-	alert(data);
-  $(data).each(function(){
-  /*  alert(data+"<=data");//data 는 컨트롤러에서 list매서드가 리턴한 리스트임.
-   alert(this+"<=thiss"); *///this 는 컨트롤러에서 list매서드가 리턴한 리스트임.
-   //this가 data네
-   
-/*    var repDate = new Date(this.repDate);
-   repDate = repDate.toLocaleDateString("ko-US") */
-   //테이블에 저장된 날짜 데이터와 컨트롤러에서 뷰로 보낼때의 날짜 데이터 형식이 다르기 때문에, 컨트롤러에서 toLocaleDateString() 를 이용해 1차적으로 데이터를 가공
-   //this.gdsNum this.userName repDate repCon으로 되잇음
-   str += "<li data-gdsNum='" + this.product_no + "'>"
-    /*  + "<div class='userInfo'>" */
-    /*  + "<span class='userName'>" + this.userName + "</span>" */
-     /* + "<span class='date'>" + repDate + "</span>" */
-   /*   + "</div>" */
-     + "<div class='replyContent'>" + this.pdreview_content + "</div>"
-     + "</li>";           
-  });
-  
-  $("section.replyList ol").append(str);
- });
-}
-</script>
+
 
 <style>
  #ej_sdetail_top{
@@ -124,14 +88,25 @@ ${dto.product_content}
 <br>
 후기
 <hr>
+<table>
+<c:forEach var="item" items="${reply}"> 
+
+<tr>
+<td>${item.member_id }</td>
+<td>${item.pdreview_content }</td>
+<td>${item.pdreview_date }</td>
+</tr>
+</c:forEach>
+</table>
+
  <section class="replyList">
  <!--foreach로 db에서 불러오면 되네  -->
 <ol>
 </ol>
-
+<!-- 
 <script>
- replyList();
-</script>
+  replyList(); 
+</script> -->
 </section> 
 <div id="replyListTest">
 </div>
@@ -174,36 +149,24 @@ ${dto.product_content}
    success : function(){
     console.log('success');
     console.log(data);
+    console.log('this'+this);
+    console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id+"kl");
     $("#repCon").val("");
-	  /*  replyList(); */
-	  // $("#replyListTest").html(data);
- //textarea초기화
- //
+	 
+    if(data.member_id!=null)
+    	{
+    	alert('hello');
+    	}
     var str = "";
-/* 	alert('funtion');
-	alert(data); */
-  $(data).each(function(){
-/*    alert(data+"<=data");//data 는 컨트롤러에서 list매서드가 리턴한 리스트임.
-   alert(this+"<=thiss");//this 는 컨트롤러에서 list매서드가 리턴한 리스트임. */
-   //this가 data네
+	str+="<tr><td>"+data.member_id+"</td>"
+	str+="<td>"+data.pdreview_content+"</td></tr>"
    
-/*    var repDate = new Date(this.repDate);
-   repDate = repDate.toLocaleDateString("ko-US") */
-   //테이블에 저장된 날짜 데이터와 컨트롤러에서 뷰로 보낼때의 날짜 데이터 형식이 다르기 때문에, 컨트롤러에서 toLocaleDateString() 를 이용해 1차적으로 데이터를 가공
-   //this.gdsNum this.userName repDate repCon으로 되잇음
-   str += "<li data-product_no='" + this.product_no + "'>"
-    /*  + "<div class='userInfo'>" */
-    /*  + "<span class='userName'>" + this.userName + "</span>" */
-     /* + "<span class='date'>" + repDate + "</span>" */
-   /*   + "</div>" */
-     + "<div class='replyContent'>" + this.pdreview_content + "</div>"
-     + "</li>";           
-  
+
   
   $("section.replyList ol").append(str);
   
-   });
-   }
+   /*  });  */
+    } 
    
   
   
@@ -219,8 +182,68 @@ ${dto.product_content}
 <!--  -->
 배송/교환/환불
 <hr>
+<pre>
+배송정책
+회원 고객의 모든 주문 (제품 및 마일리지 제품) 및 비회원 고객의 5만원 이상 주문에 한해 무료 배송 서비스를 이용하실 수 있습니다. (할인 혜택이 적용된 할인가 기준으로 함)
 
-<%-- <a href="${pageContext.request.contextPath }/list">목록으로</a> --%>
+
+배송비	무료	회원 주문 (마일리지 제품 포함), 비회원 주문
+배송시간
+주문 상세 내역	기본 배송	반품	제주도	도서산간
+주문 처리 시간	주문 접수 후 대부분 익일 출고됩니다. (공휴일 제외, 금~일 접수건은 월요일 순차 처리)
+모든 주문 내역이 처리되기까지 영업일 기준 약 1~3일 정도가 소요될 수 있습니다.
+배송업체
+배송시간
+(영업일 기준)	1 ~ 3일	2 ~ 4일	4 ~ 6일	4 ~ 7일
+총 배송시간*
+(영업일 기준)	최대 4일	최대 5일	최대 7일	최대 8일
+배송조회
+주문/배송 상태 조회를 원하실 경우, 배송확인 이메일에 제공된 송장번호로 진행 상태를 확인하시거나 홈페이지 “주문/배송 조회” 메뉴에서 확인하실 수 있으며, 랑콤 공식 온라인 몰 고객케어센터 (전화 080-835-0094, 월~금 9:30~17:30) 로 연락 하시거나 1:1 온라인 문의를 통해 문의 하시면 답변을 받아보실 수 있습니다.
+
+반품 및 교환 절차
+반품 및 교환을 원하는 경우 고객케어센터 (080-835-0094)로 연락 하시어, 반품 및 교환 접수하시면 로젠 택배 기사님이 고객님의 제품을 픽업하러 방문하겠습니다 (로젠 택배 기사님께서 픽업 날짜, 시간 및 장소 확인을 위해 고객님께 연락 드릴 예정입니다). 단순 변심에 의한 반품은 환불 계좌로 반품비를 입금해 주시기 바랍니다. 입금확인 후 환불 처리가 진행 됩니다. 
+
+반품비 정책
+회원과 비회원의 단순 변심 또는 취소로 반송을 할 경우에는 반품비 2,500원 (도서 산간 지역 5,000원)을 고객이 부담하셔야 하며, 지정된 계좌 (씨티은행) 로 입금해 주셔야 합니다. 회원/비회원, 주문 취소 후 금액에 따라 배송비 및 반품비를 모두 지불해야 할 수 있으니, 자세한 내용은 하기 테이블 참고 부탁 드립니다.
+
+상품불량 또는 상품 등의 내용이 표시/광고 내용과 다르거나 계약내용과 다르게 이행되어 교환/반품을 하시는 경우, 배송비 및 반품비는 무료입니다.
+
+회원 & 비회원
+
+반품비	무료	배송 전 주문 취소
+제품불량으로 인한 반품, 교환
+5,000원	회원의 단순 변심으로 인한 전체 주문 취소 및 수취 거절 (*배송비 부과)
+10,000원	도서산간 거주 회원의 단순 변심으로 인한 전체 주문 취소 및 수취 거절 (배송비 부과)
+(* 배송비 부과 : 제품 주문 시 배송비 지불 대상이 아니었으나, 반품 사유 및 반품 후의 총 주문금액에 따라 배송비를 부과하게 된 경우)
+반품 및 교환 기간
+반품 및 교환은 결제완료 후 15일 이내에만 가능합니다.
+단, 제공받은 상품이 주문제품의 내용과 다르거나 계약 내용과 다르게 이행된 경우는 3개월 이내에 가능합니다.
+
+반품 및 교환이 불가한 경우
+단순 변심으로 인한 반품 또는 교환 요청이 결제완료 후 15일이 경과한 경우
+상품이 훼손되거나 포장개봉 또는 제품의 사용으로 상품가치가 현저히 감소한 경우
+제품 인도 시에 포함되어 있던 사은품이나 샘플이 누락된 경우
+시간이 경과되어 재판매가 곤란할 정도로 상품 가치가 상실된 경우 (예: 한정판매 제품, 제품 사용기한의 경과 등)
+특별한 할인 혜택이 적용된 제품의 경우
+
+교환 안내
+교환 및 일부 품목의 교환은 전체 반품 후 재주문 하셔야 합니다. 단순 변심에 의한 동일 제품의 옵션 (색상 등) 교환 이더라도 전체 반품 후 재주문 부탁 드립니다.
+
+환불 기간
+반품 상품이 판매자에게 도착하고 반품사유와 반품비가 확인되면 주문하신 결제 수단에 따라 환불이 진행됩니다. 처리 기간은 최대 2주 가량 소요될 수 있으며, 신용카드의 경우는 카드사 또는 고객님의 결제일에 따라 처리일정이 달라질 수 있습니다.
+주문/배송 불편 신고
+주문하신 제품이 누락되었거나 하자 및 파손 등이 있을 경우, 1:1 온라인 문의를 통해 문의하시거나, 랑콤 공식 온라인 몰 고객케어센터 (전화 080-835-0094, 월~금 9:30~17:30) 로 연락 주시기 바랍니다. 보다 신속한 도움을 위해 주문번호를 함께 알려주시기 바랍니다. 고객님의 불편사항을 해소할 수 있도록 최선의 노력을 다하겠습니다.
+
+기타
+제품사용으로 인해 발생한 피부 트러블로 인한 교환, 반품 및 환불은 의사 소견서를 반드시 첨부하여야 합니다.
+랑콤 공식 온라인 몰 (www.lancome.co.kr) 에서 구입한 제품은 오프라인 매장 (백화점 랑콤매장) 에서 반품하실 수 없습니다. 랑콤 공식 온라인 몰 (www.lancome.co.kr) 에서 구매하신 고객님께서는 택배로 제품을 반송하실 수 있습니다. 반품 하실 때에는 구입 시 제공된 샘플 및 사은품을 반드시 제품과 함께 반송해 주십시오.
+위의 반품 및 교환에 대한 사항은 관련 법령이 판매자가 제시한 조건보다 우선합니다.
+
+그 외 다른 매장에서 구매하신 랑콤 제품은 동일한 구매처로만 반품하실 수 있습니다.
+
+국제 배송
+현재 랑콤 공식 온라인 몰에서는 국제 배송 서비스를 제공하지 않습니다.
+</pre>
 
     
 
