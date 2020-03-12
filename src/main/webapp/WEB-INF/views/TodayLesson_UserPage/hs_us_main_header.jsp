@@ -49,15 +49,13 @@ header javascript -->
             </span>
          </div>
       </div>
-        <!-- 로그인 modal -->
+                  <!-- 로그인 modal -->
                   <%--
                    onclick="openModal();" -> 로그인 a태그     숨기는건 했는테 모달로 뜨지 않음... 이건 그냥 나중에 다시...  
                   
                   <jsp:include page="hs_us_main_sec_logintest.jsp"/>  
                                  
                   --%>
-                   
-      
                   <!-- 로그인 modal -->
        
        
