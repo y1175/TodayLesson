@@ -10,7 +10,7 @@
 
 
 <!--header style-->
-<link rel="stylesheet" href="resources/CSS/hs_us_main_header.css?ver=2">
+<link rel="stylesheet" href="resources/CSS/hs_us_main_header.css?ver=1">
 <!--header style-->
 
 <!-- header javascript 
@@ -49,15 +49,13 @@ header javascript -->
             </span>
          </div>
       </div>
-        <!-- 로그인 modal -->
+                  <!-- 로그인 modal -->
                   <%--
                    onclick="openModal();" -> 로그인 a태그     숨기는건 했는테 모달로 뜨지 않음... 이건 그냥 나중에 다시...  
                   
                   <jsp:include page="hs_us_main_sec_logintest.jsp"/>  
                                  
                   --%>
-                   
-      
                   <!-- 로그인 modal -->
        
        
@@ -68,7 +66,11 @@ header javascript -->
          </a>
          <span class="hs_us_mainheader_center_senior">
             <a href="">
-               <button>시니어지원 🌴</button>
+               <button id="senior_request" 
+                       onclick="window.open('${pageContext.request.contextPath}/senior_request_form/${pageContext.request.userPrincipal.name}','senior_form','width=570,height=420')" 
+                       value="시니어 지원하기">
+                             시니어지원 🌴
+               </button>
             </a>
          </span>
       </div>

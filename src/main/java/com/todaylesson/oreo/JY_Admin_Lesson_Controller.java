@@ -110,10 +110,8 @@ public class JY_Admin_Lesson_Controller {
 			list.add(num);
 		}
 		
-		
 		System.out.println(list);
-		
-		
+			
 		int result = adminservice.apply_lesson_result(list);
 		model.addAttribute("result",result);
 		return "TodayLesson_AdminPage/jy_ad_apply_exam_result";

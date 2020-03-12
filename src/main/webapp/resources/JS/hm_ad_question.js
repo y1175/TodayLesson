@@ -12,4 +12,8 @@ $(document).ready(function(){
 		
 		location.href="hm_ad_question_detail/"+no;
 	});
+	
+	
+	
+	
 });

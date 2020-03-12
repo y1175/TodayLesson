@@ -14,12 +14,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('작성완료');
-	location.href="/freeboard";
+	location.href="/todaylesson";
 	}
 else
 	{
 	alert('작성실패');
-	location.href="/freeboard";
+	location.href="/todaylesson";
 	}
 </script>
 </body>

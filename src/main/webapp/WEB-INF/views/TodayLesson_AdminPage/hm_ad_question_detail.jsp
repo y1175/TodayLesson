@@ -13,7 +13,7 @@
 <div>
 <ul>
 <li>
-글번호 : <span id="questiondetail_no"><c:out value="${dto.question_no}"/></span>
+글번호 : <c:out value="${dto.question_no}"/>
 </li>
 <li>
 아이디 : <c:out value="${dto.member_id}"></c:out>
@@ -21,25 +21,25 @@
 <c:choose>
 <c:when test="${dto.question_group eq '0'}">
 <li>
-<p>레  슨</p>
+<p>레  슨</p>                          
 </li>
 </c:when>
-<c:when test="${dto.question_group eq '0'}">
+<c:when test="${dto.question_group eq '1'}">
 <li>
 <p>시니어</p>
 </li>
 </c:when>
-<c:when test="${dto.question_group eq '0'}">
+<c:when test="${dto.question_group eq '2'}">
 <li>
 <p>스토어</p>
 </li>
 </c:when>
-<c:when test="${dto.question_group eq '0'}">
+<c:when test="${dto.question_group eq '3'}">
 <li>
 <p>주  문</p>
 </li>
 </c:when>
-<c:when test="${dto.question_group eq '0'}">
+<c:when test="${dto.question_group eq '4'}">
 <li>
 <p>기  타</p>
 </li>
@@ -84,8 +84,9 @@
 </c:choose>
 
 <div id="hm_question_answerdiv" style="display : none;">
-<form method="post" action="hm_ad_question_update">
+<form method="post" action="${pageContext.request.contextPath}/hm_ad_question_update">
 <ul>
+<input type="hidden" id="question_no" name="question_no" value="${dto.question_no }">
 <li>
 <textarea rows="20" cols="90" id="question_answer" name="question_answer">
 ${dto.member_id} 님 안녕하세요.
@@ -93,9 +94,10 @@ ${dto.member_id} 님 안녕하세요.
 </textarea>
 </li>
 <li>
-<input type="button" id="question_answerbtn" value="답변달기">
+<input type="submit" id="question_answerbtn" value="답변달기">
 </li>
 </ul>
+<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 </div>
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.todaylesson.DTO.LessonDTO;
 
-public interface JY_US_LessonService {
+public interface JY_SN_LessonService {
 
 	public int insert_Lesson(LessonDTO dto);
 

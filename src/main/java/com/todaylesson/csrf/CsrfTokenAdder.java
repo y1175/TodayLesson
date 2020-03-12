@@ -121,7 +121,6 @@ public class CsrfTokenAdder implements Filter {
 		String replacedText = null;	
 
 		boolean excludeState = false;
-
 		
 
 		//-------------------------------------

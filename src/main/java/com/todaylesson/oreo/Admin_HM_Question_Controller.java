@@ -65,22 +65,21 @@ public class Admin_HM_Question_Controller {
 		
 	}
 	
-	@RequestMapping("/hm_ad_question_update/{no}")
-	private String hm_ad_question_update(@PathVariable int no
-								,@RequestParam("question_answer") String question_answer)
+	@RequestMapping("/hm_ad_question_update")
+	private String hm_ad_question_update(@RequestParam("question_no") int question_no
+				,@RequestParam(value = "question_answer", required=false) String question_answer
+				,Model model)
 	{
-	    int question_no = no;
-		System.out.println(question_no);
-		System.out
-		.println(question_answer);
 		HashMap<String, Object>map = new HashMap<>();
 		map.put("question_no", question_no);
 		map.put("question_answer", question_answer);
 		
-		service.hm_ad_question_update(map);
+		int result = service.hm_ad_question_update(map);
 		
+		model.addAttribute("result",result);
+		model.addAttribute("question_no",question_no);
 		
-		return "/TodayLesson_AdminPage/hm_ad_question_detail/question_no.hs_ad_main_section";
+		return "/TodayLesson_AdminPage/hm_ad_question_updateresult.hs_ad_main_section";
 	}
 
 }

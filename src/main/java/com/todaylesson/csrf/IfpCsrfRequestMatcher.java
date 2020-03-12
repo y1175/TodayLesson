@@ -190,12 +190,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if("/hm_ad_question".equals(strUri))
         	return false;
         //혜미 관리자 1:1문의 디테일 페이지 이동
-        else if("hm_ad_question_detail".equals(strUri))
-        	return false;
+        /*else if("hm_ad_question_detail".equals(strUri))
+        	return false;*/
 
         //혜미 관리자 1:1문의  관리자 답변달기
-        else if("hm_ad_question_update".equals(strUri))
-        	return false;
+       /* else if("hm_ad_question_update".equals(strUri))
+        	return false;*/
 
    //은지
         //은지 관리자 상품조회

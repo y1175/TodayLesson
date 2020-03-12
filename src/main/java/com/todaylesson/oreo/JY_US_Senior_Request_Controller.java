@@ -115,7 +115,7 @@ public class JY_US_Senior_Request_Controller {
 		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
 		model.addAttribute("token",token);
 		
-		return "TodayLesson_UserPage/jy_us_senior_switch";
+		return "TodayLesson_SeniorPage/jy_sn_senior_switch.sn_main_section";
 	}
 	
 	// 당신은 이미 시니어 입니다.
@@ -123,6 +123,7 @@ public class JY_US_Senior_Request_Controller {
 	public String you_are_senior() {
 		return "TodayLesson_SeniorPage/jy_sn_you_are_senior";
 	}
+	
 	
 	// 관련 정보 입력하면 시니어 정보 업데이트
 	@RequestMapping("plus_senior")
@@ -132,7 +133,7 @@ public class JY_US_Senior_Request_Controller {
 		int result = seniorservice.plus_senior(dto);
 		model.addAttribute("result",result);
 		
-		return "TodayLesson_UserPage/jy_us_insertresult";
+		return "TodayLesson_UserPage/jy_us_insertresult.hs_sn_main_section";
 	}
 	
 	

@@ -225,7 +225,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <textarea id="lesson_senior_content" name="lesson_senior_content" ></textarea><br>
 
 
-<h1>한번 신청한 레슨은 변경, 삭제가 불가능하므로 신중해주시길 바라겠습닏.</h1>
+<h1>거절 처리 된 레슨이 5개가 넘는 순간, 다시는 레슨을 신청할 수 없습니다.</h1>
 
 
 <input type="submit" value="글 작성"/>

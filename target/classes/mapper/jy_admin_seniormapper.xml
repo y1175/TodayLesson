@@ -12,7 +12,20 @@ select * from senior
 
 </select>
 
+<select id="select_senior" resultType="com.todaylesson.DTO.SeniorDTO">
 
+select * from senior
+where senior_no = #{senior_no}
+
+</select>
+
+<select id="senior_lesson" resultType="com.todaylesson.DTO.LessonDTO">
+
+select * from lesson
+where senior_no = #{senior_no}
+
+
+</select>
 
 
 </mapper>
