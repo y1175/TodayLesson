@@ -1,19 +1,19 @@
-package com.todaylesson.naverlogin;
+package com.todaylesson.service;
 
 import com.github.scribejava.core.builder.api.DefaultApi20;               
 
-public class NaverLoginApi extends DefaultApi20{
+public class EJ_Us_NaverLoginApi extends DefaultApi20{
 
     
-    protected NaverLoginApi(){
+    protected EJ_Us_NaverLoginApi(){
     }
 
     private static class InstanceHolder{
-        private static final NaverLoginApi INSTANCE = new NaverLoginApi();
+        private static final EJ_Us_NaverLoginApi INSTANCE = new EJ_Us_NaverLoginApi();
     }
 
 
-    public static NaverLoginApi instance(){
+    public static EJ_Us_NaverLoginApi instance(){
         return InstanceHolder.INSTANCE;
     }
 

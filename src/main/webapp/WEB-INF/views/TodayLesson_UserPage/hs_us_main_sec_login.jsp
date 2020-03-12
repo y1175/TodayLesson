@@ -14,7 +14,8 @@
 <!-- KAKAO LOGIN JS --> 
 
 <!-- NAVER LOGIN JS --> 
-
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- NAVER LOGIN JS --> 
 
 <!--  -->
@@ -60,9 +61,14 @@
                   <a href="${kakaologin_URL}"id="kakao-login-btn"></a> 
                   <!-- 카카오 -->
                   <!-- 네이버-->
-                  <a href="">
+                  <%-- <a href="${naverlogin_URL }">
                      <img width="222" style="height: 49px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/> <!-- 버튼 -->
-                  </a> 
+                  </a>  --%>
+                  <!-- 네이버 로그인 화면으로 이동 시키는 URL -->
+<!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
+<!-- <div id="naver_id_login"> --><a href="${naverlogin_URL}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a><!-- </div> -->
+               <%--   네이버 유알엘:${naverlogin_URL } --%>
                   <!-- 네이버-->
                   <!-- 구글 -->
                   <a>구글</a> 
