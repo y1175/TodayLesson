@@ -115,7 +115,7 @@ public class JY_US_Senior_Request_Controller {
 		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
 		model.addAttribute("token",token);
 		
-		return "TodayLesson_SeniorPage/jy_sn_senior_switch.hs_sn_main_section";
+		return "TodayLesson_SeniorPage/jy_sn_senior_switch";
 	}
 	
 	// 당신은 이미 시니어 입니다.
