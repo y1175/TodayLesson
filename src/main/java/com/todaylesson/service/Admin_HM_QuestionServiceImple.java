@@ -44,11 +44,13 @@ public class Admin_HM_QuestionServiceImple implements Admin_HM_QuestionService {
 	}
 
 	@Override
-	public void hm_ad_question_update(HashMap<String, Object> map) {
+	public int hm_ad_question_update(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		mapper.hm_ad_question_update(map);
+		return mapper.hm_ad_question_update(map);
+	}
+
 	}
 
 
 
-}
+

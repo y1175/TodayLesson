@@ -14,7 +14,7 @@ public interface Admin_HM_QuestionService {
 
 public Question_1_1DTO hm_ad_question_detail(int question_no);
 
-	public void hm_ad_question_update(HashMap<String, Object> map);
+	public int hm_ad_question_update(HashMap<String, Object> map);
 
 	
 
