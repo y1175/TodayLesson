@@ -49,5 +49,17 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 		return mapper.freeboard_replycount(hidden_freeboard_no);
 	}
 
+	@Override
+	public int notice_insert(NoticeDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.notice_insert(dto);
+	}
+
+	@Override
+	public List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no) {
+		// TODO Auto-generated method stub
+		return mapper.boardreply_list(freeboard_no);
+	}
+
 
 }

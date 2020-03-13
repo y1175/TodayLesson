@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.NoticeDTO;
 import com.todaylesson.DTO.PageMaker;
@@ -52,6 +54,8 @@ public class Admin_YI_FreeBoard_Controller {
 				model.addAttribute("search",search);
 				model.addAttribute("searchtxt",searchtxt);
 				
+				
+				
 				//게시물 옆 답글 숫자 표시
 				List<Integer> replist=new ArrayList<>();
 				for(int i=0; i<list.size();i++)
@@ -64,5 +68,43 @@ public class Admin_YI_FreeBoard_Controller {
 					model.addAttribute("replist",replist);
 		
 		return "/TodayLesson_AdminPage/yi_ad_freeboard";
+	}
+	
+	@RequestMapping("/freeboard_noticewrite")
+	public String admin_noticewrite()
+	{
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticeinsert";
+	}
+	
+	@RequestMapping("/freeboard_noticewriteResult")
+	public String admin_noticewriteResult(
+			@RequestParam String member_id
+			,@RequestParam int notice_category
+			,@RequestParam String notice_title
+			,@RequestParam String notice_content
+			,Model model)
+	{
+		
+		NoticeDTO dto= new NoticeDTO();
+		dto.setMember_id(member_id);
+		dto.setNotice_category(notice_category);
+		dto.setNotice_title(notice_title);
+		dto.setNotice_content(notice_content);
+		
+		
+		int result=service.notice_insert(dto);
+		model.addAttribute("result",result);
+		
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticeinsertResult";
+	}
+	@ResponseBody
+	@RequestMapping("/freeboard_replyjson/{freeboard_no}")
+	public List<SQLjoin_Member_FreeBoardDTO> detailjson(@PathVariable int freeboard_no
+			,Model model)
+	{
+				List<SQLjoin_Member_FreeBoardDTO> list=service.boardreply_list(freeboard_no);
+				model.addAttribute("rep_list",list);
+
+		return list;
 	}
 }

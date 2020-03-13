@@ -13,15 +13,86 @@
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <title>게시글 목록</title>
+<script>
+function reply_view(no)
+{
+
+	var freeboard_no=no;
+	var obj=document.getElementById("add_reply-"+freeboard_no);
+	
+if(obj.hasChildNodes())
+obj.removeChild(obj.firstChild);
+
+	
+if(obj.hasChildNodes()===false)
+	{
+document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style");
+ 
+	$.ajax({
+		url:'/freeboard_replyjson/'+freeboard_no
+		,dataType:'json'
+		,success:function(item){
+
+			console.log(item[0].member_id);
+			
+			for(var i in item)
+				{
+				
+				let member_nick=item[i].member_nick;
+				let boardreply_content=item[i].boardreply_content;
+				let boardreply_writedate=item[i].boardreply_writedate;
+			/* 	$('.add_reply').append(repdetail); */
+			
+			var textnode=document.createTextNode(member_nick);
+			var textnode2=document.createTextNode(boardreply_content);
+			var textnode3=document.createTextNode(boardreply_writedate);
+			
+			var node=document.createElement("TR");
+			var node2=document.createElement("TD");
+			var node3=document.createElement("TD");
+			var node4=document.createElement("TD");
+						
+			node2.appendChild(textnode);
+			node3.appendChild(textnode2);
+			node4.appendChild(textnode3);
+			
+			node.appendChild(node2);
+			node.appendChild(node3);
+			node.appendChild(node4);
+				document.getElementById("add_reply-"+freeboard_no).appendChild(node);
+				}
+		},error:function(data,status,jqXHR){
+			console.log('실패',data);
+			console.log(status);
+			console.log(jqXHR);
+			
+		}
+	});
+ 
+
+	}
+else
+	{
+
+	document.getElementById("add_reply_thead-"+freeboard_no).style.display="none";
+	while(obj.hasChildNodes())
+		{
+	obj.removeChild(obj.firstChild);
+		}
+	}
+	}
+
+
+</script>
 </head>
 <body>
 <sec:authentication property="principal" var="pinfo"/>
 게시판 관리페이지<br>
-<input type="button" value="공지등록">	
+<input type="button" value="공지등록" onclick="location.href='/freeboard_noticewrite'">	
 <table class="table">
 <thead>
 <tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>관리</th>
@@ -32,9 +103,7 @@
 <tr>
 <td>공지사항</td>
 <td>${notice.notice_no }</td>
-<td>			
-<a href="notice_detail/${notice.notice_no }" >${notice.notice_title }</a>
-</td>
+<td>${notice.notice_title }</td>
 <td>${notice.member_nick }</td>
 <td>${notice.notice_writedate }</td>
 <td>
@@ -45,24 +114,22 @@
 </td>
 <tr>
 <td colspan="6">
-<div class="collapse" id="notice_detail-${notice.notice_no}">
+<div style="text-align:center;" class="collapse" id="notice_detail-${notice.notice_no}">
   
    
-  <div>
   내용 : ${notice.notice_content}<br>
   <form action="" method="post">
-  <textarea style="resize: none;" name="boardreply_content"></textarea><br>
   <input type="hidden" name="member_id" value=""><br>
-  <input type="button" value="답변"><input type="button" value="삭제">
+  <input type="button" value="수정"><input type="button" value="삭제">
   </form>
-  </div>
+
 
 </div>
 </td>
 </tr>
 
 
-</tr>
+
 </c:forEach>
 </tbody>
 
@@ -79,12 +146,9 @@
 </td>
 <td>${item.freeboard_no}</td>
 <td>
-<sec:authorize access="isAuthenticated()">
-<a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }</a>
-</sec:authorize>
-<sec:authorize access="isAnonymous()">
+
 ${item.freeboard_title }		[${replist[status.index]}]
-</sec:authorize>
+
 </td>
 <td><c:out value=" ${item.member_nick }"></c:out></td>
 <td><c:out value=" ${item.freeboard_writedate }"></c:out></td>
@@ -98,13 +162,24 @@ ${item.freeboard_title }		[${replist[status.index]}]
 
 <tr>
 <td colspan="6">
-<div class="collapse" id="freeboard_detail-${item.freeboard_no}">
+<div  style="text-align:center;" class="collapse" id="freeboard_detail-${item.freeboard_no}">
   
    
   <div>
   내용 : ${item.freeboard_content}<br>
+<input type="button" value="댓글보기/접기" id="reply_view_btn" onclick="reply_view(${item.freeboard_no})">
+<table>
+<thead id="add_reply_thead-${item.freeboard_no}" style="display:none;">
+<tr><th>작성자</th><th>내용</th><th>작성일</th><th>삭제</th>
+</tr>
+</thead>
+<tbody id="add_reply-${item.freeboard_no}" >
+</tbody>
+</table>
+
+
   <form action="" method="post">
-  <textarea style="resize: none;" name="boardreply_content"></textarea><br>
+  <textarea style="resize: none;" rows="5" cols="100" name="boardreply_content"></textarea><br>
   <input type="hidden" name="member_id" value=""><br>
   <input type="button" value="답변"><input type="button" value="삭제">
   </form>

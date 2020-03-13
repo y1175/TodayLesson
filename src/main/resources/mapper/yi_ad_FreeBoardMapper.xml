@@ -32,6 +32,12 @@ on notice.member_id=member.member_id
 order by notice_no desc
 limit 0,5
 </select>
+<insert id="notice_insert" parameterType="com.todaylesson.DTO.NoticeDTO">
+insert into notice
+(notice_category,member_id,notice_title,notice_content,notice_writedate,notice_readno)
+values
+(#{notice_category},#{member_id},#{notice_title},#{notice_content},now(),0)
+</insert>
 
 <!-- 게시물 상세보기 -->
 <select id="freeboard_detail" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO">

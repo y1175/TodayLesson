@@ -15,4 +15,8 @@ public interface Admin_YI_FreeBoard_Service {
 
 	int freeboard_replycount(int freeboard_no);
 
+	int notice_insert(NoticeDTO dto);
+
+	List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no);
+
 }
