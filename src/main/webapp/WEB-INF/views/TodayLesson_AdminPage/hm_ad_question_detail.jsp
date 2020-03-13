@@ -88,7 +88,7 @@
 <ul>
 <input type="hidden" id="question_no" name="question_no" value="${dto.question_no }">
 <li>
-<textarea rows="20" cols="90" id="question_answer" name="question_answer">
+<textarea rows="20" cols="90" id="question_answer" name="question_answer" required="required">
 ${dto.member_id} 님 안녕하세요.
 오늘의 레슨 고객 센터팀 입니다.
 </textarea>

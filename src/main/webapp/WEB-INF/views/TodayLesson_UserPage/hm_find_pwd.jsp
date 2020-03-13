@@ -21,11 +21,11 @@
 <ul>
 <li>
 <label for="inputId">아이디</label>
-<input type="text"  class="form-control" id="inputId_2" name="inputId_2" placeholder="ex) godmisu">
+<input type="text"  class="form-control" id="inputId_2" name="inputId_2" placeholder="ex) godmisu" required="required">
 </li>
 <li>
 <label>이메일</label>
-<input type="text"  class="form-control" id="inputEmail_2" name="inputEmail_2" placeholder="ex) E-mail@gmail.com">
+<input type="text"  class="form-control" id="inputEmail_2" name="inputEmail_2" placeholder="ex) E-mail@gmail.com" required="required">
 </li>
 <li>
 <input type="submit" id="searchBtn2" class="btn btn-primary btn-block" value="확인">

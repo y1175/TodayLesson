@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 <input type ="hidden" id="member_id" name ="member_id" value="${pageContext.request.userPrincipal.name}">
 <li>
 <label>문의 분류</label>
-<select id="question_group" name="question_group">
+<select id="question_group" name="question_group" required="required">
 <option value ="">문의 유형을 선택하세요</option>
 <option value ="0">레   슨</option>
 <option value ="1">시니어</option>
@@ -27,11 +27,11 @@ pageEncoding="UTF-8"%>
 </li>
 <li>
 <label>문의 제목</label>
-<input type="text" id="question_title" name ="question_title">
+<input type="text" id="question_title" name ="question_title" required="required">
 </li>
 <li>
 <label>문의 내용</label>
-<textarea rows="20" cols="90" id="question_content" name="question_content" placeholder="문의 내용을 입력하세요"></textarea>
+<textarea rows="20" cols="90" id="question_content" name="question_content" placeholder="문의 내용을 입력하세요" required="required"></textarea>
 </li>
 <li>
 <input type="button" id="hm_us_question_insertbtn" value="등록">

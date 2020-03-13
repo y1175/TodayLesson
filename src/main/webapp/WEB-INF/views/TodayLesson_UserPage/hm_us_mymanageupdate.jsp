@@ -26,13 +26,13 @@ onkeyup="passwordCheckFunction();"><br>
 <div class="alert alert-success" id="alert-success">비밀번호가일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지않습니다.</div>
 <br><label>이름</label>
-<input type="text" name="member_name" id="member_name" value="${dto.member_name}"><br>
+<input type="text" name="member_name" id="member_name" value="${dto.member_name}" required="required"><br>
 <label>생년월일</label>
-<input type="date" name="member_birth" id="member_birth" value="${dto.member_birth}"><br>
+<input type="date" name="member_birth" id="member_birth" value="${dto.member_birth}" required="required"><br>
  <label>e-mail</label>
-<input type="email" name="member_email" id="member_email" value="${dto.member_email}"><br>
+<input type="email" name="member_email" id="member_email" value="${dto.member_email}" required="required"><br>
  <label>연락처</label>
- <input type="text" name="member_phone" id="member_phone" value="${dto.member_phone}"><br>
+ <input type="text" name="member_phone" id="member_phone" value="${dto.member_phone}" required="required"><br>
 <label for='addr'>주소</label>
 					<div class='form-row'>
 						<div class='col-5'>
@@ -57,7 +57,7 @@ onkeyup="passwordCheckFunction();"><br>
 						for="detailaddr">상세주소</label> <input type="text" id="detailaddr"
 						name="detailaddr" class="form-control"> 
 <label>닉네임</label>
-<input type="text" name="member_nick" value="${dto.member_nick}"><br>
+<input type="text" name="member_nick" value="${dto.member_nick}" required="required"><br>
 <button type="submit" id="submit" class="btn btn-primary">정보 수정</button><br>
 
 </form>
