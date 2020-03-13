@@ -21,7 +21,7 @@ public class JY_Mail_Test_service {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	public int mailSendWithPassword(String member_id, String senioir_email, String lesson_title, HttpServletRequest request) {
+	public void mailSendWithPassword(String member_id, String senioir_email, String lesson_title, HttpServletRequest request) {
 				
 		MimeMessage mail = mailSender.createMimeMessage();
 		String htmlStr = "<h2>æ»≥Á«œººø‰ '"+ member_id +"' ¥‘</h2><br><br>" 
@@ -38,8 +38,7 @@ public class JY_Mail_Test_service {
 			mailSender.send(mail);
 		} catch (MessagingException e) { 
 			e.printStackTrace();
-		}
-		return mapper.lessonResult(member_id, senioir_email,lesson_title);	
+		}	
 	
 	}
 

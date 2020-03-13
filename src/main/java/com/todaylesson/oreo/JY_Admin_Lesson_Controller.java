@@ -209,9 +209,8 @@ public class JY_Admin_Lesson_Controller {
 		int result = adminservice.approve(lesson_no);
 		model.addAttribute("result",result);
 		
-		int rr = mailSender.mailSendWithPassword(member_id,senior_email, lesson_title, request);
+		mailSender.mailSendWithPassword(member_id,senior_email, lesson_title, request);
  		System.out.println(senior_email);
- 		model.addAttribute("result",rr);
  		
  		
 		return "TodayLesson_AdminPage/jy_ad_lesson_approve";
