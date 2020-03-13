@@ -13,5 +13,7 @@ public class SalesDTO {
 
 	private int sales_no;
 	private int orderlist_no;
+	private int sales_status;
 	private int sales_comm;
+	private int sales_surtax;
 }

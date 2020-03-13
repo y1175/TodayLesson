@@ -12,11 +12,14 @@ import lombok.Setter;
 public class OrderListDTO {
 
 	private int orderlist_no;
+	private String member_id;
 	private int product_no;
 	private int lesson_no;
 	private int cart_no;
 	private String orderlist_date;
-	private int orderlist_status;
+	private int orderlist_orderstatus;
+	private int orderlist_paystatus;
 	private int orderlist_cost;
-	private String member_id;
+	private int orderlist_usepoint;
+	
 }
