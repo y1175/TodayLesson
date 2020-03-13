@@ -373,7 +373,6 @@ public class TodayLessonController {
 
      	
      	@RequestMapping(value="/findPassword",method=RequestMethod.POST)
-     	@ResponseBody
      	public String findPassword(@RequestParam("inputId_2")String member_id,
                  @RequestParam("inputEmail_2") String member_email
                  ,HttpServletRequest request
@@ -383,7 +382,7 @@ public class TodayLessonController {
      		System.out.println(member_email);
      		model.addAttribute("result",result);
      		
-     		return "/TodayLesson_UserPage/hm_us_search_pwd.us_main_section";
+     		return "/TodayLesson_UserPage/hm_us_search_pwd";
      	}
 /*         pwd Ã£±â
          @RequestMapping(value="/searchPassword",method=RequestMethod.POST)
