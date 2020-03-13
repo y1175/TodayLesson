@@ -5,9 +5,11 @@
 <mapper namespace="com.todaylesson.Mapper.JY_US_TotalLessonMapper">
 
 
+<!-- 승인 난 애들만 볼 수 있으니까 -->
 <select id="ttlesson_list" resultType="com.todaylesson.DTO.LessonDTO">
 
-
+select * from lesson
+where lesson_result = 1;
 
 </select>
 

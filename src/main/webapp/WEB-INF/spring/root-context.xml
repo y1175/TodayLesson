@@ -45,8 +45,10 @@
    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />
-      <property name="username" value="k.zoey94@gmail.com" />
-      <property name="password" value="*jk940925" />
+      <property name="username" value="todaylesson144@gmail.com" />
+      <property name="password" value="fmuyxcrhnsmiuick" />
+      <!--  구글 비번은 Today144!   이거임
+      이걸로 했더니 뭐가 문젠지 오류가 계속 나서 앱용 비번을 설정해놓은거임 -->
       <property name="javaMailProperties">
          <props>
             <prop key="mail.transport.protocol">smtp</prop>

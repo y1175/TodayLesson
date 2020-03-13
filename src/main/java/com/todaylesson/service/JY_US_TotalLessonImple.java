@@ -12,7 +12,7 @@ import com.todaylesson.Mapper.JY_US_TotalLessonMapper;
 public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 
 	@Autowired
-	JY_US_TotalLessonMapper mapper;
+	private JY_US_TotalLessonMapper mapper;
 	
 	
 	@Override

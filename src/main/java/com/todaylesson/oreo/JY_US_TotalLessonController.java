@@ -19,13 +19,13 @@ public class JY_US_TotalLessonController {
 	private JY_US_TotalLessonService ttlesson_service;
 	
 	
-	@RequestMapping()
+	@RequestMapping("total_lesson_list")
 	public String totallesson_list(Model model) {
 
 		List<LessonDTO> list = ttlesson_service.ttlesson_list();
 		model.addAttribute("list",list);
 		
-		return "";
+		return "TodayLesson_UserPage/jy_us_total_lesson_list";
 	}
 	
 }
