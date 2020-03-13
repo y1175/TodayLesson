@@ -189,6 +189,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //혜미 관리자 1:1문의 관리페이지 이동
         else if("/hm_ad_question".equals(strUri))
         	return false;
+        else if("/hm_us_mymanageupdatesms".equals(strUri))
+        	return false;
         //혜미 사용자 1:1문의 디테일 페이지 이동
       /*  else if("/hm_us_question_detail/{no}".equals(strUri))
         	return false;*/

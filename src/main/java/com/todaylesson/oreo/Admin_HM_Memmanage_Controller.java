@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,8 +29,11 @@ public class Admin_HM_Memmanage_Controller {
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
-			,Model model)
+			,Model model ) 
 	{
+		  
+		
+		
 		int totalCount= service.totalCount(search, searchtxt);
 		int pageSize=15;
 		int blockSize=5;
