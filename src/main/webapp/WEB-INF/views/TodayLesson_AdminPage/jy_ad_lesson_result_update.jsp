@@ -30,11 +30,8 @@
 
 <h1>레슨을 승인하시겠습니까?</h1>
 
-	${dto.senior_email }
 	<br>
-	${dto.senior_nick}
 
-디티오 값 받을 수 있네	
 	
 <input type="button" name="yes" id="yes" onclick="approve(${lesson_no});" value="승인">
 <input type="button" name="no" id="no" onclick="reject(${lesson_no});" value="거절">

@@ -15,15 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SeniorDTO;
+import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.JY_Admin_LessonService;
+import com.todaylesson.service.JY_Mail_Test_service;
 
 @Controller
 public class JY_Admin_Lesson_Controller {
@@ -32,6 +37,14 @@ public class JY_Admin_Lesson_Controller {
 	@Resource(name="adminservice")
 	private JY_Admin_LessonService adminservice;
 	
+	
+	  @Autowired
+	private JY_Mail_Test_service mailSender;
+	   
+	
+	
+	  
+	  
 	
 //  아임포트의 토큰 값 받아오기
 	public String getToken(HttpServletRequest request,HttpServletResponse response,JSONObject json,String requestURL) throws Exception{
@@ -180,17 +193,27 @@ public class JY_Admin_Lesson_Controller {
     // 레슨 심사 팝업
 	@RequestMapping("lesson_result_update/{lesson_no}")
 	public String lesson_result_update(@PathVariable int lesson_no,Model model) {
-		SeniorDTO dto = adminservice.get_senior_info(lesson_no);
 		model.addAttribute("lesson_no",lesson_no);
-		model.addAttribute("dto",dto);
 		return "TodayLesson_AdminPage/jy_ad_lesson_result_update";
 	}
 	
 	// 레슨 수락
 	@RequestMapping("lesson_approve/{lesson_no}")
-	public String lesson_approve(@PathVariable int lesson_no, Model model) {
+	public String lesson_approve(@PathVariable int lesson_no, Model model, HttpServletRequest request) {
+
+		AllLessonDTO dto = adminservice.select_lesson(lesson_no);
+		String member_id = dto.getMember_id();
+		String lesson_title = dto.getLesson_title();
+		String senior_email = dto.getSenior_email();
+		
 		int result = adminservice.approve(lesson_no);
 		model.addAttribute("result",result);
+		
+		int rr = mailSender.mailSendWithPassword(member_id,senior_email, lesson_title, request);
+ 		System.out.println(senior_email);
+ 		model.addAttribute("result",rr);
+ 		
+ 		
 		return "TodayLesson_AdminPage/jy_ad_lesson_approve";
 	}
 	
@@ -202,6 +225,8 @@ public class JY_Admin_Lesson_Controller {
 		model.addAttribute("result",result);
 		return "TodayLesson_AdminPage/jy_ad_lesson_reject";
 	}
+	
+
 	
 	
 }

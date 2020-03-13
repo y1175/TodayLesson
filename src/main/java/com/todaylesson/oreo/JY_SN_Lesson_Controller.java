@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.common.util.concurrent.ExecutionError;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SeniorDTO;
+import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.JY_Admin_LessonService;
 import com.todaylesson.service.JY_SN_LessonService;
 import com.todaylesson.service.JY_US_SeniorService;
@@ -27,7 +29,8 @@ public class JY_SN_Lesson_Controller {
 	@Resource(name="lessonservice")
 	private JY_SN_LessonService lesson_service;
 	
-	
+	   
+
 	@RequestMapping("/lesson_list/{member_id}")
 	public String list(Model model,@PathVariable String member_id){
 		int senior_no = lesson_service.select_senior_no(member_id);
