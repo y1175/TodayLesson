@@ -15,7 +15,7 @@ import com.todaylesson.Mapper.JY_Admin_LessonMapper;
 @Service
 public class JY_Mail_Test_service {
 
-	@Autowired
+	@Autowired 
 	private JY_Admin_LessonMapper mapper;
 	
 	@Autowired
