@@ -368,7 +368,7 @@ public class TodayLessonController {
      	public String findPw()
      	{
      		
-     		return "/TodayLesson_UserPage/hm_find_pwd";
+     		return "/TodayLesson_UserPage/hm_find_pwd.us_main_section";
      	}
 
      	
@@ -383,7 +383,7 @@ public class TodayLessonController {
      		System.out.println(member_email);
      		model.addAttribute("result",result);
      		
-     		return "/TodayLesson_UserPage/hm_us_search_pwd";
+     		return "/TodayLesson_UserPage/hm_us_search_pwd.us_main_section";
      	}
 /*         pwd Ã£±â
          @RequestMapping(value="/searchPassword",method=RequestMethod.POST)

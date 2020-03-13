@@ -89,8 +89,7 @@ public class User_HM_Question_Controller {
 		model.addAttribute("dto",dto);
 		
 		
-		return "/TodayLesson_UserPage/hm_us_question_detail.us_my_secti++"
-				+ "+++on";
+		return "/TodayLesson_UserPage/hm_us_question_detail.us_my_section";
 		
 	}
 	
