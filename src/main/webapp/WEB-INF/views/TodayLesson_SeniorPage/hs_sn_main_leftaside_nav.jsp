@@ -23,8 +23,8 @@
       <div class="hs_sn_main_asidenav_line"></div>
       
       <b>매출정산</b>
-      <br>
-         <a href="">매출현황</a>
+      <br> <!-- 나중에 컨트럴러에서 시니어 no값 넘기기 -->   
+         <a href="/senior_sales_list/${senior_no}">매출현황</a>
          <br>
          <a href="">정산신청</a>
          <br>
