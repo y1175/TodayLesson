@@ -61,24 +61,28 @@
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath }/ej_ad_product_insertresult"> 
 		
-		<!-- <label>카테고리</label>
+		<label>카테고리</label>
 		<select name="product_category">
-		<option value="" selected="selected"></option>
-		<option value="">운동</option>
-		<option value="">운동</option>
-		<option value="">운동</option>
-		<option value="">운동</option>
-		<option value="">운동</option></select>
-		<br> -->
+		<option value="1">외국어</option>
+		<option value="2">IT</option>
+		<option value="3">요리</option>
+		<option value="4">DIY</option>
+		<option value="5">운동</option>
+		<option value="6">기타</option>
+		</select>
+		<br>
 		<label>제품명</label><br>
 		 <input type="text" name="product_name" style="width: 40%;" placeholder="제품명" required="required"/> <br>
 			<br>
 				<label>가격</label>
 				 <input type="text" name="product_cost" style="width: 40%;" placeholder="가격"  required="required"/> <br>
-				 <label>옵션</label>
+				  <label>할인율</label>
+				 <input type="text" name="product_sale" style="width: 40%;" placeholder="%" required="required"/> <br>
+			<!-- 	 <label>할인 후 가격</label>
+				 <input type="text" name="product_after_cost" style="width: 40%;" placeholder="할인 후 가격"  required="required"/> <br> -->
 				 <label>수량</label>
 				 <input type="text" name="product_stock" style="width: 40%;" placeholder="수량" required="required"/> <br>
-				<!--   <input type="text" name="product_thumb" style="width: 40%;" placeholder="수량" value="'hi"/> <br> -->
+				
 				<label>상세설명</label><br>
 				<textarea id="summernote" name="product_content" placeholder="제품 상세 설명" required="required"></textarea>
 			

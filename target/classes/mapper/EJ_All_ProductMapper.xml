@@ -16,8 +16,8 @@ from product
 
 <!-- 게시판 insert -->
 <insert id="insertBoard" parameterType="com.todaylesson.DTO.ProductDTO">
-INSERT INTO product (product_name, product_cost, product_stock, product_content, product_img, product_thumb)
-				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb})
+INSERT INTO product (product_name, product_cost, product_stock, product_content, product_img, product_thumb, product_category, product_sale, product_after_cost)
+				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb}, #{product_category}, #{product_sale}, #{product_after_cost})
 </insert>
 
 

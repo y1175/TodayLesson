@@ -14,6 +14,7 @@ public class ProductDTO {
 	private int product_no;
 	private String product_name;
 	private int product_cost;
+	private int product_after_cost;
 	private int product_stock;
 	private int product_like;
 	private String product_content;

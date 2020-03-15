@@ -34,7 +34,30 @@ ${pageContext.request.contextPath}
 <a href="ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a><br>
 ${item.product_sale }%<br>
 
-${item.product_category}<br>
+<c:set var="category" value="${item.product_category }"/>
+ <c:choose>
+         <c:when test = "${category==1}">
+            외국어
+         </c:when>
+            <c:when test = "${category==2}">
+            IT
+         </c:when>
+            <c:when test = "${category==3}">
+            요리
+         </c:when>
+            <c:when test = "${category==4}">
+            DIY
+         </c:when>
+            <c:when test = "${category==5}">
+            운동
+         </c:when>
+            <c:when test = "${category==6}">
+            기타
+         </c:when>
+          <c:otherwise>
+        기타
+         </c:otherwise> 
+      </c:choose><br>
 <a href="ej_store_detail/${item.product_no}">${item.product_name}</a><br>
 <hr>
 ${item.product_cost}원<br>
