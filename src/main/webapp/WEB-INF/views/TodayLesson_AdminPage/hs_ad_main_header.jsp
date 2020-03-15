@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <!--header style-->
-<link rel="stylesheet" href="resources/CSS/hs_ad_main_header.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_main_header.css?ver=1">
 <!--header style-->
 
 </head>
@@ -30,7 +30,7 @@
                <b>관리자모드</b>
             </a>
             <a href="">
-               <img src="resources/IMG/SN_AD_Logo.png" alt="SN_AD_Logo" style="width: 15%;">
+               <img src="${pageContext.request.contextPath}/resources/IMG/SN_AD_Logo.png" alt="SN_AD_Logo" style="width: 15%;">
             </a>
          </div> 
       </div>  

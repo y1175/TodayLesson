@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--aside nav style-->
-<link rel="stylesheet" href="resources/CSS/hs_sn_main_leftaside_nav.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_main_leftaside_nav.css">
 <!--aside nav style-->
 
 </head>

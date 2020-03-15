@@ -28,7 +28,7 @@
 <!--icon-->
 
 <!-- font style -->
-   <link rel="stylesheet" href="resources/CSS/font.css">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/font.css">  
 <!-- font style -->
 
 </head>
