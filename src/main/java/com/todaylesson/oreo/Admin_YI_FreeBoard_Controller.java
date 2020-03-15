@@ -107,4 +107,12 @@ public class Admin_YI_FreeBoard_Controller {
 
 		return list;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/del_replyajax/{boardreply_no}")
+	public void del_replyajax(@PathVariable int boardreply_no)
+	{
+		service.del_replyajax(boardreply_no);
+	}
+	
 }

@@ -153,4 +153,5 @@ delete from boardreply
 where boardreply_no=#{boardreply_no}
 </delete>
 
+
 </mapper>

@@ -23,4 +23,8 @@ public interface Admin_YI_FreeBoard_Mapper {
 
 	List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no);
 
+	void delete_reply(int boardreply_no);
+
+
+
 }

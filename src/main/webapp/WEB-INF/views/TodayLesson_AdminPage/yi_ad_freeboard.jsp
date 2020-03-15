@@ -51,20 +51,62 @@ document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style"
 			var textnode2=document.createTextNode(boardreply_content);
 			var textnode3=document.createTextNode(boardreply_writedate);
 			
+			var button=document.createElement("input");
+			button.setAttribute("type", "button");
+			button.setAttribute("class", "boardreply_delete");
+			button.setAttribute("value","삭제");
+			button.setAttribute("id",item[i].boardreply_no);
+			
 			var node=document.createElement("TR");
+			
+			var nodeId= new Array();
+			
+			
 			var node2=document.createElement("TD");
 			var node3=document.createElement("TD");
 			var node4=document.createElement("TD");
-						
+			var node5=document.createElement("TD");
+			
 			node2.appendChild(textnode);
 			node3.appendChild(textnode2);
 			node4.appendChild(textnode3);
+			node5.appendChild(button);
 			
 			node.appendChild(node2);
 			node.appendChild(node3);
 			node.appendChild(node4);
-				document.getElementById("add_reply-"+freeboard_no).appendChild(node);
-				}
+			node.appendChild(node5);
+			
+			
+			document.getElementById("add_reply-"+freeboard_no).appendChild(node);
+				
+			
+
+				
+				
+				} /*for문 끝*/
+				
+				$('.boardreply_delete').on('click',function(){
+					
+		        	$(this).parent().parent().remove();	
+					let reno=$(this).attr('id');
+						$.ajax({
+					        url: "/del_replyajax/"+reno
+					        ,type:"post"
+					        ,success: function(){
+					        
+					        	console.log("삭제:"+reno);
+					        
+	
+					        }
+
+					
+						});
+						
+					})
+					
+				
+				
 		},error:function(data,status,jqXHR){
 			console.log('실패',data);
 			console.log(status);
@@ -84,8 +126,12 @@ else
 	obj.removeChild(obj.firstChild);
 		}
 	}
-	}
+	
+	
+	
+	} /*function reply_view 끝*/
 
+	
 
 </script>
 </head>
@@ -178,11 +224,16 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </table>
 
 
-  <form action="" method="post">
+  <form action="admin_replyinsert/${item.freeboard_no}" method="post">
   <textarea style="resize: none;" rows="5" cols="100" name="boardreply_content"></textarea><br>
   <input type="hidden" name="member_id" value=""><br>
-  <input type="button" value="답변"><input type="button" value="삭제">
-  </form>
+  <input type="submit" value="답변" name="admin_reply">
+  <input type="button" value="삭제" name="admin_delete" 
+  onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='admin_delete/${item.freeboard_no}'">
+  <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+   </form>
+  
+ 
   </div>
 
 </div>

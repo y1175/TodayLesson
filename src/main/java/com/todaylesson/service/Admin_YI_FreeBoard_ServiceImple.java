@@ -61,5 +61,11 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 		return mapper.boardreply_list(freeboard_no);
 	}
 
+	@Override
+	public void del_replyajax(int boardreply_no) {
+		// TODO Auto-generated method stub
+		mapper.delete_reply(boardreply_no);
+	}
+
 
 }

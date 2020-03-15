@@ -19,4 +19,6 @@ public interface Admin_YI_FreeBoard_Service {
 
 	List<SQLjoin_Member_FreeBoardDTO> boardreply_list(int freeboard_no);
 
+	void del_replyajax(int boardreply_no);
+
 }
