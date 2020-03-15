@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,7 +37,6 @@ public class User_HS_KakaoLoginService {
 				           "&redirect_uri=" + K_REDIRECT_URI + "&response_type=code"; 
 		return kakaoUrl; 
 	}
-
 
 	public static JsonNode getAccessToken(String autorize_code) {
 		final String RequestUrl = "https://kauth.kakao.com/oauth/token";

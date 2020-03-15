@@ -32,7 +32,6 @@ import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
 
 
-
 //MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
 @Controller
 public class TodayLessonController {
@@ -100,7 +99,7 @@ public class TodayLessonController {
           
           return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
        }
-       
+      
        //kakao 로그인 창 url 정보넘기기
        @RequestMapping(value = "/kakaologinurl", method = RequestMethod.GET)
        public ModelAndView kakaoLoginURL(HttpSession session) {
@@ -157,15 +156,13 @@ public class TodayLessonController {
  	       session.setAttribute("kakao_age", kakao_age);
     	   
  	       //생성한 로그인정보를 View(hs_us_main_sec_login.jsp)로 전달
- 	       mv.setViewName("hs_us_main_sec_login");
+ 	       mv.setViewName("todaylessonmypage");
  	       
     	   return mv;
        }
-       
+ 
        //네이버로그인 
 
-      
-       
        @Autowired
        private void setNaverLoginBO(EJ_US_NaverLoginBOService naverLoginBO) {
            this.naverLoginBO = naverLoginBO;

@@ -53,7 +53,6 @@
     <!-- 일반 파일 업로드 경로 -->
    
     <!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
-<beans:bean id="naverLoginBO" class="com.todaylesson.service.EJ_US_NaverLoginBOService" />
-    
-	
+    <beans:bean id="naverLoginBO" class="com.todaylesson.service.EJ_US_NaverLoginBOService" />
+
 </beans:beans>

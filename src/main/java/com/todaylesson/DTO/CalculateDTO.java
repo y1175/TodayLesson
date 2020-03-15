@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CalculateDTO {
 
+	private int orderlist_no;
 	private int calculate_no;
-	private int sales_no;
-	private String calculate_date;
-	private int calculate_comp;
+	private String calculate_date; //정산신청일
+	private int lessondate_count; //레슨 수업일 or 레슨 수업일 +5 결제건수
 }

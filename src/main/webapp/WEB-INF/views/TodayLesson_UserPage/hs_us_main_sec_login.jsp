@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- KAKAO LOGIN JS --> 
-   <script type="text/javascript" src="resources/JS/hs_us_main_sec_login.js"></script>
+   <script type="text/javascript" src="resources/JS/hs_us_main_sec_login.js?ver=1"></script>
    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
