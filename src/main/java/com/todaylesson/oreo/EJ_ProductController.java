@@ -69,7 +69,8 @@ public class EJ_ProductController {
 		String imgthumb=dto.getProduct_thumb();
 		System.out.println("이미지경로: "+img);
 		System.out.println("썸네일이미지경로: "+imgthumb);
-		
+		int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;
+		dto.setProduct_after_cost(cost);
 		int result = service.insertBoard(dto);
 		model.addAttribute("result", result);
 		
@@ -90,7 +91,7 @@ public class EJ_ProductController {
 		List<ProductDTO> list = service.selectAll();
 		model.addAttribute("list",list);
 		//.us_main_section
-		return "ej_store_main";
+		return "ej_store_main.us_main_section";
 	}
 	
 	
@@ -108,7 +109,7 @@ public class EJ_ProductController {
 			
 			
 		//.us_main_section
-		return "ej_store_detail";
+		return "ej_store_detail.us_main_section";
 	}
 
 	
@@ -216,7 +217,7 @@ public class EJ_ProductController {
 		ProductDTO dto = service.select(product_no);
 		model.addAttribute("pdto",dto);
 		
-		return "TodayLesson_UserPage/ej_us_orderform";
+		return "TodayLesson_UserPage/ej_us_orderform.us_main_section";
 	}
 
 	}
