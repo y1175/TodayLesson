@@ -56,9 +56,22 @@ public class JY_SN_Approve_Lesson_Controller {
 
 		int result = approve_service.apl_upload(dto);
 		
+		int lesson_no = dto.getLesson_no();
+		
 		model.addAttribute("result",result);
-
+		model.addAttribute("lesson_no",lesson_no);
+		
 		return "TodayLesson_SeniorPage/jy_sn_mal_lesson_upload_result";
 	}
+	
+	
+	@RequestMapping("facebook_login")
+	public String facebook_login() {	
+		
+		return "facebook_login";
+	}
+	
+	
+	
 	
 }

@@ -29,16 +29,8 @@ where lesson_no = #{lesson_no}
 
 <insert id="apl_upload" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
-<selectKey order="BEFORE" resultType="java.lang.Integer" keyProperty="lessondetail_chapter">  
-  select max(lessondetail_chapter) from lessondetail
-</selectKey>
-
-<if test="#{lessondetail_chapter = null}">
-	lessondetail_chapter = 0;
-</if>
-
-insert into lessson_detail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter)
-values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter+1})
+insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter)
+values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter})
 
 </insert>
 

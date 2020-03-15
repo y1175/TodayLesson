@@ -30,11 +30,6 @@ $('textarea').summernote({
 });		
 
 
-if (${detail_dto.lessondetail_chapter = null}) {
-	document.form.lessondetail_chapter.value = 1;
-} else {
-	document.form.lessondetail_chapter.value = ${detail_dto.lessondetail_chapter + 1};
-}
 
 
 });
@@ -53,14 +48,15 @@ if (${detail_dto.lessondetail_chapter = null}) {
 <input type="text" id="lessondetail_title" name="lessondetail_title">
 
 <label for="lessondetail_content">레슨 내용</label>
-<textarea id="summernote" name="lesson_content"></textarea>
+<textarea id="summernote" name="lessondetail_content"></textarea>
 
 여기도 썸네일 넣을까 고민중임
 
+<label for="lessondetail_chapter">업로드 하는 챕터</label>
+<input type="number" id="lessondetail_chapter" name="lessondetail_chapter">
 
 <input type="submit" value="레슨 등록">
 <input type="reset" value="취소">
-
 
 </form>
 
