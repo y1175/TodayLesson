@@ -28,7 +28,7 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 	@Override
 	public LessonDTO apl_detail(int lesson_no) {
 		return mapper.apl_detail(lesson_no);
-	}
+	} 
 
 	@Override
 	public int apl_upload(LessonDetailDTO dto) {
