@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
-import com.todaylesson.DTO.Lesson_LessonDetailDTO;
 import com.todaylesson.service.JY_SN_Approve_LessonService;
 
 @Controller

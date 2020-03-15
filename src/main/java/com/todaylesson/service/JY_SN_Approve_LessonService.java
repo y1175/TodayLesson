@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
-import com.todaylesson.DTO.Lesson_LessonDetailDTO;
 
 public interface JY_SN_Approve_LessonService {
 
