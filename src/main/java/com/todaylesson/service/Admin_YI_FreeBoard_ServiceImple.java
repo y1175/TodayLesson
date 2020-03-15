@@ -30,6 +30,7 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 	@Override
 	public List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt, int startRow, int endRow) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
+		
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
@@ -65,6 +66,18 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 	public void del_replyajax(int boardreply_no) {
 		// TODO Auto-generated method stub
 		mapper.delete_reply(boardreply_no);
+	}
+
+	@Override
+	public int admin_replyinsert(SQLjoin_Member_FreeBoardDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.insert_reply(dto);
+	}
+
+	@Override
+	public int admin_boarddelete(int freeboard_no) {
+		// TODO Auto-generated method stub
+		return mapper.freeboard_delete(freeboard_no);
 	}
 
 

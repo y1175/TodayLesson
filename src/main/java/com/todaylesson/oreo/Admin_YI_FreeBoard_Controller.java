@@ -24,10 +24,12 @@ public class Admin_YI_FreeBoard_Controller {
 	private Admin_YI_FreeBoard_Service service;
 	
 	@RequestMapping("/admin_freeboard")
-	public String admin_freeboard_list(@RequestParam(required=false, defaultValue="") String search
+	public String admin_freeboard_list(
+			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,@RequestParam(required=false, defaultValue="1") int hidden_freeboard_no
+			
 			,Model model)
 	{
 		
@@ -114,5 +116,30 @@ public class Admin_YI_FreeBoard_Controller {
 	{
 		service.del_replyajax(boardreply_no);
 	}
+	
+	@RequestMapping("/admin_replyinsert/{freeboard_no}")
+	public String admin_replyinsert(@PathVariable int freeboard_no
+			,@RequestParam String boardreply_content
+			,@RequestParam String member_id
+			, Model model)
+	{
+		SQLjoin_Member_FreeBoardDTO dto= new SQLjoin_Member_FreeBoardDTO();
+		dto.setFreeboard_no(freeboard_no);
+		dto.setBoardreply_content(boardreply_content);
+		dto.setMember_id(member_id);
+		int result=service.admin_replyinsert(dto);
+		model.addAttribute("result",result);
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_replyinsertResult";
+	}
+	
+	@RequestMapping("admin_delete/{freeboard_no}")
+	public String admin_boarddelete(@PathVariable int freeboard_no
+			,Model model)
+	{
+		int result=service.admin_boarddelete(freeboard_no);
+		model.addAttribute("result",result);
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_deleteresult";
+	}
+	
 	
 }

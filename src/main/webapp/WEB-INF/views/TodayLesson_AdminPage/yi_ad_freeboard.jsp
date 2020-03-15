@@ -138,6 +138,7 @@ else
 <body>
 <sec:authentication property="principal" var="pinfo"/>
 게시판 관리페이지<br>
+
 <input type="button" value="공지등록" onclick="location.href='/freeboard_noticewrite'">	
 <table class="table">
 <thead>
@@ -226,10 +227,10 @@ ${item.freeboard_title }		[${replist[status.index]}]
 
   <form action="admin_replyinsert/${item.freeboard_no}" method="post">
   <textarea style="resize: none;" rows="5" cols="100" name="boardreply_content"></textarea><br>
-  <input type="hidden" name="member_id" value=""><br>
+  <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
   <input type="submit" value="답변" name="admin_reply">
   <input type="button" value="삭제" name="admin_delete" 
-  onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='admin_delete/${item.freeboard_no}'">
+  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='admin_delete/${item.freeboard_no}'">
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
    </form>
   

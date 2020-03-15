@@ -25,6 +25,10 @@ public interface Admin_YI_FreeBoard_Mapper {
 
 	void delete_reply(int boardreply_no);
 
+	int insert_reply(SQLjoin_Member_FreeBoardDTO dto);
+
+	int freeboard_delete(int freeboard_no);
+
 
 
 }

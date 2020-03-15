@@ -21,4 +21,8 @@ public interface Admin_YI_FreeBoard_Service {
 
 	void del_replyajax(int boardreply_no);
 
+	int admin_replyinsert(SQLjoin_Member_FreeBoardDTO dto);
+
+	int admin_boarddelete(int freeboard_no);
+
 }
