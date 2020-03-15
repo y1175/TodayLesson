@@ -18,14 +18,14 @@ where senior_no = #{senior_no}
 <insert id="insert_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
 
 insert into lesson(lesson_title, lesson_content,lesson_cost, 
-lesson_member_max,lesson_category,  
+lesson_member_max,lesson_category,lesson_date,
 lesson_register_date,lesson_open_period, lesson_close_period, lesson_number, 
 lesson_type, lesson_result, lesson_readno, lesson_junior_count,
 lesson_senior_title, lesson_senior_content, 
 lesson_zipno, lesson_addr, lesson_lat, lesson_long, lesson_time,senior_no)
 
 values(#{lesson_title},#{lesson_content},#{lesson_cost},
-#{lesson_member_max},#{lesson_category},
+#{lesson_member_max},#{lesson_category},DATE_FORMAT(#{lesson_date}, '%Y-%m-%d'),
 sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
 #{lesson_type},0,0,0,
 #{lesson_senior_title},#{lesson_senior_content},
@@ -47,22 +47,6 @@ select * from lesson where lesson_no = #{lesson_no}
 
 </select>
 
-<insert id="insert_online_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
-
-insert into lesson(lesson_title, lesson_content,lesson_cost, 
-lesson_member_max,lesson_category,  
-lesson_register_date,lesson_open_period, lesson_close_period, lesson_number, 
-lesson_type, lesson_result, lesson_readno, lesson_junior_count,
-lesson_senior_title, lesson_senior_content,senior_no)
-
-values(#{lesson_title},#{lesson_content},#{lesson_cost},
-#{lesson_member_max},#{lesson_category},
-sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
-#{lesson_type},0,0,0,
-#{lesson_senior_title},#{lesson_senior_content},#{senior_no})
-
-</insert>
-
 
 <update id="update_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
 
@@ -73,6 +57,7 @@ lesson_content = #{lesson_content},
 lesson_cost = #{lesson_cost}, 
 lesson_member_max = #{lesson_member_max},
 lesson_category= #{lesson_category},  
+lesson_date = DATE_FORMAT(#{lesson_date}, '%Y-%m-%d'),
 lesson_register_date = sysdate(),
 lesson_open_period = #{lesson_open_period},
 lesson_close_period = #{lesson_close_period}, 

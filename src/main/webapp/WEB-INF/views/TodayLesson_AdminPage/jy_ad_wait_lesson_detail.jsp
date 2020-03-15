@@ -14,12 +14,17 @@ $(document).ready(function() {
 
 	// 온라인 클래스의 경우 주소가 없음 > 그니까 온라인의 경우(온라인은 타입 3번) 아예 그 부분을 hide시켜버림
 	let state = ${dto.lesson_type};
+	console.log(state);
 	if ( state == 3 ) {
-		$('.layer').hide();
+		$('.offline_lesson').hide();
+		$('.not_oneday').show();
+	} else if(state == 1) {
+		$('.offline_lesson').show();
+		$('.not_oneday').hide();
 	} else {
-		$('.layer').show();
+		$('.offline_lesson').show();
+		$('.not_oneday').show();
 	}
-	
 
 	// 썸머노트로 작성한 부분을 html코드로 변환해서 가져옴
 	$('#summer').html();
@@ -133,7 +138,7 @@ $(document).ready(function() {
 
 	</c:choose>
 
-	<div class="layer">
+	<div class="offline_lesson">
 		레슨 시간
 		<c:out value="${dto.lesson_time}" />
 		<br> 레슨 주소<br> 우편번호
@@ -167,9 +172,11 @@ $(document).ready(function() {
 
 	</div>
 
+<div class="not_oneday">
 	총 강의 수
-	<c:out value="${dto.lesson_number}" />
-	<br> 시니어 명
+	<c:out value="${dto.lesson_number}" /><br> 
+	</div>
+	시니어 명
 	<c:out value="${dto.lesson_senior_title}" />
 	<br> 시니어 소개
 	<div class="summer">${dto.lesson_senior_content}</div>

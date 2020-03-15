@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,7 +29,7 @@ import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.JY_Admin_LessonService;
-import com.todaylesson.service.JY_Mail_Test_service;
+import com.todaylesson.service.JY_Mail_service;
 
 @Controller
 public class JY_Admin_Lesson_Controller {
@@ -39,12 +40,9 @@ public class JY_Admin_Lesson_Controller {
 	
 	
 	  @Autowired
-	private JY_Mail_Test_service mailSender;
+	private JY_Mail_service mailSender;
 	   
 	
-	
-	  
-	  
 	
 //  아임포트의 토큰 값 받아오기
 	public String getToken(HttpServletRequest request,HttpServletResponse response,JSONObject json,String requestURL) throws Exception{
@@ -209,7 +207,7 @@ public class JY_Admin_Lesson_Controller {
 		int result = adminservice.approve(lesson_no);
 		model.addAttribute("result",result);
 		
-		mailSender.mailSendWithPassword(member_id,senior_email, lesson_title, request);
+		mailSender.mailSendLessonApprove(member_id,senior_email, lesson_title, request);
  		System.out.println(senior_email);
  		
  		
@@ -219,8 +217,17 @@ public class JY_Admin_Lesson_Controller {
 	
     // 레슨 거절
 	@RequestMapping("lesson_reject/{lesson_no}")
-	public String lesson_reject(@PathVariable int lesson_no, Model model) {
+	public String lesson_reject(@PathVariable int lesson_no, Model model, HttpServletRequest request) {
+		
+		AllLessonDTO dto = adminservice.select_lesson(lesson_no);
+		String member_id = dto.getMember_id();
+		String lesson_title = dto.getLesson_title();
+		String senior_email = dto.getSenior_email();
+		
 		int result = adminservice.reject(lesson_no);
+		mailSender.mailSendLessonReject(lesson_no,member_id,senior_email, lesson_title,request);
+ 		System.out.println(senior_email);
+ 		
 		model.addAttribute("result",result);
 		return "TodayLesson_AdminPage/jy_ad_lesson_reject";
 	}

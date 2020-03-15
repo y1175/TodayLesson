@@ -17,18 +17,15 @@ $(document).ready(function() {
 	let state = ${dto.lesson_type};
 	console.log(state);
 	if ( state == 3 ) {
-		$('.offline_lesson').hide();
-		$('.not_oneday').show();
-	} else if(state == 1) {
-		$('.offline_lesson').show();
-		$('.not_oneday').hide();
+		$('.layer').hide();
 	} else {
-		$('.offline_lesson').show();
-		$('.not_oneday').show();
+		$('.layer').show();
 	}
+	
 	
 	// 썸머노트로 작성한 부분을 html코드로 변환해서 가져옴
 	$('#summer').html();
+
 	
 	
 	
@@ -44,20 +41,65 @@ $(document).ready(function() {
 </head>
 <body>
 
-레슨번호<c:out value="${dto.lesson_no }"/><br>
-레슨명<c:out value="${dto.lesson_title }"/><br>
+<!-- 레슨명, 이런 기본적인건 옆에 배치 -->
+
+레슨명
+<br><c:out value="${dto.lesson_title }"/><br>
 
 
+이 강의는 "
+<c:choose>
+
+<c:when test="${dto.lesson_category == 1}">
+<c:out value="운동"/>
+</c:when>
+
+<c:when test="${dto.lesson_category == 2}">
+<c:out value="교육"/>
+</c:when>
+
+<c:when test="${dto.lesson_category == 3}">
+<c:out value="핸드메이드"/>
+</c:when>
+
+<c:when test="${dto.lesson_category == 4}">
+<c:out value="it"/>
+</c:when>
+
+<c:otherwise>
+<c:out value="요리"/>
+</c:otherwise>
+
+</c:choose>
+"에 관심이 있는 분들을 위한 강의이며,
+<br>
+총 <c:out value="${dto.lesson_number}"/>강으로 구성되어 있습니다.
+
+<!-- 이 위에 멘트는 다회성, 온라인에만 나오게  -->
+
+<br>
 레슨 내용
-
+<br>
 <div class="summer">
 ${dto.lesson_content}
 </div>
 
-수강생수<c:out value="${dto.lesson_member_max}"/><br>
+수강 가능한 최대 주니어수
+<br>
+<c:out value="${dto.lesson_member_max}"/><br>
+
+현재 수강 중인 주니어 수
+<br>
+<c:out value="${dto.lesson_junior_count}"/><br>
+
+수강 가능한 주니어 수 
+<br>
+<c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}"/>
+<c:out value="${possible_junior}"/><br>
+
 
 카테고리
-
+<br>
 <c:choose>
 
 <c:when test="${dto.lesson_category == 1}">
@@ -82,13 +124,16 @@ ${dto.lesson_content}
 
 </c:choose>
 
-레슨 가격 <c:out value="${dto.lesson_cost}"/><br>
+레슨 가격 
+<br>
+<c:out value="${dto.lesson_cost}"/><br>
 
-레슨 시작일 <c:out value="${dto.lesson_open_period}"/><br> 
-레슨 종료일 <c:out value="${dto.lesson_close_period}"/><br> 
+레슨 판매 기간
+<br>
+<c:out value="${dto.lesson_open_period}"/> ~ <c:out value="${dto.lesson_close_period}"/><br> 
 
 레슨 타입
-
+<br>
 <c:choose>
 
 <c:when test="${dto.lesson_type == 1}">
@@ -105,7 +150,7 @@ ${dto.lesson_content}
 
 </c:choose>
 
-<div class="offline_lesson">
+<div class="layer">
 레슨 시간 <c:out value="${dto.lesson_time}"/><br>
 
 레슨 주소<br> 
@@ -135,9 +180,6 @@ ${dto.lesson_content}
 
 </div>
 
-<div class="not_oneday">
-총 강의 수<c:out value="${dto.lesson_number}"/><br>
-</div>
 시니어 명<c:out value="${dto.lesson_senior_title}"/><br>
 
 시니어 소개
@@ -145,45 +187,6 @@ ${dto.lesson_content}
 ${dto.lesson_senior_content}
 </div>
 
-
-
-
---------------------------<br>
-
-시니어 아이디
-<c:out value="${dto.member_id}"/><br>
-
-시니어 이메일
-<c:out value="${dto.senior_email}"/><br>
-
-시니어 사업자 번호
-<c:out value="${dto.senior_crno}"/><br>
-
-시니어 닉네임
-<c:out value="${dto.senior_nick}"/><br>
-
-<%-- 현재까지 오픈한 레슨 명
-<c:out value="${dto.senior_nick}"/><br>
-
-현재까지 오픈한 레슨 수
-<c:out value="${dto.senior_nick}"/><br> 
-여긴 추후 추가
---%>
-
-은행 명
-<c:out value="${dto.senior_bank_name}"/><br>
-
-예금 주
-<c:out value="${dto.senior_account_name}"/><br>
-
-계좌 번호
-<c:out value="${dto.senior_account_num}"/><br>
-
-
-<a href="${pageContext.request.contextPath }/alllesson">목록으로</a>
-<br>
-
+<a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
 </body>
-
-
 </html>

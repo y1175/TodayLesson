@@ -33,23 +33,31 @@
 
 
 
-		if (${dto.lesson_type} == 3) {
-			$('.layer').hide();
+/* 		if (${dto.lesson_type} == 3) {
+			$('.online_lesson').hide();
+			$('.offline_lesson').hide();
 		} else {
-			$('.layer').show();
-		}
+			$('.online_lesson').show();
+			$('.offline_lesson').show();
+
+		} */
 		
 		
+
+
 		
 		$('#lesson_type').change(function() {
-			let state = $('#lesson_type option:selected').val();
-			console.log(state);
-			if ( state == 3 ) {
-				$('.layer').hide();
-			} else {
-				$('.layer').show();
-			}
-			});
+		let state = $('#lesson_type option:selected').val();
+		console.log(state);
+		if ( state == 3 ) {
+			$('.online_lesson').hide();
+			$('.offline_lesson').hide();
+		} else {
+			$('.online_lesson').show();
+			$('.offline_lesson').show();
+		}
+		});	
+		
 		
 		
 		
@@ -213,8 +221,16 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <br>
 
 
+<div class="offline_lesson">
 
-<div class="layer">
+<label for="lesson_date">레슨하는 날</label><br>
+<input type="date" id="lesson_date" name="lesson_date"><br>
+
+</div>
+
+
+
+<div class="online_lesson">
 
 
 <label for="lesson_time">레슨시간</label><br>

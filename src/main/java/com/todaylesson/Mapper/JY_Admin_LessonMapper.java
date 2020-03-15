@@ -31,6 +31,6 @@ public interface JY_Admin_LessonMapper {
 
 	public int get_senior_no(int lesson_no);
 
-//	public int lessonResult(String member_id, String senioir_email, String lesson_title);
+
 
 }

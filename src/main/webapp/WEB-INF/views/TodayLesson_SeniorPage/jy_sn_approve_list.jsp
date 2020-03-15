@@ -21,14 +21,14 @@ width:500px; height:auto;
 
 <thead>
 <tr>
-<th scope="col">번호</th><th scope="col">레슨명</th><th scope="col">카테고리</th><th scope="col">레슨타입</th><th scope="col">승인 상태</th>
+<th scope="col">번호</th><th scope="col">레슨명</th><th scope="col">카테고리</th><th scope="col">레슨타입</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach var="item" items="${list}">
 <tr>
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/my_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="/approve_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
 
 <c:choose>
@@ -73,35 +73,11 @@ width:500px; height:auto;
 </c:choose>
 
 
-<c:choose>
-
-<c:when test="${item.lesson_result == 0}">
-<td><c:out value="신청완료"/></td>
-</c:when>
-
-<c:when test="${item.lesson_result == 1}">
-<td><c:out value="심사중"/></td>
-</c:when>
-
-<c:when test="${item.lesson_result == 2}">
-<td><c:out value="레슨승인"/></td>
-</c:when>
-
-<c:otherwise>
-<td><c:out value="레슨거절"/></td>
-</c:otherwise>
-
-</c:choose>
-
-
 
 </tr>
 </c:forEach>
 </tbody>
 </table>
-
-<a href="${pageContext.request.contextPath }/lesson_write/${pageContext.request.userPrincipal.name}">글쓰기</a>
-
 </body>
 </body>
 </html>

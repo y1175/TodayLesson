@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.JY_SN_Approve_LessonMapper">
+
+<select id="getSenior_no" parameterType="java.lang.String" resultType="int">
+
+select senior_no from senior
+where member_id=#{member_id}
+
+</select>
+
+<select id="apl_list" parameterType="int" resultType="com.todaylesson.DTO.LessonDTO">
+
+select * from lesson
+where senior_no = #{senior_no}
+and lesson_result = 2
+
+</select>
+
+
+<select id="apl_detail" parameterType="int" resultType="com.todaylesson.DTO.LessonDTO">
+
+select * from lesson
+where lesson_no = #{lesson_no}
+
+</select>
+
+<insert id="apl_upload" parameterType="com.todaylesson.DTO.LessonDetailDTO">
+
+<selectKey order="BEFORE" resultType="java.lang.Integer" keyProperty="lessondetail_chapter">  
+  select max(lessondetail_chapter) from lessondetail
+</selectKey>
+
+<if test="#{lessondetail_chapter = null}">
+	lessondetail_chapter = 0;
+</if>
+
+insert into lessson_detail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter)
+values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter+1})
+
+</insert>
+
+
+
+
+</mapper>
+
+
+

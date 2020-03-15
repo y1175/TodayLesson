@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
 
 @Mapper
 public interface JY_US_TotalLessonMapper {
 
-	List<LessonDTO> ttlesson_list();
+	public List<LessonDTO> ttlesson_list();
+
+	public AllLessonDTO ttlesson_select(int lesson_no);
 
 }

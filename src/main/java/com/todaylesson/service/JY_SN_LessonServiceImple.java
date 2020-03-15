@@ -34,10 +34,6 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 		return mapper.detail_lesson(lesson_no);
 	}
 
-	@Override
-	public int insert_Online_Lesson(LessonDTO dto) {
-		return mapper.insert_online_lesson(dto);
-	}
 
 	@Override
 	public int update_lesson(LessonDTO dto) {

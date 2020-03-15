@@ -17,9 +17,14 @@ $(document).ready(function() {
 	let state = ${dto.lesson_type};
 	console.log(state);
 	if ( state == 3 ) {
-		$('.layer').hide();
+		$('.offline_lesson').hide();
+		$('.not_oneday').show();
+	} else if(state == 1) {
+		$('.offline_lesson').show();
+		$('.not_oneday').hide();
 	} else {
-		$('.layer').show();
+		$('.offline_lesson').show();
+		$('.not_oneday').show();
 	}
 	
 	
@@ -102,7 +107,7 @@ ${dto.lesson_content}
 
 </c:choose>
 
-<div class="layer">
+<div class="offline_lesson">
 레슨 시간 <c:out value="${dto.lesson_time}"/><br>
 
 레슨 주소<br> 
@@ -132,7 +137,10 @@ ${dto.lesson_content}
 
 </div>
 
+<div class = "not_oneday">
 총 강의 수<c:out value="${dto.lesson_number}"/><br>
+</div>
+
 시니어 명<c:out value="${dto.lesson_senior_title}"/><br>
 
 시니어 소개

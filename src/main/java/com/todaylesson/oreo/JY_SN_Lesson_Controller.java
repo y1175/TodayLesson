@@ -67,20 +67,15 @@ public class JY_SN_Lesson_Controller {
 		
 		System.out.println(dto.toString());
 		
-		if (dto.getLesson_type()==3) {
-			int result =lesson_service.insert_Online_Lesson(dto);
-			model.addAttribute("result",result);
-		} else {
 			int result =lesson_service.insert_Lesson(dto);
 			model.addAttribute("result",result);
-		}
 		
 		System.out.println("                     " +dto.toString());
 					
 		return "TodayLesson_SeniorPage/jy_sn_insert_result";
 	}
 	
-	@RequestMapping("/lesson_detail/{lesson_no}")
+	@RequestMapping("/my_lesson_detail/{lesson_no}")
 	public String lesson_detail(@PathVariable int lesson_no, Model model) {
 		LessonDTO dto = lesson_service.detail_lesson(lesson_no);
 		model.addAttribute("dto",dto);
