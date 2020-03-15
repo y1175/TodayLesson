@@ -13,4 +13,13 @@ where lesson_result = 1;
 
 </select>
 
+
+<select id="ttlesson_select" resultType="com.todaylesson.DTO.AllLessonDTO">
+
+select * from lesson join senior
+on lesson.senior_no = senior.senior_no
+where lesson_no = #{lesson_no}
+
+</select>
+
 </mapper>

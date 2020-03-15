@@ -96,4 +96,5 @@ select * from senior
 where senior_no = #{senior_no}
 
 </select>
+
 </mapper>
