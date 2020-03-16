@@ -115,7 +115,7 @@ public class EJ_ProductController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/ej_ad_insertOption_json", method = RequestMethod.POST)
+	@RequestMapping(value = "/ad_add_pdOption/insertOption_json", method = RequestMethod.POST)
 	public void addoptionjson (/*PdReviewDTO reply*/
 			@RequestParam int pd_option_no,
 			@RequestParam String pd_option_name ,

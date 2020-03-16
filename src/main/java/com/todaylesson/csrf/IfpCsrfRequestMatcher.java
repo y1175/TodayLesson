@@ -232,7 +232,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/ej_ad_pdOption_insertresult".equals(strUri))                   
         	 return false; 
        
-        else if ("/ej_ad_insertOption_json".equals(strUri))                   
+        else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
        	 return false; 
    //Áø¿µ
      
