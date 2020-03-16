@@ -36,7 +36,11 @@ public class JY_SN_Approve_Lesson_Controller {
 		
 		LessonDTO dto = approve_service.apl_detail(lesson_no);
 		
+		List<LessonDetailDTO> list = approve_service.apld_list(lesson_no);
+		
 		model.addAttribute("dto",dto);
+		model.addAttribute("list",list);
+		
 		
 		return "TodayLesson_SeniorPage/jy_sn_approve_detail";
 	}
@@ -57,12 +61,28 @@ public class JY_SN_Approve_Lesson_Controller {
 		int result = approve_service.apl_upload(dto);
 		
 		int lesson_no = dto.getLesson_no();
+	
 		
 		model.addAttribute("result",result);
 		model.addAttribute("lesson_no",lesson_no);
 		
 		return "TodayLesson_SeniorPage/jy_sn_mal_lesson_upload_result";
+		
 	}
+	
+	@RequestMapping("select_lessondetail_chapter/{lessondetail_no}")
+	public String select_apld_chapter(@PathVariable int lessondetail_no, Model model) {
+		
+		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
+		model.addAttribute("dto",dto);
+		
+		return "TodayLesson_SeniorPage/jy_sn_apld_select";
+	}
+	
+	
+	
+	
+	
 	
 	
 	@RequestMapping("facebook_login")

@@ -44,6 +44,7 @@ $('textarea').summernote({
 
 <input type="hidden" id="lesson_no" name="lesson_no" value="${dto.lesson_no}">
 <input type="hidden" id="senior_no" name="senior_no" value="${dto.senior_no}">
+<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <label for="lessondetail_title">레슨 명</label>
 <input type="text" id="lessondetail_title" name="lessondetail_title">
 
@@ -51,9 +52,6 @@ $('textarea').summernote({
 <textarea id="summernote" name="lessondetail_content"></textarea>
 
 여기도 썸네일 넣을까 고민중임
-
-<label for="lessondetail_chapter">업로드 하는 챕터</label>
-<input type="number" id="lessondetail_chapter" name="lessondetail_chapter">
 
 <input type="submit" value="레슨 등록">
 <input type="reset" value="취소">

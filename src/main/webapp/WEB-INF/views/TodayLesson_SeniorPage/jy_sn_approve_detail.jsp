@@ -105,10 +105,19 @@ $(document).ready(function() {
 </div>
 
 <div class = "not_oneday">
-총 강의 수 / 현재 진행 된 강의 수 <c:out value="${dto.lesson_number}"/> / 여기에 강의그거 구해서 가져와<br>
+총 강의 수 / 현재 진행 된 강의 수 <c:out value="${dto.lesson_number}"/> / 맥스로 값을 뽑아와야하나<br>
 
 <table>
-ㄴㄴ
+
+<thead><tr><th>레슨 챕터</th><th>레슨 제목</th></tr></thead>
+<tbody>
+<c:forEach var="list" items="${list}">
+<tr>
+<td><c:out value="${list.lessondetail_chapter}"/></td>
+<td><a href="${pageContext.request.contextPath }/select_lessondetail_chapter/${list.lessondetail_no}" onclick="window.open(this.href,'lesson_detail','width=600, height=400'); return false; target='_blank' "><c:out value="${list.lessondetail_title}"/></a></td>
+</tr>
+</c:forEach>
+</tbody>
 </table>
 
 </div>

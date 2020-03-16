@@ -29,10 +29,29 @@ where lesson_no = #{lesson_no}
 
 <insert id="apl_upload" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
-insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter)
-values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter})
+<selectKey order="BEFORE" keyProperty="lessondetail_chapter" resultType="integer">
+
+select ifnull(max(lessondetail_chapter),0) from lessondetail
+
+</selectKey>
+
+insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id)
+values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+ 1,#{member_id})
 
 </insert>
+
+<select id="apld_list" parameterType="int" resultType="com.todaylesson.DTO.LessonDetailDTO">
+
+select * from lessondetail where lesson_no = #{lesson_no} order by lessondetail_chapter asc
+
+</select>
+
+<select id="apld_select" parameterType="int" resultType="com.todaylesson.DTO.LessonDetailDTO">
+
+select * from lessondetail where lessondetail_no = #{lessondetail_no}
+
+</select>
+
 
 
 

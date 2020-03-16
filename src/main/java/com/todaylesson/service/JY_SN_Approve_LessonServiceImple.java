@@ -35,6 +35,16 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 		return mapper.apl_upload(dto);
 	}
 
+	@Override
+	public List<LessonDetailDTO> apld_list(int lesson_no) {
+		return mapper.apld_list(lesson_no);
+	}
+
+	@Override
+	public LessonDetailDTO apld_select(int lessondetail_no) {
+		return mapper.apld_select(lessondetail_no);
+	}
+
 
 
 

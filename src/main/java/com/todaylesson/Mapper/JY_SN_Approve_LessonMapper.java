@@ -18,5 +18,9 @@ public interface JY_SN_Approve_LessonMapper {
 
 	public int apl_upload(LessonDetailDTO dto);
 
+	public List<LessonDetailDTO> apld_list(int lesson_no);
+
+	public LessonDetailDTO apld_select(int lessondetail_no);
+
 
 }
