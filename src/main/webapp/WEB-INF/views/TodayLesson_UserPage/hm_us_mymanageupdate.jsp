@@ -15,12 +15,8 @@
 <body>
 <h2>회원정보 수정</h2>
 <c:set var="dto" value="${dto}"></c:set>
-<ul>
-<li>
 아이디
 ${dto.member_id}
-</li>
-</ul>
 <form method="post" id="smsForm" >
 <label>연락처</label>
 <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
