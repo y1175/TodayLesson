@@ -18,8 +18,14 @@ public class Admin_HM_Event_Controller {
 	private String eventmanagelist()
 	{
 		
-		return "hm_ad_event_manage";
+		return "TodayLesson_AdminPage/hm_ad_event_manage.hs_ad_main_section";
 	}
 	
 	
+	@RequestMapping("/hm_ad_event_insert")
+	private String eventinsert()
+	{
+		
+		return "TodayLesson_AdminPage/hm_ad_event_insertresult.hs_ad_main_section";
+	}
 }

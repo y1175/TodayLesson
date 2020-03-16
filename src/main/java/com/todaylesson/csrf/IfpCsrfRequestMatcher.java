@@ -193,6 +193,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         	return false;
         else if("/hm_ad_event_manage".equals(strUri))
         	return false;
+        else if("/hm_ad_event_insert".equals(strUri))
+        	return false;
         //혜미 사용자 1:1문의 디테일 페이지 이동
       /*  else if("/hm_us_question_detail/{no}".equals(strUri))
         	return false;*/
