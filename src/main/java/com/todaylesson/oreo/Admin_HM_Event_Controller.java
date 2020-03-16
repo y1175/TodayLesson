@@ -65,7 +65,7 @@ public class Admin_HM_Event_Controller {
 		int result = service.eventinsert(dto);
 		model.addAttribute("result", result);
 		
-		return "TodayLesson_AdminPage/hm_ad_event_insertresult.hs_ad_main_section";
+		return "TodayLesson_AdminPage/hm_ad_event_insertresult";
 		
 	}
 	
