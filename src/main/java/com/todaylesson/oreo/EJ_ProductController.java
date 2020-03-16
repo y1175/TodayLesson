@@ -22,7 +22,7 @@ import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
-import com.todaylesson.DTO.PdOptionDTO;
+import com.todaylesson.DTO.OptionsDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -92,13 +92,17 @@ public class EJ_ProductController {
 	public String addoption(@PathVariable("product_no") int product_no, Model model) {
 		
 		ProductDTO dto = service.select(product_no);
+		List<OptionsDTO> optionlist = service.optionList(product_no);
+		
+		 model.addAttribute("optionlist",optionlist);
+		
 		model.addAttribute("dto",dto);
 		
 		return "TodayLesson_AdminPage/ej_ad_pdOption";
 	}
 	
 	@RequestMapping("/ej_ad_pdOption_insertresult")
-	public String addoptionresult(Model model, PdOptionDTO odto) throws IOException, Exception {
+	public String addoptionresult(Model model, OptionsDTO odto) throws IOException, Exception {
 		
 
 		/*int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;
@@ -117,17 +121,17 @@ public class EJ_ProductController {
 	@ResponseBody
 	@RequestMapping(value = "/ad_add_pdOption/insertOption_json", method = RequestMethod.POST)
 	public void addoptionjson (/*PdReviewDTO reply*/
-			@RequestParam int pd_option_no,
-			@RequestParam String pd_option_name ,
+			@RequestParam int option_cost,
+			@RequestParam String option_name ,
 			@RequestParam int product_no,
 			HttpSession session) throws Exception {
 	
 	 
-	/* MemberDTO member = (MemberDTO)session.getAttribute("member");*/
-		PdOptionDTO odto=new PdOptionDTO();
+		OptionsDTO odto=new OptionsDTO();
+		
+		odto.setOption_cost(option_cost);
+		odto.setOption_name(option_name);
 		odto.setProduct_no(product_no);
-		odto.setPd_option_no(pd_option_no);
-		odto.setPd_option_name(pd_option_name);
 		
 		int result=service.insertOption(odto);
 	 System.out.println("addoption json  Controller");
@@ -152,8 +156,6 @@ public class EJ_ProductController {
 		List<PdReviewDTO> reply = service.replyList(product_no);
 		 System.out.println("reply object:"+reply);
 		 model.addAttribute("reply",reply);
-		//reply가 jsp에 왜 안넘어갈까?????????????
-		 //System.out.println(reply.get(3));
 			ProductDTO dto = service.select(product_no);
 			model.addAttribute("dto",dto);
 			

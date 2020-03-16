@@ -21,23 +21,32 @@
 	<br>
 
 	<div style="width: 60%; margin: auto;">
-		
-		<%-- <form role="form" method="post" action="${pageContext.request.contextPath }/ej_ad_pdOption_insertresult">  --%>
+				제품번호: ${dto.product_no }<br>
+		제품명: ${dto.product_name }<br><hr>
+		<table>
+		<thead>
+		<th>옵션명</th><th>추가가격</th></thead>
+<c:forEach var="item" items="${optionlist}"> 
+
+<tr>
+<td>${item.option_name }</td>
+<td>${item.option_cost }</td>
+</tr>
+</c:forEach>
+</table>
+<hr>
 		<section class="replyForm">
 <form role="form" method="post" autocomplete="off">
-		제품번호: ${dto.product_no }<br>
-		제품명: ${dto.product_name }<br>
+
 		<input type="hidden" name="product_no" id="product_no"style="width: 40%;" value="${dto.product_no }" />
-	<%-- 	<c:forEach var="i" begin="1" end="4"> --%>
-
-    
-
-		<label>옵션번호: </label>
-		<input type="text" name="pd_option_no" id="pd_option_no" style="width: 40%;" value="${i}" /> <br>
-				 <input type="text" name="pd_option_name" id="pd_option_name" style="width: 40%;" placeholder="옵션명"  /> <br>
+		<label>옵션명</label>
+	<input type="text" name="option_name" id="option_name" style="width: 40%;" placeholder="옵션명"  /> <br>
+	 <label>추가가격 </label>
+		<input type="text" name="option_cost" id="option_cost" style="width: 40%;" /> <br>
 				 <button id="reply_btn">옵션 추가</button>
-		<%-- 	</c:forEach> --%>
-
+				
+	
+<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 </form>
 </section>
 
@@ -46,7 +55,8 @@
 <ol>
 </ol>
 </section> 
- <input type="submit" value="옵션 등록"/>
+
+<a href="${pageContext.request.contextPath }/ej_ad_productlist">제품목록으로 이동</a>
 
 			
 	
@@ -56,15 +66,15 @@
 /*   alert('replye_btn'); */
   var formObj = $(".replyForm form[role='form']");
   var gdsNum = $("#product_no").val();
-  var repCon = $("#pd_option_name").val();
-  var memberid=$("#pd_option_no").val();
+  var repCon = $("#option_name").val();
+  var memberid=$("#option_cost").val();
   
   var data = {
     /* gdsNum : gdsNum,
     repCon : repCon */
 		 product_no : gdsNum,
-		 pd_option_name : repCon,
-		 pd_option_no: memberid
+		option_name : repCon,
+		option_cost: memberid
     };
 
   
@@ -77,16 +87,14 @@
     console.log('success');
     console.log(data);
     console.log('this'+this);
-    console.log(data.product_no+" "+data.pd_option_no+" "+data.pd_option_name+"kl");
+
+    console.log(data.product_no+" "+data.option_name+" "+data.option_cost);
     $("#repCon").val("");
 	 
-    if(data.member_id!=null)
-    	{
-    	alert('hello');
-    	}
+    
     var str = "";
-	str+="<tr><td>"+data.member_id+"</td>"
-	str+="<td>"+data.pdreview_content+"</td></tr>"
+	str+="<tr><td>"+data.option_name+"</td>"
+	str+="<td>"+data.option_cost+"</td></tr>"
    
 
   
