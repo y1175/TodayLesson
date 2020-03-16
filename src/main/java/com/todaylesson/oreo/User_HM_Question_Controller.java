@@ -18,6 +18,7 @@ import com.todaylesson.DTO.Question_1_1DTO;
 import com.todaylesson.service.User_HM_Question_Service;
 
 @Controller
+@RequestMapping("/todaylessonuser/")
 public class User_HM_Question_Controller {
 
 	

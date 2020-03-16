@@ -28,16 +28,11 @@ ${dto.member_id}
 <div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger2">인증번호가 일치하지않습니다.</div>
     <input type="hidden" id="authNum" value="${auth_num}">
-   <%--  <input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}" >
-    <input type="hidden" name="member_pwd" id="member_pwd" value ="${dto.member_pwd}" >
-    <input type="hidden" name="member_name" id="member_name" value ="${dto.member_name}" >
-    <input type="hidden" name="member_birth" id="member_birth" value ="${dto.member_birth}" >
-    <input type="hidden" name="member_email" id="member_email" value ="${dto.member_email}" >
-    <input type="hidden" name="member_zipcode" id="member_zipcode" value ="${dto.member_zipcode}" >
-    <input type="hidden" name="member_nick" id="member_nick" value ="${dto.member.nick}" >
-    <input type="hidden" name="member_addr" id="member_addr" value ="${dto.member_addr}" > --%>
     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />         
 </form>
+
+
+
 <form method="post" action="${pageContext.request.contextPath}/hm_us_mymanageupdate">
 <input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}" ><br>
 <label>비밀번호</label>
