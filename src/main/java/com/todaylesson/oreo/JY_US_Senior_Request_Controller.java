@@ -129,11 +129,40 @@ public class JY_US_Senior_Request_Controller {
 	@RequestMapping("plus_senior")
 	public String plus_senior(SeniorDTO dto, Model model) {
 		
-		
 		int result = seniorservice.plus_senior(dto);
 		model.addAttribute("result",result);
 		
 		return "TodayLesson_UserPage/jy_us_insertresult.hs_sn_main_section";
+	}
+	
+	@RequestMapping("senior_switch_update/{member_id}")
+	public String senior_info_update(Model model,@PathVariable String member_id, HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		String imp_key 		=	"5422837446408379";
+		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
+
+		JSONObject json = new JSONObject();
+		json.put("imp_key", imp_key);
+		json.put("imp_secret", imp_secret);
+	
+		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
+		model.addAttribute("token",token);
+		
+		
+		SeniorDTO dto = seniorservice.select_senior(member_id);
+		model.addAttribute("dto",dto);
+		
+		
+		return "TodayLesson_SeniorPage/jy_sn_senior_switch_update.sn_main_section";
+	}
+	
+	@RequestMapping("update_senior_result")
+	public String senior_update(SeniorDTO dto, Model model) {
+		
+		int result = seniorservice.update_senior(dto);
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_SeniorPage/jy_sn_update_senior_result";
 	}
 	
 	

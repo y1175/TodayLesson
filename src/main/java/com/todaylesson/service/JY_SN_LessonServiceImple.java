@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.Mapper.JY_SN_LessonMapper;
 
 @Service(value="lessonservice")
@@ -48,6 +49,11 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 	@Override
 	public List<LessonDTO> reject_lesson_list(int senior_no) {
 		return mapper.reject_lesson_list(senior_no);
+	}
+
+	@Override
+	public SeniorDTO select_senior_info(int senior_no) {
+		return mapper.select_senior_info(senior_no);
 	}
 
 	

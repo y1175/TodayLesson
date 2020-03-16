@@ -18,6 +18,10 @@ public interface JY_US_SeniorMapper {
 
 	// 시니어 인지 멤버 레벨 확인
 	public int check_senior(String member_id);
+
+	public SeniorDTO select_senior(String member_id);
+
+	public int update_senior(SeniorDTO dto);
 	
 
 }

@@ -52,7 +52,17 @@ select * from lessondetail where lessondetail_no = #{lessondetail_no}
 
 </select>
 
+<update id="apld_update" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
+update lessondetail
+set lessondetail_title = #{lessondetail_title}
+, lessondetail_content = #{lessondetail_content}
+where lessondetail_no = #{lessondetail_no}
+
+<!-- 여기 썸넬 다 넣기 -->
+
+
+</update>
 
 
 

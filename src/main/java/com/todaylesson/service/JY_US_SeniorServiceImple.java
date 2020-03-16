@@ -38,6 +38,18 @@ public class JY_US_SeniorServiceImple implements JY_US_SeniorService {
 	}
 
 
+	@Override
+	public SeniorDTO select_senior(String member_id) {
+		return mapper.select_senior(member_id);
+	}
+
+
+	@Override
+	public int update_senior(SeniorDTO dto) {
+		return mapper.update_senior(dto);
+	}
+
+
 	
 	
 }

@@ -45,6 +45,11 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 		return mapper.apld_select(lessondetail_no);
 	}
 
+	@Override
+	public int apld_update(LessonDetailDTO dto) {
+		return mapper.apld_update(dto);
+	}
+
 
 
 

@@ -39,6 +39,26 @@ where member_id=#{member_id}
 
 </select>
 
+<select id="select_senior" parameterType="java.lang.String" resultType="com.todaylesson.DTO.SeniorDTO">
+
+select * from senior where member_id = #{member_id}
+
+</select>
+
+<update id="update_senior" parameterType="com.todaylesson.DTO.SeniorDTO">
+
+update senior
+set senior_nick = #{senior_nick}
+,senior_email = #{senior_email}
+,senior_phone = #{senior_phone}
+,senior_crno = #{senior_crno}
+,senior_bank_name = #{senior_bank_name}
+,senior_account_name = #{senior_account_name}
+,senior_account_num = #{senior_account_num}
+where member_id = #{member_id}
+
+</update>
+
 </mapper>
 
 

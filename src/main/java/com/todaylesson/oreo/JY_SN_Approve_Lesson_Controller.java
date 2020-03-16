@@ -80,8 +80,23 @@ public class JY_SN_Approve_Lesson_Controller {
 	}
 	
 	
+	@RequestMapping("update_lessondetail_chapter/{lessondetail_no}")
+	public String update_apld_chapter(@PathVariable int lessondetail_no, Model model) {
+		
+		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
+		model.addAttribute("dto",dto);
+		
+		return "TodayLesson_SeniorPage/jy_sn_apld_update";
+	}
 	
-	
+	@RequestMapping("mal_lesson_update_result")
+	public String update_apld_chapter_result(@PathVariable LessonDetailDTO dto, Model model) {
+		
+		int result = approve_service.apld_update(dto);
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_SeniorPage/jy_sn_mal_lesson_update_result";
+	}
 	
 	
 	

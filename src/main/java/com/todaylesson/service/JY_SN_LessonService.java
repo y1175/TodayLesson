@@ -3,6 +3,7 @@ package com.todaylesson.service;
 import java.util.List;
 
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 
 public interface JY_SN_LessonService {
 
@@ -19,6 +20,8 @@ public interface JY_SN_LessonService {
 	public int delete_lesson(int lesson_no);
 
 	public List<LessonDTO> reject_lesson_list(int senior_no);
+
+	public SeniorDTO select_senior_info(int senior_no);
 
 	
 

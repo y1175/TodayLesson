@@ -340,6 +340,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/mal_lesson_upload_result".equals(strUri))    
        	 	return false; 
         
+        //레슨 디테일 수정 결과
+        else if ("/mal_lesson_update_result".equals(strUri))    
+       	 	return false; 
+
+        else if ("/update_senior_result".equals(strUri))    
+       	 	return false; 
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거

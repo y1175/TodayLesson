@@ -34,10 +34,19 @@ public class JY_SN_Lesson_Controller {
 	@RequestMapping("/lesson_list/{member_id}")
 	public String list(Model model,@PathVariable String member_id){
 		int senior_no = lesson_service.select_senior_no(member_id);
+		SeniorDTO dto = lesson_service.select_senior_info(senior_no);
+		
+		if (dto.getSenior_nick() == null) {
+			
+			return "TodayLesson_SeniorPage/jy_sn_senior_info_null";
+
+		} else {
+		
 		List<LessonDTO> list = lesson_service.list(senior_no);
 		model.addAttribute("list",list);
 	
 		return "TodayLesson_SeniorPage/jy_sn_lesson_list";
+		}
 	}
 	
 	
@@ -112,6 +121,7 @@ public class JY_SN_Lesson_Controller {
 		
 		int result = lesson_service.update_lesson(dto);
 		model.addAttribute("result",result);
+		
 		return "TodayLesson_SeniorPage/jy_sn_update_result";
 	}
 

@@ -85,4 +85,12 @@ where lesson_result = 3 and senior_no = #{senior_no}
 
 </select>
 
+<select id="select_senior_info" parameterType="int" resultType="com.todaylesson.DTO.SeniorDTO">
+
+select * from senior
+where senior_no = #{senior_no}
+
+
+</select>
+
 </mapper>
