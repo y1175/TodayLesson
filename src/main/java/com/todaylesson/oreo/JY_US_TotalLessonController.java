@@ -28,7 +28,7 @@ public class JY_US_TotalLessonController {
 		List<LessonDTO> list = ttlesson_service.ttlesson_list();
 		model.addAttribute("list",list);
 		
-		return "TodayLesson_UserPage/jy_us_total_lesson_list";
+		return "TodayLesson_UserPage/jy_us_total_lesson_list.us_main_section";
 	}
 	
 	@RequestMapping("lesson_detail/{lesson_no}")
@@ -37,7 +37,7 @@ public class JY_US_TotalLessonController {
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
 		model.addAttribute("dto",dto);
 		
-		return "TodayLesson_UserPage/jy_us_total_lesson_detail";
+		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
 	
 }

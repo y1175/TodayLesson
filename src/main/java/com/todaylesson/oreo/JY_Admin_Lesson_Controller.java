@@ -32,6 +32,7 @@ import com.todaylesson.service.JY_Admin_LessonService;
 import com.todaylesson.service.JY_Mail_service;
 
 @Controller
+@RequestMapping("/todaylessonadmin/")
 public class JY_Admin_Lesson_Controller {
 
 	
@@ -96,7 +97,7 @@ public class JY_Admin_Lesson_Controller {
 	public String all_lesson(Model model) {
 		List<AllLessonDTO> list = adminservice.all_lesson();
 		model.addAttribute("list",list);
-		return "TodayLesson_AdminPage/jy_ad_all_lesson";
+		return "TodayLesson_AdminPage/jy_ad_all_lesson.hs_ad_main_section";
 	}
 	
 	
@@ -105,7 +106,7 @@ public class JY_Admin_Lesson_Controller {
 	public String apply_lesson(Model model) {
 		List<AllLessonDTO> list = adminservice.apply_lesson();
 		model.addAttribute("list", list);
-		return "TodayLesson_AdminPage/jy_ad_apply_lesson_list";
+		return "TodayLesson_AdminPage/jy_ad_apply_lesson_list.hs_ad_main_section";
 	}
 	
 	
@@ -139,7 +140,7 @@ public class JY_Admin_Lesson_Controller {
 	public String wait_lesson(Model model) {
 		List<AllLessonDTO> list = adminservice.wait_lesson();
 		model.addAttribute("list",list);
-		return "TodayLesson_AdminPage/jy_ad_wait_lesson";
+		return "TodayLesson_AdminPage/jy_ad_wait_lesson.hs_ad_main_section";
 	}
 	
 	
@@ -169,7 +170,7 @@ public class JY_Admin_Lesson_Controller {
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);
 		 
-		return "TodayLesson_AdminPage/jy_ad_wait_lesson_detail";
+		return "TodayLesson_AdminPage/jy_ad_wait_lesson_detail.hs_ad_main_section";
 	}
 	
 	
@@ -185,7 +186,7 @@ public class JY_Admin_Lesson_Controller {
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);
 		
-		return "TodayLesson_AdminPage/jy_ad_lesson_detail";
+		return "TodayLesson_AdminPage/jy_ad_lesson_detai.hs_ad_main_sectionl";
 	}
 	
     // ·¹½¼ ½É»ç ÆË¾÷
