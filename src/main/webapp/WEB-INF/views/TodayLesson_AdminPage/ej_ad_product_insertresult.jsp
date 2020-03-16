@@ -9,12 +9,12 @@
 <script>
 
 if (${result} > 0) {
-	alert("추가 성공!");
+	alert("제품 등록을 성공하였습니다");
 	location.href="${pageContext.request.contextPath }/ej_ad_productlist";
 } else {
 	
 
-	alert("추가 실패!");
+	alert("제품 등록에 실패하였습니다");
 	location.href="${pageContext.request.contextPath }/ej_ad_productlist";
 	
 }

@@ -50,4 +50,9 @@ select *
 from member
 where member_id=#{member_id}
 </select>
+<!-- 게시판 insert -->
+<insert id="insertOption" parameterType="com.todaylesson.DTO.PdOptionDTO">
+INSERT INTO pd_option (pd_option)
+				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb}, #{product_category}, #{product_sale}, #{product_after_cost})
+</insert>
 </mapper> 

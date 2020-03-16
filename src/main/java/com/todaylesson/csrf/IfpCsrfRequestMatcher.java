@@ -226,7 +226,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지 주문폼
         else if ("/ej_us_orderform".equals(strUri))                   
        	 return false; 
-        
+        //은지 관리자 옵션등록시 나오는 창(추가성공/실패)
+        else if ("/ej_ad_pdOption_insertresult".equals(strUri))                   
+        	 return false; 
         
    //진영
      

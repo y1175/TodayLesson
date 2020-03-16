@@ -15,7 +15,7 @@
 <table>
 <thead>
 <tr>
-<th>상품번호</th><th>상품명</th><th>가격</th><th>재고</th>
+<th>상품번호</th><th>상품명</th><th>가격</th><th>재고</th><th>옵션추가</th><th>삭제</th>
 </tr>
 </thead>
 <tbody>
@@ -25,6 +25,8 @@
 <td><a href="ej_ad_productdetail/${item.product_no}">${item.product_name}</a></td>
 <td>${item.product_cost}원</td>
 <td>${item.product_stock}개</td>
+<td><a href="ad_add_pdOption/${item.product_no}">+</a></td>
+<td><a href="ad_deletePd/${item.product_no}">-</a></td>
 <%-- <td><img src="${pageContext.request.contextPath }/${item.product_thumb}" alt="\${pageContext.request.contextPath }\${item.product_thumb}"><br></td> --%>
 </tr>
 </c:forEach>

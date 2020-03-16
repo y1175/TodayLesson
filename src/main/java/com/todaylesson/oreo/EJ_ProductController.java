@@ -22,6 +22,7 @@ import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
+import com.todaylesson.DTO.Pd_OptionDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -85,6 +86,32 @@ public class EJ_ProductController {
 		model.addAttribute("dto",dto);
 		
 		return "TodayLesson_AdminPage/ej_ad_productdetail";
+	}
+	
+	@RequestMapping("/ad_add_pdOption/{product_no}")
+	public String addoption(@PathVariable("product_no") int product_no, Model model) {
+		
+		ProductDTO dto = service.select(product_no);
+		model.addAttribute("dto",dto);
+		
+		return "TodayLesson_AdminPage/ej_ad_pdOption";
+	}
+	
+	@RequestMapping("/ej_ad_pdOption_insertresult")
+	public String addoptionresult(Model model, Pd_OptionDTO odto) throws IOException, Exception {
+		
+
+		/*int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;
+		dto.setProduct_after_cost(cost);
+		int result = service.insertBoard(dto);
+		model.addAttribute("result", result);
+		
+		return "TodayLesson_AdminPage/ej_ad_product_insertresult";*/
+		int result=service.insertOption(odto);
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_AdminPage/ej_ad_pdOption_insertresult";
+		
 	}
 	@RequestMapping("/ej_store_main")
 	public String slist(Model model) {
