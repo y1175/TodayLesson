@@ -113,6 +113,29 @@ public class EJ_ProductController {
 		return "TodayLesson_AdminPage/ej_ad_pdOption_insertresult";
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/ej_ad_insertOption_json", method = RequestMethod.POST)
+	public void addoptionjson (/*PdReviewDTO reply*/
+			@RequestParam int pd_option_no,
+			@RequestParam String pd_option_name ,
+			@RequestParam int product_no,
+			HttpSession session) throws Exception {
+	
+	 
+	/* MemberDTO member = (MemberDTO)session.getAttribute("member");*/
+		PdOptionDTO odto=new PdOptionDTO();
+		odto.setProduct_no(product_no);
+		odto.setPd_option_no(pd_option_no);
+		odto.setPd_option_name(pd_option_name);
+		
+		int result=service.insertOption(odto);
+	 System.out.println("addoption json  Controller");
+/*	 reply.setMember_id(member.getMember_id());
+	 
+	 service.registReply(reply)*/;
+	
+}
 	@RequestMapping("/ej_store_main")
 	public String slist(Model model) {
 		List<ProductDTO> list = service.selectAll();
