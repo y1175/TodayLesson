@@ -74,7 +74,7 @@
          <br>
          <a href="">팝업관리</a>
          <br>
-         <a href="">관리자설정</a>
+         <a href="/admin_administrator">관리자설정</a>
       
       <div class="hs_ad_main_asidenav_line"></div>   
 

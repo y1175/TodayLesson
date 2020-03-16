@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Senior_HS_Salescalculate_Mapper">
+    <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+    <!-- 쿼리문이랑 같은 이름설정--> 
+	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO" id="salesCalculateMap">
+	   <result property="sales_no" column="sales_no"/> <!-- 매츌현황 NO. (Sales Table) -->
+	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> <!-- 매출현황 결제상태  (OrderList Table)-->
+	   <result property="lesson_type" column="lesson_type"/> <!-- 매출현황 레슨타입 (Lesson Table)  -->
+	   <result property="lesson_no" column="lesson_no"/> <!-- 매출현황 레슨번호 (Lesson Table)  -->
+	   <result property="lesson_title" column="lesson_title"/> <!-- 매출현황 레슨명 (Lesson Table) -->
+	   <result property="orderlist_date" column="orderlist_date"/> <!-- 매출현황 구매일 (OrderList Table) -->
+	   <result property="member_name" column="member_name"/> <!-- 매출현황 구매자 (Member Table) -->
+	   <result property="lesson_cost" column="lesson_cost"/> <!-- 매출현황 결제금액 (Lesson Table) -->
+	   <result property="orderlist_usepoint" column="orderlist_usepoint"/> <!-- 매출현황 포인트사용 (OrderList Table) -->
+	   <result property="sales_comm" column="sales_comm"/> <!-- 매출현황 정산수수료  (Sales Table) -->
+	   <result property="sales_surtax" column="sales_surtax"/> <!-- 매출현황 세금계산서부가세  (Sales Table) -->
+	   <result property="calculate_no" column="calculate_no"/> <!-- 정산신청 정산번호 (Calculate Table) -->
+	   <result property="calculate_date" column="calculate_date"/> <!-- 정산신청 정산신청일 (Calculate Table) -->
+	   <result property="calculate_comp" column="calculate_comp"/> <!-- 정산신청 정산상태 (Calculate Table) -->
+	   <result property="lesson_open_period" column="lesson_open_period"/> <!-- 정산신청 정산기간_시작 (Calculate Table) -->
+ 	   <result property="lesson_close_period" column="lesson_close_period"/> <!-- 정산신청 정산기간_끝 (Calculate Table) -->
+ 	   <result property="senior_bank_name" column="senior_bank_name"/> <!-- 정산신청 정산계좌_은행명 (Calculate Table) -->
+	   <result property="senior_account_num" column="senior_account_num"/> <!-- 정산신청 정산계좌_계좌번호 (Calculate Table) -->
+	   <result property="senior_account_name" column="senior_account_name"/> <!-- 정산신청 정산기간_예금주 (Calculate Table) -->
+	</resultMap>  
+	
+	<!-- 매출현황전체리스트 -->
+	<select id="SalesList" resultMap="salesCalculateMap" parameterType="int" parameterMap="hashmap">
+	   select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
+	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
+	          floor(sum(lesson_cost*0.1)) as sales_comm, 
+	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
+	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
+	                join member m on m.member_id=o.member_id
+	                join lesson l on l.lesson_no=o.lesson_no             
+	   where senior_no=#{senior_no}             
+	</select>
+	
+	<!-- 정산신청 리스트 정산번호 / 정산신청일 / 정산기간 / 정산계좌 -->
+	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="int">
+	   select c.calculate_no, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
+	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
+	   from calculate c join orderlist o on c.orderlist_no=o.orderlist_no
+	                    join lesson l on l.lesson_no=o.lesson_no
+                        join member m on m.member_id=o.member_id
+                        join senior s on s.member_id=m.member_id
+	   where s.senior_no=#{senior_no}
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+

@@ -36,28 +36,27 @@ header javascript -->
             <!-- 모든사람들이 다 --><span class="hs_us_mainheader_topdiv_cartloginsearchbox">
                
                <sec:authorize access="isAnonymous()">  
-                  <a href=""><i class="fa fa-shopping-cart"></i></a>
+                  <a href=""><i class="fa fa-ushopping-cart"></i></a>
                   <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a><span style="margin-left: 10px;">|</span><a href="">회원가입</a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
-               <sec:authorize access="isAuthenticated()">
-                  <form action="/logout" method='post'> 
-                     <%-- <c:if test="${authdto.member_auth==ROLE_ADMIN}">
+               <%-- <sec:authorize access="isAuthenticated()"> --%>
+               <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_USER')">
+                  <form action="${pageContext.request.contextPath}/logout" method='post'>
                      <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
-                     <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a href="/logout">로그아웃</a>
-                     </c:if> --%>
-                     
-                     <%-- <c:if test="${authdto.member_auth!=ROLE_ADMIN}"> --%>
-                     <a href=""><i class="fa fa-shopping-cart"></i></a>
-                     <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
-                     <a href="/todaylessonmypage">마이페이지</a><span style="margin-left: 10px;">|</span><a href="/logout">로그아웃</a>
-                     <%-- </c:if> --%>
-                     
-                  
-                     
+                     <a href="/todaylessonmypage">마이페이지</a><span style="margin-left: 10px;">|</span><a><input type="submit" value="로그아웃" /></a>     
                   </form>
                </sec:authorize>
+               <sec:authorize access="hasRole('ROLE_ADMIN')">
+                  <form action="${pageContext.request.contextPath}/logout" method='post'>
+                     <a href=""><i class="fa fa-shopping-cart"></i></a>
+                     <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
+                     <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a><input type="submit" value="로그아웃" /></a>
+                     <%-- <a href="${pageContext.request.contextPath}/logout">로그아웃</a> --%> 
+                  </form>   
+               </sec:authorize>
+               
                <a href=""><i class='fas fa-search'></i></a>
             </span>
          </div>
