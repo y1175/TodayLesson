@@ -230,19 +230,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
            return false; 
         //은지 관리자 옵션등록시 나오는 창(추가성공/실패)
         else if ("/ej_ad_pdOption_insertresult".equals(strUri))                   
-<<<<<<< HEAD
             return false; 
         else if ("/ad_add_pdOption".equals(strUri))                   
            return false; 
         else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
-           return false; 
-=======
         	 return false; 
-        else if ("/ad_add_pdOption".equals(strUri))                   
-       	 return false; 
-        else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
-       	 return false; 
->>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
+
    //진영
      
         //진영주소팝업
@@ -351,6 +344,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/mal_lesson_upload_result".equals(strUri))    
               return false; 
         
+        //레슨 디테일 수정 결과
+        else if ("/mal_lesson_update_result".equals(strUri))    
+       	 	return false; 
+
+        else if ("/update_senior_result".equals(strUri))    
+       	 	return false; 
         
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거
