@@ -22,7 +22,7 @@ import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
-import com.todaylesson.DTO.Pd_OptionDTO;
+import com.todaylesson.DTO.PdOptionDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -98,7 +98,7 @@ public class EJ_ProductController {
 	}
 	
 	@RequestMapping("/ej_ad_pdOption_insertresult")
-	public String addoptionresult(Model model, Pd_OptionDTO odto) throws IOException, Exception {
+	public String addoptionresult(Model model, PdOptionDTO odto) throws IOException, Exception {
 		
 
 		/*int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;

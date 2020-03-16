@@ -52,7 +52,7 @@ where member_id=#{member_id}
 </select>
 <!-- 게시판 insert -->
 <insert id="insertOption" parameterType="com.todaylesson.DTO.PdOptionDTO">
-INSERT INTO pd_option (pd_option)
-				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb}, #{product_category}, #{product_sale}, #{product_after_cost})
+INSERT INTO pd_option (pd_option_no, product_no, pd_option_name)
+				VALUES (#{pd_option_no},#{product_no},#{pd_option_name})
 </insert>
 </mapper> 

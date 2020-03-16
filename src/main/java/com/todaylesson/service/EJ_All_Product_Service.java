@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
-import com.todaylesson.DTO.Pd_OptionDTO;
+import com.todaylesson.DTO.PdOptionDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -23,7 +23,7 @@ public interface EJ_All_Product_Service {
 
 	public MemberDTO selectm(String member_id);
 
-	public int insertOption(Pd_OptionDTO odto);
+	public int insertOption(PdOptionDTO odto);
 
 
 

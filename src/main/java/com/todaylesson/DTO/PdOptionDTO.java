@@ -7,9 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Pd_OptionDTO {
-	private int product_op_no;
+public class PdOptionDTO {
+	private int pd_option_no;
 	private int product_no;
-	private String product_op_name;
+	private String pd_option_name;
 
 }
