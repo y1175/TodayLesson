@@ -230,11 +230,19 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
            return false; 
         //은지 관리자 옵션등록시 나오는 창(추가성공/실패)
         else if ("/ej_ad_pdOption_insertresult".equals(strUri))                   
+<<<<<<< HEAD
             return false; 
         else if ("/ad_add_pdOption".equals(strUri))                   
            return false; 
         else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
            return false; 
+=======
+        	 return false; 
+        else if ("/ad_add_pdOption".equals(strUri))                   
+       	 return false; 
+        else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
+       	 return false; 
+>>>>>>> branch 'master' of https://github.com/Hahwasoo/TodayLesson.git
    //진영
      
         //진영주소팝업
