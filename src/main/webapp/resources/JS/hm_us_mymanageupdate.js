@@ -1,5 +1,15 @@
-/* 인증번호 */
-	$("#alert-success2").hide();
+$(document).ready(function(){
+		
+/*	$("#phonenumberbtn").on('click',function(){
+			
+			$("#phonenumber1").hide();
+			$("#smsForm").show();
+			
+		});*/
+
+	/* 인증번호 */
+
+$("#alert-success2").hide();
 	$("#alert-danger2").hide();
 	
     $("#sendSMS").on('click',function(){
@@ -45,3 +55,5 @@
 
 
 		}
+    
+});

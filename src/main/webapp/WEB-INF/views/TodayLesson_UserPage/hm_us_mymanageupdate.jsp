@@ -9,17 +9,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<title>Insert title here</title>                                 
+<title>Insert title here</title>                               
 
 </head>
 <body>
+<h2>회원정보 수정</h2>
 <c:set var="dto" value="${dto}"></c:set>
+<ul>
+<li>
 아이디
-${dto.member_id}<br>
-<form method="post" id="smsForm">
+${dto.member_id}
+</li>
+</ul>
+<form method="post" id="smsForm" >
 <label>연락처</label>
 <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
-    required="required" value="${to}"/> 
+    required="required" value="${dto.member_phone}"/> 
       <input type="hidden" name="text" id="text2" > 
       <input type="button" name="sendSMS" id="sendSMS" value="인증번호 요청" /><br>
       <label>인증번호 확인:</label>
@@ -37,9 +42,7 @@ ${dto.member_id}<br>
     <input type="hidden" name="member_addr" id="member_addr" value ="${dto.member_addr}" > --%>
     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />         
 </form>
-<h2>회원정보 수정</h2>
 <form method="post" action="${pageContext.request.contextPath}/hm_us_mymanageupdate">
-<label>아이디</label>
 <input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}" ><br>
 <label>비밀번호</label>
 <input type="password" name="member_pwd" id="member_pwd" required="required" placeholder="비밀번호"><br>
@@ -54,8 +57,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="date" name="member_birth" id="member_birth" value="${dto.member_birth}" required="required"><br>
  <label>e-mail</label>
 <input type="email" name="member_email" id="member_email" value="${dto.member_email}" required="required"><br>
- <label>연락처</label>
- <input type="text" name="member_phone" id="member_phone" value="${dto.member_phone}" required="required"><br>
+ <input type="hidden" name="member_phone" id="member_phone" value="${dto.member_phone}" required="required"><br>
 <label for='addr'>주소</label>
 					<div class='form-row'>
 						<div class='col-5'>
@@ -177,7 +179,7 @@ onkeyup="passwordCheckFunction();"><br>
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="resources/JS/hm_us_mymanageupdate.js"></script>
+	<script type="text/javascript" src="resources/JS/hm_us_mymanageupdate.js"></script>  
 
 
 </body>
