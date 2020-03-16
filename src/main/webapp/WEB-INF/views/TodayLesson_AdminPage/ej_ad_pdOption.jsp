@@ -49,7 +49,7 @@
  <input type="submit" value="옵션 등록"/>
 
 			
-		</form>
+	
 	</div>
 	<script>
  $("#reply_btn").click(function(){
@@ -69,7 +69,7 @@
 
   
   $.ajax({/* "/shop/view/registReply" */
-   url :"/ej_ad_insertOption_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/ad_add_pdOption/insertOption_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,

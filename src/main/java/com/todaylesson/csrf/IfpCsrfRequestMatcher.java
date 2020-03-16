@@ -231,7 +231,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지 관리자 옵션등록시 나오는 창(추가성공/실패)
         else if ("/ej_ad_pdOption_insertresult".equals(strUri))                   
         	 return false; 
-       
+        else if ("/ad_add_pdOption".equals(strUri))                   
+       	 return false; 
         else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
        	 return false; 
    //진영
