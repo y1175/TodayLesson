@@ -6,37 +6,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event.css">
+<link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_manage.css?ver=1">
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event.js"></script>
 </head>
 <body>
 
-	<c:forEach var="item" items="${list}">
-		<div id="pattern" class="pattern">
-			<ul class="list img-list">
-				<li><a href="#" class="inner">
-						<div class="li-img">
-							<img src="${item.event_thumbnail}" alt="Thumbnail" />
-						</div>
-						<div class="li-text">
-							<h4 class="li-head">${item.event_title}</h4>
-							<p class="li-summary">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit. Duis sit amet tellus velit, ut semper neque.</p>
-							<p class="li-action">Read More</p>
-						</div>
-	</c:forEach>
+<button class="eventinsertbtn">이벤트 등록</button>
 
-
-	<%-- <ul>
 <c:forEach var="item" items="${list}">
-<div>
-<img alt="썸네일" src="${item.event_thumbnail}">
-<div>
+<div id="eventdiv1" class="eventdiv1">
+<ul class="eventul">
+<li>
+<div class="eventimg">
+<img src="${item.event_thumbnail}" alt="Thumbnail"/>
+</div>
+<div class="eventtext">
+<h6 class="eventgroup">
+<c:choose>
+<c:when test="${item.event_group eq '0'}">
+레슨
+</c:when>
+<c:when test="${item.event_group eq '1'}">
+스토어
+</c:when>
+<c:when test="${item.event_group eq '2'}">
+기타
+</c:when>
+</c:choose>
+</h6>
+<h4 class="event-head">${item.event_title}</h4>
+<p class="eventperiod">${item.event_startperiod}~${item.event_endperiod}</p>
+	<a href="" class="eventdetail"><p class="eventreadmore">Read More</p></a>
+</div>
+</li>
+</ul>
+</div>
 </c:forEach>
-</ul> --%>
 
-<input type="button"  id ="eventinsertbtn" value="이벤트 등록">
+
+
 
 </body>
 </html>
