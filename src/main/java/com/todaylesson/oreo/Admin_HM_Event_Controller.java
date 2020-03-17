@@ -33,7 +33,7 @@ public class Admin_HM_Event_Controller {
 	}
 	
 	
-	@RequestMapping("/hm_ad_event_insert")
+	@RequestMapping("/hm_ad_event_insert")          
 	private String eventinsert()
 	{
 		
