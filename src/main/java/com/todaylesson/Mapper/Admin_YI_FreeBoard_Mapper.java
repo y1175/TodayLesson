@@ -29,6 +29,14 @@ public interface Admin_YI_FreeBoard_Mapper {
 
 	int freeboard_delete(int freeboard_no);
 
+	NoticeDTO notice_modifyPlacehold(int notice_no);
+	
+	int notice_modify(NoticeDTO dto);
+
+	int notice_delete(int notice_no);
+
+
+
 
 
 }

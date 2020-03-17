@@ -7,9 +7,9 @@ import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 
 public interface Admin_YI_FreeBoard_Service {
 
-	int totalCount(String search, String searchtxt);
+	int totalCount(int category,String search, String searchtxt);
 
-	List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt, int startRow, int endRow);
+	List<SQLjoin_Member_FreeBoardDTO> list(int category,String search, String searchtxt,  int startRow, int endRow);
 
 	List<NoticeDTO> notice();
 
@@ -24,5 +24,13 @@ public interface Admin_YI_FreeBoard_Service {
 	int admin_replyinsert(SQLjoin_Member_FreeBoardDTO dto);
 
 	int admin_boarddelete(int freeboard_no);
+
+	NoticeDTO noticeModifyPlacehold(int notice_no);
+	
+	int admin_noticemodify(NoticeDTO dto);
+
+	int admin_noticedelete(int notice_no);
+
+	
 
 }

@@ -25,7 +25,8 @@ public class Admin_YI_FreeBoard_Controller {
 	
 	@RequestMapping("/admin_freeboard")
 	public String admin_freeboard_list(
-			@RequestParam(required=false, defaultValue="") String search
+			@RequestParam(required=false, defaultValue="3") int category
+			,@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,@RequestParam(required=false, defaultValue="1") int hidden_freeboard_no
@@ -34,7 +35,7 @@ public class Admin_YI_FreeBoard_Controller {
 	{
 		
 		//총 게시글 수
-				int totalCount= service.totalCount(search, searchtxt);
+				int totalCount= service.totalCount(category,search, searchtxt);
 				int pageSize=15;
 				int blockSize=5;
 				
@@ -47,7 +48,7 @@ public class Admin_YI_FreeBoard_Controller {
 				
 				
 				//게시물 리스트
-				List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt
+				List<SQLjoin_Member_FreeBoardDTO> list=service.list(category,search, searchtxt
 												,page.getStartRow()
 												,page.getEndRow());
 				
@@ -99,6 +100,45 @@ public class Admin_YI_FreeBoard_Controller {
 		
 		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticeinsertResult";
 	}
+	
+	@RequestMapping("/admin_noticemodify/{notice_no}")
+	public String admin_noticemodify(@PathVariable int notice_no
+			,Model model)
+	{
+		NoticeDTO dto=service.noticeModifyPlacehold(notice_no);
+		model.addAttribute("dto",dto);
+		
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticemodify";
+	}
+	
+	
+	@RequestMapping("/admin_noticemodifyresult/")
+	public String admin_noticemodifyresult(@RequestParam int notice_no
+			,@RequestParam String notice_title
+			,@RequestParam String notice_content
+			,@RequestParam String member_id,Model model)
+	{
+		NoticeDTO dto=new NoticeDTO();
+		dto.setMember_id(member_id);
+		dto.setNotice_title(notice_title);
+		dto.setNotice_content(notice_content);
+		dto.setNotice_no(notice_no);
+		
+		int result=service.admin_noticemodify(dto);
+		model.addAttribute("result",result);
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_modifyresult";
+	}
+	
+	@RequestMapping("/admin_noticedelete/{freeboard_no}")
+	public String admin_noticedelete(@PathVariable int notice_no
+			,Model model)
+	{
+		int result=service.admin_noticedelete(notice_no);
+		model.addAttribute("result",result);
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_deleteresult";
+	}
+	
+	
 	@ResponseBody
 	@RequestMapping("/freeboard_replyjson/{freeboard_no}")
 	public List<SQLjoin_Member_FreeBoardDTO> detailjson(@PathVariable int freeboard_no
@@ -132,7 +172,7 @@ public class Admin_YI_FreeBoard_Controller {
 		return "/TodayLesson_AdminPage/yi_ad_freeboard_replyinsertResult";
 	}
 	
-	@RequestMapping("admin_delete/{freeboard_no}")
+	@RequestMapping("/admin_delete/{freeboard_no}")
 	public String admin_boarddelete(@PathVariable int freeboard_no
 			,Model model)
 	{
@@ -141,5 +181,5 @@ public class Admin_YI_FreeBoard_Controller {
 		return "/TodayLesson_AdminPage/yi_ad_freeboard_deleteresult";
 	}
 	
-	
+
 }
