@@ -4,13 +4,13 @@
 	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
-    
+   
+   <security:http pattern="/resources/Banner/**" security="none"/> 
    <security:http pattern="/resources/CSS/**" security="none"/>
    <security:http pattern="/resources/FONT/**" security="none"/>
    <security:http pattern="/resources/IMG/**" security="none"/>
    <security:http pattern="/resources/imgUpload/**" security="none"/>
    <security:http pattern="/resources/JS/**" security="none"/>
-   
    
    <bean id="ifpCsrfRequestMatcher" class="com.todaylesson.csrf.IfpCsrfRequestMatcher"/>
    <bean id="ifpAccessDeniedHandler" class="com.todaylesson.csrf.IfpAccessDeniedHandler"/>
@@ -21,7 +21,7 @@
       <security:intercept-url pattern="/todaylessonlogin" access="permitAll"/> <!-- 로그인화면 -->
       <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
       <security:intercept-url pattern="/todaylessonsenior" access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- 시니어 -->
-      <security:intercept-url pattern="/todaylesson" access="hasAnyRole('ROLE_USER','ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- -->
+      <security:intercept-url pattern="/todaylessonmypage" access="hasAnyRole('ROLE_USER','ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
     <!--  <security:intercept-url pattern="/todaylessonpage" access="isAuthenticated()"/>   로그인한 사람 -->
       
