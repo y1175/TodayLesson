@@ -19,9 +19,9 @@
       
       <security:intercept-url pattern="/todaylesson" access="permitAll"/> <!-- 메인홈 -->
       <security:intercept-url pattern="/todaylessonlogin" access="permitAll"/> <!-- 로그인화면 -->
-      <security:intercept-url pattern="/todaylessonadmin/**" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
-      <security:intercept-url pattern="/todaylessonsenior/**" access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- 시니어 -->
-      <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- -->
+      <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
+      <security:intercept-url pattern="/todaylessonsenior" access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- 시니어 -->
+      <security:intercept-url pattern="/todaylesson" access="hasAnyRole('ROLE_USER','ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
     <!--  <security:intercept-url pattern="/todaylessonpage" access="isAuthenticated()"/>   로그인한 사람 -->
       

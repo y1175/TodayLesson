@@ -16,10 +16,10 @@
   <div id="imgslide" class="all">
 		<div class="imgbox">
 			<ul class="slide">
-				<li><img src="resources/Banner/main_banner1.jpg" alt="s"></li>
-				<li><img src="resources/Banner/main_banner2.jpg" alt="s"></li>
-				<li><img src="resources/Banner/main_banner3.jpg" alt="s"></li>
-				<li><img src="resources/Banner/main_banner4.jpg" alt=""></li>
+				<li><img src="${pageContext.request.contextPath}/resources/Banner/main_banner1.jpg" alt="s"></li>
+				<li><img src="${pageContext.request.contextPath}/resources/Banner/main_banner2.jpg" alt="s"></li>
+				<li><img src="${pageContext.request.contextPath}/resources/Banner/main_banner3.jpg" alt="s"></li>
+				<li><img src="${pageContext.request.contextPath}/resources/Banner/main_banner4.jpg" alt="s"></li>
 			</ul>
 		</div>
 	</div>

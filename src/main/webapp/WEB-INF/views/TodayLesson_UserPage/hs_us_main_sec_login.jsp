@@ -69,7 +69,7 @@
             </a>
             <!-- 네이버-->
             <!-- 구글 -->
-            <a>
+            <a href="${google_url}">
                <img alt="구글" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png">
             </a> 
             <!-- 구글 -->
