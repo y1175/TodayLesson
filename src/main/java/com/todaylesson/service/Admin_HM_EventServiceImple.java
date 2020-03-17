@@ -1,5 +1,7 @@
 package com.todaylesson.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -17,6 +19,12 @@ public class Admin_HM_EventServiceImple implements Admin_HM_EventService {
 	public int eventinsert(EventDTO dto) {
 		// TODO Auto-generated method stub
 		return mapper.eventinsert(dto);
+	}
+
+	@Override
+	public List<EventDTO> eventlist() {
+		// TODO Auto-generated method stub
+		return mapper.eventlist();
 	}
 
 }

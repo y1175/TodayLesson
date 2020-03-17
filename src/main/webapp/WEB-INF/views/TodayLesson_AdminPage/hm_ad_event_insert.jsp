@@ -23,8 +23,8 @@
 			minHeight : 370,
 			maxHeight : null,
 			focus : true,
-			lang : 'ko-KR',
-			
+			lang : 'ko-KR', 
+		
 		});
 		
 		document.getElementById('event_startperiod').valueAsDate = new Date();
@@ -58,7 +58,7 @@
 		<br>
 		<br>
 		<label>이벤트명</label><br>
-		 <input type="text" name="event_title" style="width: 40%;" placeholder="이벤트명" required="required"/> <br>
+		 <input type="text" id="event_title" name="event_title" style="width: 40%;" placeholder="이벤트명" required="required"/> <br>
 			<br>
 			<label>이벤트 시작기간</label><br>
 			<input type="date" id="event_startperiod" name="event_startperiod" style="width: 30%;" required="required"/><br>
@@ -74,17 +74,7 @@
  <input type="file" id="event_thumbnail" name="file" />
  <div class="select_img"><img src="" /></div>
  
-<!--  <script>
-  $("#product_img").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(500);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script> -->
+
  <input type="submit" value="이벤트 등록"/>
   <%-- <%=request.getRealPath("/") %>  --%>
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />

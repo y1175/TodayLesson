@@ -12,11 +12,11 @@ var result = ${result}
 if(result>0)
 {
 alert('이벤트 등록이 완료되었습니다..');
-location.href="/hm_ad_event_manage";
+location.href="/todaylessonadmin/hm_ad_event_manage";
 }
 else{
 	alert('이벤트 등록을 실패하였습니다.');
-/* 	location.href="/hm_ad_event_insert"; */
+/* 	location.href="/hm_ad_event_insert"; 다시 그전으로 돌아가는것*/
 }
 </script>
 </body>
