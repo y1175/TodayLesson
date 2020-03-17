@@ -9,7 +9,7 @@ import java.util.UUID;
 import org.springframework.util.FileCopyUtils;
 import net.coobird.thumbnailator.Thumbnails;
 
-//�뤃�뜑 �깮�꽦?�� �뙆�씪 ���옣, �뜽�궡�씪 �깮�꽦�쓽 �옉�뾽�쓣 ��?�땲�떎.
+//폴더 생성과 파일 저장, 썸내일 생성의 작업을 합니다.
 public class UploadFileUtils {
   
  static final int THUMB_WIDTH = 300;
