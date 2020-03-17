@@ -29,7 +29,10 @@
 <input type="submit" value="조회">
 
 </form>
-
+<select name="orderlist_category">
+<option value="store">스토어</option>
+<option value="lesson">레슨</option>
+</select>
 
 
 </body>
