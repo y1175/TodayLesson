@@ -23,7 +23,7 @@ import com.todaylesson.service.JY_US_SeniorService;
 
 
 @Controller
-@RequestMapping("/todaylessonsenior/")
+/*@RequestMapping("/todaylessonsenior/")*/
 public class JY_SN_Lesson_Controller {
 
 	
