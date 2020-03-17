@@ -22,6 +22,11 @@ pageEncoding="UTF-8"%>
 <input type="submit" value="검색">
 </form>
 
+
+
+
+
+
 <table>
 <thead>
 <tr><th>문의번호</th><th>문의유형</th><th>아이디</th><th>문의제목</th><th>답변상태</th><th>문의일</th></tr>

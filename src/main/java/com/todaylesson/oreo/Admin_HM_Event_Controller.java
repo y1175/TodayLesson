@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,10 +29,8 @@ public class Admin_HM_Event_Controller {
 	@Resource(name="admin_hm_eventservice")
 	private Admin_HM_EventService service;
 	
-	@Resource(name="uploadPath")
-	private String uploadPath;
 	
-	@RequestMapping("/hm_ad_event_manage")
+	@RequestMapping("/hm_ad_event_manage")   
 	private String eventmanagelist(Model model)
 	{
 		List<EventDTO> list = service.eventlist();
@@ -51,20 +51,23 @@ public class Admin_HM_Event_Controller {
 		
 		
 	@RequestMapping("/hm_ad_event_insertresult")
-	   public String insertresult(Model model, EventDTO dto, MultipartFile file) throws IOException, Exception {
+	   public String insertresult(Model model, EventDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 	      
 
-	      String imgUploadPath = uploadPath + File.separator + "imgUpload";
-	      String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-	      String fileName = null;
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
 
-	      if(file != null) 
-	      {
-	       fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-	      } else {
-	       fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-	      }
-	      dto.setEvent_thumbnail(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		if(file != null)   
+		{
+		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 	      String imgthumb=dto.getEvent_thumbnail();
 	      System.out.println("썸네일이미지경로: "+imgthumb);
 	      int result = service.eventinsert(dto);
