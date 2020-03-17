@@ -1,11 +1,11 @@
-package com.todaylesson.google;
+package com.todaylesson.service;
 
-public class AuthInfo {
+public class YI_Google_AuthInfo {
 	private String clientId;
     private String clientSecret;
     
     
-    public AuthInfo(String clientId, String clientSecret) {
+    public YI_Google_AuthInfo(String clientId, String clientSecret) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
