@@ -9,7 +9,6 @@ import java.util.UUID;
 import org.springframework.util.FileCopyUtils;
 import net.coobird.thumbnailator.Thumbnails;
 
-//�뤃�뜑 �깮�꽦?�� �뙆�씪 ���옣, �뜽�궡�씪 �깮�꽦�쓽 �옉�뾽�쓣 ��?�땲�떎.
 public class UploadFileUtils {
   
  static final int THUMB_WIDTH = 300;

@@ -14,7 +14,7 @@
 <!-- include summernote-ko-KR -->
 <!-- <script src="TodayLesson\src\main\webapp\resources\JS\summernote-ko-KR.js"></script> -->
  <script src="/resources/JS/summernote-ko-KR.js"></script>
-<title>글쓰기</title>0
+<title>글쓰기</title>
 
 <script>
 	$(document).ready(function() {

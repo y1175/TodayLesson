@@ -51,9 +51,15 @@ from member
 where member_id=#{member_id}
 </select>
 <!-- 게시판 insert -->
-<insert id="insertOption" parameterType="com.todaylesson.DTO.PdOptionDTO">
-INSERT INTO pd_option (pd_option_no, product_no, pd_option_name)
-				VALUES (#{pd_option_no},#{product_no},#{pd_option_name}),(#{pd_option_no},#{product_no},#{pd_option_name}),(#{pd_option_no},#{product_no},#{pd_option_name})
-				,(#{pd_option_no},#{product_no},#{pd_option_name})
+<insert id="insertOption" parameterType="com.todaylesson.DTO.OptionsDTO">
+INSERT INTO options (product_no, option_name, option_cost)
+				VALUES (#{product_no}, #{option_name}, #{option_cost})
 </insert>
+
+	
+	<select id="selectOption" resultType="com.todaylesson.DTO.OptionsDTO">
+	select *
+from options
+where  product_no=#{product_no}
+	</select>
 </mapper> 
