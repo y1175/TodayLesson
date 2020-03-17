@@ -171,16 +171,6 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.spring-security-version}</version>
 		</dependency>
-		
-		<!-- 스프링 시큐리티 oauth -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
-        <!-- <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-            <version>2.3.5.RELEASE</version>
-        </dependency> -->
-        <!-- 스프링 시큐리티 oauth -->
-		<!-- spring security 추가 -->
 
 		<!-- 메일보내기 lib -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
@@ -245,6 +235,15 @@
            <version>1.1.1</version>
         </dependency>
 		<!-- naver로 로그인 -->
+		
+		<!-- google로 로그인 -->
+		<dependency>
+           <groupId>org.springframework.social</groupId>
+           <artifactId>spring-social-google</artifactId>
+           <version>1.0.0.RELEASE</version>
+        </dependency>
+		<!-- httpclient kakao로그인에 있음 -->
+		<!-- google로 로그인 -->
 		
 		<!-- AspectJ -->
 		<dependency>
