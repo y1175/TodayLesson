@@ -73,6 +73,6 @@ ${item.product_name}
 <img src="${pageContext.request.contextPath }/$item.product_thumb}" alt="\${pageContext.request.contextPath }\${item.product_thumb}"><br>
 </c:forEach> --%>
 
-
+<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 </body>
 </html>

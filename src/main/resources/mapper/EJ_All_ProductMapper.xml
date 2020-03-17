@@ -30,8 +30,9 @@ where product_no=#{product_no}
 
  <select id="selectReply" resultType="com.todaylesson.DTO.PdReviewDTO">
 select *
-from pdreview, orderlist
+from pdreview, orderlist, order_detail
 where pdreview.orderlist_no=orderlist.orderlist_no
+and orderlist.orderlist_no=order_detail.orderlist_no
 and product_no=#{product_no}
 </select> 
 
