@@ -80,10 +80,18 @@ display: inline-block;}
 <input type="hidden" name="product_no" value="${dto.product_no }"/>
 <input type="hidden" name="product_name" value="${dto.product_name }"/>
 <input type="hidden" name="product_cost" value="${dto.product_cost }"/>
+<select name="selectoption">
+<c:forEach var="item" items="${optionlist}"> 
+  <option value="${item.option_name}" id="optionname">${item.option_name} +${item.option_cost}원</option>
+  </c:forEach>
+</select><br>
 
-배송비 무료<br>
+
 수량 <input type=text size="1" name="pdcount" placeholder="1" required="required"><br>
+<button >적용</button>
+배송비 무료<br>
 <a href="">♡</a><a href="">장바구니</a><br>
+
 <input type="hidden" name="memberid" value="${pageContext.request.userPrincipal.name}" id="memberid">
 <input type="submit" value="구매하기" class='btn btn-primary'>
 </nav>
@@ -225,11 +233,11 @@ ${dto.product_content}
     console.log('this'+this);
     console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id+"kl");
     $("#repCon").val("");
-	 
+	 /* 
     if(data.member_id!=null)
     	{
     	alert('hello');
-    	}
+    	} */
     var str = "";
 	str+="<tr><td>"+data.member_id+"</td>"
 	str+="<td>"+data.pdreview_content+"</td></tr>"
@@ -242,6 +250,7 @@ ${dto.product_content}
    ,error: function(){
 	   console.log(data);
 	   console.log('error');
+	   alert('구매한 고객만 후기를 작성 할 수 있습니다.');
 	   }
   });
  });
