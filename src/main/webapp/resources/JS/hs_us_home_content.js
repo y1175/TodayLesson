@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 	
 	var idx = 0; // 함수 호출 횟수
 	var i=0; // 이미지 인덱스
@@ -27,3 +27,9 @@ $(document).ready(function(){
 });
 
 
+*/
+$(document).ready(function() {
+
+  
+
+});

@@ -10,7 +10,7 @@
 
 
 <!--header style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_main_header.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_main_header.css?ver=2">
 <!--header style-->
 
 <!-- header javascript 
