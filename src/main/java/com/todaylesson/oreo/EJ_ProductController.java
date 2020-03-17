@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
@@ -33,8 +34,8 @@ public class EJ_ProductController {
 	@Resource(name="service")
 	private EJ_All_Product_Service service;
 	//
-	@Resource(name="uploadPath")
-	private String uploadPath;
+	/*@Resource(name="uploadPath")
+	private String uploadPath;*/
 	
 	@RequestMapping("/ej_ad_productlist")
 	public String list(Model model) {
@@ -50,9 +51,9 @@ public class EJ_ProductController {
 	}
 	
 	@RequestMapping("/ej_ad_product_insertresult")
-	public String insertresult(Model model, ProductDTO dto, MultipartFile file) throws IOException, Exception {
+	public String insertresult(Model model, ProductDTO dto, MultipartFile file,  HttpServletRequest request) throws IOException, Exception {
 		
-
+/*
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -65,7 +66,22 @@ public class EJ_ProductController {
 		}
 
 		dto.setProduct_img(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		dto.setProduct_thumb(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		dto.setProduct_thumb(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);*/
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null)   
+		{
+		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		dto.setProduct_img(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		dto.setProduct_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		String img=dto.getProduct_img();
 		String imgthumb=dto.getProduct_thumb();
 		System.out.println("이미지경로: "+img);

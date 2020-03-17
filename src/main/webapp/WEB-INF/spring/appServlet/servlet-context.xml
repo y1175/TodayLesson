@@ -39,14 +39,15 @@
     <!-- Tiles viewResolver -->
  	
     <!-- 업로드 패스 설정  -->
-    <beans:bean class="java.lang.String" id="uploadPath">
+    <!-- <beans:bean class="java.lang.String" id="uploadPath">
        <beans:constructor-arg value="C:\javadb\project_lesson17\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TodayLesson\resources" /> 
-    </beans:bean>
+    </beans:bean> -->
     <!-- 업로드 패스 설정  -->
 
     <!-- 일반 파일 업로드 경로 -->
-    <resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
-
+    <!-- <resources mapping="/imgUpload/**" location="/resources/imgUpload/" /> -->
+	<resources mapping="resources/imgUpload/**" location="/resources/imgUpload/" />
+	
     <beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
        <beans:property name="maxUploadSize" value="10485760"/>
     </beans:bean>
