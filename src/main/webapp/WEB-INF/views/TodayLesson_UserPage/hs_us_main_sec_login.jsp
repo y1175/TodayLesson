@@ -53,47 +53,45 @@
                <input type="submit" value="로그인">
                <br>    
             </div>
-            <!-- 로그인 line  -->
-            <div class=""></div>
-           
-               <div>
-                  <!-- 카카오 -->
-                  <a href="${kakaologin_URL}"id="kakao-login-btn"></a> 
-                  <!-- 카카오 -->
-                  <!-- 네이버-->
-                    <!-- 네이버 로그인 화면으로 이동 시키는 URL -->
-                    <!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
-                  <a href="${naverlogin_URL}">
-                     <img width="222" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
-                  </a>
-                  <!-- 네이버-->
-                  <!-- 구글 -->
-                  <a>
-                     <img alt="구글" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png">
-                  </a> 
-                  <!-- 구글 -->
-                  <!-- 페이스북 -->
-                  <a href="" id="fb-root">
-                     <span class="fb-login-button" data-width="222" data-size="large" data-button-type="login_with" 
-                                                   data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
-                     </span>
-                  </a>
-                  <!-- 페이스북 -->  
-               </div>
-           
-            <div class="hs_us_mainheader_findidpw">
-               <a href="">아이디찾기</a><span>|</span><a href="">비밀번호찾기</a>
-            </div>
-           
-            <div class="hs_us_mainheader_join">
-               <span>
-                  <span>아직도 오늘의 레슨 회원이 아니신가요?</span><a href="">회원가입</a>
-               </span> 
-            </div>
-   
+          </div>
+      </form>   
+      <!-- 로그인 line  -->
+      <div class="">
+         <div>
+            <!-- 카카오 -->
+            <a href="${kakaologin_URL}"id="kakao-login-btn"></a> 
+            <!-- 카카오 -->
+            <!-- 네이버-->
+            <!-- 네이버 로그인 화면으로 이동 시키는 URL -->
+            <!-- 네이버 로그인 화면에서 ID, PW를 올바르게 입력하면 callback 메소드 실행 요청 -->
+            <a href="${naverlogin_URL}">
+               <img width="222" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+            </a>
+            <!-- 네이버-->
+            <!-- 구글 -->
+            <a>
+               <img alt="구글" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png">
+            </a> 
+            <!-- 구글 -->
+            <!-- 페이스북 -->
+            <a href="" id="fb-root">
+               <span class="fb-login-button" data-width="222" data-size="large" data-button-type="login_with" 
+                                             data-layout="default" data-auto-logout-link="false" data-use-continue-as="false">
+               </span>
+            </a>
+            <!-- 페이스북 -->  
          </div>
-         
-      </form>
+         <div class="hs_us_mainheader_findidpw">
+            <a href="">아이디찾기</a><span>|</span><a href="">비밀번호찾기</a>
+         </div>
+           
+         <div class="hs_us_mainheader_join">
+            <span>
+               <span>아직도 오늘의 레슨 회원이 아니신가요?</span><a href="">회원가입</a>
+            </span> 
+         </div>
+      </div>
+        
    </div>
 
 </body>

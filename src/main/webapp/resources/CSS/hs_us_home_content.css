@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* Main Bunner 슬라이더(자동 좌우적용) */
+@charset "utf-8";
+body{
+	margin:0 auto;
+	/* padding: 0; */
+	list-style: none;
+}
+/* a{color: inherit; text-decoration: none;}
+button{cursor: pointer;}
+body, html{min-width: 960px;} */
+.all{
+	width:100%;
+}
+/* .wrap{
+	width:960px;
+	}
+ */
+#imgslide{
+	margin-top: 10px;
+	height: 400px;
+}
+.imgbox{
+	position:relative;
+	overflow: hidden;
+	height: 400px;
+	width: 100%;
+	background-color: pink
+}
+.slide{
+	width:3000px; /* 이미지 크기 * 이미지 개수 + 여유 */
+    position:absolute;	
+}
+.slide li{
+	display: inline; /* 이미지를 옆으로 나열 시키기 위해*/
+	margin-right: -5px; /* 이미지 사이의 마진을 없애기 위해 */
+}
+.imgbox>img{width:100%;position: absolute;transition: all 2s;}
