@@ -10,6 +10,10 @@ public interface JY_US_SeniorService {
 
 	public int check_senior(String member_id);
 
+	public SeniorDTO select_senior(String member_id);
+
+	public int update_senior(SeniorDTO dto);
+
 
 	
 	

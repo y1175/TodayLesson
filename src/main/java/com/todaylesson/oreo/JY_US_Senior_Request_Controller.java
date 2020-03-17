@@ -76,14 +76,8 @@ public class JY_US_Senior_Request_Controller {
 	
 	
 	
-	// 시니어 지원 버튼
-	@RequestMapping("senior_request")
-	public String senior_Request_PopUp() {
-		return "TodayLesson_UserPage/jy_us_senior_request";
-	}
-	
 	// 시니어 지원 버튼 팝업 > 예 누르면 시니어로 전환됨
-	@RequestMapping("senior_request_form/{member_id}")
+	@RequestMapping("/todaylesson/senior_request_form/{member_id}")
 	public String senior_Request_Button(@PathVariable String member_id, Model model) {
 		int mem_level=seniorservice.check_senior(member_id);
 		
@@ -102,7 +96,7 @@ public class JY_US_Senior_Request_Controller {
 	}
 	
 	// 시니어 지원 버튼 팝업에서 예 누르면 나오는 폼
-	@RequestMapping("senior_switch/{member_id}")
+	@RequestMapping("/todaylessonsenior/senior_switch/{member_id}")
 	public String senior_Switch(Model model,@PathVariable String member_id, HttpServletRequest request,HttpServletResponse response) throws Exception{
 		
 		String imp_key 		=	"5422837446408379";
@@ -119,21 +113,50 @@ public class JY_US_Senior_Request_Controller {
 	}
 	
 	// 당신은 이미 시니어 입니다.
-	@RequestMapping("you_are_senior")
+	@RequestMapping("/todaylessonsenior/you_are_senior")
 	public String you_are_senior() {
 		return "TodayLesson_SeniorPage/jy_sn_you_are_senior";
 	}
 	
 	
 	// 관련 정보 입력하면 시니어 정보 업데이트
-	@RequestMapping("plus_senior")
+	@RequestMapping("/todaylessonsenior/plus_senior")
 	public String plus_senior(SeniorDTO dto, Model model) {
-		
 		
 		int result = seniorservice.plus_senior(dto);
 		model.addAttribute("result",result);
 		
 		return "TodayLesson_UserPage/jy_us_insertresult.hs_sn_main_section";
+	}
+	
+	@RequestMapping("senior_switch_update/{member_id}")
+	public String senior_info_update(Model model,@PathVariable String member_id, HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		String imp_key 		=	"5422837446408379";
+		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
+
+		JSONObject json = new JSONObject();
+		json.put("imp_key", imp_key);
+		json.put("imp_secret", imp_secret);
+	
+		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
+		model.addAttribute("token",token);
+		
+		
+		SeniorDTO dto = seniorservice.select_senior(member_id);
+		model.addAttribute("dto",dto);
+		
+		
+		return "TodayLesson_SeniorPage/jy_sn_senior_switch_update.sn_main_section";
+	}
+	
+	@RequestMapping("/todaylessonsenior/update_senior_result")
+	public String senior_update(SeniorDTO dto, Model model) {
+		
+		int result = seniorservice.update_senior(dto);
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_SeniorPage/jy_sn_update_senior_result";
 	}
 	
 	

@@ -109,12 +109,13 @@ $(document).ready(function() {
 
 <table>
 
-<thead><tr><th>레슨 챕터</th><th>레슨 제목</th></tr></thead>
+<thead><tr><th>레슨 챕터</th><th>레슨 제목</th><th>레슨 수정</th></tr></thead>
 <tbody>
 <c:forEach var="list" items="${list}">
 <tr>
 <td><c:out value="${list.lessondetail_chapter}"/></td>
 <td><a href="${pageContext.request.contextPath }/select_lessondetail_chapter/${list.lessondetail_no}" onclick="window.open(this.href,'lesson_detail','width=600, height=400'); return false; target='_blank' "><c:out value="${list.lessondetail_title}"/></a></td>
+<td><a href="${pageContext.request.contextPath }/update_lessondetail_chapter/${list.lessondetail_no}">레슨 수정</a></td>
 </tr>
 </c:forEach>
 </tbody>

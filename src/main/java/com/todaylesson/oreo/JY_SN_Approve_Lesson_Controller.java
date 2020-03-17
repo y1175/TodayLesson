@@ -15,6 +15,7 @@ import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.service.JY_SN_Approve_LessonService;
 
 @Controller
+@RequestMapping("/todaylessonsenior/")
 public class JY_SN_Approve_Lesson_Controller {
 
 	@Autowired
@@ -27,7 +28,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		
 		model.addAttribute("list",list);
 		
-		return"TodayLesson_SeniorPage/jy_sn_approve_list";
+		return"TodayLesson_SeniorPage/jy_sn_approve_list.sn_main_section";
 	}
 	
 	
@@ -42,7 +43,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		model.addAttribute("list",list);
 		
 		
-		return "TodayLesson_SeniorPage/jy_sn_approve_detail";
+		return "TodayLesson_SeniorPage/jy_sn_approve_detail.sn_main_section";
 	}
 	
 	@RequestMapping("my_approve_lesson_upload/{lesson_no}")
@@ -52,7 +53,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		
 		model.addAttribute("dto",dto);
 
-		return "TodayLesson_SeniorPage/jy_sn_approve_lesson_upload";
+		return "TodayLesson_SeniorPage/jy_sn_approve_lesson_upload.sn_main_section";
 	}
 	
 	@RequestMapping("mal_lesson_upload_result")
@@ -76,12 +77,27 @@ public class JY_SN_Approve_Lesson_Controller {
 		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
 		model.addAttribute("dto",dto);
 		
-		return "TodayLesson_SeniorPage/jy_sn_apld_select";
+		return "TodayLesson_SeniorPage/jy_sn_apld_select.sn_main_section";
 	}
 	
 	
+	@RequestMapping("update_lessondetail_chapter/{lessondetail_no}")
+	public String update_apld_chapter(@PathVariable int lessondetail_no, Model model) {
+		
+		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
+		model.addAttribute("dto",dto);
+		
+		return "TodayLesson_SeniorPage/jy_sn_apld_update.sn_main_section";
+	}
 	
-	
+	@RequestMapping("mal_lesson_update_result")
+	public String update_apld_chapter_result(@PathVariable LessonDetailDTO dto, Model model) {
+		
+		int result = approve_service.apld_update(dto);
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_SeniorPage/jy_sn_mal_lesson_update_result";
+	}
 	
 	
 	

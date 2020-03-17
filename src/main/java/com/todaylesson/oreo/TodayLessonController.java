@@ -73,10 +73,8 @@ public class TodayLessonController {
    }
    
    @RequestMapping("/todaylesson")
-   public String all(Member_AuthDTO authdto,Model model){
+   public String all(Model model){
 	  
-	   model.addAttribute("authdto", authdto);
-	   
       return "hs_us_main";
    }
           
@@ -179,7 +177,7 @@ public class TodayLessonController {
            
            //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
            //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-           System.out.println("네이버:" + naverAuthUrl);
+           //System.out.println("네이버:" + naverAuthUrl);
            
            //네이버 
            model.addAttribute("naverlogin_URL", naverAuthUrl);
@@ -225,11 +223,11 @@ public class TodayLessonController {
        }
        //
        
-       @RequestMapping("/logout")
+/*      @RequestMapping("/logout")
        public String logout() {
-    	   return "redirect:/todaylessonlogin";
-       }	   
-    		   
+    	   return "redirect:/todaylesson";
+       }	 
+    	*/
     		   
        @RequestMapping("/join")
        public String join(HttpServletRequest request, Model model) throws Exception {	   

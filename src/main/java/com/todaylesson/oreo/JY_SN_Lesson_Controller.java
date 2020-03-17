@@ -23,6 +23,7 @@ import com.todaylesson.service.JY_US_SeniorService;
 
 
 @Controller
+@RequestMapping("/todaylessonsenior/")
 public class JY_SN_Lesson_Controller {
 
 	
@@ -34,10 +35,19 @@ public class JY_SN_Lesson_Controller {
 	@RequestMapping("/lesson_list/{member_id}")
 	public String list(Model model,@PathVariable String member_id){
 		int senior_no = lesson_service.select_senior_no(member_id);
+		SeniorDTO dto = lesson_service.select_senior_info(senior_no);
+		
+		if (dto.getSenior_nick() == null) {
+			
+			return "TodayLesson_SeniorPage/jy_sn_senior_info_null";
+
+		} else {
+		
 		List<LessonDTO> list = lesson_service.list(senior_no);
 		model.addAttribute("list",list);
 	
-		return "TodayLesson_SeniorPage/jy_sn_lesson_list";
+		return "TodayLesson_SeniorPage/jy_sn_lesson_list.sn_main_section";
+		}
 	}
 	
 	
@@ -50,7 +60,7 @@ public class JY_SN_Lesson_Controller {
 			return "TodayLesson_SeniorPage/jy_sn_you_cant_write_lesson";
 		} else {
 			model.addAttribute("senior_no",senior_no);
-			return "TodayLesson_SeniorPage/jy_sn_lesson_write";
+			return "TodayLesson_SeniorPage/jy_sn_lesson_write.sn_main_section";
 		}
 	}
 	
@@ -79,7 +89,7 @@ public class JY_SN_Lesson_Controller {
 	public String lesson_detail(@PathVariable int lesson_no, Model model) {
 		LessonDTO dto = lesson_service.detail_lesson(lesson_no);
 		model.addAttribute("dto",dto);
-		return "TodayLesson_SeniorPage/jy_sn_lesson_detail";
+		return "TodayLesson_SeniorPage/jy_sn_lesson_detail.sn_main_section";
 	}
 	
 	@RequestMapping("/lesson_update/{lesson_no}")
@@ -89,7 +99,7 @@ public class JY_SN_Lesson_Controller {
 			return "TodayLesson_SeniorPage/jy_sn_lesson_can_not_update";
 		} else {
 			model.addAttribute("dto",dto);
-			return "TodayLesson_SeniorPage/jy_sn_lesson_update";
+			return "TodayLesson_SeniorPage/jy_sn_lesson_update.sn_main_section";
 		} 
 	}
 	
@@ -112,6 +122,7 @@ public class JY_SN_Lesson_Controller {
 		
 		int result = lesson_service.update_lesson(dto);
 		model.addAttribute("result",result);
+		
 		return "TodayLesson_SeniorPage/jy_sn_update_result";
 	}
 

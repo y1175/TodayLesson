@@ -15,6 +15,7 @@ import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_Admin_SeniorService;
 
 @Controller
+@RequestMapping("/todaylessonadmin/")
 public class JY_Admin_Senior_Controller {
 
 	
@@ -28,7 +29,7 @@ public class JY_Admin_Senior_Controller {
 		List<SeniorDTO> list = ad_senior_service.all_senior();
 		model.addAttribute("list",list);
 		
-		return "TodayLesson_AdminPage/jy_ad_senior_list";
+		return "TodayLesson_AdminPage/jy_ad_senior_list.hs_ad_main_section";
 	}
 	
 	// 시니어 상세페이지
@@ -38,7 +39,7 @@ public class JY_Admin_Senior_Controller {
 		SeniorDTO dto = ad_senior_service.select_senior(senior_no);
 		model.addAttribute("list",list);
 		model.addAttribute("dto",dto);
-		return "TodayLesson_AdminPage/jy_ad_senior_select";
+		return "TodayLesson_AdminPage/jy_ad_senior_selec.hs_ad_main_sectiont";
 	}
 	
 }

@@ -18,9 +18,9 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- NAVER LOGIN JS --> 
 
-<!--  -->
+<!-- Google -->
 
-<!--  -->
+<!-- Google -->
 
 <!-- FaceBook LOGIN JS -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v6.0&appId=2903951876333746&autoLogAppEvents=1"></script>
@@ -68,7 +68,9 @@
                   </a>
                   <!-- 네이버-->
                   <!-- 구글 -->
-                  <a>구글</a> 
+                  <a>
+                     <img alt="구글" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png">
+                  </a> 
                   <!-- 구글 -->
                   <!-- 페이스북 -->
                   <a href="" id="fb-root">

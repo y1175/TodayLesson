@@ -50,7 +50,7 @@
 
       <b>운영관리</b>
       <br>
-         <a href="">이벤트관리</a>
+         <a href="/todaylessonadmin/hm_ad_event_manage">이벤트관리</a>
          <br>
          <a href="">커뮤니티관리</a>
          <br>
@@ -74,7 +74,7 @@
          <br>
          <a href="">팝업관리</a>
          <br>
-         <a href="">관리자설정</a>
+         <a href="admin_administrator">관리자설정</a>
       
       <div class="hs_ad_main_asidenav_line"></div>   
 

@@ -18,6 +18,8 @@ public interface JY_SN_Approve_LessonService {
 
 	public LessonDetailDTO apld_select(int lessondetail_no);
 
+	public int apld_update(LessonDetailDTO dto);
+
 
 
 }

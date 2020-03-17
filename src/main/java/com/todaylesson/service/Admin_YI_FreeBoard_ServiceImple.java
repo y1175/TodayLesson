@@ -19,8 +19,9 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 
 	//페이징 카운트
 	@Override
-	public int totalCount(String search, String searchtxt) {
+	public int totalCount(int category,String search, String searchtxt) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("category", category);
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		return mapper.getCount(hm);
@@ -28,9 +29,9 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 	
 	//게시물 전체보기
 	@Override
-	public List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt, int startRow, int endRow) {
+	public List<SQLjoin_Member_FreeBoardDTO> list(int category,String search, String searchtxt, int startRow, int endRow) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
-		
+		hm.put("category",category);
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
@@ -78,6 +79,24 @@ public class Admin_YI_FreeBoard_ServiceImple implements Admin_YI_FreeBoard_Servi
 	public int admin_boarddelete(int freeboard_no) {
 		// TODO Auto-generated method stub
 		return mapper.freeboard_delete(freeboard_no);
+	}
+
+	@Override
+	public int admin_noticemodify(NoticeDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.notice_modify(dto);
+	}
+
+	@Override
+	public int admin_noticedelete(int notice_no) {
+		// TODO Auto-generated method stub
+		return mapper.notice_delete(notice_no);
+	}
+
+	@Override
+	public NoticeDTO noticeModifyPlacehold(int notice_no) {
+		// TODO Auto-generated method stub
+		return mapper.notice_modifyPlacehold(notice_no);
 	}
 
 

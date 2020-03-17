@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.SeniorDTO;
 
 
 @Mapper
@@ -29,5 +30,8 @@ public interface JY_SN_LessonMapper {
 
 
 	public List<LessonDTO> reject_lesson_list(int senior_no);
+
+
+	public SeniorDTO select_senior_info(int senior_no);
 
 }

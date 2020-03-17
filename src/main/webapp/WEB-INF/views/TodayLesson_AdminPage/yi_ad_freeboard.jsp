@@ -23,12 +23,16 @@ function reply_view(no)
 
 	var freeboard_no=no;
 	var obj=document.getElementById("add_reply-"+freeboard_no);
-	
-if(obj.hasChildNodes())
-obj.removeChild(obj.firstChild);
 
-	
-if(obj.hasChildNodes()===false)
+ if(obj.hasChildNodes())
+{
+
+	 obj.removeChild(obj.firstChild); 
+} 
+
+
+
+if(obj.hasChildNodes()!=true)
 	{
 document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style");
  
@@ -120,13 +124,14 @@ document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style"
 else
 	{
 
+	
 	document.getElementById("add_reply_thead-"+freeboard_no).style.display="none";
 	while(obj.hasChildNodes())
 		{
 	obj.removeChild(obj.firstChild);
 		}
-	}
 	
+	}
 	
 	
 	} /*function reply_view 끝*/
@@ -165,9 +170,11 @@ else
   
    
   내용 : ${notice.notice_content}<br>
-  <form action="" method="post">
-  <input type="hidden" name="member_id" value=""><br>
-  <input type="button" value="수정"><input type="button" value="삭제">
+  <form action="/admin_noticemodify/${notice.notice_no }" method="post">
+  <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
+  <input type="submit" value="수정"><input type="button" value="삭제"
+  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='/admin_noticedelete/${notice.notice_no}'">
+  <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
   </form>
 
 
@@ -181,6 +188,9 @@ else
 </tbody>
 
 <tbody>
+<tr>
+<tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>관리</th>
+</tr>
 <c:forEach var="item" items="${list }" varStatus="status">
 
 
@@ -226,7 +236,7 @@ ${item.freeboard_title }		[${replist[status.index]}]
 
 
   <form action="admin_replyinsert/${item.freeboard_no}" method="post">
-  <textarea style="resize: none;" rows="5" cols="100" name="boardreply_content"></textarea><br>
+  <textarea style="resize: none;" rows="5" cols="100" name="boardreply_content" required="required"></textarea><br>
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
   <input type="submit" value="답변" name="admin_reply">
   <input type="button" value="삭제" name="admin_delete" 
@@ -245,6 +255,11 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </tbody>
 </table>
 <form method="get" action="admin_freeboard?currPage=${page.startBlock }">
+<select name="category">
+<option value="3" selected="selected">전체</option>
+<option value="1">자유글</option>
+<option value="2">질문과답변</option>
+</select>
 <select name="search">
 <option value="all">전체</option>
 <option value="member_nick">닉네임</option>
@@ -261,17 +276,17 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </sec:authorize>
 
 <c:if test="${page.prev }">
-<a href="admin_freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<a href="admin_freeboard?currPage=${page.startBlock-1}&category=${category}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="admin_freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<a href="admin_freeboard?currPage=${index }&category=${category}&search=${search}&searchtxt=${searchtxt}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="admin_freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<a href="admin_freeboard?currPage=${page.endBlock+1 }&category${category}&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
 </c:if>
 </body>
 </html>
