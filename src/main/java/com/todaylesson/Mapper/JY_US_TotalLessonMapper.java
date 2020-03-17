@@ -14,4 +14,6 @@ public interface JY_US_TotalLessonMapper {
 
 	public AllLessonDTO ttlesson_select(int lesson_no);
 
+	public void ttlesson_readno_plus(int lesson_no);
+
 }

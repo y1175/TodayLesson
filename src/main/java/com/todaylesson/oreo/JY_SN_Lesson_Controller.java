@@ -69,6 +69,12 @@ public class JY_SN_Lesson_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_jusoPopup";
 	}	
 	
+
+	
+	@RequestMapping("multiple_time_lesson_date")
+	public String multiple_lesson() {
+		return "TodayLesson_SeniorPage/jy_sn_multiple_lesson";
+	}	
 	
 	
 	

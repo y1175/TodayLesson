@@ -49,7 +49,10 @@
 		if ( state == 3 ) {
 			$('.online_lesson').hide();
 			$('.offline_lesson').hide();
-		} else {
+		} else if (state == 2) {
+			$('.online_lesson').show();
+			$('.offline_lesson').show();
+		} else{
 			$('.online_lesson').show();
 			$('.offline_lesson').show();
 		}
@@ -149,6 +152,13 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 	  
 	  
+function multiple_time_lesson_date(){
+	
+	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
+
+	
+}	  
+	  
 
 </script>
 
@@ -203,8 +213,21 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 <div class="offline_lesson">
 
-<label for="lesson_date">레슨하는 날</label><br>
+<label for="lesson_date">레슨 시작일 날</label><br>
 <input type="date" id="lesson_date" name="lesson_date"><br>
+
+<input type ="button" onclick="multiple_time_lesson_date()" value="날짜/시간 설정하기" name="">
+
+<label for="lesson_date_day_of_the_week">레슨하는 요일</label><br>
+<select id = "lesson_date_day_of_the_week" name="lesson_date_day_of_the_week">
+<option value="0">월요일</option>
+<option value="1">화요일</option>
+<option value="2">수요일</option>
+<option value="3">목요일</option>
+<option value="4">금요일</option>
+<option value="5">토요일</option>
+<option value="6">일요일</option>
+</select>
 
 </div>
 

@@ -22,4 +22,12 @@ where lesson_no = #{lesson_no}
 
 </select>
 
+<update id="ttlesson_readno_plus">
+
+update lesson 
+set lesson_readno = lesson_readno + 1
+where lesson_no = #{lesson_no}
+
+</update>
+
 </mapper>
