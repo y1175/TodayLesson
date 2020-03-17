@@ -15,7 +15,7 @@ import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_Admin_SeniorService;
 
 @Controller
-@RequestMapping("/todaylessonadmin/")
+//@RequestMapping("/todaylessonadmin/")
 public class JY_Admin_Senior_Controller {
 
 	

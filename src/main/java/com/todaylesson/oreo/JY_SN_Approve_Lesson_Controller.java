@@ -15,7 +15,7 @@ import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.service.JY_SN_Approve_LessonService;
 
 @Controller
-@RequestMapping("/todaylessonsenior/")
+//@RequestMapping("/todaylessonsenior/")
 public class JY_SN_Approve_Lesson_Controller {
 
 	@Autowired

@@ -32,7 +32,7 @@ import com.todaylesson.service.JY_Admin_LessonService;
 import com.todaylesson.service.JY_Mail_service;
 
 @Controller
-@RequestMapping("/todaylessonadmin/")
+//@RequestMapping("/todaylessonadmin/")
 public class JY_Admin_Lesson_Controller {
 
 	
