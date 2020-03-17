@@ -9,7 +9,7 @@
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
 <!-- jQuery -->
 <!--Main HOME style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=2">
 <!--Main HOME style-->
 <!--Main HOME JS-->
 <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/JS/hs_us_home_content.js"> --%>
@@ -18,21 +18,28 @@
 
 </head>
 <body>
-   <div id="imgslide" class="alldiv">
+   <div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
 		<div class="imgbox">
 			<div class="slide">
-				<a><img src="resources/Banner/main_banner1.jpg" alt="s"></a>
+				<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
 				<a><img src="resources/Banner/main_banner2.jpg" alt="s"></a>
 				<a><img src="resources/Banner/main_banner3.jpg" alt="s"></a>
 				<a><img src="resources/Banner/main_banner4.jpg" alt="s"></a>
 			</div>
 		</div>
 	</div>	
+	
+	<div style="margin-top: 40px;">
+	   <a>
+	      <img alt="" src="resources/Banner/Mainimg1.jpg">
+	   </a>
+	</div>
+	
 	<script type="text/javascript">
 
 	var idx = 0; // 함수 호출 횟수
 	var i=0; // 이미지 인덱스
-	var imgNum=4; // 이미지 개수
+	var imgNum=3; // 이미지 개수
 	var imgSize=100; // 이미지 크기
 	function imgSlide() {
 	   idx = idx + 1; // 함수 호출 회수 증가
