@@ -18,7 +18,7 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.service.Hm_Us_MymanageService;
 
 @Controller
-@RequestMapping("/todaylessonuser/")
+/*@RequestMapping("/todaylessonuser/")*/
 public class User_HM_Mymanage_Controller {
 
 	//암호화 메서드

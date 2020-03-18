@@ -13,6 +13,8 @@ public interface Admin_HM_EventMapper {
 
 	public List<EventDTO> eventlist();
 
+	public EventDTO eventdetail(int event_no);
+
 	
 
 }

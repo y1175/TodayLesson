@@ -55,8 +55,6 @@
 	<br>
 
 	<div style="width: 60%; margin: auto;">
-		<%-- <form method="post" action="${pageContext.request.contextPath }/insertresult"
-		enctype="multipart/form-data"> --%>
 		<!-- 블로그에서는  -->
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath }/ej_ad_product_insertresult"> 

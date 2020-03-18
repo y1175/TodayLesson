@@ -35,6 +35,9 @@
 	   </a>
 	</div>
 	
+	
+	
+	
 	<script type="text/javascript">
 	/* Main Banner Slider */
 	var idx = 0; // 함수 호출 횟수
@@ -62,6 +65,7 @@
 	// 3초에 한번 함수를 실행
 	setInterval(function() { imgSlide() }, 3000);
 	/* Main Banner Slider */
+	
 	</script>
 
 </body>

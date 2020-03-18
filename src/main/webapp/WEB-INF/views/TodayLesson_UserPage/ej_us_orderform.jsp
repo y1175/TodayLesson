@@ -20,7 +20,12 @@
 
 </style>
 </head>
+
+
+
+
 <body>
+<form method="post" action="/orderlistdetail">
 <h2 text align="center">주문신청서</h2>
 <h4>주문할 취미</h4>
 <hr>
@@ -31,14 +36,12 @@
 
  수량: ${pdcount } 개<br>
  전체금액:
- ${product_cost}원X${pdcount}
+ ${product_after_cost}원X${pdcount}
  =>>>>${totalcost }원
 <%--  로그인아이디:${member_id}
 ${mdto.member_id }
 ${mdto.member_addr } --%>
- 
- <section class="total" >
- </section><br>
+
  
  <h4>주문자 정보</h4><hr>
  주문자명   <input type="text"  class="form-control" width="300" value=${mdto.member_name }><br>
@@ -87,30 +90,22 @@ ${mdto.member_addr } --%>
   <input type="radio" name="paymethod" value="card">신용카드
 <input type="radio" name="paymethod" value="kakaopay">카카오페이
 <input type="radio" name="paymethod" value="payco">페이코
-<input type="radio" name="paymethod" value="accountpay">무통장입금
+<input type="radio" name="paymethod" value="accou
+ntpay">무통장입금
 <br>
 보유 포인트: ${mdto.member_point }<br>
- 마일리지 사용 <input type="text"  class="form-control" ><button class='btn btn-primary'>적용</button><br>
- 상품금액:${totalcost}-포인트<br>
+ 마일리지 사용 <input type="text"  class="form-control" id="usepoint"><button class='btn btn-primary'>적용</button><br>
+
+ 상품금액:${totalcost}-포인트<br><!-- 모달창 띄워야될듯 -->
  배송비 무료<br>
  전체 주문금액:<br>
-  <button id="check_module" type="button" class='btn btn-primary'>아임 서포트 결제 모듈 테스트 해보기</button>
+  <button id="check_module" type="button" class='btn btn-primary'>결제하기</button>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- Optional JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script>/* 총가격계산(할인율도 적용할것) */
- var cost=${product_cost};
- var cnt=${pdcount};
- var total=cost*cnt;
 
- $("section.total").html(+total+'원');
- //에이작스 써야되나?
- </script>
+
  <script>
     $("#check_module").click(function () {
-    	alert('clickdone');
+    
     	var IMP = window.IMP; // 생략가능
     	IMP.init('imp65601532');
     	// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -146,14 +141,14 @@ ${mdto.member_addr } --%>
     	*/
     	name: '주문명:결제테스트',
     	//결제창에서 보여질 이름
-    	amount: ${product_cost},
+    	amount: ${totalcost},
     	//가격
-    	buyer_email: 'iamport@siot.do',
-    	buyer_name: '구매자이름',
-    	buyer_tel: '010-1234-5678',
-    	buyer_addr: '서울특별시 강남구 삼성동',
-    	buyer_postcode: '123-456',
-    	m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+    	buyer_email: '${dto.member_email}',
+    	buyer_name: '${dto.member_name}',
+    	buyer_tel: '${dto.member_phone}',
+    	buyer_addr: '${dto.member_addr}',
+    	buyer_postcode: '${dto.member_zipcode}',
+    	m_redirect_url: '/todaylessonlogin'
     	/*
     	모바일 결제시,
     	결제가 끝나고 랜딩되는 URL을 지정
@@ -162,7 +157,7 @@ ${mdto.member_addr } --%>
     	}, function (rsp) {
     	console.log(rsp);
     	if (rsp.success) {
-    	var msg = '결제가 완료되었습니다.';
+    	var msg = '화면의 주문완료 버튼을 눌러주세요';
     	msg += '고유ID : ' + rsp.imp_uid;
     	msg += '상점 거래ID : ' + rsp.merchant_uid;
     	msg += '결제 금액 : ' + rsp.paid_amount;
@@ -176,6 +171,13 @@ ${mdto.member_addr } --%>
     	});
 
     </script>
+    <input type="submit" value="주문완료">
+
+    </form>
 </body>
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
  
 </html>

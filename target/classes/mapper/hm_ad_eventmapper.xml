@@ -14,4 +14,9 @@ insert into event(event_group, event_title, event_content, event_startperiod, ev
 values(#{event_group},#{event_title},#{event_content},#{event_startperiod},#{event_endperiod},#{event_thumbnail})
 </insert>
 
+<select id="eventdetail" parameterType="int" resultType="com.todaylesson.DTO.EventDTO">
+select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail
+from event
+where event_no = #{event_no}
+</select>
 </mapper>

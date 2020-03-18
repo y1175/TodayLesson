@@ -271,14 +271,14 @@ public class EJ_ProductController {
 	public String orderform(@RequestParam("product_no") int product_no
 			,@RequestParam("pdcount") int pdcount
 			,@RequestParam("product_name") String product_name
-			,@RequestParam("product_cost") int product_cost
+			,@RequestParam("product_after_cost") int product_after_cost
 			,@RequestParam("memberid") String member_id
 			,Model model){
 		System.out.println("주문페이지에서 상풍번호:"+product_no);
 		System.out.println("주문페이지에서 수량:"+pdcount);
 		model.addAttribute("product_no",product_no);
 		model.addAttribute("product_name",product_name);
-		model.addAttribute("product_cost",product_cost);
+		model.addAttribute("product_after_cost",product_after_cost);
 		model.addAttribute("pdcount",pdcount);
 		model.addAttribute("member_id",member_id);
 		MemberDTO mdto = service.selectm(member_id);
@@ -286,9 +286,15 @@ public class EJ_ProductController {
 		
 		ProductDTO dto = service.select(product_no);
 		model.addAttribute("pdto",dto);
-		int totalcost=pdcount*product_cost;
+		int totalcost=pdcount*product_after_cost;
 		model.addAttribute("totalcost", totalcost);
 		return "TodayLesson_UserPage/ej_us_orderform.us_main_section";
+	}
+	
+	@RequestMapping("/orderlistdetail")
+	public String orderlistdetail()
+	{
+		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
 	}
 
 	}
