@@ -14,14 +14,14 @@ public class OrderListDTO {
 	private int orderlist_no;
 	private String member_id;
 	private int product_no;
-	private int lesson_no;
+	private String orderlist_receiver;
+	private String orderlist_addr;
+	private String orderlist_phone;
 	private int cart_no;
 	private String orderlist_date;
 	private int orderlist_orderstatus;
 	private int orderlist_paystatus;
 	private int orderlist_cost;
 	private int orderlist_usepoint;
-	private String orderlist_receiver;
-	private String orderlist_addr;
-	
+
 }

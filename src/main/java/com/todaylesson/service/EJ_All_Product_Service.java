@@ -5,6 +5,8 @@ import java.util.List;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.OptionsDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -26,6 +28,10 @@ public interface EJ_All_Product_Service {
 	public int insertOption(OptionsDTO odto);
 
 	public List<OptionsDTO> optionList(int product_no);
+
+	public int insertorderdetail(OrderDetailDTO oddto);
+
+	public int insertorderlist(OrderListDTO oldto);
 
 
 

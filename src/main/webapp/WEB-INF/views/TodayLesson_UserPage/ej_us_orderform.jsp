@@ -29,33 +29,33 @@
 <h2 text align="center">주문신청서</h2>
 <h4>주문할 취미</h4>
 <hr>
- <%-- ${product_no } --%>
+<input type="hidden" name="product_no" value=${product_no }>
  <img src="${pdto.product_img}" id="ej_order_topimg" width="200">
 <h4>${product_name }</h4><br>
 
 
  수량: ${pdcount } 개<br>
  전체금액:
- ${product_after_cost}원X${pdcount}
- =>>>>${totalcost }원
-<%--  로그인아이디:${member_id}
-${mdto.member_id }
-${mdto.member_addr } --%>
+ ${product_after_cost}원X${pdcount}<input type="hidden" name="order_count" value=${pdcount }>
+ =>>>>${totalcost }원<input type="hidden" name="orderlist_cost" value=${totalcost }>
+ 로그인아이디:1)${member_id}<input type="hidden" name="member_id" value=${member_id }>
+2)${mdto.member_id }
+3)${pageContext.request.userPrincipal.name}
 
  
  <h4>주문자 정보</h4><hr>
- 주문자명   <input type="text"  class="form-control" width="300" value=${mdto.member_name }><br>
- 이메일   <input type="text" class="form-control"  value=${mdto.member_email }><br>
-연락처   <input type="text"  class="form-control" value=${mdto.member_phone }><br>
+ 주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name }><br>
+ 이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email }><br>
+연락처   <input type="text"  name="orderlist_phone" class="form-control" value=${mdto.member_phone }><br>
 
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked"   >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr"   >새로운 배송지<br>
 
-수령자명<input type="text"  class="form-control"  value=${mdto.member_name }><br>
-휴대전화<input type="text"  class="form-control"  value=${mdto.member_phone }><br>
+수령자명<input type="text"  name="orderlist_receiver" class="form-control"  value=${mdto.member_name }><br>
+휴대전화<input type="text"  name="orderlist_phone" class="form-control"  value=${mdto.member_phone }><br>
 추가번호(선택)<input type="text"  class="form-control"  name="phone2"><br>
-주소(우편번호)<input type="text" size="150"  class="form-control" value="${mdto.member_addr }"><br>
+주소(우편번호)<input type="text" name="orderlist_addr" size="150"  class="form-control" value="${mdto.member_addr }"><br>
 체크(기본배송지로 저장나중에 추가)<br>
 배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
 <!-- ---------------국쌤우편번호---------<br>

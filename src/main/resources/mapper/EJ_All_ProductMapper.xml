@@ -16,8 +16,9 @@ from product
 
 <!-- 게시판 insert -->
 <insert id="insertBoard" parameterType="com.todaylesson.DTO.ProductDTO">
-INSERT INTO product (product_name, product_cost, product_stock, product_content, product_img, product_thumb, product_category, product_sale, product_after_cost)
-				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb}, #{product_category}, #{product_sale}, #{product_after_cost})
+INSERT INTO product (product_name, product_cost, product_stock, product_content, product_img, product_thumb, product_category, product_sale, product_after_cost, product_date)
+				VALUES (#{product_name},#{product_cost},#{product_stock},#{product_content},#{product_img},#{product_thumb}, #{product_category}, #{product_sale}, #{product_after_cost}
+				,now())
 </insert>
 
 
@@ -63,4 +64,21 @@ INSERT INTO options (product_no, option_name, option_cost)
 from options
 where  product_no=#{product_no}
 	</select>
+	
+	<insert id="insertorderlist" parameterType="com.todaylesson.DTO.OrderListDTO">
+	insert into orderlist(member_id,orderlist_receiver,orderlist_phone,orderlist_addr
+	,orderlist_date,orderlist_orderstatus,orderlist_cost
+	,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint)
+	values (#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
+	sysdate(),1,#{orderlist_cost},1,1,0)
+	</insert>
+	
+	<insert id="insertorderdetail" parameterType="com.todaylesson.DTO.OrderDetailDTO">
+	<selectKey resultType="int" keyProperty="orderlist_no" order="BEFORE">
+	select max(orderlist_no) as orderlist_no from orderlist
+	</selectKey>
+	insert into order_detail (orderlist_no,product_no,order_count)
+	 values(#{orderlist_no},#{product_no},#{order_count})
+	</insert>
+	
 </mapper> 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.OptionsDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.Mapper.EJ_US_ProductMapper;
 
@@ -62,6 +64,18 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	public List<OptionsDTO> optionList(int product_no) {
 		// TODO Auto-generated method stub
 		return  mapper.selectOption(product_no);
+	}
+
+	@Override
+	public int insertorderdetail(OrderDetailDTO oddto) {
+		return mapper.insertorderdetail(oddto);
+		
+	}
+
+	@Override
+	public int insertorderlist(OrderListDTO oldto) {
+		// TODO Auto-generated method stub
+		return mapper.insertorderlist(oldto);
 	}
 
 }

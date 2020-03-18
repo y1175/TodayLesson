@@ -1,7 +1,11 @@
 package com.todaylesson.oreo;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -24,6 +28,8 @@ import com.todaylesson.upload.UploadFileUtils;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.OptionsDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -291,11 +297,51 @@ public class EJ_ProductController {
 		return "TodayLesson_UserPage/ej_us_orderform.us_main_section";
 	}
 	
-	@RequestMapping("/orderlistdetail")
-	public String orderlistdetail()
+	/*@RequestMapping("/orderlistdetail")
+	public String orderlistdetail(@RequestParam("product_no") int product_no
+			,@RequestParam("memberid") String memberid
+			,@RequestParam("orderlist_receiver") String orderlist_receiver
+			,@RequestParam("orderlist_phone") String orderlist_phone
+			,@RequestParam("pdcount") int pdcount
+			,@RequestParam("totalcost") int totalcost
+			,@RequestParam("orderlist_addr") String orderlist_addr)
 	{
+		OrderDetailDTO oddto=service.insertorderdetail;
+		oddto.set
+		OrderlistDTO oldto=service.insertorderlist;
+		
 		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
-	}
+	}*/
+	/*@RequestMapping("/orderlistdetail")
+	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto, Model model)
+	{
+		//여기서 주문번호 생성해서 넘겨주기
 
+		 Calendar cal = Calendar.getInstance();
+		 int year = cal.get(Calendar.YEAR);
+		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		 System.out.println();
+		 System.out.println(ym);
+		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		 String subNum = "";
+		 
+		 for(int i = 1; i <= 2; i ++) {
+		  subNum += (int)(Math.random() * 10);
+		 }
+		 
+		 String orderId =ymd+subNum;
+		 System.out.println("오더아이디:"+orderId);
+		 System.out.println("데이터타입확인:"+orderId instanceof String);
+		int orderlist_no=Integer.parseInt(orderId);
+			System.out.println("orderlist_NO:"+orderlist_no);
+		oldto.setOrderlist_no(orderlist_no); 
+		
+		service.insertorderlist(oldto);
+		//service.insertorderdetail(oddto);
+		//model.addAttribute("oddto",oddto);
+		model.addAttribute("oldto",oldto);
+		//List<OrderDetailDTO> list=service.selectordetail;
+		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
+	}*/
 	}
 	

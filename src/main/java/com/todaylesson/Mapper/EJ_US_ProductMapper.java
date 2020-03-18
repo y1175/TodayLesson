@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.OptionsDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.ProductDTO;
 
 
@@ -29,5 +31,9 @@ public interface EJ_US_ProductMapper {
 	public int insertOption(OptionsDTO odto);
 
 	public List<OptionsDTO> selectOption(int product_no);
+
+	public int insertorderdetail(OrderDetailDTO oddto);
+	
+	public int insertorderlist(OrderListDTO oldto);
 
 }
