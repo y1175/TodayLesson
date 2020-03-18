@@ -174,7 +174,9 @@ public class EJ_ProductController {
 		 model.addAttribute("reply",reply);
 			ProductDTO dto = service.select(product_no);
 			model.addAttribute("dto",dto);
+			List<OptionsDTO> optionlist = service.optionList(product_no);
 			
+			 model.addAttribute("optionlist",optionlist);
 			
 		//.us_main_section
 		return "ej_store_detail.us_main_section";
@@ -266,7 +268,7 @@ public class EJ_ProductController {
 	
 	
 	@RequestMapping("/ej_us_orderform")
-	public String order(@RequestParam("product_no") int product_no
+	public String orderform(@RequestParam("product_no") int product_no
 			,@RequestParam("pdcount") int pdcount
 			,@RequestParam("product_name") String product_name
 			,@RequestParam("product_cost") int product_cost
@@ -284,7 +286,8 @@ public class EJ_ProductController {
 		
 		ProductDTO dto = service.select(product_no);
 		model.addAttribute("pdto",dto);
-		
+		int totalcost=pdcount*product_cost;
+		model.addAttribute("totalcost", totalcost);
 		return "TodayLesson_UserPage/ej_us_orderform.us_main_section";
 	}
 

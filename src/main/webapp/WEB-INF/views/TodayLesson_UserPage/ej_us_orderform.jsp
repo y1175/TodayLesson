@@ -16,6 +16,9 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<style>
+
+</style>
 </head>
 <body>
 <h2 text align="center">주문신청서</h2>
@@ -29,6 +32,7 @@
  수량: ${pdcount } 개<br>
  전체금액:
  ${product_cost}원X${pdcount}
+ =>>>>${totalcost }원
 <%--  로그인아이디:${member_id}
 ${mdto.member_id }
 ${mdto.member_addr } --%>
@@ -37,20 +41,20 @@ ${mdto.member_addr } --%>
  </section><br>
  
  <h4>주문자 정보</h4><hr>
- 주문자명   <input type="text" value=${mdto.member_name }><br>
- 이메일   <input type="text" value=${mdto.member_email }><br>
-연락처   <input type="text" value=${mdto.member_phone }><br>
+ 주문자명   <input type="text"  class="form-control" width="300" value=${mdto.member_name }><br>
+ 이메일   <input type="text" class="form-control"  value=${mdto.member_email }><br>
+연락처   <input type="text"  class="form-control" value=${mdto.member_phone }><br>
 
  <h4>배송지 정보</h4><hr>
- <input type="radio" name="deliveryaddr" value="same" checked="checked">주문자정보와 동일
-<input type="radio" name="deliveryaddr" value="newaddr">새로운 배송지<br>
+ <input type="radio" name="deliveryaddr" value="same" checked="checked"   >주문자정보와 동일
+<input type="radio" name="deliveryaddr" value="newaddr"   >새로운 배송지<br>
 
-수령자명<input type="text" value=${mdto.member_name }><br>
-휴대전화<input type="text" value=${mdto.member_phone }><br>
-추가번호(선택)<input type="text" name="phone2"><br>
-주소(우편번호)<input type="text" size="150" value="${mdto.member_addr }"><br>
+수령자명<input type="text"  class="form-control"  value=${mdto.member_name }><br>
+휴대전화<input type="text"  class="form-control"  value=${mdto.member_phone }><br>
+추가번호(선택)<input type="text"  class="form-control"  name="phone2"><br>
+주소(우편번호)<input type="text" size="150"  class="form-control" value="${mdto.member_addr }"><br>
 체크(기본배송지로 저장나중에 추가)<br>
-배송요청사항<textarea rows="5" cols="100"></textarea><br>
+배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
 <!-- ---------------국쌤우편번호---------<br>
 <label for='addr'>주소</label>
 					<div class='form-row'>
@@ -85,9 +89,9 @@ ${mdto.member_addr } --%>
 <input type="radio" name="paymethod" value="payco">페이코
 <input type="radio" name="paymethod" value="accountpay">무통장입금
 <br>
-보유 포인트 <input type="text" value="${mdto.member_point }" readonly="readonly">
- 마일리지 사용 <input type="text" ><button class='btn btn-primary'>적용</button><br>
- 상품금액:${total}<br>
+보유 포인트: ${mdto.member_point }<br>
+ 마일리지 사용 <input type="text"  class="form-control" ><button class='btn btn-primary'>적용</button><br>
+ 상품금액:${totalcost}-포인트<br>
  배송비 무료<br>
  전체 주문금액:<br>
   <button id="check_module" type="button" class='btn btn-primary'>아임 서포트 결제 모듈 테스트 해보기</button>

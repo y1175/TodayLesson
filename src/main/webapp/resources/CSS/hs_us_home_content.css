@@ -4,38 +4,30 @@ body{
 	margin : opx auto;
 	padding: 0; 
 } 
-/* a{color: inherit; text-decoration: none;}
-button{cursor: pointer;}
-body, html{min-width: 960px;} */
+
 .hs_us_home_mainBanner{
 	width:100%;
 	margin-top: -10px;
 	height: 400px;
 }
 
-#imgslide{
-	/* margin-top: -10px; */
-	
-}
-.imgbox{
+.hs_us_home_mainBannerbox{
 	position:relative;
 	overflow: hidden;
 	height: 400px;
 	width: 100%;
 	background-color: pink
 }
-.slide{
+.hs_us_home_mainBannerslide{
 	width:100%; /* 이미지 크기 * 이미지 개수 + 여유 */
-    /* position:absolute;	 */
+	display: inline; 
+    /* position:absolute;  이거 풀면 이미지 넘어가면서 배경색 같이나옴 */
 }
-.slide{
-	display: inline; /* 이미지를 옆으로 나열 시키기 위해 */
-   /* margin-right: -5px; 이미지 사이의 마진을 없애기 위해 */
-}
-.slide>a>img{
+
+.hs_us_home_mainBannerslide>a>img{
 	width:100%;
 	height : 400px;
 	position: absolute;
 	transition: all 2s;
-} 
-
+}  
+/* Main Bunner 슬라이더(자동 좌우적용) */
