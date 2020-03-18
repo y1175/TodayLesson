@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_YI_OrderList_Mapper">
+<!-- 게시물 카운트  -->
+	<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+		select COUNT(*) 
+		from orderlist join order_detail
+		on orderlist.orderlist_no = order_detail.orderlist_no
+		<!-- WHERE절을 include 태그로 삽입 -->
+
+
+</select>
+
+	<select id="orderlist" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="java.util.HashMap">
+        select *
+	from member 
+	join (orderlist join 
+	(order_detail join product on 
+	order_detail.product_no=product.product_no )
+	on orderlist.orderlist_no=order_detail.orderlist_no)
+	on member.member_id=orderlist.member_id
+	  order by orderlist_date desc
+limit   #{startrow}, 15
+	</select>
+</mapper>
