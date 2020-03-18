@@ -11,7 +11,7 @@
 </head>
 <body>
 주문내역 관리
-<form action="">
+<form action="/todaylessonadmin/order_search">
 <label>주문상태</label>
 <input type="radio" id="order_all" name="order_status"><label for="order_all">전체</label>
 <input type="radio" id="deposit_waiting" name="order_status"><label for="deposit_waiting">입금대기</label>
@@ -33,7 +33,24 @@
 <option value="store">스토어</option>
 <option value="lesson">레슨</option>
 </select>
+<form action="/todaylessonadmin/order_modify">
+<table>
+<thead>
+<tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th>금액합계</th><th rowspan="2">미수금</th></tr>
+<tr><th>주문상태</th><th>주문자 ID</th><th>배송 주소</th><th>상품번호</th><th>입금합계</th><tr>
+</thead>
+<tbody>
+<c:forEach var="item" items="${list }">
 
+
+</c:forEach>
+</tbody>
+<tbody>
+<tr><td colspan="4"></td><td>합계</td><td>원</td><td>원</td>
+</tbody>
+</table>
+배송상태 수정하기 <input type="button" value="button">
+</form>
 
 </body>
 </html>
