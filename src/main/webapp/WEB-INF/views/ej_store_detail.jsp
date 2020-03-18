@@ -80,6 +80,7 @@ display: inline-block;}
 <input type="hidden" name="product_no" value="${dto.product_no }"/>
 <input type="hidden" name="product_name" value="${dto.product_name }"/>
 <input type="hidden" name="product_cost" value="${dto.product_cost }"/>
+<input type="hidden" name="product_after_cost" value="${dto.product_after_cost }"/>
 <select name="selectoption">
 <c:forEach var="item" items="${optionlist}"> 
   <option value="${item.option_name}" id="optionname">${item.option_name} +${item.option_cost}원</option>

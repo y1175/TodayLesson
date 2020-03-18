@@ -230,6 +230,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지 주문폼
         else if ("/ej_us_orderform".equals(strUri))                   
            return false; 
+      //은지 주문내역상세
+        else if ("/orderlistdetail".equals(strUri))                   
+           return false; 
                
         	
         //옵션추가페이지..안됨..                           
