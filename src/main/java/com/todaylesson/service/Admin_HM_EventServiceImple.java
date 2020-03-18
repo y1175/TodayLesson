@@ -27,4 +27,10 @@ public class Admin_HM_EventServiceImple implements Admin_HM_EventService {
 		return mapper.eventlist();
 	}
 
+	@Override
+	public EventDTO eventdetail(int event_no) {
+		// TODO Auto-generated method stub
+		return mapper.eventdetail(event_no);
+	}
+
 }

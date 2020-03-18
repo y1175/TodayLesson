@@ -10,4 +10,6 @@ public interface Admin_HM_EventService {
 
 	public List<EventDTO> eventlist();
 
+	public EventDTO eventdetail(int event_no);
+
 }

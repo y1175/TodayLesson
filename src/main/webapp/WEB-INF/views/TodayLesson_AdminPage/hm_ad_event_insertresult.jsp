@@ -12,7 +12,7 @@ var result = ${result}
 if(result>0)
 {
 alert('이벤트 등록이 완료되었습니다..');
-location.href="/todaylessonadmin/hm_ad_event_manage";
+location.href="/hm_ad_event_manage";
 }
 else{
 	alert('이벤트 등록을 실패하였습니다.');

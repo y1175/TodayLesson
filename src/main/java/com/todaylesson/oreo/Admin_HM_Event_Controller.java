@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ import com.todaylesson.service.Admin_HM_EventService;
 import com.todaylesson.upload.UploadFileUtils;
 
 @Controller
-@RequestMapping("/todaylessonadmin/")
+/*@RequestMapping("/todaylessonadmin/")*/
 public class Admin_HM_Event_Controller {
 
 	
@@ -77,7 +78,14 @@ public class Admin_HM_Event_Controller {
 	      
 	   }
 
-	
+	@RequestMapping("/hm_ad_event_detail/{no}")
+	public String eventdetail(@PathVariable int no, Model model) {
+		
+		int event_no = no;
+		EventDTO dto = service.eventdetail(event_no);
+		model.addAttribute("dto",dto);
+		return "TodayLesson_AdminPage/hm_ad_event_detail.hs_ad_main_section";
+	}
 	
 	
 }

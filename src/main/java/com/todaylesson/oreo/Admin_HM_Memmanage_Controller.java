@@ -19,7 +19,7 @@ import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.service.Admin_HM_MemmanageService;
 
 @Controller
-@RequestMapping("/todaylessonadmin/")
+/*@RequestMapping("/todaylessonadmin/")*/
 public class Admin_HM_Memmanage_Controller {
 
 	@Resource(name="admin_hm_memmanage")
