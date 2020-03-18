@@ -31,6 +31,9 @@ public class Admin_HM_Event_Controller {
 	private Admin_HM_EventService service;
 	
 	
+	
+	
+	
 	@RequestMapping("/hm_ad_event_manage")   
 	private String eventmanagelist(Model model)
 	{
