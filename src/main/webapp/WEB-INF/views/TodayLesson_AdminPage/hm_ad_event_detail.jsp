@@ -14,6 +14,7 @@
 </head>
 <body>
 	<jsp:useBean id="now" class="java.util.Date" />
+	<input type="hidden" value="${dto.event_no}" class="event_no">
 	<div class="eventdetailmain">
 		<div class="eventdetailgroup">
 			<c:choose>

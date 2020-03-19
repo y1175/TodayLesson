@@ -12,4 +12,6 @@ public interface Admin_HM_EventService {
 
 	public EventDTO eventdetail(int event_no);
 
+	public int eventupdate(EventDTO dto);
+
 }

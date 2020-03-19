@@ -159,7 +159,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //혜미 이메일 & 아이디 값 받아서 임시 비밀번호 전송
         else if("/findPassword".equals(strUri))
              return false;
-     //혜미 내 정보관리 페이지로 가기
+     //혜미 내 정보관리 페이지로 가기-필요없
         else if("/hm_us_mymanage".equals(strUri))
              return false;
      //혜미 내 정보 관리 1차 비밀번호 인증받기
@@ -177,25 +177,32 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //혜미 관리자 회원 디테일
         else if("/hm_memmanagedetail".equals(strUri))
            return false;
-        //혜미 사용자 1:1문의 페이지로 이동
+        //혜미 사용자 1:1문의 페이지로 이동-필요없
         else if("/hm_us_question".equals(strUri))
            return false;
-        //혜미 사용자 1:1문의 등록 페이지로 이동
+        //혜미 사용자 1:1문의 등록 페이지로 이동-필요없
         else if("/hm_question_insert".equals(strUri))
            return false;
         //혜미 1:1문의 등록
         else if("/hm_question_create".equals(strUri))
          return false;
-        //혜미 관리자 1:1문의 관리페이지 이동
+        //혜미 관리자 1:1문의 관리페이지 이동 -필요없
         else if("/hm_ad_question".equals(strUri))
            return false;
+        //혜미 회원정보수정 updatesms
         else if("/hm_us_mymanageupdatesms".equals(strUri))
            return false;
+        //혜미 이벤트 페이지로 이동-필요없
         else if("/hm_ad_event_manage".equals(strUri))
            return false;
+        //혜미 이벤트 insert
         else if("/hm_ad_event_insert".equals(strUri))
            return false;
+        //혜미 이벤트 insertresult이동 - 이거 필요없는데... 나중에 다 삭제함
         else if("/hm_ad_event_insertresult".equals(strUri))
+        	return false;
+        //혜미 이벤트 수정폼
+        else if("/hm_ad_event_modify".equals(strUri))
         	return false;
         //혜미 사용자 1:1문의 디테일 페이지 이동
       /*  else if("/hm_us_question_detail/{no}".equals(strUri))
