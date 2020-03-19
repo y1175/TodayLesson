@@ -40,11 +40,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
+import com.todaylesson.DTO.ProductDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.EJ_US_NaverLoginBOService;
 import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
+import com.todaylesson.service.User_HS_MainService;
 import com.todaylesson.service.YI_Google_AuthInfo;
 
 
@@ -52,11 +55,12 @@ import com.todaylesson.service.YI_Google_AuthInfo;
 @Controller
 public class TodayLessonController {
    
-	 /* NaverLoginBO */
+	/* NaverLogin */
     private EJ_US_NaverLoginBOService naverLoginBO;
     private String apiResult = null;
+    /* NaverLogin */
     
-    /*google 로그인용*/
+    /* googleLogin */
     @Inject
     private YI_Google_AuthInfo authInfo;
     
@@ -65,44 +69,66 @@ public class TodayLessonController {
     
     @Autowired
     private OAuth2Parameters googleOAuth2Parameters;
+    /* googleLogin */
     
-   @Resource(name="todaylessonService")
-   private TodaylessonService todaylessonService;
-   
-   @Resource(name="kakaologinservice")
-   private User_HS_KakaoLoginService hs_kakaologinservice;
-   
-   @Resource(name="loginService")
-   private LoginService loginService;
-   
-   @Autowired
-   private Hm_Us_MailSendService mailSender;
-   
-   @RequestMapping("/todaylessonadmin")
-   public String admin() { 
-	   return "hs_ad_main";
-   }
+    /* kakaoLogin */
+    @Resource(name="kakaologinservice")
+    private User_HS_KakaoLoginService hs_kakaologinservice;
+    /* kakaoLogin */
     
-   @RequestMapping("/todaylessonsenior")
-   public String senior() {
-       return "hs_sn_main"; 
-   }
+    /* security */
+    @Resource(name="todaylessonService")
+    private TodaylessonService todaylessonService;
+    /* security */
+    
+    /* User_Main */
+    @Resource(name="user_HS_MainService")
+    private User_HS_MainService userMainService;
+    /* User_Main */
+    
+    /* 아이디찾기 */
+    @Resource(name="loginService")
+    private LoginService loginService;
+    /* 아이디찾기 */
+    
+    /* 비밀번호찾기 */
+    @Autowired
+    private Hm_Us_MailSendService mailSender;
+    /* 비밀번호찾기 */
+    
+    @RequestMapping("/todaylessonadmin")
+    public String admin() { 
+    	return "hs_ad_main";
+    }
+    
+    @RequestMapping("/todaylessonsenior")
+    public String senior() {
+    	return "hs_sn_main"; 
+    }
        
-   @RequestMapping("/todaylessonmember")
-   public String member(){
-      return "hs_us_mypage";
-   } 
+    @RequestMapping("/todaylessonmember")
+    public String member(){
+    	return "hs_us_mypage";
+    } 
     
-   @RequestMapping("/todaylessonmypage")
-   public String usermypage() {
-	   return "hs_us_mypage";
-   }
+    @RequestMapping("/todaylessonmypage")
+    public String usermypage() {
+    	return "hs_us_mypage";
+    }
    
-   @RequestMapping("/todaylesson")
-   public String all(Model model){
-	  
-      return "hs_us_main";
-   }
+    @RequestMapping("/todaylesson")
+    public String all(Model model){
+	    //신규레슨목록
+    	List<SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO> newlessonlist 
+    	    =userMainService.newLessonList();
+    	
+    	List<ProductDTO> storenewproductlist=userMainService.StoreNewProductList(); 
+    	
+    	model.addAttribute("newlessonlist", newlessonlist);
+    	model.addAttribute("storenewproductlist", storenewproductlist);
+    	
+    	return "hs_us_main";
+    }
           
        @RequestMapping("/error")
        public String error()
@@ -403,7 +429,6 @@ public class TodayLessonController {
 		 } 
        
        
-       
        @RequestMapping("/findId")
        public String findId()
        {
@@ -445,7 +470,6 @@ public class TodayLessonController {
      		return "/TodayLesson_UserPage/hm_find_pwd.us_main_section";
      	}
 
-     	
      	@RequestMapping(value="/findPassword",method=RequestMethod.POST)
      	public String findPassword(@RequestParam("inputId_2")String member_id,
                  @RequestParam("inputEmail_2") String member_email
@@ -458,17 +482,5 @@ public class TodayLessonController {
      		
      		return "/TodayLesson_UserPage/hm_us_search_pwd";
      	}
-/*         pwd 찾기
-         @RequestMapping(value="/searchPassword",method=RequestMethod.POST)
-         @ResponseBody
-         public String passwordSearch(@RequestParam("inputId_2")String member_id,
-               @RequestParam("inputEmail_2") String member_email
-               ,HttpServletRequest request) {
-            mailSender.mailSendWithPassword(member_id,member_email,request);
-            System.out.println(member_email);
-            return "/userSearchPassword";
-  
-         }
-         */
 
 }

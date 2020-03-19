@@ -67,7 +67,7 @@
                </tr>
             </thead>
             <tbody>
-               <c:forEach var="cal_requestlist" items="cal_requestlist">
+               <c:forEach var="cal_requestlist" items="${cal_requestlist}">
                   <tr>
                      <!-- NO. 정산신청완료했을시에만 나타나게 -->
                      <td>

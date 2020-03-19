@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -14,30 +15,120 @@
 <!--Main HOME JS-->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/JS/hs_us_home_content.js">
 <!--Main HOME JS-->
-
-
+<!--  -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<!--  -->
 </head>
 <body>
    <div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
-		<div class="hs_us_home_mainBannerbox">
-			<div class="hs_us_home_mainBannerslide">
-				<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
-				<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
-				<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
-				<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
-			</div>
-		</div>
-	</div>	
+      <div class="hs_us_home_mainBannerbox">
+	     <div class="hs_us_home_mainBannerslide">
+		    <a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
+		    <a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
+			<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
+			<a><img src="resources/Banner/main_banner5.jpg" alt="s"></a>
+	     </div>
+	  </div>
+   </div>	
 	
-	<div style="margin-top: 80px; text-align: center;">
-	   <a>
-	      <img alt="" src="resources/IMG/Mainimg6.jpg">
-	   </a>
-	</div>
+   <div style="margin: 80px 0px 80px; text-align: center;">
+      <a>
+	     <img alt="" src="resources/IMG/Mainimg6.jpg">
+	  </a>
+   </div>
+   
+   <!-- 레슨 베스트 -->
+   
+   <!-- 레슨 신규ㅜ -->
+   
+   <!-- 레슨 추천 -->
+   
+   <!-- 스토어 베스트  -->
+   	 
 	
 	
-	
-	
+   <!-- 스토어 신규 상품 -->
+   <div class="" style="width: 80%; margin: auto;">
+      <b class="" style="font-size: 25px;"> 스토어신규 </b>
+      <div class="" style="margin-top: 30px;">
+         <c:forEach var="storenewproductlist" items="${storenewproductlist}">
+            <div class="col-md-3 col-sm-6">
+               <div class="hs_user_store_newproduct">
+                  <div class="hs_user_store_newproduct_img">
+                     <a href="#">
+                        <img src="${storenewproductlist.product_thumb}"/>
+                     </a>
+                     <ul class="hs_user_store_newproduct_social" >
+                        <li>
+                           <a href="" class="fas fa-heart"></a>
+                        </li>
+                        <li>
+                           <a href="" class="fa fa-shopping-cart"></a>
+                        </li>
+                     </ul>
+                     <span class="hs_user_store_newproduct_label">
+                        <c:out value="${storenewproductlist.product_sale}"/>%
+                     </span> 
+                  </div>
+                  <div class="hs_user_store_newproduct_content">
+                     <c:set var="category" value="${storenewproductlist.product_category }"/>
+                     <c:choose>
+                        <c:when test = "${category==1}">
+                           <b class="hs_user_store_newproduct_category">
+                              <c:out value="외국어"/>
+                           </b>   
+                        </c:when>
+                        <c:when test = "${category==2}">
+                           <b class="hs_user_store_newproduct_category">  
+                              <c:out value="IT"/>
+                           </b>
+                        </c:when>
+                        <c:when test = "${category==3}">
+                           <b class="hs_user_store_newproduct_category">
+                              <c:out value="요리"/>
+                           </b>   
+                        </c:when>
+                        <c:when test = "${category==4}">
+                           <b class="hs_user_store_newproduct_category">
+                              <c:out value="DIY"/>
+                           </b>
+                        </c:when>
+                        <c:when test = "${category==5}">
+                           <b class="hs_user_store_newproduct_category">
+                              <c:out value="운동"/>
+                           </b>
+                        </c:when>
+                        <c:when test = "${category==6}">
+                           <b class="hs_user_store_newproduct_category"> 
+                              <c:out value="기타"/>
+                           </b>   
+                        </c:when>
+                     </c:choose>
+                     <h6 class="hs_user_store_newprodct_title">
+                        <a href="#">${storenewproductlist.product_name}</a>
+                     </h6>
+                     <div class="hs_user_store_newproduct_line"></div>
+                     <div class="hs_user_store_newprodct_cost">${storenewproductlist.product_after_cost}원
+                        <span class="hs_user_store_newprodct_BFcost">
+                           <c:out value="${storenewproductlist.product_cost}"/>원
+                        </span>
+                     </div>
+                     <div class="hs_user_store_newprodct_likenum_box">                
+                        <span class="hs_user_store_newprodct_likenum">
+                           <i class="fas fa-heart"></i>
+                           111
+                        </span>
+                     </div>     
+                  </div>
+               </div>
+            </div>
+         </c:forEach>
+      </div>
+   </div>   
+   <!-- 스토어 신규 상품 -->
 	<script type="text/javascript">
 	/* Main Banner Slider */
 	var idx = 0; // 함수 호출 횟수
@@ -66,6 +157,7 @@
 	setInterval(function() { imgSlide() }, 3000);
 	/* Main Banner Slider */
 	
+
 	</script>
 
 </body>

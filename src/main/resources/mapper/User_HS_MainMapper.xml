@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.User_HS_MainMapper">
+    <!-- 쿼리문이랑 같은 이름설정--> 
+	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO" id="userMAinMap">
+	   <result property="lesson_thumb" column="lesson_thumb"/> <!-- 레슨썸네일 -->
+	   <result property="lesson_category" column="lesson_category"/> <!-- 레슨카테고리 -->
+	   <result property="senior_nick" column="senior_nick"/> <!-- 시니어닉네임 -->
+	   <result property="lesson_title" column="lesson_title"/> <!-- 레슨타이틀 -->
+	   <result property="lesson_cost" column="lesson_cost"/> <!-- 레슨가격 -->
+	   <result property="lesson_open_period" column="lesson_open_period"/> <!-- 레슨시작일 -->
+	</resultMap>  
+	
+	<!-- 신규레슨 -->
+    <select id="newLessonList" resultMap="userMAinMap">
+    select l.lesson_thumb, l.lesson_category, s.senior_nick
+	      ,l.lesson_title, l.lesson_cost, l.lesson_open_period
+    from lesson l join senior s on l.senior_no=s.senior_no
+    ORDER BY l.lesson_open_period desc ,RAND() LIMIT 15;
+    </select> 
+    
+    <!-- 스토어신규 -->
+    <select id="StoreNewProductList" resultType="com.todaylesson.DTO.ProductDTO">
+    select product_thumb, product_name, product_category, product_cost
+	      ,product_sale, product_after_cost, product_date
+    from product
+    ORDER BY product_date desc ,RAND() LIMIT 16;   
+    </select> 
+    
+</mapper>
+
+
+
+
+
+
+
+
+
