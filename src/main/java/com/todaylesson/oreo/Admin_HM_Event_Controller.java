@@ -103,6 +103,12 @@ public class Admin_HM_Event_Controller {
 	@RequestMapping("/hm_ad_event_modify")
 	public String eventmodify(Model model, EventDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
+		
+		
+		/*if(dto.getEvent_thumbnail()==null){
+		
+		}else {
+		*/
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
 		System.out.println("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
@@ -115,12 +121,13 @@ public class Admin_HM_Event_Controller {
 		} else {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
-
+		System.out.println("dto의 머시깽이주소"+fileName);
 		dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 	      String imgthumb=dto.getEvent_thumbnail();
 	      System.out.println("썸네일이미지경로: "+imgthumb);
 	      int result = service.eventupdate(dto);
 	      model.addAttribute("result", result);
+		/*}*/
 	      
 	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";
 		

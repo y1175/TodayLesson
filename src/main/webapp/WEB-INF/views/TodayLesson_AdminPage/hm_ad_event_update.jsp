@@ -27,7 +27,22 @@
 		
 		});
 		
-		$('#new_event_thumbnail').on('click',function(){
+		$('#event_thumbnail').on('click',function(){
+			$(this).removeAttr("style");
+		});
+	
+
+	/* 	$('#event_update_btn').on('click',function(){
+			
+			var thumbnail = $('#event_thumbnail').val();
+			if(thumbnail != null){
+				thumbnail.disabled = false;
+			}
+			
+		}); */
+		
+		
+		/* $('#new_event_thumbnail').on('click',function(){
 			
 			$(this).removeAttr("style");
 			var originthumbnail = document.getElementById('event_thumbnail');
@@ -49,10 +64,10 @@
 			}else{
 				newthumbnail.disabled = true;
 				originthumbnail.disabled = false;
-				/* $("#new_event_thumbnail").Attr("style"); */
+				 $("#new_event_thumbnail").Attr("style"); 
 			}
 			
-		});
+		}); */
 }); 
 </script> 
 </head>
@@ -64,10 +79,9 @@
 
 	<div style="width: 60%; margin: auto;">
 		
-		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
+		<form role="form"  name="eventupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath}/hm_ad_event_modify"> 
 		<input type ="hidden" id="event_no" name="event_no" value="${dto.event_no}">
-		
 		<br>
 		<label>이벤트 유형</label><br>
 		<select name="event_group" id="event_group">
@@ -106,14 +120,13 @@
 <br>
  <label for="event_thumbnail">썸네일 수정</label>
  <br>
- <input type="file" id="new_event_thumbnail" name="file" style="width: 80px;"/>
- <input type="text" id="event_thumbnail" name="file" value="${dto.event_thumbnail}">
+ <input type="file" id="event_thumbnail" name="file" style="width: 80px;"/>
  <br>
  <div class="select_img"><img src="${dto.event_thumbnail}" /></div>
  <br>
 
  <script>
-  $("#new_event_thumbnail").change(function(){
+  $("#event_thumbnail").change(function(){
    if(this.files && this.files[0]) {
     var reader = new FileReader;
     reader.onload = function(data) {
@@ -127,7 +140,26 @@
  
  
 <br>
- <input type="submit" value="이벤트 등록" style="float: right; id="event_update_btn"/>
+ <input type="button" id="event_update_btn"  onclick="updatethumbnail();"  value="이벤트 등록" style="float: right;" />
+  <script>
+  
+  function updatethumbnail(){
+	  
+	var updateform = document.eventupdateform;  
+	var thumbnail =  updateform.file.value;
+	var newthumbnail = document.getElementById('event_thumbnail');
+	console.log(thumbnail);
+	console.log(newthumbnail);
+	if(thumbnail==null){
+		newthumbnail.disabled = true;
+		console.log(newthumbnail);
+		updateform.submit();
+	}else{
+		updateform.submit();	
+	}
+  }
+  </script>
+  
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </div>
 			
