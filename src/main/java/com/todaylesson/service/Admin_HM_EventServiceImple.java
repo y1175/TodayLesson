@@ -39,4 +39,10 @@ public class Admin_HM_EventServiceImple implements Admin_HM_EventService {
 		return mapper.eventupdate(dto);
 	}
 
+	@Override
+	public int delete(int event_no) {
+		// TODO Auto-generated method stub
+		return mapper.eventdelete(event_no);
+	}
+
 }

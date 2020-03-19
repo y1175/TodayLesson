@@ -17,6 +17,8 @@ public interface Admin_HM_EventMapper {
 
 	public int eventupdate(EventDTO dto);
 
+	public int eventdelete(int event_no);
+
 	
 
 }

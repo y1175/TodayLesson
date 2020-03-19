@@ -124,6 +124,16 @@ public class Admin_HM_Event_Controller {
 	      
 	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";
 		
-		
 	}
+	
+	@RequestMapping("/hm_ad_event_delete/{no}")
+	public String eventdelete(@PathVariable int no, Model model) {
+		
+		int event_no = no;
+		int result = service.delete(event_no);
+		model.addAttribute("result",result);
+		
+		return "TodayLesson_AdminPage/hm_ad_event_deleteresult";
+	}
+	
 }

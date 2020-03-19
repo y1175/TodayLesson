@@ -14,4 +14,6 @@ public interface Admin_HM_EventService {
 
 	public int eventupdate(EventDTO dto);
 
+	public int delete(int event_no);
+
 }

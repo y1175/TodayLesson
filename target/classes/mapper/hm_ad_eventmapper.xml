@@ -26,8 +26,13 @@ set event_group = #{event_group}
 	,event_title = #{event_title}
 	,event_content = #{event_content}
 	,event_startperiod = #{event_startperiod}
-	,event_endperiod = #{event_endperiod}
+	,event_endperiod = #{event_endperiod}j
 	,event_thumbnail = #{event_thumbnail}
 	where event_no = #{event_no}
 </update>
+
+<delete id="eventdelete" parameterType="int">
+delete from event
+where event_no = #{event_no}
+</delete>
 </mapper>

@@ -30,13 +30,28 @@
 		$('#new_event_thumbnail').on('click',function(){
 			
 			$(this).removeAttr("style");
-			
-			 
+			var originthumbnail = document.getElementById('event_thumbnail');
+			originthumbnail.disabled = true;
 			var newthumbnail = document.getElementById('new_event_thumbnail');
 			newthumbnail.disabled = false;
 			
-			var thumbnail = document.getElementById('event_thumbnail');
-			thumbnail.disabled = true;
+		});
+		
+		$('#event_update_btn').on('click',function(){
+			
+			var thumbnail = $("#new_event_thumbnail").val();
+			var originthumbnail = document.getElementById('event_thumbnail');
+			var newthumbnail = document.getElementById('new_event_thumbnail');
+			
+			if(thumbnail!=null){
+				originthumbnail.disabled = true;
+				newthumbnail.disabled = false;
+			}else{
+				newthumbnail.disabled = true;
+				originthumbnail.disabled = false;
+				/* $("#new_event_thumbnail").Attr("style"); */
+			}
+			
 		});
 }); 
 </script> 
@@ -92,7 +107,7 @@
  <label for="event_thumbnail">썸네일 수정</label>
  <br>
  <input type="file" id="new_event_thumbnail" name="file" style="width: 80px;"/>
- <input type="hidden" id="event_thumbnail" name="file" value="${dto.event_thumbnail}">
+ <input type="text" id="event_thumbnail" name="file" value="${dto.event_thumbnail}">
  <br>
  <div class="select_img"><img src="${dto.event_thumbnail}" /></div>
  <br>
@@ -112,7 +127,7 @@
  
  
 <br>
- <input type="submit" value="이벤트 등록" style="float: right;"/>
+ <input type="submit" value="이벤트 등록" style="float: right; id="event_update_btn"/>
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </div>
 			
