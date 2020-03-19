@@ -26,7 +26,7 @@
 		
 		});
 		
-		/* document.getElementById('event_startperiod').valueAsDate = new Date(); */
+		
 });
 		
 </script>
@@ -40,7 +40,7 @@
 	<div style="width: 60%; margin: auto;">
 		
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="hm_ad_event_modify"> 
+		 action="${pageContext.request.contextPath}/hm_ad_event_modify"> 
 		<input type ="hidden" id="event_no" name="event_no" value="${dto.event_no}">
 		
 		<br>
@@ -73,13 +73,13 @@
 			<label>이벤트 종료기간</label><br>
 			<input type="date" name="event_endperiod" style="width: 30%;" value="${dto.event_endperiod}" required="required"/><br>
 				<label>이벤트 상세설명</label><br>
-				<textarea id="summernote" name="event_content"  value="${dto.event_content}"></textarea>
+				<textarea id="summernote" name="event_content"><c:out value="${dto.event_content}"/></textarea>
 			
 			
 			<div class="inputArea">
 			
  <label for="event_thumbnail">썸네일</label>
- <input type="file" id="event_thumbnail" name="file" value="${dto.event_thumbnail}" required="required"/>
+ <input type="file" id="event_thumbnail" name="file"/>
  <div class="select_img"><img src="" /></div>
  
 
