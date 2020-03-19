@@ -122,7 +122,7 @@ public class Admin_HM_Event_Controller {
 	      int result = service.eventupdate(dto);
 	      model.addAttribute("result", result);
 	      
-	      return "TodayLesson_AdminPage/hm_ad_event_updateresult.hm_ad_main_section";
+	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";
 		
 		
 	}

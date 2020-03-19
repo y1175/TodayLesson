@@ -13,10 +13,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
  <script src="/resources/JS/summernote-ko-KR.js"></script>
+<%--  <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_update.js"></script> --%>
 <title>Insert title here</title>
-
-<script>
-	$(document).ready(function() {
+ <script>
+ 	$(document).ready(function() {
 		$('#summernote').summernote({
 			placeholder : 'content',
 			minHeight : 370,
@@ -26,10 +27,19 @@
 		
 		});
 		
-		
-});
-		
-</script>
+		$('#new_event_thumbnail').on('click',function(){
+			
+			$(this).removeAttr("style");
+			
+			 
+			var newthumbnail = document.getElementById('new_event_thumbnail');
+			newthumbnail.disabled = false;
+			
+			var thumbnail = document.getElementById('event_thumbnail');
+			thumbnail.disabled = true;
+		});
+}); 
+</script> 
 </head>
 <body>
 	<h2 style="text-align: center;">이벤트 수정</h2>
@@ -77,14 +87,32 @@
 			
 			
 			<div class="inputArea">
-			
- <label for="event_thumbnail">썸네일</label>
- <input type="file" id="event_thumbnail" name="file"/>
- <div class="select_img"><img src="" /></div>
- 
 
- <input type="submit" value="이벤트 등록"/>
-  <%-- <%=request.getRealPath("/") %>  --%>
+<br>
+ <label for="event_thumbnail">썸네일 수정</label>
+ <br>
+ <input type="file" id="new_event_thumbnail" name="file" style="width: 80px;"/>
+ <input type="hidden" id="event_thumbnail" name="file" value="${dto.event_thumbnail}">
+ <br>
+ <div class="select_img"><img src="${dto.event_thumbnail}" /></div>
+ <br>
+
+ <script>
+  $("#new_event_thumbnail").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(300);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
+ 
+ 
+<br>
+ <input type="submit" value="이벤트 등록" style="float: right;"/>
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </div>
 			
