@@ -7,7 +7,7 @@ import com.todaylesson.DTO.SeniorDTO;
 
 public interface JY_SN_LessonService {
 
-	public int insert_Lesson(LessonDTO dto);
+	//public int insert_Lesson(LessonDTO dto);
 
 	public List<LessonDTO> list(int senior_no);
 
@@ -22,6 +22,9 @@ public interface JY_SN_LessonService {
 	public List<LessonDTO> reject_lesson_list(int senior_no);
 
 	public SeniorDTO select_senior_info(int senior_no);
+
+	public int insert_Lesson(LessonDTO dto);
+
 
 	
 

@@ -40,4 +40,12 @@ public class JY_US_TotalLessonController {
 		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
 	
+	@RequestMapping("lesson_buy/{lesson_no}")
+	public String lesson_buy(Model model, @PathVariable int lesson_no) {
+		
+		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
+		model.addAttribute("dto",dto);
+		
+		return "";
+	}
 }

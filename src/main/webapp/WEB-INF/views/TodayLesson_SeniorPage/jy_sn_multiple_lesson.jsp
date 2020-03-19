@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,78 +42,61 @@ $(document).ready(function(){
 
 <form name="form">
 
+
+총 강의 수
+<br>* 강의는 10강을 넘길 수 없습니다.
+<input type="text" id="lesson_max_number" name="lesson_max_number">  
+<br>
+
 레슨일
-<input type="text" id="lesson_date" name="lesson_date">  
+<input type="text" id="lesson_date" name="lesson_date" required="required">  
 
+<br>
 강의 시작시간
-<select name="hour" id="hour">
-<option value="00">오전 00시</option>
-<option value="01">오전 01시</option>
-<option value="02">오전 02시</option>
-<option value="03">오전 03시</option>
-<option value="04">오전 04시</option>
-<option value="05">오전 05시</option>
-<option value="06">오전 06시</option>
-<option value="07">오전 07시</option>
-<option value="08">오전 08시</option>
-<option value="09">오전 09시</option>
-<option value="10">오전 10시</option>
-<option value="11">오전 11시</option>
-<option value="12">오후 12시</option>
-<option value="13">오후 1시</option>
-<option value="14">오후 2시</option>
-<option value="15">오후 3시</option>
-<option value="16">오후 4시</option>
-<option value="17">오후 5시</option>
-<option value="18">오후 6시</option>
-<option value="19">오후 7시</option>
-<option value="20">오후 8시</option>
-<option value="21">오후 9시</option>
-<option value="22">오후 10시</option>
-<option value="23">오후 11시</option>
-</select>
+<input type="time" id="lesson_time" name="lesson_time" required="required"> 
 
-<select name="minute" id="minute">
-<option value="00">00분</option>
-<option value="10">10분</option>
-<option value="20">20분</option>
-<option value="30">30분</option>
-<option value="40">40분</option>
-<option value="50">50분</option>
-</select>
 
 <input type="button" value="추가" onclick="add_Lesson_Time();">
-
-</form>
-
 
 <script>
 
 
+
+
+
+
+var lesson_date_and_time = [];
+
 function add_Lesson_Time(){
 
-    let hour = $("#hour option:checked").text();
-    let minute = $("#minute option:checked").text()
 	let lesson_date = document.form.lesson_date.value;
-    
-    console.log(hour);
-    console.log(minute);
-    console.log(lesson_date);
-    
- 	num = $('#lessontable>tbody tr').length;
+	let lesson_time = document.form.lesson_time.value;
 
- 	 if(num >= 10){
-		alert("레슨은 10강을 넘길 수 없습니다.");
-		return false;
-	} else {
-    $('tbody').append("<tr>"+"<td>"+lesson_date+"</td>"+"<td>"+hour+" "+minute+"</td>"+"<td>"+"<input type='button' value='삭제' onclick='delete_lesson_date(this);' >"+"</td>"+"</tr>");
-     console.log(num);
-	}
-   
-    
-    
-    
-    };
+	console.log('ssss');
+	let lesson_maxnumber = document.form.lesson_max_number.value;
+	
+	let num = $('#lessontable>tbody tr').length;
+
+	
+	if(num >= lesson_maxnumber){
+ 		 
+		alert("레슨 수는 "+ lesson_maxnumber + "강을 초과할 수 없습니다.");
+    		
+	    for (let i = 0; i < num; i++) {
+	    	console.log(lesson_date_and_time[i] );
+	    }
+	   	
+	}  else  {
+		  $('tbody').append("<tr>"+"<td>"+lesson_date+"</td>"+"<td>"+lesson_time+"</td>"+"<td>"+"<input type='button' value='삭제' onclick='delete_lesson_date(this);' >"+"</td>"+"</tr>");
+		lesson_date_and_time.push(
+				{lesson_date : lesson_date, 
+				lesson_time : lesson_time}
+				);
+			console.log(lesson_date_and_time[num]); 
+		 	console.log(num);
+	} 
+ 	
+}
     
     
     function delete_lesson_date(obj) {
@@ -122,7 +107,15 @@ function add_Lesson_Time(){
     }
       
     
+    
+    function lesson_date_submit(){
+    	window.opener.add_Lesson_Time(lesson_date_and_time);
+    	window.close();
+    }
 
+   
+    
+    
 </script>
 
 <table id = "lessontable">
@@ -132,5 +125,12 @@ function add_Lesson_Time(){
 </tbody>
 </table>
 
+
+<br>
+<br>
+
+<input type="submit" value="전송" onclick="lesson_date_submit();">
+
+</form>
 </body>
 </html>

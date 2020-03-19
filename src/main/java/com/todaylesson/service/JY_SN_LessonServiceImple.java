@@ -15,6 +15,7 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 	@Autowired
 	public JY_SN_LessonMapper mapper;
 	
+	
 	@Override
 	public int insert_Lesson(LessonDTO dto) {	
 		return mapper.insert_lesson(dto);

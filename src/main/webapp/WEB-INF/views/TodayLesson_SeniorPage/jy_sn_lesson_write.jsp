@@ -38,7 +38,6 @@
 		});		
 	
 		
-		$('.online_lesson').hide();
 		$('.offline_lesson').hide();
 		
 		
@@ -47,13 +46,8 @@
 		let state = $('#lesson_type option:selected').val();
 		console.log(state);
 		if ( state == 3 ) {
-			$('.online_lesson').hide();
 			$('.offline_lesson').hide();
-		} else if (state == 2) {
-			$('.online_lesson').show();
-			$('.offline_lesson').show();
-		} else{
-			$('.online_lesson').show();
+		} else {
 			$('.offline_lesson').show();
 		}
 		});	
@@ -157,14 +151,31 @@ function multiple_time_lesson_date(){
 	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
 
 	
-}	  
-	  
+}	
+
+function add_Lesson_Time(lesson_date_and_time){
+	for (var i = 0; i < lesson_date_and_time.length; i++) {
+		console.log(lesson_date_and_time);	
+		$('#lesson_d_t').append(lesson_date_and_time[i].lesson_date+" "+lesson_date_and_time[i].lesson_time+"<br>"
+				+"<input type='hidden' name='lesson_date' id='lesson_date' value=" + lesson_date_and_time[i].lesson_date +">"
+				+"<input type='hidden' name='lesson_time' id='lesson_time' value=" + lesson_date_and_time[i].lesson_time +">");
+		
+
+	}
+	document.getElementById("lesson_number").value=lesson_date_and_time.length;
+		 
+
+	
+}
+
+	
+
 
 </script>
 
 
 
-<form method="post" action="${pageContext.request.contextPath }/insert_result" name="form"> 
+<form method="post" action="${pageContext.request.contextPath }/insert_result" name="form" autocomplete="off" enctype="multipart/form-data"> 
 
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
@@ -178,6 +189,25 @@ function multiple_time_lesson_date(){
 <label for="lesson_content">레슨 내용</label><br>
 <textarea id="summernote" name="lesson_content"></textarea><br>
 
+<label for="lesson_thumb">썸네일</label>
+<input type="file" id="lesson_thumb" name="file" />
+ 
+ 
+ <div class="select_img"><img src="" /></div>
+ 
+ <script>
+  $("#lesson_thumb").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
+ 
 <label for="lesson_member_max">수강생수</label><br>
 <input type="number" id="lesson_member_max" name="lesson_member_max"><br>
 
@@ -194,6 +224,7 @@ function multiple_time_lesson_date(){
 
 <label for="lesson_cost">가격</label><br>
 <input type="number" id="lesson_cost" name="lesson_cost"><br>
+
 
 <label for="lesson_open_period">시작일</label><br>
 <input type="date" id="lesson_open_period" name="lesson_open_period"><br>
@@ -213,32 +244,13 @@ function multiple_time_lesson_date(){
 
 <div class="offline_lesson">
 
-<label for="lesson_date">레슨 시작일 날</label><br>
-<input type="date" id="lesson_date" name="lesson_date"><br>
+<input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name="">
 
-<input type ="button" onclick="multiple_time_lesson_date()" value="날짜/시간 설정하기" name="">
+<div id="lesson_d_t">
 
-<label for="lesson_date_day_of_the_week">레슨하는 요일</label><br>
-<select id = "lesson_date_day_of_the_week" name="lesson_date_day_of_the_week">
-<option value="0">월요일</option>
-<option value="1">화요일</option>
-<option value="2">수요일</option>
-<option value="3">목요일</option>
-<option value="4">금요일</option>
-<option value="5">토요일</option>
-<option value="6">일요일</option>
-</select>
 
 </div>
 
-
-
-
-<div class="online_lesson">
-
-
-<label for="lesson_time">레슨시간</label><br>
-<input type="time" id="lesson_time" name="lesson_time"><br>
 
 <label>레슨주소</label><br>
 우편번호<br>
@@ -250,6 +262,7 @@ function multiple_time_lesson_date(){
 도로명주소<br>
 <input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly">
 <p class="map"></p>
+
 </div>
 
 
@@ -271,6 +284,8 @@ function multiple_time_lesson_date(){
 <input type="reset" value="글 취소"/>
 
 </form>
+
+
 
 
 

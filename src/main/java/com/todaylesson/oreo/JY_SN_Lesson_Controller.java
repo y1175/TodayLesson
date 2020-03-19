@@ -1,25 +1,31 @@
 package com.todaylesson.oreo;
 
+import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.Model;import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.google.common.util.concurrent.ExecutionError;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SeniorDTO;
-import com.todaylesson.service.Hm_Us_MailSendService;
-import com.todaylesson.service.JY_Admin_LessonService;
 import com.todaylesson.service.JY_SN_LessonService;
-import com.todaylesson.service.JY_US_SeniorService;
+import com.todaylesson.upload.UploadFileUtils;
+
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 
 @Controller
@@ -56,6 +62,7 @@ public class JY_SN_Lesson_Controller {
 	public String write(@PathVariable String member_id,Model model) {
 		int senior_no = lesson_service.select_senior_no(member_id);
 		List<LessonDTO> list = lesson_service.reject_lesson_list(senior_no);
+		
 		if (list.size() > 5) {
 			return "TodayLesson_SeniorPage/jy_sn_you_cant_write_lesson";
 		} else {
@@ -76,19 +83,57 @@ public class JY_SN_Lesson_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_multiple_lesson";
 	}	
 	
+
 	
 	
 	@RequestMapping("/insert_result")
-	public String insertresult(LessonDTO dto, Model model) {
+	public String insertresult(LessonDTO dto, Model model,MultipartFile file, HttpServletRequest request) throws Exception {
+		
+		String[] l_date = request.getParameterValues("lesson_date");
+		String[] l_time = request.getParameterValues("lesson_time");
+		
+		String lessondate = Arrays.toString(l_date);
+		String lessontime = Arrays.toString(l_time);
+		
+		String date = lessondate.replace("[", "");
+		String lesson_date = date.replace("]", "");
+		
+		String time = lessontime.replace("[", "");
+		String lesson_time = time.replace("]", "");
+		
+		
+		dto.setLesson_date(lesson_date);
+		dto.setLesson_time(lesson_time);
+		
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null)   
+		{
+		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		//dto.set(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		dto.setLesson_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		String imgthumb = dto.getLesson_thumb();
+		//System.out.println("이미지경로: "+img);
+		System.out.println("썸네일이미지경로: "+imgthumb);
+		
+		
+
+		int result =lesson_service.insert_Lesson(dto);
+		model.addAttribute("result",result);
 		
 		System.out.println(dto.toString());
-		
-			int result =lesson_service.insert_Lesson(dto);
-			model.addAttribute("result",result);
-		
-		System.out.println("                     " +dto.toString());
 					
 		return "TodayLesson_SeniorPage/jy_sn_insert_result";
+		
 	}
 	
 	@RequestMapping("/my_lesson_detail/{lesson_no}")
