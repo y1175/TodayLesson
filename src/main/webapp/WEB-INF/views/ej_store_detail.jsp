@@ -86,10 +86,29 @@ display: inline-block;}
   <option value="${item.option_name}" id="optionname">${item.option_name} +${item.option_cost}원</option>
   </c:forEach>
 </select><br>
+<script>
+
+$('#selectoption').change(function() {
+alert($('#selectoption option:selected').val());
+});
+$('#ej_apply_btn').click(function(){
+	alert($('#selectoption option:selected').val());
+});
+$('#selectoption').change(function() {
+	
+	alert($(this).val());
+
+	alert($(this).children('option:selected').text());
+
+});
+
+
+
+</script>
 
 
 수량 <input type=text size="1" name="pdcount" placeholder="1" required="required"><br>
-<button >적용</button>
+<button id="ej_apply_btn">적용</button>
 배송비 무료<br>
 <a href="">♡</a><a href="">장바구니</a><br>
 
@@ -232,7 +251,7 @@ ${dto.product_content}
     console.log('success');
     console.log(data);
     console.log('this'+this);
-    console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id+"kl");
+    console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id");
     $("#repCon").val("");
 	 /* 
     if(data.member_id!=null)

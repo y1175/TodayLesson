@@ -81,4 +81,12 @@ where  product_no=#{product_no}
 	 values(#{orderlist_no},#{product_no},#{order_count})
 	</insert>
 	
+	<insert id="insertmylike" parameterType="com.todaylesson.DTO.MyLikeDTO">
+	insert into mylike(product_no,member_id) values(#{product_no},#{member_id})
+	</insert>
+	
+	<insert id="insertcart" parameterType="com.todaylesson.DTO.CartDTO">
+	insert into cart(product_no,member_id, cart_amount) values(#{product_no},#{member_id},#{cart_amount})
+	</insert>
+	
 </mapper> 

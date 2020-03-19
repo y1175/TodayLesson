@@ -25,7 +25,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
+import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
+import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.DTO.OptionsDTO;
 import com.todaylesson.DTO.OrderDetailDTO;
@@ -312,20 +314,24 @@ public class EJ_ProductController {
 		
 		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
 	}*/
-	/*@RequestMapping("/orderlistdetail")
+	@RequestMapping("/orderlistdetail")
 	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto, Model model)
 	{
 		//여기서 주문번호 생성해서 넘겨주기
 
 		 Calendar cal = Calendar.getInstance();
-		 int year = cal.get(Calendar.YEAR);
+		 int year1 = cal.get(Calendar.YEAR);
+		 String year2=Integer.toString(year1);
+		 String year=year2.substring(2, 4);
+		 
+		 System.out.println("두자릿수년도:"+year);
 		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
 		 System.out.println();
 		 System.out.println(ym);
 		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		 String subNum = "";
 		 
-		 for(int i = 1; i <= 2; i ++) {
+		 for(int i = 1; i <= 4; i ++) {
 		  subNum += (int)(Math.random() * 10);
 		 }
 		 
@@ -342,6 +348,33 @@ public class EJ_ProductController {
 		model.addAttribute("oldto",oldto);
 		//List<OrderDetailDTO> list=service.selectordetail;
 		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
-	}*/
+	}
+	@ResponseBody
+	@RequestMapping("/likejson")
+	public void likemain(@RequestParam(value="product_no") int product_no
+			,@RequestParam(value="member_id") String member_id)
+	{
+		System.out.println("productno:"+product_no+member_id);
+		MyLikeDTO likedto=new MyLikeDTO();
+		likedto.setMember_id(member_id);
+		likedto.setProduct_no(product_no);
+		service.insertmylike(likedto);
+		System.out.println("like임");
+		
+	}
+	@ResponseBody
+	@RequestMapping("/cartjson")
+	public void cartmain(@RequestParam(value="product_no") int product_no
+			,@RequestParam(value="member_id") String member_id)
+	{
+		System.out.println("productno:"+product_no+member_id);
+		CartDTO cartdto=new CartDTO();
+		cartdto.setMember_id(member_id);
+		cartdto.setProduct_no(product_no);
+		cartdto.setCart_amount(1);
+		service.insertcart(cartdto);
+		System.out.println("cart임");
+		
+	}
 	}
 	

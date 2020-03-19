@@ -25,6 +25,9 @@
 
 
 <body>
+<script>
+$("#ordersuccess_btn").hide();
+</script>
 <form method="post" action="/orderlistdetail">
 <h2 text align="center">주문신청서</h2>
 <h4>주문할 취미</h4>
@@ -156,6 +159,7 @@ ntpay">무통장입금
     	*/
     	}, function (rsp) {
     	console.log(rsp);
+    	$("#ordersuccess_btn").show();
     	if (rsp.success) {
     	var msg = '화면의 주문완료 버튼을 눌러주세요';
     	msg += '고유ID : ' + rsp.imp_uid;
@@ -171,7 +175,8 @@ ntpay">무통장입금
     	});
 
     </script>
-    <input type="submit" value="주문완료">
+    <div id="ordersuccess_btn">
+    <input type="submit" id="ordersuccess_btn" value="주문완료"></div>
 
     </form>
 </body>

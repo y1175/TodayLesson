@@ -10,11 +10,9 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartDTO {
-	
+public class MyLikeDTO {
 
-	private int cart_no;
-	private int cart_amount;
+	private int mylike_no;
 	private int product_no;
 	private int lesson_no;
 	private String member_id;

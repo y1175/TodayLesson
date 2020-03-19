@@ -240,6 +240,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //은지 주문내역상세
         else if ("/orderlistdetail".equals(strUri))                   
            return false; 
+      //은지 좋아요
+        else if ("/mylike".equals(strUri))                   
+           return false; 
+      //은지 장바구니
+        else if ("/mycart".equals(strUri))                   
+           return false; 
                
         	
         //옵션추가페이지..안됨..                           

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- <script src="resources/JS/summernote-lite.js"></script> -->
 <!-- <script src="/JS/summernote-lite.js"></script> -->
 <!-- <script src="resources/JS/summernote-ko-KR.js"></script> -->
@@ -16,6 +17,10 @@
 #thumb{
 display:inline-block;
 width:30%}
+h4.beforecost{
+text-decoration: line-through;}
+#ej_cost{
+display: inline-block;} 
 </style>
 </head>
 
@@ -28,11 +33,11 @@ ${pageContext.request.contextPath}
 
 
 
-
+ <form role="form" method="post" autocomplete="off">  
 <c:forEach var="item" items="${list}"> 
+
 <div id="thumb">
 <a href="ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a><br>
-${item.product_sale }%<br>
 
 <c:set var="category" value="${item.product_category }"/>
  <c:choose>
@@ -58,20 +63,121 @@ ${item.product_sale }%<br>
         기타
          </c:otherwise> 
       </c:choose><br>
-<a href="ej_store_detail/${item.product_no}">${item.product_name}</a><br>
+<a href="ej_store_detail/${item.product_no}">${item.product_name}</a>
+<input type="image" src="" name="" class="ej_cart_btn"  id="${item.product_no}" value="장바구니">
+<input type="image" src="" class="ej_like_btn" id="${item.product_no}" value="좋아요">
+  
+
 <hr>
-${item.product_cost}원<br>
+<h4 class="beforecost" id="ej_cost">
+${item.product_cost}원</h4>
+
+<div id="ej_cost"><c:out value="${item.product_sale}"/>%</div> <div id="ej_cost"><h3><c:out value="${item.product_after_cost}"></c:out>원 </h3></div><br>
 </div>
-
-
 </c:forEach>
+ </form> 
+<script>
+
+ $(".ej_like_btn").click(function(){
+ //alert('replye_btn'); 
+
+ var productno=$(this).prop("id");
+ console.log(productno);
+  //var formObj = $(".replyForm form[role='form']");
+  
+  var memberid='${pageContext.request.userPrincipal.name}';
+  
+  var data = {
+       product_no : productno,
+       member_id: memberid
+    };
+  console.log(memberid);
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(){
+    console.log('success');
+    console.log(data);
+    console.log('this'+this);
+    console.log(data.product_no+" "+data.member_id);
+   
+    
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       } 
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+</script>
+<script>
+
+ $(".ej_cart_btn").click(function(){
+ //alert('replye_btn'); 
+
+ var productno=$(this).prop("id");
+ console.log(productno);
+  //var formObj = $(".replyForm form[role='form']");
+  
+  var memberid='${pageContext.request.userPrincipal.name}';
+  
+  var data = {
+       product_no : productno,
+       member_id: memberid
+    };
+  console.log(memberid);
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/cartjson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(){
+    console.log('success');
+    console.log(data);
+    console.log('this'+this);
+    console.log(data.product_no+" "+data.member_id);
+   
+    
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       } 
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+</script>
 
 
 
-<%-- <c:forEach var="item" items="${list}"> 
-${item.product_name}
-<img src="${pageContext.request.contextPath }/$item.product_thumb}" alt="\${pageContext.request.contextPath }\${item.product_thumb}"><br>
-</c:forEach> --%>
+
 
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 </body>

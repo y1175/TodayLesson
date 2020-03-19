@@ -70,8 +70,7 @@
   var memberid=$("#option_cost").val();
   
   var data = {
-    /* gdsNum : gdsNum,
-    repCon : repCon */
+  
 		 product_no : gdsNum,
 		option_name : repCon,
 		option_cost: memberid
