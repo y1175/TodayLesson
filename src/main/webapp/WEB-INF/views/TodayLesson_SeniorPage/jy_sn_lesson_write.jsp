@@ -222,6 +222,7 @@ function multiple_time_lesson_date(){
   <option value="3">핸드메이드</option>
   <option value="4">it</option>
   <option value="5">요리</option>
+  <option value="6">기타</option>
 </select>
 <br>
 

@@ -29,7 +29,7 @@ import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.JY_Admin_LessonService;
-import com.todaylesson.service.JY_Mail_service;
+import com.todaylesson.service.JY_SN_Mail_service;
 
 @Controller
 //@RequestMapping("/todaylessonadmin/")
@@ -41,7 +41,7 @@ public class JY_Admin_Lesson_Controller {
 	
 	
 	  @Autowired
-	private JY_Mail_service mailSender;
+	private JY_SN_Mail_service mailSender;
 	   
 	
 	

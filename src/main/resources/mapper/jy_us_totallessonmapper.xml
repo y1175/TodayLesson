@@ -7,10 +7,12 @@
 
 <!-- 승인 난 애들만 볼 수 있으니까 -->
 <select id="ttlesson_list" resultType="com.todaylesson.DTO.LessonDTO">
-
+<![CDATA[
 select * from lesson
-where lesson_result = 1;
-
+where lesson_result=2
+and now() >= date(lesson_open_period) 
+and now() <= date(lesson_close_period)
+]]>
 </select>
 
 

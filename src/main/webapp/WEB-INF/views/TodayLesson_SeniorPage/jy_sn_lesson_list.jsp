@@ -43,8 +43,12 @@ width:500px; height:auto;
 <c:out value="it"/>
 </c:when>
 
-<c:otherwise>
+<c:when test="${item.lesson_category == 5}">
 <c:out value="요리"/>
+</c:when>
+
+<c:otherwise>
+<c:out value="기타"/>
 </c:otherwise>
 
 </c:choose>

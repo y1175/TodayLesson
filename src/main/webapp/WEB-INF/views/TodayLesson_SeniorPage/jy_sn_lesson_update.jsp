@@ -202,7 +202,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 
 <label for="lesson_content">레슨 내용</label><br>
-<textarea id="summernote" name="lesson_content" ><c:out value="${dto.lesson_content}"/></textarea><br>
+<textarea id="summernote" name="lesson_content" style="display:none"><c:out value="${dto.lesson_content}"/></textarea><br>
 
 <label for="lesson_member_max">수강생수</label><br>
 <input type="number" id="lesson_member_max" name="lesson_member_max" value="${dto.lesson_member_max}"><br>
@@ -215,6 +215,7 @@ function add_Lesson_Time(lesson_date_and_time){
   <option value="3">핸드메이드</option>
   <option value="4">it</option>
   <option value="5">요리</option>
+  <option value="6">기타</option>
 </select>
 <br>
 
@@ -272,7 +273,7 @@ function add_Lesson_Time(lesson_date_and_time){
 <input type="text" id="lesson_senior_title" name="lesson_senior_title" value="${dto.lesson_senior_title}"><br>
 
 <label for="lesson_senior_content">시니어소개</label><br>
-<textarea id="lesson_senior_content" name="lesson_senior_content" ><c:out value="${dto.lesson_senior_content}"/></textarea><br>
+<textarea id="lesson_senior_content" name="lesson_senior_content" style="display:none"><c:out value="${dto.lesson_senior_content}"/></textarea><br>
 
 
 

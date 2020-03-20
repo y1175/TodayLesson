@@ -43,10 +43,10 @@ $('textarea').summernote({
 <input type="hidden" name= "lessondetail_no" value="${dto.lessondetail_no }">
 
 <label for="lessondetail_title">레슨 명</label>
-<input type="text" id="lessondetail_title" name="lessondetail_title" value="${dto.lessondetail_title }">
+<input type="text" id="lessondetail_title" name="lessondetail_title"  value="${dto.lessondetail_title }">
 
 <label for="lessondetail_content">레슨 내용</label>
-<textarea id="summernote" name="lessondetail_content" >${dto.lessondetail_content}</textarea>
+<textarea id="summernote" name="lessondetail_content" style="display:none" >${dto.lessondetail_content}</textarea>
 
 여기도 썸네일 넣을까 고민중임
 

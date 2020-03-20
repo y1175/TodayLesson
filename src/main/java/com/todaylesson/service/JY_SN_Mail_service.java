@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.todaylesson.Mapper.JY_Admin_LessonMapper;
 
 @Service
-public class JY_Mail_service {
+public class JY_SN_Mail_service {
 
 	@Autowired 
 	private JY_Admin_LessonMapper mapper;
@@ -28,10 +28,10 @@ public class JY_Mail_service {
 		String htmlStr = "<h2> 안녕하세요 '"+ member_id +"' 님</h2><br><br>" 
 				+ "<p> 신청해주신 레슨'" +lesson_title + "'  의 심사가 끝났습니다.</p>"
 				+ "<p> 심사 결과 큰 무리없이 레슨을 진행 할 수 있을 것 같습니다</p>"
-				+ "<p> 레슨을 수강하시는 시니어분께 보내드리는 키트 제작을 위해</p>"
+				+ "<p> 레슨을 수강하시는 주니어분께 보내드리는 키트 제작을 위해</p>"
 				+ "<p> 담당자(김진영 : 010-7144-3797)가 연락을 드릴 예정입니다.</p>"
 				+ "<p> 수많은 레슨 플랫폼 중 저희 '오늘의 레슨'을 선택해주셔서 감사드리며,</p>"
-				+ "<p> 오늘의 레슨은 이 땅에 있는 모든 이들이 하나의 레슨을 가지는 그날까지! 열심히 노력하겠습니다!</p>";
+				+ "<p> 오늘의 레슨은 이 땅에 있는 모든 이들이 하나의 취미을 가지는 그날까지! 열심히 노력하겠습니다!</p>";
 		try {
 			mail.setSubject("[TodayLesson] 신청하신 레슨 심사가 완료 되었습니다.", "utf-8");
 			mail.setText(htmlStr, "utf-8", "html");

@@ -46,6 +46,6 @@ public class JY_US_TotalLessonController {
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
 		model.addAttribute("dto",dto);
 		
-		return "";
+		return "TodayLesson_UserPage/jy_us_lesson_buy.us_main_section";
 	}
 }

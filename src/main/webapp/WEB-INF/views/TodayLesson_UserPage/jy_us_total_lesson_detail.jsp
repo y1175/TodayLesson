@@ -118,8 +118,12 @@ ${dto.lesson_content}
 <c:out value="it"/><br>
 </c:when>
 
-<c:otherwise>
+<c:when test="${dto.lesson_category == 5}">
 <c:out value="요리"/><br>
+</c:when>
+
+<c:otherwise>
+<c:out value="기타"/><br>
 </c:otherwise>
 
 </c:choose>
@@ -186,7 +190,7 @@ ${dto.lesson_content}
 <div class="summer">
 ${dto.lesson_senior_content}
 </div>
-
+<input type="button" onclick="location.href='${pageContext.request.contextPath }/lesson_buy/${dto.lesson_no}'">
 <a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
 </body>
 </html>

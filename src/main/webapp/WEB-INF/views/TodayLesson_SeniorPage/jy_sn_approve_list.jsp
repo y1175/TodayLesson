@@ -49,8 +49,13 @@ width:500px; height:auto;
 <td><c:out value="it"/></td>
 </c:when>
 
-<c:otherwise>
+<c:when test="${item.lesson_category == 4}">
 <td><c:out value="요리"/></td>
+</c:when>
+
+
+<c:otherwise>
+<td><c:out value="기타"/></td>
 </c:otherwise>
 
 </c:choose>

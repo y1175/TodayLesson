@@ -78,8 +78,12 @@ ${dto.lesson_content}
 <c:out value="it"/><br>
 </c:when>
 
-<c:otherwise>
+<c:when test="${dto.lesson_category == 5}">
 <c:out value="요리"/><br>
+</c:when>
+
+<c:otherwise>
+<c:out value="기타"/><br>
 </c:otherwise>
 
 </c:choose>
