@@ -57,7 +57,8 @@ display: inline-block;}
 <img src="${dto.product_img }" id="ej_sdetail_topimg" width="700">
 </span>
 
-<form action="/ej_us_orderform" method="post">
+  <form role="form" method="post" id="form1" name="form" >
+  <!--autocomplete="off"   -->
 <div id="followquick">
 <nav id="ej_sdetail_right">
 <c:set var="category" value="${dto.product_category }"/>
@@ -81,12 +82,12 @@ display: inline-block;}
 <input type="hidden" name="product_name" value="${dto.product_name }"/>
 <input type="hidden" name="product_cost" value="${dto.product_cost }"/>
 <input type="hidden" name="product_after_cost" value="${dto.product_after_cost }"/>
-<select name="selectoption">
+<%-- <select name="selectoption">
 <c:forEach var="item" items="${optionlist}"> 
   <option value="${item.option_name}" id="optionname">${item.option_name} +${item.option_cost}원</option>
   </c:forEach>
-</select><br>
-<script>
+</select><br> --%>
+<!-- <script>
 
 $('#selectoption').change(function() {
 alert($('#selectoption option:selected').val());
@@ -101,22 +102,112 @@ $('#selectoption').change(function() {
 	alert($(this).children('option:selected').text());
 
 });
+</script> -->
 
 
+수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" value=1 required="required"><br>
+배송비 무료<br>
+
+
+
+<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
+<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary'  onclick="javascript: form.action='/ej_us_orderform';"><br>
+<input type="image" src="" class="ej_like_btn" id="${dto.product_no}" value="♡">
+<input type="image" src="" name="" class="ej_cart_btn"  id="${dto.product_no}" value="장바구니">
+<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
+ </form>
+ </nav>
+ </div>
+ <script>
+/*  $("#to_orderform").click(function(){
+	 //alert('hih');
+	 $("form").attr("action", "/ej_us_orderform");
+ }); */
+ </script>
+ <script>
+
+ $(".ej_cart_btn").click(function(){
+	 
+  var productno=$(this).prop("id");
+  var member_id='${pageContext.request.userPrincipal.name}';
+  var pdcount=$("#pdcount").val();
+  
+  console.log(pdcount);
+  var data = {
+       product_no : productno,
+       member_id: member_id,
+       cart_amount: pdcount
+    };
+  console.log(member_id);
+  if(member_id=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/cartwith_amount_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(){
+   		alert("장바구니에 상품이"+data.cart_amount+"개가 담겼습니다!");
+    		} 
+   ,error: function(){
+      console.log('error');
+      }
+  }); 
+  }
+ });
+
+</script>
+ <script>
+
+ $(".ej_like_btn").click(function(){
+
+
+ var productno=$(this).prop("id");
+ console.log(productno);
+
+  
+  var member_id='${pageContext.request.userPrincipal.name}';
+  
+  var data = {
+       product_no : productno,
+       member_id: member_id
+    };
+  
+  if(member_id=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(){
+ 	alert('좋아요 완료!');
+ 	//$(this).css("color","red");
+   
+    
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       } 
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
 
 </script>
 
-
-수량 <input type=text size="1" name="pdcount" placeholder="1" required="required"><br>
-<button id="ej_apply_btn">적용</button>
-배송비 무료<br>
-<a href="">♡</a><a href="">장바구니</a><br>
-
-<input type="hidden" name="memberid" value="${pageContext.request.userPrincipal.name}" id="memberid">
-<input type="submit" value="구매하기" class='btn btn-primary'>
-</nav>
-</div>
- </form> 
  <script>
 //follow quick menu
 $(window).scroll(function(){
@@ -143,18 +234,7 @@ $("#followquick").animate( { "top" : scrollTop });
 </div>
 </div>
 
-<!-- <div class="jbMenu">
-<nav id="ej_sdetail_top">
-<span id="ej_top">
-<a href="#ej_first">상품소개</a>
-</span>
-<span id="ej_top">
-<a href="#ej_second">후기</a></span>
-<span id="ej_top">
-<a href="#ej_third">배송/교환/환불</a>
-</span>
-</nav>
-</div> -->
+
 <script>
 <!-- 상단바 스크롤해도 고정되게 하는 코드 -->
 var jbOffset = $( '.jbMenu' ).offset();
@@ -222,27 +302,23 @@ ${dto.product_content}
 </div>
 </form>
 </section>
+
 <script>
-
-
-/* $(document).ready(function(){ */
  $("#reply_btn").click(function(){
-/*   alert('replye_btn'); */
+
   var formObj = $(".replyForm form[role='form']");
   var gdsNum = $("#gdsNum").val();
   var repCon = $("#repCon").val();
-  var memberid=$("#memberid").val();
+  var member_id=$("#member_id").val();
   
   var data = {
-    /* gdsNum : gdsNum,
-    repCon : repCon */
 		 product_no : gdsNum,
 		 pdreview_content : repCon,
-		 member_id: memberid
+		 member_id: member_id
     };
 
   
-  $.ajax({/* "/shop/view/registReply" */
+  $.ajax({
    url :"/ej_store_detail/registReply",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
@@ -251,7 +327,7 @@ ${dto.product_content}
     console.log('success');
     console.log(data);
     console.log('this'+this);
-    console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id");
+    console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id);
     $("#repCon").val("");
 	 /* 
     if(data.member_id!=null)

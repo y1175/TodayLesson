@@ -42,4 +42,8 @@ public interface EJ_US_ProductMapper {
 
 	public int insertcart(CartDTO cartdto);
 
+	public List<MyLikeDTO> selectmylike(String member_id);
+
+	public List<CartDTO> selectmycart(String member_id);
+
 }

@@ -25,14 +25,10 @@ display: inline-block;}
 </head>
 
 <body>
- 
-
-${pageContext.request.contextPath}
-
-<c:out value="${pageContext.request.contextPath}"/>
-
-
-
+ <c:set var="member_id" value="${pageContext.request.userPrincipal.name}"></c:set>
+ ${member_id }
+<a href="mycart/${member_id}">내장바구니</a>
+<a href="mylike/${member_id}">내 좋아요</a><br>
  <form role="form" method="post" autocomplete="off">  
 <c:forEach var="item" items="${list}"> 
 
@@ -79,11 +75,11 @@ ${item.product_cost}원</h4>
 <script>
 
  $(".ej_like_btn").click(function(){
- //alert('replye_btn'); 
+
 
  var productno=$(this).prop("id");
  console.log(productno);
-  //var formObj = $(".replyForm form[role='form']");
+
   
   var memberid='${pageContext.request.userPrincipal.name}';
   

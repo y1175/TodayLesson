@@ -39,6 +39,10 @@ public interface EJ_All_Product_Service {
 
 	public int insertcart(CartDTO cartdto);
 
+	public List<MyLikeDTO> selectMyLike(String member_id);
+
+	public List<CartDTO> selectMyCart(String member_id);
+
 
 
 

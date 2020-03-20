@@ -15,12 +15,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.service.EJ_All_Product_Service;
@@ -59,8 +61,11 @@ public class EJ_ProductController {
 	}
 	
 	@RequestMapping("/ej_ad_product_insertresult")
-	public String insertresult(Model model, ProductDTO dto, MultipartFile file,  HttpServletRequest request) throws IOException, Exception {
+	public String insertresult(Model model, ProductDTO dto, 
+			MultipartFile file,  HttpServletRequest request) throws IOException, Exception {
 		
+		
+	
 /*
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
@@ -70,6 +75,9 @@ public class EJ_ProductController {
 		{
 		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
+		
+		
+		
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 
@@ -80,8 +88,8 @@ public class EJ_ProductController {
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
-
-		if(file != null)   
+		//file=null;
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "")   
 		{
 		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		} else {
@@ -129,12 +137,6 @@ public class EJ_ProductController {
 	public String addoptionresult(Model model, OptionsDTO odto) throws IOException, Exception {
 		
 
-		/*int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;
-		dto.setProduct_after_cost(cost);
-		int result = service.insertBoard(dto);
-		model.addAttribute("result", result);
-		
-		return "TodayLesson_AdminPage/ej_ad_product_insertresult";*/
 		int result=service.insertOption(odto);
 		model.addAttribute("result",result);
 		
@@ -159,9 +161,7 @@ public class EJ_ProductController {
 		
 		int result=service.insertOption(odto);
 	 System.out.println("addoption json  Controller");
-/*	 reply.setMember_id(member.getMember_id());
-	 
-	 service.registReply(reply)*/;
+
 	
 }
 	@RequestMapping("/ej_store_main")
@@ -169,7 +169,7 @@ public class EJ_ProductController {
 		List<ProductDTO> list = service.selectAll();
 		model.addAttribute("list",list);
 		//.us_main_section
-		return "ej_store_main.us_main_section";
+		return "TodayLesson_UserPage/ej_store_main.us_main_section";
 	}
 	
 	
@@ -185,57 +185,12 @@ public class EJ_ProductController {
 			List<OptionsDTO> optionlist = service.optionList(product_no);
 			
 			 model.addAttribute("optionlist",optionlist);
-			
-		//.us_main_section
-		return "ej_store_detail.us_main_section";
+	
+		return "TodayLesson_UserPage/ej_store_detail.us_main_section";
 	}
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	// 상품 소감(댓글) 목록 /view/replyList엿음..replyList        
-	List<PdReviewDTO>
-	@ResponseBody
-	@RequestMapping(value = "/ej_store_detail/replyList", method = RequestMethod.GET)
-	public  List<PdReviewDTO> getReplyList(@RequestParam("product_no") int product_no
-			,@RequestParam("member_id") String member_id
-			,@RequestParam("pdreview_content") String pdreview_content) throws Exception {
-//원래는 RequestParam임 pathvariable로 해
-	   
-
-	 System.out.println("getReplyListController");
-	 List<PdReviewDTO> reply = service.replyList(product_no);
-	 System.out.println("reply object:"+reply);
-	 System.out.println(product_no);
-	 System.out.println(member_id);
-	
-	// System.out.println(pdreview_content);
-		int i = 0;
-
-		while ( i < reply.size()) {
-
-			System.out.println("reply list:"+reply.get(2));
-
-			i++;
-
-		}
-
-
-
-
-	 return reply;
-		return 3;
-		//여기서 리턴한게 replyList()함수에서 data로 받아지네
-		
-	} 
-	*/
 	
 	// 상품 소감(댓글) 작성 registReply
 	@ResponseBody
@@ -247,7 +202,6 @@ public class EJ_ProductController {
 			HttpSession session) throws Exception {
 	
 	 
-	/* MemberDTO member = (MemberDTO)session.getAttribute("member");*/
 		PdReviewDTO pdreviewdto=new PdReviewDTO();
 		pdreviewdto.setMember_id(member_id);
 		pdreviewdto.setProduct_no(product_no);
@@ -255,22 +209,8 @@ public class EJ_ProductController {
 		
 		int result=service.registReply(pdreviewdto);
 	 System.out.println("registReply Controller");
-/*	 reply.setMember_id(member.getMember_id());
-	 
-	 service.registReply(reply)*/;
-	
+
 }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -280,7 +220,7 @@ public class EJ_ProductController {
 			,@RequestParam("pdcount") int pdcount
 			,@RequestParam("product_name") String product_name
 			,@RequestParam("product_after_cost") int product_after_cost
-			,@RequestParam("memberid") String member_id
+			,@RequestParam("member_id") String member_id
 			,Model model){
 		System.out.println("주문페이지에서 상풍번호:"+product_no);
 		System.out.println("주문페이지에서 수량:"+pdcount);
@@ -296,24 +236,10 @@ public class EJ_ProductController {
 		model.addAttribute("pdto",dto);
 		int totalcost=pdcount*product_after_cost;
 		model.addAttribute("totalcost", totalcost);
+		
 		return "TodayLesson_UserPage/ej_us_orderform.us_main_section";
 	}
 	
-	/*@RequestMapping("/orderlistdetail")
-	public String orderlistdetail(@RequestParam("product_no") int product_no
-			,@RequestParam("memberid") String memberid
-			,@RequestParam("orderlist_receiver") String orderlist_receiver
-			,@RequestParam("orderlist_phone") String orderlist_phone
-			,@RequestParam("pdcount") int pdcount
-			,@RequestParam("totalcost") int totalcost
-			,@RequestParam("orderlist_addr") String orderlist_addr)
-	{
-		OrderDetailDTO oddto=service.insertorderdetail;
-		oddto.set
-		OrderlistDTO oldto=service.insertorderlist;
-		
-		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
-	}*/
 	@RequestMapping("/orderlistdetail")
 	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto, Model model)
 	{
@@ -376,5 +302,54 @@ public class EJ_ProductController {
 		System.out.println("cart임");
 		
 	}
+	
+	
+	@RequestMapping("/mylike/{member_id}")
+	public String mylike(@PathVariable(value="member_id") String member_id,Model model)
+	{
+		List<MyLikeDTO> likedto=service.selectMyLike(member_id);
+		model.addAttribute("list",likedto);
+		return "TodayLesson_UserPage/ej_us_mylike.us_main_section";
+	}
+	
+	@RequestMapping("/mycart/{member_id}")
+	public String mycart(@PathVariable(value="member_id") String member_id,Model model)
+	{
+		List<CartDTO> cartdto=service.selectMyCart(member_id);
+		model.addAttribute("list",cartdto);
+		return "TodayLesson_UserPage/ej_us_mycart.us_main_section";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cartwith_amount_json")
+	public void cartwith(@RequestParam(value="product_no") int product_no
+			,@RequestParam(value="member_id") String member_id
+			,@RequestParam(value="cart_amount") int cart_amount)
+	{
+		System.out.println("productno:"+product_no+member_id);
+		System.out.println("수량:"+cart_amount);
+		CartDTO cartdto=new CartDTO();
+		cartdto.setMember_id(member_id);
+		cartdto.setProduct_no(product_no);
+		cartdto.setCart_amount(cart_amount);
+		service.insertcart(cartdto);
+		System.out.println("cart임");
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping("/ej_us_orderform/applypointjson")
+	public void applypoint(@RequestParam(value="usepoint") int usepoint
+			,@RequestParam(value="memberpoint") int member_point
+			,@RequestParam(value="member_id") String member_id
+			,@RequestParam(value="totalcost") int totalcost
+			,@RequestParam(value="paymentcost") int paymentcost)
+			
+	{
+		
+	
+		
+	}
+	
 	}
 	
