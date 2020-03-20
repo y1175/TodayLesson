@@ -351,5 +351,10 @@ public class EJ_ProductController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping("/showcheckedlist_json")
+	public void showcheckedlist(HttpSession session) {
+		System.out.println("체크된리스트 컨트롤러");
+	}
 	}
 	

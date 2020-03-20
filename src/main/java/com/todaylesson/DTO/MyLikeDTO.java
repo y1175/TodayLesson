@@ -17,6 +17,7 @@ public class MyLikeDTO {
 	private String product_thumb;
 	private int lesson_no;
 	private int product_cost;
+	private int product_after_cost;
 	private String product_name;
 	private String member_id;
 }
