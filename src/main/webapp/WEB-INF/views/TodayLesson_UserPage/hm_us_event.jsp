@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=2">
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script>
 </head>
 <body>
- 
+
 </body>
-</html>
+</html>                                       

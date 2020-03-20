@@ -17,7 +17,7 @@ public class User_HM_Event_Controller {
 	@RequestMapping("/hm_us_event")
 	public String hm_us_event_main() {
 		
-		return "/TodayLesson_UserPage/hm_us_event.us_my_section";
+		return "/TodayLesson_UserPage/hm_us_event.us_main_section";
 	}
 	
 }
