@@ -76,7 +76,7 @@
 			<label>이벤트 종료기간</label><br>
 			<input type="date" name="event_endperiod" style="width: 30%;" value="${dto.event_endperiod}" required="required"/><br>
 				<label>이벤트 상세설명</label><br>
-				<textarea id="summernote" name="event_content"><c:out value="${dto.event_content}"/></textarea>
+				<textarea id="summernote" name="event_content" style="display:none"><c:out value="${dto.event_content}"/></textarea>
 			
 			
 			<div class="inputArea">
