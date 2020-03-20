@@ -42,7 +42,7 @@ public class JY_US_TotalLessonController {
 	
 	@RequestMapping("lesson_buy/{lesson_no}")
 	public String lesson_buy(Model model, @PathVariable int lesson_no) {
-		
+		 
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
 		model.addAttribute("dto",dto);
 		
