@@ -1,11 +1,13 @@
 package com.todaylesson.oreo;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,7 +49,21 @@ public class Admin_YI_Orderlist_Controller {
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",orderlist_search);
+		model.addAttribute("orderlist_category",orderlist_category);
+		model.addAttribute("orderstatus",orderlist_orderstatus);
+		model.addAttribute("start_date",start_date);
+		model.addAttribute("end_date",end_date);
 		
 		return "/TodayLesson_AdminPage/yi_ad_orderlist";
+	}
+	
+	//배송상태 수정
+	@RequestMapping("/todaylessonadmin/admin_order_modify/{orderlist_no}/{order_status}")
+	public String order_modify(@PathVariable int orderlist_no
+			,@PathVariable int order_status)
+	{
+
+		int result=service.order_modify(orderlist_no,order_status);
+		return "redirect:/todaylessonadmin/admin_orderlist";
 	}
 }

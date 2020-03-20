@@ -11,4 +11,6 @@ public int getCount(HashMap<String, Object> hm);
 
 public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderlist(HashMap<String, Object> hm);
 
+public int order_modify(HashMap<String,Object> hm);
+
 }

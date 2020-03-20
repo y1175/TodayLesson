@@ -40,7 +40,7 @@
 </form>
 
 
-<form action="/todaylessonadmin/order_modify">
+<form action="/todaylessonadmin/admin_order_modify">
 <table>
 <thead>
 <tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th rowspan="2">금액합계</th></tr>
@@ -50,7 +50,7 @@
 
 <c:forEach var="item" items="${list }">
 <tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td></tr>
-<tr><td><select name="orderlist_category" class="status_select">
+<tr><td><select name="order_status" class="status_select status_select-${item.orderlist_no}" id="${item.orderlist_no}">
 <option value="1">입금대기</option>
 <option value="2">입금완료</option>
 <option value="3">배송준비</option>
@@ -62,31 +62,55 @@
 <c:set var="cost" value="${item.orderlist_cost }"></c:set>
 <c:set var="total" value="${total+cost }"></c:set>
 <script>
-$('.status_select option[value=${item.orderlist_orderstatus }]').attr("selected",true);
+	
+$('.status_select-'+${item.orderlist_no}+' option[value=${item.orderlist_orderstatus }]').attr('selected',true);
+console.log($('.status_select option[value=${item.orderlist_orderstatus }]').val());
+
+
+
+
+
 </script>
 </c:forEach>
 </tbody>
-<tbody>
+<%-- <tbody>
 <tr><td colspan="3"></td><td>합계</td><td><c:out value="${total }"/>원</td>
-
-</tbody>
+</tbody> --%>
 </table>
-배송상태 수정하기 <input type="button" value="button">
+
 </form>
 <c:if test="${page.prev }">
-<a href="admin_orderlist?currPage=${page.startBlock-1}"><c:out value="이전"/></a>
+<a href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="admin_orderlist?currPage=${index }">${index }</a>
+<a href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="admin_orderlist?currPage=${page.endBlock+1 }"><c:out value="다음"/></a>
+<a href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}"><c:out value="다음"/></a>
 </c:if>
+<script>
 
-&category=${category}&search=${search}
+/*주문배송상태 변경 셀렉터*/
+var before
+$('.status_select').focus(function(){
+	before=$(this).val();
+});
+$('.status_select').on("change",function(){
+	var orderlist_no=$(this).attr('id');
+	var selected=$(this).prop('selected',true).val();
+	if(!confirm('주문상태를 변경하시겠습니까?'))
+	{
+		$('.status_select-'+orderlist_no+' option[value='+before+']').prop('selected',true);
+		console.log(before);
+		return false;
+	}
+	else
+	{location.href="/todaylessonadmin/admin_order_modify/"+orderlist_no+"/"+selected;} 
+});
+</script>
 </body>
 </html>

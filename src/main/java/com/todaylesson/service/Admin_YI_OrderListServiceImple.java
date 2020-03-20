@@ -40,5 +40,15 @@ public class Admin_YI_OrderListServiceImple implements Admin_YI_OrderListService
 		hm.put("endrow", endRow);
 		return mapper.orderlist(hm);
 	}
+
+	@Override
+	public int order_modify(int orderlist_no, int order_status) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("orderlist_no", orderlist_no);
+		hm.put("order_status",order_status);
+		
+		return mapper.order_modify(hm);
+	}
 	
 }
