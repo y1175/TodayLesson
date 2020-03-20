@@ -105,34 +105,31 @@ public class Admin_HM_Event_Controller {
 	@RequestMapping("/hm_ad_event_modify")
 	public String eventmodify(Model model, EventDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
-		
-		
+
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
 		System.out.println("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
-		if(file != null)   
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "")   
 		{
 		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		}
-		System.out.println("dto의 머시깽이주소"+fileName);
-		dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		 dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 	      String imgthumb=dto.getEvent_thumbnail();
-	      System.out.println("썸네일이미지경로: "+imgthumb);
 	      int result = service.eventupdate(dto);
 	      model.addAttribute("result", result);
- 
+	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
 	      
+		 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		 System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+		 int result = service.eventupdatenothumbnail(dto);
+		  model.addAttribute("result", result);
+		  return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
 	      
-	      
-	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";
-		
-	      
-	      
+		}
 	}
 	
 	

@@ -32,42 +32,6 @@
 		});
 	
 
-	/* 	$('#event_update_btn').on('click',function(){
-			
-			var thumbnail = $('#event_thumbnail').val();
-			if(thumbnail != null){
-				thumbnail.disabled = false;
-			}
-			
-		}); */
-		
-		
-		/* $('#new_event_thumbnail').on('click',function(){
-			
-			$(this).removeAttr("style");
-			var originthumbnail = document.getElementById('event_thumbnail');
-			originthumbnail.disabled = true;
-			var newthumbnail = document.getElementById('new_event_thumbnail');
-			newthumbnail.disabled = false;
-			
-		});
-		
-		$('#event_update_btn').on('click',function(){
-			
-			var thumbnail = $("#new_event_thumbnail").val();
-			var originthumbnail = document.getElementById('event_thumbnail');
-			var newthumbnail = document.getElementById('new_event_thumbnail');
-			
-			if(thumbnail!=null){
-				originthumbnail.disabled = true;
-				newthumbnail.disabled = false;
-			}else{
-				newthumbnail.disabled = true;
-				originthumbnail.disabled = false;
-				 $("#new_event_thumbnail").Attr("style"); 
-			}
-			
-		}); */
 }); 
 </script> 
 </head>

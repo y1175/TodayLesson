@@ -31,6 +31,16 @@ set event_group = #{event_group}
 	where event_no = #{event_no}
 </update>
 
+<update id="eventupdatenothumbnail" parameterType="com.todaylesson.DTO.EventDTO">
+update event
+set event_group = #{event_group}
+	,event_title = #{event_title}
+	,event_content = #{event_content}
+	,event_startperiod = #{event_startperiod}
+	,event_endperiod = #{event_endperiod}
+	where event_no = #{event_no}
+</update>
+
 <delete id="eventdelete" parameterType="int">
 delete from event
 where event_no = #{event_no}
