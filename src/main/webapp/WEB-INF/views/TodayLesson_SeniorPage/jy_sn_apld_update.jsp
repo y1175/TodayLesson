@@ -40,6 +40,8 @@ $('textarea').summernote({
 
 <form name="form" action="${pageContext.request.contextPath }/mal_lesson_update_result" method="post">
 
+<input type="hidden" name= "lessondetail_no" value="${dto.lessondetail_no }">
+
 <label for="lessondetail_title">레슨 명</label>
 <input type="text" id="lessondetail_title" name="lessondetail_title" value="${dto.lessondetail_title }">
 

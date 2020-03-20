@@ -45,11 +45,11 @@ $(document).ready(function(){
 
 총 강의 수
 <br>* 강의는 10강을 넘길 수 없습니다.
-<input type="text" id="lesson_max_number" name="lesson_max_number">  
+<input type="text" id="lesson_max_number" name="lesson_max_number" >
 <br>
 
 레슨일
-<input type="text" id="lesson_date" name="lesson_date" required="required">  
+<input type="text" id="lesson_date" name="lesson_date" required="required" >  
 
 <br>
 강의 시작시간
@@ -72,7 +72,6 @@ function add_Lesson_Time(){
 	let lesson_date = document.form.lesson_date.value;
 	let lesson_time = document.form.lesson_time.value;
 
-	console.log('ssss');
 	let lesson_maxnumber = document.form.lesson_max_number.value;
 	
 	let num = $('#lessontable>tbody tr').length;

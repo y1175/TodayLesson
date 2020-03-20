@@ -13,14 +13,10 @@
 <script>
 
 if (${result} > 0) {
-	alert("추가 성공!");
-	</script>
-	
-	<h3>추가 완료</h3>
-	<h5>내부 검토 후 등록 여부를 알려드리겠습니다!</h5>
-	<a href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}">목록으로</a>
-	
-	<script>
+	alert("추가 성공! 내부 검토 후 등록 여부를 알려드리겠습니다.");
+
+	location.href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}";
+
 } else {
 	
 
@@ -29,8 +25,6 @@ if (${result} > 0) {
 	
 }
 </script>
-
-
 
 
 </body>

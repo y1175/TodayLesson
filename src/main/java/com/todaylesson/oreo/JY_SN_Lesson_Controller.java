@@ -25,8 +25,6 @@ import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_SN_LessonService;
 import com.todaylesson.upload.UploadFileUtils;
 
-import edu.emory.mathcs.backport.java.util.Arrays;
-
 
 @Controller
 /*@RequestMapping("/todaylessonsenior/")*/
@@ -89,21 +87,30 @@ public class JY_SN_Lesson_Controller {
 	@RequestMapping("/insert_result")
 	public String insertresult(LessonDTO dto, Model model,MultipartFile file, HttpServletRequest request) throws Exception {
 		
-		String[] l_date = request.getParameterValues("lesson_date");
-		String[] l_time = request.getParameterValues("lesson_time");
+		if (dto.getLesson_type() != 3) {
+			String[] l_date = request.getParameterValues("lesson_date");
+			String[] l_time = request.getParameterValues("lesson_time");
+
+			StringBuilder l_d_t = new StringBuilder();
+			
+			for (int i = 0; i < l_time.length; i++) {		
+				if (i == l_time.length - 1) {
+					l_d_t.append(" "+l_date[i] + " " + l_time[i]);
+				} else if (i == 0){
+					l_d_t.append(l_date[i] + " " + l_time[i]+ ",");
+				} else {
+					l_d_t.append(" " + l_date[i] + " " + l_time[i]+ ",");
+				}
+			}
+			dto.setLesson_date_time(l_d_t.toString());
+
+		}
+	
 		
-		String lessondate = Arrays.toString(l_date);
-		String lessontime = Arrays.toString(l_time);
+		//String lessondatetime = Arrays.toString(l_date_time);
 		
-		String date = lessondate.replace("[", "");
-		String lesson_date = date.replace("]", "");
-		
-		String time = lessontime.replace("[", "");
-		String lesson_time = time.replace("]", "");
-		
-		
-		dto.setLesson_date(lesson_date);
-		dto.setLesson_time(lesson_time);
+		//String date_time = lessondatetime.replace("[", "");
+		//String lesson_date_time = date_time.replace("]", "");
 		
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 

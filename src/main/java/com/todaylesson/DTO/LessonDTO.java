@@ -34,7 +34,7 @@ public class LessonDTO {
 	private int lesson_type;
 	private int lesson_junior_count;
 	private int lesson_result;
-	private String lesson_time;
+	private String lesson_date_time;
 	private String lesson_addr;
 	private String lesson_lat;
 	private String lesson_long;
@@ -43,7 +43,6 @@ public class LessonDTO {
 	private String lesson_senior_content;
 	private String lesson_zipno;
 	private int senior_no;
-	private String lesson_date;
 
 	
 	

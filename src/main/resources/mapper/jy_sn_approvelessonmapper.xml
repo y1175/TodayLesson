@@ -31,12 +31,13 @@ where lesson_no = #{lesson_no}
 
 <selectKey order="BEFORE" keyProperty="lessondetail_chapter" resultType="integer">
 
-select ifnull(max(lessondetail_chapter),0) from lessondetail
+select ifnull(max(lessondetail_chapter),0) from lessondetail where lesson_no = #{lesson_no}
 
 </selectKey>
 
 insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id)
 values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+ 1,#{member_id})
+where lesson_no = #{lesson_no}
 
 </insert>
 
@@ -55,8 +56,8 @@ select * from lessondetail where lessondetail_no = #{lessondetail_no}
 <update id="apld_update" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
 update lessondetail
-set lessondetail_title = #{lessondetail_title}
-, lessondetail_content = #{lessondetail_content}
+set lessondetail_title = #{lessondetail_title}, 
+lessondetail_content = #{lessondetail_content}
 where lessondetail_no = #{lessondetail_no}
 
 <!-- 여기 썸넬 다 넣기 -->

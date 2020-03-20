@@ -27,7 +27,7 @@ public class AllLessonDTO {
 	private int lesson_type;
 	private int lesson_junior_count;
 	private int lesson_result;
-	private String lesson_time;
+	private String lesson_date_time;
 	private String lesson_addr;
 	private String lesson_lat;
 	private String lesson_long;

@@ -153,17 +153,20 @@ function multiple_time_lesson_date(){
 	
 }	
 
-function add_Lesson_Time(lesson_date_and_time){
-	for (var i = 0; i < lesson_date_and_time.length; i++) {
-		console.log(lesson_date_and_time);	
-		$('#lesson_d_t').append(lesson_date_and_time[i].lesson_date+" "+lesson_date_and_time[i].lesson_time+"<br>"
-				+"<input type='hidden' name='lesson_date' id='lesson_date' value=" + lesson_date_and_time[i].lesson_date +">"
-				+"<input type='hidden' name='lesson_time' id='lesson_time' value=" + lesson_date_and_time[i].lesson_time +">");
+	function add_Lesson_Time(lesson_date_and_time){
+	
+	
+	for (let i = 0; i < lesson_date_and_time.length; i++) {
 		
+		console.log(lesson_date_and_time[i]);	
+		$('#lesson_d_t').append( lesson_date_and_time[i].lesson_date+" "+lesson_date_and_time[i].lesson_time+"<br>"
+				+"<input type='hidden' name='lesson_date' id='lesson_date' value=" + lesson_date_and_time[i].lesson_date+">"
+				+"<input type='hidden' name='lesson_time' id='lesson_time' value=" + lesson_date_and_time[i].lesson_time+">");	
 
 	}
+	
 	document.getElementById("lesson_number").value=lesson_date_and_time.length;
-		 
+	 
 
 	
 }
@@ -276,8 +279,6 @@ function add_Lesson_Time(lesson_date_and_time){
 <label for="lesson_senior_content">시니어소개</label><br>
 <textarea id="lesson_senior_content" name="lesson_senior_content" ></textarea><br>
 
-
-<h1>거절 처리 된 레슨이 5개가 넘는 순간, 다시는 레슨을 신청할 수 없습니다.</h1>
 
 
 <input type="submit" value="글 작성"/>

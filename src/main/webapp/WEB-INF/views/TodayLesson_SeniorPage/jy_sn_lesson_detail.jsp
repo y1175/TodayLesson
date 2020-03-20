@@ -108,7 +108,7 @@ ${dto.lesson_content}
 </c:choose>
 
 <div class="offline_lesson">
-레슨 시간 <c:out value="${dto.lesson_time}"/><br>
+레슨 날짜, 시간 <c:out value="${dto.lesson_date_time}"/><br>
 
 레슨 주소<br> 
 우편번호<c:out value="${dto.lesson_zipno}"/><br>

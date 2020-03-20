@@ -58,12 +58,9 @@ public class JY_SN_Approve_Lesson_Controller {
 	
 	@RequestMapping("mal_lesson_upload_result")
 	public String approve_lesson_upload(LessonDetailDTO dto, Model model) {	
-
-		int result = approve_service.apl_upload(dto);
-		
+		int result = approve_service.apl_upload(dto);	
 		int lesson_no = dto.getLesson_no();
 	
-		
 		model.addAttribute("result",result);
 		model.addAttribute("lesson_no",lesson_no);
 		
@@ -91,7 +88,7 @@ public class JY_SN_Approve_Lesson_Controller {
 	}
 	
 	@RequestMapping("mal_lesson_update_result")
-	public String update_apld_chapter_result(@PathVariable LessonDetailDTO dto, Model model) {
+	public String update_apld_chapter_result(LessonDetailDTO dto, Model model) {
 		
 		int result = approve_service.apld_update(dto);
 		model.addAttribute("result",result);

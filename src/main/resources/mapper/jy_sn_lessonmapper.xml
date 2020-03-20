@@ -18,18 +18,18 @@ where senior_no = #{senior_no}
 <insert id="insert_lesson" parameterType="com.todaylesson.DTO.LessonDTO">
 
 insert into lesson(lesson_title, lesson_content,lesson_cost, 
-lesson_member_max,lesson_category,lesson_date, lesson_thumb,
+lesson_member_max,lesson_category,lesson_date_time, lesson_thumb,
 lesson_register_date,lesson_open_period, lesson_close_period, lesson_number, 
 lesson_type, lesson_result, lesson_readno, lesson_junior_count,
 lesson_senior_title, lesson_senior_content, 
-lesson_zipno, lesson_addr, lesson_lat, lesson_long, lesson_time,senior_no)
+lesson_zipno, lesson_addr, lesson_lat, lesson_long, senior_no)
 
 values(#{lesson_title},#{lesson_content},#{lesson_cost},
-#{lesson_member_max},#{lesson_category},#{lesson_date},#{lesson_thumb},
+#{lesson_member_max},#{lesson_category},#{lesson_date_time},#{lesson_thumb},
 sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
 #{lesson_type},0,0,0,
 #{lesson_senior_title},#{lesson_senior_content},
-#{lesson_zipno},#{lesson_addr},#{lesson_lat},#{lesson_long},#{lesson_time},#{senior_no})
+#{lesson_zipno},#{lesson_addr},#{lesson_lat},#{lesson_long},#{senior_no})
 
 </insert>
 
@@ -59,7 +59,6 @@ lesson_content = #{lesson_content},
 lesson_cost = #{lesson_cost}, 
 lesson_member_max = #{lesson_member_max},
 lesson_category= #{lesson_category},  
-lesson_date = DATE_FORMAT(#{lesson_date}, '%Y-%m-%d'),
 lesson_register_date = sysdate(),
 lesson_open_period = #{lesson_open_period},
 lesson_close_period = #{lesson_close_period}, 
@@ -67,7 +66,8 @@ lesson_number = #{lesson_number},
 lesson_type = #{lesson_type}, 
 lesson_junior_count = #{lesson_junior_count},
 lesson_senior_title = #{lesson_senior_title}, 
-lesson_senior_content = #{lesson_senior_content}
+lesson_senior_content = #{lesson_senior_content},
+lesson_date_time = #{lesson_date_time}
 where lesson_no = #{lesson_no}
 
 

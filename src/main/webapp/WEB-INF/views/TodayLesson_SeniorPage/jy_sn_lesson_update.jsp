@@ -27,33 +27,25 @@
 			maxHeight : null,
 			focus : true,
 			lang : 'ko-KR'
-		});		
-	
-		
+		});	
 
 
 
-/* 		if (${dto.lesson_type} == 3) {
-			$('.online_lesson').hide();
-			$('.offline_lesson').hide();
+		if ('#lesson_type' == 3) {
+			
+		$('.offline_lesson').hide();
+
 		} else {
-			$('.online_lesson').show();
-			$('.offline_lesson').show();
-
-		} */
+		$('.offline_lesson').show();
+		}
 		
-		
-
-
 		
 		$('#lesson_type').change(function() {
 		let state = $('#lesson_type option:selected').val();
 		console.log(state);
 		if ( state == 3 ) {
-			$('.online_lesson').hide();
 			$('.offline_lesson').hide();
 		} else {
-			$('.online_lesson').show();
 			$('.offline_lesson').show();
 		}
 		});	
@@ -161,6 +153,31 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 	}
 	
+	
+
+function multiple_time_lesson_date(){
+	
+	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
+
+	
+}	
+
+function add_Lesson_Time(lesson_date_and_time){
+	for (var i = 0; i < lesson_date_and_time.length; i++) {
+		console.log(lesson_date_and_time);	
+		$('#lesson_d_t').append(lesson_date_and_time[i].lesson_date+" "+lesson_date_and_time[i].lesson_time+"<br>"
+				+"<input type='hidden' name='lesson_date_time' id='lesson_date_time' value=" + lesson_date_and_time[i].lesson_date +" "+ lesson_date_and_time[i].lesson_time +">");		
+
+	}
+	document.getElementById("lesson_number").value=lesson_date_and_time.length;
+		 
+
+	
+}
+
+	
+	
+	
 //document.form.lesson_addr.value= ${dto.lesson_addr};
 //document.form.lesson_zipno.value = ${dto.lesson_zipno};
 
@@ -221,20 +238,18 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <br>
 
 
+
 <div class="offline_lesson">
 
-<label for="lesson_date">레슨하는 날</label><br>
-<input type="date" id="lesson_date" name="lesson_date"><br>
+<input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name="">
+<br> 오프라인 레슨의 경우 수정 시 이 전에 설정한 날짜와 시간이 초기화 됩니다.<br>
+그러므로 오프라인 레슨 변경 시엔 꼭 값을 다시 입력해주세요 <br>
+
+<div id="lesson_d_t">
+
 
 </div>
 
-
-
-<div class="online_lesson">
-
-
-<label for="lesson_time">레슨시간</label><br>
-<input type="time" id="lesson_time" name="lesson_time" value="${dto.lesson_time}"><br>
 
 <label>레슨주소</label><br>
 우편번호<br>
@@ -250,7 +265,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 
 <label for="lesson_number">총강의수</label><br>
-<input type="number" id="lesson_number" name="lesson_number" value="${dto.lesson_number}"><br>
+<input type="number" id="lesson_number" name="lesson_number" value=""><br>
 
 
 <label for="lesson_senior_title">시니어명</label><br>
@@ -259,8 +274,6 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 <label for="lesson_senior_content">시니어소개</label><br>
 <textarea id="lesson_senior_content" name="lesson_senior_content" ><c:out value="${dto.lesson_senior_content}"/></textarea><br>
 
-
-<h1>한번 신청한 레슨은 변경, 삭제가 불가능하므로 신중해주시길 바라겠습닏.</h1>
 
 
 <input type="submit" value="글 작성"/>

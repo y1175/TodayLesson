@@ -17,40 +17,35 @@ width:500px; height:auto;
 </head>
 <body>
 
-<table class="table">
 
-<thead>
-<tr>
-<th scope="col">번호</th><th scope="col">레슨명</th><th scope="col">카테고리</th><th scope="col">레슨타입</th>
-</tr>
-</thead>
-<tbody>
 <c:forEach var="item" items="${list}">
-<tr>
-<td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+
+<div id="thumb">
+<img alt="레슨 썸네일" src="${item.lesson_thumb }">
+<c:out value="${item.lesson_no}"/>
+<a href="/lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a>
 
 
 <c:choose>
 
 <c:when test="${item.lesson_category == 1}">
-<td><c:out value="운동"/></td>
+<c:out value="운동"/>
 </c:when>
 
 <c:when test="${item.lesson_category == 2}">
-<td><c:out value="교육"/></td>
+<c:out value="교육"/>
 </c:when>
 
 <c:when test="${item.lesson_category == 3}">
-<td><c:out value="핸드메이드"/></td>
+<c:out value="핸드메이드"/>
 </c:when>
 
 <c:when test="${cate == 4}">
-<td><c:out value="it"/></td>
+<c:out value="it"/>
 </c:when>
 
 <c:otherwise>
-<td><c:out value="요리"/></td>
+<c:out value="요리"/>
 </c:otherwise>
 
 </c:choose>
@@ -59,11 +54,11 @@ width:500px; height:auto;
 <c:choose>
 
 <c:when test="${item.lesson_type == 1}">
-<td><c:out value="원데이 클래스"/></td>
+<c:out value="원데이 클래스"/>
 </c:when>
 
 <c:when test="${item.lesson_type == 2}">
-<td><c:out value="다회성 클래스"/></td>
+<c:out value="다회성 클래스"/>
 </c:when>
 
 <c:otherwise>
@@ -74,10 +69,8 @@ width:500px; height:auto;
 
 
 
-</tr>
+</div>
 </c:forEach>
-</tbody>
-</table>
 
 </body>
 </body>
