@@ -267,10 +267,11 @@ public class EJ_ProductController {
 		int orderlist_no=Integer.parseInt(orderId);
 			System.out.println("orderlist_NO:"+orderlist_no);
 		oldto.setOrderlist_no(orderlist_no); 
-		
 		service.insertorderlist(oldto);
-		//service.insertorderdetail(oddto);
-		//model.addAttribute("oddto",oddto);
+		oddto.setOrderlist_no(orderlist_no);
+		
+		service.insertorderdetail(oddto);
+		model.addAttribute("oddto",oddto);
 		model.addAttribute("oldto",oldto);
 		//List<OrderDetailDTO> list=service.selectordetail;
 		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";

@@ -66,21 +66,21 @@ where  product_no=#{product_no}
 	</select>
 	
 	<insert id="insertorderlist" parameterType="com.todaylesson.DTO.OrderListDTO">
-	insert into orderlist(member_id,orderlist_receiver,orderlist_phone,orderlist_addr
+	insert into orderlist(orderlist_no,member_id,orderlist_receiver,orderlist_phone,orderlist_addr
 	,orderlist_date,orderlist_orderstatus,orderlist_cost
 	,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint)
-	values (#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
+	values (#{orderlist_no},#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
 	sysdate(),1,#{orderlist_cost},1,1,0)
 	</insert>
-	
+	<!-- insert into order_detail (orderlist_no,product_no,order_count)
+	 values(#{orderlist_no},#{product_no},#{order_count}) -->
 	<insert id="insertorderdetail" parameterType="com.todaylesson.DTO.OrderDetailDTO">
-	<selectKey resultType="int" keyProperty="orderlist_no" order="BEFORE">
-	select max(orderlist_no) as orderlist_no from orderlist
-	</selectKey>
-	insert into order_detail (orderlist_no,product_no,order_count)
-	 values(#{orderlist_no},#{product_no},#{order_count})
+	 insert into order_detail (orderlist_no, product_no, order_count)
+	 values(#{orderlist_no},#{product_no},#{order_count}) 
 	</insert>
-	
+	<!-- insert into tbl_order_details(orderDetailsNum, orderId, gdsNum, cartStock)
+     select tbl_order_details_seq.nextval, #{orderId}, gdsNum, cartStock
+         from tbl_cart     -->
 	<insert id="insertmylike" parameterType="com.todaylesson.DTO.MyLikeDTO">
 	insert into mylike(product_no,member_id) values(#{product_no},#{member_id})
 	</insert>

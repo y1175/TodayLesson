@@ -40,7 +40,7 @@ $("#ordersuccess_btn").hide();
 
  수량: ${pdcount} 개<br>
  전체금액:
- ${product_after_cost}원X${pdcount}<input type="hidden" name="pdcount" value=${pdcount }>
+ ${product_after_cost}원X${pdcount}<input type="hidden" name="order_count" value=${pdcount }>
  =>${totalcost }원<br><hr>
  
  <input type="hidden" name="orderlist_cost" value=${totalcost }>
@@ -100,11 +100,12 @@ $("#ordersuccess_btn").hide();
  주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name }><br>
  이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email }><br>
 연락처   <input type="text"  name="orderlist_phone" class="form-control" value=${mdto.member_phone }><br>
-
+<input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked"   >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr"   >새로운 배송지<br>
-
+<input type="hidden" name="product_no" value=${product_no }>
+<input type="hidden" name="order_count" value=${pdcount }>
 수령자명<input type="text"  name="orderlist_receiver" class="form-control"  value=${mdto.member_name }><br>
 휴대전화<input type="text"  name="orderlist_phone" class="form-control"  value=${mdto.member_phone }><br>
 추가번호(선택)<input type="text"  class="form-control"  name="phone2"><br>
