@@ -2,6 +2,8 @@ package com.todaylesson.oreo;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -105,10 +107,6 @@ public class Admin_HM_Event_Controller {
 		
 		
 		
-		/*if(dto.getEvent_thumbnail()==null){
-		
-		}else {
-		*/
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
 		System.out.println("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
@@ -127,11 +125,19 @@ public class Admin_HM_Event_Controller {
 	      System.out.println("썸네일이미지경로: "+imgthumb);
 	      int result = service.eventupdate(dto);
 	      model.addAttribute("result", result);
-		/*}*/
+ 
+	      
+	      
 	      
 	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";
 		
+	      
+	      
 	}
+	
+	
+	
+	
 	
 	@RequestMapping("/hm_ad_event_delete/{no}")
 	public String eventdelete(@PathVariable int no, Model model) {

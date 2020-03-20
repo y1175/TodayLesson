@@ -1,5 +1,7 @@
 package com.todaylesson.DTO;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +20,5 @@ public class EventDTO {
 	private String event_startperiod;
 	private String event_endperiod;
 	private String event_thumbnail;
+	
 }
