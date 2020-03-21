@@ -18,7 +18,8 @@
     select l.lesson_thumb, l.lesson_category, s.senior_nick
 	      ,l.lesson_title, l.lesson_cost, l.lesson_open_period
     from lesson l join senior s on l.senior_no=s.senior_no
-    ORDER BY l.lesson_open_period desc ,RAND() LIMIT 15;
+     where l.lesson_register_date limit 30,45;
+    <!-- ORDER BY l.lesson_register_date desc ,RAND() LIMIT 15; -->
     </select> 
     
     <!-- 스토어신규 -->

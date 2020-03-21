@@ -44,6 +44,7 @@ import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
+import com.todaylesson.service.Admin_HS_MainService;
 import com.todaylesson.service.EJ_US_NaverLoginBOService;
 import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
@@ -86,6 +87,11 @@ public class TodayLessonController {
     private User_HS_MainService userMainService;
     /* User_Main */
     
+    /* Admin_Main */
+    @Resource(name="admin_HS_MainService")
+    private Admin_HS_MainService adminMainService;
+    /* Admin_Main */
+    
     /* 아이디찾기 */
     @Resource(name="loginService")
     private LoginService loginService;
@@ -97,7 +103,40 @@ public class TodayLessonController {
     /* 비밀번호찾기 */
     
     @RequestMapping("/todaylessonadmin")
-    public String admin() { 
+    public String admin(Model model) { 
+    	
+    	//레슨카테고리
+    	int lessonITCount=adminMainService.lessonITCount();
+    	int lessonCookCount=adminMainService.lessonCookCount();
+    	int lessonHandmadeCount=adminMainService.lessonHandmadeCount();
+    	int lessonLanguageCount=adminMainService.lessonLanguageCount();
+    	int lessonEducationCount=adminMainService.lessonEducationCount();
+    	int lessonOtherCount=adminMainService.lessonOtherCount();
+    	
+    	model.addAttribute("lessonITCount", lessonITCount);
+    	model.addAttribute("lessonCookCount", lessonCookCount);
+    	model.addAttribute("lessonHandmadeCount", lessonHandmadeCount);
+    	model.addAttribute("lessonLanguageCount", lessonLanguageCount);
+    	model.addAttribute("lessonEducationCount", lessonEducationCount);
+    	model.addAttribute("lessonOtherCount", lessonOtherCount);
+    	
+    	//상품카테고리
+    	int productITCount=adminMainService.productITCount();
+    	int productCookCount=adminMainService.productCookCount();
+    	int productHandmadeCount=adminMainService.productHandmadeCount();
+    	int productLanguageCount=adminMainService.productLanguageCount();
+    	int productEducationCount=adminMainService.productEducationCount();
+    	int productOtherCount=adminMainService.productOtherCount();
+    	
+    	model.addAttribute("productITCount", productITCount);
+    	model.addAttribute("productCookCount", productCookCount);
+    	model.addAttribute("productHandmadeCount", productHandmadeCount);
+    	model.addAttribute("productLanguageCount", productLanguageCount);
+    	model.addAttribute("productEducationCount", productEducationCount);
+    	model.addAttribute("productOtherCount", productOtherCount);
+    	
+    	
+    	
     	return "hs_ad_main";
     }
     
@@ -121,7 +160,7 @@ public class TodayLessonController {
 	    //신규레슨목록
     	List<SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO> newlessonlist 
     	    =userMainService.newLessonList();
-    	
+    	//신규스토어목록
     	List<ProductDTO> storenewproductlist=userMainService.StoreNewProductList(); 
     	
     	model.addAttribute("newlessonlist", newlessonlist);

@@ -32,6 +32,201 @@ body{
 }  
 /* Main Bunner 슬라이더(자동 좌우적용) */
 
+/* 신규레슨 */
+/* 슬라이더 묶는 박스 */
+.hs_us_newlesson_container {
+    max-width: 100%;
+    /* margin-bottom: 30px; */
+}
+/* 슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용  */
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a {
+    display: inline-block;
+    notice the comments between inline-block items margin-right: 10px;
+    width: 23%;
+     margin: 12.5px;
+    /*text-align: center;*/
+    text-decoration: none;
+}
+/* 썸네일 */
+.hs_storecontent_cg_img{
+	width: 100%;
+	/* padding: 15px 0px; */
+    /* height:200px; */
+}
+/* p tag 공통적용 */
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p {
+    margin: 0px;
+    color: rgb(53, 54, 58);
+    position: relative;
+    /* text-align: center; */
+}
+/* 카테고리 및 시니어 닉네임(첫번째 p를 선택하는 타입넣어줌) */
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:first-of-type{
+	font-size: 10px;
+	font-weight: 900;
+	color: #999;
+	margin:10px 0px 0px;
+}
+/* 2번째 P 타이틀 */
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:nth-of-type(2){
+	font-size:17px;
+	font-weight:600;
+	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
+	margin:10px 0px;
+	transition:all .3s ease 0s
+}
+/* 3번째 p 세일된가격가격  */
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:nth-of-type(3){
+	font-size:16px;
+	font-weight:700;
+	transition:all .3s
+}
+/* 이전가격 */
+.hs_us_newlesson_BFcost{
+	color:#999;
+	font-size:16px;
+	font-weight:500;
+	text-decoration:line-through;
+	margin-left:7px;
+}
+/* 4번째 p 좋아요 수  */
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:nth-of-type(4){
+	font-size: 12px;
+	font-weight:400;
+}
+/* 썸네일 안데 장바구니 좋아요 아이콘 */	
+/* .hs_us_newlesson_social {
+	padding:0;
+	margin:0;
+	list-style:none;
+	position:absolute;
+	bottom:100px;
+	right:13px;
+	z-index:1
+	}
+.hs_us_newlesson_social li{
+	opacity:0;
+	transform:translateY(3px);
+	transition:all .5s ease 0s
+	}
+.hs_us_newlesson_items:hover .hs_us_newlesson_social li{
+	margin:0 0 10px;
+	opacity:1;
+	transform:translateY(0)
+	}
+.hs_us_newlesson_items:hover .hs_us_newlesson_social li:nth-child(1){
+	transition-delay:.2s  트랜지션 지연시간(애니메이션을 지연시킬 때)
+	}
+.hs_us_newlesson_items:hover .hs_us_newlesson_social li:nth-child(2){
+	transition-delay:.4s 트랜지션 지연시간(애니메이션을 지연시킬 때)
+	}
+썸네일 안데 장바구니 좋아요 아이콘 위치	
+.hs_us_newlesson_social li a{
+	color:white;
+	font-size:17px;
+	line-height:40px;
+	text-align:center;
+	height:40px;
+	width:40px;
+	border:1px solid white;
+	display:block;
+	transition:all .5s ease-in-out
+	}
+.hs_us_newlesson_social li a:hover{
+	color:rgb(224, 62, 82);
+	border-color:rgb(224, 62, 82)
+	} */
+/* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
+
+.hs_us_newlesson_g-scrolling-carousel {
+    position: relative;
+}
+
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items {
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items::-webkit-scrollbar {
+    display: none;
+}
+
+.jc-right,
+/*동그라미*/
+.jc-left {
+    color: #757575;
+    margin-bottom: auto;
+    margin-top: auto;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0.94;
+
+}
+
+.jc-right {
+    /*위치조절*/
+    right: 0px;
+}
+
+.jc-left {
+    left: -40px;
+}
+
+.jc-right:hover,
+.jc-left:hover {
+    opacity: 0.98;
+}
+
+.jc-right svg,
+/*화살표*/
+.jc-left svg {
+    position: absolute;
+    left: 0px;
+    right: 0;
+    bottom: 10px;
+    top: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    fill: #222;
+}
+
+.jc-right:hover svg,
+.jc-left:hover svg {
+    fill: rgb(0, 153, 255);
+}
+
+@media (pointer: coarse) {
+
+    .jc-right,
+    .jc-left {
+        display: none !important;
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}
+.hs_us_newlesson_content{
+	display: inline-block;
+}
+/* 신규레슨 */
+
 /* 스토어 신규 상품 */
 /* 썸네일 _ 설명 묶은 DIV */
 .hs_user_store_newproduct{
@@ -128,7 +323,7 @@ body{
 	transition:all .3s ease 0s
 	}
 .hs_user_store_newprodct_title a{
-	color:#000
+	color: rgb(53, 54, 58);
 	}
 /* 상품명 상품가격 사이 라인 */	
 .hs_user_store_newproduct_line{
@@ -139,7 +334,7 @@ body{
 }
 /* 상품가격(이전 / 세일된 가격)  */
 .hs_user_store_newprodct_cost{
-	color:#000;
+	color: rgb(53, 54, 58);
 	font-size:16px;
 	font-weight:700;
 	/* text-align:left; */
