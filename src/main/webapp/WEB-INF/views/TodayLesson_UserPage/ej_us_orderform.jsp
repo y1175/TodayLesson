@@ -103,17 +103,16 @@ $("#ordersuccess_btn").hide();
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked"   >주문자정보와 동일
-<input type="radio" name="deliveryaddr" value="newaddr"   >새로운 배송지<br>
+<input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="product_no" value=${product_no }>
 <input type="hidden" name="order_count" value=${pdcount }>
-수령자명<input type="text"  name="orderlist_receiver" class="form-control"  value=${mdto.member_name }><br>
-휴대전화<input type="text"  name="orderlist_phone" class="form-control"  value=${mdto.member_phone }><br>
-추가번호(선택)<input type="text"  class="form-control"  name="phone2"><br>
-주소(우편번호)<input type="text" name="orderlist_addr" size="150"  class="form-control" value="${mdto.member_addr }"><br>
-체크(기본배송지로 저장나중에 추가)<br>
+수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name }><br>
+휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone }><br>
+주소(우편번호)<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }"><br>
+
 배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
-<!-- ---------------국쌤우편번호---------<br>
-<label for='addr'>주소</label>
+
+<!-- <label for='addr'>주소</label>
                <div class='form-row'>
                   <div class='col-5'>
                      <input type="text" id="sample4_postcode" name='zipcode'
@@ -137,7 +136,17 @@ $("#ordersuccess_btn").hide();
                   for="detailaddr">상세주소</label> <input type="text" id="detailaddr"
                   name="detailaddr" class="form-control"> 
 
-<br> -->
+<br>  -->
+<script>
+$("#newaddr").on('click', function() {
+	
+	$('#rec').val('');
+	$('#phone').val('');
+	$('#addr').val('');
+	//우편번호 찾기 버튼 활성화 시킬거임
+	
+});
+</script>
 <br>
 <h4>결제정보</h4><hr>
  결제수단 선택

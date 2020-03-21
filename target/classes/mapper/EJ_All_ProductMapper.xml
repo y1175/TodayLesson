@@ -72,11 +72,13 @@ where  product_no=#{product_no}
 	values (#{orderlist_no},#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
 	sysdate(),1,#{orderlist_cost},1,1,0)
 	</insert>
-	<!-- insert into order_detail (orderlist_no,product_no,order_count)
-	 values(#{orderlist_no},#{product_no},#{order_count}) -->
+	<!--  -->
+	 <!-- insert into order_detail( orderlist_no, product_no, order_count)
+     select #{orderlist_no}, product_no, cart_amount
+         from cart where member_id=#{member_id}; -->
 	<insert id="insertorderdetail" parameterType="com.todaylesson.DTO.OrderDetailDTO">
-	 insert into order_detail (orderlist_no, product_no, order_count)
-	 values(#{orderlist_no},#{product_no},#{order_count}) 
+	insert into order_detail (orderlist_no,product_no,order_count)
+	 values(#{orderlist_no},#{product_no},#{order_count})
 	</insert>
 	<!-- insert into tbl_order_details(orderDetailsNum, orderId, gdsNum, cartStock)
      select tbl_order_details_seq.nextval, #{orderId}, gdsNum, cartStock
