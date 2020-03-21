@@ -97,18 +97,18 @@ $("#ordersuccess_btn").hide();
 
  <form role="form" method="post" autocomplete="off"> 
  <h4>주문자 정보</h4><hr>
- 주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name }><br>
- 이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email }><br>
-연락처   <input type="text"  name="orderlist_phone" class="form-control" value=${mdto.member_phone }><br>
+ 주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name } readonly="readonly"><br>
+ 이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email } readonly="readonly"><br>
+연락처   <input type="text"  name="orderlist_phone" class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked"   >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="product_no" value=${product_no }>
 <input type="hidden" name="order_count" value=${pdcount }>
-수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name }><br>
-휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone }><br>
-주소(우편번호)<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }"><br>
+수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
+휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
+주소(우편번호)<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
 
 배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
 
@@ -143,6 +143,10 @@ $("#newaddr").on('click', function() {
 	$('#rec').val('');
 	$('#phone').val('');
 	$('#addr').val('');
+	$('#rec').attr("readonly",false);
+	$('#phone').attr("readonly",false);
+	$('#addr').attr("readonly",false);
+	
 	//우편번호 찾기 버튼 활성화 시킬거임
 	
 });
