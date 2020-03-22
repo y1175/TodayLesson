@@ -130,18 +130,20 @@
 <!-- 상품카테고리 현황 차트 -->
 </head>
 <body>
-<div style="width: 100%">
-   <div style="border: 1px solid black; width: 30%;">
+<div style="width: 90%; margin: auto;">
+   <div>
+   <div style="border: 1px solid black; width: 30%; display: inline-block;">
       <b>게시글수(지금 한달로 계산해둠)</b>
       <c:out value="${freeboardWriteCount}"/>
    </div>
-   <div style="border: 1px solid black; width: 30%;">
+   <div style="border: 1px solid black; width: 30%; display: inline-block;">
       <b>판매금액(지금 한달로 계산해둠)</b>
       <c:out value="${orderlistCostSum}"/>
    </div>
-   <div style="border: 1px solid black; width: 30%;">
+   <div style="border: 1px solid black; width: 30%; display: inline-block;">
       <b>가입자수(지금 한달로 계산해둠)</b>
       <c:out value="${memberJoinCount}"/>
+   </div>
    </div>
    <div style="width: 40%; height: 30%; margin: 30px;">
       <div id="hs_lessoncg_chartdiv"></div>
