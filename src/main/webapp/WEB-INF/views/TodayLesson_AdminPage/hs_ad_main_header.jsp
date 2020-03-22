@@ -17,10 +17,10 @@
    <div class="hs_ad_mainheader_width">
       <div class="hs_ad_mainheader_box">
          <sec:authorize access="isAuthenticated()">
-            <form action="/logout" method='post'>
+            <form action="/logout" method='post' id="logout-form">
                <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                <span class="hs_ad_mainheader_namelogout">
-                  <a href="">${pageContext.request.userPrincipal.name}님</a><span style="margin-left: 10px; color: white;">|</span><a href="/logout">로그아웃</a>
+                  <a href="">${pageContext.request.userPrincipal.name}님</a><span style="margin-left: 10px; color: white;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>
                   <!--  ${member} com.todaylesson.DTO.CustomerUserDetails@710766e6 -->
                </span>
             </form>

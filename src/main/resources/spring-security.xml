@@ -17,11 +17,11 @@
 
    <security:http use-expressions="true">
       
-      <security:intercept-url pattern="/todaylesson" access="permitAll"/> <!-- 메인홈 -->
+      <security:intercept-url pattern="/todaylesson/**" access="permitAll"/> <!-- 메인홈 -->
       <security:intercept-url pattern="/todaylessonlogin" access="permitAll"/> <!-- 로그인화면 -->
-      <security:intercept-url pattern="/todaylessonadmin" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
-      <security:intercept-url pattern="/todaylessonsenior" access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- 시니어 -->
-      <security:intercept-url pattern="/todaylessonmypage" access="hasAnyRole('ROLE_USER','ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- -->
+      <security:intercept-url pattern="/todaylessonadmin/**" access="hasRole('ROLE_ADMIN')"/>  <!-- 관리자 -->
+      <security:intercept-url pattern="/todaylessonsenior/**" access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- 시니어 -->
+      <security:intercept-url pattern="/todaylessonmypage/**" access="hasAnyRole('ROLE_USER','ROLE_SENIOR','ROLE_ADMIN')"/>  <!-- -->
       <security:intercept-url pattern="/error" access="hasRole('ROLE_ERROR')"/> <!-- 불량회원  --> 
     <!--  <security:intercept-url pattern="/todaylessonpage" access="isAuthenticated()"/>   로그인한 사람 -->
       
@@ -29,10 +29,11 @@
 
       <security:form-login login-page="/todaylessonlogin" login-processing-url="/todaylesson" default-target-url="/todaylesson"/> 
       <security:logout logout-success-url="/todaylesson" logout-url="/logout" invalidate-session="true"  delete-cookies="id" />
+      
       <security:remember-me  remember-me-cookie="id" token-validity-seconds="300"/>
       
       <!-- 로그인 중복방지 // 자동로그아웃되어 로그인창가게 했음 나중에 로그아웃됐다고 알림띄우기 -->
-      <security:session-management invalid-session-url="/todaylessonlogin"> <!-- invalid-session-url="/todaylessonlogin" 세션이 끊겼을때 이동할 페이지 -->
+      <security:session-management invalid-session-url="/todaylesson"> <!-- invalid-session-url="/todaylessonlogin" 세션이 끊겼을때 이동할 페이지 -->
          <security:concurrency-control max-sessions="1" expired-url="/todaylessonlogin"/> <!-- expired-url="/todaylessonlogin" 중복로그인이 일어났을경우 이동 할 페이지 -->
       </security:session-management>
       

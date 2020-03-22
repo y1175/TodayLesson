@@ -42,17 +42,17 @@ header javascript -->
                <!-- 로그인한 사람들만  -->
                <%-- <sec:authorize access="isAuthenticated()"> --%>
                <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_USER')">
-                  <form action="${pageContext.request.contextPath}/logout" method='post'>
+                  <form action="${pageContext.request.contextPath}/logout" method='post' id="logout-form">
                      <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
-                     <a href="/todaylessonmypage">마이페이지</a><span style="margin-left: 10px;">|</span><a><input type="submit" value="로그아웃" /></a>     
+                     <a href="/todaylessonmypage">마이페이지</a><span style="margin-left: 10px;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>    
                   </form>
                </sec:authorize>
                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                  <form action="${pageContext.request.contextPath}/logout" method='post'>
+                  <form action="${pageContext.request.contextPath}/logout" method='post' id="logout-form">
                      <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
-                     <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a><input type="submit" value="로그아웃" /></a>
+                     <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>
                      <%-- <a href="${pageContext.request.contextPath}/logout">로그아웃</a> --%> 
                   </form>   
                </sec:authorize>

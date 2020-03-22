@@ -18,6 +18,7 @@ import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.service.Admin_YI_FreeBoard_Service;
 
 @Controller
+@RequestMapping("/todaylessonadmin/")
 public class Admin_YI_FreeBoard_Controller {
 
 	@Resource(name="admin_YI_FreeBoard_Service")

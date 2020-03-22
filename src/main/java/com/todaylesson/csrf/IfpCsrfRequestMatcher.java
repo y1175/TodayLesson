@@ -75,7 +75,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$"); //새로 추가한거
 
       private RegexRequestMatcher unprotectedMatcher = new RegexRequestMatcher("/unprotected", null); //새로 추가한거
-
+      
+     
    
 
     @Override
@@ -187,7 +188,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if("/hm_question_create".equals(strUri))
          return false;
         //혜미 관리자 1:1문의 관리페이지 이동 -필요없
-        else if("/hm_ad_question".equals(strUri))
+        else if("/todaylessonadmin/hm_ad_question".equals(strUri))
            return false;
         //혜미 회원정보수정 updatesms
         else if("/hm_us_mymanageupdatesms".equals(strUri))
@@ -205,14 +206,14 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if("/hm_ad_event_modify".equals(strUri))
         	return false;
         //혜미 사용자 1:1문의 디테일 페이지 이동
-      /*  else if("/hm_us_question_detail/{no}".equals(strUri))
+      /*  else if("/todaylessonadmin/hm_us_question_detail/{no}".equals(strUri))
            return false;*/
         //혜미 관리자 1:1문의 디테일 페이지 이동
-        /*else if("hm_ad_question_detail".equals(strUri))
+        /*else if("/todaylessonadmin/hm_ad_question_detail".equals(strUri))
            return false;*/
 
         //혜미 관리자 1:1문의  관리자 답변달기
-       /* else if("hm_ad_question_update".equals(strUri))
+       /* else if("/todaylessonadmin/hm_ad_question_update".equals(strUri))
            return false;*/
 
    //은지
@@ -395,6 +396,6 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         
         //시큐리티 권한 해제에 대한 권한을 준거임(에이작까지 처리되는지는 아직 확인 못함.. 두개 합친거라서 따로따로 분리해서 확인필요함)
         return !unprotectedMatcher.matches(request);   //새로 추가한거
-
+      
     }
 }

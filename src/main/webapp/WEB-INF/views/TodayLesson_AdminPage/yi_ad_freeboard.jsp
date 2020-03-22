@@ -37,7 +37,7 @@ if(obj.hasChildNodes()!=true)
 document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style");
  
 	$.ajax({
-		url:'/freeboard_replyjson/'+freeboard_no
+		url:'/todaylessonadmin/freeboard_replyjson/'+freeboard_no
 		,dataType:'json'
 		,success:function(item){
 
@@ -144,7 +144,7 @@ else
 <sec:authentication property="principal" var="pinfo"/>
 게시판 관리페이지<br>
 
-<input type="button" value="공지등록" onclick="location.href='/freeboard_noticewrite'">	
+<input type="button" value="공지등록" onclick="location.href='/todaylessonadmin/freeboard_noticewrite'">	
 <table class="table">
 <thead>
 <tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>관리</th>
@@ -170,10 +170,10 @@ else
   
    
   내용 : ${notice.notice_content}<br>
-  <form action="/admin_noticemodify/${notice.notice_no }" method="post">
+  <form action="/todaylessonadmin/admin_noticemodify/${notice.notice_no }" method="post">
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
   <input type="submit" value="수정"><input type="button" value="삭제"
-  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='/admin_noticedelete/${notice.notice_no}'">
+  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='/todaylessonadmin/admin_noticedelete/${notice.notice_no}'">
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
   </form>
 
@@ -272,7 +272,7 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </form>
 
 <sec:authorize access="isAuthenticated()">
-<input type="button" id="write" value="글쓰기" onclick="location.href='/freeboard_insert'"><br>
+<input type="button" id="write" value="글쓰기" onclick="location.href='/todaylessonadmin/freeboard_insert'"><br>
 </sec:authorize>
 
 <c:if test="${page.prev }">

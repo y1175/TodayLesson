@@ -10,7 +10,7 @@ $(document).ready(function(){
 		
 		var no = td.eq(0).text();
 		
-		location.href="hm_ad_question_detail/"+no;
+		location.href="/todaylessonadmin/hm_ad_question_detail/"+no;
 	});
 	
 	

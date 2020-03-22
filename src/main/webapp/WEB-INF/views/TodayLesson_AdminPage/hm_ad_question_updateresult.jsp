@@ -14,11 +14,11 @@ var question_no = ${question_no}
 if(result>0)
 {
 alert('답변이 완료되었습니다');
-location.href="/hm_ad_question_detail/"+question_no;
+location.href="/todaylessonadmin/hm_ad_question_detail/"+question_no;
 }
 else{
 	alert('답변 실패');
-	location.href="/hm_ad_question_detail/"+question_no;
+	location.href="/todaylessonadmin/hm_ad_question_detail/"+question_no;
 }
 </script>
 </body>

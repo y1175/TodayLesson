@@ -17,7 +17,7 @@ import com.todaylesson.DTO.Question_1_1DTO;
 import com.todaylesson.service.Admin_HM_QuestionService;
 
 @Controller
-/*@RequestMapping("/todaylessonadmin/")*/
+@RequestMapping("/todaylessonadmin/")
 public class Admin_HM_Question_Controller {
 
 	

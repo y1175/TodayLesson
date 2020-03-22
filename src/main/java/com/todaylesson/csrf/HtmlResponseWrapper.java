@@ -62,7 +62,7 @@ public class HtmlResponseWrapper extends HttpServletResponseWrapper{
                 }
                 //아래두개는 사이트에 없었음
                 @Override
-				public void setWriteListener(WriteListener arg0) {
+				public void setWriteListener(WriteListener writelistener) {
 					// TODO Auto-generated method stub
 					
 				}
@@ -70,7 +70,7 @@ public class HtmlResponseWrapper extends HttpServletResponseWrapper{
 				@Override
 				public boolean isReady() {
 					// TODO Auto-generated method stub
-					return false;
+					return true;
 				}
 
             };

@@ -16,12 +16,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('수정완료');
-	location.href="/admin_freeboard";
+	location.href="/todaylessonadmin/admin_freeboard";
 	}
 else
 	{
 	alert('수정실패');
-	location.href="/admin_freeboard";
+	location.href="/todaylessonadmin/admin_freeboard";
 	}
 </script>
 </body>
