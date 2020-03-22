@@ -109,14 +109,14 @@ public class TodayLessonController {
     	int lessonITCount=adminMainService.lessonITCount();
     	int lessonCookCount=adminMainService.lessonCookCount();
     	int lessonHandmadeCount=adminMainService.lessonHandmadeCount();
-    	int lessonLanguageCount=adminMainService.lessonLanguageCount();
+    	int lessonSportCount=adminMainService.lessonSportCount();
     	int lessonEducationCount=adminMainService.lessonEducationCount();
     	int lessonOtherCount=adminMainService.lessonOtherCount();
     	
     	model.addAttribute("lessonITCount", lessonITCount);
     	model.addAttribute("lessonCookCount", lessonCookCount);
     	model.addAttribute("lessonHandmadeCount", lessonHandmadeCount);
-    	model.addAttribute("lessonLanguageCount", lessonLanguageCount);
+    	model.addAttribute("lessonSportCount", lessonSportCount);
     	model.addAttribute("lessonEducationCount", lessonEducationCount);
     	model.addAttribute("lessonOtherCount", lessonOtherCount);
     	
@@ -124,17 +124,31 @@ public class TodayLessonController {
     	int productITCount=adminMainService.productITCount();
     	int productCookCount=adminMainService.productCookCount();
     	int productHandmadeCount=adminMainService.productHandmadeCount();
-    	int productLanguageCount=adminMainService.productLanguageCount();
+    	int productSportCount=adminMainService.productSportCount();
     	int productEducationCount=adminMainService.productEducationCount();
     	int productOtherCount=adminMainService.productOtherCount();
     	
     	model.addAttribute("productITCount", productITCount);
     	model.addAttribute("productCookCount", productCookCount);
     	model.addAttribute("productHandmadeCount", productHandmadeCount);
-    	model.addAttribute("productLanguageCount", productLanguageCount);
+    	model.addAttribute("productSportCount", productSportCount);
     	model.addAttribute("productEducationCount", productEducationCount);
     	model.addAttribute("productOtherCount", productOtherCount);
     	
+    	//일일게시글수 집계
+    	int freeboardWriteCount=adminMainService.freeboardWriteCount();
+    	
+    	model.addAttribute("freeboardWriteCount", freeboardWriteCount);
+    	
+    	//일일 판매금액 집계
+    	int orderlistCostSum=adminMainService.orderlistCostSum();
+    	
+    	model.addAttribute("orderlistCostSum", orderlistCostSum);
+    	
+    	//일일가입자수 집계
+    	int memberJoinCount=adminMainService.memberJoinCount();
+    	
+    	model.addAttribute("memberJoinCount", memberJoinCount);
     	
     	
     	return "hs_ad_main";

@@ -19,12 +19,12 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	//매출현황전체리스트
 	@Override
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO> 
-	       salesList(int senior_no, String start_date, String end_date, String search, String searchtxt) {
+	       salesList(int senior_no, String search, String searchtxt) {  //String start_date, String end_date, 
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		/*hm.put("senior_no", senior_no);*/
-		hm.put("start_date", start_date);
-		hm.put("end_date", end_date);
+		//hm.put("start_date", start_date);
+		//hm.put("end_date", end_date);
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		return salescalculateMapper.SalesList(senior_no,hm);

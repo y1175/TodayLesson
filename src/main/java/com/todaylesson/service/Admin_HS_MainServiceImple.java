@@ -32,9 +32,9 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 	}
 
 	@Override
-	public int lessonLanguageCount() {
+	public int lessonSportCount() {
 		// TODO Auto-generated method stub
-		return adminmainMapper.lessonLanguageCount();
+		return adminmainMapper.lessonSportCount();
 	}
 
 	@Override
@@ -69,9 +69,9 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 	}
 
 	@Override
-	public int productLanguageCount() {
+	public int productSportCount() {
 		// TODO Auto-generated method stub
-		return adminmainMapper.productLanguageCount();
+		return adminmainMapper.productSportCount();
 	}
 
 	@Override
@@ -84,6 +84,27 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 	public int productOtherCount() {
 		// TODO Auto-generated method stub
 		return adminmainMapper.productOtherCount();
+	}
+
+	//일일게시글수 집계
+	@Override
+	public int freeboardWriteCount() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.freeboardWriteCount();
+	}
+
+	//일일 판매금액 집계
+	@Override
+	public int orderlistCostSum() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.orderlistCostSum();
+	}
+
+	//일일가입자수 집계
+	@Override
+	public int memberJoinCount() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberJoinCount();
 	}
 	
 }

@@ -17,6 +17,8 @@
 	   <result property="orderlist_usepoint" column="orderlist_usepoint"/> <!-- 매출현황 포인트사용 (OrderList Table) -->
 	   <result property="sales_comm" column="sales_comm"/> <!-- 매출현황 정산수수료  (Sales Table) -->
 	   <result property="sales_surtax" column="sales_surtax"/> <!-- 매출현황 세금계산서부가세  (Sales Table) -->
+	   <result property="sales_search_startdate" column="sales_search_startdate"/> <!-- 매출현황 기간검색 START  (Sales Table) -->
+	   <result property="sales_search_enddate" column="sales_search_enddate"/> <!-- 매출현황 기간검색 END  (Sales Table) -->
 	   <result property="calculate_no" column="calculate_no"/> <!-- 정산신청 정산번호 (Calculate Table) -->
 	   <result property="calculate_date" column="calculate_date"/> <!-- 정산신청 정산신청일 (Calculate Table) -->
 	   <result property="calculate_comp" column="calculate_comp"/> <!-- 정산신청 정산상태 (Calculate Table) -->
@@ -34,9 +36,14 @@
 	          floor(sum(lesson_cost*0.1)) as sales_comm, 
 	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
 	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
+	                join order_detail od on od.orderlist_no=o.orderlist_no
 	                join member m on m.member_id=o.member_id
-	                join lesson l on l.lesson_no=o.lesson_no             
-	   where senior_no=#{senior_no}             
+	                join lesson l on l.lesson_no=od.lesson_no             
+	   where senior_no=#{senior_no}
+	   <![CDATA[   
+	         and s.sales_search_startdate>=#{sales_search_startdate}
+	         and s.sales_search_enddate<=#{sales_search_enddate} 
+	         ]]>        
 	</select>
 	
 	<!-- 정산신청 리스트 정산번호 / 정산신청일 / 정산기간 / 정산계좌 -->
@@ -44,7 +51,8 @@
 	   select c.calculate_no, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
 	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
 	   from calculate c join orderlist o on c.orderlist_no=o.orderlist_no
-	                    join lesson l on l.lesson_no=o.lesson_no
+	                    join order_detail od on od.orderlist_no=o.orderlist_no
+	                    join lesson l on l.lesson_no=od.lesson_no
                         join member m on m.member_id=o.member_id
                         join senior s on s.member_id=m.member_id
 	   where s.senior_no=#{senior_no}

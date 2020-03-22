@@ -14,4 +14,6 @@ public class SalesDTO {
 	private int orderlist_no;
 	private int sales_comm;
 	private int sales_surtax;
+	private String sales_search_startdate;
+	private String sales_search_enddate;
 }

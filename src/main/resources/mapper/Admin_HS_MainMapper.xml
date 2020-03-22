@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_HS_MainMapper">
+    <!-- 레슨카테고리현황 -->
+    <select id="lessonITCount" resultType="int">
+       select count(*)
+       from lesson
+       where lesson_category=4
+    </select>
+    <select id="lessonCookCount" resultType="int">
+       select count(*)
+       from lesson
+       where lesson_category=5
+    </select>
+    <select id="lessonHandmadeCount" resultType="int">
+       select count(*)
+       from lesson
+       where lesson_category=3
+    </select>
+    <select id="lessonSportCount" resultType="int">
+       select count(*)
+       from lesson
+       where lesson_category=1
+    </select>
+    <select id="lessonEducationCount" resultType="int">
+       select count(*)
+       from lesson
+       where lesson_category=2
+    </select>
+    <select id="lessonOtherCount" resultType="int">
+       select count(*)
+       from lesson
+       where lesson_category=6
+    </select>
+    <!-- 레슨카테고리현황 -->
+    <!-- 상품카테고리현황 -->
+    <select id="productITCount" resultType="int">
+       select count(*)
+       from product
+       where  product_category=2
+    </select>
+    <select id="productCookCount" resultType="int">
+       select count(*)
+       from product
+       where  product_category=3
+    </select>
+    <select id="productHandmadeCount" resultType="int">
+       select count(*)
+       from product
+       where  product_category=4
+    </select>
+    <select id="productSportCount" resultType="int">
+       select count(*)
+       from product
+       where  product_category=5
+    </select>
+    <select id="productEducationCount" resultType="int">
+       select count(*)
+       from product
+       where  product_category=1
+    </select>
+    <select id="productOtherCount" resultType="int">
+       select count(*)
+       from product
+       where  product_category=6
+    </select>
+    <!-- 상품카테고리현황 -->
+    <!-- 일일게시글수 집계 / 수량확인 위해서 1달로 해둠 -->
+    <select id="freeboardWriteCount" resultType="int">
+       select count(*) 
+       from freeboard
+       where freeboard_writedate > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+    <!-- 일일게시글수 집계 -->
+    <!-- 일일 판매금액 집계 / 수량확인 위해서 1달로 해둠 -->
+    <select id="orderlistCostSum" resultType="int">
+       select sum(orderlist_cost) 
+       from orderlist 
+       where orderlist_date > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+    <!-- 일일 판매금액 집계 -->
+    <select id="memberJoinCount" resultType="int">
+       select count(*) 
+       from member
+       where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+

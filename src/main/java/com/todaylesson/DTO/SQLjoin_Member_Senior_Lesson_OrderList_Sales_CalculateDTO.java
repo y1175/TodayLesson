@@ -73,7 +73,9 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO {
 	private int orderlist_no;
 	private int product_no;
 	//private String member_id; FK
-	//private int lesson_no; FK
+	private String orderlist_receiver;
+	private String orderlist_addr;
+	private String orderlist_phone;
 	private int cart_no;
 	private String orderlist_date;
 	private int orderlist_orderstatus;
@@ -81,10 +83,20 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO {
 	private int orderlist_cost;
 	private int orderlist_usepoint;
 	
+	//OrderDetailDTO
+	private int order_detail_no;
+	//private int orderlist_no;
+	//private int product_no;
+	//private int lesson_no;
+	private int order_count;
+	
 	//SalesDTO
 	//private int orderlist_no; FK
 	private int sales_comm;
 	private int sales_surtax;
+	private String sales_search_startdate;
+	private String sales_search_enddate;
+
 	
 	//CalculateDTO
 	//private int orderlist_no; FK

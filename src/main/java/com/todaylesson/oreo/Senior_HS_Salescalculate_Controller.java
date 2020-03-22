@@ -21,18 +21,18 @@ public class Senior_HS_Salescalculate_Controller {
 	
 	@RequestMapping("/senior_sales_list/{senior_no}")
 	public String salesList(@PathVariable int senior_no 
-	            		   ,@RequestParam(required=false, defaultValue="") String start_date
-			               ,@RequestParam(required=false, defaultValue="") String end_date
+	            		   //,@RequestParam(required=false, defaultValue="") String start_date
+			               //,@RequestParam(required=false, defaultValue="") String end_date
 			               ,@RequestParam(required=false, defaultValue="") String search
 			               ,@RequestParam(required=false, defaultValue="") String searchtxt
 			               , Model model) {
 		//매출현황전체리스트
 		List<SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO> salesList=
-	         salescalculateService.salesList(senior_no, start_date, end_date, search, searchtxt);
+	         salescalculateService.salesList(senior_no, search, searchtxt); //start_date, end_date,
 		
 		model.addAttribute("salesList", salesList);
-		model.addAttribute("start_date",start_date);
-		model.addAttribute("end_date",end_date);
+		//model.addAttribute("start_date",start_date);
+		//model.addAttribute("end_date",end_date);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 		

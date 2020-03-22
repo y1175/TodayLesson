@@ -1,5 +1,7 @@
 package com.todaylesson.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +20,4 @@ public class Admin_HS_Administrator_ServiceImple implements Admin_HS_Administrat
 		// TODO Auto-generated method stub
 		return adminIstratorMapper.administratorDetail();
 	}
-
 }

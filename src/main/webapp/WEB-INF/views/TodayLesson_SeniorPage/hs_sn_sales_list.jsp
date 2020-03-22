@@ -13,12 +13,12 @@
    <div>
       <h3>매출 현황</h3>
       <div>
-         <form method="post" action="/senior_sales_list/${salesList.senior_no}?startdate=${startdate}&enddate=${enddate}&search=${search}&searchtxt=${searchtxt}">
+         <form method="post" action="/senior_sales_list/${salesList.senior_no}?startdate=${salesList.sales_search_startdate}&enddate=${salesList.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
             <label>기간검색</label>
             <div>
-               <input type="date" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD">
+               <input type="date" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" value="${salesList.sales_search_startdate}">
                <span> - </span>
-               <input type="date" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD">
+               <input type="date" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" value="${salesList.sales_search_enddate}">
                <input type="button" name="" id="" value="전체">
                <input type="button" name="" id="" value="오늘">
                <input type="button" name="" id="" value="일주일">

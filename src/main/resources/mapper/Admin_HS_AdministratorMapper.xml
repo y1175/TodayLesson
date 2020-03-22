@@ -8,7 +8,6 @@
        from member
        where member_level=0;
     </select>
-
 </mapper>
 
 
