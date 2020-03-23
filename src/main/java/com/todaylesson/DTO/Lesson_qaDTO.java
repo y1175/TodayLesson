@@ -15,6 +15,7 @@ public class Lesson_qaDTO {
 	private int lesson_qa_group;
 	private int lesson_qa_group_layer;
 	private String member_id;
+	private String lesson_qa_reply_title;
 	private String lesson_qa_reply_content;
 	private String lesson_qa_register_date;
 	private String lesson_qa_reply_secret;

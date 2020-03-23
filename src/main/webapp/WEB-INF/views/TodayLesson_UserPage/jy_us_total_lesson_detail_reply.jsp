@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+		#accordian li{ list-style:none;}
+		li > ul{ display:none;}
+		.see{display: block;}
+
+    </style>
 <script> 
 
 $(document).ready(function() { 
@@ -21,12 +27,17 @@ $(document).ready(function() {
     });
 	
 	
+	
+	
 }); 
 </script>
 
 
 </head>
 <body>
+
+
+
 
 
 <div class="container">
@@ -46,11 +57,14 @@ $(document).ready(function() {
                         
                         <script>
                         
-                        if ($('input[name=sec]').is(":checked")) {
-                            $('input[name=lesson_qa_reply_secret]').val('Y');
+                        $("input:checkbox").on('click', function() {
+                           if ( $(this).prop('checked')) {
+                           	document.getElementById('lesson_qa_reply_secret').value='Y';
                         } else {
-                            $('input[name=lesson_qa_reply_secret]').val('N');
+                            document.getElementById('lesson_qa_reply_secret').value='N';
                         }
+                        
+                        });
                         
                         
                         </script>
@@ -59,6 +73,9 @@ $(document).ready(function() {
 						<div id="pas">
                         <input type="text" name="lesson_qa_reply_password" id="lesson_qa_reply_password">
                         </div>
+                        <br>
+                        <label>제목</label>
+                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" >
                             <textarea rows="3" cols="30" id="lesson_qa_reply_content" name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
@@ -92,6 +109,7 @@ function fn_comment(lesson_no){
 	
 	 if(member_id=='')
      {
+	 $("#lesson_qa_reply_title").val("");
      $("#lesson_qa_reply_content").val("");
      alert('로그인이 필요합니다.');
      return false;
@@ -99,12 +117,17 @@ function fn_comment(lesson_no){
 	 
     $.ajax({
         type:'POST',
-        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_insert.do'/>",
+        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_insert'/>",
         data:$("#commentForm").serialize(),
         success : function(data){
             if(data=="success")
             {
+            	alert("댓글 등록 완료!");
                 getCommentList();
+                $("#lesson_qa_reply_title").val("");
+                $("#lesson_qa_reply_content").val("");
+                $("#lesson_qa_reply_password").val("");
+                $('input[name="sec"]').prop("checked", false);
             	$("#pas").hide();
 
             }
@@ -116,6 +139,8 @@ function fn_comment(lesson_no){
     });
 }
  
+  
+  
 /**
  * 초기 페이지 로딩시 댓글 불러오기
  */
@@ -132,7 +157,7 @@ function getCommentList(){
 
     $.ajax({
         type:'get',
-        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_list.do'/>",
+        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
         dataType : "json",
         data:$("#commentForm").serialize(),
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
@@ -144,12 +169,21 @@ function getCommentList(){
             if (data.length > 0){
                 
                 for(i=0; i<data.length; i++){
-                    html += "<div>";
-                    html += "<div><table class='table'><h6><strong>"+data[i].member_id+"</strong></h6>";
-                    html += "<tr><td>"+data[i].lesson_qa_reply_content +"</td><td>"+data[i].lesson_qa_register_date+"</td></tr>";
-                    html += "</table></div>";
-                    html += "</div>";
-                }
+                	if (i == 0) {
+                		html += "<div id='accordian'>";
+                		html += "<ul><li class = 'tt'><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul class = 'con'><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
+					} else if(i == data.length - 1){
+						
+						html += "<li class = 'tt'><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul class = 'con'><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
+						html += "</ul></div>";
+                	} else {
+                
+                  	 	html += "<li class = 'tt'><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                  	  	html += "<ul class = 'con'><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
+                	}
+        		}
                 
             } else {
                 
@@ -170,6 +204,17 @@ function getCommentList(){
         
     });
 }
+
+
+
+$(function(){
+	$(".tt").click(function(){
+		$(".tt .con").toggleClass('see');
+	})
+})
+
+
+
  
 </script>
 
