@@ -68,9 +68,9 @@ where  product_no=#{product_no}
 	<insert id="insertorderlist" parameterType="com.todaylesson.DTO.OrderListDTO">
 	insert into orderlist(orderlist_no,member_id,orderlist_receiver,orderlist_phone,orderlist_addr
 	,orderlist_date,orderlist_orderstatus,orderlist_cost
-	,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint)
+	,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint,orderlist_zipcode)
 	values (#{orderlist_no},#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
-	sysdate(),1,#{orderlist_cost},1,1,0)
+	sysdate(),1,#{orderlist_cost},1,1,0,#{orderlist_zipcode})
 	</insert>
 	<!--  -->
 	 <!-- insert into order_detail( orderlist_no, product_no, order_count)

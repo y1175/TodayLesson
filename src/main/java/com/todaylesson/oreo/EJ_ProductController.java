@@ -241,10 +241,34 @@ public class EJ_ProductController {
 	}
 	
 	@RequestMapping("/orderlistdetail")
-	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto, Model model)
+	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto
+//			, @RequestParam(value="zipcodesame", required=false) String member_zipcode1
+		, @RequestParam(value="orderlist_zipcode", required=false) int member_zipcode
+				, @RequestParam(value="addrselect",required=false) int addrselect
+,@RequestParam(value="roadaddr",required=false) String roadaddr
+	,@RequestParam(value="jibunaddr",required=false) String jibunaddr
+	, @RequestParam(value="detailaddr",required=false) String detailaddr
+	, Model model)
 	{
+		//전체주소(도로or지번주소 + 상세주소) addr에 셋팅
+		//int addrselect1=Integer.parseInt(addrselect);
+		
+	if(addrselect>0)
+		{
+		 String fulladdr= "";	
+		 if(addrselect==1)
+				{fulladdr=roadaddr;}
+				else if(addrselect==2)
+		 
+				{fulladdr=jibunaddr;}
+		 oldto.setOrderlist_addr(fulladdr+" "+detailaddr);
+		}
 		//여기서 주문번호 생성해서 넘겨주기
-
+/*if(member_zipcode==0)
+{
+	oldto.setOrderlist_zipcode(member_zipcode1);
+	}*/
+		 System.out.println("addrselect: "+addrselect);
 		 Calendar cal = Calendar.getInstance();
 		 int year1 = cal.get(Calendar.YEAR);
 		 String year2=Integer.toString(year1);

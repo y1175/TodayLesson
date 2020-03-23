@@ -16,6 +16,7 @@ public class OrderListDTO {
 	private int product_no;
 	private String orderlist_receiver;
 	private String orderlist_addr;
+	private int orderlist_zipcode;
 	private String orderlist_phone;
 	private int cart_no;
 	private String orderlist_date;

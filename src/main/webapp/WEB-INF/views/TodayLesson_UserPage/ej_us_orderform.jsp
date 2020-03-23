@@ -26,7 +26,8 @@
 
 <body>
 <script>
-$("#ordersuccess_btn").hide();
+
+//$("#ordersuccess_btn").hide();
 </script>
 
 <h2 text align="center">주문신청서</h2>
@@ -43,22 +44,23 @@ $("#ordersuccess_btn").hide();
  ${product_after_cost}원X${pdcount}<input type="hidden" name="order_count" value=${pdcount }>
  =>${totalcost }원<br><hr>
  
- <input type="hidden" name="orderlist_cost" value=${totalcost }>
+ <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
  <input type="hidden" name="product_after_cost" value="${product_after_cost }">
  보유 포인트: ${mdto.member_point}<br>
 포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0>
 <button class='btn btn-primary' id="pointbtn">적용</button><br>
 
  결제금액<br>
- <input type="text" value="${totalcost }" id="paymentcost" class="paymentcost" readonly="readonly">
+ <input type="text" value=${totalcost } id="orderlist_cost1" class="paymentcost" readonly="readonly">
 
 <script>
     
     $("#pointbtn").click(function(){
   
-       console.log('usepoint');
+      
   var memberpoint=${mdto.member_point};
   var usepoint=$("#usepoint").val();
+  console.log('usepoint: ',usepoint);
   var member_id='${pageContext.request.userPrincipal.name}';
   var totalcost=${totalcost};
   var paymentcost=totalcost-usepoint;
@@ -69,6 +71,7 @@ $("#ordersuccess_btn").hide();
        totalcost: totalcost,
        paymentcost: paymentcost
     };
+ 
 
   $.ajax({
    url :"/ej_us_orderform/applypointjson",
@@ -81,7 +84,12 @@ $("#ordersuccess_btn").hide();
 		alert('보유포인트를 초과하였습니다.');
 		}
 	else{
-  	$('.paymentcost').val(paymentcost);
+	
+		$('.paymentcost').val(data.paymentcost);
+  	 $('#orderlist_usepoint').val(data.usepoint);
+  	 console.log(data.paymentcost);
+  	 console.log(data.usepoint);
+  	
 	}
     } 
    ,error: function(){
@@ -102,53 +110,96 @@ $("#ordersuccess_btn").hide();
 연락처   <input type="text"  name="orderlist_phone" class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <h4>배송지 정보</h4><hr>
- <input type="radio" name="deliveryaddr" value="same" checked="checked"   >주문자정보와 동일
+ <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="product_no" value=${product_no }>
 <input type="hidden" name="order_count" value=${pdcount }>
+<input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost }>
+<input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
+
 수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
 휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
-주소(우편번호)<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
+주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
+<%-- 우편번호<input type="text" value=${mdto.member_zipcode } readonly="readonly"> --%>
 
-배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
-
-<!-- <label for='addr'>주소</label>
+ 
+ <div id="findaddr">
+ <label for='addr'></label>
                <div class='form-row'>
                   <div class='col-5'>
-                     <input type="text" id="sample4_postcode" name='zipcode'
-                        placeholder="우편번호" class='form-control'>
+                     <input type="text" id="sample4_postcode" name='orderlist_zipcode'
+                        placeholder="우편번호" value=${mdto.member_zipcode } class='form-control' >
                   </div>
                   <input type="button" onclick="sample4_execDaumPostcode()"
-                     value="우편번호 찾기" readonly="readonly" class='btn btn-primary'><br>
+                     value="우편번호 찾기" readonly="readonly" class='btn btn-primary' ><br>
                </div>
                <div class='juso'>
+               <input type="radio"  name='addrselect' value="0" id="sameaddrselect" checked="checked">
+                <input type="radio" id='roadAddress' name='addrselect' value="1" 
+                     ><label for="addrselect">도로명주소 선택</label> <br>
                   <input type="text" id="sample4_roadAddress" placeholder="도로명주소"
-                     name="roadaddr" readonly="readonly" class="form-control">
-                  <input type="radio" id='roadAddress' name='addrselect' value="0"
-                     required><label for="addrselect">도로명주소 선택</label> <br>
-
+                     name="roadaddr" readonly="readonly" class="form-control" >
+                 
+				 <input type="radio" id='jibunAddress' name='addrselect' value="2"><label
+                     for="addrselect" disabled>지번주소 선택</label><br>
                   <input type="text" id="sample4_jibunAddress" placeholder="지번주소"
-                     name="jibunaddr" readonly="readonly" class="form-control">
-                  <input type="radio" id='jibunAddress' name='addrselect' value="1"><label
-                     for="addrselect">지번주소 선택</label><br>
+                     name="jibunaddr" readonly="readonly" class="form-control" >
+                 
                </div>
                <span id="guide" style="color: #999"></span> <label
                   for="detailaddr">상세주소</label> <input type="text" id="detailaddr"
                   name="detailaddr" class="form-control"> 
 
-<br>  -->
+<br>  
+</div> 
+<script>
+$("#sameaddrselect").hide();
+$("#roadAddress").on('click', function() {
+	$("#roadAddress").val("1");
+});
+$("#jibunAddress").on('click', function() {
+	$("#jibunAddress").val("2");
+});
+	
+  
+  </script>
+<hr>
+배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
+
+<script>
+
+$("#findaddr").hide();
+
+</script>
 <script>
 $("#newaddr").on('click', function() {
 	
 	$('#rec').val('');
 	$('#phone').val('');
+	$("#addr").hide();
 	$('#addr').val('');
+	$('#zipcode').val('');
 	$('#rec').attr("readonly",false);
 	$('#phone').attr("readonly",false);
 	$('#addr').attr("readonly",false);
-	
+	//$("#findaddr").attr("disabled", true);
+	//$("#findaddr").show();
+	$("#findaddr").toggle();
+	$("#findaddr").find("input").prop("disabled",false);
 	//우편번호 찾기 버튼 활성화 시킬거임
 	
+});
+$("#sameaddr").on('click', function() {
+	
+	$('#rec').val('${mdto.member_name }');
+	$('#phone').val('${mdto.member_phone }');
+	$('#addr').val('${mdto.member_addr }');
+	$('#rec').attr("readonly",true);
+	$('#phone').attr("readonly",true);
+	$('#addr').attr("readonly",true);
+	$('#addr').toggle();
+	$("#findaddr").toggle();
+	$("#findaddr").find("input").prop("disabled",true);
 });
 </script>
 <br>
@@ -172,6 +223,7 @@ $("#newaddr").on('click', function() {
     $("#check_module").click(function () {
     
        var IMP = window.IMP; // 생략가능
+       var cost=$("#orderlist_cost").val();
        IMP.init('imp65601532');
        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
@@ -206,13 +258,13 @@ $("#newaddr").on('click', function() {
        */
        name: '주문명:결제테스트',
        //결제창에서 보여질 이름
-       amount: ${totalcost},
+       amount: cost,
        //가격
-       buyer_email: '${dto.member_email}',
-       buyer_name: '${dto.member_name}',
-       buyer_tel: '${dto.member_phone}',
-       buyer_addr: '${dto.member_addr}',
-       buyer_postcode: '${dto.member_zipcode}',
+       buyer_email: '${mdto.member_email}',
+       buyer_name: '${mdto.member_name}',
+       buyer_tel: '${mdto.member_phone}',
+       buyer_addr: '${mdto.member_addr}',
+       buyer_postcode: '${mdto.member_zipcode}',
        m_redirect_url: '/todaylessonlogin'
        /*
        모바일 결제시,
