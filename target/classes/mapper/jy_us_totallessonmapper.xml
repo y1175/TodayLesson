@@ -32,4 +32,41 @@ where lesson_no = #{lesson_no}
 
 </update>
 
+
+<update id="ttlesson_like_count_plus">
+update lesson 
+set lesson_like = lesson_like + 1
+where lesson_no = #{lesson_no} 
+</update>
+
+<insert id="add_like_lesson">
+
+insert into mylike(lesson_no, member_id)
+value(#{lesson_no},#{member_id})
+
+
+</insert>
+
+<insert id="add_cart_lesson">
+
+insert into cart(lesson_no, member_id, cart_amount)
+value(#{lesson_no},#{member_id},1)
+</insert>
+
+<insert id="add_lesson_reply">
+
+insert into lesson_q_a(lesson_no, member_id, lesson_qa_reply_content,lesson_qa_register_date,lesson_qa_reply_secret,lesson_qa_reply_password)
+value(#{lesson_no},#{member_id},#{lesson_qa_reply_content},sysdate(),#{lesson_qa_reply_secret},#{lesson_qa_reply_password})
+
+</insert>
+
+
+
+<select id="select_lesson_reply" resultType="com.todaylesson.DTO.Lesson_qaDTO">
+
+
+select * from lesson_q_a
+where lesson_no = #{lesson_no} 
+
+</select>
 </mapper>

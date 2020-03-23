@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<style>.selected{display: none;}</style> <!-- 스타일은 CSS에 추가해주는 것을 권장합니다. --> 
 <script>
 
 $(document).ready(function() {
@@ -17,9 +18,9 @@ $(document).ready(function() {
 	let state = ${dto.lesson_type};
 	console.log(state);
 	if ( state == 3 ) {
-		$('.layer').hide();
+		$('.layer').addClass('selected');
 	} else {
-		$('.layer').show();
+		$('.layer').removeClass('selected');
 	}
 	
 	
@@ -41,7 +42,94 @@ $(document).ready(function() {
 </head>
 <body>
 
+
+
+
+
+
 <!-- 레슨명, 이런 기본적인건 옆에 배치 -->
+
+<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no" >
+<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
+
+
+<button class="insert_my_like">좋아요</button>
+<button class="insert_my_cart">카트에 담기</button>
+
+<br>
+
+
+<script>
+
+$(".insert_my_like").click(function(){
+	 
+  let lesson_no=document.getElementById('lesson_no').value;
+  let member_id='${pageContext.request.userPrincipal.name}';
+  
+  let data = {
+	   lesson_no: lesson_no,
+       member_id: member_id,
+  };
+  
+  console.log(member_id);
+  
+  if(member_id=='')
+  {
+  alert('로그인이 필요합니다.');
+  } else{
+ 
+  $.ajax({
+   url :"/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(){
+   		alert("♥");
+   }  
+   ,error: function(){
+      console.log('error');
+      }
+  }); 
+  }
+ });
+ 
+
+
+$(".insert_my_cart").click(function(){
+	 
+ let lesson_no=document.getElementById('lesson_no').value;
+ let member_id='${pageContext.request.userPrincipal.name}';
+
+
+ let data = {
+	  lesson_no : lesson_no,
+      member_id: member_id,
+   };
+ if(member_id=='')
+ {
+ alert('로그인이 필요합니다.');
+ }else{
+
+ $.ajax({
+  url :"/lesson_cart",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+  //request mapping value랑 맞추면되는듯
+  type : "post",
+  data : data,
+  success : function(){
+  		alert("장바구니에 레슨이 담겼습니다!");
+   		} 
+  ,error: function(){
+     console.log('error');
+     }
+ }); 
+ }
+});
+
+
+
+
+</script>
+
 
 레슨명
 <br><c:out value="${dto.lesson_title }"/><br>
@@ -192,5 +280,10 @@ ${dto.lesson_senior_content}
 </div>
 <input type="button" onclick="location.href='${pageContext.request.contextPath }/lesson_buy/${dto.lesson_no}'">
 <a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
+
+
+<%@ include file="../TodayLesson_UserPage/jy_us_total_lesson_detail_reply.jsp" %>
+
+
 </body>
 </html>

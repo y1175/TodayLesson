@@ -349,6 +349,20 @@
 		</dependency>
 		<!-- Json -->
 
+
+<!-- 제이슨 array를 사용하려면 있어야된다고함 -->
+
+<dependency>
+
+    <groupId>org.json</groupId>
+
+    <artifactId>json</artifactId>
+
+    <version>20180130</version>
+
+</dependency>
+
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
