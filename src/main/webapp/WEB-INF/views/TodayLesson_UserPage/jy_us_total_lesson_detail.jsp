@@ -7,14 +7,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<style>.selected{display: none;}</style> <!-- 스타일은 CSS에 추가해주는 것을 권장합니다. --> 
-<script>
+<style>
 
-$(document).ready(function() {
+.selected{display: none;}
+#accordian li{ list-style:none;}
+#accordian li >h1{ cursor:pointer;}
+li > ul{ display:none;}
+li > ul >li{ color:#00F;}
+
+</style>
+<script> 
+
+$(document).ready(function() { 
+	
+	$("#pas").hide();
+	
+	$("#sec").change(function(){
+        if($("#sec").is(":checked")){
+        	$("#pas").show();
+        }else{
+        	$("#pas").hide();
+        }
+    });
 	
 	
 	
 	// 온라인 클래스의 경우 주소가 없음 > 그니까 온라인의 경우(온라인은 타입 3번) 아예 그 부분을 hide시켜버림
+	
 	let state = ${dto.lesson_type};
 	console.log(state);
 	if ( state == 3 ) {
@@ -49,8 +68,7 @@ $(document).ready(function() {
 
 <!-- 레슨명, 이런 기본적인건 옆에 배치 -->
 
-<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no" >
-<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
+    
 
 
 <button class="insert_my_like">좋아요</button>
@@ -282,7 +300,185 @@ ${dto.lesson_senior_content}
 <a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
 
 
-<%@ include file="../TodayLesson_UserPage/jy_us_total_lesson_detail_reply.jsp" %>
+
+<div class="container">
+    <form id="commentForm" name="commentForm" method="post">
+    <br><br>
+        <div>
+            <div>
+                <span><strong>Comments</strong></span> <span id="cCnt"></span>
+            </div>
+            <div>
+                <table class="table">                    
+                    <tr>
+                        <td>
+                        비밀글
+                        <input type="checkbox" name="sec" id="sec">
+                        <input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret">
+                        
+                        <script>
+                        
+                        $("input:checkbox").on('click', function() {
+                           if ( $(this).prop('checked')) {
+                           	document.getElementById('lesson_qa_reply_secret').value='Y';
+                        } else {
+                            document.getElementById('lesson_qa_reply_secret').value='N';
+                        }
+                        
+                        });
+                        
+                        
+                        </script>
+
+
+                        <label>제목</label>
+                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" >
+                            <textarea rows="3" cols="30" id="lesson_qa_reply_content" name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
+                            <br>
+                            <div>
+                                <a href='#' onClick="fn_comment('${dto.lesson_no }')" class="btn pull-right btn-success">등록</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no" >
+			<input type="hidden" name="senior_id" value="${dto.member_id}" id="senior_id" >
+			<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />     
+        </div>
+    </form>
+</div>
+<div class="container">
+    <form id="commentListForm" name="commentListForm" method="post">
+        <div id="commentList">
+        </div>
+    </form>
+</div>
+
+
+<script>
+/*
+ * 댓글 등록하기(Ajax)
+ */
+function fn_comment(lesson_no){
+    
+	let member_id ='${pageContext.request.userPrincipal.name}';
+		
+	 if(member_id=='')
+     {
+	 $("#lesson_qa_reply_title").val("");
+     $("#lesson_qa_reply_content").val("");
+     alert('로그인이 필요합니다.');
+     return false;
+     } 
+	 
+    $.ajax({
+        type:'POST',
+        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_insert'/>",
+        data:$("#commentForm").serialize(),
+        success : function(data){
+            if(data=="success")
+            {
+            	alert("댓글 등록 완료!");
+                getCommentList();
+                $("#lesson_qa_reply_title").val("");
+                $("#lesson_qa_reply_content").val("");
+                $("#lesson_qa_reply_password").val("");
+                $('input[name="sec"]').prop("checked", false);
+            	$("#pas").hide();
+
+            }
+        },
+        error:function(request,status,error){
+            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+       }
+        
+    });
+}
+ 
+  
+  
+/**
+ * 초기 페이지 로딩시 댓글 불러오기
+ */
+$(function(){
+    
+    getCommentList();
+    
+});
+ 
+/**
+ * 댓글 불러오기(Ajax)
+ */
+function getCommentList(){
+	
+	let member_id ='${pageContext.request.userPrincipal.name}';
+	let senior_id = document.getElementById('senior_id').value;
+	
+    $.ajax({
+        type:'get',
+        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
+        dataType : "json",
+        data:$("#commentForm").serialize(),
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        success : function(data){
+            
+            let html = "";
+            let cCnt = data.length;
+            
+            if (data.length > 0){
+                
+                for(i=0; i<data.length; i++){
+                	if (i == 0) {
+                		html += "<div id='accordian'>";
+                		html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
+					} else if(i == data.length - 1){
+						
+						html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
+						html += "</ul></div>";
+                	} else {
+                  	 	html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                  	  	html += "<ul <li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
+                	}
+        		}
+                
+            } else {
+                
+                html += "<div>";
+                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
+                html += "</table></div>";
+                html += "</div>";
+                
+            }
+            
+            $("#cCnt").html(cCnt);
+            $("#commentList").html(html);
+            
+            
+            $(function(){
+            	$("#accordian h6").click(function(){
+            		$("#accordian ul ul").slideUp();
+            		$('.ico_ar').css('transform','none');
+            		if(!$(this).next().is(":visible"))
+            		{
+            			$(this).next().slideDown();
+            			$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
+            		}
+            	})
+            })
+            
+        },
+        error:function(request,status,error){
+            
+       }
+        
+    });
+}
+
+ 
+</script>
 
 
 </body>

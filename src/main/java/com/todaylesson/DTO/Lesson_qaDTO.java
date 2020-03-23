@@ -19,7 +19,6 @@ public class Lesson_qaDTO {
 	private String lesson_qa_reply_content;
 	private String lesson_qa_register_date;
 	private String lesson_qa_reply_secret;
-	private String lesson_qa_reply_password;
 	private int lesson_no;
 	private String lesson_qa_answer_content;
 	private int lesson_qa_originno;

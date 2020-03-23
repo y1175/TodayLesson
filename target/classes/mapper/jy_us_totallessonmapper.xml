@@ -55,8 +55,8 @@ value(#{lesson_no},#{member_id},1)
 
 <insert id="add_lesson_reply">
 
-insert into lesson_q_a(lesson_no, member_id,lesson_qa_reply_title, lesson_qa_reply_content,lesson_qa_register_date,lesson_qa_reply_secret,lesson_qa_reply_password)
-value(#{lesson_no},#{member_id},#{lesson_qa_reply_title},#{lesson_qa_reply_content},sysdate(),#{lesson_qa_reply_secret},#{lesson_qa_reply_password})
+insert into lesson_q_a(lesson_no, member_id,lesson_qa_reply_title, lesson_qa_reply_content,lesson_qa_register_date,lesson_qa_reply_secret)
+value(#{lesson_no},#{member_id},#{lesson_qa_reply_title},#{lesson_qa_reply_content},now(),#{lesson_qa_reply_secret})
 
 </insert>
 

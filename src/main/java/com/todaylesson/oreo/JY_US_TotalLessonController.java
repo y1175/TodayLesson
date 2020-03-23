@@ -47,6 +47,7 @@ public class JY_US_TotalLessonController {
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
 		model.addAttribute("dto",dto);
 		
+		
 		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
 	
@@ -88,15 +89,13 @@ public class JY_US_TotalLessonController {
 	@ResponseBody
 	@RequestMapping("lesson_detail/{lesson_no}/lesson_reply_insert")
 	public String lesson_reply_insert(@PathVariable int lesson_no, @RequestParam String member_id, 
-			@RequestParam String lesson_qa_reply_secret, @RequestParam String lesson_qa_reply_password, 
-			@RequestParam String lesson_qa_reply_content, @RequestParam String lesson_qa_reply_title) {
+			@RequestParam String lesson_qa_reply_secret,@RequestParam String lesson_qa_reply_content, @RequestParam String lesson_qa_reply_title) {
 		
 		Lesson_qaDTO dto = new Lesson_qaDTO();
 		
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
 		dto.setLesson_qa_reply_secret(lesson_qa_reply_secret);
-		dto.setLesson_qa_reply_password(lesson_qa_reply_password);
 		dto.setLesson_qa_reply_content(lesson_qa_reply_content);
 		dto.setLesson_qa_reply_title(lesson_qa_reply_title);
 
@@ -113,7 +112,10 @@ public class JY_US_TotalLessonController {
 	
 	@ResponseBody
 	@RequestMapping(value="lesson_detail/{lesson_no}/lesson_reply_list",produces="application/json; charset=utf8")
-	public ResponseEntity lesson_reply_list(@PathVariable int lesson_no){
+	public ResponseEntity lesson_reply_list(@PathVariable int lesson_no, @RequestParam String member_id, @RequestParam String senior_id){
+		
+		System.out.println(member_id   + "        " + senior_id);
+		
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		
@@ -126,14 +128,32 @@ public class JY_US_TotalLessonController {
 	
 		if (lesson_reply_list.size() > 0) {
 			for (int i = 0; i < lesson_reply_list.size(); i++) {
+				
 				HashMap hm = new HashMap<>();
+				
 				if (lesson_reply_list.get(i).getLesson_qa_reply_secret().equals("Y")) {
+					
+					if (lesson_reply_list.get(i).getMember_id().equals(member_id)) {
+						hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
+						hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
+						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
+						hm.put("member_id", lesson_reply_list.get(i).getMember_id());
+						
+					} else if (senior_id.equals(member_id)) {
+						hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
+						hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
+						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
+						hm.put("member_id", lesson_reply_list.get(i).getMember_id());
+						
+					} else {
 					hm.put("lesson_qa_reply_title", "비밀 글입니다.");
 					hm.put("lesson_qa_reply_content", "작성자와 시니어만 확인할 수 있습니다.");
 					hm.put("member_id","비밀 댓글입니다.");
 					hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
-
+					}
+					
 				} else {
+					
 				hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
 				hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
 				hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
@@ -146,6 +166,8 @@ public class JY_US_TotalLessonController {
 		JSONArray json = new JSONArray(rplist);
 		
 		return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
+		
+		
 	}
 	
 	
