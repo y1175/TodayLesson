@@ -46,4 +46,6 @@ public interface EJ_US_ProductMapper {
 
 	public List<CartDTO> selectmycart(String member_id);
 
+	public int updatepoint(MemberDTO memberdto);
+
 }

@@ -242,33 +242,37 @@ public class EJ_ProductController {
 	
 	@RequestMapping("/orderlistdetail")
 	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto
-//			, @RequestParam(value="zipcodesame", required=false) String member_zipcode1
-		, @RequestParam(value="orderlist_zipcode", required=false) int member_zipcode
-				, @RequestParam(value="addrselect",required=false) int addrselect
-,@RequestParam(value="roadaddr",required=false) String roadaddr
-	,@RequestParam(value="jibunaddr",required=false) String jibunaddr
-	, @RequestParam(value="detailaddr",required=false) String detailaddr
-	, Model model)
+			, @RequestParam(value="addrselect",required=false) int addrselect
+			,@RequestParam(value="roadaddr",required=false) String roadaddr
+			,@RequestParam(value="jibunaddr",required=false) String jibunaddr
+			, @RequestParam(value="detailaddr",required=false) String detailaddr
+			,@RequestParam(value="orderlist_usepoint", required=false) int orderlist_usepoint
+			,@RequestParam(value="remainpoint", required=false) int remainpoint
+			,@RequestParam(value="member_id") String member_id
+			, Model model)
 	{
-		//전체주소(도로or지번주소 + 상세주소) addr에 셋팅
-		//int addrselect1=Integer.parseInt(addrselect);
+		
 		
 	if(addrselect>0)
 		{
 		 String fulladdr= "";	
-		 if(addrselect==1)
+		 if(addrselect==1) 
 				{fulladdr=roadaddr;}
 				else if(addrselect==2)
-		 
 				{fulladdr=jibunaddr;}
 		 oldto.setOrderlist_addr(fulladdr+" "+detailaddr);
-		}
-		//여기서 주문번호 생성해서 넘겨주기
-/*if(member_zipcode==0)
-{
-	oldto.setOrderlist_zipcode(member_zipcode1);
-	}*/
-		 System.out.println("addrselect: "+addrselect);
+		}//주소
+	
+	//usepoint>0이면 update쿼리 실행
+	MemberDTO memberdto=new MemberDTO();
+	if(orderlist_usepoint>0)
+	{
+		memberdto.setMember_id(member_id);
+		memberdto.setMember_point(remainpoint);
+		service.updatepoint(memberdto);
+	}
+	
+	//주문번호 생성
 		 Calendar cal = Calendar.getInstance();
 		 int year1 = cal.get(Calendar.YEAR);
 		 String year2=Integer.toString(year1);
@@ -293,8 +297,9 @@ public class EJ_ProductController {
 		oldto.setOrderlist_no(orderlist_no); 
 		service.insertorderlist(oldto);
 		oddto.setOrderlist_no(orderlist_no);
-		
 		service.insertorderdetail(oddto);
+		//포인트 차감
+		
 		model.addAttribute("oddto",oddto);
 		model.addAttribute("oldto",oldto);
 		//List<OrderDetailDTO> list=service.selectordetail;

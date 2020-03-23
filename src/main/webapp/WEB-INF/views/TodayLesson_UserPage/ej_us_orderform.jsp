@@ -34,15 +34,26 @@
 <h4>주문할 취미</h4>
 <hr>
 <input type="hidden" name="product_no" value=${product_no }>
- <img src="${pdto.product_img}" id="ej_order_topimg" width="200">
-<h4>${product_name }</h4><br>
-<input type="hidden" name="product_name" value=${product_name }>
+<table>
+<thead>
+<th></th><th>상품명</th><th>개당금액</th><th>수량</th><th>배송비</th><th>주문금액</th>
+</thead>
+<tbody>
+<tr>
+<td><img src="${pdto.product_img}" id="ej_order_topimg" width="200"></td>
+<td><h4>${product_name }</h4></td>
+<td>${product_after_cost }</td>
+ <td> ${pdcount} 개</td>
+ <td>배송비 무료</td>
+ <td>${totalcost }원</td>
+ </tr>
+</tbody>
+</table>
+<hr>
+ <input type="hidden" name="product_name" value=${product_name }>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
+ <input type="hidden" name="order_count" value=${pdcount }>
 
- 수량: ${pdcount} 개<br>
- 전체금액:
- ${product_after_cost}원X${pdcount}<input type="hidden" name="order_count" value=${pdcount }>
- =>${totalcost }원<br><hr>
  
  <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
  <input type="hidden" name="product_after_cost" value="${product_after_cost }">
@@ -64,12 +75,14 @@
   var member_id='${pageContext.request.userPrincipal.name}';
   var totalcost=${totalcost};
   var paymentcost=totalcost-usepoint;
+  var remainpoint=memberpoint-usepoint;
   var data = {
         memberpoint: memberpoint,
        usepoint : usepoint,
        member_id: member_id,
        totalcost: totalcost,
-       paymentcost: paymentcost
+       paymentcost: paymentcost,
+       remainpoint: remainpoint
     };
  
 
@@ -87,6 +100,7 @@
 	
 		$('.paymentcost').val(data.paymentcost);
   	 $('#orderlist_usepoint').val(data.usepoint);
+  	 $('.remainpoint').val(data.remainpoint);
   	 console.log(data.paymentcost);
   	 console.log(data.usepoint);
   	
@@ -107,41 +121,42 @@
  <h4>주문자 정보</h4><hr>
  주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name } readonly="readonly"><br>
  이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email } readonly="readonly"><br>
-연락처   <input type="text"  name="orderlist_phone" class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
+연락처   <input type="text"  class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="product_no" value=${product_no }>
 <input type="hidden" name="order_count" value=${pdcount }>
-<input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost }>
+<input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost } class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
-
+<input type="hidden" name="remainpoint" class="remainpoint" value= ${mdto.member_point}>
 수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
 휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
 주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
-<%-- 우편번호<input type="text" value=${mdto.member_zipcode } readonly="readonly"> --%>
 
+
+   <input type="radio"  name='addrselect' value="0" id="sameaddrselect" checked="checked">
  
  <div id="findaddr">
  <label for='addr'></label>
                <div class='form-row'>
                   <div class='col-5'>
-                     <input type="text" id="sample4_postcode" name='orderlist_zipcode'
+                     <input type="text" id="sample4_postcode" name="orderlist_zipcode"
                         placeholder="우편번호" value=${mdto.member_zipcode } class='form-control' >
                   </div>
                   <input type="button" onclick="sample4_execDaumPostcode()"
                      value="우편번호 찾기" readonly="readonly" class='btn btn-primary' ><br>
                </div>
                <div class='juso'>
-               <input type="radio"  name='addrselect' value="0" id="sameaddrselect" checked="checked">
+            
                 <input type="radio" id='roadAddress' name='addrselect' value="1" 
                      ><label for="addrselect">도로명주소 선택</label> <br>
                   <input type="text" id="sample4_roadAddress" placeholder="도로명주소"
                      name="roadaddr" readonly="readonly" class="form-control" >
                  
 				 <input type="radio" id='jibunAddress' name='addrselect' value="2"><label
-                     for="addrselect" disabled>지번주소 선택</label><br>
+                     for="addrselect" >지번주소 선택</label><br>
                   <input type="text" id="sample4_jibunAddress" placeholder="지번주소"
                      name="jibunaddr" readonly="readonly" class="form-control" >
                  
@@ -152,8 +167,20 @@
 
 <br>  
 </div> 
+
+<hr>
+배송요청사항<textarea rows="5" name="orderlist_msg" class="form-control" cols="100"></textarea><br>
 <script>
+
+$("#findaddr").hide();
 $("#sameaddrselect").hide();
+var h=$('addrselect').val();
+console.log('addrselect',h);
+
+
+var value = $('input[name=addrselect]').val();
+console.log('addrselect input으로 벨류값',value);
+$('input[name=addrselect]').val('0');
 $("#roadAddress").on('click', function() {
 	$("#roadAddress").val("1");
 });
@@ -161,14 +188,6 @@ $("#jibunAddress").on('click', function() {
 	$("#jibunAddress").val("2");
 });
 	
-  
-  </script>
-<hr>
-배송요청사항<textarea rows="5"  class="form-control" cols="100"></textarea><br>
-
-<script>
-
-$("#findaddr").hide();
 
 </script>
 <script>
@@ -179,13 +198,14 @@ $("#newaddr").on('click', function() {
 	$("#addr").hide();
 	$('#addr').val('');
 	$('#zipcode').val('');
+	$('#sample4_postcode').val('');
 	$('#rec').attr("readonly",false);
 	$('#phone').attr("readonly",false);
 	$('#addr').attr("readonly",false);
 	//$("#findaddr").attr("disabled", true);
 	//$("#findaddr").show();
 	$("#findaddr").toggle();
-	$("#findaddr").find("input").prop("disabled",false);
+	//$("#findaddr").find("input").prop("disabled",false);
 	//우편번호 찾기 버튼 활성화 시킬거임
 	
 });
@@ -199,7 +219,7 @@ $("#sameaddr").on('click', function() {
 	$('#addr').attr("readonly",true);
 	$('#addr').toggle();
 	$("#findaddr").toggle();
-	$("#findaddr").find("input").prop("disabled",true);
+	//$("#findaddr").find("input").prop("disabled",true);
 });
 </script>
 <br>
@@ -221,10 +241,12 @@ $("#sameaddr").on('click', function() {
 
  <script>
     $("#check_module").click(function () {
-    
+  
        var IMP = window.IMP; // 생략가능
-       var cost=$("#orderlist_cost").val();
+       var cost=$(".paymentcost").val();
+    	// $("form").attr("action", "/orderlistdetail");
        IMP.init('imp65601532');
+       
        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
        IMP.request_pay({
@@ -256,7 +278,7 @@ $("#sameaddr").on('click', function() {
        참고하세요.
        나중에 포스팅 해볼게요.
        */
-       name: '주문명:결제테스트',
+       name: '주문상품:${product_name}',
        //결제창에서 보여질 이름
        amount: cost,
        //가격
@@ -265,34 +287,38 @@ $("#sameaddr").on('click', function() {
        buyer_tel: '${mdto.member_phone}',
        buyer_addr: '${mdto.member_addr}',
        buyer_postcode: '${mdto.member_zipcode}',
-       m_redirect_url: '/todaylessonlogin'
+       m_redirect_url: '/orderlistdetail'
        /*
        모바일 결제시,
        결제가 끝나고 랜딩되는 URL을 지정
        (카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
        */
+    	  
        }, function (rsp) {
-       console.log(rsp);
+     
        $("#ordersuccess_btn").show();
-       if (rsp.success) {
-       var msg = '화면의 주문완료 버튼을 눌러주세요';
-       msg += '고유ID : ' + rsp.imp_uid;
+       		if (rsp.success) {
+      var msg = '화면의 주문완료 버튼을 눌러주세요';
+      /*  msg += '고유ID : ' + rsp.imp_uid;
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
-       msg += '카드 승인번호 : ' + rsp.apply_num;
-       } else {
-       var msg = '결제에 실패하였습니다.';
-       msg += '에러내용 : ' + rsp.error_msg;
+       msg += '카드 승인번호 : ' + rsp.apply_num;  */
+       			<%-- location.href='<%=request.getContextPath()%>/orderlistdetail'; --%>
+       		} else {
+    	   
+       		var msg = '결제에 실패하였습니다.';
+      		 msg += '에러내용 : ' + rsp.error_msg;
        }
-       alert(msg);
+      alert(msg);
        });
        });
 
     </script>
-    <div id="ordersuccess_btn">
-    <input type="submit" id="ordersuccess_btn" value="주문완료"></div>
+    <div id="ordersuccess_btn" class="text-center">
+    <input type="submit" id="ordersuccess_btn"  class="btn btn-success btn-lg" value="주문완료"></div>
     </form>
     <script>
+   $("#ordersuccess_btn").hide();
     $("#ordersuccess_btn").click(function () {
     $("form").attr("action", "/orderlistdetail");
     });

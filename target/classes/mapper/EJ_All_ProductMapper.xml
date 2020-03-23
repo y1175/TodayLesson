@@ -68,14 +68,12 @@ where  product_no=#{product_no}
 	<insert id="insertorderlist" parameterType="com.todaylesson.DTO.OrderListDTO">
 	insert into orderlist(orderlist_no,member_id,orderlist_receiver,orderlist_phone,orderlist_addr
 	,orderlist_date,orderlist_orderstatus,orderlist_cost
-	,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint,orderlist_zipcode)
+	,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint,orderlist_zipcode,orderlist_msg)
 	values (#{orderlist_no},#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
-	sysdate(),1,#{orderlist_cost},1,1,0,#{orderlist_zipcode})
+	sysdate(),1,#{orderlist_cost},1,1,#{orderlist_usepoint},#{orderlist_zipcode},#{orderlist_msg})
 	</insert>
 	<!--  -->
-	 <!-- insert into order_detail( orderlist_no, product_no, order_count)
-     select #{orderlist_no}, product_no, cart_amount
-         from cart where member_id=#{member_id}; -->
+
 	<insert id="insertorderdetail" parameterType="com.todaylesson.DTO.OrderDetailDTO">
 	insert into order_detail (orderlist_no,product_no,order_count)
 	 values(#{orderlist_no},#{product_no},#{order_count})
@@ -99,5 +97,16 @@ where  product_no=#{product_no}
 	select * from cart, product where cart.product_no=product.product_no
 	and  member_id=#{member_id}
 	</select>
+	
+	<!-- updatepoint(int remainpoint); -->
+	 <update id="updatepoint"  parameterType="com.todaylesson.DTO.MemberDTO">
+        update  member
+        set member_point = #{member_point}
+        where member_id = #{member_id}  
+    </update>
+	 <!-- insert into order_detail( orderlist_no, product_no, order_count)
+     select #{orderlist_no}, product_no, cart_amount
+         from cart where member_id=#{member_id}; -->
+
 	
 </mapper> 

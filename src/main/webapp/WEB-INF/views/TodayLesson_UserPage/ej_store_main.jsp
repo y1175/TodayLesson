@@ -26,9 +26,18 @@ display: inline-block;}
 
 <body>
  <c:set var="member_id" value="${pageContext.request.userPrincipal.name}"></c:set>
- ${member_id }
-<a href="mycart/${member_id}">내장바구니</a>
-<a href="mylike/${member_id}">내 좋아요</a><br>
+ ${member_id }회원님의
+<a href="mycart/${member_id}" id="mycart">내장바구니</a>
+<a href="mylike/${member_id}" id="mylike">내 좋아요</a><br>
+<script>
+$("#mycart").click(function(){
+	if(${member_id}==null)
+		{
+		alert('로그인이 필요한 페이지입니다.');
+		}
+	alert('안녕');
+});
+</script>
  <form role="form" method="post" autocomplete="off">  
 <c:forEach var="item" items="${list}"> 
 

@@ -43,6 +43,10 @@ public interface EJ_All_Product_Service {
 
 	public List<CartDTO> selectMyCart(String member_id);
 
+	public int updatepoint(MemberDTO memberdto);
+
+
+
 
 
 
