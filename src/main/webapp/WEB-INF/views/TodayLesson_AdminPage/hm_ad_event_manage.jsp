@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+      <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event.js"></script>
 </head>
 <body>
-<jsp:useBean id="now" class="java.util.Date"/>
+
 
 
 
@@ -58,11 +59,13 @@
                      </c:choose>
                   </li>
                   <br>
-                  <li class="event-head">${item.event_title}
-                  <c:if test="${now < item.event_endperiod}">(종료)</c:if>
-                  <c:if test="${now >= item.event_endperiod}">(진행중)</c:if>
-                  </li>
-                  <li class="eventperiod">${item.event_startperiod}~${item.event_endperiod}</li>
+					<jsp:useBean id="now" class="java.util.Date"/>
+					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+					<li class="event-head">${item.event_title}
+					<c:if test="${today <= item.event_endperiod}">(진행중)</c:if> 
+					<c:if test="${today > item.event_endperiod}">(종료)</c:if>
+					</li>
+					<li class="eventperiod">${item.event_startperiod}~${item.event_endperiod}</li>
                   <br><br>
 	              <li class="eventreadmore"><a href="${pageContext.request.contextPath}/hm_ad_event_detail/${item.event_no}" class="eventdetail">Read More</a></li>
                   </ul>

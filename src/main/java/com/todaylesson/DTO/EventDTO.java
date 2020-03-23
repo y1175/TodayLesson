@@ -1,6 +1,5 @@
 package com.todaylesson.DTO;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
