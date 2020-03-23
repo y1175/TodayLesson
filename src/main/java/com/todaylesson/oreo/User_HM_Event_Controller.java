@@ -11,6 +11,7 @@ import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.service.User_HM_EventService;
 
 @Controller
+@RequestMapping("/todaylessonuser/")
 public class User_HM_Event_Controller {
 
 	@Resource(name="user_hm_eventservice")

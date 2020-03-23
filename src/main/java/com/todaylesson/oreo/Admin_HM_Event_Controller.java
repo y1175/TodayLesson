@@ -25,7 +25,7 @@ import com.todaylesson.service.Admin_HM_EventService;
 import com.todaylesson.upload.UploadFileUtils;
 
 @Controller
-/*@RequestMapping("/todaylessonadmin/")*/
+@RequestMapping("/todaylessonadmin/")
 public class Admin_HM_Event_Controller {
 
 	
