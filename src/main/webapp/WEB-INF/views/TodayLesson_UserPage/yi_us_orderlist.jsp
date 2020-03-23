@@ -15,7 +15,6 @@ $(document).ready(function(){
 		url:'/todaylessonmypage/myorderlist_detail/'
 		,dataType:'json'
 		,success:function(item){
-			console.log(item[0].orderlist_no);
 			
 			for(var i=0;i<item.length;i++)
 				{
@@ -50,14 +49,19 @@ $(document).ready(function(){
 <div class="no" id='${orderlist.orderlist_no}'>
 
 </div>
-<c:forEach var="orderdetail" items="${detailList }">
-<img src="${orderdetail.product_thumb}" alt="thumb"><br>
-[스토어>${orderdetail.product_category}]<br>
-[상품명:${orderdetail.product_name}]<br>
-가격:${orderdetail.orderlist_cost}<br>
-${orderdetail.orderlist_no }
-<br>
 </c:forEach>
+<c:if test="${page.prev }">
+<a href="user_myorderlist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+</c:if>
+
+<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+<c:if test="${index!= page.currPage }">
+</c:if>
+<a href="user_myorderlist?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
 </c:forEach>
+
+<c:if test="${page.next }">
+<a href="user_myorderlist?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+</c:if>
 </body>
 </html>
