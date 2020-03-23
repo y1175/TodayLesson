@@ -9,7 +9,7 @@
 		from orderlist join order_detail
 		on orderlist.orderlist_no = order_detail.orderlist_no
 		<!-- WHERE절을 include 태그로 삽입 -->
-
+		<include refid="orderlist_search"></include>
 
 </select>
 

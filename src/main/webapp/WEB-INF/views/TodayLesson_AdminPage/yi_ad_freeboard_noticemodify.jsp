@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="/admin_noticemodifyresult/" method="post">
+<form action="/todaylessonadmin/admin_noticemodifyresult/" method="post">
 
 <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <input type="hidden" name="notice_category" value="0">

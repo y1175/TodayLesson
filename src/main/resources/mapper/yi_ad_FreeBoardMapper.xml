@@ -94,9 +94,9 @@ freeboard_category=#{category}
 and
 					member_nick like CONCAT('%', #{searchtxt}, '%')
 				or 
-			freeboard_category=#{category}	and	freeboard_content like CONCAT('%', #{searchtxt}, '%')
+				freeboard_content like CONCAT('%', #{searchtxt}, '%')
 				or 
-			freeboard_category=#{category}	and	freeboard_title like CONCAT('%', #{searchtxt}, '%')
+			freeboard_title like CONCAT('%', #{searchtxt}, '%')
 					
 			</when>
 <when test='search.equals("member_nick")'>
