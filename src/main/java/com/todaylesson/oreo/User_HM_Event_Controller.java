@@ -8,24 +8,45 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.EventDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.service.User_HM_EventService;
 
 @Controller
-@RequestMapping("/todaylessonuser/")
+@RequestMapping("/todaylesson/")
 public class User_HM_Event_Controller {
 
 	@Resource(name="user_hm_eventservice")
 	private User_HM_EventService service;
 	
 	
-/*	@RequestMapping("/hm_us_event")
-	public String hm_us_event_main() {
+	@RequestMapping("/hm_us_event")
+	public String hm_us_event_main(
+			@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,Model model
+			) {
+		int totalCount= service.totalCount(search, searchtxt);
+		int pageSize=15;
+		int blockSize=5;
 		
-		List<EventDTO> list = service.hm_us_eventlist();
+
+		PageMaker page = new PageMaker(currPage, totalCount, pageSize, blockSize);
+		
+		
+		List<EventDTO> list = service.hm_us_eventlist(search,searchtxt,page.getStartRow()
+				,page.getEndRow());
+		
+		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		
 		return "/TodayLesson_UserPage/hm_us_event.us_main_section";
-	}*/
+	}
 	
 	
 	
