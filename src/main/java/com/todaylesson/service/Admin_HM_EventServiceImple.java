@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,9 +23,14 @@ public class Admin_HM_EventServiceImple implements Admin_HM_EventService {
 	}
 
 	@Override
-	public List<EventDTO> eventlist() {
+	public List<EventDTO> eventlist(String search, String searchtxt, int startRow, int endRow) {
 		// TODO Auto-generated method stub
-		return mapper.eventlist();
+		HashMap<String, Object>hm = new HashMap<String,Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startrow", startRow);
+		hm.put("endrow", endRow);
+		return mapper.eventlist(hm);
 	}
 
 	@Override
@@ -49,6 +55,15 @@ public class Admin_HM_EventServiceImple implements Admin_HM_EventService {
 	public int eventupdatenothumbnail(EventDTO dto) {
 		// TODO Auto-generated method stub
 		return mapper.eventupdatenothumbnail(dto);
+	}
+
+	@Override
+	public int totalCount(String search, String searchtxt) {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> hm=new HashMap<String,Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		return mapper.getCount(hm);
 	}
 
 }

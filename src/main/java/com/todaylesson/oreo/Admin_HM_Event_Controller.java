@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.DTO.EventDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.service.Admin_HM_EventService;
 import com.todaylesson.upload.UploadFileUtils;
 
@@ -37,10 +38,28 @@ public class Admin_HM_Event_Controller {
 	
 	
 	@RequestMapping("/hm_ad_event_manage")   
-	private String eventmanagelist(Model model)
+	private String eventmanagelist(
+			@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,Model model)
 	{
-		List<EventDTO> list = service.eventlist();
+		
+		int totalCount= service.totalCount(search, searchtxt);
+		int pageSize=15;
+		int blockSize=5;
+		
+
+		PageMaker page = new PageMaker(currPage, totalCount, pageSize, blockSize);
+		
+		
+		
+		List<EventDTO> list = service.eventlist(search,searchtxt,page.getStartRow()
+				,page.getEndRow());
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
 		
 		return "TodayLesson_AdminPage/hm_ad_event_manage.hs_ad_main_section";
 	}

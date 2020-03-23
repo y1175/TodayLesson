@@ -4,9 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_HM_EventMapper">
 
-<select id="eventlist" resultType="com.todaylesson.DTO.EventDTO">
+<!-- 이벤트카운트 -->
+<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+select COUNT(*)
+from event
+<include refid="search_select"></include> 
+</select>
+
+
+<select id="eventlist" resultType="com.todaylesson.DTO.EventDTO" parameterType="java.util.HashMap">
 select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail
 from event
+<include refid="search_select"></include> 
+order by event_no desc
+limit #{startrow},15
 </select>
 
 <insert id="eventinsert" parameterType="com.todaylesson.DTO.EventDTO" >
@@ -45,4 +56,20 @@ set event_group = #{event_group}
 delete from event
 where event_no = #{event_no}
 </delete>
+
+
+
+<sql id="search_select">
+<if test='searchtxt!=null and searchtxt!=""'>
+<choose>
+<when test='search.equals("all")'>
+where event_title like CONCAT('%',#{searchtxt},'%')
+</when>
+<when test='search.equals("event_title")'>
+where event_title like CONCAT('%',#{searchtxt},'%')
+</when>
+</choose>
+</if>
+</sql>
+
 </mapper>

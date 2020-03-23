@@ -1,5 +1,6 @@
 package com.todaylesson.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -11,7 +12,7 @@ public interface Admin_HM_EventMapper {
 
 	public int eventinsert(EventDTO dto);
 
-	public List<EventDTO> eventlist();
+	public List<EventDTO> eventlist(HashMap<String, Object> hm);
 
 	public EventDTO eventdetail(int event_no);
 
@@ -20,6 +21,8 @@ public interface Admin_HM_EventMapper {
 	public int eventdelete(int event_no);
 
 	public int eventupdatenothumbnail(EventDTO dto);
+
+	public int getCount(HashMap<String, Object> hm);
 
 	
 

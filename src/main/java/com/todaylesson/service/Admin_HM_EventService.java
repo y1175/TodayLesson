@@ -8,7 +8,7 @@ public interface Admin_HM_EventService {
 
 	public int eventinsert(EventDTO dto);
 
-	public List<EventDTO> eventlist();
+	public List<EventDTO> eventlist(String search, String searchtxt, int startRow, int endRow);
 
 	public EventDTO eventdetail(int event_no);
 
@@ -17,5 +17,7 @@ public interface Admin_HM_EventService {
 	public int delete(int event_no);
 
 	public int eventupdatenothumbnail(EventDTO dto);
+
+	public int totalCount(String search, String searchtxt);
 
 }
