@@ -149,9 +149,24 @@ $('#selectoption').change(function() {
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
-   success : function(){
-   		alert("장바구니에 상품이"+data.cart_amount+"개가 담겼습니다!");
-    		} 
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('장바구니에'+data.cart_amount+'개 담겼습니다');
+    		}
+    	else{
+    		alert('이미 장바구니에 추가된 상품입니다.');
+    	}
+    		
+    }
+   
+    } 
    ,error: function(){
       console.log('error');
       }
@@ -186,15 +201,22 @@ $('#selectoption').change(function() {
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
-   success : function(){
- 	alert('좋아요 완료!');
- 	//$(this).css("color","red");
-   
-    
+   success : function(result){
+	   console.log('result:',result);
     if(data.member_id==null)
        {
        alert('로그인이 필요합니다.');
-       } 
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('♥');
+    		}
+    	else{
+    		alert('이미 좋아요에 추가된 상품입니다.');
+    	}
+    		
+    }
    
     } 
    ,error: function(){

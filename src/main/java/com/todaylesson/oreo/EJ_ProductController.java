@@ -307,29 +307,51 @@ public class EJ_ProductController {
 	}
 	@ResponseBody
 	@RequestMapping("/likejson")
-	public void likemain(@RequestParam(value="product_no") int product_no
+	public String likemain(@RequestParam(value="product_no") int product_no
 			,@RequestParam(value="member_id") String member_id)
 	{
 		System.out.println("productno:"+product_no+member_id);
 		MyLikeDTO likedto=new MyLikeDTO();
 		likedto.setMember_id(member_id);
 		likedto.setProduct_no(product_no);
-		service.insertmylike(likedto);
-		System.out.println("like임");
+	
+		String result;
+		
+		List<MyLikeDTO> product_in_mylike = service.has_mylike_product(likedto);
+		
+		if (product_in_mylike.isEmpty()) {
+			service.insertmylike(likedto);
+			result="success"; 
+		} else {
+			result="false";
+		}
+		return result;
 		
 	}
 	@ResponseBody
 	@RequestMapping("/cartjson")
-	public void cartmain(@RequestParam(value="product_no") int product_no
+	public String cartmain(@RequestParam(value="product_no") int product_no
 			,@RequestParam(value="member_id") String member_id)
 	{
+		System.out.println("cart임");
 		System.out.println("productno:"+product_no+member_id);
 		CartDTO cartdto=new CartDTO();
 		cartdto.setMember_id(member_id);
 		cartdto.setProduct_no(product_no);
-		cartdto.setCart_amount(1);
-		service.insertcart(cartdto);
-		System.out.println("cart임");
+		
+		String result;
+		List<CartDTO> product_in_cart = service.has_cart_product(cartdto);
+		
+		if (product_in_cart.isEmpty()) {
+			cartdto.setCart_amount(1);
+			service.insertcart(cartdto);
+			result="success"; 
+		} else {
+			result="false";
+		}
+		return result;
+		
+		
 		
 	}
 	
@@ -352,19 +374,28 @@ public class EJ_ProductController {
 	
 	@ResponseBody
 	@RequestMapping("/cartwith_amount_json")
-	public void cartwith(@RequestParam(value="product_no") int product_no
+	public String cartwith(@RequestParam(value="product_no") int product_no
 			,@RequestParam(value="member_id") String member_id
 			,@RequestParam(value="cart_amount") int cart_amount)
 	{
-		System.out.println("productno:"+product_no+member_id);
-		System.out.println("수량:"+cart_amount);
+		
 		CartDTO cartdto=new CartDTO();
 		cartdto.setMember_id(member_id);
 		cartdto.setProduct_no(product_no);
-		cartdto.setCart_amount(cart_amount);
-		service.insertcart(cartdto);
-		System.out.println("cart임");
+	
+	
+
+		String result;
+		List<CartDTO> product_in_cart = service.has_cart_product(cartdto);
 		
+		if (product_in_cart.isEmpty()) {
+			cartdto.setCart_amount(cart_amount);
+			service.insertcart(cartdto);
+			result="success"; 
+		} else {
+			result="false";
+		}
+		return result;
 	}
 	
 	@ResponseBody
