@@ -50,6 +50,7 @@ public class User_HM_Event_Controller {
 	
 	
 	
+	
 /*
 	@RequestMapping("/hm_us_event_detail/{no}")
 	public String hm_us_event_detail(@PathVariable int no,Model model) {
