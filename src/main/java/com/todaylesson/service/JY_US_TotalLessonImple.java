@@ -62,8 +62,8 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 
 
 	@Override
-	public List<Lesson_qaDTO> select_lesson_reply(Lesson_qaDTO dto) {
-		return mapper.select_lesson_reply(dto);
+	public List<Lesson_qaDTO> select_lesson_reply(int lesson_no) {
+		return mapper.select_lesson_reply(lesson_no);
 	}
 
 
@@ -77,5 +77,14 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 	public List<CartDTO> has_cart_lesson(CartDTO dto) {
 		return mapper.has_cart_lesson(dto);
 	}
+
+
+	@Override
+	public int add_lesson_reply_answer(Lesson_qaDTO dto) {
+		return mapper.add_lesson_reply_answer(dto);
+	}
+
+
+
 
 }

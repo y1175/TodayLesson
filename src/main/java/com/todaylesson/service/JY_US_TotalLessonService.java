@@ -22,10 +22,13 @@ public interface JY_US_TotalLessonService {
 
 	public int add_lesson_secret_reply(Lesson_qaDTO dto);
 
-	public List<Lesson_qaDTO> select_lesson_reply(Lesson_qaDTO dto);
+	public List<Lesson_qaDTO> select_lesson_reply(int lesson_no);
 
 	public List<MyLikeDTO> has_like_lesson(MyLikeDTO dto);
 
 	public List<CartDTO> has_cart_lesson(CartDTO dto);
+
+	public int add_lesson_reply_answer(Lesson_qaDTO dto);
+
 
 }

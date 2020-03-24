@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +8,25 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
+.selected {
+	display: none;
+}
 
-.selected{display: none;}
-#accordian li{ list-style:none;}
-#accordian li >h1{ cursor:pointer;}
-li > ul{ display:none;}
-li > ul >li{ color:#00F;}
+#accordian li {
+	list-style: none;
+}
 
+#accordian li>h1 {
+	cursor: pointer;
+}
+
+li>ul {
+	display: none;
+}
+
+li>ul>li {
+	color: #00F;
+}
 </style>
 <script> 
 
@@ -47,7 +59,18 @@ $(document).ready(function() {
 	$('#summer').html();
 
 	
-	
+
+    $('#sec').change(function() {
+       if ( $('#sec').prop('checked')) {
+       	document.getElementById('lesson_qa_reply_secret').value='Y';
+       } else {
+       document.getElementById('lesson_qa_reply_secret').value='N';
+    }
+    
+       console.log( document.getElementById('lesson_qa_reply_secret').value);
+
+    });
+    
 	
 });
 
@@ -66,18 +89,18 @@ $(document).ready(function() {
 
 
 
-<!-- 레슨명, 이런 기본적인건 옆에 배치 -->
-
-    
+	<!-- 레슨명, 이런 기본적인건 옆에 배치 -->
 
 
-<button class="insert_my_like">좋아요</button>
-<button class="insert_my_cart">카트에 담기</button>
-
-<br>
 
 
-<script>
+	<button class="insert_my_like">좋아요</button>
+	<button class="insert_my_cart">카트에 담기</button>
+
+	<br>
+
+
+	<script>
 
 $(".insert_my_like").click(function(){
 	 
@@ -160,129 +183,135 @@ $(".insert_my_cart").click(function(){
 </script>
 
 
-레슨명
-<br><c:out value="${dto.lesson_title }"/><br>
+	레슨명
+	<br>
+	<c:out value="${dto.lesson_title }" />
+	<br> 이 강의는 "
+	<c:choose>
 
+		<c:when test="${dto.lesson_category == 1}">
+			<c:out value="운동" />
+		</c:when>
 
-이 강의는 "
-<c:choose>
+		<c:when test="${dto.lesson_category == 2}">
+			<c:out value="교육" />
+		</c:when>
 
-<c:when test="${dto.lesson_category == 1}">
-<c:out value="운동"/>
-</c:when>
+		<c:when test="${dto.lesson_category == 3}">
+			<c:out value="핸드메이드" />
+		</c:when>
 
-<c:when test="${dto.lesson_category == 2}">
-<c:out value="교육"/>
-</c:when>
+		<c:when test="${dto.lesson_category == 4}">
+			<c:out value="it" />
+		</c:when>
 
-<c:when test="${dto.lesson_category == 3}">
-<c:out value="핸드메이드"/>
-</c:when>
+		<c:otherwise>
+			<c:out value="요리" />
+		</c:otherwise>
 
-<c:when test="${dto.lesson_category == 4}">
-<c:out value="it"/>
-</c:when>
+	</c:choose>
+	"에 관심이 있는 분들을 위한 강의이며,
+	<br> 총
+	<c:out value="${dto.lesson_number}" />
+	강으로 구성되어 있습니다.
 
-<c:otherwise>
-<c:out value="요리"/>
-</c:otherwise>
+	<!-- 이 위에 멘트는 다회성, 온라인에만 나오게  -->
 
-</c:choose>
-"에 관심이 있는 분들을 위한 강의이며,
-<br>
-총 <c:out value="${dto.lesson_number}"/>강으로 구성되어 있습니다.
+	<br> 레슨 내용
+	<br>
+	<div class="summer">${dto.lesson_content}</div>
 
-<!-- 이 위에 멘트는 다회성, 온라인에만 나오게  -->
+	수강 가능한 최대 주니어수
+	<br>
+	<c:out value="${dto.lesson_member_max}" />
+	<br> 현재 수강 중인 주니어 수
+	<br>
+	<c:out value="${dto.lesson_junior_count}" />
+	<br> 수강 가능한 주니어 수
+	<br>
+	<c:set var="possible_junior"
+		value="${dto.lesson_member_max - dto.lesson_junior_count}" />
+	<c:out value="${possible_junior}" />
+	<br> 카테고리
+	<br>
+	<c:choose>
 
-<br>
-레슨 내용
-<br>
-<div class="summer">
-${dto.lesson_content}
-</div>
+		<c:when test="${dto.lesson_category == 1}">
+			<c:out value="운동" />
+			<br>
+		</c:when>
 
-수강 가능한 최대 주니어수
-<br>
-<c:out value="${dto.lesson_member_max}"/><br>
+		<c:when test="${dto.lesson_category == 2}">
+			<c:out value="교육" />
+			<br>
+		</c:when>
 
-현재 수강 중인 주니어 수
-<br>
-<c:out value="${dto.lesson_junior_count}"/><br>
+		<c:when test="${dto.lesson_category == 3}">
+			<c:out value="핸드메이드" />
+			<br>
+		</c:when>
 
-수강 가능한 주니어 수 
-<br>
-<c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}"/>
-<c:out value="${possible_junior}"/><br>
+		<c:when test="${dto.lesson_category == 4}">
+			<c:out value="it" />
+			<br>
+		</c:when>
 
+		<c:when test="${dto.lesson_category == 5}">
+			<c:out value="요리" />
+			<br>
+		</c:when>
 
-카테고리
-<br>
-<c:choose>
+		<c:otherwise>
+			<c:out value="기타" />
+			<br>
+		</c:otherwise>
 
-<c:when test="${dto.lesson_category == 1}">
-<c:out value="운동"/><br>
-</c:when>
+	</c:choose>
 
-<c:when test="${dto.lesson_category == 2}">
-<c:out value="교육"/><br>
-</c:when>
+	레슨 가격
+	<br>
+	<c:out value="${dto.lesson_cost}" />
+	<br> 레슨 판매 기간
+	<br>
+	<c:out value="${dto.lesson_open_period}" />
+	~
+	<c:out value="${dto.lesson_close_period}" />
+	<br> 레슨 타입
+	<br>
+	<c:choose>
 
-<c:when test="${dto.lesson_category == 3}">
-<c:out value="핸드메이드"/><br>
-</c:when>
+		<c:when test="${dto.lesson_type == 1}">
+			<c:out value="원데이 클래스" />
+			<br>
+		</c:when>
 
-<c:when test="${dto.lesson_category == 4}">
-<c:out value="it"/><br>
-</c:when>
+		<c:when test="${dto.lesson_type == 2}">
+			<c:out value="다회성 클래스" />
+			<br>
+		</c:when>
 
-<c:when test="${dto.lesson_category == 5}">
-<c:out value="요리"/><br>
-</c:when>
+		<c:otherwise>
+			<c:out value="온라인 클래스" />
+			<br>
+		</c:otherwise>
 
-<c:otherwise>
-<c:out value="기타"/><br>
-</c:otherwise>
+	</c:choose>
 
-</c:choose>
+	<div class="layer">
+		레슨 일자 및 시간
+		<c:out value="${dto.lesson_date_time}" />
+		<br> 레슨 주소<br> 우편번호
+		<c:out value="${dto.lesson_zipno}" />
+		<br> 주소
+		<c:out value="${dto.lesson_addr}" />
+		<br>
+		<!-- 여기에 map가져오기 -->
 
-레슨 가격 
-<br>
-<c:out value="${dto.lesson_cost}"/><br>
+		<div id="map" style="width: 750px; height: 350px;"></div>
 
-레슨 판매 기간
-<br>
-<c:out value="${dto.lesson_open_period}"/> ~ <c:out value="${dto.lesson_close_period}"/><br> 
-
-레슨 타입
-<br>
-<c:choose>
-
-<c:when test="${dto.lesson_type == 1}">
-<c:out value="원데이 클래스"/><br>
-</c:when>
-
-<c:when test="${dto.lesson_type == 2}">
-<c:out value="다회성 클래스"/><br>
-</c:when>
-
-<c:otherwise>
-<c:out value="온라인 클래스"/><br>
-</c:otherwise>
-
-</c:choose>
-
-<div class="layer">
-레슨 일자 및 시간 <c:out value="${dto.lesson_date_time}"/><br>
-
-레슨 주소<br> 
-우편번호<c:out value="${dto.lesson_zipno}"/><br>
-주소<c:out value="${dto.lesson_addr}"/><br>
-<!-- 여기에 map가져오기 -->
-
-<div id="map" style="width:750px;height:350px;"></div>
-
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
-<script>
+		<script
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
+		<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new kakao.maps.LatLng(${dto.lesson_lat}, ${dto.lesson_long}), // 지도의 중심좌표
@@ -299,75 +328,79 @@ ${dto.lesson_content}
 </script>
 
 
-</div>
+	</div>
 
-시니어 명<c:out value="${dto.lesson_senior_title}"/><br>
-
-시니어 소개
-<div class="summer">
-${dto.lesson_senior_content}
-</div>
-<input type="button" onclick="location.href='${pageContext.request.contextPath }/lesson_buy/${dto.lesson_no}'">
-<a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
-
+	시니어 명
+	<c:out value="${dto.lesson_senior_title}" />
+	<br> 시니어 소개
+	<div class="summer">${dto.lesson_senior_content}</div>
+	<input type="button"
+		onclick="location.href='${pageContext.request.contextPath }/lesson_buy/${dto.lesson_no}'">
+	<a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
 
 
-<div class="container">
-    <form id="commentForm" name="commentForm" method="post">
-    <br><br>
-        <div>
-            <div>
-                <span><strong>Comments</strong></span> <span id="cCnt"></span>
-            </div>
-            <div>
-                <table class="table">                    
-                    <tr>
-                        <td>
-                        비밀글
-                        <input type="checkbox" name="sec" id="sec">
-                        <input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret">
-                        
-                        <script>
-                        
-                        $("input:checkbox").on('click', function() {
-                           if ( $(this).prop('checked')) {
+
+	<div class="container">
+		<form id="commentForm" name="commentForm" method="post">
+			<br>
+			<br>
+			<div>
+				<div>
+					<span><strong>Comments</strong></span> <span id="cCnt"></span>
+				</div>
+				<div>
+					<table class="table">
+						<tr>
+							<td>비밀글 <input type="checkbox" name="sec" id="sec">
+							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret"> 
+								
+						<script>
+                        /*
+						
+                        $('#sec').change(function() {
+                           if ( $('#sec').prop('checked')) {
                            	document.getElementById('lesson_qa_reply_secret').value='Y';
-                        } else {
-                            document.getElementById('lesson_qa_reply_secret').value='N';
+                           } else {
+                           document.getElementById('lesson_qa_reply_secret').value='N';
                         }
                         
                         });
                         
+                      
                         
-                        </script>
+                        
+                        console.log( document.getElementById('lesson_qa_reply_secret').value);
+                        */
+                        
+                        </script> 
+                        
+                        <label>제목</label> 
+                        
+                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title">
+								<textarea rows="3" cols="30" id="lesson_qa_reply_content"
+									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
+								<br>
+								<div>
+									<a href='#' onClick="fn_comment('${dto.lesson_no }')" class="btn pull-right btn-success">등록</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no"> 
+				<input type="hidden" name="senior_id" value="${dto.member_id}" id="senior_id"> 
+				<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<form id="commentListForm" name="commentListForm" method="post">
+			<div id="commentList"></div>
+		</form>
+	</div>
 
 
-                        <label>제목</label>
-                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" >
-                            <textarea rows="3" cols="30" id="lesson_qa_reply_content" name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
-                            <br>
-                            <div>
-                                <a href='#' onClick="fn_comment('${dto.lesson_no }')" class="btn pull-right btn-success">등록</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no" >
-			<input type="hidden" name="senior_id" value="${dto.member_id}" id="senior_id" >
-			<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />     
-        </div>
-    </form>
-</div>
-<div class="container">
-    <form id="commentListForm" name="commentListForm" method="post">
-        <div id="commentList">
-        </div>
-    </form>
-</div>
-
-
-<script>
+	<script>
 /*
  * 댓글 등록하기(Ajax)
  */
@@ -406,7 +439,8 @@ function fn_comment(lesson_no){
         
     });
 }
- 
+
+
   
   
 /**
@@ -436,25 +470,73 @@ function getCommentList(){
             
             let html = "";
             let cCnt = data.length;
+       
             
-            if (data.length > 0){
+   if (data.length > 0){
                 
                 for(i=0; i<data.length; i++){
-                	if (i == 0) {
-                		html += "<div id='accordian'>";
-                		html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
-					} else if(i == data.length - 1){
-						
-						html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
-						html += "</ul></div>";
-                	} else {
-                  	 	html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                  	  	html += "<ul <li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li></ul></li>";
-                	}
-        		}
-                
+                   if (i == 0) {
+                   	    html += "<div id='accordian'>";
+                   	    html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li>";
+              
+						 if (member_id == senior_id) { 
+                        	
+                        	html += "<li>";
+			                html += "<input type ='hidden' name='lesson_qa_reply_secret' id='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
+                           	html += "<input type ='hidden' name='lesson_qa_no' id='lesson_qa_no' value="+data[i].lesson_qa_no+">";
+	                        html += "<input type = 'text' id='lesson_qa_answer_content' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+                        	html += "<input type ='button' onClick='fn_answer("+data[i].lesson_qa_no+")' class='btn pull-right btn-success' value='등록'></li></ul></li>"; 
+                        
+                        }  else { 
+                        
+                        	html+= "</ul></li>"; 
+                        	
+                        }
+                        
+                        
+                   } else if(i == data.length-1){
+                  
+                  		html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li>";
+                        
+						 if (member_id == senior_id) { 
+                        	
+	                        html += "<li>";
+			                html += "<input type ='hidden' name='lesson_qa_reply_secret' id='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
+                           	html += "<input type ='hidden' name='lesson_qa_no' id='lesson_qa_no' value="+data[i].lesson_qa_no+">";
+	                        html += "<input type = 'text' id='lesson_qa_answer_content' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+                        	html += "<input type='button' onClick='fn_answer("+ data[i].lesson_qa_no +")' class='btn pull-right btn-success' value='등록'></li></ul></li></ul></div>"; 
+                        
+                        }  else { 
+                        
+                        	html+= "</ul></li></ul></div>"; 
+                        	
+                        }
+ 
+                  		
+                   } else {
+                	   
+                        html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li>";
+                        
+						 if (member_id == senior_id) { 
+                        	
+	                         html += "<li>";
+				             html += "<input type ='hidden' name='lesson_qa_reply_secret' id='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
+			                 html += "<input type ='hidden' name='lesson_qa_no' id='lesson_qa_no' value="+data[i].lesson_qa_no+">";
+		                     html += "<input type = 'text' id='lesson_qa_answer_content' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+                        	 html += "<input type='button' onClick='fn_answer(" +data[i].lesson_qa_no+")' class='btn pull-right btn-success' value='등록'></li></ul></li>"; 
+                        
+                        }  else { 
+                        
+                        	html+= "</ul></li>"; 
+                        	
+                        }
+ 
+                   }
+
+                }
             } else {
                 
                 html += "<div>";
@@ -487,6 +569,59 @@ function getCommentList(){
         
     });
 }
+
+
+
+//답댓
+function fn_answer(lesson_qa_no){
+
+	console.log(lesson_qa_no);
+	
+	let senior_id = '${pageContext.request.userPrincipal.name}';
+	let lesson_no = document.getElementById('lesson_no').value;
+	let lesson_qa_answer_content = document.getElementById('lesson_qa_answer_content').value;
+	let lesson_qa_reply_secret = document.getElementById('lesson_qa_reply_secret').value;
+
+	console.log(senior_id);
+	
+	
+	
+	let data = {
+			
+			lesson_qa_answer_content : lesson_qa_answer_content,
+			senior_id : senior_id,
+			lesson_qa_no : lesson_qa_no,
+			lesson_no : lesson_no,
+			lesson_qa_reply_secret : lesson_qa_reply_secret
+	}
+	
+	console.log('dddd',data);
+	
+ $.ajax({
+     type:'post',
+     url : '/lesson_detail/${dto.lesson_no}/lesson_answer_insert',
+     data : data,
+     success : function(result){
+         if(result=="success")
+         {
+         	alert("답변 등록 완료!");
+             //getCommentList();
+             $("#lesson_qa_answer_content").val("");
+             //$("#lesson_qa_reply_content").val("");
+             //$('input[name="sec"]').prop("checked", false);
+         	//$("#pas").hide();
+
+         }
+     },
+     error:function(request,status,error){
+         //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+     
+ });
+	
+}
+
+
 
  
 </script>

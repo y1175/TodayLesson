@@ -138,11 +138,8 @@ public class JY_US_TotalLessonController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		
 		ArrayList<HashMap> rplist = new ArrayList<HashMap>();
-		
-		Lesson_qaDTO dto = new Lesson_qaDTO();
-		dto.setLesson_no(lesson_no);
-		
-		List<Lesson_qaDTO> lesson_reply_list = ttlesson_service.select_lesson_reply(dto);
+				
+		List<Lesson_qaDTO> lesson_reply_list = ttlesson_service.select_lesson_reply(lesson_no);
 	
 		if (lesson_reply_list.size() > 0) {
 			for (int i = 0; i < lesson_reply_list.size(); i++) {
@@ -152,30 +149,45 @@ public class JY_US_TotalLessonController {
 				if (lesson_reply_list.get(i).getLesson_qa_reply_secret().equals("Y")) {
 					
 					if (lesson_reply_list.get(i).getMember_id().equals(member_id)) {
+						hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
 						hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
 						hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
 						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
 						hm.put("member_id", lesson_reply_list.get(i).getMember_id());
+						hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+
 						
 					} else if (senior_id.equals(member_id)) {
+						hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
 						hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
 						hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
 						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
 						hm.put("member_id", lesson_reply_list.get(i).getMember_id());
+						hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+
+
 						
 					} else {
+					hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
 					hm.put("lesson_qa_reply_title", "비밀 글입니다.");
 					hm.put("lesson_qa_reply_content", "작성자와 시니어만 확인할 수 있습니다.");
 					hm.put("member_id","비밀 댓글입니다.");
 					hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
+					hm.put("lesson_qa_answer_content", lesson_reply_list.get(i).getLesson_qa_answer_content());
+					hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+
+
 					}
 					
 				} else {
-					
+				hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());	
 				hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
 				hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
 				hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
 				hm.put("member_id", lesson_reply_list.get(i).getMember_id());
+				hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+
+
 				}
 				rplist.add(hm);
 			}
@@ -187,6 +199,35 @@ public class JY_US_TotalLessonController {
 		
 		
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("lesson_detail/{lesson_no}/lesson_answer_insert")
+	public String lesson_answer_insert(@PathVariable int lesson_no, @RequestParam int lesson_qa_no, @RequestParam String senior_id,
+			@RequestParam String lesson_qa_answer_content, @RequestParam String lesson_qa_reply_secret) {
+		
+		Lesson_qaDTO dto = new Lesson_qaDTO();
+		
+		// 댓글이 있는 레슨번호
+		dto.setLesson_no(lesson_no);
+		// 내가 답변을 다는 댓글 번호
+		dto.setLesson_qa_originno(lesson_qa_no);
+		// 답변
+		dto.setLesson_qa_answer_content(lesson_qa_answer_content);
+		// 답변을 다는 사람은 시니어
+		dto.setMember_id(senior_id);
+		dto.setLesson_qa_reply_secret(lesson_qa_reply_secret);
+
+			int result = ttlesson_service.add_lesson_reply_answer(dto);
+			if (result > 0) {
+				return "success";
+			} else {
+				return "false";
+			}
+		
+	}
+	
+	
 	
 	
 	
