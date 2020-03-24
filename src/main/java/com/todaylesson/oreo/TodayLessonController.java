@@ -41,7 +41,7 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.DTO.ProductDTO;
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.Admin_HS_MainService;
@@ -172,7 +172,7 @@ public class TodayLessonController {
     @RequestMapping("/todaylesson")
     public String all(Model model){
 	    //신규레슨목록
-    	List<SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO> newlessonlist 
+    	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> newlessonlist 
     	    =userMainService.newLessonList();
     	//신규스토어목록
     	List<ProductDTO> storenewproductlist=userMainService.StoreNewProductList(); 

@@ -5,8 +5,7 @@
 <mapper namespace="com.todaylesson.Mapper.Senior_HS_Salescalculate_Mapper">
     <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
     <!-- 쿼리문이랑 같은 이름설정--> 
-	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO" id="salesCalculateMap">
-	   <result property="sales_no" column="sales_no"/> <!-- 매츌현황 NO. (Sales Table) -->
+	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO" id="salesCalculateMap">
 	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> <!-- 매출현황 결제상태  (OrderList Table)-->
 	   <result property="lesson_type" column="lesson_type"/> <!-- 매출현황 레슨타입 (Lesson Table)  -->
 	   <result property="lesson_no" column="lesson_no"/> <!-- 매출현황 레슨번호 (Lesson Table)  -->
@@ -21,7 +20,7 @@
 	   <result property="sales_search_enddate" column="sales_search_enddate"/> <!-- 매출현황 기간검색 END  (Sales Table) -->
 	   <result property="calculate_no" column="calculate_no"/> <!-- 정산신청 정산번호 (Calculate Table) -->
 	   <result property="calculate_date" column="calculate_date"/> <!-- 정산신청 정산신청일 (Calculate Table) -->
-	   <result property="calculate_comp" column="calculate_comp"/> <!-- 정산신청 정산상태 (Calculate Table) -->
+	   <result property="orderlist_calculatestatus" column="orderlist_calculatestatus"/> <!-- 정산신청 정산상태 (Calculate Table) -->
 	   <result property="lesson_open_period" column="lesson_open_period"/> <!-- 정산신청 정산기간_시작 (Calculate Table) -->
  	   <result property="lesson_close_period" column="lesson_close_period"/> <!-- 정산신청 정산기간_끝 (Calculate Table) -->
  	   <result property="senior_bank_name" column="senior_bank_name"/> <!-- 정산신청 정산계좌_은행명 (Calculate Table) -->
@@ -30,7 +29,7 @@
 	</resultMap>  
 	
 	<!-- 매출현황전체리스트 -->
-	<select id="SalesList" resultMap="salesCalculateMap" parameterType="int" parameterMap="hashmap">
+	<select id="SalesList" resultMap="salesCalculateMap" parameterMap="hashmap">
 	   select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
 	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
 	          floor(sum(lesson_cost*0.1)) as sales_comm, 
@@ -46,9 +45,9 @@
 	         ]]>        
 	</select>
 	
-	<!-- 정산신청 리스트 정산번호 / 정산신청일 / 정산기간 / 정산계좌 -->
+	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌 -->
 	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="int">
-	   select c.calculate_no, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
+	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
 	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
 	   from calculate c join orderlist o on c.orderlist_no=o.orderlist_no
 	                    join order_detail od on od.orderlist_no=o.orderlist_no
@@ -56,7 +55,64 @@
                         join member m on m.member_id=o.member_id
                         join senior s on s.member_id=m.member_id
 	   where s.senior_no=#{senior_no}
+	   group by o.orderlist_date
+       order by orderlist_date desc
 	</select>
+	
+	<!-- 정산신청 리스트 결제건수 -->
+	<select id="calPayCount" resultMap="salesCalculateMap" parameterType="int">
+	   select count(*)
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+	   where s.senior_no=#{senior_no}
+	   group by o.orderlist_date
+       order by orderlist_date desc
+	</select>
+	
+	<!-- 정산신청 리스트 레스수익금액 -->
+	<select id="calRevenueCost" resultMap="salesCalculateMap" parameterType="int">
+	   select sum(orderlist_cost) 
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+       where s.senior_no=#{senior_no}
+       group by o.orderlist_date
+       order by orderlist_date desc
+	</select>
+	
+	<!-- 정산신청 리스트 포인트사용 -->
+	<select id="calUsePointSum" resultMap="salesCalculateMap" parameterType="int">
+	   select sum(orderlist_usepoint) 
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+       where s.senior_no=#{senior_no}
+       group by o.orderlist_date
+       order by orderlist_date desc
+	</select>
+	
+	<!-- 정산신청 리스트 레스취소금액 -->
+	<!-- <select id="calCancelCost" resultMap="salesCalculateMap" parameterType="int">
+	   select sum(orderlist_cost) 
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+       where s.senior_no=#{senior_no} and o.orderlist_paystatus=1 1결제취소
+       group by o.orderlist_date
+       order by orderlist_date desc
+	</select> -->
+	
+	<!-- 정산신청 리스트 포인트취소 -->
+	<!-- <select id="calCancelPointSum" resultMap="salesCalculateMap" parameterType="int">
+	   select sum(orderlist_usepoint) 
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+       where s.senior_no=#{senior_no} and o.orderlist_paystatus=0 1결제취소
+       group by o.orderlist_date
+       order by orderlist_date desc
+	</select> -->
 
 
 </mapper>

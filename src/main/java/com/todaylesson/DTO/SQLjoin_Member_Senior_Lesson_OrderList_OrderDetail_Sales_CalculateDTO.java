@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-public class SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO {
+public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO {
 	
 	//MemberDTO
 	private String member_id;
@@ -80,6 +80,7 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_Sales_CalculateDTO {
 	private String orderlist_date;
 	private int orderlist_orderstatus;
 	private int orderlist_paystatus;
+	private int orderlist_calculatestatus;
 	private int orderlist_cost;
 	private int orderlist_usepoint;
 	
