@@ -405,17 +405,23 @@ public class EJ_ProductController {
 			,@RequestParam(value="member_id") String member_id
 			,@RequestParam(value="totalcost") int totalcost
 			,@RequestParam(value="paymentcost") int paymentcost)
-			
 	{
 		
-	
-		
+		System.out.println("");
 	}
 	
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping("/showcheckedlist_json")
 	public void showcheckedlist(HttpSession session) {
 		System.out.println("체크된리스트 컨트롤러");
+		service.insertorder_cart(dto);
+	}*/
+	
+	@RequestMapping("/order_cart/{member_id}")
+	public void  ordercart(@PathVariable(value="member_id") String member_id,Model model) {
+		System.out.println("오더카트");
+		List<CartDTO> cartdto=service.selectMyCart(member_id);
+		//service.insertorder_cart(cartdto);
 	}
 	}
 	

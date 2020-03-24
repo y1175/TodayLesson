@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="">
+<form method="post" action="/order_cart">
 mycart페이지<br>
 <table>
 <thead>
@@ -39,7 +39,7 @@ mycart페이지<br>
 <input type="submit" value="주문하기">
 </form>
 <script>
-$("input:checkbox").on('click', function() {
+/* $("input:checkbox").on('click', function() {
 	
 	var product_name= $(this).val();
 	var cart_amount= $(this).prop('id');
@@ -50,13 +50,7 @@ $("input:checkbox").on('click', function() {
 			cart_amount: cart_amount
 			
 	}
- /*    var str = "";
-	str+="<tr><td>"+data.member_id+"</td>"
-	str+="<td>"+data.pdreview_content+"</td></tr>"
-   
 
-  
-  $("section.replyList ol").append(str); */
 	$.ajax({
 		url:"/showcheckedlist_json",
 		type:"post",
@@ -73,7 +67,7 @@ $("input:checkbox").on('click', function() {
 	}	
 	});
 
-});
+}); */
 </script>
 </body>
 </html>
