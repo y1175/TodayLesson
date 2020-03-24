@@ -96,7 +96,7 @@ public class JY_US_TotalLessonController {
 		List<CartDTO> lesson_in_cart = ttlesson_service.has_cart_lesson(dto);
 		if (lesson_in_cart.isEmpty()) {
 			ttlesson_service.add_cart_lesson(dto);
-			result="success";
+			result="success"; 
 		} else {
 			result="false";
 		}
