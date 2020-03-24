@@ -69,4 +69,20 @@ select * from lesson_q_a
 where lesson_no = #{lesson_no} 
 
 </select>
+
+<select id="has_like_lesson" resultType="com.todaylesson.DTO.MyLikeDTO" parameterType="com.todaylesson.DTO.MyLikeDTO">
+
+select * from mylike
+where lesson_no=#{lesson_no} and member_id = #{member_id}
+
+
+</select>
+
+<select id="has_cart_lesson" resultType="com.todaylesson.DTO.CartDTO" parameterType="com.todaylesson.DTO.CartDTO">
+
+select * from cart
+where lesson_no = #{lesson_no} and member_id=#{member_id}
+
+</select>
+
 </mapper>

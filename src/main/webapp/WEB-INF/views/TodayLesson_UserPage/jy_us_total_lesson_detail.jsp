@@ -85,16 +85,18 @@ $(".insert_my_like").click(function(){
   let member_id='${pageContext.request.userPrincipal.name}';
   
   let data = {
-	   lesson_no: lesson_no,
-       member_id: member_id,
-  };
+		  lesson_no : lesson_no,
+	      member_id: member_id,
+	   };
+	 
   
   console.log(member_id);
   
   if(member_id=='')
   {
   alert('로그인이 필요합니다.');
-  } else{
+  
+  } else {
  
   $.ajax({
    url :"/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
@@ -102,7 +104,11 @@ $(".insert_my_like").click(function(){
    type : "post",
    data : data,
    success : function(){
+	   if(data=="success"){
    		alert("♥");
+   } else {
+		alert("좋아요는 한번만 할 수 있습니다.");   
+   }
    }  
    ,error: function(){
       console.log('error');
@@ -123,6 +129,7 @@ $(".insert_my_cart").click(function(){
 	  lesson_no : lesson_no,
       member_id: member_id,
    };
+ 
  if(member_id=='')
  {
  alert('로그인이 필요합니다.');
@@ -134,8 +141,12 @@ $(".insert_my_cart").click(function(){
   type : "post",
   data : data,
   success : function(){
+	  if(data=="success"){
   		alert("장바구니에 레슨이 담겼습니다!");
-   		} 
+   	} else {
+		alert("레슨은 장바구니에 딱 한번만 담을 수 있습니다.");   
+   	} 
+   	}
   ,error: function(){
      console.log('error');
      }

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysql.cj.core.conf.ModifiableLongProperty;
 import com.todaylesson.DTO.AllLessonDTO;
+import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
 import com.todaylesson.DTO.MyLikeDTO;
@@ -62,27 +64,41 @@ public class JY_US_TotalLessonController {
 	
 	@ResponseBody
 	@RequestMapping("lesson_like")
-	public void lesson_like(@RequestParam(value="lesson_no") int lesson_no
+	public String lesson_like(@RequestParam(value="lesson_no") int lesson_no
 			,@RequestParam(value="member_id") String member_id){
 		
 		MyLikeDTO dto = new MyLikeDTO();
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
 		
-		ttlesson_service.add_like_lesson(dto);
+		List<MyLikeDTO> has_dto = ttlesson_service.has_like_lesson(dto);
 		
+		if (has_dto.isEmpty()) {
+			ttlesson_service.add_like_lesson(dto);
+			return "success";
+		} else {
+			return "false";
+		}
+	
 	}
+	
+	
 	@ResponseBody
 	@RequestMapping("lesson_cart")
-	public void lesson_cart(@RequestParam(value="lesson_no") int lesson_no
+	public String lesson_cart(@RequestParam(value="lesson_no") int lesson_no
 			,@RequestParam(value="member_id") String member_id){
 		
-		MyLikeDTO dto = new MyLikeDTO();
+		CartDTO dto = new CartDTO();
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
-		
-		ttlesson_service.add_cart_lesson(dto);
-		
+			
+		List<CartDTO> lesson_in_cart = ttlesson_service.has_cart_lesson(dto);
+		if (lesson_in_cart.isEmpty()) {
+			ttlesson_service.add_cart_lesson(dto);
+			return "success";
+		} else {
+			return "false";
+		}
 	}
 	
 	
