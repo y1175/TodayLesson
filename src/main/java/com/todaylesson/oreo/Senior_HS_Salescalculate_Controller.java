@@ -21,7 +21,7 @@ public class Senior_HS_Salescalculate_Controller {
 	private Senior_HS_Salescalculate_Service salescalculateService;
 	
 	@RequestMapping("/senior_sales_list/{senior_no}")
-	public String salesList(@PathVariable int senior_no 
+	public String salesList(@PathVariable int senior_no
 	            		   ,@RequestParam(required=false, defaultValue="") String sales_search_startdate
 			               ,@RequestParam(required=false, defaultValue="") String sales_search_enddate
 			               ,@RequestParam(required=false, defaultValue="") String search

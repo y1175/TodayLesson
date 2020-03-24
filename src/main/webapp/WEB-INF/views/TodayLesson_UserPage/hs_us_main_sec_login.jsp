@@ -28,7 +28,7 @@
 
 </head>
 <body>
-  <div style="width: 50%; margin: auto; text-align: center;">
+  <div style="width: 50%; margin: auto; text-align: center;" id="todaaylesson">
       <form method="post" action="/todaylesson">
          <div class="hs_us_mainheader_loginmodalform_div">
             <b>오늘의 레슨에 오신것을 환영합니다!</b>

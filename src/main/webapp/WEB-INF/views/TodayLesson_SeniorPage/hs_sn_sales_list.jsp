@@ -80,7 +80,7 @@
                <c:set var="comm_sum" value="0"/> <!-- 정산수수료합계 -->
                <c:set var="surtaxsum" value="0"/> <!-- 세금계산서 부가세합계-->
                <c:forEach var="salesList" items="${salesList}">
-               <c:choose>
+               <%-- <c:choose>
                   <c:when test="${salesList eq null}">
                      <tr>
                         <td>
@@ -88,8 +88,8 @@
                         </td>
                      </tr>
                   </c:when>
-               </c:choose>
-               <c:otherwise>
+               </c:choose> --%>
+               <%-- <c:otherwise> --%>
                   <tr>
                      <!-- NO. -->
                      <td>
@@ -97,10 +97,10 @@
                      </td> 
                      <!-- 결제상태 -->
                      <c:choose>
-                        <c:when test="${salesList.orderlist_paystatus == 0}">
+                        <c:when test="${salesList.orderlist_paystatus == 2}">
                            <c:out value="결제완료"/>
                         </c:when> 
-                        <c:when test="${salesList.orderlist_paystatus == 1}">
+                        <c:when test="${salesList.orderlist_paystatus == 5}">
                            <c:out value="결제취소"/>
                         </c:when>
                      </c:choose>
@@ -142,20 +142,26 @@
                            <c:out value="${senior_sales}"/>
                         </td> 
                      <!-- 결제금액 -->
-                     <c:choose>
+                        <td>
+                           <c:out value="${salesList.lesson_cost}"/>
+                        </td> 
+                     <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
                            <td>
                               <c:out value="${salesList.lesson_cost}"/>
                            </td> 
-                        </c:when>
-                        <c:when test="${salesList.orderlist_paystatus == 1}">
+                        </c:when> --%>
+                       <%--  <c:when test="${salesList.orderlist_paystatus == 1}">
                            <td>
                              <c:out value="0"/>
                            </td>
                         </c:when>
-                     </c:choose>
+                     </c:choose> --%>
                      <!-- 포인트사용 -->
-                     <c:choose>
+                        <td>
+                           <c:out value="${salesList.orderlist_usepoint}"/>
+                        </td> 
+                     <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
                            <td>
                               <c:out value="${salesList.orderlist_usepoint}"/>
@@ -166,7 +172,7 @@
                              <c:out value="0"/>
                            </td>
                         </c:when>
-                     </c:choose>
+                     </c:choose> --%>
                      <!-- 취소금액 -->
                      <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
@@ -240,7 +246,7 @@
                   </c:choose> --%>
                   <c:set var="comm_sum" value="${comm_sum+salesList.sales_comm}"/> <!-- 정산수수료합계 -->
                   <c:set var="surtaxsum" value="${surtaxsum+salesList.sales_surtax}"/> <!-- 세금계산서 부가세합계-->
-               </c:otherwise>
+              <%--  </c:otherwise> --%>
                </c:forEach>
             </tbody>
             <tfoot>

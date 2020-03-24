@@ -6,6 +6,10 @@
     <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
     <!-- 쿼리문이랑 같은 이름설정--> 
 	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO" id="salesCalculateMap">
+	   <result property="senior_no" column="senior_no"/>
+	   <result property="member_id" column="member_id"/>
+	   <result property="member_no" column="member_no"/>
+	   <result property="orderlist_no" column="orderlist_no"/>
 	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> <!-- 매출현황 결제상태  (OrderList Table)-->
 	   <result property="lesson_type" column="lesson_type"/> <!-- 매출현황 레슨타입 (Lesson Table)  -->
 	   <result property="lesson_no" column="lesson_no"/> <!-- 매출현황 레슨번호 (Lesson Table)  -->
@@ -38,7 +42,7 @@
 	                join order_detail od on od.orderlist_no=o.orderlist_no
 	                join member m on m.member_id=o.member_id
 	                join lesson l on l.lesson_no=od.lesson_no             
-	   where senior_no=#{senior_no}
+	   where m.member_id=#{member_id}
 	   <![CDATA[   
 	         and s.sales_search_startdate>=#{sales_search_startdate}
 	         and s.sales_search_enddate<=#{sales_search_enddate} 
