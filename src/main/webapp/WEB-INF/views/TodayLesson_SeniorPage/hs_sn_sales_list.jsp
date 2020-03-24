@@ -60,13 +60,13 @@
                   <th rowspan="2">구매일</th>
                   <th rowspan="2">구매자</th>
                   <th rowspan="2">시니어매출</th>
-                  <th colspan="6">관리</th>
+                  <th colspan="4">상세내역</th>
                </tr>
                <tr>
                   <th>결제금액</th>   
                   <th>포인트사용</th>
-                  <th>취소금액</th>
-                  <th>취소포인트</th>
+                  <!-- <th>취소금액</th>
+                  <th>취소포인트</th> -->
                   <th>정산수수료</th>
                   <th>세금계산서부가세</th>
                </tr>
@@ -74,12 +74,22 @@
             <tbody>
                <c:set var="sales_sum" value="0"/> <!-- 시니어매출합계 -->
                <c:set var="cost_sum" value="0"/> <!-- 결제금액합계 -->
-               <c:set var="costcancel_sum" value="0"/> <!-- 결제결제취소합계합계 -->
+               <%-- <c:set var="costcancel_sum" value="0"/> --%> <!-- 결제결제취소합계합계 -->
                <c:set var="usepoint_sum" value="0"/> <!-- 포인트사용합계 -->
-               <c:set var="usepointcancel_sum" value="0"/> <!-- 포인트취소합계 -->
+               <%-- <c:set var="usepointcancel_sum" value="0"/> --%> <!-- 포인트취소합계 -->
                <c:set var="comm_sum" value="0"/> <!-- 정산수수료합계 -->
                <c:set var="surtaxsum" value="0"/> <!-- 세금계산서 부가세합계-->
                <c:forEach var="salesList" items="${salesList}">
+               <c:choose>
+                  <c:when test="${salesList eq null}">
+                     <tr>
+                        <td>
+                           <c:out value="매출내역이 없습니다"/>
+                        </td>
+                     </tr>
+                  </c:when>
+               </c:choose>
+               <c:otherwise>
                   <tr>
                      <!-- NO. -->
                      <td>
@@ -158,7 +168,7 @@
                         </c:when>
                      </c:choose>
                      <!-- 취소금액 -->
-                     <c:choose>
+                     <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
                            <td>
                               <c:out value="0"/>
@@ -169,9 +179,9 @@
                              <c:out value="${salesList.lesson_cost}"/>
                           </td>
                         </c:when>
-                     </c:choose>
+                     </c:choose> --%>
                      <!-- 취소포인트 -->
-                     <c:choose>
+                     <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
                            <td>
                               <c:out value="0"/>
@@ -182,7 +192,7 @@
                              <c:out value="${salesList.orderlist_usepoint}"/>
                           </td>
                         </c:when>
-                     </c:choose>
+                     </c:choose> --%>
                      <!-- 정산수수료 -->
                      <td>
                         <c:out value="${salesList.sales_comm}"/>
@@ -202,48 +212,55 @@
                      </c:choose>
                   </tr>
                   <c:set var="sales_sum" value="${sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
-                  <c:choose>
+                  
                      <!-- 결제금액합계 -->
+                     <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_paystatus}"/> 
+                     <%-- 결제금액/취소금액 같이되었을때... 처리할려고 햇던거 
+                     <c:choose>
                      <c:when test="${salesList.orderlist_paystatus == 0}">
                         <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_paystatus}"/> 
-                     </c:when>
+                     </c:when> --%>
                      <!-- 결제결제취소합계합계 -->
-                     <c:when test="${salesList.orderlist_paystatus == 1}">
+                     <%-- <c:when test="${salesList.orderlist_paystatus == 1}">
                         <c:set var="costcancel_sum" value="${costcancel_sum+salesList.orderlist_paystatus}"/> 
                      </c:when>
-                  </c:choose>
-                  <c:choose>
+                  </c:choose> --%>
+                  
                      <!-- 포인트사용합계 -->
+                     <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_paystatus}"/> 
+                     <%-- 결제금액/취소금액 같이되었을때... 처리할려고 햇던거 
+                     <c:choose>
                      <c:when test="${salesList.orderlist_paystatus == 0}">
                         <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_paystatus}"/> 
-                     </c:when>
+                     </c:when> --%>
                      <!-- 포인트취소합계 -->
-                     <c:when test="${salesList.orderlist_paystatus == 1}">
+                     <%-- <c:when test="${salesList.orderlist_paystatus == 1}">
                         <c:set var="usepointcancel_sum" value="${usepointcancel_sum+salesList.orderlist_paystatus}"/>
-                     </c:when>
-                  </c:choose>
+                     </c:when> 
+                  </c:choose> --%>
                   <c:set var="comm_sum" value="${comm_sum+salesList.sales_comm}"/> <!-- 정산수수료합계 -->
                   <c:set var="surtaxsum" value="${surtaxsum+salesList.sales_surtax}"/> <!-- 세금계산서 부가세합계-->
+               </c:otherwise>
                </c:forEach>
             </tbody>
             <tfoot>
                <tr>
-                  <td colspan="6">합계</td>
+                  <td colspan="4">합계</td>
                   <td> <!-- 시니어매출합계 -->
                      <c:out value="${sales_sum}"/>
                   </td> 
                   <td> <!-- 결제금액합계 -->
                      <c:out value="${cost_sum}"/>
                   </td> 
-                  <td> <!-- 결제결제취소합계합계 -->
+                  <%-- <td> <!-- 결제결제취소합계합계 -->
                      <c:out value="${costcancel_sum}"/>
-                  </td> 
+                  </td --%> 
                   <td> <!-- 포인트사용합계 -->
                      <c:out value="${usepoint_sum}"/>
                   </td> 
-                  <td> <!-- 포인트취소합계 -->
+                  <%-- <td> <!-- 포인트취소합계 -->
                      <c:out value="${usepointcancel_sum}"/>
-                  </td> 
+                  </td> --%> 
                   <td> <!-- 정산수수료합계 -->
                      <c:out value="${comm_sum}"/>
                   </td> 
