@@ -110,6 +110,18 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.updatepoint(memberdto);
 	}
 
+	@Override
+	public List<CartDTO> has_cart_product(CartDTO cartdto) {
+		// TODO Auto-generated method stub
+		return mapper.has_cart_product(cartdto);
+	}
+
+	@Override
+	public List<MyLikeDTO> has_mylike_product(MyLikeDTO likedto) {
+		// TODO Auto-generated method stub
+		return mapper.has_mylike_product(likedto);
+	}
+
 
 
 }

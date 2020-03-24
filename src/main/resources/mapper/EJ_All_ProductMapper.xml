@@ -108,5 +108,13 @@ where  product_no=#{product_no}
      select #{orderlist_no}, product_no, cart_amount
          from cart where member_id=#{member_id}; -->
 
-	
+	<select id="has_cart_product" resultType="com.todaylesson.DTO.CartDTO" parameterType="com.todaylesson.DTO.CartDTO">
+select * from cart
+where product_no = #{product_no} and member_id=#{member_id}
+</select>
+
+<select id="has_mylike_product" resultType="com.todaylesson.DTO.MyLikeDTO" parameterType="com.todaylesson.DTO.MyLikeDTO">
+select * from mylike
+where product_no=#{product_no} and member_id = #{member_id}
+</select>
 </mapper> 

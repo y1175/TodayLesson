@@ -48,4 +48,8 @@ public interface EJ_US_ProductMapper {
 
 	public int updatepoint(MemberDTO memberdto);
 
+	public List<CartDTO> has_cart_product(CartDTO cartdto);
+
+	public List<MyLikeDTO> has_mylike_product(MyLikeDTO likedto);
+
 }

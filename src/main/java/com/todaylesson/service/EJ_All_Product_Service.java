@@ -45,6 +45,10 @@ public interface EJ_All_Product_Service {
 
 	public int updatepoint(MemberDTO memberdto);
 
+	public List<CartDTO> has_cart_product(CartDTO cartdto);
+
+	public List<MyLikeDTO> has_mylike_product(MyLikeDTO likedto);
+
 
 
 

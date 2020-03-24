@@ -35,7 +35,7 @@ $("#mycart").click(function(){
 		{
 		alert('로그인이 필요한 페이지입니다.');
 		}
-	alert('안녕');
+
 });
 </script>
  <form role="form" method="post" autocomplete="off">  
@@ -107,17 +107,22 @@ ${item.product_cost}원</h4>
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
-   success : function(){
-    console.log('success');
-    console.log(data);
-    console.log('this'+this);
-    console.log(data.product_no+" "+data.member_id);
-   
-    
+   success : function(result){
+	   console.log('result:',result);
     if(data.member_id==null)
        {
        alert('로그인이 필요합니다.');
-       } 
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('♥');
+    		}
+    	else{
+    		alert('이미 좋아요에 추가된 상품입니다.');
+    	}
+    		
+    }
    
     } 
    ,error: function(){
@@ -156,17 +161,22 @@ ${item.product_cost}원</h4>
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
-   success : function(){
-    console.log('success');
-    console.log(data);
-    console.log('this'+this);
-    console.log(data.product_no+" "+data.member_id);
-   
-    
+   success : function(result){
+	   console.log('result:',result);
     if(data.member_id==null)
        {
        alert('로그인이 필요합니다.');
-       } 
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('장바구니에 추가되었습니다.');
+    		}
+    	else{
+    		alert('이미 장바구니에 추가된 상품입니다.');
+    	}
+    		
+    }
    
     } 
    ,error: function(){

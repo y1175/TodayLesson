@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.todaylesson.DTO.AllLessonDTO;
+import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
 import com.todaylesson.DTO.MyLikeDTO;
@@ -36,15 +37,15 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 
 
 	@Override
-	public void add_like_lesson(MyLikeDTO dto) {
+	public int add_like_lesson(MyLikeDTO dto) {
 		mapper.ttlesson_like_count_plus(dto.getLesson_no());
-		mapper.add_like_lesson(dto);
+		return mapper.add_like_lesson(dto);
 	}
 
 
 	@Override
-	public void add_cart_lesson(MyLikeDTO dto) {
-		mapper.add_cart_lesson(dto);
+	public int add_cart_lesson(CartDTO dto) {
+		return mapper.add_cart_lesson(dto);
 	}
 
 
@@ -63,6 +64,18 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 	@Override
 	public List<Lesson_qaDTO> select_lesson_reply(Lesson_qaDTO dto) {
 		return mapper.select_lesson_reply(dto);
+	}
+
+
+	@Override
+	public List<MyLikeDTO> has_like_lesson(MyLikeDTO dto) {
+		return mapper.has_like_lesson(dto);
+	}
+
+
+	@Override
+	public List<CartDTO> has_cart_lesson(CartDTO dto) {
+		return mapper.has_cart_lesson(dto);
 	}
 
 }

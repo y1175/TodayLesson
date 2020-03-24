@@ -23,6 +23,7 @@ public class OrderListDTO {
 	private int orderlist_orderstatus;
 	private int orderlist_paystatus;
 	private int orderlist_cost;
+	private int orderlist_calculatestatus;
 	private int orderlist_usepoint;
 	private String orderlist_msg;
 
