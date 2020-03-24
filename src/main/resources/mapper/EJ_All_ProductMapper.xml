@@ -117,4 +117,21 @@ where product_no = #{product_no} and member_id=#{member_id}
 select * from mylike
 where product_no=#{product_no} and member_id = #{member_id}
 </select>
+<!-- insertorder_cart(cartdto); -->
+	<!-- 다중insert 구문 -->
+   	<insert id="insertorder_cart" parameterType="List">
+   		insert into order_detail
+   		(product_no,order_count)
+   		values
+   		<foreach collection="list" item="dto" separator=" , ">
+            (#{dto.product_no}, #{dto.cart_amount})
+        </foreach>
+   	</insert>
+   	
+   	
+   	<delete id="deletecart" parameterType="com.todaylesson.DTO.CartDTO">
+   	delete from cart
+   	 where product_no=#{product_no} and member_id=#{member_id}
+   	    	</delete>
+   	
 </mapper> 

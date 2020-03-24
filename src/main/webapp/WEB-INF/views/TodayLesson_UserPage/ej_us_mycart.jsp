@@ -6,21 +6,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>Insert title here</title>
+<style>
+.orderInfo{
+display:none;}
+</style>
 </head>
 <body>
+
 <form method="post" action="/order_cart">
-mycart페이지<br>
+<h2>${memberid }님의 장바구니<br></h2>
+
+<input type="hidden" name="member_id" value="${memberid }" id="member_id"> 
 <table>
 <thead>
 <tr>
-<th></th><th>상품번호</th><th></th><th>상품명</th><th>레슨명</th><th>가격</th><th>수량</th>
+<th>삭제</th><th>상품번호</th><th></th><th>상품명</th><th>레슨번호</th><th>가격</th><th>수량</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach var="item" items="${list}">
 <tr>
-<td><input type="checkbox" value="${item.product_name }" id=${item.product_after_cost }></td>
+<td><i class="fas fa-times" value="${item.product_no}" id="${item.product_no}" ></i></td>
 <td>${item.product_no }</td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}">${item.product_name }</a></td>
@@ -32,42 +45,62 @@ mycart페이지<br>
 </tbody>
 </table>
 <hr>
-<section id="checkedlist">
+<!-- <section id="checkedlist">
 <th>상품명</th><th>가격</th><th>수량</th>
-</section>
-<hr>
-<input type="submit" value="주문하기">
+</section> -->
+
+<input type="button" class='btn btn-primary' id="open_orderform_btn"value="주문하기"><br>
+<div class="orderInfo">
+주문자 정보 div
+<button class="cancel_btn">취소</button>
+</div>
+<input type="submit" class='btn btn-primary' value="주문하기2">
 </form>
 <script>
-/* $("input:checkbox").on('click', function() {
+ $("#open_orderform_btn").click(function(){
+  $(".orderInfo").slideDown();
+  $("#open_orderform_btn").slideUp();
+ }); 
+ 
+ $(".cancel_btn").click(function(){
+	 $(".orderInfo").slideUp();
+	 $(".orderOpne_bnt").slideDown();
+	});   
+</script>
+<script>
+$(".fas.fa-times").on('click',function(){
 	
-	var product_name= $(this).val();
-	var cart_amount= $(this).prop('id');
-	console.log("product_name",product_name);
-	console.log("cart_amount",cart_amount);
+	console.log(this);
+	var product_no=$(this).prop('id');
+	var member_id='${memberid }';
 	var data={
-			product_name: product_name,
-			cart_amount: cart_amount
-			
+			product_no: product_no,
+			member_id: member_id
 	}
-
+	
 	$.ajax({
-		url:"/showcheckedlist_json",
-		type:"post",
-		data: data,
-		success: function(){
-			
-			var cartlist="";
-				cartlist+="<tr><td>"+data.product_name+"</td>"
-				cartlist+="<td><input type='text' value="+data.cart_amount+"></td></tr>"
-			console.log(cartlist);
-				$('#checkedlist').append(cartlist);
-		},error: function(){
-			console.log('error');
-	}	
-	});
+	      url:"/deletecart_json",
+	      type:"post",
+	      data: data,
+	      success: function(){
+	    	  console.log(data);
+	       /*   
+	         var cartlist="";
+	            cartlist+="<tr><td>"+data.product_name+"</td>"
+	            cartlist+="<td><input type='text' value="+data.cart_amount+"></td></tr>"
+	         console.log(cartlist);
+	            $('#checkedlist').append(cartlist); */
+	      },error: function(){
+	         console.log('error');
+	   }    
+	  });
 
-}); */
+	
+});
 </script>
 </body>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>

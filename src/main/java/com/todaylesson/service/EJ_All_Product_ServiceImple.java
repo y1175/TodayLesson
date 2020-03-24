@@ -122,6 +122,18 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.has_mylike_product(likedto);
 	}
 
+	@Override
+	public int insertorder_cart(List<CartDTO> cartdto) {
+		// TODO Auto-generated method stub
+		return mapper.insertorder_cart(cartdto);
+	}
+
+	@Override
+	public int deletecart(CartDTO cartdto) {
+		// TODO Auto-generated method stub
+		return mapper.deletecart(cartdto);
+	}
+
 
 
 }

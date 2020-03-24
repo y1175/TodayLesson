@@ -369,6 +369,7 @@ public class EJ_ProductController {
 	{
 		List<CartDTO> cartdto=service.selectMyCart(member_id);
 		model.addAttribute("list",cartdto);
+		model.addAttribute("memberid",member_id);
 		return "TodayLesson_UserPage/ej_us_mycart.us_main_section";
 	}
 	
@@ -417,11 +418,33 @@ public class EJ_ProductController {
 		service.insertorder_cart(dto);
 	}*/
 	
-	@RequestMapping("/order_cart/{member_id}")
-	public void  ordercart(@PathVariable(value="member_id") String member_id,Model model) {
-		System.out.println("오더카트");
-		List<CartDTO> cartdto=service.selectMyCart(member_id);
-		//service.insertorder_cart(cartdto);
+	//cart에서 delete 하는 json메서드
+	@ResponseBody
+	@RequestMapping("/deletecart_json")
+	public void deletecart(@RequestParam(value="product_no")int product_no
+			,@RequestParam(value="member_id")String member_id)
+	{
+		System.out.println("deletecart_prono:"+product_no);
+		CartDTO cartdto=new CartDTO();
+		cartdto.setProduct_no(product_no);
+		cartdto.setMember_id(member_id);
+		service.deletecart(cartdto);
+	/*	return "redirect:TodayLesson_UserPage/ej_us_mycart.us_main_section";*/
 	}
+	
+	@RequestMapping("/order_cart")
+	public String  order_cart(@RequestParam(value="member_id") String member_id,Model model) {
+		System.out.println("오더카트");
+		System.out.println("오더카트에서의 멤버아이디: "+member_id);
+		
+		List<CartDTO> cartdto=service.selectMyCart(member_id);
+		//cart테이블에 잇는거 다 받아오기
+		service.insertorder_cart(cartdto);
+		//받아온 리스트를 order_detail테이블에 insert하기
+		
+		return "TodayLesson_UserPage/ej_us_ordercart";
+	}
+	
+	
 	}
 	

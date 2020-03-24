@@ -52,4 +52,8 @@ public interface EJ_US_ProductMapper {
 
 	public List<MyLikeDTO> has_mylike_product(MyLikeDTO likedto);
 
+	public int insertorder_cart(List<CartDTO> cartdto);
+
+	public int deletecart(CartDTO cartdto);
+
 }
