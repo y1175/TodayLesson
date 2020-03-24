@@ -1,12 +1,21 @@
 package com.todaylesson.oreo;
 
 
+import java.security.Principal;
 import java.util.List;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -17,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO;
+
 import com.todaylesson.service.User_YI_OrderList_Service;
 
 @Controller
@@ -25,22 +35,32 @@ public class User_YI_OrderList_Controller {
 	@Resource(name="user_YI_OrderList_Service")
 	private User_YI_OrderList_Service service;
 	
+
 	
 	@RequestMapping("/todaylessonmypage/user_myorderlist")
 	public String user_orderlist(@RequestParam(required=false, defaultValue="") String start_date
 								,@RequestParam(required=false, defaultValue="") String end_date
 								,@RequestParam(required=false, defaultValue="1") int currPage
-								,Model model)
+								,Model model) throws Exception
 	{
 
 		
-		int totalCount= service.totalCount(start_date, end_date);
-		int pageSize=15;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails=(UserDetails)principal;
+		String member_id=userDetails.getUsername();
+		System.out.println("id:"+member_id);
+		model.addAttribute("member_id",member_id);
+		
+
+	
+		
+		int totalCount= service.totalCount(member_id,start_date, end_date);
+		int pageSize=5;
 		int blockSize=5;
 		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
-		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderlist(start_date,end_date
+		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderlist(member_id,start_date,end_date
 				,page.getStartRow()
 				,page.getEndRow());
 		System.out.println("list:"+list.get(0).getOrderlist_no());

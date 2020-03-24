@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 </script>
 <body>
-주문내역
+${member_id }님의 주문내역
 <form action="/todaylessonuser/user_myorderlist_date">
 <input type="date" name="start_date"> ~ <input type="date" name="end_date"> <input type="submit" value="조회">
 </form>

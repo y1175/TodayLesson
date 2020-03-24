@@ -7,6 +7,7 @@
 	<select id="getCount" resultType="int" parameterType="java.util.HashMap">
 		select COUNT(*) 
 		from orderlist
+		where member_id=#{member_id}
 		<!-- WHERE절을 include 태그로 삽입 -->
 </select>
 
@@ -16,9 +17,10 @@
 	from member join orderlist
 	on member.member_id=orderlist.member_id
 <!-- WHERE절을 include 태그로 삽입 -->
+where member.member_id=#{member_id}
 <!-- <include refid="search_select"></include> -->
  order by orderlist_date desc
-limit   #{startrow}, 15 
+limit   #{startrow}, 5 
 
 </select>
 
