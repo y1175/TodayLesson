@@ -1,0 +1,131 @@
+@charset "utf-8";
+/* 전체 DIV */
+.hs_senior_calculate_request{
+	width: 95%;
+	margin: auto;
+	margin-top: 30px;
+	color: rgb(53, 54, 58);
+}
+/* 정산신청 제목 */
+.hs_senior_calculate_request_title{
+	font-size: 23px;
+	font-weight: 800;
+}
+/* 정산가능금액 정산대기금액 DIV */
+.hs_senior_calculate_possible_wait_box{
+	width : 100%;
+	margin-top: 20px;
+	display: inline-block;
+}
+/* 정산가능금액 DIV */
+.hs_senior_calculate_possiblebox_title{
+	font-size: 20px;
+	font-weight: 600;
+}
+/* 정산대기금액 DIV */
+.hs_senior_calculate_waitbox_title{
+    font-size: 20px;
+	font-weight: 600;
+}
+/* 정산기준 DIV */
+.hs_senior_calculate_standardtbox_title{
+	font-size: 20px;
+	font-weight: 600;
+}
+
+/* 계좌수정 모달창 */
+   /* 계좌수정버튼 */
+.hs_senior_AccountUpdate{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-top : 5px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.4);
+}
+  /* 계좌정보수정 제목 x 버튼 박스*/
+.hs_senior_AccountModal_HeaderDiv{
+	padding: 0px 0px 16px;
+}
+/* 계좌정보수정 제목*/
+.hs_senior_AccountModal_Title{
+	font-size: 16px;
+}
+/* 모달 경고문구 */
+.hs_senior_AccountModal_WarningDiv{
+	font-size: 10px;
+	font-weight : 700;
+	text-align: center;
+}
+/* 모달 하단.. 버튼 */
+.hs_senior_AccountModal_FooterDiv{
+	text-align: center;
+}
+/* 계좌실명조회버튼 */
+.hs_senior_AccountModal_RealnameCheck{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin : 0px 5px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.4);
+}
+/* 정산계좌수정버튼 */
+.hs_senior_AccountModal_AccountUpdate{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin : 0px 5px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+}
+/* 정산신청 모달창 */
+   /* 정산신청버튼 */
+.hs_senior_CulateRequestBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+}
+   /* 계좌정보수정 제목 x 버튼 박스*/
+.hs_senior_CulateRequestModal_HeaderDiv{
+	padding: 0px 0px 16px;
+}
+   /* 계좌정보수정 제목*/
+.hs_senior_CulateRequestModal_title{
+	font-size: 16px;
+}
+
+
+/* 엑세다운로드 DIV  */
+.hs_senior_CalculateRequest_ExcelBox{
+	margin-top: 20px;
+}
+/* 엑셀다운로드버튼 */
+.hs_senior_CalculateRequest_ExcelBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+}
+/* 정산신청 리스트 */
+.hs_senior_calculate_requestList{
+	width: 100%;
+	margin-top: 20px;
+}
+.hs_senior_calculate_requestListTable{
+	
+	
+}

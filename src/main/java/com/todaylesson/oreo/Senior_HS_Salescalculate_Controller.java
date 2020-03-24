@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Senior_HS_Salescalculate_Service;
 
 @Controller
@@ -41,7 +43,7 @@ public class Senior_HS_Salescalculate_Controller {
 	}
 	
 	@RequestMapping("/senior_calculate_requestlist/{senior_no}")
-	public String calculateRequestList( @PathVariable int senior_no ,Model model) {
+	public String calculateRequestList( @PathVariable int senior_no, SeniorDTO dto, Model model) {
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist=salescalculateService.calculateRequsetList(senior_no);
 		model.addAttribute("cal_requestlist", cal_requestlist);
@@ -57,6 +59,12 @@ public class Senior_HS_Salescalculate_Controller {
 		//정산신청 리스트 포인트사용
 		List<Integer> cal_usepointsum=salescalculateService.calUsePointSum(senior_no);
 		model.addAttribute("cal_usepointsum", cal_usepointsum);
+		
+		//정산신청 시니어디테일
+		SeniorDTO accountdetalidto=salescalculateService.accountDetailDTO(senior_no);
+		model.addAttribute("accountdetalidto", accountdetalidto);
+		
+		
 
 		//정산신청 리스트 레스취소금액
 		//List<Integer> cal_lseeoncancelcost=salescalculateService.calCancelCost(senior_no);
@@ -67,6 +75,16 @@ public class Senior_HS_Salescalculate_Controller {
 		//model.addAttribute("cal_cancelpointsum", cal_cancelpointsum);
 		
 		return "/TodayLesson_SeniorPage/hs_sn_calculate_requestlist.sn_main_section";
+	}
+	
+	@RequestMapping("/senior_calculate_accountupdateresult")
+	public String calculateRequestAccountUpdateResult (SeniorDTO dto, Model model) {
+		
+		//정산신청 시니어계좌정보수정
+		int accountupdatedto=salescalculateService.accountUpdateDTO(dto);
+		model.addAttribute("accountupdatedto", accountupdatedto);
+		
+		return "redirect:/TodayLesson_SeniorPage/hs_sn_calculate_requestlist.sn_main_section"+dto.getSenior_no();
 	}
 
 }

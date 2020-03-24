@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.Mapper.Senior_HS_Salescalculate_Mapper;
 
 @Service(value="senior_HS_Salescalculate_Service")
@@ -58,21 +60,36 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		return salescalculateMapper.calUsePointSum(senior_no);
 	}
 
-	//정산신청 리스트 레스취소금액
-	/*@Override
-	public List<Integer> calCancelCost(int senior_no) {
-		// TODO Auto-generated method stub
-		return salescalculateMapper.calCancelCost(senior_no);
-	}*/
 
-	//정산신청 리스트 포인트취소
-	/*@Override
-	public List<Integer> calCancelPointSum(int senior_no) {
+	//정산신청 시니어디테일
+	@Override
+	public SeniorDTO accountDetailDTO(int senior_no) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.calCancelPointSum(senior_no);
-	}*/
+		return salescalculateMapper.accountDetailDTO(senior_no);
+	}
+	
+	//정산신청 시니어계좌정보수정
+	@Override
+	public int accountUpdateDTO(SeniorDTO dto) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.accountUpdateDTO(dto);
+	}
 
 	
+	
+	//정산신청 리스트 레스취소금액
+		/*@Override
+		public List<Integer> calCancelCost(int senior_no) {
+			// TODO Auto-generated method stub
+			return salescalculateMapper.calCancelCost(senior_no);
+		}*/
+
+		//정산신청 리스트 포인트취소
+		/*@Override
+		public List<Integer> calCancelPointSum(int senior_no) {
+			// TODO Auto-generated method stub
+			return salescalculateMapper.calCancelPointSum(senior_no);
+		}*/
 	
 
 }

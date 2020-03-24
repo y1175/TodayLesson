@@ -3,6 +3,7 @@ package com.todaylesson.service;
 import java.util.List;
 
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SeniorDTO;
 
 public interface Senior_HS_Salescalculate_Service {
 	
@@ -22,10 +23,16 @@ public interface Senior_HS_Salescalculate_Service {
 	//정산신청 리스트 포인트사용
 	public List<Integer> calUsePointSum(int senior_no);
 
+	//정산신청 시니어디테일
+	public SeniorDTO accountDetailDTO(int senior_no);
+	
+	//정산신청 시니어계좌정보수정
+	public int accountUpdateDTO(SeniorDTO dto);
+
+	
 	//정산신청 리스트 레스취소금액
 	//public List<Integer> calCancelCost(int senior_no);
 
 	//정산신청 리스트 포인트취소
 	//public List<Integer> calCancelPointSum(int senior_no);
-
 }

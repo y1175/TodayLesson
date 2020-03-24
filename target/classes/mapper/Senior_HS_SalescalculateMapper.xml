@@ -96,6 +96,24 @@
        order by orderlist_date desc
 	</select>
 	
+	<!-- 정산신청 계좌정보 디테일(그외 디테일필요할수도있어서 시니어정보 다 가져옴 -->
+	<select id="accountDetailDTO" resultType="com.todaylesson.DTO.SeniorDTO" parameterType="int">
+	   select senior_no, member_id, senior_email, senior_phone, senior_crno, senior_nick,
+	          senior_bank_name, senior_account_name, senior_account_num, senior_register_date
+	   from senior
+	   where senior_no=#{senior_no}
+	</select>
+	
+	<!-- 정산신청 계좌정보 수정 -->
+	<update id="accountUpdateDTO" parameterType="com.todaylesson.DTO.SeniorDTO">
+	   update senior
+	   set
+	   senior_bank_name=#{senior_bank_name}
+	   senior_account_name=#{senior_account_name}
+	   senior_account_num=#{senior_account_num}
+	   where senior_no=#{senior_no}
+	</update>
+	
 	<!-- 정산신청 리스트 레스취소금액 -->
 	<!-- <select id="calCancelCost" resultMap="salesCalculateMap" parameterType="int">
 	   select sum(orderlist_cost) 

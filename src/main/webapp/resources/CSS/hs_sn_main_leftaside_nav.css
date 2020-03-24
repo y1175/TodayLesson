@@ -1,4 +1,7 @@
 @charset "utf-8";
+.hs_sn_main_asidenav_nav{
+	margin-top: 30px;
+}
 /* nav 카테고리 라인 */
 .hs_sn_main_asidenav_line{
 	width: 100%;
@@ -7,7 +10,7 @@
     margin: 15px 0px 15px;
 }
 /* nav 카테고리 소제목  */
-.hs_sn_main_asidenav_nav b{
+.hs_sn_main_asidenav_nav_title{
 	margin-left: 20px;
 	font-size: 20px;
 	color: rgb(53, 54, 58);
