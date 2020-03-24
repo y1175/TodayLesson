@@ -70,15 +70,16 @@ public class JY_US_TotalLessonController {
 		MyLikeDTO dto = new MyLikeDTO();
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
-		
+		String result;
 		List<MyLikeDTO> has_dto = ttlesson_service.has_like_lesson(dto);
 		
 		if (has_dto.isEmpty()) {
 			ttlesson_service.add_like_lesson(dto);
-			return "success";
+			result= "success";
 		} else {
-			return "false";
+			result= "false";
 		}
+		return result;
 	
 	}
 	
@@ -91,14 +92,15 @@ public class JY_US_TotalLessonController {
 		CartDTO dto = new CartDTO();
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
-			
+			String result;
 		List<CartDTO> lesson_in_cart = ttlesson_service.has_cart_lesson(dto);
 		if (lesson_in_cart.isEmpty()) {
 			ttlesson_service.add_cart_lesson(dto);
-			return "success";
+			result="success";
 		} else {
-			return "false";
+			result="false";
 		}
+		return result;
 	}
 	
 	

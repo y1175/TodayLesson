@@ -103,8 +103,8 @@ $(".insert_my_like").click(function(){
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
-   success : function(){
-	   if(data=="success"){
+   success : function(result){
+	   if(result=="success"){
    		alert("♥");
    } else {
 		alert("좋아요는 한번만 할 수 있습니다.");   
@@ -140,8 +140,8 @@ $(".insert_my_cart").click(function(){
   //request mapping value랑 맞추면되는듯
   type : "post",
   data : data,
-  success : function(){
-	  if(data=="success"){
+  success : function(result){
+	  if(result=="success"){
   		alert("장바구니에 레슨이 담겼습니다!");
    	} else {
 		alert("레슨은 장바구니에 딱 한번만 담을 수 있습니다.");   
