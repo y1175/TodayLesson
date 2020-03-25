@@ -14,12 +14,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('수정이 완료되었습니다.');
-	location.href="/hm_us_mymanage";
+	location.href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanage";
 	}
 else
 	{
 	alert('수정 실패');
-	location.href="/hm_us_mymanage";
+	location.href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanage";
 	}
 </script>
 </body>

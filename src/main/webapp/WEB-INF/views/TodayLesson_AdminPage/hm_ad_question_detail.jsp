@@ -84,7 +84,7 @@
 </c:choose>
 
 <div id="hm_question_answerdiv" style="display : none;">
-<form method="post" action="${pageContext.request.contextPath}/hm_ad_question_update">
+<form method="post" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question_update">
 <ul>
 <input type="hidden" id="question_no" name="question_no" value="${dto.question_no }">
 <li>

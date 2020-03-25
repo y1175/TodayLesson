@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<form id="searchP" method="post" action="findPassword">
+<form id="searchP" method="post" action="/findPassword">
 <ul>
 <li>
 <label for="inputId">아이디</label>
@@ -29,7 +29,7 @@
 </li>
 <li>
 <input type="submit" id="searchBtn2" class="btn btn-primary btn-block" value="확인">
-<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}">취소</a>
+<a class="btn btn-danger btn-block"	href="${pageContext.request.contextPath}/todaylessonlogin">취소</a>
 </li>
 </ul>
 

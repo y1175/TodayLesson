@@ -12,11 +12,11 @@ var result = ${result}
 if(result>0)
 {
 alert('이벤트가 삭제되었습니다.');
-location.href="/hm_ad_event_manage";
+location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage";
 }
 else{
 	alert('이벤트 삭제 실패하였습니다.');
-	location.href="/hm_ad_event_manage";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage";
 }
 </script>
 </body>

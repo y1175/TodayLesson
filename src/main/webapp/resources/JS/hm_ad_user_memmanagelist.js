@@ -11,7 +11,7 @@ $(document).ready(function(){
 		
 		var no = td.eq(0).text();
 		
-		location.href="hm_memmanagedetail/"+no;
+		location.href="/todaylessonadmin/hm_memmanagedetail/"+no;
 		
 	});
 });

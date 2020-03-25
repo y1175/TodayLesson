@@ -137,17 +137,17 @@
 
 
 <c:if test="${page.prev }">
-<a href="hm_us_event?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="hm_us_event?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="hm_us_event?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
 </c:if>
 
 

@@ -155,10 +155,10 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         
    //혜미
       //혜미비번찾기 
-        else if ("/todaylesson/findPw".equals(strUri))                   
+        else if ("/findPw".equals(strUri))                   
             return false; 
       //혜미 이메일 & 아이디 값 받아서 임시 비밀번호 전송
-        else if("/todaylesson/findPassword".equals(strUri))
+        else if("/findPassword".equals(strUri))
              return false;
      //혜미 내 정보관리 페이지로 가기-필요없
         else if("/todaylessonmypage/hm_us_mymanage".equals(strUri))

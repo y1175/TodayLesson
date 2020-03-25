@@ -45,7 +45,7 @@
 	<div style="width: 60%; margin: auto;">
 		
 		<form role="form"  name="eventupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="${pageContext.request.contextPath}/hm_ad_event_modify"> 
+		 action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_modify"> 
 		<input type ="hidden" id="event_no" name="event_no" value="${dto.event_no}">
 		<br>
 		<label>이벤트 유형</label><br>

@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <h2>1:1문의 등록</h2>
-<form name ="hmquestionform" method="post" action="hm_question_create">
+<form name ="hmquestionform" method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_question_create">
 <ul>
 <input type ="hidden" id="member_id" name ="member_id" value="${pageContext.request.userPrincipal.name}">
 <li>

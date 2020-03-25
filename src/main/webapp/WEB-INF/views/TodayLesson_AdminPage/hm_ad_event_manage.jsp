@@ -16,7 +16,7 @@
 
 
 
- <form method ="get" action="hm_ad_event_manage?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
+ <form method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
  <select name="search">
  <option value="all">전체</option>
  <option value="event_title">제목</option>
@@ -79,17 +79,17 @@
 
 
 <c:if test="${page.prev }">
-<a href="hm_ad_event_manage?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="hm_ad_event_manage?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="hm_ad_event_manage?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
 </c:if>
 
 
