@@ -229,7 +229,7 @@ function multiple_time_lesson_date(){
 <label for="lesson_cost">가격</label><br>
 <input type="number" id="lesson_cost" name="lesson_cost"><br>
 
-
+<h6>레슨 심사는 3일~7일 정도 걸리므로 오픈 날짜 설정 시 참고해주세요</h6>
 <label for="lesson_open_period">시작일</label><br>
 <input type="date" id="lesson_open_period" name="lesson_open_period"><br>
 

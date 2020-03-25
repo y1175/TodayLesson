@@ -85,6 +85,20 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 	}
 
 
+	@Override
+	public List<Lesson_qaDTO> select_lesson_reply_answer(int lesson_no) {
+		return mapper.select_lesson_reply_answer(lesson_no);
+	}
+
+
+	@Override
+	public int has_answer_reply(Lesson_qaDTO dto) {
+		return mapper.has_answer_reply(dto);
+	}
+
+
+
+
 
 
 }

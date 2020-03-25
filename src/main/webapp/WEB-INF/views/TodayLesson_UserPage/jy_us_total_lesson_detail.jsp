@@ -352,7 +352,7 @@ $(".insert_my_cart").click(function(){
 					<table class="table">
 						<tr>
 							<td>비밀글 <input type="checkbox" name="sec" id="sec">
-							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret"> 
+							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret" value='N'> 
 								
 						<script>
                         /*
@@ -459,7 +459,6 @@ function getCommentList(){
 	
 	let member_id ='${pageContext.request.userPrincipal.name}';
 	let senior_id = document.getElementById('senior_id').value;
-	
     $.ajax({
         type:'get',
         url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
@@ -473,39 +472,46 @@ function getCommentList(){
        
             
    if (data.length > 0){
-                
+		console.log(data);
+
                 for(i=0; i<data.length; i++){
                    if (i == 0) {
                    	    html += "<div id='accordian'>";
                    	    html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li>";
+                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"  "+data[i].lesson_qa_register_date+  "</li>";
+                        if (data[i].lesson_qa_answer_content != null) {
+                            html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
+						}
               
 						 if (member_id == senior_id) { 
                         	
+							
                         	html += "<li>";
-			                html += "<input type ='hidden' name='lesson_qa_reply_secret' id='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
-                           	html += "<input type ='hidden' name='lesson_qa_no' id='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' id='lesson_qa_answer_content' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+				            html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
+                           	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
+	                        html += "<input type = 'text' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
                         	html += "<input type ='button' onClick='fn_answer("+data[i].lesson_qa_no+")' class='btn pull-right btn-success' value='등록'></li></ul></li>"; 
+							 
+                        	}  else { 
                         
-                        }  else { 
-                        
-                        	html+= "</ul></li>"; 
+                        		html+= "</ul></li>"; 
                         	
-                        }
+                       		}
                         
                         
                    } else if(i == data.length-1){
                   
                   		html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li>";
-                        
+                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"  "+data[i].lesson_qa_register_date + "</li>";
+                        if (data[i].lesson_qa_answer_content != null) {
+                            html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
+						}
 						 if (member_id == senior_id) { 
                         	
 	                        html += "<li>";
-			                html += "<input type ='hidden' name='lesson_qa_reply_secret' id='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
-                           	html += "<input type ='hidden' name='lesson_qa_no' id='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' id='lesson_qa_answer_content' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
+                           	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
+	                        html += "<input type = 'text' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
                         	html += "<input type='button' onClick='fn_answer("+ data[i].lesson_qa_no +")' class='btn pull-right btn-success' value='등록'></li></ul></li></ul></div>"; 
                         
                         }  else { 
@@ -518,14 +524,16 @@ function getCommentList(){
                    } else {
                 	   
                         html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_register_date + "<br>" +data[i].lesson_qa_reply_content + "</li>";
-                        
+                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"  "+data[i].lesson_qa_register_date+ "</li>";
+                        if (data[i].lesson_qa_answer_content != null) {
+                            html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
+						}
 						 if (member_id == senior_id) { 
                         	
 	                         html += "<li>";
-				             html += "<input type ='hidden' name='lesson_qa_reply_secret' id='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
-			                 html += "<input type ='hidden' name='lesson_qa_no' id='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-		                     html += "<input type = 'text' id='lesson_qa_answer_content' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
+			                 html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
+		                     html += "<input type = 'text' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
                         	 html += "<input type='button' onClick='fn_answer(" +data[i].lesson_qa_no+")' class='btn pull-right btn-success' value='등록'></li></ul></li>"; 
                         
                         }  else { 
@@ -579,8 +587,8 @@ function fn_answer(lesson_qa_no){
 	
 	let senior_id = '${pageContext.request.userPrincipal.name}';
 	let lesson_no = document.getElementById('lesson_no').value;
-	let lesson_qa_answer_content = document.getElementById('lesson_qa_answer_content').value;
-	let lesson_qa_reply_secret = document.getElementById('lesson_qa_reply_secret').value;
+	let lesson_qa_answer_content = document.getElementById('lesson_qa_answer_content'+lesson_qa_no).value;
+	let lesson_qa_reply_secret = document.getElementById('lesson_qa_reply_secret'+lesson_qa_no).value;
 
 	console.log(senior_id);
 	
@@ -605,13 +613,22 @@ function fn_answer(lesson_qa_no){
          if(result=="success")
          {
          	alert("답변 등록 완료!");
-             //getCommentList();
-             $("#lesson_qa_answer_content").val("");
+             getCommentList();
+             $("#lesson_qa_answer_content"+lesson_qa_no).val("");
              //$("#lesson_qa_reply_content").val("");
              //$('input[name="sec"]').prop("checked", false);
          	//$("#pas").hide();
 
-         }
+         } else if (result == "has_answer"){
+        	 alert("답변은 하나만 달 수 있습니다.");
+             getCommentList();
+             $("#lesson_qa_answer_content"+lesson_qa_no).val("");
+
+         } else {
+        	 alert("추가 실패");
+             getCommentList();
+             $("#lesson_qa_answer_content"+lesson_qa_no).val("");
+		}
      },
      error:function(request,status,error){
          //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

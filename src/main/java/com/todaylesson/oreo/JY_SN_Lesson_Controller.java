@@ -1,6 +1,7 @@
 package com.todaylesson.oreo;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,13 +98,13 @@ public class JY_SN_Lesson_Controller {
 				if (i == l_time.length - 1) {
 					l_d_t.append(" "+l_date[i] + " " + l_time[i]);
 				} else if (i == 0){
-					l_d_t.append(l_date[i] + " " + l_time[i]+ ",");
+					l_d_t.append(l_date[i] + " " + l_time[i]+ ", ");
 				} else {
 					l_d_t.append(" " + l_date[i] + " " + l_time[i]+ ",");
 				}
 			}
 			dto.setLesson_date_time(l_d_t.toString());
-
+			System.out.println(dto.getLesson_date_time());
 		}
 	
 		
@@ -176,15 +177,54 @@ public class JY_SN_Lesson_Controller {
 	
 	
 	@RequestMapping("/lesson_update_result")
-	public String lesson_update_result (LessonDTO dto, Model model) {
+	public String lesson_update_result (LessonDTO dto, Model model,MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
-		int result = lesson_service.update_lesson(dto);
-		model.addAttribute("result",result);
+		
+		if (dto.getLesson_type() != 3) {
+			String[] l_date = request.getParameterValues("lesson_date");
+			String[] l_time = request.getParameterValues("lesson_time");
+
+			StringBuilder l_d_t = new StringBuilder();
+			
+			for (int i = 0; i < l_time.length; i++) {		
+				if (i == l_time.length - 1) {
+					l_d_t.append(" "+l_date[i] + " " + l_time[i]);
+				} else if (i == 0){
+					l_d_t.append(l_date[i] + " " + l_time[i]+ ", ");
+				} else {
+					l_d_t.append(" " + l_date[i] + " " + l_time[i]+ ",");
+				}
+			}
+			dto.setLesson_date_time(l_d_t.toString());
+			System.out.println(dto.getLesson_date_time());
+		}
+		
+		
+
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "")  {
+		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		 dto.setLesson_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		 String imgthumb = dto.getLesson_thumb();
+		 int result = lesson_service.update_lesson(dto);
+		 model.addAttribute("result",result);
 		
 		return "TodayLesson_SeniorPage/jy_sn_update_result";
-	}
+		
+		} else {
+			 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			 System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+			 int result = lesson_service.update_lesson(dto);
+			 model.addAttribute("result",result);
+				return "TodayLesson_SeniorPage/jy_sn_update_result";
 
+		}
 	
-	
-	
+	}
 }

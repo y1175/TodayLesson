@@ -166,7 +166,8 @@ function add_Lesson_Time(lesson_date_and_time){
 	for (var i = 0; i < lesson_date_and_time.length; i++) {
 		console.log(lesson_date_and_time);	
 		$('#lesson_d_t').append(lesson_date_and_time[i].lesson_date+" "+lesson_date_and_time[i].lesson_time+"<br>"
-				+"<input type='hidden' name='lesson_date_time' id='lesson_date_time' value=" + lesson_date_and_time[i].lesson_date +" "+ lesson_date_and_time[i].lesson_time +">");		
+				+"<input type='hidden' name='lesson_date' id='lesson_date' value=" + lesson_date_and_time[i].lesson_date+">"
+				+"<input type='hidden' name='lesson_time' id='lesson_time' value=" + lesson_date_and_time[i].lesson_time+">");	
 
 	}
 	document.getElementById("lesson_number").value=lesson_date_and_time.length;
@@ -190,7 +191,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 
 
-<form method="post" action="${pageContext.request.contextPath }/lesson_update_result" name="form"> 
+<form method="post" action="${pageContext.request.contextPath }/lesson_update_result" name="form" autocomplete="off" enctype="multipart/form-data"> 
 
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
@@ -204,6 +205,24 @@ function add_Lesson_Time(lesson_date_and_time){
 <label for="lesson_content">레슨 내용</label><br>
 <textarea id="summernote" name="lesson_content" style="display:none"><c:out value="${dto.lesson_content}"/></textarea><br>
 
+<label for="lesson_thumb">썸네일</label>
+<input type="file" id="lesson_thumb" name="file" />
+ 
+ 
+ <div class="select_img"><img src="" /></div>
+ 
+ <script>
+  $("#lesson_thumb").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ 
 <label for="lesson_member_max">수강생수</label><br>
 <input type="number" id="lesson_member_max" name="lesson_member_max" value="${dto.lesson_member_max}"><br>
 
@@ -221,6 +240,9 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <label for="lesson_cost">가격</label><br>
 <input type="number" id="lesson_cost" name="lesson_cost" value="${dto.lesson_cost}"><br>
+
+<h6>레슨 심사는 3일~7일 정도 걸리므로 오픈 날짜 설정 시 참고해주세요</h6>
+
 
 <label for="lesson_open_period">시작일</label><br>
 <input type="date" id="lesson_open_period" name="lesson_open_period" value="${dto.lesson_open_period }"><br>

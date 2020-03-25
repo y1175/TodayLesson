@@ -37,5 +37,9 @@ public interface JY_US_TotalLessonMapper {
 
 	public int add_lesson_reply_answer(Lesson_qaDTO dto);
 
+	public List<Lesson_qaDTO> select_lesson_reply_answer(int lesson_no);
+
+	public int has_answer_reply(Lesson_qaDTO dto);
+
 
 }

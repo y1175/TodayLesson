@@ -59,9 +59,10 @@ function checkDisable()
 {
     if(no_crno.checked == true ){
 	   senior_crno.disabled = true;
-	} else 
-	{
+	   senior_crno_name.disabled = true;
+	} else {
 	   senior_crno.disabled = false;
+	   senior_crno_name.disabled = false;
 	}
 }
 
@@ -89,10 +90,14 @@ function checkDisable()
 <input type="text" id="senior_crno" name="senior_crno">
 사업자 번호 없음<input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
 
+<label>상호명</label>
+<input type="text" id="senior_crno_name" name="senior_crno_name">
+
+
 <h3>계좌정보</h3>
 <label>은행명</label>
 <select name="senior_bank_name">
-<option disabled="disabled">-----</option>
+<option disabled="disabled" selected="selected">-----</option>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
 <option value="039">경남은행</option>

@@ -29,11 +29,14 @@ where lesson_no = #{lesson_no}
 
 <insert id="apl_upload" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
+
 <selectKey order="BEFORE" keyProperty="lessondetail_chapter" resultType="integer">
 
 select ifnull(max(lessondetail_chapter),0) from lessondetail where lesson_no = #{lesson_no}
 
 </selectKey>
+
+
 
 insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id)
 values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+ 1,#{member_id})

@@ -29,125 +29,121 @@ import com.todaylesson.service.JY_US_TotalLessonService;
 @Controller
 public class JY_US_TotalLessonController {
 
-	
-	@Resource(name="totallesson_service")
+	@Resource(name = "totallesson_service")
 	private JY_US_TotalLessonService ttlesson_service;
-	
-	
+
 	@RequestMapping("total_lesson_list")
 	public String ttlesson_list(Model model) {
 
 		List<LessonDTO> list = ttlesson_service.ttlesson_list();
-		model.addAttribute("list",list);
-		
+		model.addAttribute("list", list);
+
 		return "TodayLesson_UserPage/jy_us_total_lesson_list.us_main_section";
 	}
-	
+
 	@RequestMapping("lesson_detail/{lesson_no}")
 	public String ttlesson_detail(Model model, @PathVariable int lesson_no) {
-		
+
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
-		model.addAttribute("dto",dto);
-		
-		
+		model.addAttribute("dto", dto);
+
 		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
-	
+
 	@RequestMapping("lesson_buy/{lesson_no}")
 	public String lesson_buy(Model model, @PathVariable int lesson_no) {
-		 
+
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
-		model.addAttribute("dto",dto);
-		
+		model.addAttribute("dto", dto);
+
 		return "TodayLesson_UserPage/jy_us_lesson_buy.us_main_section";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("lesson_like")
-	public String lesson_like(@RequestParam(value="lesson_no") int lesson_no
-			,@RequestParam(value="member_id") String member_id){
-		
+	public String lesson_like(@RequestParam(value = "lesson_no") int lesson_no,
+			@RequestParam(value = "member_id") String member_id) {
+
 		MyLikeDTO dto = new MyLikeDTO();
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
 		String result;
 		List<MyLikeDTO> has_dto = ttlesson_service.has_like_lesson(dto);
-		
+
 		if (has_dto.isEmpty()) {
 			ttlesson_service.add_like_lesson(dto);
-			result= "success";
+			result = "success";
 		} else {
-			result= "false";
+			result = "false";
 		}
 		return result;
-	
+
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping("lesson_cart")
-	public String lesson_cart(@RequestParam(value="lesson_no") int lesson_no
-			,@RequestParam(value="member_id") String member_id){
-		
+	public String lesson_cart(@RequestParam(value = "lesson_no") int lesson_no,
+			@RequestParam(value = "member_id") String member_id) {
+
 		CartDTO dto = new CartDTO();
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
-			String result;
+		String result;
 		List<CartDTO> lesson_in_cart = ttlesson_service.has_cart_lesson(dto);
 		if (lesson_in_cart.isEmpty()) {
 			ttlesson_service.add_cart_lesson(dto);
-			result="success"; 
+			result = "success";
 		} else {
-			result="false";
+			result = "false";
 		}
 		return result;
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping("lesson_detail/{lesson_no}/lesson_reply_insert")
-	public String lesson_reply_insert(@PathVariable int lesson_no, @RequestParam String member_id, 
-			@RequestParam String lesson_qa_reply_secret,@RequestParam String lesson_qa_reply_content, @RequestParam String lesson_qa_reply_title) {
-		
+	public String lesson_reply_insert(@PathVariable int lesson_no, @RequestParam String member_id,
+			@RequestParam String lesson_qa_reply_secret, @RequestParam String lesson_qa_reply_content,
+			@RequestParam String lesson_qa_reply_title) {
+
 		Lesson_qaDTO dto = new Lesson_qaDTO();
-		
+
 		dto.setLesson_no(lesson_no);
 		dto.setMember_id(member_id);
 		dto.setLesson_qa_reply_secret(lesson_qa_reply_secret);
 		dto.setLesson_qa_reply_content(lesson_qa_reply_content);
 		dto.setLesson_qa_reply_title(lesson_qa_reply_title);
 
-		
-			int result = ttlesson_service.add_lesson_reply(dto);
-			if (result > 0) {
-				return "success";
-			} else {
-				return "false";
-			}
-		
+		int result = ttlesson_service.add_lesson_reply(dto);
+		if (result > 0) {
+			return "success";
+		} else {
+			return "false";
+		}
+
 	}
-		
-	
+
 	@ResponseBody
-	@RequestMapping(value="lesson_detail/{lesson_no}/lesson_reply_list",produces="application/json; charset=utf8")
-	public ResponseEntity lesson_reply_list(@PathVariable int lesson_no, @RequestParam String member_id, @RequestParam String senior_id){
-		
-		System.out.println(member_id   + "        " + senior_id);
-		
-		
+	@RequestMapping(value = "lesson_detail/{lesson_no}/lesson_reply_list", produces = "application/json; charset=utf8")
+	public ResponseEntity lesson_reply_list(@PathVariable int lesson_no, @RequestParam String member_id,
+			@RequestParam String senior_id) {
+
+		System.out.println(member_id + "        " + senior_id);
+
 		HttpHeaders responseHeaders = new HttpHeaders();
-		
+
 		ArrayList<HashMap> rplist = new ArrayList<HashMap>();
-				
+
 		List<Lesson_qaDTO> lesson_reply_list = ttlesson_service.select_lesson_reply(lesson_no);
-	
+
+		List<Lesson_qaDTO> lesson_reply_answer_list = ttlesson_service.select_lesson_reply_answer(lesson_no);
+
 		if (lesson_reply_list.size() > 0) {
 			for (int i = 0; i < lesson_reply_list.size(); i++) {
-				
+
 				HashMap hm = new HashMap<>();
-				
+
 				if (lesson_reply_list.get(i).getLesson_qa_reply_secret().equals("Y")) {
-					
+
 					if (lesson_reply_list.get(i).getMember_id().equals(member_id)) {
 						hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
 						hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
@@ -155,8 +151,17 @@ public class JY_US_TotalLessonController {
 						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
 						hm.put("member_id", lesson_reply_list.get(i).getMember_id());
 						hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+						for (int j = 0; j < lesson_reply_answer_list.size(); j++) {
+							if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i)
+									.getLesson_qa_no()) {
+								hm.put("lesson_qa_answer_content",
+										lesson_reply_answer_list.get(j).getLesson_qa_answer_content());
+								hm.put("lesson_qa_register_date",
+										lesson_reply_answer_list.get(j).getLesson_qa_register_date());
+								hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
+							}
+						}
 
-						
 					} else if (senior_id.equals(member_id)) {
 						hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
 						hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
@@ -164,50 +169,72 @@ public class JY_US_TotalLessonController {
 						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
 						hm.put("member_id", lesson_reply_list.get(i).getMember_id());
 						hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+						for (int j = 0; j < lesson_reply_answer_list.size(); j++) {
+							if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i)
+									.getLesson_qa_no()) {
+								hm.put("lesson_qa_answer_content",
+										lesson_reply_answer_list.get(j).getLesson_qa_answer_content());
+								hm.put("lesson_qa_register_date",
+										lesson_reply_answer_list.get(j).getLesson_qa_register_date());
+								hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
+							}
+						}
 
-
-						
 					} else {
-					hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
-					hm.put("lesson_qa_reply_title", "비밀 글입니다.");
-					hm.put("lesson_qa_reply_content", "작성자와 시니어만 확인할 수 있습니다.");
-					hm.put("member_id","비밀 댓글입니다.");
-					hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
-					hm.put("lesson_qa_answer_content", lesson_reply_list.get(i).getLesson_qa_answer_content());
-					hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
-
+						hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
+						hm.put("lesson_qa_reply_title", "비밀 글입니다.");
+						hm.put("lesson_qa_reply_content", "작성자와 시니어만 확인할 수 있습니다.");
+						hm.put("member_id", "비밀 댓글입니다.");
+						hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
+						hm.put("lesson_qa_answer_content", lesson_reply_list.get(i).getLesson_qa_answer_content());
+						hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+						for (int j = 0; j < lesson_reply_answer_list.size(); j++) {
+							if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i)
+									.getLesson_qa_no()) {
+								hm.put("lesson_qa_answer_content", "작성자와 시니어만 확인할 수 있습니다.");
+								hm.put("member_id", "비밀댓글입니다.");
+							}
+						}
 
 					}
-					
-				} else {
-				hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());	
-				hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
-				hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
-				hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
-				hm.put("member_id", lesson_reply_list.get(i).getMember_id());
-				hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
 
+				} else {
+					hm.put("lesson_qa_no", lesson_reply_list.get(i).getLesson_qa_no());
+					hm.put("lesson_qa_reply_title", lesson_reply_list.get(i).getLesson_qa_reply_title());
+					hm.put("lesson_qa_reply_content", lesson_reply_list.get(i).getLesson_qa_reply_content());
+					hm.put("lesson_qa_register_date", lesson_reply_list.get(i).getLesson_qa_register_date());
+					hm.put("member_id", lesson_reply_list.get(i).getMember_id());
+					hm.put("lesson_qa_reply_secret", lesson_reply_list.get(i).getLesson_qa_reply_secret());
+					for (int j = 0; j < lesson_reply_answer_list.size(); j++) {
+						if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i)
+								.getLesson_qa_no()) {
+							hm.put("lesson_qa_answer_content",
+									lesson_reply_answer_list.get(j).getLesson_qa_answer_content());
+							hm.put("lesson_qa_register_date",
+									lesson_reply_answer_list.get(j).getLesson_qa_register_date());
+							hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
+						}
+					}
 
 				}
 				rplist.add(hm);
 			}
 		}
-		
+
 		JSONArray json = new JSONArray(rplist);
-		
+
 		return new ResponseEntity(json.toString(), responseHeaders, HttpStatus.CREATED);
-		
-		
+
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping("lesson_detail/{lesson_no}/lesson_answer_insert")
-	public String lesson_answer_insert(@PathVariable int lesson_no, @RequestParam int lesson_qa_no, @RequestParam String senior_id,
-			@RequestParam String lesson_qa_answer_content, @RequestParam String lesson_qa_reply_secret) {
-		
+	public String lesson_answer_insert(@PathVariable int lesson_no, @RequestParam int lesson_qa_no,
+			@RequestParam String senior_id, @RequestParam String lesson_qa_answer_content,
+			@RequestParam String lesson_qa_reply_secret) {
+
 		Lesson_qaDTO dto = new Lesson_qaDTO();
-		
+
 		// 댓글이 있는 레슨번호
 		dto.setLesson_no(lesson_no);
 		// 내가 답변을 다는 댓글 번호
@@ -218,21 +245,18 @@ public class JY_US_TotalLessonController {
 		dto.setMember_id(senior_id);
 		dto.setLesson_qa_reply_secret(lesson_qa_reply_secret);
 
+		int answer_reply = ttlesson_service.has_answer_reply(dto);
+		if (answer_reply > 0) {
+			return "has_answer";
+		} else {
 			int result = ttlesson_service.add_lesson_reply_answer(dto);
 			if (result > 0) {
 				return "success";
 			} else {
 				return "false";
 			}
-		
+		}
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
