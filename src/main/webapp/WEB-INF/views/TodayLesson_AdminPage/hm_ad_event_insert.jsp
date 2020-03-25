@@ -44,7 +44,7 @@
 	<div style="width: 60%; margin: auto;">
 		
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="hm_ad_event_insertresult"> 
+		 action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_insertresult"> 
 		
 		
 		<br>
@@ -72,9 +72,25 @@
 			
  <label for="event_thumbnail">썸네일</label>
  <input type="file" id="event_thumbnail" name="file" />
+ <br>
  <div class="select_img"><img src="" /></div>
  
-
+ <script>
+  $("#event_thumbnail").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(300);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+ <br><br>
+ <li style="list-style: none;">이벤트 간단설명</li>
+ <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100"></textarea>
+<br>
+<br>
  <input type="submit" value="이벤트 등록"/>
   <%-- <%=request.getRealPath("/") %>  --%>
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />

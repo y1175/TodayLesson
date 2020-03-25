@@ -155,58 +155,58 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         
    //혜미
       //혜미비번찾기 
-        else if ("/findPw".equals(strUri))                   
+        else if ("/todaylesson/findPw".equals(strUri))                   
             return false; 
       //혜미 이메일 & 아이디 값 받아서 임시 비밀번호 전송
-        else if("/findPassword".equals(strUri))
+        else if("/todaylesson/findPassword".equals(strUri))
              return false;
      //혜미 내 정보관리 페이지로 가기-필요없
-        else if("/hm_us_mymanage".equals(strUri))
+        else if("/todaylessonmypage/hm_us_mymanage".equals(strUri))
              return false;
      //혜미 내 정보 관리 1차 비밀번호 인증받기
-        else if("/hm_us_mymanage2".equals(strUri))
+        else if("/todaylessonmypage/hm_us_mymanage2".equals(strUri))
              return false; 
      //혜미 내 정보 수정 완료 될 시 가는 페이지
-        else if("/hm_us_mymanageupdate".equals(strUri))
+        else if("/todaylessonmypage/hm_us_mymanageupdate".equals(strUri))
            return false;
         //혜미 관리자 회원관리 페이지
-        else if("/admin_hm_memmanage".equals(strUri))
+        else if("/todaylessonadmin/admin_hm_memmanage".equals(strUri))
            return false;
         //혜미 관리자 레벨 수정 페이지
-        else if("/adminmember_levelupdate".equals(strUri))
+        else if("/todaylessonadmin/adminmember_levelupdate".equals(strUri))
            return false;
         //혜미 관리자 회원 디테일
-        else if("/hm_memmanagedetail".equals(strUri))
+        else if("/todaylessonadmin/hm_memmanagedetail".equals(strUri))
            return false;
         //혜미 사용자 1:1문의 페이지로 이동-필요없
-        else if("/hm_us_question".equals(strUri))
+        else if("/todaylessonmypage/hm_us_question".equals(strUri))
            return false;
         //혜미 사용자 1:1문의 등록 페이지로 이동-필요없
-        else if("/hm_question_insert".equals(strUri))
+        else if("/todaylessonmypage/hm_question_insert".equals(strUri))
            return false;
         //혜미 1:1문의 등록
-        else if("/hm_question_create".equals(strUri))
+        else if("/todaylessonmypage/hm_question_create".equals(strUri))
          return false;
         //혜미 관리자 1:1문의 관리페이지 이동 -필요없
-        else if("/todaylessonadmin/hm_ad_question".equals(strUri))
+        else if("/todaylessonmyadmin/todaylessonadmin/hm_ad_question".equals(strUri))
            return false;
         //혜미 회원정보수정 updatesms
-        else if("/hm_us_mymanageupdatesms".equals(strUri))
+        else if("/todaylessonmypage/hm_us_mymanageupdatesms".equals(strUri))
            return false;
         //혜미 이벤트 페이지로 이동-필요없
-        else if("/hm_ad_event_manage".equals(strUri))
+        else if("/todaylessonadmin/hm_ad_event_manage".equals(strUri))
            return false;
         //혜미 이벤트 insert
-        else if("/hm_ad_event_insert".equals(strUri))
+        else if("/todaylessonadmin/hm_ad_event_insert".equals(strUri))
            return false;
         //혜미 이벤트 insertresult이동 - 이거 필요없는데... 나중에 다 삭제함
-        else if("/hm_ad_event_insertresult".equals(strUri))
+        else if("/todaylessonadmin/hm_ad_event_insertresult".equals(strUri))
         	return false;
         //혜미 이벤트 수정폼
-        else if("/hm_ad_event_modify".equals(strUri))
+        else if("/todaylessonadmin/hm_ad_event_modify".equals(strUri))
         	return false;
         //혜미 사용자 이벤트
-        else if("/hm_us_event".equals(strUri))
+        else if("/todaylesson/hm_us_event".equals(strUri))
         	return false;
         //혜미 사용자 1:1문의 디테일 페이지 이동
       /*  else if("/todaylessonadmin/hm_us_question_detail/{no}".equals(strUri))
