@@ -24,6 +24,7 @@ import com.todaylesson.DTO.SQLjoin_Member_FreeBoardDTO;
 import com.todaylesson.service.User_YI_FreeBoard_Service;
 
 @Controller
+@RequestMapping("/todaylesson/")
 public class User_YI_FreeBoard_Controller {
 
 	@Resource(name="user_YI_FreeBoard_Service")

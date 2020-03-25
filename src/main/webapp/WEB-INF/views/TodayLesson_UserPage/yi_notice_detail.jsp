@@ -16,7 +16,7 @@
 제목 : ${notice_title } <br>
 내용 : ${item.notice_content } <br>
 
-<a href="/freeboard">목록으로</a>
+<a href="/todaylesson/freeboard">목록으로</a>
 
 </body>
 </html>

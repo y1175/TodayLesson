@@ -21,7 +21,7 @@ if (result>0)
 else
 	{
 	alert('주문을 취소할 수 없습니다.');
-	location.href="/user_myorderlist";
+	location.href="/todaylessonmypage/user_myorderlist";
 	}
 </script>
 </body>

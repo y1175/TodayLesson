@@ -33,7 +33,7 @@ $(document).ready(function() {
 		
 		var formData = $("#repdetail").serialize();
 		$.ajax({
-			url:'/freeboard_detailjson/'+freeboard_no
+			url:'/todaylesson/freeboard_detailjson/'+freeboard_no
 			,dataType:'json'
 			,data: formData
 			,success:function(data){
@@ -42,7 +42,7 @@ $(document).ready(function() {
  				console.log(data.freeboard_no);	
 				console.log(data.member_nick);
 				console.log("id"+data.member_id);
-				let onclickfunction = "if(!confirm()){return false;}location.href='/boardreply_delete/${item.boardreply_no+1}'";
+				let onclickfunction = "if(!confirm()){return false;}location.href='/todaylesson/boardreply_delete/${item.boardreply_no+1}'";
 				let repdetail="<tr><td>"+data.member_nick+"</td>";
 				repdetail+="<td>"+data.boardreply_content+"</td>";
 			    repdetail+="<td>"+yyyy+"-"+mm+"-"+dd+"</td>";
@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 
 <div class="rep_form">
-<form method='post' action='/insert_boardreply/' id='repdetail'>
+<form method='post' action='/todaylesson/insert_boardreply/' id='repdetail'>
 <input type='hidden' name='freeboard_no' value="${item.freeboard_no }"><br>
 <input type='hidden' id='member_id' name='member_id' value='${pageContext.request.userPrincipal.name}'><br>
 <label for='boardreply_content'>내용</label>
@@ -111,7 +111,7 @@ $(document).ready(function() {
 <td>
 <c:if test="${rep_list.member_id eq pageContext.request.userPrincipal.name }">
 <input type="button" class="reply_delete" value="삭제" 
-onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/boardreply_delete/${rep_list.boardreply_no}'">
+onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/todaylesson/boardreply_delete/${rep_list.boardreply_no}'">
 </c:if>
 </td></tr>
 </c:forEach>
@@ -120,11 +120,11 @@ onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href=
 </table><br>
 <c:if test="${item.member_id eq pageContext.request.userPrincipal.name }">
 <input type="button" class="freeboard_modify" value="글수정" 
-onclick="location.href='/freeboard_modify/${item.freeboard_no}'">
+onclick="location.href='/todaylesson/freeboard_modify/${item.freeboard_no}'">
 <input type="button" class="freeboard_delete" value="글삭제"
-onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/freeboard_delete/${item.freeboard_no}'">
+onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/todaylesson/freeboard_delete/${item.freeboard_no}'">
 </c:if>
-<a href="/freeboard">목록으로</a>
+<a href="/todaylesson/freeboard">목록으로</a>
 </sec:authorize>
 </body>
 </html>

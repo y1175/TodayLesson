@@ -21,7 +21,7 @@ if (result>0)
 else
 	{
 	alert('수정실패');
-	location.href="/freeboard";
+	location.href="/todaylesson/freeboard";
 	}
 </script>
 </body>

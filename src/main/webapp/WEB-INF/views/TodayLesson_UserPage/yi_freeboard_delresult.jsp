@@ -14,12 +14,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('삭제완료');
-	location.href="/freeboard";
+	location.href="/todaylesson/freeboard";
 	}
 else
 	{
 	alert('삭제실패');
-	location.href="/freeboard";
+	location.href="/todaylesson/freeboard";
 	}
 </script>
 </body>

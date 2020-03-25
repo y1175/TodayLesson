@@ -29,7 +29,7 @@
 <li>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <input type="submit" value="작성">
-<input type="button" onclick="location.href='/freeboard'" value="목록으로">
+<input type="button" onclick="location.href='/todaylesson/freeboard'" value="목록으로">
 </li>
 </ul>
 </form>
