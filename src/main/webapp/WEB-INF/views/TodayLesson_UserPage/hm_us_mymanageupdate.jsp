@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/resources/JS/hm_us_mymanageupdate.js"></script>
 <title>Insert title here</title>                               
 
 </head>
@@ -19,14 +20,28 @@
 ${dto.member_id}
 <form method="post" id="smsForm" >
 <label>연락처</label>
-<input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
-    required="required" value="${dto.member_phone}"/> 
+     <c:choose>
+     <c:when test="${to eq null }">
+     <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
+     value="${dto.member_phone}"/> 
+     </c:when>
+     <c:otherwise>
+     <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
+     value="${to}"/>
+     </c:otherwise>
+     </c:choose>
+     
       <input type="hidden" name="text" id="text2" > 
       <input type="button" name="sendSMS" id="sendSMS" value="인증번호 요청" /><br>
       <label>인증번호 확인:</label>
 <input type="text" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
 <div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger2">인증번호가 일치하지않습니다.</div>
+<!-- 
+<script>
+$("#alert-success2").hide();
+$("#alert-danger2").hide();
+</script> -->
     <input type="hidden" id="authNum" value="${auth_num}">
     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />         
 </form>
@@ -48,7 +63,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="date" name="member_birth" id="member_birth" value="${dto.member_birth}" required="required"><br>
  <label>e-mail</label>
 <input type="email" name="member_email" id="member_email" value="${dto.member_email}" required="required"><br>
- <input type="hidden" name="member_phone" id="member_phone" value="${dto.member_phone}" required="required"><br>
+ <input type="hidden" name="member_phone" id="member_phone" value="${to}" required="required"><br>
 <label for='addr'>주소</label>
 					<div class='form-row'>
 						<div class='col-5'>
@@ -170,7 +185,7 @@ onkeyup="passwordCheckFunction();"><br>
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="resources/JS/hm_us_mymanageupdate.js"></script>  
+	<!-- <script type="text/javascript" src="resources/JS/hm_us_mymanageupdate.js"></script>   -->
 
 
 </body>

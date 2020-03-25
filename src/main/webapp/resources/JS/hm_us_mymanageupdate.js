@@ -1,20 +1,13 @@
 $(document).ready(function(){
 		
-/*	$("#phonenumberbtn").on('click',function(){
-			
-			$("#phonenumber1").hide();
-			$("#smsForm").show();
-			
-		});*/
+
 
 	/* 인증번호 */
-
-$("#alert-success2").hide();
+   $("#alert-success2").hide();
 	$("#alert-danger2").hide();
 	
     $("#sendSMS").on('click',function(){
-       
-        var result = Math.floor(Math.random() * 1000000)+100000;
+       var result = Math.floor(Math.random() * 1000000)+100000;
         if(result>1000000){
            result = result - 100000;
         }
@@ -28,8 +21,8 @@ $("#alert-success2").hide();
          console.log(" 인증번호:"+result);
          $("#smsForm").attr("action",  "hm_us_mymanagesms"); //위에 있는 폼태그를 컨트롤러로 전송한다.
          $("#smsForm").submit();  
-       
-       
+         
+        
     })
     
     function smscheckfunction() {
