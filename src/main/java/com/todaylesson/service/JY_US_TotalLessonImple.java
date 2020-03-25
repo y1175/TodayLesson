@@ -12,6 +12,7 @@ import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
+import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.Mapper.JY_US_TotalLessonMapper;
 
@@ -94,6 +95,12 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 	@Override
 	public int has_answer_reply(Lesson_qaDTO dto) {
 		return mapper.has_answer_reply(dto);
+	}
+
+
+	@Override
+	public MemberDTO select_member_info(String member_id) {
+		return mapper.select_member_info(member_id);
 	}
 
 

@@ -116,4 +116,10 @@ where lesson_no = #{lesson_no} and lesson_qa_originno = #{lesson_qa_originno}
 
 </select>
 
+<select id="select_member_info" resultType="com.todaylesson.DTO.MemberDTO">
+
+select * from member where member_id = #{member_id}
+
+</select>
+
 </mapper>

@@ -20,5 +20,6 @@ public class LessonDetailDTO {
 	private int lessondetail_chapter;
 	private int lessondetail_comp;
 	private String member_id;
+	private String lessondetail_thumb;
 	
 }

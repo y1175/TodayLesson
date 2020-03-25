@@ -8,6 +8,7 @@ import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
+import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 
 @Mapper
@@ -40,6 +41,8 @@ public interface JY_US_TotalLessonMapper {
 	public List<Lesson_qaDTO> select_lesson_reply_answer(int lesson_no);
 
 	public int has_answer_reply(Lesson_qaDTO dto);
+
+	public MemberDTO select_member_info(String member_id);
 
 
 }

@@ -182,6 +182,7 @@ $(".insert_my_cart").click(function(){
 
 </script>
 
+<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
 
 	레슨명
 	<br>

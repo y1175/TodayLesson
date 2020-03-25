@@ -23,6 +23,7 @@ import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
+import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.service.JY_US_TotalLessonService;
 
@@ -51,12 +52,15 @@ public class JY_US_TotalLessonController {
 	}
 
 	@RequestMapping("lesson_buy/{lesson_no}")
-	public String lesson_buy(Model model, @PathVariable int lesson_no) {
+	public String lesson_buy(Model model, @PathVariable int lesson_no, @RequestParam String member_id) {
 
-		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
-		model.addAttribute("dto", dto);
+		MemberDTO mdto = ttlesson_service.select_member_info(member_id);
+		
+		AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);
+		model.addAttribute("ldto", ldto);
+		model.addAttribute("mdto", mdto);
 
-		return "TodayLesson_UserPage/jy_us_lesson_buy.us_main_section";
+		return "TodayLesson_UserPage/jy_us_lesson_order.us_main_section";
 	}
 
 	@ResponseBody

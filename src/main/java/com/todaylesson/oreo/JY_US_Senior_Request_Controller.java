@@ -123,10 +123,11 @@ public class JY_US_Senior_Request_Controller {
 	@RequestMapping("plus_senior")
 	public String plus_senior(SeniorDTO dto, Model model) {
 		
+		System.out.println(dto.toString());
 		int result = seniorservice.plus_senior(dto);
 		model.addAttribute("result",result);
 		
-		return "TodayLesson_UserPage/jy_us_insertresult.hs_sn_main_section";
+		return "TodayLesson_SeniorPage/jy_sn_senior_insert_result";
 	}
 	
 	@RequestMapping("senior_switch_update/{member_id}")

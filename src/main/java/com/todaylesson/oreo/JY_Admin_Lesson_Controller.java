@@ -186,7 +186,7 @@ public class JY_Admin_Lesson_Controller {
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);
 		
-		return "TodayLesson_AdminPage/jy_ad_lesson_detai.hs_ad_main_sectionl";
+		return "TodayLesson_AdminPage/jy_ad_lesson_detail.hs_ad_main_section";
 	}
 	
     // ·¹½¼ ½É»ç ÆË¾÷

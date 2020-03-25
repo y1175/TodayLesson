@@ -14,13 +14,8 @@
 
 if (${result} > 0) {
 	alert("승인 완료!");
-	</script>
-	
-	<h3>승인완료</h3>
-	<h5>이제 멜 보내면 됨 혬한테 배워야혀</h5>
-	<a href="${pageContext.request.contextPath }/wait_lesson">목록으로</a>
-	
-	<script>
+	location.href="${pageContext.request.contextPath }/wait_lesson";
+
 } else {
 	
 

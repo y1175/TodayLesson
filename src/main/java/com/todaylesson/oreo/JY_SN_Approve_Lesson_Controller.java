@@ -1,18 +1,22 @@
 package com.todaylesson.oreo;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.service.JY_SN_Approve_LessonService;
+import com.todaylesson.upload.UploadFileUtils;
 
 @Controller
 //@RequestMapping("/todaylessonsenior/")
@@ -57,9 +61,35 @@ public class JY_SN_Approve_Lesson_Controller {
 	}
 	
 	@RequestMapping("mal_lesson_upload_result")
-	public String approve_lesson_upload(LessonDetailDTO dto, Model model) {	
-		int result = approve_service.apl_upload(dto);	
-		int lesson_no = dto.getLesson_no();
+	public String approve_lesson_upload(LessonDetailDTO dto, Model model, MultipartFile file, HttpServletRequest request) throws Exception{	
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null)   
+		{
+		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		//dto.set(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		dto.setLessondetail_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		String imgthumb = dto.getLessondetail_thumb();
+		//System.out.println("이미지경로: "+img);
+		System.out.println("썸네일이미지경로: "+imgthumb);
+		
+		
+
+		int result =approve_service.apl_upload(dto);
+		model.addAttribute("result",result);
+		
+		System.out.println(dto.toString());
+					
+				int lesson_no = dto.getLesson_no();
 	
 		model.addAttribute("result",result);
 		model.addAttribute("lesson_no",lesson_no);
