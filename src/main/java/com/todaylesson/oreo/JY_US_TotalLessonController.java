@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -52,8 +54,11 @@ public class JY_US_TotalLessonController {
 	}
 
 	@RequestMapping("lesson_buy/{lesson_no}")
-	public String lesson_buy(Model model, @PathVariable int lesson_no, @RequestParam String member_id) {
-
+	public String lesson_buy(Model model, @PathVariable int lesson_no,Authentication authentication) {
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+		
+		
 		MemberDTO mdto = ttlesson_service.select_member_info(member_id);
 		
 		AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);

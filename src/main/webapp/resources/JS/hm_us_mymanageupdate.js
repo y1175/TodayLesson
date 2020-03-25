@@ -1,7 +1,4 @@
 $(document).ready(function(){
-		
-
-
 	/* 인증번호 */
    $("#alert-success2").hide();
 	$("#alert-danger2").hide();
@@ -25,28 +22,30 @@ $(document).ready(function(){
         
     })
     
-    function smscheckfunction() {
-			$("#alert-success2").hide();
-			$("#alert-danger2").hide();
-			$("#numcheck").keyup(function() {
-			var authnum =$("#authNum").val();
-				console.log("authnum:"+authnum)
-				var numcheck = $("#numcheck").val();
-				console.log("numcheck:",numcheck);
-				if (authnum != "" || numcheck != "") {
-					if (authnum == numcheck) {
-						$("#alert-success2").show();
-						$("#alert-danger2").hide();
-						$("#submit").removeAttr("disabled");
-					} else {
-						$("#alert-success2").hide();
-						$("#alert-danger2").show();
-						$("#submit").attr("disabled", "disabled");
-						}
-				}
-			});
-
-
-		}
+ 
     
 });
+function smscheckfunction() {
+	$("#alert-success2").hide();
+	$("#alert-danger2").hide();
+	$("#numcheck").keyup(function() {
+	var authnum =$("#authNum").val();
+		console.log("authnum:"+authnum)
+		var numcheck = $("#numcheck").val();
+		console.log("numcheck:",numcheck);
+		if (authnum != "" || numcheck != "") {
+			if (authnum == numcheck) {
+				$("#alert-success2").show();
+				$("#alert-danger2").hide();
+				$("#submit").removeAttr("disabled");
+			} else {
+				$("#alert-success2").hide();
+				$("#alert-danger2").show();
+				$("#submit").attr("disabled", "disabled");
+				
+				}
+		}
+	});
+
+
+}

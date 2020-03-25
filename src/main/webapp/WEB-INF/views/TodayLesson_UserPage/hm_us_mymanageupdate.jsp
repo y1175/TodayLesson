@@ -8,9 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="/resources/JS/hm_us_mymanageupdate.js"></script>
-<title>Insert title here</title>                               
+<title>오늘의 레슨 회원정보수정</title>                               
 
 </head>
 <body>
@@ -36,12 +34,8 @@ ${dto.member_id}
       <label>인증번호 확인:</label>
 <input type="text" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
 <div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
-<div class="alert alert-danger" id="alert-danger2">인증번호가 일치하지않습니다.</div>
-<!-- 
-<script>
-$("#alert-success2").hide();
-$("#alert-danger2").hide();
-</script> -->
+<div class="alert alert-danger" id="alert-danger2" >인증번호가 일치하지않습니다.</div>
+
     <input type="hidden" id="authNum" value="${auth_num}">
     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />         
 </form>
@@ -64,6 +58,12 @@ onkeyup="passwordCheckFunction();"><br>
  <label>e-mail</label>
 <input type="email" name="member_email" id="member_email" value="${dto.member_email}" required="required"><br>
  <input type="hidden" name="member_phone" id="member_phone" value="${to}" required="required"><br>
+ 
+ 
+ 
+ 
+ 
+ 
 <label for='addr'>주소</label>
 					<div class='form-row'>
 						<div class='col-5'>
@@ -182,11 +182,10 @@ onkeyup="passwordCheckFunction();"><br>
 
 	</script>
  
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<!-- <script type="text/javascript" src="resources/JS/hm_us_mymanageupdate.js"></script>   -->
-
+	<script src="/resources/JS/hm_us_mymanageupdate.js"></script>
 
 </body>
 </html>
