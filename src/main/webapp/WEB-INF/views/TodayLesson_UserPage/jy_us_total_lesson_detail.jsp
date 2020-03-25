@@ -584,7 +584,7 @@ function fn_answer(lesson_qa_no){
 
 	console.log(senior_id);
 	
-  
+	
 	
 	let data = {
 			
