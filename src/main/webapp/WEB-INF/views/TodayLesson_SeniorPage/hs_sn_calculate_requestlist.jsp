@@ -10,6 +10,10 @@
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=1">  
 <!-- CSSstyle -->
 
+<!-- JS -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_sn_calculate_requestlist.js"></script>
+<!-- JS -->
 <script>
 
 function checkBankHolder(){
@@ -49,11 +53,48 @@ function checkBankHolder(){
 							alert("실명 인증 성공");
 						} else {
 							alert("실명 인증 실패");
-						}
-					
-					});
+						}			
+	
 }
+</script>
+<script type="text/javascript">
+/* /* 
+$(document).ready(function() {
 
+	let bank_code= "${accountupdatedto.senior_bank_name}";
+	let token = "${token}";
+
+	console.log(bank_code);
+	console.log(token);
+
+	$.ajax({
+		method: 'get',
+		url: 'https://api.iamport.kr/banks',
+	    headers: { 
+	    	"Authorization": token
+		}
+	}).done(function(msg) {
+			console.log(msg);
+			let bank_name = msg.response;
+			
+			for (var i = 0; i < bank_name.length; i++) {
+				console.log(bank_name[i]);
+				console.log(bank_name[i].code);
+				console.log(bank_name[i].name);
+				//console.log(bank_code);
+				
+				if (bank_name[i].code == bank_code) {
+					let senior_bank_name = bank_name[i].name;
+					$('#bank_name').append(senior_bank_name);
+					break;
+				}
+			}
+			
+		});
+	
+	
+});
+ */ */
 </script>
 </head>
 <body>
@@ -67,9 +108,7 @@ function checkBankHolder(){
                   <div class="col-sm-7" style="display: inline-block;">
                      <b>000원</b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
                      <br>
-                     <span>
-                        <c:out value="${accountdetalidto.senior_bank_name}"/>
-                     </span>
+                     <div id = "bank_name"></div>
                      <br>
                      <span>
                         <c:out value="${accountdetalidto.senior_account_num}"/>
@@ -83,7 +122,7 @@ function checkBankHolder(){
                   <div class="modal fade" id="hs_senior_AccountModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_AccountModal_title" aria-hidden="true">
                      <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                           <div class="modal-body" style="padding: 12px 16px 16px">
+                           <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
                               <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_accountupdateresult">
                                  <div class="hs_senior_AccountModal_HeaderDiv">
                                     <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
@@ -94,7 +133,7 @@ function checkBankHolder(){
                                  <div class="form-row">
                                     <div class="form-group col-md-4">
                                        <select name="senior_bank_name" class="form-control" style="font-size: 15px;">
-                                    <option disabled="disabled" value="senior_bank_name">-----</option>
+                                    <option disabled="disabled" value="${accountdetalidto.senior_bank_name}">-----</option>
                                     <option value="004">KB국민은행</option>
                                     <option value="023">SC제일은행</option>
                                     <option value="039">경남은행</option>
@@ -169,15 +208,15 @@ function checkBankHolder(){
                
                <div class="col-sm-5 text-right" style="display: inline-block; float: right;">
                   <!-- <button>정산FAQ</button> -->
-                 <!--  <button  data-toggle="modal" data-target="#hs_senior_CulateRequestModal" class="hs_senior_CulateRequestBtn">
+                  <button  data-toggle="modal" data-target="#hs_senior_CulateRequestModal" class="hs_senior_CulateRequestBtn">
                   <i class='fas fa-won-sign'></i>
                                 정산신청
-                  </button> -->
+                  </button>
                   <!-- CulateRequest modal -->
-                    <!--  <div class="modal fade" id="hs_senior_CulateRequestModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_CulateRequestModal_title" aria-hidden="true">
+                  <div class="modal fade" id="hs_senior_CulateRequestModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_CulateRequestModal_title" aria-hidden="true">
                      <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
-                           <div class="modal-body" style="padding: 12px 16px 16px">
+                           <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
                               <form method="post" action="">
                                  <div class="hs_senior_CulateRequestModal_HeaderDiv">
                                     <b class="hs_senior_CulateRequestModal_Title" id="hs_senior_CulateRequestModal_title">정산신청</b>
@@ -185,16 +224,100 @@ function checkBankHolder(){
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
-                                 <div class="form-row">
-                                     <b>정산가능금액해서 금액나타내기...</b>
-                                   
+                                 <div class="form-row" style="width:100%; margin-bottom: 15px;">
+                                    <div class="col-md-6 text-left" style="display: inline-block; float: left;">
+                                       <span>정산가능</span>
+                                    </div>
+                                    <div class="col-md-6 text-right" style="display: inline-block; float: right;">
+                                       <span>000원</span>
+                                    </div>
                                  </div>
-                                 
+                                 <!-- 계좌정보 -->
+                                 <div class="col-md-6" style="display: inline-block; text-align: left; float: left;">
+                                    <b class="hs_senior_CulateRequestModal_accountdetail">계좌정보</b>
+                                       <div class="card-block" style="padding: 10px 0px;">
+                                          <table class="table table-hover" style="border-top: 2px solid rgb(53, 54, 58); border-bottom: 2px solid rgb(53, 54, 58);">
+                                             <tr class="hs_senior_CulateRequestModal_accountdetail_tr">
+                                                <th>은행</th>
+                                                <td>
+                                                   <c:out value="${accountdetalidto.senior_bank_name}"/> 
+                                                </td>
+                                             </tr>
+                                             <tr class="hs_senior_CulateRequestModal_accountdetail_tr">
+                                                <th>계좌번호</th>
+                                                <td>
+                                                   <c:out value=""/>${accountdetalidto.senior_account_num}
+                                                </td>
+                                             </tr>
+                                             <tr class="hs_senior_CulateRequestModal_accountdetail_tr">   
+                                                <th>예금주</th>
+                                                <td>
+                                                   <c:out value="${accountdetalidto.senior_account_name}"/>
+                                                </td>
+                                             </tr>
+                                          </table>      
+                                       </div>
+                                       <div class="card-block" style=" width:100%; padding: 12px; background-color: rgba(53, 54, 58, 0.3); font-size: 14px;">
+                                          <input type="radio" id="hs_senior_CulateRequestModal_crno_o" 
+                                                 name="hs_senior_CulateRequestModal_crno_ch" value="1" checked="checked">
+                                          <label style="font-weight: 600; font-size: 13px; margin-right: 20px; margin-bottom: 12px;">개인사업자(법인)</label>
+                                          <input type="radio" id="hs_senior_CulateRequestModal_crno_x" 
+                                                 name="hs_senior_CulateRequestModal_crno_ch" value="2">
+                                          <label style="font-weight: 600; font-size: 13px; margin-bottom: 12px;">개인</label>
+                                          <!-- 사업자번호 있는 사람  -->
+                                          <div id="hs_senior_CulateRequestModal_crno_o_detail" class="hs_senior_CulateRequestModal_crno_o_detail">
+                                             <label for="hs_sn_cal_senior_crno" style="width: 120px; font-weight: 600;">사업자등록번호</label>
+                                             <input type="text" id="hs_sn_cal_senior_crno" name="senior_crno">
+                                             <br>
+                                             <label for="hs_sn_cal_senior_name" style="width: 120px; font-weight: 600;">상호명</label>
+                                             <input type="text" id="hs_sn_cal_senior_name" name="senior_crno_name">
+                                             <br>
+                                             <label for="hs_sn_cal_senior_crnophone" style="width: 120px; font-weight: 600;">연락처</label>
+                                             <input type="text" id="hs_sn_cal_senior_crnophone" name="senior_phone"> 
+                                          </div>
+                                          <!-- 개인 -->
+                                          <div id="hs_senior_CulateRequestModal_crno_x_detail" style="display: none;">
+                                             <label for="hs_sn_cal_senior_name" style="width: 120px; font-weight: 600;">이름</label>
+                                             <input type="text" id="hs_sn_cal_senior_name" name="member_name">
+                                             <br>
+                                             <label for="hs_sn_cal_senior_phone" style="width: 120px; font-weight: 600;">연락처</label>
+                                             <input type="text" id="hs_sn_cal_senior_phone" name="senior_phone">
+                                          </div>
+                                       </div>
+                                       <div id="hs_senior_CulateRequestModal_calculateguide_detail1" class="card-block" style="padding: 20px 0px; font-size: 13px;">
+                                          <pre style="margin: 0px 0px 7px;">※ 최초 1회 정산시 증빙서류 제풀이 필요하며, 확인시 정산이 정상적으로 진행됩니다.</pre>
+                                          <pre style="margin: 0px 0px 5px;">  [담당자 - 하화수 / E-Mail - todaylesson144@gmail.com]</pre>
+                                          <pre style="margin: 0px 0px 0px;">  - 사업자 : 사업자등록증 사본, 사업자 통장사본</pre>
+                                          <pre style="margin: 0px 0px 0px;">  - 개인 : 주민등록등본 사본, 본인 명의 통장 사본(비용처리에 필요한정보)</pre>
+                                       </div>
+                                 </div>
+                                 <!-- 계좌정보 -->
+                                 <!-- 정산가이드 -->
+                                 <div class="col-md-6" style="display: inline-block; text-align : left; float: right;">
+                                    <b class="hs_senior_CulateRequestModal_calculateguide">정산가이드</b>
+                                    <div id="hs_senior_CulateRequestModal_calculateguide_detail2" class="card-block" style="padding: 15px 0px; font-size: 14px;">
+                                       <pre style="margin: 0px 0px 7px; ">※ 정산 조건을 확인 하였습니까? </pre>
+                                       <pre>   1.가입정보와 일치한 증빙 서류 제출</pre>
+                                       <pre>     [담당자 - 하화수 / E-Mail - todaylesson144@gmail.com]</pre>
+                                       <pre>     - 사업자 : 사업자등록증 사본, 사업자 통장사본</pre>
+                                       <pre>     - 개인 : 주민등록등본 사본, 본인 명의 통장 사본(비용처리에 필요한정보)</pre>
+                                       <pre>   2.정산신청 금액과 일치하는 공금가액으로 발행 된 '세금계산서'</pre>
+                                       <pre>   3.환급신청 금액을 입금받으실 정확한 '계좌번호'</pre>
+                                       <pre>   4.정산수수료 - 매출금액의 10% (VAT 별도)</pre>
+                                    </div>
+                                 </div>
+                                 <!-- 정산가이드 -->
+                                 <div class="col-md-12" style="clear: both; text-align: center;">
+                                    <button type="submit" class="hs_senior_CulateRequestModal_Btn">
+                                       <i class='fas fa-won-sign'></i>
+                                                                     정산신청하기
+                                    </button>
+                                 </div>
                               </form>
                            </div>
                         </div>
                      </div>
-                  </div> -->
+                  </div>
                   <!-- CulateRequest modal -->
                </div>
             </div>   

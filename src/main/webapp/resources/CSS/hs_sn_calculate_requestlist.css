@@ -91,7 +91,7 @@
 	border-radius : 3px;
 	border: 1px transparent;
 	padding: 5px 15px;
-	font-weight : 800;
+	font-weight : 700;
 	font-size : 14px;
 	color: white;
 	background-color: rgb(224, 62, 82);
@@ -100,12 +100,86 @@
 .hs_senior_CulateRequestModal_HeaderDiv{
 	padding: 0px 0px 16px;
 }
-   /* 계좌정보수정 제목*/
-.hs_senior_CulateRequestModal_title{
-	font-size: 16px;
+   /* 정산신청 제목*/
+.hs_senior_CulateRequestModal_Title{
+	font-size: 18px;
+	display: inline-block; 
+	float: left;
+	margin-bottom: 15px;
 }
-
-
+/* 정산신청 계좌정보 제목 */
+.hs_senior_CulateRequestModal_accountdetail{
+	font-size: 15px;
+}
+/* 정산신청 계좌정보 table */
+.hs_senior_CulateRequestModal_accountdetail_tr{
+	font-size: 13px;
+}
+.hs_senior_CulateRequestModal_accountdetail_tr th{
+	width : 20%;
+	background-color : rgba(53, 54, 58, 0.1);
+	border-right: 1px solid rgba(53, 54, 58, 0.2);
+}
+.hs_senior_CulateRequestModal_accountdetail_tr td{
+	width : 80%;
+}
+/* 정산신청 개인사업자 개인정보 */
+#hs_sn_cal_senior_crno{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_senior_name{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_senior_crnophone{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	width: 74%;
+}
+#hs_sn_cal_senior_name{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_senior_phone{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	width: 74%;
+}
+#hs_senior_CulateRequestModal_calculateguide_detail1>pre{
+	font-weight: 600; 
+	color: rgba(53, 54, 58, 0.4);
+}
+#hs_senior_CulateRequestModal_calculateguide_detail2>pre{
+	margin: 0px 0px 3px; 
+	font-weight: 600; 
+	color: rgba(53, 54, 58, 0.6);
+}
+/* 정산신청 정산가이드 제목 */
+.hs_senior_CulateRequestModal_calculateguide{
+	font-size: 15px;
+}
+/* 정산신청하기 버튼 */
+.hs_senior_CulateRequestModal_Btn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	font-weight : 700;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+}
 /* 엑세다운로드 DIV  */
 .hs_senior_CalculateRequest_ExcelBox{
 	margin-top: 20px;

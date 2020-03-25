@@ -13,12 +13,13 @@
    <div>
       <h3>매출 현황</h3>
       <div>
-         <form method="post" action="/senior_sales_list/${salesList.senior_no}?startdate=${salesList.sales_search_startdate}&enddate=${salesList.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
+       <c:forEach var="salesList_form" items="${salesList}">
+         <form method="post" action="/senior_sales_list/${salesList_form.member_id}?startdate=${salesList_form.sales_search_startdate}&enddate=${salesList_form.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
             <label>기간검색</label>
             <div>
-               <input type="date" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" value="${salesList.sales_search_startdate}">
+               <input type="date" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" value="${salesList_form.sales_search_startdate}">
                <span> - </span>
-               <input type="date" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" value="${salesList.sales_search_enddate}">
+               <input type="date" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" value="${salesList_form.sales_search_enddate}">
                <input type="button" name="" id="" value="전체">
                <input type="button" name="" id="" value="오늘">
                <input type="button" name="" id="" value="일주일">
@@ -37,6 +38,7 @@
             <div>
                <input type="reset" id="" value="초기화">
                <input type="submit" id="" value="검색">
+               
             </div>
             <div>
                <select name="" class="">
@@ -47,6 +49,7 @@
                <button>엑셀다운로드</button>
             </div>            
          </form>
+         </c:forEach>
       </div>     
       <div>
          <table class="hs_sn_sales_table">
@@ -220,7 +223,7 @@
                   <c:set var="sales_sum" value="${sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
                   
                      <!-- 결제금액합계 -->
-                     <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_paystatus}"/> 
+                     <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_cost}"/> 
                      <%-- 결제금액/취소금액 같이되었을때... 처리할려고 햇던거 
                      <c:choose>
                      <c:when test="${salesList.orderlist_paystatus == 0}">
@@ -233,7 +236,7 @@
                   </c:choose> --%>
                   
                      <!-- 포인트사용합계 -->
-                     <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_paystatus}"/> 
+                     <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_usepoint}"/> 
                      <%-- 결제금액/취소금액 같이되었을때... 처리할려고 햇던거 
                      <c:choose>
                      <c:when test="${salesList.orderlist_paystatus == 0}">

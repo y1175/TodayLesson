@@ -81,11 +81,13 @@
        where orderlist_date > DATE_ADD(now(), INTERVAL -1 month);
     </select>
     <!-- 일일 판매금액 집계 -->
+    <!-- 일일 회원가입현황 -->
     <select id="memberJoinCount" resultType="int">
        select count(*) 
        from member
        where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
     </select>
+    <!-- 일일 회원가입현황 -->
 </mapper>
 
 

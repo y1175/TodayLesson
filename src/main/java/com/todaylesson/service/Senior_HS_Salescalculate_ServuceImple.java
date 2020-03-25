@@ -21,10 +21,10 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	//매출현황전체리스트
 	@Override
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> 
-	       salesList(int senior_no, String sales_search_startdate, String sales_search_enddate, String search, String searchtxt) {  //String start_date, String end_date, 
+	       salesList(String member_id, String sales_search_startdate, String sales_search_enddate, String search, String searchtxt) {  //String start_date, String end_date, 
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();
-		hm.put("senior_no", senior_no);
+		hm.put("senior_no", member_id);
 		hm.put("sales_search_startdate", sales_search_startdate);
 		hm.put("sales_search_enddate", sales_search_enddate);
 		hm.put("search", search);
@@ -34,38 +34,38 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 
 	//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calculateRequsetList(int senior_no) {
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calculateRequsetList(String member_id) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.cal_RequestList(senior_no);
+		return salescalculateMapper.cal_RequestList(member_id);
 	}
 
 	//정산신청 리스트 결제건수
 	@Override
-	public List<Integer> calPayCount(int senior_no) {
+	public List<Integer> calPayCount(String member_id) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.calPayCount(senior_no);
+		return salescalculateMapper.calPayCount(member_id);
 	}
 
 	//정산신청 리스트 레스수익금액
 	@Override
-	public List<Integer> calRevenueCost(int senior_no) {
+	public List<Integer> calRevenueCost(String member_id) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.calRevenueCost(senior_no);
+		return salescalculateMapper.calRevenueCost(member_id);
 	}
 
 	//정산신청 리스트 포인트사용
 	@Override
-	public List<Integer> calUsePointSum(int senior_no) {
+	public List<Integer> calUsePointSum(String member_id) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.calUsePointSum(senior_no);
+		return salescalculateMapper.calUsePointSum(member_id);
 	}
 
 
 	//정산신청 시니어디테일
 	@Override
-	public SeniorDTO accountDetailDTO(int senior_no) {
+	public SeniorDTO accountDetailDTO(String member_id) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.accountDetailDTO(senior_no);
+		return salescalculateMapper.accountDetailDTO(member_id);
 	}
 	
 	//정산신청 시니어계좌정보수정
@@ -74,6 +74,20 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		// TODO Auto-generated method stub
 		return salescalculateMapper.accountUpdateDTO(dto);
 	}
+
+	//정산신청가능금액
+	/*@Override
+	public int calculate_PossibilityCost(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.calculate_PossibilityCost(member_id);
+	}*/
+
+	//정산대기금액
+	/*@Override
+	public int calculate_WaitingCost(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.calculate_WaitingCost(member_id);
+	}*/
 
 	
 	
