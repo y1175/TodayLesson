@@ -13,7 +13,7 @@ from event
 
 
 <select id="eventlist" resultType="com.todaylesson.DTO.EventDTO" parameterType="java.util.HashMap">
-select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail
+select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail,event_thumbexplain
 from event
 <include refid="search_select"></include> 
 order by event_no desc
@@ -21,12 +21,12 @@ limit #{startrow},15
 </select>
 
 <insert id="eventinsert" parameterType="com.todaylesson.DTO.EventDTO" >
-insert into event(event_group, event_title, event_content, event_startperiod, event_endperiod,event_thumbnail)
-values(#{event_group},#{event_title},#{event_content},#{event_startperiod},#{event_endperiod},#{event_thumbnail})
+insert into event(event_group, event_title, event_content, event_startperiod, event_endperiod,event_thumbnail,event_thumbexplain)
+values(#{event_group},#{event_title},#{event_content},#{event_startperiod},#{event_endperiod},#{event_thumbnail},#{event_thumbexplain})
 </insert>
 
 <select id="eventdetail" parameterType="int" resultType="com.todaylesson.DTO.EventDTO">
-select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail
+select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail,event_thumbexplain
 from event
 where event_no = #{event_no}
 </select>
@@ -39,6 +39,7 @@ set event_group = #{event_group}
 	,event_startperiod = #{event_startperiod}
 	,event_endperiod = #{event_endperiod}
 	,event_thumbnail = #{event_thumbnail}
+	,event_thumbexplain = #{event_thumbexplain}
 	where event_no = #{event_no}
 </update>
 
@@ -49,6 +50,7 @@ set event_group = #{event_group}
 	,event_content = #{event_content}
 	,event_startperiod = #{event_startperiod}
 	,event_endperiod = #{event_endperiod}
+	,event_thumbexplain =#{event_thumbexplain}
 	where event_no = #{event_no}
 </update>
 

@@ -67,7 +67,7 @@
 					</li>
 					<li class="eventperiod">${item.event_startperiod}~${item.event_endperiod}</li>
                   <br><br>
-	              <li class="eventreadmore"><a href="${pageContext.request.contextPath}/hm_ad_event_detail/${item.event_no}" class="eventdetail">Read More</a></li>
+	              <li class="eventreadmore"><a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_detail/${item.event_no}" class="eventdetail">Read More</a></li>
                   </ul>
 </div>
 <div class="event_line"></div>

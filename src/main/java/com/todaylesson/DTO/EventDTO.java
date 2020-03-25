@@ -19,5 +19,5 @@ public class EventDTO {
 	private String event_startperiod;
 	private String event_endperiod;
 	private String event_thumbnail;
-	
+	private String event_thumbexplain;
 }

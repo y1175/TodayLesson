@@ -54,14 +54,64 @@
 
 
 <!-- 여기에 이미지 직접넣어서 버튼으로 만드는거(주력 이벤트) -->
-
+<div class = "hm_event_header">
 <h2>이벤트 모음</h2>
-
-
-<div>
-<h3>전체 이벤트</h3>
 </div>
 
+ 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:70%; margin : 40px auto 0px;">
+  <a class="navbar-brand" href="#" style="font-size:25px; margin-right:30px; ">Event</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">전체 이벤트</a><span class="sr-only">(current)</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">레  슨</a>
+      </li>     
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">스토어</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="font-size:20px;">기  타</a>
+      </li>                                     
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="get" action="hm_us_event?currPage=${page.startBlock }">
+    <select name="search"  class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+     <option value="all">전체</option>
+     <option value="event_title">제목</option>
+    </select>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchtxt">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+    </form>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
+기존 검색창
 <div class="event_search_form">
  <form method ="get" action="hm_us_event?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
  <select name="search">
@@ -72,11 +122,7 @@
  <input type="submit" value="검색">
  </form>
  </div>
-
-</div>
-
-
-
+ --%>
 
 
 
