@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
+
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.session.SessionInformation;
+
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import com.todaylesson.DTO.PageMaker;
+
 import com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO;
 
 import com.todaylesson.service.User_YI_OrderList_Service;
@@ -88,6 +88,27 @@ public class User_YI_OrderList_Controller {
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> detailList=service.orderdetail();
 		System.out.println("length:"+detailList.size());
 		return detailList;
+	}
+	
+	@RequestMapping("/todaylessonmypage/myorderlist_orderinfo/{orderlist_no}")
+	public String orderinfo(@PathVariable int orderlist_no
+			,Model model)
+	{
+		SQLjoin_OrderList_Order_detail_MemberDTO dto=service.orderinfo(orderlist_no);
+		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderinfo_detail(orderlist_no);
+		
+		model.addAttribute("dto",dto);
+	model.addAttribute("list",list);
+		
+		return "/TodayLesson_UserPage/yi_us_orderlist_detail";
+	}
+	
+	@RequestMapping("/todaylessonmypage/user_myorderlist_cancel/{orderlist_no}")
+	public String myorderlist_cancel(@PathVariable int orderlist_no,Model model)
+	{
+		int result=service.order_cancel(orderlist_no);
+		model.addAttribute("result",result);
+		return"/TodayLesson_UserPage/yi_us_orderlist_cancel";
 	}
 	
 }

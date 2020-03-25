@@ -16,4 +16,11 @@ public interface User_YI_OrderList_Mapper {
 
 	public List<SQLjoin_OrderList_Order_detail_MemberDTO> detailList();
 
+	public SQLjoin_OrderList_Order_detail_MemberDTO orderinfo(int orderlist_no);
+
+	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderinfo_detail(
+			int orderlist_no);
+
+	public int orderlist_cancel(int orderlist_no);
+
 }

@@ -8,6 +8,7 @@
 		select COUNT(*) 
 		from orderlist
 		where member_id=#{member_id}
+		 <include refid="orderlist_search"></include>
 		<!-- WHERE절을 include 태그로 삽입 -->
 </select>
 
@@ -18,7 +19,7 @@
 	on member.member_id=orderlist.member_id
 <!-- WHERE절을 include 태그로 삽입 -->
 where member.member_id=#{member_id}
-<!-- <include refid="search_select"></include> -->
+ <include refid="orderlist_search"></include>
  order by orderlist_date desc
 limit   #{startrow}, 5 
 
@@ -31,5 +32,45 @@ join(order_detail join product on order_detail.product_no=product.product_no)
 on  orderlist.orderlist_no= order_detail.orderlist_no
   order by orderlist_date desc
 </select>
+
+<select id="orderinfo" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="int">
+select *
+from orderlist
+where orderlist_no=#{orderlist_no}
+
+</select>
+
+<select id="orderinfo_detail" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO"
+ parameterType="int">
+select product_thumb,product_category,product_cost,orderlist_orderstatus
+from member join (orderlist
+join(order_detail join product on order_detail.product_no=product.product_no)
+on  orderlist.orderlist_no= order_detail.orderlist_no)
+on member.member_id= orderlist.member_id
+where orderlist.orderlist_no=#{orderlist_no}
+
+</select>
+
+<update id="orderlist_cancel" parameterType="int">
+update orderlist
+set orderlist_orderstatus=5
+where orderlist_no=#{orderlist_no}
+</update>
+
+	<!-- 검색기능 -->
+	<sql id="orderlist_search">
+
+	
+	<if test='start_date!="" and start_date!=null'>	
+	and orderlist_date<![CDATA[>=]]>#{start_date}
+	</if>
+	
+	<if test='end_date!="" and end_date!=null'>	
+	and orderlist_date<![CDATA[<=]]>#{end_date}
+	</if>
+	
+
+	</sql>
+
 
 </mapper>

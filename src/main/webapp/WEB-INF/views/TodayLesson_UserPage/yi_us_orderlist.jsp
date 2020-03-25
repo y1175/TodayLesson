@@ -38,30 +38,30 @@ $(document).ready(function(){
 </script>
 <body>
 ${member_id }님의 주문내역
-<form action="/todaylessonuser/user_myorderlist_date">
+<form action="/todaylessonmypage/user_myorderlist">
 <input type="date" name="start_date"> ~ <input type="date" name="end_date"> <input type="submit" value="조회">
 </form>
 
 <c:forEach var="orderlist" items="${list}">
 
 주문일자:${orderlist.orderlist_date }	주문번호: ${orderlist.orderlist_no } 주문상태:${orderlist.orderlist_orderstatus}
-<input type="button" value="상세보기" onclick="location.href='/todaylessonuser/user_myorderdetail/${orderlist.orderlist_no}'"><br>
+<input type="button" value="상세보기" onclick="location.href='/todaylessonmypage/myorderlist_orderinfo/${orderlist.orderlist_no}'"><br>
 <div class="no" id='${orderlist.orderlist_no}'>
 
 </div>
 </c:forEach>
 <c:if test="${page.prev }">
-<a href="user_myorderlist?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<a href="user_myorderlist?currPage=${page.startBlock-1}&start_date=${start_date}&end_date=${end_date}"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="user_myorderlist?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<a href="user_myorderlist?currPage=${index }&start_date=${start_date}&end_date=${end_date}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="user_myorderlist?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<a href="user_myorderlist?currPage=${page.endBlock+1 }&start_date=${start_date}&end_date=${end_date}"><c:out value="다음"/></a>
 </c:if>
 </body>
 </html>

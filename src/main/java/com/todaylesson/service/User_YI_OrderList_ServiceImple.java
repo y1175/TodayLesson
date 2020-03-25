@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+
 import com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO;
 import com.todaylesson.Mapper.User_YI_OrderList_Mapper;
 
@@ -44,5 +45,24 @@ public class User_YI_OrderList_ServiceImple implements User_YI_OrderList_Service
 	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderdetail() {
 		// TODO Auto-generated method stub
 		return mapper.detailList();
+	}
+
+	@Override
+	public SQLjoin_OrderList_Order_detail_MemberDTO orderinfo(int orderlist_no) {
+		// TODO Auto-generated method stub
+		return mapper.orderinfo(orderlist_no);
+	}
+
+	@Override
+	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderinfo_detail(
+			int orderlist_no) {
+		// TODO Auto-generated method stub
+		return mapper.orderinfo_detail(orderlist_no);
+	}
+
+	@Override
+	public int order_cancel(int orderlist_no) {
+		// TODO Auto-generated method stub
+		return mapper.orderlist_cancel(orderlist_no);
 	}
 }

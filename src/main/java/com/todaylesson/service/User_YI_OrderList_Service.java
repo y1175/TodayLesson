@@ -13,4 +13,11 @@ public interface User_YI_OrderList_Service {
 
 	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderdetail();
 
+	public SQLjoin_OrderList_Order_detail_MemberDTO orderinfo(int orderlist_no);
+
+	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderinfo_detail(
+			int orderlist_no);
+
+	public int order_cancel(int orderlist_no);
+
 }
