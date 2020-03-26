@@ -13,11 +13,8 @@ $(document).ready(function(){
         	$('#hs_senior_CulateRequestModal_crno_o_detail').css('display','none');
 			$('#hs_senior_CulateRequestModal_crno_x_detail').css('display','block');
 			
-		}
-		
-		
-		
+		}	
 	});
-	
+
 	
 });
