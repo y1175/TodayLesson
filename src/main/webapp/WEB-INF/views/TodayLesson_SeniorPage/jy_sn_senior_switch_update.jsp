@@ -12,7 +12,7 @@
 /* 은행명 */
 $(document).ready(function() {
 
-   let bank_code= "${accountdetalidto.senior_bank_name}";
+   let bank_code= "${dto.senior_bank_name}";
    let token = "${token}";
 
    console.log(bank_code);
@@ -56,56 +56,56 @@ $(document).ready(function() {
 
 function checkBankHolder(){
 
-	let bank_code= document.frm.senior_bank_name.value;
-	let bank_num = document.frm.senior_account_num.value;
-	let token = document.frm.token.value;
-	let account_name = document.frm.senior_account_name.value;
-	
-	console.log(bank_code);
-	console.log(bank_num);
-	
-	$.ajax({
-		method: 'get',
-		url: 'https://api.iamport.kr/vbanks/holder',
-	    headers: { "Authorization": token
-		}, 
-		data : {
-			bank_code : bank_code,
-			bank_num : bank_num
-		}
-	}).done(
-					function(msg) {
-						console.log(msg);
-					/* 	let adn = msg.documents[0].bank_holder;
-						console.log
-						(adn); */
+   let bank_code= document.frm.senior_bank_name.value;
+   let bank_num = document.frm.senior_account_num.value;
+   let token = document.frm.token.value;
+   let account_name = document.frm.senior_account_name.value;
+   
+   console.log(bank_code);
+   console.log(bank_num);
+   
+   $.ajax({
+      method: 'get',
+      url: 'https://api.iamport.kr/vbanks/holder',
+       headers: { "Authorization": token
+      }, 
+      data : {
+         bank_code : bank_code,
+         bank_num : bank_num
+      }
+   }).done(
+               function(msg) {
+                  console.log(msg);
+               /*    let adn = msg.documents[0].bank_holder;
+                  console.log
+                  (adn); */
 
-						let bank = msg.response;
-						//let name = bank.parse().bank_holder;
-						console.log(bank);
-						console.log(bank["bank_holder"]);
-						
-						let bank_holder = bank["bank_holder"];
-						
-						if (account_name == bank_holder) {
-							alert("실명 인증 성공");
-						} else {
-							alert("실명 인증 실패");
-						}
-					
-					});
+                  let bank = msg.response;
+                  //let name = bank.parse().bank_holder;
+                  console.log(bank);
+                  console.log(bank["bank_holder"]);
+                  
+                  let bank_holder = bank["bank_holder"];
+                  
+                  if (account_name == bank_holder) {
+                     alert("실명 인증 성공");
+                  } else {
+                     alert("실명 인증 실패");
+                  }
+               
+               });
 }
 
-	
+   
 
 function checkDisable()
 {
     if(no_crno.checked == true ){
-	   senior_crno.disabled = true;
-	} else 
-	{
-	   senior_crno.disabled = false;
-	}
+      senior_crno.disabled = true;
+   } else 
+   {
+      senior_crno.disabled = false;
+   }
 }
 
 </script>
