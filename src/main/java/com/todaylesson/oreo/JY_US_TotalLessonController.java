@@ -1,6 +1,8 @@
 package com.todaylesson.oreo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,6 +29,9 @@ import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
+import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.service.JY_US_TotalLessonService;
 
 @Controller
@@ -35,6 +40,9 @@ public class JY_US_TotalLessonController {
 	@Resource(name = "totallesson_service")
 	private JY_US_TotalLessonService ttlesson_service;
 
+	@Resource(name="service")
+	private EJ_All_Product_Service ej_service;
+	
 	@RequestMapping("total_lesson_list")
 	public String ttlesson_list(Model model) {
 
@@ -267,5 +275,80 @@ public class JY_US_TotalLessonController {
 		}
 
 	}
+	
+	
+	
+	@RequestMapping("/orderlist_detail")
+	public String orderlist_detail(OrderDetailDTO oddto, OrderListDTO oldto
+			,@RequestParam(value="orderlist_cost", required=false) int orderlist_cost
+			, @RequestParam(value="addrselect",required=false) int addrselect
+			,@RequestParam(value="roadaddr",required=false) String roadaddr
+			,@RequestParam(value="jibunaddr",required=false) String jibunaddr
+			, @RequestParam(value="detailaddr",required=false) String detailaddr
+			,@RequestParam(value="orderlist_usepoint", required=false) int orderlist_usepoint
+			,@RequestParam(value="remainpoint", required=false) int remainpoint
+			,@RequestParam(value="member_id") String member_id
+			, Model model)
+	{
+		
+		
+	if(addrselect>0)
+		{
+		 String fulladdr= "";	
+		 if(addrselect==1) 
+				{fulladdr=roadaddr;}
+				else if(addrselect==2)
+				{fulladdr=jibunaddr;}
+		 oldto.setOrderlist_addr(fulladdr+" "+detailaddr);
+		}//주소
+	
+	
+	MemberDTO memberdto=new MemberDTO();
+	int updatedpoint=(int) (remainpoint+(0.1*orderlist_cost));
+	//remainpoint는 포인트 사용후 남은 금액
+	//남은 금액에 결제금액의 10%를 적립해서 update해줌
+	memberdto.setMember_id(member_id);
+	memberdto.setMember_point(updatedpoint);
+	ej_service.updatepoint(memberdto);
+	
+	//주문번호 생성
+		 Calendar cal = Calendar.getInstance();
+		 int year1 = cal.get(Calendar.YEAR);
+		 String year2=Integer.toString(year1);
+		 String year=year2.substring(2, 4);
+		 
+		 System.out.println("두자릿수년도:"+year);
+		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		 System.out.println();
+		 System.out.println(ym);
+		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		 String subNum = "";
+		 
+		 for(int i = 1; i <= 4; i ++) {
+		  subNum += (int)(Math.random() * 10);
+		 }
+		 
+		 String orderId =ymd+subNum;
+		 System.out.println("오더아이디:"+orderId);
+		 System.out.println("데이터타입확인:"+orderId instanceof String);
+		int orderlist_no=Integer.parseInt(orderId);
+			System.out.println("orderlist_NO:"+orderlist_no);
+		oldto.setOrderlist_no(orderlist_no); 
+		ej_service.insertorderlist(oldto);
+		oddto.setOrderlist_no(orderlist_no);
+		ej_service.insertorderdetail(oddto);
+		//포인트 차감
+		
+
+		OrderListDTO orderlistdto=ej_service.selectorderlist(orderlist_no);//오더정보 받아오기
+		List<OrderDetailDTO> list=ej_service.selectorderdetail(orderlist_no);//오더 디테일 정보 받아오기
+		model.addAttribute("list",list);
+		model.addAttribute("orderlistdto",orderlistdto);
+		return "TodayLesson_UserPage/jy_us_orderlistdetail.us_main_section";
+	}
+	
+	
+	
+	
 
 }

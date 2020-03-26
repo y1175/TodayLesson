@@ -46,18 +46,12 @@
 </tbody>
 </table>
 <hr>
- <input type="hidden" name="lesson_title" value='${ldto.lesson_title }'>
-<input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
-
-<input type="hidden" name="orderlist_cost1" value=${totalcost }>
-<%--  <input type="hidden" name="product_after_cost" value="${product_after_cost }"> --%>
-<input type="hidden" name="user_point" id="user_point" value='${mdto.member_point}'>
 
 
 <div id= "your_point">
 보유 포인트: ${mdto.member_point}<br>
 </div>
-포인트 사용 <input type="text"  class="form-control" id="usepoint"  name="usepoint" >
+포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0 name="usepoint" >
 
 전액<input type="checkbox" value="all_point" id="all_point">
 
@@ -150,6 +144,14 @@ $('#all_point').change(function() {
 
 
  <form role="form" method="post" autocomplete="off"> 
+  <input type="hidden" name="lesson_title" value='${ldto.lesson_title }'>
+<input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
+ <input type="hidden" name="order_count" value=1>
+
+<input type="hidden" name="orderlist_cost1" value=${totalcost }>
+<%--  <input type="hidden" name="product_after_cost" value="${product_after_cost }"> --%>
+<input type="hidden" name="user_point" id="user_point" value='${mdto.member_point}'>
+ 
  <h4>주문자 정보</h4><hr>
  주문자명   <input type="text"   class="form-control" width="300" value="${mdto.member_name }" readonly="readonly"><br>
  이메일   <input type="text" name="member_email" class="form-control"  value="${mdto.member_email }" readonly="readonly"><br>
@@ -159,9 +161,11 @@ $('#all_point').change(function() {
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
-<input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost } class="paymentcost">
+<input type="hidden" name="order_count" value=1>
+orderlist보내는부분${ldto.lesson_cost }
+<input type="text" name="orderlist_cost" id="orderlist_cost" value="${ldto.lesson_cost }" class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
-<input type="hidden" name="remainpoint" class="remainpoint" value= '${mdto.member_point}'>
+<input type="hidden" name="remainpoint" class="remainpoint" value= "${mdto.member_point}">
 수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
 휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
 주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
@@ -264,8 +268,8 @@ $("#sameaddr").on('click', function() {
 
  배송비 무료<br>
  결제금액<br>
- <input type="text" name="paymentt2" value="${totalcost }" class="paymentcost" readonly="readonly">
- 
+ <input type="text" name="paymentt2" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">
+ ${totalcost } ${totalcost } ${totalcost }
   <button id="check_module" type="button" class='btn btn-primary'>결제하기</button>
 
 
@@ -355,7 +359,7 @@ $("#sameaddr").on('click', function() {
     <script>
    $("#ordersuccess_btn").hide();
     $("#ordersuccess_btn").click(function () {
-    $("form").attr("action", "/orderlistdetail");
+    $("form").attr("action", "/orderlist_detail");
     });
     </script>
     

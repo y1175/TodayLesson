@@ -156,6 +156,7 @@ public class JY_US_Senior_Request_Controller {
 		
 		int result = seniorservice.update_senior(dto);
 		model.addAttribute("result",result);
+		model.addAttribute("member_id",dto.getMember_id());
 		
 		return "TodayLesson_SeniorPage/jy_sn_update_senior_result";
 	}
