@@ -232,7 +232,7 @@ onkeyup="passwordCheckFunction();"><br>
 
 		let target = document.getElementById("member_bank_name");
 		let bank_code = target.options[target.selectedIndex].value;
-		let token = document.getElementById("token").;
+		let token = document.getElementById("token").value;
 		let bank_num = document.getElementById("member_account_num").value;
 		let account_name = document.getElementById("member_account_name").value;
 		
