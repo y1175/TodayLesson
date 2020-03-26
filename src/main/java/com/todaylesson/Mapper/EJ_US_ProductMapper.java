@@ -1,8 +1,10 @@
 package com.todaylesson.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
@@ -52,8 +54,10 @@ public interface EJ_US_ProductMapper {
 
 	public List<MyLikeDTO> has_mylike_product(MyLikeDTO likedto);
 
-	public int insertorder_cart(List<CartDTO> cartdto);
+	public int insertorder_cart(HashMap<String, Object> hm);
 
 	public int deletecart(CartDTO cartdto);
+
+	public int delete_all_cart(String member_id);
 
 }

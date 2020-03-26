@@ -104,9 +104,7 @@ where  product_no=#{product_no}
         set member_point = #{member_point}
         where member_id = #{member_id}  
     </update>
-	 <!-- insert into order_detail( orderlist_no, product_no, order_count)
-     select #{orderlist_no}, product_no, cart_amount
-         from cart where member_id=#{member_id}; -->
+	 
 
 	<select id="has_cart_product" resultType="com.todaylesson.DTO.CartDTO" parameterType="com.todaylesson.DTO.CartDTO">
 select * from cart
@@ -117,21 +115,23 @@ where product_no = #{product_no} and member_id=#{member_id}
 select * from mylike
 where product_no=#{product_no} and member_id = #{member_id}
 </select>
-<!-- insertorder_cart(cartdto); -->
+
 	<!-- 다중insert 구문 -->
-   	<insert id="insertorder_cart" parameterType="List">
+    	<insert id="insertorder_cart" parameterType="java.util.HashMap">
    		insert into order_detail
-   		(product_no,order_count)
-   		values
-   		<foreach collection="list" item="dto" separator=" , ">
-            (#{dto.product_no}, #{dto.cart_amount})
-        </foreach>
-   	</insert>
-   	
+   		(orderlist_no,product_no,order_count)
+   		values (#{orderlist_no}, #{product_no}, #{cart_amount})
+   	</insert>  
+ 
    	
    	<delete id="deletecart" parameterType="com.todaylesson.DTO.CartDTO">
    	delete from cart
    	 where product_no=#{product_no} and member_id=#{member_id}
-   	    	</delete>
+   	</delete>
+   	
+   	<delete id="delete_all_cart" parameterType="com.todaylesson.DTO.CartDTO">
+   	delete from cart
+   	 where member_id=#{member_id}
+   	</delete>
    	
 </mapper> 
