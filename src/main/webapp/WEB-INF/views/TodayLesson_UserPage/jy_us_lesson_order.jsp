@@ -63,16 +63,18 @@
 <script>
 
 
+let my_point = document.
+
 $('#all_point').change(function() {
     if ( $('#all_point').prop('checked')) {
-    	document.getElementById('usepoint').value='ff';
+    	document.getElementById('usepoint').value='';
     } else {
-    document.getElementById('usepoint').value='ff';
+    document.getElementById('usepoint').value='';
  }
  
     console.log( document.getElementById('usepoint').value);
 
- });
+ }); 
 
 
 </script>
