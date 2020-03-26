@@ -57,6 +57,9 @@
 
 보유 포인트: ${mdto.member_point}<br>
 포인트 사용 <input type="text"  class="form-control" id="usepoint"  name="usepoint">
+
+전액<input type="checkbox" value="all_point" id="all_point">
+
 <script>
 
 
@@ -73,7 +76,7 @@ $('#all_point').change(function() {
 
 
 </script>
-전액<input type="checkbox" value="all_point" id="all_point">
+
 <button class='btn btn-primary' id="pointbtn">적용</button><br>
 
  결제금액<br>
@@ -226,6 +229,7 @@ $("#sameaddr").on('click', function() {
 
 
 
+
  <script>
     $("#check_module").click(function () {
   
@@ -265,7 +269,7 @@ $("#sameaddr").on('click', function() {
        참고하세요.
        나중에 포스팅 해볼게요.
        */
-       name: '주문상품:${ldto.lesson_title}',
+       name: '주문상품:${product_name}',
        //결제창에서 보여질 이름
        amount: cost,
        //가격
@@ -283,14 +287,17 @@ $("#sameaddr").on('click', function() {
     	  
        }, function (rsp) {
      
-       $("#ordersuccess_btn").show();
+     
        		if (rsp.success) {
-      var msg = '화면의 주문완료 버튼을 눌러주세요';
+      var msg = '주문 성공';
       /*  msg += '고유ID : ' + rsp.imp_uid;
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
-       			<%-- location.href='<%=request.getContextPath()%>/orderlistdetail'; --%>
+      
+       			
+       			$("form").attr("action", "/orderlistdetail");
+       			$("form").submit();  
        		} else {
     	   
        		var msg = '결제에 실패하였습니다.';
