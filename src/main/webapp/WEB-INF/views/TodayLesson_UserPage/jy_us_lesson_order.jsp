@@ -63,15 +63,13 @@
 <script>
 
 
-let my_point = document.
+let my_point = document.getElementById('user_point').value;
 
 $('#all_point').change(function() {
     if ( $('#all_point').prop('checked')) {
-    	document.getElementById('usepoint').value='';
-    } else {
-    document.getElementById('usepoint').value='';
+    	document.getElementById('usepoint').value=my_point;
+    }
  }
- 
     console.log( document.getElementById('usepoint').value);
 
  }); 

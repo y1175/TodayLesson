@@ -56,14 +56,48 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<script>
+
+<input type="hidden" id="token" name="token" value="${token}">
+   <div class="hs_senior_calculate_request">
+      <h4 class="hs_senior_calculate_request_title">정산신청</h4>
+      <div class="hs_senior_calculate_possible_wait_box">
+         <div class="col-md-6" style="display: inline-block;">
+            <b class="hs_senior_calculate_possiblebox_title">정산 가능 금액</b>
+            <div class="card m card-default" style="margin-top: 10px; height: 160px;"> <!-- 이거 빼고 확인해보기   -->
+               <div class="card-block" style="padding: 25px 10px;">
+                  <div class="col-sm-7" style="display: inline-block;">
+                     <b>000원</b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
+                     <br>
+                     <div id = "bank_name"></div>
+                     <br>
+                     <span>
+                        <c:out value="${accountdetalidto.senior_account_num}"/>
+                     </span>
+                     <span>
+                        <c:out value="${accountdetalidto.senior_account_name}"/>
+                     </span>
+                        <br>
+                  <button type="button" data-toggle="modal" data-target="#hs_senior_AccountModal" class="hs_senior_AccountUpdate">계좌수정</button>
+                  <!-- Account Update modal -->
+                  <div class="modal fade" id="hs_senior_AccountModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_AccountModal_title" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
+                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_accountupdateresult">
+                                 <div class="hs_senior_AccountModal_HeaderDiv">
+                                    <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    
+                                    <script>
 
 function checkBankHolder(){
 
-	let bank_code= document.frm.senior_bank_name.value;
-	let bank_num = document.frm.senior_account_num.value;
-	let token = document.frm.token.value;
-	let account_name = document.frm.senior_account_name.value;
+	let bank_code= ${accountdetalidto.senior_bank_name};
+	let bank_num = ${accountdetalidto.senior_account_num};
+	let token = document.getElementById('token').value;
+	let account_name = ${accountdetalidto.senior_account_name};
 	
 	console.log(bank_code);
 	console.log(bank_num);
@@ -103,37 +137,7 @@ function checkBankHolder(){
 	
 </script>
 
-   <div class="hs_senior_calculate_request">
-      <h4 class="hs_senior_calculate_request_title">정산신청</h4>
-      <div class="hs_senior_calculate_possible_wait_box">
-         <div class="col-md-6" style="display: inline-block;">
-            <b class="hs_senior_calculate_possiblebox_title">정산 가능 금액</b>
-            <div class="card m card-default" style="margin-top: 10px; height: 160px;"> <!-- 이거 빼고 확인해보기   -->
-               <div class="card-block" style="padding: 25px 10px;">
-                  <div class="col-sm-7" style="display: inline-block;">
-                     <b>000원</b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
-                     <br>
-                     <div id = "bank_name"></div>
-                     <br>
-                     <span>
-                        <c:out value="${accountdetalidto.senior_account_num}"/>
-                     </span>
-                     <span>
-                        <c:out value="${accountdetalidto.senior_account_name}"/>
-                     </span>
-                        <br>
-                  <button type="button" data-toggle="modal" data-target="#hs_senior_AccountModal" class="hs_senior_AccountUpdate">계좌수정</button>
-                  <!-- Account Update modal -->
-                  <div class="modal fade" id="hs_senior_AccountModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_AccountModal_title" aria-hidden="true">
-                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                           <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_accountupdateresult">
-                                 <div class="hs_senior_AccountModal_HeaderDiv">
-                                    <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
+
                                  </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-4">
