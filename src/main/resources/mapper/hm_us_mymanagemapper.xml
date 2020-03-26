@@ -5,7 +5,7 @@
 <mapper namespace="com.todaylesson.Mapper.Hm_Us_MymanageMapper">
 
 <select  id="myinfolist" parameterType="String" resultType="com.todaylesson.DTO.MemberDTO">
-select member_id,member_pwd,member_name,member_nick,member_birth,member_zipcode,member_addr,member_phone,member_email
+select member_id,member_pwd,member_name,member_nick,member_birth,member_zipcode,member_addr,member_phone,member_email,member_bank_name,member_account_name,member_account_num
 from member
 where member_id=#{member_id}
 </select>
@@ -21,6 +21,9 @@ set member_pwd =#{member_pwd}
 ,member_zipcode=#{member_zipcode}
 ,member_addr=#{member_addr}
 ,member_nick=#{member_nick}
+,member_bank_name=#{member_bank_name}
+,member_account_name=#{member_account_name}
+,member_account_num=#{member_account_num}
 where member_id =#{member_id}
 </update>
 

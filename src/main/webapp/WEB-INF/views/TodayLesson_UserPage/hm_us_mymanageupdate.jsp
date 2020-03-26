@@ -61,8 +61,13 @@ onkeyup="passwordCheckFunction();"><br>
  
  <h3>계좌정보</h3>
 <label>은행명</label>
-<select name="senior_bank_name">
+<select name="member_bank_name">
+<c:if test="${empty dto.member_bank_name }">
 <option disabled="disabled" selected="selected">-----</option>
+</c:if>
+<c:if test="${!empty dto.member_bank_name }">
+<option selected="selected">${dto.member_bank_name}</option>
+</c:if>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
 <option value="039">경남은행</option>
@@ -111,11 +116,19 @@ onkeyup="passwordCheckFunction();"><br>
 </select>
 
 <label>예금주</label>
-<input type="text" id="senior_account_name" name="senior_account_name" required="required" value="">
-
+<c:if test="${!empty dto.member_account_name}">
+<input type="text" id="member_account_name" name="member_account_name" value="${dto.member_account_name}" required="required">
+</c:if>
+<c:if test="${empty dto.member_account_name }">
+<input type="text" id="member_account_name" name="member_account_name" required="required" value="">
+</c:if>
 <label>계좌번호</label>
-<input type="text" id="senior_account_num" name="senior_account_num" required="required" value="">
-
+<c:if test="${empty dto.member_account_num }">
+<input type="text" id="member_account_num" name="member_account_num" value="${dto.member_account_num}" required="required">
+</c:if>
+<c:if test="${empty dto.member_account_num}">
+<input type="text" id="member_account_num" name="member_account_num" value="" required="required">
+</c:if>
 <input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
  
  <br>
@@ -150,7 +163,8 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 
-
+<input type="button" value="회원탈퇴">
+<input type="reset" value="취소">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
