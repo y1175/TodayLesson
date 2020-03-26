@@ -129,8 +129,8 @@ onkeyup="passwordCheckFunction();"><br>
 <c:if test="${empty dto.member_account_num}">
 <input type="text" id="member_account_num" name="member_account_num" value="" required="required">
 </c:if>
-<input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
 <input type="hidden" id="token" name="token" value="${token}">
+<input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
  <br>
  
  
