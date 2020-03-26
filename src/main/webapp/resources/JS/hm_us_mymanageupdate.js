@@ -51,13 +51,20 @@ function smscheckfunction() {
 
 function checkBankHolder(){
 
-	let bank_code= document.frm.member_bank_name.value;
+	/*let bank_code= document.frm.member_bank_name.value;
 	let bank_num = document.frm.member_account_num.value;
 	let token = document.frm.token.value;
-	let account_name = document.frm.member_account_name.value;
+	let account_name = document.frm.member_account_name.value;*/
+	let target = document.getElementById("member_bank_name");
+	let bank_code = target.options[target.selectedIndex].value;
+	let token = docunment.frm.tken.value;
+	let bank_num = document.getElementById("member_account_num").value;
+	let account_name = document.getElementById("member_account_name").value;
 	
 	console.log(bank_code);
 	console.log(bank_num);
+	console.log(token);
+	console.log(account_name);
 	
 	$.ajax({
 		method: 'get',

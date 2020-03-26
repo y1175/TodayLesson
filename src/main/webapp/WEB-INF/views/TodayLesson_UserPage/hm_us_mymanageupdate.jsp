@@ -61,7 +61,7 @@ onkeyup="passwordCheckFunction();"><br>
  
  <h3>계좌정보</h3>
 <label>은행명</label>
-<select name="member_bank_name">
+<select name="member_bank_name" id="member_bank_name">
 <c:if test="${empty dto.member_bank_name }">
 <option disabled="disabled" selected="selected">-----</option>
 </c:if>
