@@ -123,7 +123,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="text" id="member_account_name" name="member_account_name" required="required" value="">
 </c:if>
 <label>계좌번호</label>
-<c:if test="${empty dto.member_account_num }">
+<c:if test="${!empty dto.member_account_num }">
 <input type="text" id="member_account_num" name="member_account_num" value="${dto.member_account_num}" required="required">
 </c:if>
 <c:if test="${empty dto.member_account_num}">
@@ -163,7 +163,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 
-<input type="button" value="회원탈퇴">
+<input type="button" value="회원탈퇴" onclick="location.href='/todaylessonmypage/hm_us_memberwithdraw/'+${dto.member_id}">
 <input type="reset" value="취소">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
