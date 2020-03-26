@@ -134,4 +134,15 @@ where product_no=#{product_no} and member_id = #{member_id}
    	 where member_id=#{member_id}
    	</delete>
    	
+
+   	<select id="selectorderdetail" resultType="com.todaylesson.DTO.OrderDetailDTO">
+   	select * from order_detail, product
+   	where order_detail.product_no=product.product_no and orderlist_no=#{orderlist_no}
+   	</select>
+   	
+   	<select id="selectorderlist"  resultType="com.todaylesson.DTO.OrderListDTO">
+   	select * from orderlist
+   	where orderlist_no=#{orderlist_no}
+   	</select>
+   	
 </mapper> 

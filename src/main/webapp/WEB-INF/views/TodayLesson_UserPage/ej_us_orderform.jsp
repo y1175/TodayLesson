@@ -235,7 +235,7 @@ $("#sameaddr").on('click', function() {
  결제금액<br>
  <input type="text" name="paymentt2" value="${totalcost }" class="paymentcost" readonly="readonly">
  
-  <button id="check_module" type="button" class='btn btn-primary'>결제하기</button>
+  <button id="check_module" type="button" class='btn btn-primary' >결제하기</button>
 
 
 
@@ -317,7 +317,7 @@ $("#sameaddr").on('click', function() {
        });
 
     </script>
-    <div id="ordersuccess_btn" class="text-center">
+  
  
     </form>
   

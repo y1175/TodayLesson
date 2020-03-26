@@ -15,5 +15,7 @@ public class OrderDetailDTO {
 	private int product_no;
 	private int lesson_no;
 	private int order_count;
+	private String product_name;
+	private String lesson_name;
 
 }

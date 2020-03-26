@@ -55,6 +55,10 @@ public interface EJ_All_Product_Service {
 
 	public int delet_all_cart(String member_id);
 
+	public List<OrderDetailDTO> selectorderdetail(int orderlist_no);
+
+	public OrderListDTO selectorderlist(int orderlist_no);
+
 
 
 

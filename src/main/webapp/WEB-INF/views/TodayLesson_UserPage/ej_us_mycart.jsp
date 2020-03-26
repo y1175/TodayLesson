@@ -306,16 +306,16 @@ $("#sameaddr").on('click', function() {
     	  
        }, function (rsp) {
      
-       $("#ordersuccess_btn").show();
+      
        		if (rsp.success) {
-      var msg = '화면의 주문완료 버튼을 눌러주세요';
+      var msg = '주문이 완료되었습니다';
       /*  msg += '고유ID : ' + rsp.imp_uid;
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
-       			<%-- location.href='<%=request.getContextPath()%>/orderlistdetail'; --%>
-       		
-       		/*  location.href="/order_cart"; */
+       			
+       			$("form").attr("action", "/order_cart");
+       			$("form").submit();  
        		} else {
     	   
        		var msg = '결제에 실패하였습니다.';
@@ -326,18 +326,8 @@ $("#sameaddr").on('click', function() {
        });
 
     </script>
-    <div id="ordersuccess_btn" class="text-center">
-    <input type="submit" id="ordersuccess_btn"  class="btn btn-success btn-lg" value="주문완료"></div>
+    
    
-
-
-
-
-
-
-
-
-</div>
 
 </form>
 <script>
@@ -348,7 +338,7 @@ $("#sameaddr").on('click', function() {
  
  $("#cancel_btn").click(function(){
 	 $(".orderInfo").slideUp();
-	 $(".orderOpne_bnt").slideDown();
+	 $("#open_orderform_btn").slideDown();
 	});   
 </script>
 <script>
@@ -385,9 +375,9 @@ $(".fas.fa-times").on('click',function(){
 </script>
  <script>
    //$("#ordersuccess_btn").hide();
-    $("#ordersuccess_btn").click(function () {
+    /* $("#ordersuccess_btn").click(function () {
     $("form").attr("action", "/order_cart");
-    });
+    }); */
     </script>
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -154,6 +154,18 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.delete_all_cart(member_id);
 	}
 
+	@Override
+	public List<OrderDetailDTO> selectorderdetail(int orderlist_no) {
+		// TODO Auto-generated method stub
+		return mapper.selectorderdetail(orderlist_no);
+	}
+
+	@Override
+	public OrderListDTO selectorderlist(int orderlist_no) {
+		// TODO Auto-generated method stub
+		return mapper.selectorderlist(orderlist_no);
+	}
+
 
 
 }

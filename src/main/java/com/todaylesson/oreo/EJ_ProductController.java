@@ -425,9 +425,11 @@ public class EJ_ProductController {
 		service.insertorderdetail(oddto);
 		//포인트 차감
 		
-		model.addAttribute("oddto",oddto);
-		model.addAttribute("oldto",oldto);
-		//List<OrderDetailDTO> list=service.selectordetail;
+
+		OrderListDTO orderlistdto=service.selectorderlist(orderlist_no);//오더정보 받아오기
+		List<OrderDetailDTO> list=service.selectorderdetail(orderlist_no);//오더 디테일 정보 받아오기
+		model.addAttribute("list",list);
+		model.addAttribute("orderlistdto",orderlistdto);
 		return "TodayLesson_UserPage/ej_us_orderlistdetail.us_main_section";
 	}
 	
@@ -519,7 +521,10 @@ public class EJ_ProductController {
 		
 		service.delet_all_cart(member_id);//카트에 담겨 있는것 다 delete
 	
-		//service.add_memberpoint(memberdto);//적립금 부여 구매액
+		OrderListDTO orderlistdto=service.selectorderlist(orderlist_no);//오더정보 받아오기
+		List<OrderDetailDTO> list=service.selectorderdetail(orderlist_no);//오더 디테일 정보 받아오기
+		model.addAttribute("list",list);
+		model.addAttribute("orderlistdto",orderlistdto);
 		
 		return "TodayLesson_UserPage/ej_us_ordercart";
 	}
