@@ -227,6 +227,47 @@ onkeyup="passwordCheckFunction();"><br>
 	</script>
 	<script>
 
+	/* 은행명 */
+	$(document).ready(function() {
+
+	   let bank_code= "${dto.member_bank_name}";
+	   let token = "${token}";
+
+	   console.log(bank_code);
+	   console.log(token);
+
+	   $.ajax({
+	      method: 'get',
+	      url: 'https://api.iamport.kr/banks',
+	       headers: { 
+	          "Authorization": token
+	      }
+	   }).done(function(msg) {
+	         console.log(msg);
+	         let bank_name = msg.response;
+	         
+	         for (var i = 0; i < bank_name.length; i++) {
+	            console.log(bank_name[i]);
+	            console.log(bank_name[i].code);
+	            console.log(bank_name[i].name);
+	            //console.log(bank_code);
+	            
+	            if (bank_name[i].code == bank_code) {
+	               let senior_bank_name = bank_name[i].name;
+	               $('#bank_name').append(senior_bank_name);
+	               break;
+	            }
+	         }
+	         
+	      });
+	   
+	   
+	});
+
+	
+	
+	
+	
 
 	function checkBankHolder(){
 
