@@ -24,7 +24,7 @@ public class SeniorDTO {
 	private String senior_account_name;
 	private String senior_account_num;
 	private String senior_register_date;
-	
+	private String senior_crno_name;
 	
 
 	

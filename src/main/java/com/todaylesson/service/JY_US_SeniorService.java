@@ -14,7 +14,5 @@ public interface JY_US_SeniorService {
 
 	public int update_senior(SeniorDTO dto);
 
-
-	
 	
 }

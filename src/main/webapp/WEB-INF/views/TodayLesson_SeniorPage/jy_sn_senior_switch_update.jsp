@@ -6,10 +6,53 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+
+/* 은행명 */
+$(document).ready(function() {
+
+   let bank_code= "${accountdetalidto.senior_bank_name}";
+   let token = "${token}";
+
+   console.log(bank_code);
+   console.log(token);
+
+   $.ajax({
+      method: 'get',
+      url: 'https://api.iamport.kr/banks',
+       headers: { 
+          "Authorization": token
+      }
+   }).done(function(msg) {
+         console.log(msg);
+         let bank_name = msg.response;
+         
+         for (var i = 0; i < bank_name.length; i++) {
+            console.log(bank_name[i]);
+            console.log(bank_name[i].code);
+            console.log(bank_name[i].name);
+            //console.log(bank_code);
+            
+            if (bank_name[i].code == bank_code) {
+               let senior_bank_name = bank_name[i].name;
+               $('.bank_name').append(senior_bank_name);
+               break;
+            }
+         }
+         
+      });
+   
+   
+});
+ 
+
+</script>
 </head>
 <body>
 
 <script>
+
 
 function checkBankHolder(){
 
@@ -42,7 +85,7 @@ function checkBankHolder(){
 						console.log(bank);
 						console.log(bank["bank_holder"]);
 						
-						var bank_holder = bank["bank_holder"];
+						let bank_holder = bank["bank_holder"];
 						
 						if (account_name == bank_holder) {
 							alert("실명 인증 성공");
@@ -93,8 +136,8 @@ function checkDisable()
 
 <h3>계좌정보</h3>
 <label>은행명</label>
-<select name="senior_bank_name" >
-<option disabled="disabled">-----</option>
+<select name="senior_bank_name">
+<option class="bank_name"></option>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
 <option value="039">경남은행</option>

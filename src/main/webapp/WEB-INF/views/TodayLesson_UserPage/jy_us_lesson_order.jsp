@@ -49,14 +49,15 @@
  <input type="hidden" name="lesson_title" value='${ldto.lesson_title }'>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
 
- <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
+<input type="hidden" name="orderlist_cost1" value=${totalcost }>
 <%--  <input type="hidden" name="product_after_cost" value="${product_after_cost }"> --%>
 <input type="hidden" name="user_point" id="user_point" value='${mdto.member_point}'>
 
 
-
+<div id= "your_point">
 보유 포인트: ${mdto.member_point}<br>
-포인트 사용 <input type="text"  class="form-control" id="usepoint"  name="usepoint">
+</div>
+포인트 사용 <input type="text"  class="form-control" id="usepoint"  name="usepoint" >
 
 전액<input type="checkbox" value="all_point" id="all_point">
 
@@ -68,8 +69,10 @@ let my_point = document.getElementById('user_point').value;
 $('#all_point').change(function() {
     if ( $('#all_point').prop('checked')) {
     	document.getElementById('usepoint').value=my_point;
-    }
+    } else {     document.getElementById('usepoint').value=0;
+
  }
+
     console.log( document.getElementById('usepoint').value);
 
  }); 
@@ -84,17 +87,22 @@ $('#all_point').change(function() {
 
 <script>
     
+	
+    
+    
     $("#pointbtn").click(function(){
   
+
+    
       
-  let memberpoint=${mdto.member_point};
-  let usepoint=$("#usepoint").val();
+  var memberpoint=${mdto.member_point};
+  var usepoint=$("#usepoint").val();
   console.log('usepoint: ',usepoint);
-  let member_id='${pageContext.request.userPrincipal.name}';
-  let totalcost=${ldto.lesson_cost};
-  let paymentcost=totalcost-usepoint;
-  let remainpoint=memberpoint-usepoint;
-  let data = {
+  var member_id='${pageContext.request.userPrincipal.name}';
+  var totalcost=${ldto.lesson_cost} - usepoint;
+  var paymentcost=totalcost-usepoint;
+  var remainpoint=memberpoint-usepoint;
+  var data = {
         memberpoint: memberpoint,
        usepoint : usepoint,
        member_id: member_id,
@@ -102,7 +110,41 @@ $('#all_point').change(function() {
        paymentcost: paymentcost,
        remainpoint: remainpoint
     };
+
+  $.ajax({
+//   url :"/ej_us_orderform/applypointjson",
+   type : "post",
+   data : data,
+   success : function(){
+   console.log('success');
+	if(usepoint>=memberpoint)
+		{
+		alert('보유포인트를 초과하였습니다.');
+		}
+	else{
+	
+		$('.paymentcost').val(data.paymentcost);
+  	 $('#orderlist_usepoint').val(data.usepoint);
+  	 $('.remainpoint').val(data.remainpoint);
+  	 console.log(data.paymentcost);
+  	 console.log(data.usepoint);
+  	
+	}
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
  
+  
+	var usepoint_input = document.getElementById('usepoint');
+	usepoint_input.disabled = true;
+	
+	$('#your_point').hide();
+	
+	
  });
     </script>
 
@@ -116,11 +158,10 @@ $('#all_point').change(function() {
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
-<input type="hidden" name="product_no" value=${product_no }>
-<input type="hidden" name="order_count" value=${pdcount }>
+<input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
 <input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost } class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
-<input type="hidden" name="remainpoint" class="remainpoint" value= ${mdto.member_point}>
+<input type="hidden" name="remainpoint" class="remainpoint" value= '${mdto.member_point}'>
 수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
 휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
 주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
