@@ -51,10 +51,10 @@ function smscheckfunction() {
 
 function checkBankHolder(){
 
-	let bank_code= document.frm.senior_bank_name.value;
-	let bank_num = document.frm.senior_account_num.value;
+	let bank_code= document.frm.member_bank_name.value;
+	let bank_num = document.frm.member_account_num.value;
 	let token = document.frm.token.value;
-	let account_name = document.frm.senior_account_name.value;
+	let account_name = document.frm.member_account_name.value;
 	
 	console.log(bank_code);
 	console.log(bank_num);

@@ -42,7 +42,7 @@ ${dto.member_id}
 
 
 
-<form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanageupdate">
+<form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanageupdate" name="frm" id="frm">
 <input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}" ><br>
 <label>비밀번호</label>
 <input type="password" name="member_pwd" id="member_pwd" required="required" placeholder="비밀번호"><br>
