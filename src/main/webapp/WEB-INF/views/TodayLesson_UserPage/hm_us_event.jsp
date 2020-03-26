@@ -53,14 +53,12 @@
 
 
 
-<!-- 여기에 이미지 직접넣어서 버튼으로 만드는거(주력 이벤트) -->
 <div class = "hm_event_header">
 <h2>이벤트 모음</h2>
 </div>
 
- 
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:70%; margin : 40px auto 0px;">
-  <a class="navbar-brand" href="#" style="font-size:25px; margin-right:30px; ">Event</a>
+ <!-- 이벤트 네비바 -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:70%; margin : 40px auto;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -71,10 +69,10 @@
         <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">전체 이벤트</a><span class="sr-only">(current)</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">레  슨</a>
+        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">레슨 이벤트</a>
       </li>     
       <li class="nav-item">
-        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">스토어</a>
+        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">스토어 이벤트</a>
       </li>    
       <li class="nav-item">
         <a class="nav-link" href="#" style="font-size:20px;">기  타</a>
@@ -135,7 +133,7 @@
 
 
 
-
+<!-- 페이징 처리  -->
 <c:if test="${page.prev }">
 <a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>

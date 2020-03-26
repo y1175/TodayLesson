@@ -163,7 +163,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 
-<%-- <input type="button" value="회원탈퇴" onclick="location.href='/todaylessonmypage/hm_us_memberwithdraw/'+${dto.member_id}"> --%>
+ <input type="button" id="hm_memberwithdrawbtn" value="회원탈퇴" > 
 <input type="reset" value="취소">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>

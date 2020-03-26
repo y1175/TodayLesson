@@ -9,8 +9,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_detail.css?ver=2">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_detail.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_detail.js"></script>
 </head>
 <body>
 	<jsp:useBean id="now" class="java.util.Date" />
@@ -42,6 +41,8 @@
 			<div class="eventthumbnail">
 			<p>썸네일</p>
 			<img alt="thumbnail" src="${dto.event_thumbnail}">
+			<br><br>
+			<p>${dto.event_thumbexplain}</p>
 			</div>
 	</div>
 	<div class="eventdetailbtn">

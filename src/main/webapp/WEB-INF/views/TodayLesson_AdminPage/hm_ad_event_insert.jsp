@@ -8,12 +8,10 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- include summernote css/js-->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-<!-- include summernote-ko-KR -->
-<!-- <script src="TodayLesson\src\main\webapp\resources\JS\summernote-ko-KR.js"></script> -->
  <script src="/resources/JS/summernote-ko-KR.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_insert.js"></script>
 <title>글쓰기</title>
 
 <script>
@@ -44,7 +42,7 @@
 	<div style="width: 60%; margin: auto;">
 		
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_insertresult"> 
+		 action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_insertresult" name="eventinsertfrm" id="eventinsertfrm"> 
 		
 		
 		<br>
@@ -91,7 +89,7 @@
  <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100"></textarea>
 <br>
 <br>
- <input type="submit" value="이벤트 등록"/>
+ <input type="button" id="hm_ad_event_insertbtn" value="이벤트 등록"/>
   <%-- <%=request.getRealPath("/") %>  --%>
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </div>
