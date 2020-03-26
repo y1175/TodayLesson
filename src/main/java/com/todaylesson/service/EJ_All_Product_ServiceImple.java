@@ -143,6 +143,9 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		hm.put("orderlist_no", orderlist_no);//Å° . ¹ë·ù
 		hm.put("product_no", cart.getProduct_no());
+		System.out.println("pronum"+cart.getProduct_no());
+		hm.put("lesson_no", cart.getLesson_no());
+		System.out.println("lesnum"+cart.getLesson_no());
 		hm.put("cart_amount", cart.getCart_amount());
 		
 		return mapper.insertorder_cart(hm);
@@ -164,6 +167,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	public OrderListDTO selectorderlist(int orderlist_no) {
 		// TODO Auto-generated method stub
 		return mapper.selectorderlist(orderlist_no);
+	}
+
+	@Override
+	public int deletecart_lesson(CartDTO cartdto) {
+		// TODO Auto-generated method stub
+		return mapper.deletecart_lesson(cartdto);
 	}
 
 

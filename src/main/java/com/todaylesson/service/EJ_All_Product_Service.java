@@ -59,6 +59,8 @@ public interface EJ_All_Product_Service {
 
 	public OrderListDTO selectorderlist(int orderlist_no);
 
+	public int deletecart_lesson(CartDTO cartdto);
+
 
 
 

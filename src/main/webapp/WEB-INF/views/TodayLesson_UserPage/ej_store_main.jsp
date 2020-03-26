@@ -7,12 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!-- <script src="resources/JS/summernote-lite.js"></script> -->
-<!-- <script src="/JS/summernote-lite.js"></script> -->
-<!-- <script src="resources/JS/summernote-ko-KR.js"></script> -->
-<!-- <script src="/JS/summernote-ko-KR.js"></script> -->
-<!-- <link rel="stylesheet" href="resources/CSS/summernote-lite.css"> -->
-<!--  <link rel="stylesheet" href="/CSS/summernote-lite.css"> -->
+
 <style>
 #thumb{
 display:inline-block;
@@ -29,15 +24,7 @@ display: inline-block;}
  ${member_id }회원님의
 <a href="mycart/${member_id}" id="mycart">내장바구니</a>
 <a href="mylike/${member_id}" id="mylike">내 좋아요</a><br>
-<script>
-$("#mycart").click(function(){
-	if(${member_id}==null)
-		{
-		alert('로그인이 필요한 페이지입니다.');
-		}
 
-});
-</script>
  <form role="form" method="post" autocomplete="off">  
 <c:forEach var="item" items="${list}"> 
 
@@ -81,6 +68,15 @@ ${item.product_cost}원</h4>
 </div>
 </c:forEach>
  </form> 
+ <script>
+$("#mycart").click(function(){
+	if(${member_id}==null)
+		{
+		alert('로그인이 필요한 페이지입니다.');
+		}
+
+});
+</script>
 <script>
 
  $(".ej_like_btn").click(function(){

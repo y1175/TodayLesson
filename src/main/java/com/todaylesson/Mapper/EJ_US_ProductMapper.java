@@ -64,4 +64,6 @@ public interface EJ_US_ProductMapper {
 
 	public OrderListDTO selectorderlist(int orderlist_no);
 
+	public int deletecart_lesson(CartDTO cartdto);
+
 }

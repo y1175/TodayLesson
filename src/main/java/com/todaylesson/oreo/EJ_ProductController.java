@@ -354,13 +354,25 @@ public class EJ_ProductController {
 	@ResponseBody
 	@RequestMapping("/deletecart_json")
 	public int  deletecart(@RequestParam(value="product_no")int product_no
+			,@RequestParam(value="lesson_no")int lesson_no
 			,@RequestParam(value="member_id")String member_id)
 	{
 		System.out.println("deletecart_prono:"+product_no);
+		System.out.println("deletecart_lesson no:"+lesson_no);
+		
 		CartDTO cartdto=new CartDTO();
-		cartdto.setProduct_no(product_no);
 		cartdto.setMember_id(member_id);
-		int result=service.deletecart(cartdto);
+		
+		int result=0;
+		
+		if(lesson_no==0) {//상품삭제
+			cartdto.setProduct_no(product_no);
+		 result=service.deletecart(cartdto);
+		 }
+		else if(product_no==0) {//레슨삭제
+			cartdto.setLesson_no(lesson_no);
+			result=service.deletecart_lesson(cartdto);
+		}
 				return result;
 	}
 	
@@ -526,7 +538,7 @@ public class EJ_ProductController {
 		model.addAttribute("list",list);
 		model.addAttribute("orderlistdto",orderlistdto);
 		
-		return "TodayLesson_UserPage/ej_us_ordercart";
+		return "TodayLesson_UserPage/ej_us_ordercart.us_main_section";
 	}
 	
 	

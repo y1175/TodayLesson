@@ -90,12 +90,14 @@ where  product_no=#{product_no}
 	</insert>
 	
 	<select id="selectmylike" resultType="com.todaylesson.DTO.MyLikeDTO">
-	select * from mylike, product where mylike.product_no=product.product_no
-	 and member_id=#{member_id}
+	select * from mylike left outer join product on mylike.product_no=product.product_no
+						left outer join lesson on mylike.lesson_no=lesson.lesson_no
+						where member_id=#{member_id}
 	</select>
 	<select id="selectmycart" resultType="com.todaylesson.DTO.CartDTO">
-	select * from cart, product where cart.product_no=product.product_no
-	and  member_id=#{member_id}
+	 select * from cart left outer join product on cart.product_no=product.product_no
+						left outer join lesson on cart.lesson_no=lesson.lesson_no
+						where member_id=#{member_id}
 	</select>
 	
 	<!-- updatepoint(int remainpoint); -->
@@ -119,14 +121,19 @@ where product_no=#{product_no} and member_id = #{member_id}
 	<!-- 다중insert 구문 -->
     	<insert id="insertorder_cart" parameterType="java.util.HashMap">
    		insert into order_detail
-   		(orderlist_no,product_no,order_count)
-   		values (#{orderlist_no}, #{product_no}, #{cart_amount})
+   		(orderlist_no,product_no,lesson_no,order_count)
+   		values (#{orderlist_no}, #{product_no}, #{lesson_no},#{cart_amount})
    	</insert>  
  
    	
    	<delete id="deletecart" parameterType="com.todaylesson.DTO.CartDTO">
    	delete from cart
    	 where product_no=#{product_no} and member_id=#{member_id}
+   	</delete>
+  
+   	<delete id="deletecart_lesson" parameterType="com.todaylesson.DTO.CartDTO">
+   	delete from cart
+   	 where lesson_no=#{lesson_no} and member_id=#{member_id}
    	</delete>
    	
    	<delete id="delete_all_cart" parameterType="com.todaylesson.DTO.CartDTO">
@@ -136,8 +143,9 @@ where product_no=#{product_no} and member_id = #{member_id}
    	
 
    	<select id="selectorderdetail" resultType="com.todaylesson.DTO.OrderDetailDTO">
-   	select * from order_detail, product
-   	where order_detail.product_no=product.product_no and orderlist_no=#{orderlist_no}
+   	select * from order_detail left outer join product on order_detail.product_no=product.product_no
+						left outer join lesson on order_detail.lesson_no=lesson.lesson_no
+						where orderlist_no=#{orderlist_no};
    	</select>
    	
    	<select id="selectorderlist"  resultType="com.todaylesson.DTO.OrderListDTO">

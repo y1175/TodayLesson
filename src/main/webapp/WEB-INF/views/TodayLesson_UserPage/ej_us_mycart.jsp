@@ -13,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <title>Insert title here</title>
 <style>
@@ -34,23 +34,38 @@ text-align: right;
 <table>
 <thead>
 <tr>
-<th>삭제</th><th>상품번호</th><th></th><th>상품명</th><th>레슨번호</th><th>가격</th><th>수량</th>
+<th>삭제</th><th>구분</th><th></th><th>이름</th><th>가격</th><th>수량</th>
 </tr>
 </thead>
 <tbody>
 <c:set var="total_cart" value="0" />
 <c:forEach var="item" items="${list}">
 <tr>
-<td><a href="#"><i class="fas fa-times" value="${item.product_no}" id="${item.product_no}" ></i></a></td>
-<td>${item.product_no }</td>
+<c:set var="lesson_title" value="${item.lesson_title}"/>
+<c:set var="product_name" value="${item.product_name}"/>
+
+
+<c:choose>
+<c:when test="${lesson_title==null}"><!--상품정보  -->
+<td><a href="#" class="delete_product_cart" id="${item.product_no}" >x</a></td>
+<td>상품</td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}">${item.product_name }</a></td>
-<td>${item.lesson_no }</td>
 <td>${item.product_after_cost }</td>
 <td>${item.cart_amount }</td>
+</c:when>
+<c:when test="${product_name==null}"><!--레슨정보  -->
+<td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" >x</a></td>
+<td>레슨</td>
+<td><a href="#"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td><a href="#">${item.lesson_title}</a></td>
+<td>${item.lesson_cost }</td>
+<td>1</td>
+</c:when>
+</c:choose>
 </tr>
 <!--foreach문 내에서 합계 계산  -->
-<c:set var="total_cart" value="${total_cart + (item.product_after_cost * item.cart_amount)}" />
+<c:set var="total_cart" value="${total_cart + (item.product_after_cost * item.cart_amount)+item.lesson_cost}" />
 </c:forEach> 
 </tbody>
 </table>
@@ -245,9 +260,15 @@ $("#sameaddr").on('click', function() {
  결제금액<br>
  <input type="text" name="paymentt2" value="${total_cart }" class="paymentcost" readonly="readonly">
  
-  <button id="check_module" type="button" class='btn btn-primary'>결제하기</button>
-
-
+  <!-- <button id="check_module" type="button" class='btn btn-primary'>결제하기</button> -->
+<button id="testbtn">테스트주문완료</button>
+<script>
+$("#testbtn").click(function(){
+	
+	$("form").attr("action", "/order_cart");
+		$("form").submit();
+});
+</script>
 
  <script>
     $("#check_module").click(function () {
@@ -313,9 +334,9 @@ $("#sameaddr").on('click', function() {
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
-       			
+       		/* 	
        			$("form").attr("action", "/order_cart");
-       			$("form").submit();  
+       			$("form").submit();   */
        		} else {
     	   
        		var msg = '결제에 실패하였습니다.';
@@ -342,13 +363,52 @@ $("#sameaddr").on('click', function() {
 	});   
 </script>
 <script>
-$(".fas.fa-times").on('click',function(){
+/* 상품삭제 */
+$(".delete_product_cart").on('click',function(){
 	
 	console.log(this);
+	console.log('delete pro');
 	var product_no=$(this).prop('id');
+	var member_id='${memberid }';
+	var lesson_no=0;
+	var data={
+			product_no: product_no,
+			member_id: member_id,
+			lesson_no: lesson_no
+	}
+	
+	$.ajax({
+	      url:"/deletecart_json",
+	      type:"post",
+	      data: data,
+	      success: function(result){
+	    	 if(result>0)
+	    		 {
+	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
+	    	  location.href="/mycart/"+'${memberid}';
+	    		 }
+	    	 else{
+	    		 alert('삭제 실패되었습니다.');
+	    	 }
+	      },error: function(){
+	         console.log('error');
+	   }    
+	  });
+
+	
+});
+</script>
+<script>
+$(".delete_lesson_cart").on('click',function(){
+	/* 레슨삭제 */
+	console.log(this);
+	console.log('delete les');
+	var product_no=0;
+	var lesson_no=$(this).prop('id');
 	var member_id='${memberid }';
 	var data={
 			product_no: product_no,
+			lesson_no: lesson_no,
 			member_id: member_id
 	}
 	

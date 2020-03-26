@@ -13,17 +13,28 @@ mylike페이지<br>
 <table>
 <thead>
 <tr>
-<th>상품번호</th><th></th><th>상품명</th><th>레슨명</th><th>가격</th>
+<th>구분</th><th></th><th></th><th></th><th>가격</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach var="item" items="${list}">
 <tr>
-<td>${item.product_no }</td>
+<c:set var="product_name" value="${item.product_name }"/>
+<c:set var="lesson_title" value="${item.lesson_title }"/>
+
+<c:if test="${lesson_title==null }">
+<td>상품</td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}">${item.product_name }</a></td>
-<td>${item.lesson_no }</td>
-<td>${item.product_cost }</td></tr>
+<td>${item.product_cost }원</td></c:if>
+
+<c:if test="${product_name==null }">
+<td>레슨</td>
+<td><a href="#"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td><a href="#">${item.lesson_title }</a></td>
+<td>${item.lesson_cost }원</td></c:if>
+
+</tr>
 </c:forEach> 
 </tbody>
 </table>

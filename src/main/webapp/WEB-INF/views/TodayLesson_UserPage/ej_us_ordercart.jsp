@@ -22,8 +22,14 @@ ${addedpoint } 포인트가 적립되었습니다!<br>
 <hr>
 <!--오더 디테일 정보  -->
 <c:forEach var="item" items="${list}"> 
-상품명: ${item.product_name }
-수량: ${item.order_count }<br>
+<c:set var="product_name" value="${item.product_name }"/>
+<c:set var="lesson_title" value="${item.lesson_title }"/>
+<c:if test="${lesson_title==null }">
+상품명: ${item.product_name }  </c:if>
+<c:if test="${product_name==null }">
+레슨명:${item.lesson_title} </c:if>
+수량: ${item.order_count }
+<br>
 </c:forEach>
 
 
