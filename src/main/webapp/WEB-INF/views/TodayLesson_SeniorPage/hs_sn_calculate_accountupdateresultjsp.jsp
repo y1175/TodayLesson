@@ -11,13 +11,13 @@
 
    if (${accountupdatedto} > 0) {
 	alert("수정완료);
-	   location href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_requestlist/${pageContext.request.userPrincipal.name}";
+	   location href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_requestlist/"+${pageContext.request.userPrincipal.name};
 	
    } else {
 	
 
 	alert("수정 실패!");
-	   location.href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_requestlist/${pageContext.request.userPrincipal.name}";
+	   location.href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_requestlist/"+${pageContext.request.userPrincipal.name};
 	
    } 
    

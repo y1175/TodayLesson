@@ -14,6 +14,48 @@
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_sn_calculate_requestlist.js"></script>
 <!-- JS -->
+
+<script type="text/javascript">
+/* 
+$(document).ready(function() {
+
+	let bank_code= "${accountupdatedto.senior_bank_name}";
+	let token = "${token}";
+
+	console.log(bank_code);
+	console.log(token);
+
+	$.ajax({
+		method: 'get',
+		url: 'https://api.iamport.kr/banks',
+	    headers: { 
+	    	"Authorization": token
+		}
+	}).done(function(msg) {
+			console.log(msg);
+			let bank_name = msg.response;
+			
+			for (var i = 0; i < bank_name.length; i++) {
+				console.log(bank_name[i]);
+				console.log(bank_name[i].code);
+				console.log(bank_name[i].name);
+				//console.log(bank_code);
+				
+				if (bank_name[i].code == bank_code) {
+					let senior_bank_name = bank_name[i].name;
+					$('#bank_name').append(senior_bank_name);
+					break;
+				}
+			}
+			
+		});
+	
+	
+});
+ */ 
+</script>
+</head>
+<body>
 <script>
 
 function checkBankHolder(){
@@ -53,51 +95,14 @@ function checkBankHolder(){
 							alert("실명 인증 성공");
 						} else {
 							alert("실명 인증 실패");
-						}			
-	
+						}
+					
+					});
 }
-</script>
-<script type="text/javascript">
-/* /* 
-$(document).ready(function() {
 
-	let bank_code= "${accountupdatedto.senior_bank_name}";
-	let token = "${token}";
-
-	console.log(bank_code);
-	console.log(token);
-
-	$.ajax({
-		method: 'get',
-		url: 'https://api.iamport.kr/banks',
-	    headers: { 
-	    	"Authorization": token
-		}
-	}).done(function(msg) {
-			console.log(msg);
-			let bank_name = msg.response;
-			
-			for (var i = 0; i < bank_name.length; i++) {
-				console.log(bank_name[i]);
-				console.log(bank_name[i].code);
-				console.log(bank_name[i].name);
-				//console.log(bank_code);
-				
-				if (bank_name[i].code == bank_code) {
-					let senior_bank_name = bank_name[i].name;
-					$('#bank_name').append(senior_bank_name);
-					break;
-				}
-			}
-			
-		});
 	
-	
-});
- */ */
 </script>
-</head>
-<body>
+
    <div class="hs_senior_calculate_request">
       <h4 class="hs_senior_calculate_request_title">정산신청</h4>
       <div class="hs_senior_calculate_possible_wait_box">
@@ -133,7 +138,7 @@ $(document).ready(function() {
                                  <div class="form-row">
                                     <div class="form-group col-md-4">
                                        <select name="senior_bank_name" class="form-control" style="font-size: 15px;">
-                                    <option disabled="disabled" value="${accountdetalidto.senior_bank_name}">-----</option>
+                                    <option value="${accountdetalidto.senior_bank_name}">-----</option>
                                     <option value="004">KB국민은행</option>
                                     <option value="023">SC제일은행</option>
                                     <option value="039">경남은행</option>
@@ -195,7 +200,7 @@ $(document).ready(function() {
                                  </div>
                                  <div class="hs_senior_AccountModal_FooterDiv">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                    <input type="button" value="계좌실명확인" onclick="checkBankHolder();" class="hs_senior_AccountModal_RealnameCheck">
+                                    <input type="button" value="계좌실명확인" class="hs_senior_AccountModal_RealnameCheck" onclick="checkBankHolder();" >
                                     <input type="submit" value="정산계좌수정" class="hs_senior_AccountModal_AccountUpdate">
                                  </div>
                               </form>
