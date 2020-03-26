@@ -49,9 +49,11 @@ public interface EJ_All_Product_Service {
 
 	public List<MyLikeDTO> has_mylike_product(MyLikeDTO likedto);
 
-	public int insertorder_cart(List<CartDTO> cartdto);
+	public int insertorder_cart(CartDTO cart, int orderlist_no);
 
 	public int deletecart(CartDTO cartdto);
+
+	public int delet_all_cart(String member_id);
 
 
 

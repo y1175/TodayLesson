@@ -296,13 +296,14 @@ $("#sameaddr").on('click', function() {
     	  
        }, function (rsp) {
      
-       $("#ordersuccess_btn").show();
+     
        		if (rsp.success) {
       var msg = '화면의 주문완료 버튼을 눌러주세요';
       /*  msg += '고유ID : ' + rsp.imp_uid;
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
+       $("#ordersuccess_btn").show();
        			<%-- location.href='<%=request.getContextPath()%>/orderlistdetail'; --%>
        		} else {
     	   

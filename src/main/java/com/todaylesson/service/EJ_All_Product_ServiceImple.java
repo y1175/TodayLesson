@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,16 +123,35 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.has_mylike_product(likedto);
 	}
 
-	@Override
-	public int insertorder_cart(List<CartDTO> cartdto) {
+	/*@Override
+	public int insertorder_cart(CartDTO cart) {
 		// TODO Auto-generated method stub
-		return mapper.insertorder_cart(cartdto);
-	}
+		return mapper.insertorder_cart(cart);
+	}*/
 
 	@Override
 	public int deletecart(CartDTO cartdto) {
 		// TODO Auto-generated method stub
 		return mapper.deletecart(cartdto);
+	}
+
+	@Override
+	public int insertorder_cart(CartDTO cart,int orderlist_no) {
+		// TODO Auto-generated method stub
+		//해쉬맵만들어서 맵에 카트 풋하고 no가져와
+		//해쉬맵넣기 파라미터에
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("orderlist_no", orderlist_no);//키 . 밸류
+		hm.put("product_no", cart.getProduct_no());
+		hm.put("cart_amount", cart.getCart_amount());
+		
+		return mapper.insertorder_cart(hm);
+	}
+
+	@Override
+	public int delet_all_cart(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.delete_all_cart(member_id);
 	}
 
 
