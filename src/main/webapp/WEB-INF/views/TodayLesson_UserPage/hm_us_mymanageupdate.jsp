@@ -66,7 +66,7 @@ onkeyup="passwordCheckFunction();"><br>
 <option disabled="disabled" selected="selected">-----</option>
 </c:if>
 <c:if test="${!empty dto.member_bank_name }">
-<option selected="selected">${dto.member_bank_name}</option>
+<option id="bank_name"></option>
 </c:if>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>

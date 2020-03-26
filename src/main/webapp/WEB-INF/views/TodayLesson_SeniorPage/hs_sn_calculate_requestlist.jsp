@@ -16,7 +16,7 @@
 <!-- JS -->
 
 <script type="text/javascript">
-
+/* 은행명 */
 $(document).ready(function() {
 
 	let bank_code= "${accountdetalidto.senior_bank_name}";
@@ -43,7 +43,7 @@ $(document).ready(function() {
 				
 				if (bank_name[i].code == bank_code) {
 					let senior_bank_name = bank_name[i].name;
-					$('#bank_name').append(senior_bank_name);
+					$('.bank_name').append(senior_bank_name);
 					break;
 				}
 			}
@@ -70,7 +70,7 @@ $(document).ready(function() {
                   <div class="col-sm-7" style="display: inline-block;">
                      <b>000원</b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
                      <br>
-                     <div id = "bank_name"></div>
+                     <div class = "bank_name"></div>
                      <br>
                      <span>
                         <c:out value="${accountdetalidto.senior_account_num}"/>
@@ -85,7 +85,7 @@ $(document).ready(function() {
                      <div class="modal-dialog" role="document">
                         <div class="modal-content">
                            <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_accountupdateresult">
+                              <form method="post" action="todaylessonsenior/senior_calculate_accountupdateresult">
                                  <div class="hs_senior_AccountModal_HeaderDiv">
                                     <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -95,9 +95,7 @@ $(document).ready(function() {
                                  <div class="form-row">
                                     <div class="form-group col-md-4">
                                        <select name="senior_bank_name" id="senior_bank_name" class="form-control" style="font-size: 15px;">
-                                    <option >
-                                       
-                                    </option>
+                                    <option class="bank_name"></option>
                                     <option value="004">KB국민은행</option>
                                     <option value="023">SC제일은행</option>
                                     <option value="039">경남은행</option>
