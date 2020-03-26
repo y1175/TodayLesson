@@ -24,7 +24,7 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	       salesList(String member_id, String sales_search_startdate, String sales_search_enddate, String search, String searchtxt) {  //String start_date, String end_date, 
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();
-		hm.put("senior_no", member_id);
+		hm.put("member_id", member_id);
 		hm.put("sales_search_startdate", sales_search_startdate);
 		hm.put("sales_search_enddate", sales_search_enddate);
 		hm.put("search", search);
