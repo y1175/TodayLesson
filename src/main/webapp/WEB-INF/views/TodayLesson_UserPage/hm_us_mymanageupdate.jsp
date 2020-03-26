@@ -272,19 +272,6 @@ onkeyup="passwordCheckFunction();"><br>
 						
 						});
 	}
-
-		
-
-	function checkDisable()
-	{
-	    if(no_crno.checked == true ){
-		   senior_crno.disabled = true;
-		   senior_crno_name.disabled = true;
-		} else {
-		   senior_crno.disabled = false;
-		   senior_crno_name.disabled = false;
-		}
-	}
 	</script>
 	<script>
 		$(function(){

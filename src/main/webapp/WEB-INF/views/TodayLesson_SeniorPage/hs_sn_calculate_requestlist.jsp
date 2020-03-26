@@ -16,10 +16,10 @@
 <!-- JS -->
 
 <script type="text/javascript">
-/* 
+
 $(document).ready(function() {
 
-	let bank_code= "${accountupdatedto.senior_bank_name}";
+	let bank_code= "${accountdetalidto.senior_bank_name}";
 	let token = "${token}";
 
 	console.log(bank_code);
@@ -52,12 +52,14 @@ $(document).ready(function() {
 	
 	
 });
- */ 
+ 
 </script>
 </head>
 <body>
 
-<input type="hidden" id="token" name="token" value="${token}">
+                                    
+
+
    <div class="hs_senior_calculate_request">
       <h4 class="hs_senior_calculate_request_title">정산신청</h4>
       <div class="hs_senior_calculate_possible_wait_box">
@@ -89,60 +91,13 @@ $(document).ready(function() {
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
-                                    
-                                    <script>
-
-function checkBankHolder(){
-
-	let bank_code= ${accountdetalidto.senior_bank_name};
-	let bank_num = ${accountdetalidto.senior_account_num};
-	let token = document.getElementById('token').value;
-	let account_name = ${accountdetalidto.senior_account_name};
-	
-	console.log(bank_code);
-	console.log(bank_num);
-	
-	$.ajax({
-		method: 'get',
-		url: 'https://api.iamport.kr/vbanks/holder',
-	    headers: { "Authorization": token
-		}, 
-		data : {
-			bank_code : bank_code,
-			bank_num : bank_num
-		}
-	}).done(
-					function(msg) {
-						console.log(msg);
-					/* 	let adn = msg.documents[0].bank_holder;
-						console.log
-						(adn); */
-
-						let bank = msg.response;
-						//let name = bank.parse().bank_holder;
-						console.log(bank);
-						console.log(bank["bank_holder"]);
-						
-						var bank_holder = bank["bank_holder"];
-						
-						if (account_name == bank_holder) {
-							alert("실명 인증 성공");
-						} else {
-							alert("실명 인증 실패");
-						}
-					
-					});
-}
-
-	
-</script>
-
-
                                  </div>
                                  <div class="form-row">
                                     <div class="form-group col-md-4">
-                                       <select name="senior_bank_name" class="form-control" style="font-size: 15px;">
-                                    <option value="${accountdetalidto.senior_bank_name}">-----</option>
+                                       <select name="senior_bank_name" id="senior_bank_name" class="form-control" style="font-size: 15px;">
+                                    <option >
+                                       
+                                    </option>
                                     <option value="004">KB국민은행</option>
                                     <option value="023">SC제일은행</option>
                                     <option value="039">경남은행</option>
@@ -204,14 +159,69 @@ function checkBankHolder(){
                                  </div>
                                  <div class="hs_senior_AccountModal_FooterDiv">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                    <input type="button" value="계좌실명확인" class="hs_senior_AccountModal_RealnameCheck" onclick="checkBankHolder();" >
+                                    <input type="button" value="계좌실명확인" name="hs_senior_AccountModal_RealnameCheck" class="hs_senior_AccountModal_RealnameCheck" onclick="checkBankHolder();" >
                                     <input type="submit" value="정산계좌수정" class="hs_senior_AccountModal_AccountUpdate">
                                  </div>
+                                 <input type="hidden" id="token" name="token" value="${token}">
                               </form>
                            </div>
                         </div>
                      </div>
                   </div>
+                  <script>
+                  /*   */
+                  
+                 	function checkBankHolder(){
+              		
+             
+                  	let target = document.getElementById("senior_bank_name");
+		            let bank_code = target.options[target.selectedIndex].value;
+		            let token = document.getElementById("token").value;
+		            let bank_num = document.getElementById("senior_account_num").value;
+		            let account_name = document.getElementById("senior_account_name").value;
+		
+	            	console.log(bank_code);
+             		console.log(bank_num);
+	             	console.log(token);
+	            	console.log(account_name);
+                  	
+                  	
+                  	$.ajax({
+                  		method: 'get',
+                  		url: 'https://api.iamport.kr/vbanks/holder',
+                  	    headers: { "Authorization": token
+                  		}, 
+                  		data : {
+                  			bank_code : bank_code,
+                  			bank_num : bank_num
+                  		}
+                  	}).done(
+                  					function(msg) {
+                  						console.log(msg);
+                  					/* 	let adn = msg.documents[0].bank_holder;
+                  						console.log
+                  						(adn); */
+
+                  						let bank = msg.response;
+                  						//let name = bank.parse().bank_holder;
+                  						console.log(bank);
+                  						console.log(bank["bank_holder"]);
+                  						
+                  						var bank_holder = bank["bank_holder"];
+                  						
+                  						if (account_name == bank_holder) {
+                  							alert("실명 인증 성공");
+                  						} else {
+                  							alert("실명 인증 실패");
+                  						}
+                  					
+                  					});
+              	}
+                  
+               </script>
+                  
+                  
+                  
                   <!-- Account Update modal -->
                </div>
                

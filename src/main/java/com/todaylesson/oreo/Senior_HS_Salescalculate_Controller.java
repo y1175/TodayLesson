@@ -52,7 +52,8 @@ public class Senior_HS_Salescalculate_Controller {
 	}
 	
 	@RequestMapping("/senior_calculate_requestlist/{member_id}")
-	public String calculateRequestList( @PathVariable String member_id, SeniorDTO dto, Model model) {
+	public String calculateRequestList( @PathVariable String member_id, SeniorDTO dto, Model model
+			                          , HttpServletRequest request,HttpServletResponse response) throws Exception {
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist=salescalculateService.calculateRequsetList(member_id);
 		model.addAttribute("cal_requestlist", cal_requestlist);
@@ -72,6 +73,18 @@ public class Senior_HS_Salescalculate_Controller {
 		//정산신청 시니어디테일
 		SeniorDTO accountdetalidto=salescalculateService.accountDetailDTO(member_id);
 		model.addAttribute("accountdetalidto", accountdetalidto);
+		
+		String imp_key 		=	"5422837446408379";
+		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
+
+		JSONObject json = new JSONObject();
+		json.put("imp_key", imp_key);
+		json.put("imp_secret", imp_secret);
+	
+		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
+		model.addAttribute("token",token);
+		
+		
 		
 		//정산신청가능금액
 		/*int calculate_possibilitycost=salescalculateService.calculate_PossibilityCost(member_id);
@@ -137,17 +150,9 @@ public class Senior_HS_Salescalculate_Controller {
 	}
 	
 	@RequestMapping("/senior_calculate_accountupdateresult")
-	public String calculateRequestAccountUpdateResult (SeniorDTO dto, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
+	public String calculateRequestAccountUpdateResult (SeniorDTO dto, Model model)  {
 		
-		String imp_key 		=	"5422837446408379";
-		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
-
-		JSONObject json = new JSONObject();
-		json.put("imp_key", imp_key);
-		json.put("imp_secret", imp_secret);
-	
-		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
-		model.addAttribute("token",token);
+		
 		
 		//정산신청 시니어계좌정보수정
 		int accountupdatedto=salescalculateService.accountUpdateDTO(dto);
