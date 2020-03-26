@@ -14,22 +14,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style>
 
 </style>
+
 </head>
 
 
 
 
 <body>
-<script>
-
-//$("#ordersuccess_btn").hide();
-</script>
-
 <h2 text align="center">주문신청서</h2>
 <h4>주문할 레슨</h4>
 <hr>
@@ -50,22 +46,34 @@
 </tbody>
 </table>
 <hr>
- <input type="hidden" name="lesson_title" value=${lesson_title }>
+ <input type="hidden" name="lesson_title" value='${ldto.lesson_title }'>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
 
  <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
 <%--  <input type="hidden" name="product_after_cost" value="${product_after_cost }"> --%>
+<input type="hidden" name="user_point" id="user_point" value='${mdto.member_point}'>
+
+
+
 보유 포인트: ${mdto.member_point}<br>
-포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0>
-전액<input type="checkbox" value="all_point" id="all_point">
+포인트 사용 <input type="text"  class="form-control" id="usepoint"  name="usepoint">
 <script>
 
-if($('#all_point').is(":checked")){
-	$('#usepoint').value() = ${mdto.member_point};
-}
+
+$('#all_point').change(function() {
+    if ( $('#all_point').prop('checked')) {
+    	document.getElementById('usepoint').value='ff';
+    } else {
+    document.getElementById('usepoint').value='ff';
+ }
+ 
+    console.log( document.getElementById('usepoint').value);
+
+ });
 
 
 </script>
+전액<input type="checkbox" value="all_point" id="all_point">
 <button class='btn btn-primary' id="pointbtn">적용</button><br>
 
  결제금액<br>
