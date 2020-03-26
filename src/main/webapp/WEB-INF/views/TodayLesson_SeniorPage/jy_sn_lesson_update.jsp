@@ -19,7 +19,7 @@
 
 <script>
 	$(document).ready(function() {
-		
+		 
 		
 		$('textarea').summernote({
 			placeholder : 'content',
