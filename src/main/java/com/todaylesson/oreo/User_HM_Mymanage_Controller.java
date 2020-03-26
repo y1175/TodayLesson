@@ -94,7 +94,7 @@ public class User_HM_Mymanage_Controller {
 	@RequestMapping("/hm_us_mymanage2")
 	public String currentUserName(@RequestParam("member_id") String member_id
 			,@RequestParam("member_pwd") String member_pwd
-			,Model model)
+			,Model model, HttpServletRequest request,HttpServletResponse response)throws Exception
 	{
 
 
@@ -109,6 +109,17 @@ public class User_HM_Mymanage_Controller {
 		{
 			MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
 			model.addAttribute("dto",dto);
+			
+			String imp_key 		=	"5422837446408379";
+			String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
+
+			JSONObject json = new JSONObject();
+			json.put("imp_key", imp_key);
+			json.put("imp_secret", imp_secret);
+		
+			String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
+			model.addAttribute("token",token);
+
 			return "/TodayLesson_UserPage/hm_us_mymanageupdate";
 		}
 		else {
@@ -119,7 +130,7 @@ public class User_HM_Mymanage_Controller {
 
 	//내정보 수정
 	@RequestMapping("/hm_us_mymanagesms")
-	public String hmusmymanageupdatesms(Authentication authentication, Model model, HttpServletRequest request)throws Exception
+	public String hmusmymanageupdatesms(Authentication authentication, Model model,HttpServletRequest request)
 	{
 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
@@ -186,8 +197,7 @@ public class User_HM_Mymanage_Controller {
 			,@RequestParam("detailaddr") String detailaddr
 			,@RequestParam("member_nick") String member_nick
 			,MemberDTO dto, Model model
-			,HttpServletRequest request, HttpServletResponse response
-			)throws Exception
+			)
 	{
 
 		member_pwd=encoder.encode(member_pwd);
@@ -212,16 +222,7 @@ public class User_HM_Mymanage_Controller {
 		model.addAttribute("result",result1);
 		
 		
-		String imp_key 		=	"5422837446408379";
-		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
-
-		JSONObject json = new JSONObject();
-		json.put("imp_key", imp_key);
-		json.put("imp_secret", imp_secret);
 	
-		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
-		model.addAttribute("token",token);
-		
 	
 		
 

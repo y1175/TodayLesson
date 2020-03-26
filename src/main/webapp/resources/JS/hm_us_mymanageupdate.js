@@ -48,16 +48,16 @@ function smscheckfunction() {
 
 }
 
-
+/*
 function checkBankHolder(){
 
-	/*let bank_code= document.frm.member_bank_name.value;
+	let bank_code= document.frm.member_bank_name.value;
 	let bank_num = document.frm.member_account_num.value;
 	let token = document.frm.token.value;
-	let account_name = document.frm.member_account_name.value;*/
+	let account_name = document.frm.member_account_name.value;
 	let target = document.getElementById("member_bank_name");
 	let bank_code = target.options[target.selectedIndex].value;
-	let token = docunment.frm.tken.value;
+	let token = docunment.getElementById("token").value;
 	let bank_num = document.getElementById("member_account_num").value;
 	let account_name = document.getElementById("member_account_name").value;
 	
@@ -78,9 +78,9 @@ function checkBankHolder(){
 	}).done(
 					function(msg) {
 						console.log(msg);
-					/* 	let adn = msg.documents[0].bank_holder;
+					 	let adn = msg.documents[0].bank_holder;
 						console.log
-						(adn); */
+						(adn); 
 
 						let bank = msg.response;
 						//let name = bank.parse().bank_holder;
@@ -109,4 +109,4 @@ function checkDisable()
 	   senior_crno.disabled = false;
 	   senior_crno_name.disabled = false;
 	}
-}
+}*/

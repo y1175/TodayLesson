@@ -130,7 +130,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="text" id="member_account_num" name="member_account_num" value="" required="required">
 </c:if>
 <input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
- 
+<input type="hidden" id="token" name="token" value="${token}">
  <br>
  
  
@@ -163,7 +163,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 
-<input type="button" value="회원탈퇴" onclick="location.href='/todaylessonmypage/hm_us_memberwithdraw/'+${dto.member_id}">
+<%-- <input type="button" value="회원탈퇴" onclick="location.href='/todaylessonmypage/hm_us_memberwithdraw/'+${dto.member_id}"> --%>
 <input type="reset" value="취소">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
@@ -225,7 +225,71 @@ onkeyup="passwordCheckFunction();"><br>
 					}).open();
 		}
 	</script>
+	<script>
 
+
+	function checkBankHolder(){
+
+		/*let bank_code= document.frm.member_bank_name.value;
+		let bank_num = document.frm.member_account_num.value;
+		let token = document.frm.token.value;
+		let account_name = document.frm.member_account_name.value;*/
+		let target = document.getElementById("member_bank_name");
+		let bank_code = target.options[target.selectedIndex].value;
+		let token = ${token};
+		let bank_num = document.getElementById("member_account_num").value;
+		let account_name = document.getElementById("member_account_name").value;
+		
+		console.log(bank_code);
+		console.log(bank_num);
+		console.log(token);
+		console.log(account_name);
+		
+		$.ajax({
+			method: 'get',
+			url: 'https://api.iamport.kr/vbanks/holder',
+		    headers: { "Authorization": token
+			}, 
+			data : {
+				bank_code : bank_code,
+				bank_num : bank_num
+			}
+		}).done(
+						function(msg) {
+							console.log(msg);
+						/* 	let adn = msg.documents[0].bank_holder;
+							console.log
+							(adn); */
+
+							let bank = msg.response;
+							//let name = bank.parse().bank_holder;
+							console.log(bank);
+							console.log(bank["bank_holder"]);
+							
+							var bank_holder = bank["bank_holder"];
+							
+							if (account_name == bank_holder) {
+								alert("실명 인증 성공");
+							} else {
+								alert("실명 인증 실패");
+							}
+						
+						});
+	}
+
+		
+
+	function checkDisable()
+	{
+	    if(no_crno.checked == true ){
+		   senior_crno.disabled = true;
+		   senior_crno_name.disabled = true;
+		} else {
+		   senior_crno.disabled = false;
+		   senior_crno_name.disabled = false;
+		}
+	}
+	</script>
 	<script>
 		$(function(){
 			$("#alert-success").hide();
@@ -256,7 +320,7 @@ onkeyup="passwordCheckFunction();"><br>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<script src="/resources/JS/hm_us_mymanageupdate.js"></script>
+	<script src="/resources/JS/hm_us_mymanageupdate.js?ver=1"></script>
 
 </body>
 </html>
