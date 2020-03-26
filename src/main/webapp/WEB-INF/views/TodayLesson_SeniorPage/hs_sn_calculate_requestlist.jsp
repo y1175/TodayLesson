@@ -85,7 +85,7 @@ $(document).ready(function() {
                      <div class="modal-dialog" role="document">
                         <div class="modal-content">
                            <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                              <form method="post" action="todaylessonsenior/senior_calculate_accountupdateresult">
+                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_accountupdateresult">
                                  <div class="hs_senior_AccountModal_HeaderDiv">
                                     <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

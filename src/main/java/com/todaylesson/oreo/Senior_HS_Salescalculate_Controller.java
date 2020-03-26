@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,13 +33,17 @@ public class Senior_HS_Salescalculate_Controller {
 	@Resource(name="senior_HS_Salescalculate_Service")
 	private Senior_HS_Salescalculate_Service salescalculateService;
 	
-	@RequestMapping("/senior_sales_list/{member_id}")
-	public String salesList(@PathVariable String member_id
-	            		   ,@RequestParam(required=false, defaultValue="") String sales_search_startdate
+	@RequestMapping("/senior_sales_list")
+	public String salesList(Authentication authentication
+			               ,@RequestParam(required=false, defaultValue="") String sales_search_startdate
 			               ,@RequestParam(required=false, defaultValue="") String sales_search_enddate
 			               ,@RequestParam(required=false, defaultValue="") String search
 			               ,@RequestParam(required=false, defaultValue="") String searchtxt
 			               , Model model) {
+		//시큐리티 멤버아이디
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+				
 		//매출현황전체리스트
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> salesList=
 	         salescalculateService.salesList(member_id, sales_search_startdate, sales_search_enddate, search, searchtxt); 
@@ -51,11 +57,18 @@ public class Senior_HS_Salescalculate_Controller {
 		return "/TodayLesson_SeniorPage/hs_sn_sales_list.sn_main_section";
 	}
 	
-	@RequestMapping("/senior_calculate_requestlist/{member_id}")
-	public String calculateRequestList( @PathVariable String member_id, SeniorDTO dto, Model model
+	@RequestMapping("/senior_calculate_requestlist")
+	public String calculateRequestList( SeniorDTO dto, Model model
+			                          , Authentication authentication
 			                          , HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		//시큐리티 멤버아이디
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+		
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
-		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist=salescalculateService.calculateRequsetList(member_id);
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist
+		                          =salescalculateService.calculateRequsetList(member_id);
 		model.addAttribute("cal_requestlist", cal_requestlist);
 		
 		//정산신청 리스트 결제건수
@@ -74,6 +87,7 @@ public class Senior_HS_Salescalculate_Controller {
 		SeniorDTO accountdetalidto=salescalculateService.accountDetailDTO(member_id);
 		model.addAttribute("accountdetalidto", accountdetalidto);
 		
+		//토큰값
 		String imp_key 		=	"5422837446408379";
 		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
 
@@ -83,7 +97,6 @@ public class Senior_HS_Salescalculate_Controller {
 	
 		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
 		model.addAttribute("token",token);
-		
 		
 		
 		//정산신청가능금액

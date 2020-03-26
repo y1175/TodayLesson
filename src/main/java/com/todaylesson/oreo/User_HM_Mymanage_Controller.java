@@ -221,12 +221,47 @@ public class User_HM_Mymanage_Controller {
 		int result1 = hm_mymanageservice.MyInfoupdate(dto);
 		model.addAttribute("result",result1);
 		
-		
-	
-	
-		
-
 		return "/TodayLesson_UserPage/hm_us_mymanageupdateresult";
 	}
+	
+/*	È¸¿øÅ»Åð 
+	@RequestMapping("/hm_us_memberwithdraw")
+	public String memberwithdraw(Authentication authentication,Model model) {
+		
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+		
+		String encoded_pwd=encoder.encode(member_pwd);
+		boolean result=encoder.matches(member_pwd , encoded_pwd);
+
+
+		System.out.println(member_pwd);
+		System.out.println(result);
+
+		if(result==true)
+		{
+			MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
+			model.addAttribute("dto",dto);
+			
+			String imp_key 		=	"5422837446408379";
+			String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
+
+			JSONObject json = new JSONObject();
+			json.put("imp_key", imp_key);
+			json.put("imp_secret", imp_secret);
+		
+			String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
+			model.addAttribute("token",token);
+
+			return "/TodayLesson_UserPage/hm_us_mymanageupdate";
+		}
+		else {
+
+			return "/TodayLesson_UserPage/hm_us_mymanage2";
+		}
+		
+		
+		
+	}*/
 
 }

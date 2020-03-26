@@ -101,7 +101,11 @@
    }
   });
  </script>
- 
+ <br><br>
+ <li style="list-style: none;">이벤트 간단설명</li>
+ <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100">${dto.event_thumbexplain}</textarea>
+<br>
+<br>
  
  
 <br>

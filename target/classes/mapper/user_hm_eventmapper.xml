@@ -13,7 +13,7 @@ from event
 
 
 <select id="eventlist" resultType="com.todaylesson.DTO.EventDTO" parameterType="java.util.HashMap">
-select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail
+select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail,event_thumbexplain
 from event
 <include refid="search_select"></include> 
 order by event_no desc

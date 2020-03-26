@@ -22,7 +22,16 @@ $(document).ready(function(){
         
     })
     
+ /*  
+  * 회원탈퇴
+  *  $('#hm_memberwithdrawbtn').on('click',function(){
+    	
+    	
+    	
+    	
+    });*/
 });
+
 function smscheckfunction() {
 	$("#alert-success2").hide();
 	$("#alert-danger2").hide();
@@ -44,7 +53,7 @@ function smscheckfunction() {
 				}
 		}
 	});
-
-
 }
+
+
 
