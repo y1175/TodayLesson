@@ -4,7 +4,17 @@
 	
 }
 
+.hm_event_total{
+	
+	width:80%;
+	margin : auto;
+} 
 
+.hm_event_thumbnail{
+	display: inline-block;
+	margin : 0px
+	
+}
 
 
 

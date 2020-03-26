@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=2"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=1"> 
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> 
 </head>
@@ -57,6 +57,7 @@
 <h2>이벤트 모음</h2>
 </div>
 
+<div class="hm_event_total">
  <!-- 이벤트 네비바 -->
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:70%; margin : 40px auto;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,10 +91,17 @@
 </nav>
 
 
+<div class="hm_event_thumbnailmain">
+<c:forEach var="item" items="${list}">
+<div class="hm_event_thumbnail">
+<div>
+<img alt="이벤트 이미지" src="${item.event_thumbnail}">
+</div>
+</div>
+</c:forEach>
+</div>
 
-
-
-
+</div>
 
 
 
@@ -134,6 +142,7 @@
 
 
 <!-- 페이징 처리  -->
+<br>
 <c:if test="${page.prev }">
 <a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>
