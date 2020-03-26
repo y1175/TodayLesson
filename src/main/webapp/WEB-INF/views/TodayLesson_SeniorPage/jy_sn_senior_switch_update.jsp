@@ -12,7 +12,7 @@
 /* 은행명 */
 $(document).ready(function() {
 
-   let bank_code= "${accountdetalidto.senior_bank_name}";
+   let bank_code= "${dto.senior_bank_name}";
    let token = "${token}";
 
    console.log(bank_code);
