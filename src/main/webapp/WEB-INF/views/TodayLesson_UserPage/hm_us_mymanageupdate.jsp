@@ -236,7 +236,7 @@ onkeyup="passwordCheckFunction();"><br>
 		let account_name = document.frm.member_account_name.value;*/
 		let target = document.getElementById("member_bank_name");
 		let bank_code = target.options[target.selectedIndex].value;
-		let token = ${token};
+		let token = document.getElementById("token");
 		let bank_num = document.getElementById("member_account_num").value;
 		let account_name = document.getElementById("member_account_name").value;
 		
