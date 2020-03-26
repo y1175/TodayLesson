@@ -163,7 +163,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 
-<input type="button" value="회원탈퇴" onclick="location.href='/todaylessonmypage/hm_us_memberwithdraw'"> 
+<%-- <input type="button" value="회원탈퇴" onclick="location.href='/todaylessonmypage/hm_us_memberwithdraw/'+${dto.member_id}"> --%>
 <input type="reset" value="취소">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
@@ -232,7 +232,7 @@ onkeyup="passwordCheckFunction();"><br>
 
 		let target = document.getElementById("member_bank_name");
 		let bank_code = target.options[target.selectedIndex].value;
-		let token = document.getElementById("token").value;
+		let token = document.getElementById("token").;
 		let bank_num = document.getElementById("member_account_num").value;
 		let account_name = document.getElementById("member_account_name").value;
 		
