@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* 전체 DIV */
+.hs_senior_calculate_statement{
+	width: 95%;
+	margin: auto;
+	margin-top: 30px;
+	color: rgb(53, 54, 58);
+}
+/* 정산내역 제목 */
+.hs_senior_calculate_statement_title{
+	font-size: 23px;
+	font-weight: 800;
+}
+/* 엑세다운로드 DIV  */
+.hs_senior_CalculateStatement_ExcelBox{
+	width: 100%;
+	margin : auto;
+	margin-top: 20px;
+}
+/* 엑셀다운로드버튼 */
+.hs_senior_CalculateStatement_ExcelBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+}
+/* 정산내역 리스트 */
+.hs_senior_calculate_statementList{
+	width: 100%;
+	margin : auto;
+	margin-top: 20px;
+}
+/* 테이블 가운데 정렬 */
+#hs_senior_calculate_statementList_Table th, td{
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+}
+#hs_senior_calculate_statementList_Table th{
+	background-color: rgba(53, 54, 58, 0.2);
+	border-right: 1px solid rgba(53, 54, 58, 0.4);
+}

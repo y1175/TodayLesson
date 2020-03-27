@@ -6,7 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- style -->   
-   <link rel="stylesheet" href="resources/CSS/hs_sn_sales_list.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}resources/CSS/hs_sn_sales_list.css">
+   <style type="text/css">
+      .hs_sn_main_asidenav_nav_salestitle>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
 <!-- style -->
 </head>
 <body>

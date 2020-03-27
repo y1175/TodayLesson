@@ -41,11 +41,11 @@
    
    <section style="width: 100%;">
       
-      <aside style="width: 10%; float: left;">
+      <aside style="width: 11%; float: left;">
       <tiles:insertAttribute name="hs_ad_main_leftaside_nav"/>
       </aside>
       
-      <section style="width: 90%; float: right ;">
+      <section style="width: 89%; float: right ;">
       <tiles:insertAttribute name="hs_ad_main_section"/>
       </section>
    

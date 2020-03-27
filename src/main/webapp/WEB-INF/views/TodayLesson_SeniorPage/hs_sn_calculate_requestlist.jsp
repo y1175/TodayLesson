@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -7,7 +8,12 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=1">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=2">  
+   <style type="text/css">
+      .hs_sn_main_asidenav_nav_calRequest_title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
 <!-- CSSstyle -->
 
 <!-- JS -->
@@ -370,8 +376,8 @@ $(document).ready(function() {
          <button class="hs_senior_CalculateRequest_ExcelBtn">엑셀다운로드</button>
       </div> 
       <div class="hs_senior_calculate_requestList">
-         <table class="table table-hover">
-            <thead>
+         <table id="hs_senior_calculate_requestList_Table" class="table table-hover">
+            <thead style="border-top: 2px solid rgb(53, 54, 58);">
                <tr>
                   <th rowspan="2">NO.</th>
                   <th rowspan="2">정산번호</th>
@@ -381,7 +387,7 @@ $(document).ready(function() {
                   <th rowspan="2">정산기간</th>
                   <th rowspan="2">정산계좌</th>
                   <th rowspan="2">정산금액</th>
-                  <th colspan="4">상세내역</th>
+                  <th colspan="4" style="border-right: none; border-bottom: 1px solid rgba(53, 54, 58, 0.4);">상세내역</th>
                </tr>
                <tr>
                   <th>레슨수익금액</th> 
@@ -389,7 +395,7 @@ $(document).ready(function() {
                   <!-- <th>레슨취소금액</th>
                   <th>포인트취소</th> -->
                   <th>정산수수료</th>
-                  <th>세금계산서부가세</th>
+                  <th style="border-right: none;">세금계산서부가세</th>
                </tr>
             </thead>
             <tbody>
@@ -437,7 +443,7 @@ $(document).ready(function() {
                      </td> 
                      <!-- 결제건수 -->
                      <td>
-                        <c:out value="${cal_paycount}"/>
+                        <fmt:formatNumber value="${cal_paycount}" type="number" maxFractionDigits="3"/>
                      </td> 
                   
                      <!-- 정산기간 -->
@@ -460,11 +466,11 @@ $(document).ready(function() {
                      </td> 
                      <!-- 레슨수익금액 결제완료된금액-->
                      <td>
-                        <c:out value="${cal_lessonrevenuecost}"/>
+                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 포인트사용 -->
                      <td>
-                        <c:out value="${cal_usepointsum}"/>
+                        <fmt:formatNumber value="${cal_usepointsum}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 레슨취소금액 -->
                      <!-- <td>
@@ -476,7 +482,7 @@ $(document).ready(function() {
                      </td> --> 
                      <!-- 정산수수료 -->
                      <td>
-                        <c:out value="${cal_lessonrevenuecost*0.1}"/>   
+                        <fmt:formatNumber value="${cal_lessonrevenuecost*0.1}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 세금계산서부가세 -->
                      <td>
@@ -488,7 +494,7 @@ $(document).ready(function() {
                         </c:when>
                         <c:otherwise>
                            <td>
-                              <c:out value="${(cal_lessonrevenuecost/1.1)*0.1}"/>  
+                              <fmt:formatNumber value="${(cal_lessonrevenuecost/1.1)*0.1}" type="number" maxFractionDigits="3"/>
                            </td>    
                         </c:otherwise>
                      </c:choose>

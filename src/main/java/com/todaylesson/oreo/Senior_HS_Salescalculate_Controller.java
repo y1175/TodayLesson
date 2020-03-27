@@ -33,6 +33,7 @@ public class Senior_HS_Salescalculate_Controller {
 	@Resource(name="senior_HS_Salescalculate_Service")
 	private Senior_HS_Salescalculate_Service salescalculateService;
 	
+	//매출현황
 	@RequestMapping("/senior_sales_list")
 	public String salesList(Authentication authentication
 			               ,@RequestParam(required=false, defaultValue="") String sales_search_startdate
@@ -57,14 +58,22 @@ public class Senior_HS_Salescalculate_Controller {
 		return "/TodayLesson_SeniorPage/hs_sn_sales_list.sn_main_section";
 	}
 	
+	//정산신청
 	@RequestMapping("/senior_calculate_requestlist")
 	public String calculateRequestList( SeniorDTO dto, Model model
 			                          , Authentication authentication
-			                          , HttpServletRequest request,HttpServletResponse response) throws Exception {
+			                          , HttpServletRequest request,HttpServletResponse response
+			                          ,@RequestParam(required=false, defaultValue="1") int currPage
+			                          ) throws Exception {
 		
 		//시큐리티 멤버아이디
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
+
+		//정산신청 총 게시글 수
+		/*int totalCount= salescalculateService.calculateRequsetListTotalCount();
+		int pageSize=10;
+		int blockSize=5;*/
 		
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist
@@ -163,6 +172,7 @@ public class Senior_HS_Salescalculate_Controller {
 		return _token;
 	}
 	
+	//정산신청 계좌정보수정
 	@RequestMapping("/senior_calculate_accountupdateresult")
 	public String calculateRequestAccountUpdateResult (SeniorDTO dto, Model model)  {
 		
@@ -175,4 +185,32 @@ public class Senior_HS_Salescalculate_Controller {
 		return "TodayLesson_SeniorPage/hs_sn_calculate_accountupdateresult";
 	}
 
+	//정산내역
+	@RequestMapping("/senior_calculate_statementlist")
+	public String calculateStatementList(Model model,
+			                             Authentication authentication) {
+		//시큐리티 멤버아이디
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+		
+		//정산내역 리스트
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_statementlist
+		                          =salescalculateService.calStatementList(member_id);
+		model.addAttribute("cal_statementlist", cal_statementlist);
+		
+		//정산내역 리스트 결제건수
+		List<Integer> cal_statement_paycount=salescalculateService.calStatementPayCount(member_id);
+		model.addAttribute("cal_statement_paycount", cal_statement_paycount);
+				
+		//정산내역 리스트 레스수익금액
+		List<Integer> cal_statement_lessonrevenuecost=salescalculateService.calStatementRevenueCost(member_id);
+		model.addAttribute("cal_statement_lessonrevenuecost", cal_statement_lessonrevenuecost);
+
+		//정산내역 리스트 포인트사용
+		List<Integer> cal_statement_usepointsum=salescalculateService.calStatementUsePointSum(member_id);
+		model.addAttribute("cal_statement_usepointsum", cal_statement_usepointsum);
+		
+		return "/TodayLesson_SeniorPage/hs_sn_calculate_statementlist.sn_main_section";
+	}
+	
 }

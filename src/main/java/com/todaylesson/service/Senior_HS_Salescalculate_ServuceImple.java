@@ -32,6 +32,13 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		return salescalculateMapper.SalesList(hm);
 	}
 
+	//정산신청 총 게시글 수
+	/*@Override
+	public int calculateRequsetListTotalCount() {
+	    // TODO Auto-generated method stub
+	   	return salescalculateMapper.calculateRequsetListTotalCount();
+	} */      
+	       
 	//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 	@Override
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calculateRequsetList(String member_id) {
@@ -60,7 +67,6 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		return salescalculateMapper.calUsePointSum(member_id);
 	}
 
-
 	//정산신청 시니어디테일
 	@Override
 	public SeniorDTO accountDetailDTO(String member_id) {
@@ -88,22 +94,35 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calculate_WaitingCost(member_id);
 	}*/
+	
+	//정산내역 목록 리스트
+	@Override
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calStatementList(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.calStatementList(member_id);
+	}
 
-	
-	
-	//정산신청 리스트 레스취소금액
-		/*@Override
-		public List<Integer> calCancelCost(int senior_no) {
-			// TODO Auto-generated method stub
-			return salescalculateMapper.calCancelCost(senior_no);
-		}*/
+	//정산내역 리스트 결제건수
+	@Override
+	public List<Integer> calStatementPayCount(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.calStatementPayCount(member_id);
+	}
 
-		//정산신청 리스트 포인트취소
-		/*@Override
-		public List<Integer> calCancelPointSum(int senior_no) {
-			// TODO Auto-generated method stub
-			return salescalculateMapper.calCancelPointSum(senior_no);
-		}*/
-	
+	//정산내역 리스트 레스수익금액
+	@Override
+	public List<Integer> calStatementRevenueCost(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.calStatementRevenueCost(member_id);
+	}
+
+	//정산내역 리스트 포인트사용
+	@Override
+	public List<Integer> calStatementUsePointSum(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.calStatementUsePointSum(member_id);
+	}
+
+
 
 }

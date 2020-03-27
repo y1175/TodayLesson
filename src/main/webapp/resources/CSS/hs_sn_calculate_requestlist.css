@@ -117,8 +117,8 @@
 }
 .hs_senior_CulateRequestModal_accountdetail_tr th{
 	width : 20%;
-	background-color : rgba(53, 54, 58, 0.1);
-	border-right: 1px solid rgba(53, 54, 58, 0.2);
+	background-color : rgba(53, 54, 58, 0.2);
+	border-right: 1px solid rgba(53, 54, 58, 0.1);
 }
 .hs_senior_CulateRequestModal_accountdetail_tr td{
 	width : 80%;
@@ -199,7 +199,12 @@
 	width: 100%;
 	margin-top: 20px;
 }
-.hs_senior_calculate_requestListTable{
-	
-	
+#hs_senior_calculate_requestList_Table th,td{
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+}
+#hs_senior_calculate_requestList_Table th{
+	background-color: rgba(53, 54, 58, 0.2);
+	border-right: 1px solid rgba(53, 54, 58, 0.4);
 }
