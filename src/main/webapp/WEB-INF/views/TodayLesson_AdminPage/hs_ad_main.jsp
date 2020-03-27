@@ -25,6 +25,7 @@
 
 <!--icon-->
    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--icon-->
 
 <!-- font style -->

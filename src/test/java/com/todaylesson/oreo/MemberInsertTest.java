@@ -35,20 +35,21 @@ public class MemberInsertTest {
 			  // a1ÀÇ ±ÇÇÑÀº admin°ú user. auth°¡ 2°³ÀÌ¹Ç·Î service.insert(vo) == 2 °¡ µÇ¸é true.
 			  
 			  MemberDTO dto=new MemberDTO(); 
-			  dto.setMember_no(4);
-			  dto.setMember_id("cc");
-			  dto.setMember_pwd("cc");
-			  dto.setMember_name("acc_TEST");
-			  dto.setMember_birth("1111-11-25");
-			  dto.setMember_phone("010-118-211");
+			  dto.setMember_no(14);
+			  dto.setMember_id("u15");
+			  dto.setMember_pwd("u15");
+			  dto.setMember_name("u15");
+			  dto.setMember_birth("1981-11-25");
+			  dto.setMember_phone("010-1018-211");
 			  dto.setMember_addr("ÀÎÃµ");
 			  dto.setMember_zipcode(12345);
 			  dto.setMember_email("x_o1215@naver.com");
-			  dto.setMember_nick("acc_¿Õ¹ã»§");
-			  dto.setMember_img("acc_¿Õ¹ã»§");
+			  dto.setMember_nick("u6_¿Õ¹ã»§");
+			  dto.setMember_img("u6_¿Õ¹ã»§");
 			  dto.setEnabled(true);
+			  dto.setMember_gen(1); //1 ¿©ÀÚ 2 ³²ÀÚ
 			  ArrayList<Member_AuthDTO> arr=new ArrayList<>();
-			  arr.add(new Member_AuthDTO("ROLE_SENIOR","cc"));
+			  arr.add(new Member_AuthDTO("ROLE_USER","u15"));
 			  dto.setAuthList(arr);
 			  assertEquals(1, service.insert(dto));
 			  

@@ -30,6 +30,8 @@
  	   <result property="senior_bank_name" column="senior_bank_name"/> <!-- 정산신청 정산계좌_은행명 (Calculate Table) -->
 	   <result property="senior_account_num" column="senior_account_num"/> <!-- 정산신청 정산계좌_계좌번호 (Calculate Table) -->
 	   <result property="senior_account_name" column="senior_account_name"/> <!-- 정산신청 정산기간_예금주 (Calculate Table) -->
+	   <result property="senior_crno" column="senior_crno"/>
+	   <result property="orderlist_cost" column="orderlist_cost"/>
 	</resultMap>  
 	
 	<!-- 매출현황전체리스트 -->
@@ -112,12 +114,27 @@
 	   update senior
 	   set
 	   senior_bank_name=#{senior_bank_name}
-	   senior_account_name=#{senior_account_name}
-	   senior_account_num=#{senior_account_num}
+	  ,senior_account_name=#{senior_account_name}
+	  ,senior_account_num=#{senior_account_num}
 	   where member_id=#{member_id}
 	</update>
 	
 	<!-- 정산가능금액 -->
+<!--     <select id="calculate_PossibilityCost" resultType="int" parameterType="java.lang.String">
+       select 
+       <choose>
+          <when test="senior_crno==null">
+             floor(sum(orderlist_cost)-sum(orderlist_cost*0.1)-(sum(orderlist_cost/1.1)*0.1)-sum(orderlist_usepoint))
+          </when>
+          <when test="senior_crno!=null">
+             floor(sum(orderlist_cost)-sum(orderlist_cost*0.1)-sum(orderlist_usepoint))
+          </when>
+       </choose>
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+    </select> -->
+    
     
     <!-- 정산대기금액 -->
 	

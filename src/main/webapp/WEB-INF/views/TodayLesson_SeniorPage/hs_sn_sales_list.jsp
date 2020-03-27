@@ -14,7 +14,7 @@
       <h3>매출 현황</h3>
       <div>
        <c:forEach var="salesList_form" items="${salesList}">
-         <form method="post" action="/senior_sales_list/${salesList_form.member_id}?startdate=${salesList_form.sales_search_startdate}&enddate=${salesList_form.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
+         <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?startdate=${salesList_form.sales_search_startdate}&enddate=${salesList_form.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
             <label>기간검색</label>
             <div>
                <input type="date" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" value="${salesList_form.sales_search_startdate}">

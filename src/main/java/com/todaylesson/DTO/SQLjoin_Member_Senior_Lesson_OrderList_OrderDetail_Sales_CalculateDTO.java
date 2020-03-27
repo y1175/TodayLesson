@@ -31,6 +31,10 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateD
 	private String member_img;
 	private boolean enabled;
 	private List<Member_AuthDTO> authList;
+	private int member_bank_name;
+	private String member_account_name;
+	private String member_account_num;
+	private int member_gen;
 	
 	//SeniorDTO
 	private int senior_no;
@@ -39,7 +43,7 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateD
 	private String senior_phone;
 	private String senior_crno;
 	private String senior_nick;
-	private String senior_bank_name;
+	private int senior_bank_name;
 	private String senior_account_name;
 	private String senior_account_num;
 	private String senior_register_date;

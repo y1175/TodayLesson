@@ -103,6 +103,7 @@ public class Senior_HS_Salescalculate_Controller {
 		/*int calculate_possibilitycost=salescalculateService.calculate_PossibilityCost(member_id);
 		model.addAttribute("calculate_possibilitycost", calculate_possibilitycost);*/
 
+		
 		//정산대기금액
 		/*int calculate_waitingcost=salescalculateService.calculate_WaitingCost(member_id);
 		model.addAttribute("calculate_waitingcost", calculate_waitingcost );*/

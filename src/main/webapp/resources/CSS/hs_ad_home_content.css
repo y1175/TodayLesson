@@ -1,0 +1,55 @@
+@charset "utf-8";
+.hs_ad_todaybox{
+	width: 22.75%;
+	border: 1px solid rgba(53, 54, 58, 0.3);
+	margin: 0px 15px;
+	padding: 15px 10px 10px;
+}
+.hs_ad_todaybox i{
+	font-size: 35px;
+	color: rgb(224, 62, 82);
+	margin-bottom: 5px;
+}
+.hs_ad_todaybox pre{
+	margin: 0px;	
+	font-size: 13px;
+	font-weight: 600;
+}
+/* 카테고리별 현황 박스 */
+.hs_ad_category_chart{
+	width: 60%;
+	border: 1px solid rgba(53, 54, 58, 0.3);
+	margin: 50px 15px 25px;
+	display: inline-block;
+}
+/* 레슨카테고리 */
+.hs_ad_lesson_product_cg_chart{
+	width: 47%;
+	height: 20%;
+	margin: 30px 10px;;
+	display: inline-block;
+}
+#hs_lessoncg_chartdiv{
+	font-size: 12px;
+}
+#hs_productcg_chartdiv{
+	font-size: 12px;
+}
+.hs_ad_lesson_product_cg_chart pre{
+	text-align: center;
+	font-size: 12px;
+	font-weight: 600;
+}
+.hs_ad_agjoin_chart{
+	width: 70%;
+	height: 35%;
+	border: 1px solid rgba(53, 54, 58, 0.3);
+	margin: 25px 15px;
+}
+.hs_ad_agjoin_chart2{
+	width: 35%;
+	height: 55%;
+	border: 1px solid rgba(53, 54, 58, 0.3);
+	margin: 25px 15px;
+	display: inline-block;
+}

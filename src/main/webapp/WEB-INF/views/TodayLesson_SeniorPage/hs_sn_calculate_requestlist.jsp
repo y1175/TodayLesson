@@ -167,7 +167,6 @@ $(document).ready(function() {
                      </div>
                   </div>
                   <script>
-                  /*   */
                   
                  	function checkBankHolder(){
               		
@@ -217,9 +216,7 @@ $(document).ready(function() {
               	}
                   
                </script>
-                  
-                  
-                  
+                 
                   <!-- Account Update modal -->
                </div>
                
