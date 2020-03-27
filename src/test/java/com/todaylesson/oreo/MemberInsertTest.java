@@ -36,19 +36,19 @@ public class MemberInsertTest {
 			  
 			  MemberDTO dto=new MemberDTO(); 
 			  dto.setMember_no(4);
-			  dto.setMember_id("bb");
-			  dto.setMember_pwd("bb");
-			  dto.setMember_name("PW_TEST");
+			  dto.setMember_id("cc");
+			  dto.setMember_pwd("cc");
+			  dto.setMember_name("acc_TEST");
 			  dto.setMember_birth("1111-11-25");
 			  dto.setMember_phone("010-118-211");
 			  dto.setMember_addr("牢玫");
 			  dto.setMember_zipcode(12345);
 			  dto.setMember_email("x_o1215@naver.com");
-			  dto.setMember_nick("bb_空广户");
-			  dto.setMember_img("bb_空广户");
+			  dto.setMember_nick("acc_空广户");
+			  dto.setMember_img("acc_空广户");
 			  dto.setEnabled(true);
 			  ArrayList<Member_AuthDTO> arr=new ArrayList<>();
-			  arr.add(new Member_AuthDTO("ROLE_USER","bb"));
+			  arr.add(new Member_AuthDTO("ROLE_SENIOR","cc"));
 			  dto.setAuthList(arr);
 			  assertEquals(1, service.insert(dto));
 			  
