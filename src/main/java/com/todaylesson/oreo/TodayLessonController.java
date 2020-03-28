@@ -21,6 +21,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.google.connect.GoogleOAuth2Template;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Parameters;
@@ -49,6 +51,7 @@ import com.todaylesson.service.EJ_US_NaverLoginBOService;
 import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
 import com.todaylesson.service.User_HS_MainService;
+import com.todaylesson.service.User_HS_MyPageService;
 import com.todaylesson.service.YI_Google_AuthInfo;
 
 
@@ -86,6 +89,11 @@ public class TodayLessonController {
     @Resource(name="user_HS_MainService")
     private User_HS_MainService userMainService;
     /* User_Main */
+
+    /* User_MyPage */
+    @Resource(name="user_HS_MyPageService")
+    private User_HS_MyPageService userMyPageService;
+    /* User_MyPage */
     
     /* Admin_Main */
     @Resource(name="admin_HS_MainService")
@@ -159,13 +167,22 @@ public class TodayLessonController {
     	return "hs_sn_main"; 
     }
        
-    @RequestMapping("/todaylessonmember")
+/*    @RequestMapping("/todaylessonmember")
     public String member(){
     	return "hs_us_mypage";
     } 
-    
+    */
     @RequestMapping("/todaylessonmypage")
-    public String usermypage() {
+    public String usermypage(Authentication authentication
+    		                ,Model model) {
+    	//시큐리티 멤버아이디
+    	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+    	String member_id = userDetails.getUsername();
+    	
+    	//마이페이지 본인레벨 및 포인트 나타내기
+    	MemberDTO myPageMyLevel_MyPoint=userMyPageService.myPageMyLevel_MyPoint(member_id);
+    	model.addAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint);
+    	
     	return "hs_us_mypage";
     }
    

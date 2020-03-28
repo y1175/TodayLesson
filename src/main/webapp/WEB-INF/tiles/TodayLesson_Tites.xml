@@ -29,7 +29,7 @@
    <definition name="hs_us_mypage" template="/WEB-INF/views/TodayLesson_UserPage/hs_us_mypage.jsp">
       <put-attribute name="hs_us_my_header" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_main_header.jsp"/>
       <put-attribute name="hs_us_my_nav" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_mypage_nav.jsp"/>
-      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/TodayLesson_UserPage/hs_us_home_content.jsp"/>
+      <put-attribute name="hs_us_my_section" value="/WEB-INF/views/TodayLesson_UserPage/hm_us_mymanage.jsp"/>
       <put-attribute name="hs_us_my_footer" value="/WEB-INF/hs_all_main_footer.jsp"/>
    </definition>
    

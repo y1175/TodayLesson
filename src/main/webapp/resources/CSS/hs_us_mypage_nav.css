@@ -1,23 +1,51 @@
 @charset "utf-8";
-   .hs_us_mypage_box{
-     width: 100%;
-   }
-   .hs_us_mypage_div{
-      width: 80%;
-      display: inline-block;
-   }
-   .hs_us_mypage_navdiv{
-      width: 80%;
-      margin : auto;
-      
-   }
-   .hs_us_mypage_nav{
-      margin: 20px;
-   }
-   .hs_us_mypage_nav a{
-      text-decoration: none;
-      font-weight: 800;
-      color: #757575;
-      margin-right: 20px;
-      
-   }
+.hs_us_mypage_box{
+	width: 100%;
+	margin-top: 30px;
+}
+.hs_us_mypage_imgbox{
+	width : 120px;
+	height : 120px;
+	background-color: #ffd1dc;
+	border-radius: 50%;
+	display: inline-block;
+}
+.hs_us_mypage_nickbox{
+	display: inline-block;
+    margin-left: 20px;
+    position: relative;
+    top: 55px;
+}
+.hs_us_mypage_nick{
+	font-size: 22px;
+}
+.hs_us_mypage_myLevelLessonPoint_title{
+	font-size: 12px;
+	font-weight : 900;
+	color: rgba(53, 54, 58, 0.5);
+}
+.hs_us_mypage_myLevelLessonPoint_content{
+	font-size: 17px;
+	font-weight : 900;
+	color: rgb(53, 54, 58);
+}
+/* 마이페이지 nav */
+.hs_us_mypage_nav ul{
+	padding: 0px 0px 0px 13px;
+	margin: 40px 0px 40px 0px;
+	background-color: rgb(53, 54, 58);
+} 
+.hs_us_mypage_nav ul li{
+	display: inline-block;
+	padding: 20px 10px;
+	
+}
+.hs_us_mypage_nav a{
+	text-decoration: none;
+    font-size : 14px;
+    font-weight: 600;
+    color : #757575;
+} 
+.hs_us_mypage_mymanage>a{
+	color: white;
+}
