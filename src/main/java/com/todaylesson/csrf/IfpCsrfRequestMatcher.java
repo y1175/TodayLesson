@@ -232,6 +232,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지 관리자 상품등록시 나오는 창(추가성공/실패)
         else if ("/ej_ad_product_insertresult".equals(strUri))                   
             return false; 
+        //은지 관리자 상품 수정
+        else if("/ad_product_update".equals(strUri))
+            return false;
+        //은지 관리자 상품 삭제
+        else if("/ad_product_delete".equals(strUri))
+            return false;
         //은지 스토어 디테일
         else if ("/ej_store_detail".equals(strUri))                   
             return false; 
@@ -259,6 +265,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
            return false; 
         else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
         	 return false; 
+    
 
    //진영
      
