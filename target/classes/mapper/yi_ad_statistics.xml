@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_YI_Statistics_Mapper">
+<select id="allLog" resultType="com.todaylesson.DTO.Stat_LogDTO">
+
+SELECT 
+    stat_logdate
+    ,count(*) as total
+FROM stat_log
+group by stat_logdate 
+ORDER BY stat_logdate asc
+
+
+</select>
+
+
+<!-- <select id="createTmp">
+drop table if exists stat_log_tmp;
+create temporary table stat_log_tmp
+as
+select count(stat_logdate) as total ,stat_logdate from stat_log group by stat_logdate
+</select>
+
+<select id="setVariable">
+set @SumVaraible:=0
+</select>
+
+<select id="dropTmp">
+drop table stat_log_tmp
+</select> -->
+
+<select id="distinct_member" resultType="com.todaylesson.DTO.Stat_LogDTO">
+select count(distinct(member_id)) as member_total
+,stat_logdate 
+from stat_log
+group by stat_logdate 
+order by stat_logdate asc
+</select>
+
+</mapper>

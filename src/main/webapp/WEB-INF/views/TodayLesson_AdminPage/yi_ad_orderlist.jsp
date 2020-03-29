@@ -43,13 +43,13 @@
 <form action="/todaylessonadmin/admin_order_modify">
 <table>
 <thead>
-<tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th rowspan="2">금액합계</th></tr>
+<tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th rowspan="2">금액합계</th><th rowspan="2">정산상태</th></tr>
 <tr><th>주문상태</th><th>주문자 ID</th><th>배송 주소</th><th>상품번호</th></tr>
 </thead>
 <tbody>
 
 <c:forEach var="item" items="${list }">
-<tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td></tr>
+<tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td><td>정산상태(공사중)</td></tr>
 <tr><td><select name="order_status" class="status_select status_select-${item.orderlist_no}" id="${item.orderlist_no}">
 <option value="1">입금대기</option>
 <option value="2">입금완료</option>

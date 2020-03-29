@@ -14,4 +14,7 @@ public class Stat_LogDTO {
 	private int stat_log_no;
 	private String stat_logdate;
 	private String member_id;
+	
+	private int total;
+	private int member_total;
 }
