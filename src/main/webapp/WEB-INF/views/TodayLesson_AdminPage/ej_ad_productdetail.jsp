@@ -14,13 +14,13 @@ $(document).ready(function(){
 	
 	var product_no =${dto.product_no};
 	$(".product_detail_updatebtn").on('click',function(){
-		location.href="/todaylessonadmin/ej_ad_product_update/"+product_no;
+		location.href="/ad_product_update/"+product_no;
 		
 	});
 	
 	$(".product_detail_deletebtn").on('click',function(){
 		if(confirm("제품을 삭제하시겠습니까?")){
-			location.href="/todaylessonadmin/ej_ad_product_delete/"+product_no;
+			location.href="/ad_product_delete/"+product_no;
 		}
 	
 		

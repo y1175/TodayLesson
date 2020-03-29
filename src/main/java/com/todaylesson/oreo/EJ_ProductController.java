@@ -163,7 +163,7 @@ public class EJ_ProductController {
 		}
 	}*/
 	
-	@RequestMapping("/ej_ad_product_delete/{product_no}")
+	@RequestMapping("/ad_product_delete/{product_no}")
 	public String prodelete(@PathVariable int product_no, Model model) {
 		
 		int result = service.deletepro(product_no);//삭제 쿼리만들기
