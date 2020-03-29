@@ -61,6 +61,8 @@ public interface EJ_All_Product_Service {
 
 	public int deletecart_lesson(CartDTO cartdto);
 
+	public int deletepro(int product_no);
+
 
 
 

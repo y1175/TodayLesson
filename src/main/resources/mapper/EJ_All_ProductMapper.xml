@@ -28,6 +28,10 @@ from product
 where product_no=#{product_no}
 </select>
 
+<delete id="deletepro" parameterType="com.todaylesson.DTO.ProductDTO">
+   	delete from product
+   	 where product_no=#{product_no}
+   	</delete>
 
  <select id="selectReply" resultType="com.todaylesson.DTO.PdReviewDTO">
 select *
@@ -130,6 +134,9 @@ where product_no=#{product_no} and member_id = #{member_id}
    	delete from cart
    	 where product_no=#{product_no} and member_id=#{member_id}
    	</delete>
+   
+   	 	
+   	
   
    	<delete id="deletecart_lesson" parameterType="com.todaylesson.DTO.CartDTO">
    	delete from cart

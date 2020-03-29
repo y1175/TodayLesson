@@ -235,6 +235,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지 관리자 상품 수정
         else if("/ad_product_update".equals(strUri))
             return false;
+      //은지 관리자 상품 수정결과
+        else if("/ad_product_update_result".equals(strUri))
+            return false;
         //은지 관리자 상품 삭제
         else if("/ad_product_deleteresult".equals(strUri))
             return false;

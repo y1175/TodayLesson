@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
 import com.todaylesson.DTO.CartDTO;
+import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.PdReviewDTO;
@@ -120,50 +121,59 @@ public class EJ_ProductController {
 		return "TodayLesson_AdminPage/ej_ad_productdetail";
 	}
 	
-	@RequestMapping("/ad_add_pdOption/{product_no}")
-	public String addoption(@PathVariable("product_no") int product_no, Model model) {
-		
-		ProductDTO dto = service.select(product_no);
-		List<OptionsDTO> optionlist = service.optionList(product_no);
-		
-		 model.addAttribute("optionlist",optionlist);
-		
+	/*@RequestMapping("/ad_product_update/${product_no}")
+	public String updatepro(@PathVariable("product_no") int product_no, Model model)
+	{
+
+		ProductDTO dto = service.updatepro(product_no);
 		model.addAttribute("dto",dto);
 		
-		return "TodayLesson_AdminPage/ej_ad_pdOption";
+		return "TodayLesson_AdminPage/ej_ad_product_update.hs_ad_main_section";
 	}
+
 	
-	@RequestMapping("/ej_ad_pdOption_insertresult")
-	public String addoptionresult(Model model, OptionsDTO odto) throws IOException, Exception {
+	
+	@RequestMapping("/ad_product_update_result")
+	public String proupdate_result(Model model, EventDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
 
-		int result=service.insertOption(odto);
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "")   
+		{
+		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		 dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+	      String imgthumb=dto.getEvent_thumbnail();
+	      int result = service.eventupdate(dto);
+	      model.addAttribute("result", result);
+	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
+	      
+		 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		 System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+		 int result = service.eventupdatenothumbnail(dto);
+		  model.addAttribute("result", result);
+		  return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
+	      
+		}
+	}*/
+	
+	@RequestMapping("/ej_ad_product_delete/{product_no}")
+	public String prodelete(@PathVariable int product_no, Model model) {
+		
+		int result = service.deletepro(product_no);//삭제 쿼리만들기
 		model.addAttribute("result",result);
 		
-		return "TodayLesson_AdminPage/ej_ad_pdOption_insertresult";
-		
+		return "TodayLesson_AdminPage/ej_ad_product_delete_result";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/ad_add_pdOption/insertOption_json", method = RequestMethod.POST)
-	public void addoptionjson (/*PdReviewDTO reply*/
-			@RequestParam int option_cost,
-			@RequestParam String option_name ,
-			@RequestParam int product_no,
-			HttpSession session) throws Exception {
+	//스토어 메인
 	
-	 
-		OptionsDTO odto=new OptionsDTO();
-		
-		odto.setOption_cost(option_cost);
-		odto.setOption_name(option_name);
-		odto.setProduct_no(product_no);
-		
-		int result=service.insertOption(odto);
-	 System.out.println("addoption json  Controller");
-
-	
-}
 	@RequestMapping("/ej_store_main")
 	public String slist(Model model) {
 		List<ProductDTO> list = service.selectAll();
@@ -171,6 +181,7 @@ public class EJ_ProductController {
 		//.us_main_section
 		return "TodayLesson_UserPage/ej_store_main.us_main_section";
 	}
+	
 	
 	
 	@RequestMapping("/ej_store_detail/{product_no}")
@@ -188,7 +199,8 @@ public class EJ_ProductController {
 	
 		return "TodayLesson_UserPage/ej_store_detail.us_main_section";
 	}
-
+	
+	
 	
 	
 	

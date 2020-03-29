@@ -175,6 +175,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.deletecart_lesson(cartdto);
 	}
 
+	@Override
+	public int deletepro(int product_no) {
+		// TODO Auto-generated method stub
+		return mapper.deletepro(product_no);
+	}
+
 
 
 }

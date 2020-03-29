@@ -12,16 +12,15 @@
 <script>
 $(document).ready(function(){
 	
-	var no =${dto.product_no};
-	console.log(no);
+	var product_no =${dto.product_no};
 	$(".product_detail_updatebtn").on('click',function(){
-		location.href="/todaylessonadmin/ej_ad_product_update/"+no;
+		location.href="/todaylessonadmin/ej_ad_product_update/"+product_no;
 		
 	});
 	
-	$(".product_delete_deletebtn").on('click',function(){
+	$(".product_detail_deletebtn").on('click',function(){
 		if(confirm("제품을 삭제하시겠습니까?")){
-			location.href="/todaylessonadmin/ej_ad_product_delete/"+no;
+			location.href="/todaylessonadmin/ej_ad_product_delete/"+product_no;
 		}
 	
 		
@@ -58,8 +57,8 @@ ${dto.product_content}
 <hr>
 <img src="${dto.product_thumb}" alt="thumb"><br>
 <br>
-<ul><li><button class="product_detail_updatebtn">수정</button>
-<button class="product_detail_deletebtn">삭제</button></li></ul>
+<button class="product_detail_updatebtn">수정</button>
+<button class="product_detail_deletebtn">삭제</button><br>
 
 
 <a href="${pageContext.request.contextPath }/ej_ad_productlist">목록으로</a>

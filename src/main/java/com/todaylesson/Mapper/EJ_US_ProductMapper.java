@@ -66,4 +66,6 @@ public interface EJ_US_ProductMapper {
 
 	public int deletecart_lesson(CartDTO cartdto);
 
+	public int deletepro(int product_no);
+
 }
