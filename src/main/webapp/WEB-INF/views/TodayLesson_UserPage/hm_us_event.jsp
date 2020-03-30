@@ -17,7 +17,7 @@
 
 
 <!-- bootstrap 오토 캐러셀 -->
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -59,7 +59,7 @@
 
 <div class="hm_event_total">
  <!-- 이벤트 네비바 -->
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:70%; margin : 40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:1000px; margin : 40px auto;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -97,12 +97,53 @@
 <div>
 <img alt="이벤트 이미지" src="${item.event_thumbnail}">
 </div>
+<div>
+<p>${item.event_startperiod}~${item.event_endperiod}</p>
+<h5>${item.event_title}</h5>
+<h6>${item.event_thumbexplain}</h6>
+</div>
 </div>
 </c:forEach>
-</div>
+</div> 
+
+
+
 
 </div>
 
+
+
+<%-- <div class="hm_event_section">
+<div class="hm_event_list_area">
+<ul class="hm_event_list" id="hm_event_list">
+<c:forEach var="item" items="${list}">
+<li style="height:270px; list-style:none; list-style-type:none; float:left;">
+<img alt="이벤트 이미지" src="${item.event_thumbnail}" >
+<div>
+<p>${item.event_startperiod}~${item.event_endperiod}</p>
+<h5>${item.event_title}</h5>
+<h6>${item.event_thumbexplain}</h6>
+</div>
+</li>
+</c:forEach>
+</ul> --%>
+<%-- <div class="hm_event_thumbnailmain">
+<c:forEach var="item" items="${list}">
+<div class="hm_event_thumbnail">
+<div>
+<img alt="이벤트 이미지" src="${item.event_thumbnail}">
+</div>
+<div>
+<p>${item.event_startperiod}~${item.event_endperiod}</p>
+<h5>${item.event_title}</h5>
+<h6>${item.event_thumbexplain}</h6>
+</div>
+</div>
+</c:forEach>
+</div> --%>
+<!-- </div>
+</div>
+ -->
 
 
 
