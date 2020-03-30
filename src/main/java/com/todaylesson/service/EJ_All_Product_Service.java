@@ -70,6 +70,10 @@ public interface EJ_All_Product_Service {
 
 	public List<PdReviewDTO> selectAllReview();
 
+	public PdReviewDTO selectpdreview(int product_no);
+
+	public int deletepdreview(int product_no);
+
 
 
 

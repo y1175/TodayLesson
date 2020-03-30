@@ -74,4 +74,8 @@ public interface EJ_US_ProductMapper {
 
 	public List<PdReviewDTO> selectAllReview();
 
+	public PdReviewDTO selectpdreview(int product_no);
+
+	public int deletepdreview(int product_no);
+
 }

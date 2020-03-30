@@ -200,6 +200,18 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.selectAllReview();
 	}
 
+	@Override
+	public PdReviewDTO selectpdreview(int pdreview_no) {
+		// TODO Auto-generated method stub
+		return mapper.selectpdreview(pdreview_no);
+	}
+
+	@Override
+	public int deletepdreview(int pdreview_no) {
+		// TODO Auto-generated method stub
+		return mapper.deletepdreview(pdreview_no);
+	}
+
 
 
 }
