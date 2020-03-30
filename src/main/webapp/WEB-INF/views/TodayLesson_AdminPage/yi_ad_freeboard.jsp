@@ -95,7 +95,7 @@ document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style"
 		        	$(this).parent().parent().remove();	
 					let reno=$(this).attr('id');
 						$.ajax({
-					        url: "/del_replyajax/"+reno
+					        url: "/todaylessonadmin/del_replyajax/"+reno
 					        ,type:"post"
 					        ,success: function(){
 					        
