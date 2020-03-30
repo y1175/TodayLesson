@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=1"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=2"> 
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> 
 </head>
@@ -59,7 +57,7 @@
 
 <div class="hm_event_total">
  <!-- 이벤트 네비바 -->
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:1000px; margin : 40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" width: 80%; margin :0 auto 40px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -91,27 +89,11 @@
 </nav>
 
 
-<%-- <div class="hm_event_thumbnailmain">
-   <c:forEach var="item" items="${list}">
-      <div class="hm_event_thumbnail">
-         <div class="hm_event_thumbnail_imgbox">
-            <img alt="이벤트 이미지" src="${item.event_thumbnail}">
-         </div>
-         <div>
-            <p>${item.event_startperiod}~${item.event_endperiod}</p>
-            <h5>${item.event_title}</h5>
-            <h6>${item.event_thumbexplain}</h6>
-         </div>
-      </div>
-   </c:forEach>
-</div>  --%>
-
 <div class="hm_event_thumbnailmain">
    <c:forEach var="item" items="${list}">
-      <div class="row" style="display: inline-block; margin: 0px 5px">
-            <div class="hm_event_thumbnail" style="">
+      <div class="row" style="display: inline-block; margin: 0px 5px;" onclick="location.href='${pageContext.request.contextPath}/todaylesson/hm_us_event_detail/'+${item.event_no}">
+            <div class="hm_event_thumbnail" >
                <img alt="이벤트 이미지" src="${item.event_thumbnail}" style="width: 360px;">
-            
                <p>${item.event_startperiod}~${item.event_endperiod}</p>
                <h5>${item.event_title}</h5>
                <h6>${item.event_thumbexplain}</h6>
@@ -119,77 +101,7 @@
       </div>
    </c:forEach>
 </div> 
-
-
-
 </div>
-
-
-
-<%-- <div class="hm_event_section">
-<div class="hm_event_list_area">
-<ul class="hm_event_list" id="hm_event_list">
-<c:forEach var="item" items="${list}">
-<li style="height:270px; list-style:none; list-style-type:none; float:left;">
-<img alt="이벤트 이미지" src="${item.event_thumbnail}" >
-<div>
-<p>${item.event_startperiod}~${item.event_endperiod}</p>
-<h5>${item.event_title}</h5>
-<h6>${item.event_thumbexplain}</h6>
-</div>
-</li>
-</c:forEach>
-</ul> --%>
-<%-- <div class="hm_event_thumbnailmain">
-<c:forEach var="item" items="${list}">
-<div class="hm_event_thumbnail">
-<div>
-<img alt="이벤트 이미지" src="${item.event_thumbnail}">
-</div>
-<div>
-<p>${item.event_startperiod}~${item.event_endperiod}</p>
-<h5>${item.event_title}</h5>
-<h6>${item.event_thumbexplain}</h6>
-</div>
-</div>
-</c:forEach>
-</div> --%>
-<!-- </div>
-</div>
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%-- 
-기존 검색창
-<div class="event_search_form">
- <form method ="get" action="hm_us_event?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
- <select name="search">
- <option value="all">전체</option>
- <option value="event_title">제목</option>
- </select>
- <input type="text" name="searchtxt">
- <input type="submit" value="검색">
- </form>
- </div>
- --%>
-
-
-
-
-
-
-
 
 
 

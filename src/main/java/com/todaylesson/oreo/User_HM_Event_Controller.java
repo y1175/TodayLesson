@@ -9,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.PageMaker;
+import com.todaylesson.DTO.SQLjoin_Member_EventDTO;
 import com.todaylesson.service.User_HM_EventService;
 
 @Controller
@@ -48,17 +50,27 @@ public class User_HM_Event_Controller {
 		return "/TodayLesson_UserPage/hm_us_event.us_main_section";
 	}
 	
-	
-	
-/*
-	@RequestMapping("/hm_us_event_detail/{no}")
-	public String hm_us_event_detail(@PathVariable int no,Model model) {
+
+	@RequestMapping("/hm_us_event_detail/{event_no}")
+	public String hm_us_event_detail(@PathVariable int event_no,Model model) {
 		
-		int event_no = no;
-		EventDTO dto = service.hm_us_event_detail(no);
+		EventDTO dto = service.hm_us_event_detail(event_no);
 		model.addAttribute("dto",dto);
 		
 		return "/TodayLesson_UserPage/hm_us_event_detail.us_main_section";
-	}*/
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/event_replyjson/{event_no}")
+	public List<SQLjoin_Member_EventDTO> detailjson(@PathVariable int event_no
+			,Model model)
+	{
+		List<SQLjoin_Member_EventDTO> list = service.eventreply_list(event_no);
+		model.addAttribute("rep_list",list);
+		
+		return list;
+	}
+	
 }
 
