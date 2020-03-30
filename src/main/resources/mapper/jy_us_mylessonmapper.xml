@@ -17,10 +17,13 @@ where member_id = #{member_id}
 <select id="my_lesson_select" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
 select * 
-from lessondetail d join test_lesson_comp t
+from lessondetail d left join test_lesson_comp t
 on d.lessondetail_no = t.lessondetail_no
-and d.member_id = t.member_id
-where d.lesson_no = #{lesson_no} 
+union
+select * 
+from lessondetail d right join test_lesson_comp t
+on d.lessondetail_no = t.lessondetail_no
+where d.lesson_no = #{lesson_no};
 
 </select>
 
@@ -39,7 +42,7 @@ select lesson_title from lesson where lesson_no = #{lesson_no}
 <insert id="update_lesson_comp">
 
 insert into test_lesson_comp(lessondetail_no, member_id, lessondetail_comp)
-value(#{lessondetail_no}, #{member_id}, 1);
+value(#{lessondetail_no}, #{member_id}, 1)
 
 </insert>
 
