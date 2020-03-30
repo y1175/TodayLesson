@@ -193,9 +193,10 @@ and now() <= date(lesson_close_period)
 	
 	 <selectKey resultType="int" keyProperty="orderlist_no" order="BEFORE">
 select orderlist.orderlist_no from orderlist, order_detail 
- 	where order_detail.orderlist_no=orderlist.orderlist_no and lesson_no=#{lesson_no} and member_id=#{member_id}
+where order_detail.orderlist_no=orderlist.orderlist_no and lesson_no=#{lesson_no} and member_id=#{member_id}
+order by orderlist_date desc limit 1
  </selectKey>
- insert into pdreview(orderlist_no, lreview_title,pdreview_content, pdreview_date)
+ insert into lreview(orderlist_no, lreview_title,lreview_content, lreview_date)
  values (#{orderlist_no},#{lreview_title},#{lreview_content},sysdate())
 </insert>
 	
