@@ -68,4 +68,10 @@ public interface EJ_US_ProductMapper {
 
 	public int deletepro(int product_no);
 
+	public int updatepro(ProductDTO dto);
+
+	public int updatepro_nothumbnail(ProductDTO dto);
+
+	public List<PdReviewDTO> selectAllReview();
+
 }

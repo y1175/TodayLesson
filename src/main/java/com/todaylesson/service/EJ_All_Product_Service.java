@@ -3,6 +3,7 @@ package com.todaylesson.service;
 import java.util.List;
 
 import com.todaylesson.DTO.CartDTO;
+import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.PdReviewDTO;
@@ -62,6 +63,12 @@ public interface EJ_All_Product_Service {
 	public int deletecart_lesson(CartDTO cartdto);
 
 	public int deletepro(int product_no);
+
+	public int updatepro(ProductDTO dto);
+
+	public int updatepro_nothumbnail(ProductDTO dto);
+
+	public List<PdReviewDTO> selectAllReview();
 
 
 

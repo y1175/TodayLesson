@@ -21,5 +21,7 @@ public class PdReviewDTO {
 	//member테이블꺼
 	private String member_id;
 	private int product_no;
+	//product테이블
+	private String product_name;
 	
 }
