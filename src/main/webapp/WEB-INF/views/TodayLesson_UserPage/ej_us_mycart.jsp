@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,7 +52,7 @@ text-align: right;
 <td>상품</td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}">${item.product_name }</a></td>
-<td>${item.product_after_cost }</td>
+<td><fmt:formatNumber value="${item.product_after_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>${item.cart_amount }</td>
 </c:when>
 <c:when test="${product_name==null}"><!--레슨정보  -->
@@ -59,7 +60,7 @@ text-align: right;
 <td>레슨</td>
 <td><a href="#"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
 <td><a href="#">${item.lesson_title}</a></td>
-<td>${item.lesson_cost }</td>
+<td><fmt:formatNumber value="${item.lesson_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>1</td>
 </c:when>
 </c:choose>
@@ -71,7 +72,7 @@ text-align: right;
 </table>
 <hr>
 <div class="sum">
-	<h3>장바구니 합계 : ${total_cart }원</h3>
+	<h3>장바구니 합계 : <fmt:formatNumber value="${total_cart }" type="number" maxFractionDigits="3"/>원</h3>
 </div>
 
 <input type="button" class='btn btn-primary' id="open_orderform_btn"value="주문하기"><br>
@@ -80,7 +81,7 @@ text-align: right;
 <div class="orderInfo">
 
 
- 보유 포인트: ${mdto.member_point}<a href="#"><i class="far fa-times-circle"  id="cancel_btn"></i></a><br>
+ 보유 포인트: <fmt:formatNumber value="${mdto.member_point}" type="number" maxFractionDigits="3"/><a href="#"><i class="far fa-times-circle"  id="cancel_btn"></i></a><br>
 포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0>
 <button class='btn btn-primary' id="pointbtn">적용</button><br>
 

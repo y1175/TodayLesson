@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -402,7 +403,7 @@ body{
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_newproduct">
                   <div class="hs_user_store_newproduct_img">
-                     <a href="#">
+                     <a href="ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
                      </a>
                      <ul class="hs_user_store_newproduct_social" >
@@ -455,8 +456,10 @@ body{
                         <a href="ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_newproduct_line"></div>
-                     <div class="hs_user_store_newprodct_cost">${storenewproductlist.product_after_cost}원
+                     <div class="hs_user_store_newprodct_cost">
+                      <fmt:formatNumber value="${storenewproductlist.product_after_cost}" type="number" maxFractionDigits="3"/>원
                         <span class="hs_user_store_newprodct_BFcost">
+                       
                            <c:out value="${storenewproductlist.product_cost}원"/>
                         </span>
                      </div>

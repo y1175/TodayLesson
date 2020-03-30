@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,10 +43,10 @@
 <tr>
 <td><img src="${pdto.product_img}" id="ej_order_topimg" width="200"></td>
 <td><h4>${product_name }</h4></td>
-<td>${product_after_cost }</td>
+<td><fmt:formatNumber value="${pdto.product_after_cost}" type="number" maxFractionDigits="3"/>원 </td>
  <td> ${pdcount} 개</td>
  <td>배송비 무료</td>
- <td>${totalcost }원</td>
+ <td><fmt:formatNumber value="${totalcost }" type="number" maxFractionDigits="3"/>원</td>
  </tr>
 </tbody>
 </table>
@@ -57,12 +58,15 @@
  
  <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
  <input type="hidden" name="product_after_cost" value="${product_after_cost }">
- 보유 포인트: ${mdto.member_point}<br>
+ 보유 포인트: <fmt:formatNumber value="${mdto.member_point}" type="number" maxFractionDigits="3"/><br>
 포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0>
 <button class='btn btn-primary' id="pointbtn">적용</button><br>
 
  결제금액<br>
- <input type="text" value=${totalcost } id="orderlist_cost1" class="paymentcost" readonly="readonly">
+<%--  <div class="paymentcost3">
+ <fmt:formatNumber value="${totalcost }" type="number" maxFractionDigits="3"/> 
+ </div> --%>
+<input type="text" value=${totalcost } id="orderlist_cost1" class="paymentcost" readonly="readonly"> 
 
 <script>
     
@@ -76,6 +80,12 @@
   var totalcost=${totalcost};
   var paymentcost=totalcost-usepoint;
   var remainpoint=memberpoint-usepoint;
+  var element = $(".paymentcost3");//클래스로 받아옴
+  var paymentnum = element.children();
+  var hh=$("fmt").val();
+  console.log('ele',element);
+console.log('paymentnum',paymentnum);
+console.log('val',hh);
   var data = {
         memberpoint: memberpoint,
        usepoint : usepoint,
@@ -97,8 +107,9 @@
 		alert('보유포인트를 초과하였습니다.');
 		}
 	else{
-	
+	if(data.paymentcost>)
 		$('.paymentcost').val(data.paymentcost);
+		
   	 $('#orderlist_usepoint').val(data.usepoint);
   	 $('.remainpoint').val(data.remainpoint);
   	 console.log(data.paymentcost);

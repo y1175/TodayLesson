@@ -221,65 +221,61 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
 
    //은지
         //은지 관리자 상품조회
-        else if ("/ej_ad_product_productlist".equals(strUri))                   
+        else if ("/todaylessonadmin/ej_ad_product_productlist".equals(strUri))                   
            return false; 
         //은지 관리자 상품디테일
-        else if ("/ej_ad_product_productdetail".equals(strUri))                   
+        else if ("/todaylessonadmin/ej_ad_product_productdetail".equals(strUri))                   
               return false; 
         //은지 관리자 상품등록
-        else if ("/ej_ad_product_productregister".equals(strUri))                   
+        else if ("/todaylessonadmin/ej_ad_product_productregister".equals(strUri))                   
            return false; 
         //은지 관리자 상품등록시 나오는 창(추가성공/실패)
-        else if ("/ej_ad_product_insertresult".equals(strUri))                   
+        else if ("/todaylessonadmin/ej_ad_product_insertresult".equals(strUri))                   
             return false; 
         //은지 관리자 상품 수정
-        else if("/ad_product_update".equals(strUri))
+        else if("/todaylessonadmin/ad_product_update".equals(strUri))
             return false;
       //은지 관리자 상품 수정결과
-        else if("/ad_product_update_result".equals(strUri))
+        else if("/todaylessonadmin/ad_product_update_result".equals(strUri))
             return false;
         //은지 관리자 상품 삭제
-        else if("/ad_product_delete".equals(strUri))
+        else if("/todaylessonadmin/ad_product_delete".equals(strUri))
             return false;
        //후기리스트 
-        else if("/ad_product_reviewlist".equals(strUri))
+        else if("/todaylessonadmin/ad_product_reviewlist".equals(strUri))
             return false;
         //후기디테일
-        else if("/ad_product_reviewdetail".equals(strUri))
+        else if("/todaylessonadmin/ad_product_reviewdetail".equals(strUri))
             return false;
         //후기 삭제
-        else if("/ad_product_reviewdelete".equals(strUri))
+        else if("/todaylessonadmin/ad_product_reviewdelete".equals(strUri))
             return false;
         
         
         //사용자 페이지들
         //은지 스토어 디테일
-        else if ("/ej_store_detail".equals(strUri))                   
+        else if ("/todaylesson/ej_store_detail".equals(strUri))                   
             return false; 
         //은지스토어 메인
-        else if ("/ej_store_main".equals(strUri))                   
+        else if ("/todaylesson/ej_store_main".equals(strUri))                   
             return false; 
         //은지 주문폼
-        else if ("/ej_us_orderform".equals(strUri))                   
+        else if ("/todaylesson/ej_us_orderform".equals(strUri))                   
            return false; 
       //은지 주문내역상세
-        else if ("/orderlistdetail".equals(strUri))                   
+        else if ("/todaylesson/orderlistdetail".equals(strUri))                   
            return false; 
       //은지 좋아요
-        else if ("/mylike".equals(strUri))                   
+        else if ("/todaylesson/mylike".equals(strUri))                   
            return false; 
       //은지 장바구니
-        else if ("/mycart".equals(strUri))                   
+        else if ("/todaylesson/mycart".equals(strUri))                   
            return false; 
         
       //은지 장바구니에서 주문할때
-        else if ("/order_cart".equals(strUri))                   
+        else if ("/todaylesson/order_cart".equals(strUri))                   
            return false; 
-        //옵션추가페이지..안됨..                           
-        else if ("/ad_add_pdOption".equals(strUri))                   
-           return false; 
-        else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
-        	 return false; 
+      
         
         
     

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,8 +74,8 @@ display: inline-block;}
           </c:choose><br>
           
 <h3><c:out value="${dto.product_name}"></c:out><br></h3>
-<h4 class="beforecost" id="ej_cost"><c:out value="${dto.product_cost}"></c:out>원 </h4>
-<div id="ej_cost"><c:out value="${dto.product_sale}"/>%</div> <div id="ej_cost"><h3><c:out value="${dto.product_after_cost}"></c:out>원 </h3></div><br>
+<h4 class="beforecost" id="ej_cost"><fmt:formatNumber value="${dto.product_cost}" type="number" maxFractionDigits="3"/>원 </h4>
+<div id="ej_cost"><c:out value="${dto.product_sale}"/>%</div> <div id="ej_cost"><h3> <fmt:formatNumber value="${dto.product_after_cost}" type="number" maxFractionDigits="3"/>원 </h3></div><br>
 
 
 

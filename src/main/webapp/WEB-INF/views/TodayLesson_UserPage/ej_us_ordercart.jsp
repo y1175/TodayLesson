@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -13,11 +14,11 @@
  주문번호  ${orderlistdto.orderlist_no }<br>
 수령인  ${orderlistdto.orderlist_receiver }<br>
 수령 주소  ${orderlistdto.orderlist_addr }<br>
-결제금액  ${orderlistdto.orderlist_cost }원<br>
-사용포인트  ${orderlistdto.orderlist_usepoint  }<br>
+결제금액 <fmt:formatNumber value="${orderlistdto.orderlist_cost }" type="number" maxFractionDigits="3"/> 원<br>
+사용포인트 <fmt:formatNumber value="${orderlistdto.orderlist_usepoint  }" type="number" maxFractionDigits="3"/> <br>
 <c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
 <c:set var="addedpoint" value="${(cost*0.1)}"></c:set>
-${addedpoint } 포인트가 적립되었습니다!<br>
+<fmt:formatNumber value="${addedpoint }" type="number" maxFractionDigits="3"/> 포인트가 적립되었습니다!<br>
 배송요청사항  ${orderlistdto.orderlist_msg  }
 <hr>
 <!--오더 디테일 정보  -->
