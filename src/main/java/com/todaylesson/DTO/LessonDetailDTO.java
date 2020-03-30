@@ -16,10 +16,13 @@ public class LessonDetailDTO {
 	private int senior_no;
 	private String lessondetail_title;
 	private String lessondetail_content;
-	private String lessondetail_running_time;
+	private int lessondetail_running_time;
 	private int lessondetail_chapter;
 	private int lessondetail_comp;
 	private String member_id;
 	private String lessondetail_thumb;
+	
+	// ∑πΩº ¿Ã∏ß
+	private String lesson_title;
 	
 }

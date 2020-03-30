@@ -71,7 +71,7 @@ $('textarea').summernote({
   });
  </script>
 
-레슨 러닝타임 <input type="text" id="lessondetail_running_time" name="lessondetail_running_time" placeholder="00:00:00" maxlength="8">
+레슨 러닝타임 <input type="text" id="rt" name="rt" placeholder="00:00:00" maxlength="8">
 <br>
 
 <input type="submit" value="레슨 등록">

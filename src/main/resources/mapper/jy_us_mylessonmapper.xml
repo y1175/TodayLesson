@@ -4,18 +4,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.JY_US_MyLessonMapper">
 
-<select id="mylesson_list" resultType="com.todaylesson.DTO.LessonDTO">
+<select id="my_lesson_list" resultType="com.todaylesson.DTO.LessonDTO" parameterType="java.lang.String">
 
-select * from lesson l and 
-(
-select lesson_no from order_detail d join orderlist l
+select * from lesson where lesson_no in
+(select lesson_no from order_detail d join orderlist l
 on d.orderlist_no = l.orderlist_no
-where member_id = #{member_id};
-) n
-where l.lesson_no = n.lesson_no
+where member_id = #{member_id}
+)
 
 </select>
 
+<select id="my_lesson_select" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
+select * 
+from lessondetail d join test_lesson_comp t
+on d.lessondetail_no = t.lessondetail_no
+and d.member_id = t.member_id
+where d.lesson_no = #{lesson_no} 
+
+</select>
+
+<select id="my_lesson_detail_thil_chapter" resultType="com.todaylesson.DTO.LessonDetailDTO">
+
+select * from lessondetail where lessondetail_no = #{lessondetail_no}
+
+</select>
+
+<select id="my_lesson_name" resultType="java.lang.String">
+
+select lesson_title from lesson where lesson_no = #{lesson_no}
+
+</select>
+
+<insert id="update_lesson_comp">
+
+insert into test_lesson_comp(lessondetail_no, member_id, lessondetail_comp)
+value(#{lessondetail_no}, #{member_id}, 1);
+
+</insert>
 
 </mapper>

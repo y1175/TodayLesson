@@ -50,6 +50,14 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 		return mapper.apld_update(dto);
 	}
 
+	@Override
+	public int apl_rt(String lessondetail_running_time) {
+		return mapper.apl_rtime(lessondetail_running_time);
+	}
+
+
+
+
 
 
 

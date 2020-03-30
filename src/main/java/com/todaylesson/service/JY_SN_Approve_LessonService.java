@@ -20,6 +20,11 @@ public interface JY_SN_Approve_LessonService {
 
 	public int apld_update(LessonDetailDTO dto);
 
+	public int apl_rt(String lessondetail_running_time);
+
+
+
+
 
 
 }

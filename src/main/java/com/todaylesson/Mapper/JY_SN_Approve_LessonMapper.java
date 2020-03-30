@@ -24,5 +24,10 @@ public interface JY_SN_Approve_LessonMapper {
 
 	public int apld_update(LessonDetailDTO dto);
 
+	public int apl_rtime(String lessondetail_running_time);
+
+
+
+
 
 }

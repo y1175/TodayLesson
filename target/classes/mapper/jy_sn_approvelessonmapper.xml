@@ -27,8 +27,9 @@ where lesson_no = #{lesson_no}
 
 </select>
 
-<insert id="apl_upload" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
+
+<insert id="apl_upload" parameterType="com.todaylesson.DTO.LessonDetailDTO">
 
 <selectKey order="BEFORE" keyProperty="lessondetail_chapter" resultType="integer">
 
@@ -36,10 +37,25 @@ select ifnull(max(lessondetail_chapter),0) from lessondetail where lesson_no = #
 
 </selectKey>
 
-insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id, lessondetail_running_time, lessondetail_thumb)
-values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+ 1,#{member_id}, #{lessondetail_running_time},#{lessondetail_thumb})
+
+insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id, lessondetail_thumb,lessondetail_running_time)
+values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+1,#{member_id}, #{lessondetail_thumb},#{lessondetail_running_time})
 
 </insert>
+
+
+<select id="apl_rtime" resultType="integer">
+
+SELECT (substring(#{lessondetail_running_time}, 1,2) * 3600) + (substring(#{lessondetail_running_time}, 4,2) * 60) + (substring(#{lessondetail_running_time}, 7,2) * 1)  as rt
+
+</select>
+
+
+<update id="apl_rt_update">
+
+update lessondetail set lessondetail_running_time = #{r_t} where lessondetail_no = #{lessondetail_no}
+
+</update>
 
 <select id="apld_list" parameterType="int" resultType="com.todaylesson.DTO.LessonDetailDTO">
 

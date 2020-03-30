@@ -99,7 +99,7 @@ $('#all_point').change(function() {
   var usepoint=$("#usepoint").val();
   console.log('usepoint: ',usepoint);
   var member_id='${pageContext.request.userPrincipal.name}';
-  var totalcost=${ldto.lesson_cost} - usepoint;
+  var totalcost=${ldto.lesson_cost}
   var paymentcost=totalcost-usepoint;
   var remainpoint=memberpoint-usepoint;
   var data = {
@@ -267,8 +267,7 @@ $("#sameaddr").on('click', function() {
  결제수단 선택
 <input type="radio" name="paymethod" value="card">신용카드
 <input type="radio" name="paymethod" value="kakaopay">카카오페이
-<input type="radio" name="paymethod" value="payco">페이코
-<input type="radio" name="paymethod" value="accountpay">무통장입금
+
 <br>
 
  배송비 무료<br>
@@ -287,22 +286,26 @@ $("#sameaddr").on('click', function() {
 	
     $("#check_module").click(function () {
   		
-    let radio_value = $('input[name="paymethod"]:checked').val();
+    var inputValue = $('input[name="paymethod"]:checked').val();
 
     	 
-    if (radio_value!=null) {
-    	
-       console.log(radio_value);
-       var IMP = window.IMP; // 생략가능
-       var cost=$(".paymentcost").val();
-    	// $("form").attr("action", "/orderlistdetail");
-       IMP.init('imp65601532');
+    if (inputValue!=null) {
+        var IMP = window.IMP; // 생략가능
+        var cost=$(".paymentcost").val();
+
+        if(inputValue=='card')
+           {IMP.init('imp57388060');//이니시스
+           }
+        else if(inputValue=='kakaopay')
+           {IMP.init('imp65601532');//카카오
+           }
+      
        
        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
        IMP.request_pay({
     	   
-       pg: radio_value, // version 1.1.0부터 지원.
+       pg: inputValue, // version 1.1.0부터 지원.
        /*
        'kakao':카카오페이,
         html5_inicis':이니시스(웹표준결제)
