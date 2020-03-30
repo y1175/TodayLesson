@@ -11,7 +11,7 @@
 
 
 <!--mypage nav style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}resources/CSS/hs_us_mypage_nav.css?ver=2">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_mypage_nav.css?ver=2">
 <!--mypage nav style-->
 
 </head>
