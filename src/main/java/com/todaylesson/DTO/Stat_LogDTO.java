@@ -17,4 +17,8 @@ public class Stat_LogDTO {
 	
 	private int total;
 	private int member_total;
+	
+	private String regYear;
+	private String regMonth;
+	private String regDay;
 }

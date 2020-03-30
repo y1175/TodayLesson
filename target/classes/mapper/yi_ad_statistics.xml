@@ -3,18 +3,50 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_YI_Statistics_Mapper">
-<select id="allLog" resultType="com.todaylesson.DTO.Stat_LogDTO">
+<select id="allLog" resultType="com.todaylesson.DTO.Stat_LogDTO" parameterType="java.util.HashMap">
 
-SELECT 
-    stat_logdate
-    ,count(*) as total
-FROM stat_log
-group by stat_logdate 
-ORDER BY stat_logdate asc
+<choose>
+<when test='ymd.equals("date")'>
+<include refid="date_statlog"></include>
+</when>
+
+<when test='ymd.equals("month")'>
+<include refid="month_statlog"></include>
+</when>
+
+<when test='ymd.equals("year")'>
+<include refid="year_statlog"></include>
+</when>
+
+</choose> 
+
 
 
 </select>
-
+<sql id="date_statlog">
+SELECT
+date_format(stat_logdate,'%Y-%m-%d') as stat_logdate
+    ,count(*) as total
+FROM stat_log
+group by date(stat_logdate) 
+ORDER BY stat_logdate asc
+</sql>
+<sql id="month_statlog">
+SELECT
+date_format(stat_logdate,'%Y-%m-%d') as stat_logdate
+    ,count(*) as total
+FROM stat_log
+group by month(stat_logdate),year(stat_logdate) 
+ORDER BY stat_logdate asc
+</sql>
+<sql id="year_statlog">
+SELECT
+date_format(stat_logdate,'%Y') as stat_logdate
+    ,count(*) as total
+FROM stat_log
+group by year(stat_logdate) 
+ORDER BY stat_logdate asc
+</sql>
 
 <!-- <select id="createTmp">
 drop table if exists stat_log_tmp;
@@ -37,6 +69,16 @@ select count(distinct(member_id)) as member_total
 from stat_log
 group by stat_logdate 
 order by stat_logdate asc
+</select>
+
+
+<select id = "chartOutput" resultType = "com.todaylesson.DTO.Stat_LogDTO">
+
+select year(stat_logdate) as regYear, month(stat_logdate) as regMonth,
+day(stat_logdate) as regDay, count(*) as total
+FROM stat_log
+group by stat_logdate
+
 </select>
 
 </mapper>

@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,9 +17,13 @@ public class Admin_YI_Statistics_ServiceImple implements Admin_YI_Statistics_Ser
 	private Admin_YI_Statistics_Mapper mapper;
 
 	@Override
-	public List<Stat_LogDTO> allLog() {
+	public List<Stat_LogDTO> allLog(String ymd, String start_date, String end_date) {
 		// TODO Auto-generated method stub
-		return mapper.allLog();
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("ymd", ymd);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
+		return mapper.allLog(hm);
 	}
 
 	@Override
@@ -43,6 +48,12 @@ public class Admin_YI_Statistics_ServiceImple implements Admin_YI_Statistics_Ser
 	public List<Stat_LogDTO> distinct_member() {
 		// TODO Auto-generated method stub
 		return mapper.distinct_member();
+	}
+
+	@Override
+	public List<Stat_LogDTO> chartOutput() {
+		// TODO Auto-generated method stub
+		return mapper.chartOutput();
 	}
 	
 }
