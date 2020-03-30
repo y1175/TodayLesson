@@ -10,7 +10,13 @@
 
 <!-- jQuery -->
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+   
 <!-- jQuery -->
+
+<!-- jQuery DatePicker -->
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- jQuery DatePicker -->
 
 <!-- viewport -->
    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">

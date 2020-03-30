@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=2">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=1">  
    <style type="text/css">
       .hs_sn_main_asidenav_nav_calRequest_title>a{
          color: rgb(224, 62, 82);

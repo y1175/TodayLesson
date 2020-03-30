@@ -34,17 +34,41 @@
 	   <result property="orderlist_cost" column="orderlist_cost"/>
 	</resultMap>  
 	
+	<!-- //시니어 멤버아이디로 시니어번호 받아오기 -->
+	<!-- <select id="get_Seniorno" resultType="int" parameterType="java.lang.String">
+	   select senior_no 
+       from senior
+       where member_id=#{member_id}
+	</select>  -->
+	
 	<!-- 매출현황전체리스트 -->
 	<select id="SalesList" resultMap="salesCalculateMap" parameterMap="hashmap">
-	   select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
+	   <!-- select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
 	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
 	          floor(sum(lesson_cost*0.1)) as sales_comm, 
 	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
 	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
 	                join order_detail od on od.orderlist_no=o.orderlist_no
 	                join member m on m.member_id=o.member_id
+	                join senior sn on sn.member_id=m.member_id
+	                join lesson l on l.lesson_no=od.lesson_no             
+	   where sn.senior_no=(select sn2.senior_no 
+                           from senior sn2  
+                           where sn.senior_no=sn2.senior_no
+                           and sn2.member_id=#{member_id}) -->
+                           
+      select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
+	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
+	          floor(sum(lesson_cost*0.1)) as sales_comm, 
+	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
+	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
+	                join order_detail od on od.orderlist_no=o.orderlist_no
+	                join member m on m.member_id=o.member_id
+	                join senior sn on sn.member_id=m.member_id
 	                join lesson l on l.lesson_no=od.lesson_no             
 	   where m.member_id=#{member_id}
+      
+                           
 	   <![CDATA[   
 	         and s.sales_search_startdate>=#{sales_search_startdate}
 	         and s.sales_search_enddate<=#{sales_search_enddate} 
@@ -238,12 +262,6 @@
 	</select>
 
 </mapper>
-
-
-
-
-
-
 
 
 

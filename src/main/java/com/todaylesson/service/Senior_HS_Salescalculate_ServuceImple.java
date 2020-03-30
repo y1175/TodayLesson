@@ -18,17 +18,26 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	@Resource(name="senior_HS_Salescalculate_Mapper")
 	private Senior_HS_Salescalculate_Mapper salescalculateMapper;
 
+	//시니어 멤버아이디로 시니어번호 받아오기
+	/*@Override
+	public int get_Seniorno(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.get_Seniorno(member_id);
+	}*/
+	
 	//매출현황전체리스트
 	@Override
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> 
 	       salesList(String member_id, String sales_search_startdate, String sales_search_enddate, String search, String searchtxt) {  //String start_date, String end_date, 
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();
+		
 		hm.put("member_id", member_id);
 		hm.put("sales_search_startdate", sales_search_startdate);
 		hm.put("sales_search_enddate", sales_search_enddate);
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
+		
 		return salescalculateMapper.SalesList(hm);
 	}
 
@@ -122,6 +131,8 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calStatementUsePointSum(member_id);
 	}
+
+	
 
 
 

@@ -6,6 +6,9 @@ import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sa
 import com.todaylesson.DTO.SeniorDTO;
 
 public interface Senior_HS_Salescalculate_Service {
+
+	//시니어 멤버아이디로 시니어번호 받아오기
+	//public int get_Seniorno(String member_id);
 	
 	//매출현황전체리스트
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> 
@@ -49,6 +52,8 @@ public interface Senior_HS_Salescalculate_Service {
 
 	//정산내역 리스트 포인트사용
 	public List<Integer> calStatementUsePointSum(String member_id);
+
+	
 
 	
 }

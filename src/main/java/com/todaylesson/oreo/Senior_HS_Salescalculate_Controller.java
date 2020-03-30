@@ -44,7 +44,10 @@ public class Senior_HS_Salescalculate_Controller {
 		//시큐리티 멤버아이디
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
-				
+		
+		//시니어 멤버아이디로 시니어번호 받아오기
+		//int senior_no = salescalculateService.get_Seniorno(member_id);
+		
 		//매출현황전체리스트
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> salesList=
 	         salescalculateService.salesList(member_id, sales_search_startdate, sales_search_enddate, search, searchtxt); 
@@ -74,6 +77,7 @@ public class Senior_HS_Salescalculate_Controller {
 		/*int totalCount= salescalculateService.calculateRequsetListTotalCount();
 		int pageSize=10;
 		int blockSize=5;*/
+		
 		
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist

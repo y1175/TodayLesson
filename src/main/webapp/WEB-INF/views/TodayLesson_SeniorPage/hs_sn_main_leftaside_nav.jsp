@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--aside nav style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_main_leftaside_nav.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_main_leftaside_nav.css?ver=2">
 <!--aside nav style-->
 
 </head>
@@ -22,6 +22,7 @@
          </p>
          
       <div class="hs_sn_main_asidenav_line"></div>
+      <div class="hs_sn_main_asidenav_line" style="margin-bottom : 20px;"></div>
       
       <b class="hs_sn_main_asidenav_nav_title">매출정산</b>
          <p class="hs_sn_main_asidenav_nav_salestitle">

@@ -1,64 +1,112 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <!DOCTYPE>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- style -->   
-   <link rel="stylesheet" href="${pageContext.request.contextPath}resources/CSS/hs_sn_sales_list.css">
+<!-- CSSstyle -->   
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=1">
    <style type="text/css">
       .hs_sn_main_asidenav_nav_salestitle>a{
          color: rgb(224, 62, 82);
       }
    </style>
-<!-- style -->
+<!-- CSSstyle -->
+<!-- jQuery DatePicker -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- jQuery DatePicker -->
+<!-- JS -->
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_sn_sales_list.js?ver=1">
+   
+   
+   </script>
+   
+   <script type="text/javascript">
+   $(document).ready(function(){
+		
+	   $.datepicker.setDefaults({
+	    	dateFormat:"yy-mm-dd" //Input Display Format 변경
+	    	,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+            ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+	    	,changeMonth: false  //콤보박스에서 월 선택 가능 
+	        ,changeYear: false  //콤보박스에서 년 선택 가능
+	        ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+            ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+            ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+            ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트  
+            ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+            ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+            ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+            ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+            ,minDate: "-1Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+            ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)     
+	        ,nextText: '다음 달'
+	        ,prevText: '이전 달'
+	    });	
+	
+	    
+	  //input을 datepicker로 선언
+        $("#hs_sn_sales_startdate").datepicker();                    
+        $("#hs_sn_sales_enddate").datepicker();
+
+	 
+});
+   
+   
+   </script>
+<!-- JS -->
 </head>
 <body>
-   <div>
-      <h3>매출 현황</h3>
-      <div>
-       <c:forEach var="salesList_form" items="${salesList}">
-         <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?startdate=${salesList_form.sales_search_startdate}&enddate=${salesList_form.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
-            <label>기간검색</label>
-            <div>
-               <input type="date" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" value="${salesList_form.sales_search_startdate}">
-               <span> - </span>
-               <input type="date" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" value="${salesList_form.sales_search_enddate}">
-               <input type="button" name="" id="" value="전체">
-               <input type="button" name="" id="" value="오늘">
-               <input type="button" name="" id="" value="일주일">
-               <input type="button" name="" id="" value="1개월">
-            </div>
-            <label>검색기준</label>
-            <div>   
-               <label for=""></label>
-               <select name="search" class="">
-                  <option value="">전체</option>
-                  <option value="">레슨명</option>
-                  <option value="">구매자</option>
-               </select> 
-               <input type="text" id="" name="searchtxt" placeholder="검색어를 입력해주세요">
-            </div>
-            <div>
-               <input type="reset" id="" value="초기화">
-               <input type="submit" id="" value="검색">
-               
-            </div>
-            <div>
-               <select name="" class="">
-                  <option value="">전체</option>
-                  <option value="">결제완료</option>
-                  <option value="">결제취소</option>
-               </select>
-               <button>엑셀다운로드</button>
-            </div>            
-         </form>
+   <div class="hs_senior_sales">
+      <h3 class="hs_senior_sales_title">매출 현황</h3>
+      <div class="">
+         <c:forEach var="salesList_form" items="${salesList}">
+            <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?startdate=${salesList_form.sales_search_startdate}&enddate=${salesList_form.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
+               <div class="hs_senior_sales_searchbox">
+               <label class="hs_senior_sales_DatesearchTitle">기간검색</label>
+               <div class="hs_senior_sales_Datesearchbox">
+                  <input type="text" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" >  <!-- value="${salesList_form.sales_search_enddate}" -->
+                  <span class="hs_senior_sales_Date-"> - </span>
+                  <input type="text" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" >
+                  <input type="button" name="" id="hs_senior_sales_Datesearch_AllBtn" value="전체">
+                  <input type="button" name="" id="hs_senior_sales_Datesearch_TodayBtn" value="오늘">
+                  <input type="button" name="" id="hs_senior_sales_Datesearch_WeeklyBtn" value="일주일">
+                  <input type="button" name="" id="hs_senior_sales_Datesearch_MonthBtn" value="1개월">
+               </div>
+               <label class="hs_senior_sales_TextsearchTitle">검색기준</label>
+               <div class="hs_senior_sales_Textsearchbox">   
+                  <label for=""></label>
+                  <select name="search" class="hs_senior_sales_TextsearchOP">
+                     <option value="">전체</option>
+                     <option value="">레슨명</option>
+                     <option value="">구매자</option>
+                  </select> 
+                  <input type="text" id="hs_senior_sales_Textsearch" name="searchtxt" placeholder="검색어를 입력해주세요">
+               </div>
+               <div class="hs_senior_Sales_BtnBox">
+                  <input type="reset" id="hs_senior_Sales_ResetBtn" value="초기화">
+                  <input type="submit" id="hs_senior_Sales_SearchBtn" value="검색">
+               </div>
+               </div>
+               <div class="hs_senior_Sales_OpExcelBox">
+                  <select name="" class="hs_senior_sales_SelectOP">
+                     <option value="">전체</option>
+                     <option value="">결제완료</option>
+                     <option value="">결제취소</option>
+                  </select>
+                  <button class="hs_senior_Sales_ExcelBtn">엑셀다운로드</button>
+               </div>            
+            </form>
          </c:forEach>
       </div>     
-      <div>
-         <table class="hs_sn_sales_table">
-            <thead>
+      <div class="hs_sn_salesList">
+         <table id="hs_sn_sales_table" class="table table-hover" >
+            <thead style="border-top: 2px solid rgb(53, 54, 58);">
                <tr>
                   <th rowspan="2">NO.</th>
                   <th rowspan="2">결제상태</th>
@@ -68,7 +116,7 @@
                   <th rowspan="2">구매일</th>
                   <th rowspan="2">구매자</th>
                   <th rowspan="2">시니어매출</th>
-                  <th colspan="4">상세내역</th>
+                  <th colspan="4" style="border-right: none; border-bottom: 1px solid rgba(53, 54, 58, 0.4);">상세내역</th>
                </tr>
                <tr>
                   <th>결제금액</th>   
@@ -76,7 +124,7 @@
                   <!-- <th>취소금액</th>
                   <th>취소포인트</th> -->
                   <th>정산수수료</th>
-                  <th>세금계산서부가세</th>
+                  <th style="border-right: none;">세금계산서부가세</th>
                </tr>
             </thead>
             <tbody>
@@ -87,7 +135,7 @@
                <%-- <c:set var="usepointcancel_sum" value="0"/> --%> <!-- 포인트취소합계 -->
                <c:set var="comm_sum" value="0"/> <!-- 정산수수료합계 -->
                <c:set var="surtaxsum" value="0"/> <!-- 세금계산서 부가세합계-->
-               <c:forEach var="salesList" items="${salesList}">
+               <c:forEach var="salesList" items="${salesList}" varStatus="status">
                <%-- <c:choose>
                   <c:when test="${salesList eq null}">
                      <tr>
@@ -101,7 +149,7 @@
                   <tr>
                      <!-- NO. -->
                      <td>
-                        <!-- 스크립트로 자동번호주기 -->
+                        <c:out value="${status.count}"/>
                      </td> 
                      <!-- 결제상태 -->
                      <c:choose>
@@ -147,11 +195,11 @@
                      <c:set var="surtax" value="${salesList.sales_surtax}"/> <!-- 부가세 -->
                      <c:set var="senior_sales" value="${cost-(point+comm+surtax)}"/>
                         <td>
-                           <c:out value="${senior_sales}"/>
+                           <fmt:formatNumber value="${senior_sales}" type="number" maxFractionDigits="3"/>
                         </td> 
                      <!-- 결제금액 -->
                         <td>
-                           <c:out value="${salesList.lesson_cost}"/>
+                           <fmt:formatNumber value="${salesList.lesson_cost}" type="number" maxFractionDigits="3"/>
                         </td> 
                      <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
@@ -167,7 +215,7 @@
                      </c:choose> --%>
                      <!-- 포인트사용 -->
                         <td>
-                           <c:out value="${salesList.orderlist_usepoint}"/>
+                           <fmt:formatNumber value="${salesList.orderlist_usepoint}" type="number" maxFractionDigits="3"/>
                         </td> 
                      <%-- <c:choose>
                         <c:when test="${salesList.orderlist_paystatus == 0}">
@@ -209,7 +257,7 @@
                      </c:choose> --%>
                      <!-- 정산수수료 -->
                      <td>
-                        <c:out value="${salesList.sales_comm}"/>
+                        <fmt:formatNumber value="${salesList.sales_comm}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 세금계산서부가세 -->
                      <c:choose>
@@ -220,7 +268,7 @@
                         </c:when>
                         <c:otherwise>
                            <td>
-                              <c:out value="${salesList.sales_surtax}"/>  
+                              <fmt:formatNumber value="${salesList.sales_surtax}" type="number" maxFractionDigits="3"/>
                            </td>    
                         </c:otherwise>
                      </c:choose>
@@ -259,27 +307,27 @@
             </tbody>
             <tfoot>
                <tr>
-                  <td colspan="4">합계</td>
+                  <td colspan="7">합계</td>
                   <td> <!-- 시니어매출합계 -->
-                     <c:out value="${sales_sum}"/>
+                     <fmt:formatNumber value="${sales_sum}" type="number" maxFractionDigits="3"/>
                   </td> 
                   <td> <!-- 결제금액합계 -->
-                     <c:out value="${cost_sum}"/>
+                     <fmt:formatNumber value="${cost_sum}" type="number" maxFractionDigits="3"/>
                   </td> 
                   <%-- <td> <!-- 결제결제취소합계합계 -->
                      <c:out value="${costcancel_sum}"/>
                   </td --%> 
                   <td> <!-- 포인트사용합계 -->
-                     <c:out value="${usepoint_sum}"/>
+                     <fmt:formatNumber value="${usepoint_sum}" type="number" maxFractionDigits="3"/>
                   </td> 
                   <%-- <td> <!-- 포인트취소합계 -->
                      <c:out value="${usepointcancel_sum}"/>
                   </td> --%> 
                   <td> <!-- 정산수수료합계 -->
-                     <c:out value="${comm_sum}"/>
+                     <fmt:formatNumber value="${comm_sum}" type="number" maxFractionDigits="3"/> 
                   </td> 
                   <td> <!-- 세금계산서 부가세합계-->
-                     <c:out value="${surtaxsum}"/>
+                     <fmt:formatNumber value="${surtaxsum}" type="number" maxFractionDigits="3"/> 
                   </td> 
                </tr>
             </tfoot>

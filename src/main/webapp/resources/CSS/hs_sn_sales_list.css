@@ -1,7 +1,199 @@
 @charset "utf-8";
-.hs_sn_sales_table{
-	border-collapse: collapse;
+.hs_senior_sales{
+	width: 90%;
+	margin: auto;
+	margin-top: 30px;
+	color: rgb(53, 54, 58);
+	overflow-y   : hidden;
 }
-.hs_sn_sales_table th,td{
-	border: 1px solid black;
+/* 매출현황 제목 */
+.hs_senior_sales_title{
+	font-size: 23px;
+	font-weight: 800;
+}
+/* 매출현황 기간검색 및 검색 search Box*/
+.hs_senior_sales_searchbox{
+	width: 100%;
+	background-color: rgba(53, 54, 58, 0.2);
+	margin : auto;
+	margin-top: 30px;
+	margin-bottom : 30px;
+	padding: 30px;
+}
+.hs_senior_sales_Datesearchbox{
+	margin: 0px 0px 5px 0px;
+}
+#hs_sn_sales_startdate{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 6px;
+	font-size: 13px;
+	width: 12%;
+}
+#hs_sn_sales_enddate{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 6px;
+	font-size: 13px;
+	width: 12%;
+}
+.hs_senior_sales_Date-{
+	position: relative;
+	right: 9px;
+}
+.ui-datepicker-trigger{
+	position: relative;
+	right: 20px;
+}
+/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
+.ui-datepicker-trigger{cursor: pointer;}
+/*datepicer input 롤오버 시 손가락 모양 표시*/
+.hasDatepicker{cursor: pointer;}
+
+/* 매출현황 search Box 기간검색 */
+.hs_senior_sales_DatesearchTitle{
+	font-size : 15px;
+	font-weight: 800;
+	margin: 5px 0px;
+}
+/* 매출현황 search Box 기간검색 전체 */
+#hs_senior_sales_Datesearch_AllBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 20px;
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.9);
+	margin-right: 5px;
+}
+/* 매출현황 search Box 기간검색 오늘 */
+#hs_senior_sales_Datesearch_TodayBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 20px;
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.9);
+	margin-right: 5px;
+}
+/* 매출현황 search Box 기간검색 일주일 */
+#hs_senior_sales_Datesearch_WeeklyBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 13px;
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.9);
+	margin-right: 5px;
+}
+/* 매출현황 search Box 기간검색 1개월 */
+#hs_senior_sales_Datesearch_MonthBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 16px;
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.9);
+}
+/* 매출현황 search Box 검색기준 */
+.hs_senior_sales_TextsearchTitle{
+	font-size : 15px;
+	font-weight: 800;
+	margin: 15px 0px 5px 0px;
+}
+/* 검색기준 박스 */
+.hs_senior_sales_Textsearchbox{
+	width: 50%;	
+	background-color:white;
+	/* padding: 5px; */
+	border-radius: 3px;
+	/* border: 1px solid #757575; */
+}
+/* 검색기준 옵션 */
+.hs_senior_sales_TextsearchOP{
+	width :15%;
+	border: 1px transparent;
+	padding: 5px 0px;
+	font-size: 13px;
+	border-radius: 3px;
+	position: relative;
+	right: 6px;
+}
+/* 검색기준 검색 txt */
+#hs_senior_sales_Textsearch{
+	border: 1px transparent;
+	padding: 5px 0px;
+	font-size: 13px;
+	border-radius: 3px;
+	width: 83.5%;
+}
+/* 매출현황 search Box 버튼 div */
+.hs_senior_Sales_BtnBox{
+	text-align: center;
+	margin-top: 25px;
+}
+/* 매출현황 search Box 초기화버튼 */
+#hs_senior_Sales_ResetBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 23px;
+	font-weight : 700;
+	font-size : 14px;
+	color: white;
+	background-color: rgba(53, 54, 58, 0.5);
+	margin-right: 5px;
+}
+/* 매출현황 search Box 검색버튼 */
+#hs_senior_Sales_SearchBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 30px;
+	font-weight : 700;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+}
+/* 정렬 엑셀다운로드 */
+.hs_senior_Sales_OpExcelBox{
+	width: 100%;
+	margin : auto;
+	margin-top: 30px;
+}
+/* 옵션별 리스트 정렬 */
+.hs_senior_sales_SelectOP{
+	width :10%;
+	border: 1px transparent rgba(53, 54, 58, 0.5);
+	padding: 5px 0px;
+	font-size: 13px;
+	border-radius: 3px;
+}
+/* 엑셀다운로드버튼  */
+.hs_senior_Sales_ExcelBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	font-weight : 800;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
+	float: right;
+}
+/* 매출현황 리스트 */
+.hs_sn_salesList{
+	width: 100%;
+	margin : auto;
+	margin-top: 20px;
+}
+#hs_sn_sales_table th, td{
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+}
+#hs_sn_sales_table th{
+	background-color: rgba(53, 54, 58, 0.2);
+	border-right: 1px solid rgba(53, 54, 58, 0.4);
 }
