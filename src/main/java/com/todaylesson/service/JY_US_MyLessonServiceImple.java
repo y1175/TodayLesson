@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,16 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 		return mapper.my_lesson_name(lesson_no);
 	}
 
-	@Override
+    @Override
 	public int update_lesson_comp(String member_id, int lessondetail_no, int time_change) {
-		return mapper.update_lesson_comp(member_id, lessondetail_no, time_change);
+    	HashMap<String, Object> hm=new HashMap<String, Object>();
+    	hm.put("member_id", member_id);
+    	hm.put("lessondetail_no", lessondetail_no);
+    	hm.put("time_change", time_change);
+    	
+    	
+		//return mapper.update_lesson_comp(member_id, lessondetail_no, time_change);
+    	return mapper.update_lesson_comp(hm);
 	}
 	
 }

@@ -17,4 +17,5 @@ public interface JY_US_MyLessonService {
 	public String mylesson_name(int lesson_no);
 
 	public int update_lesson_comp(String member_id, int lessondetail_no, int time_change);
+
 }

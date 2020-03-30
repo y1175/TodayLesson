@@ -61,19 +61,20 @@ public class JY_US_MyLesson_Controller {
 		
 	}
 	
-	@RequestMapping("update_lesson_comp")
+	@RequestMapping("/update_lesson_comp")
 	public String update_lesson_comp(@RequestParam int lessondetail_no, @RequestParam int time_change, Authentication authentication, Model model) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
 		
-		if (time_change == 0) {
+		if (time_change==0) {
+			
 			int result = mlservice.update_lesson_comp(member_id, lessondetail_no, time_change);
 			model.addAttribute("result",result);
-			return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp.us_main_section";
+			return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp";
 
 		} else {
 			model.addAttribute("result",0);
-			return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp.us_main_section";
+			return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp";
 		}
 		
 	}

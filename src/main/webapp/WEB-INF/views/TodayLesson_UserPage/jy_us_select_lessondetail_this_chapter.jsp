@@ -32,7 +32,7 @@ function startInterval() {
     interval = window.setInterval("tTimer()",1000);
 } 
 function stopInterval() {
-    window.clearInterval (interval);
+    window.clearInterval(interval);
     interval="";
 }
 function tTimer() {
@@ -55,7 +55,7 @@ function time_change(){
 <form method="post" action="${pageContext.request.contextPath }/update_lesson_comp">
 
 <div class ="time_count">
-<input type="hidden" name="display" value="" size=2 id = "time">
+<input type="hidden" name="display" size=2 id = "time">
 <input type="hidden" name="time_change" id ="time_change">
 </div>
 
@@ -66,16 +66,16 @@ startInterval();
 
 레슨명
 <br>
-<c:out value="${dto.lesson_title }"/><br>
+<c:out value="${dto.lesson_title}"/><br>
 챕터 명<br><c:out value="${dto.lessondetail_title}"/><br>
 레슨 내용<br>
 <div class="summer">
 ${dto.lessondetail_content}
 </div><br>
-현재 레슨 챕터 <br><c:out value="${dto.lessondetail_chapter }"/>
+현재 레슨 챕터 <br><c:out value="${dto.lessondetail_chapter}"/>
 
-<input type="hidden" name="lessondetail_no" id="lessondetail_no" value="${dto.lessondetail_no }">
-
+<input type="hidden" name="lessondetail_no" id="lessondetail_no" value="${dto.lessondetail_no}">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br>
 <input type="submit" name="lesson_comp_update" id="lesson_comp_update">
 

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.JY_US_MyLessonMapper">
-
+<parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
 <select id="my_lesson_list" resultType="com.todaylesson.DTO.LessonDTO" parameterType="java.lang.String">
 
 select * from lesson where lesson_no in
@@ -39,7 +39,7 @@ select lesson_title from lesson where lesson_no = #{lesson_no}
 
 </select>
 
-<insert id="update_lesson_comp">
+<insert id="update_lesson_comp" parameterMap="hashmap" >
 
 insert into test_lesson_comp(lessondetail_no, member_id, lessondetail_comp)
 value(#{lessondetail_no}, #{member_id}, 1)

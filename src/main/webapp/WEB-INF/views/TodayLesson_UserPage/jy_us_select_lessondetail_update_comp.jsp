@@ -13,12 +13,12 @@
 if (${result} > 0) {
 	alert("업데이트 완료");
 
-	location.href="${pageContext.request.contextPath }/my_lesson_list";
+	location.href="${pageContext.request.contextPath}/my_lesson_list";
 
 } else {
 
 	alert("업데이트 실패!");
-	location.href="${pageContext.request.contextPath }/my_lesson_list";
+	location.href="${pageContext.request.contextPath}/my_lesson_list";
 	
 }
 </script>
