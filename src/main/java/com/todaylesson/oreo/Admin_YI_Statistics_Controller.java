@@ -63,6 +63,7 @@ public class Admin_YI_Statistics_Controller {
 		return "/TodayLesson_AdminPage/yi_ad_member_statistics";
 	}
 	
+	//AmChart
 	@RequestMapping(value = "/member_statistics", method = RequestMethod.POST)
 	@ResponseBody
 	public List chartOutput()throws Exception {

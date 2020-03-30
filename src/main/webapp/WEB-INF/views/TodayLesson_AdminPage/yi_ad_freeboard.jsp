@@ -271,9 +271,7 @@ ${item.freeboard_title }		[${replist[status.index]}]
 
 </form>
 
-<sec:authorize access="isAuthenticated()">
-<input type="button" id="write" value="글쓰기" onclick="location.href='/todaylessonadmin/freeboard_insert'"><br>
-</sec:authorize>
+
 
 <c:if test="${page.prev }">
 <a href="admin_freeboard?currPage=${page.startBlock-1}&category=${category}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>

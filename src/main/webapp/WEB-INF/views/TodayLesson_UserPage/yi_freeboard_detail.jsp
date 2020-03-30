@@ -10,63 +10,6 @@
 <title>Insert title here</title>
 <c:set var="item" value="${dto }"></c:set>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$(document).ready(function() {
-	/*리플달기 ajax */
-	$('.reply_submit').on('click', function () {
-		let freeboard_no=$('.freeboard_no').html();
-		
-
-		let today = new Date();
-		let day = today.getDate();
-		let month = today.getMonth()+1; //January is 0!
-		let yyyy = today.getFullYear();
-
-		if (month < 10) 
-		var mm="0"+month;
-		else
-			mm=month;
-		if (day <10) 
-		var dd="0"+day;
-		else
-			dd=day;
-		
-		var formData = $("#repdetail").serialize();
-		$.ajax({
-			url:'/todaylesson/freeboard_detailjson/'+freeboard_no
-			,dataType:'json'
-			,data: formData
-			,success:function(data){
-
-				
- 				console.log(data.freeboard_no);	
-				console.log(data.member_nick);
-				console.log("id"+data.member_id);
-				let onclickfunction = "if(!confirm()){return false;}location.href='/todaylesson/boardreply_delete/${item.boardreply_no+1}'";
-				let repdetail="<tr><td>"+data.member_nick+"</td>";
-				repdetail+="<td>"+data.boardreply_content+"</td>";
-			    repdetail+="<td>"+yyyy+"-"+mm+"-"+dd+"</td>";
-			    repdetail+="<td>";
-			    repdetail+="<input type='button' class='delete' value='삭제'>";
-			    repdetail+="</td></tr>";
-				$('.add_reply').append(repdetail);
-			},error:function(data,status,jqXHR){
-				console.log('실패',data);
-				console.log(status);
-				console.log(jqXHR);
-				
-			}
-		});
-		
-
-	});
-
-
-});
-
-
-</script>
-
 </head>
 <body>
 <sec:authentication property="principal" var="pinfo"/>		

@@ -30,6 +30,7 @@ import com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO;
 import com.todaylesson.service.User_YI_OrderList_Service;
 
 @Controller
+@RequestMapping("/todaylessonmypage")
 public class User_YI_OrderList_Controller {
 
 	@Resource(name="user_YI_OrderList_Service")
@@ -37,7 +38,7 @@ public class User_YI_OrderList_Controller {
 	
 
 	
-	@RequestMapping("/todaylessonmypage/user_myorderlist")
+	@RequestMapping("/user_myorderlist")
 	public String user_orderlist(@RequestParam(required=false, defaultValue="") String start_date
 								,@RequestParam(required=false, defaultValue="") String end_date
 								,@RequestParam(required=false, defaultValue="1") int currPage
@@ -82,7 +83,7 @@ public class User_YI_OrderList_Controller {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/todaylessonmypage/myorderlist_detail/")
+	@RequestMapping("/myorderlist_detail/")
 	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderdetail()
 	{
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> detailList=service.orderdetail();
@@ -90,7 +91,7 @@ public class User_YI_OrderList_Controller {
 		return detailList;
 	}
 	
-	@RequestMapping("/todaylessonmypage/myorderlist_orderinfo/{orderlist_no}")
+	@RequestMapping("/myorderlist_orderinfo/{orderlist_no}")
 	public String orderinfo(@PathVariable int orderlist_no
 			,Model model)
 	{
@@ -103,7 +104,7 @@ public class User_YI_OrderList_Controller {
 		return "/TodayLesson_UserPage/yi_us_orderlist_detail";
 	}
 	
-	@RequestMapping("/todaylessonmypage/user_myorderlist_cancel/{orderlist_no}")
+	@RequestMapping("/user_myorderlist_cancel/{orderlist_no}")
 	public String myorderlist_cancel(@PathVariable int orderlist_no,Model model)
 	{
 		int result=service.order_cancel(orderlist_no);

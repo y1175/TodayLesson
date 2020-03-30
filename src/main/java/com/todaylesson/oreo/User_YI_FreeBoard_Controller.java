@@ -36,7 +36,12 @@ public class User_YI_FreeBoard_Controller {
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,@RequestParam(required=false, defaultValue="1") int hidden_freeboard_no
+			,@RequestParam(required=false, defaultValue="freeboard_no") String order
+			
 			,Model model)  {
+		
+		
+		System.out.println(order);
 		
 		//총 게시글 수
 		int totalCount= service.totalCount(search, searchtxt);
@@ -52,7 +57,8 @@ public class User_YI_FreeBoard_Controller {
 		
 		
 		//게시물 리스트
-		List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt
+		//order는 정렬 카테고리를 결정한다. 리스트에 넣어줌
+		List<SQLjoin_Member_FreeBoardDTO> list=service.list(search, searchtxt,order
 										,page.getStartRow()
 										,page.getEndRow());
 		
@@ -60,6 +66,7 @@ public class User_YI_FreeBoard_Controller {
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("order",order);
 		
 		//게시물 옆 답글 숫자 표시
 		List<Integer> replist=new ArrayList<>();

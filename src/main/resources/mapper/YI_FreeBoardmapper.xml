@@ -33,7 +33,22 @@ from freeboard join member
 on freeboard.member_id = member.member_id
 <!-- WHERE절을 include 태그로 삽입 -->
 <include refid="search_select"></include>
-  order by freeboard_no desc
+
+<choose>
+<!-- order가 1이나 2일때는 셀렉트박스로 카테고리를 선택 -->
+<when test='order.equals("1") or order.equals("2")'> 
+<where> 
+and   
+freeboard_category=#{order}
+</where>
+ </when>
+ <!-- 그 외에는 정렬기능 버튼 작동 -->
+<otherwise>
+ order by ${order} desc
+</otherwise>
+</choose>
+
+
 limit   #{startrow}, 15
 
 </select>

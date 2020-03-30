@@ -17,12 +17,13 @@ import com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO;
 import com.todaylesson.service.Admin_YI_OrderListService;
 
 @Controller
+@RequestMapping("/todaylessonadmin")
 public class Admin_YI_Orderlist_Controller {
 
 	@Resource(name="admin_YI_OrderListService")
 	private Admin_YI_OrderListService service;
 	
-	@RequestMapping("/todaylessonadmin/admin_orderlist")
+	@RequestMapping("/admin_orderlist")
 	public String orderlist(
 			@RequestParam(required=false, defaultValue="0") int orderlist_orderstatus
 			,@RequestParam(required=false, defaultValue="1") int orderlist_category
@@ -58,7 +59,7 @@ public class Admin_YI_Orderlist_Controller {
 	}
 	
 	//배송상태 수정
-	@RequestMapping("/todaylessonadmin/admin_order_modify/{orderlist_no}/{order_status}")
+	@RequestMapping("/admin_order_modify/{orderlist_no}/{order_status}")
 	public String order_modify(@PathVariable int orderlist_no
 			,@PathVariable int order_status)
 	{

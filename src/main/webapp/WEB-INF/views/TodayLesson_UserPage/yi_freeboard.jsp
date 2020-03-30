@@ -6,12 +6,44 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록</title>
+<script>
+/* 정렬 자바스크립트 */
+ /* 
+ order function=>정렬 함수
+ orderSelect function=>셀렉트박스 선택 함수
+ mapper는 id=list를 참고
+ 컨트롤러에는 order를 필요한곳에 추가해줘야함!
+ */
+function order(data)
+{
+
+location.href="freeboard?order="+data;
+	
+	
+	}
+function orderSelect()
+{
+	var selectOption=orderselect.options[orderselect.selectedIndex].value;
+	console.log(selectOption);
+	location.href="freeboard?order="+selectOption;
+	}
+</script>
 </head>
 <body>
 <sec:authentication property="principal" var="pinfo"/>	
 <table class="table">
 <thead>
-<tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th>
+<tr><th>카테고리
+<select name="order" id="orderselect" onchange="orderSelect()">
+<option value="">선택</option>
+<option value="1" >자유글</option>
+<option value="2" >질문과답변</option>
+</select></th>
+<th>번호		<input type="button" name="order" value="정렬" onclick="order('freeboard_no')"></th>
+<th>제목		</th>
+<th>작성자	</th>
+<th>작성일	<input type="button" name="order" value="정렬" onclick="order('freeboard_writedate')"></th>
+<th>조회수	<input type="button" name="order" value="정렬" onclick="order('freeboard_readno')"></th>
 </tr>
 </thead>
 <tbody>
@@ -71,17 +103,17 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </sec:authorize>
 
 <c:if test="${page.prev }">
-<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}&order=${order}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&order=${order}"><c:out value="다음"/></a>
 </c:if>
 </body>
 </html>

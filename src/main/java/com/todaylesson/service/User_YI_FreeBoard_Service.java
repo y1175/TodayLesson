@@ -13,7 +13,7 @@ public interface User_YI_FreeBoard_Service {
 	//페이징 카운트
 	public int totalCount(String search, String searchtxt);
 	//게시물 전체보기
-	public List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt, int startRow, int endRow);
+	public List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt, String order, int startRow, int endRow);
 	//게시물 상세보기
 	public SQLjoin_Member_FreeBoardDTO freeboard_detail(int freeboard_no);
 	//조회수 증가

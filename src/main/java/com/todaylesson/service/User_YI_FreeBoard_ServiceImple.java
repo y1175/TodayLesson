@@ -32,12 +32,13 @@ public class User_YI_FreeBoard_ServiceImple implements User_YI_FreeBoard_Service
 	
 	//게시물 전체보기
 	@Override
-	public List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt, int startRow, int endRow) {
+	public List<SQLjoin_Member_FreeBoardDTO> list(String search, String searchtxt,String order, int startRow, int endRow) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
 		hm.put("endrow", endRow);
+		hm.put("order", order);
 		return mapper.list(hm);
 	}
 
