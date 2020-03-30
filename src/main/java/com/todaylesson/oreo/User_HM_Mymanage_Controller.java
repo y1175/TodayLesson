@@ -88,7 +88,7 @@ public class User_HM_Mymanage_Controller {
 	public String hm_us_mymanage1()
 	{
 
-		return "/TodayLesson_UserPage/hm_us_mymanage";
+		return "/TodayLesson_UserPage/hm_us_mymanage.us_my_section";
 	}
 	//내 정보관리 비밀번호 인증 후 true일 때 내 정보 수정
 	@RequestMapping("/hm_us_mymanage2")
@@ -120,11 +120,11 @@ public class User_HM_Mymanage_Controller {
 			String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
 			model.addAttribute("token",token);
 
-			return "/TodayLesson_UserPage/hm_us_mymanageupdate";
+			return "/TodayLesson_UserPage/hm_us_mymanageupdate.us_my_section";
 		}
 		else {
 
-			return "/TodayLesson_UserPage/hm_us_mymanage2";
+			return "/TodayLesson_UserPage/hm_us_mymanage2.us_my_section";
 		}
 	}
 
@@ -176,7 +176,7 @@ public class User_HM_Mymanage_Controller {
 		
         MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
 		model.addAttribute("dto",dto);
-		return "/TodayLesson_UserPage/hm_us_mymanageupdate";
+		return "/TodayLesson_UserPage/hm_us_mymanageupdate.us_my_section";
 	}
 	
 	
@@ -221,7 +221,7 @@ public class User_HM_Mymanage_Controller {
 		int result1 = hm_mymanageservice.MyInfoupdate(dto);
 		model.addAttribute("result",result1);
 		
-		return "/TodayLesson_UserPage/hm_us_mymanageupdateresult";
+		return "/TodayLesson_UserPage/hm_us_mymanageupdateresult.us_my_section";
 	}
 	
 /*	회원탈퇴 
