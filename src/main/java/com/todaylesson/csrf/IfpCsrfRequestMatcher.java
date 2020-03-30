@@ -385,6 +385,10 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         else if ("/update_senior_result".equals(strUri))    
        	 	return false; 
         
+        //결제 완료
+        else if("/orderlist_detail".equals(strUri))
+        	return false;
+        
         
        else if(allowedMethods.matcher(request.getMethod()).matches()){  //새로 추가한거
 

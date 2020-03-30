@@ -32,7 +32,7 @@
 <input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
 <table>
 <thead>
-<th></th><th>상품명</th><th>개당금액</th><th>수량</th><th>배송비</th><th>주문금액</th>
+<tr><th>상품명</th><th>개당금액</th><th>수량</th><th>배송비</th><th>주문금액</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -51,19 +51,25 @@
 <div id= "your_point">
 보유 포인트: ${mdto.member_point}<br>
 </div>
-포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0 name="usepoint" >
+
+
+포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0 name="usepoint">
+
+
 
 전액<input type="checkbox" value="all_point" id="all_point">
+
 
 <script>
 
 
-let my_point = document.getElementById('user_point').value;
+let my_point = ${mdto.member_point};
 
 $('#all_point').change(function() {
     if ( $('#all_point').prop('checked')) {
     	document.getElementById('usepoint').value=my_point;
-    } else {     document.getElementById('usepoint').value=0;
+    } else { 
+    document.getElementById('usepoint').value=0;
 
  }
 
@@ -111,7 +117,7 @@ $('#all_point').change(function() {
    data : data,
    success : function(){
    console.log('success');
-	if(usepoint>=memberpoint)
+	if(usepoint>memberpoint)
 		{
 		alert('보유포인트를 초과하였습니다.');
 		}
@@ -162,8 +168,7 @@ $('#all_point').change(function() {
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
 <input type="hidden" name="order_count" value=1>
-orderlist보내는부분${ldto.lesson_cost }
-<input type="text" name="orderlist_cost" id="orderlist_cost" value="${ldto.lesson_cost }" class="paymentcost">
+<input type="hidden" name="orderlist_cost" id="orderlist_cost" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= "${mdto.member_point}">
 수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
@@ -260,7 +265,7 @@ $("#sameaddr").on('click', function() {
 <br>
 <h4>결제정보</h4><hr>
  결제수단 선택
-  <input type="radio" name="paymethod" value="card">신용카드
+<input type="radio" name="paymethod" value="card">신용카드
 <input type="radio" name="paymethod" value="kakaopay">카카오페이
 <input type="radio" name="paymethod" value="payco">페이코
 <input type="radio" name="paymethod" value="accountpay">무통장입금
@@ -276,8 +281,18 @@ $("#sameaddr").on('click', function() {
 
 
  <script>
+ 
+ 
+
+	
     $("#check_module").click(function () {
-  
+  		
+    let radio_value = $('input[name="paymethod"]:checked').val();
+
+    	 
+    if (radio_value!=null) {
+    	
+       console.log(radio_value);
        var IMP = window.IMP; // 생략가능
        var cost=$(".paymentcost").val();
     	// $("form").attr("action", "/orderlistdetail");
@@ -286,10 +301,11 @@ $("#sameaddr").on('click', function() {
        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
        IMP.request_pay({
-       pg: 'inicis', // version 1.1.0부터 지원.
+    	   
+       pg: radio_value, // version 1.1.0부터 지원.
        /*
        'kakao':카카오페이,
-       html5_inicis':이니시스(웹표준결제)
+        html5_inicis':이니시스(웹표준결제)
        'nice':나이스페이
        'jtnet':제이티넷
        'uplus':LG유플러스
@@ -341,7 +357,7 @@ $("#sameaddr").on('click', function() {
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
       
        			
-       			$("form").attr("action", "/orderlistdetail");
+       			$("form").attr("action", "/orderlist_detail");
        			$("form").submit();  
        		} else {
     	   
@@ -350,7 +366,12 @@ $("#sameaddr").on('click', function() {
        }
       alert(msg);
        });
+       
+    } else {
+    	alert('결제 수단을 선택하세요.');
+    };
        });
+
 
     </script>
     <div id="ordersuccess_btn" class="text-center">

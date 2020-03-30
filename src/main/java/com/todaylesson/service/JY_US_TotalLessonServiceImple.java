@@ -10,15 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.CartDTO;
+import com.todaylesson.DTO.LReviewDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.Mapper.JY_US_TotalLessonMapper;
 
 @Service(value="totallesson_service")
 @Transactional(rollbackFor={Exception.class} , propagation=Propagation.REQUIRED , isolation=Isolation.DEFAULT)
-public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
+public class JY_US_TotalLessonServiceImple implements JY_US_TotalLessonService {
 
 	@Autowired
 	private JY_US_TotalLessonMapper mapper;
@@ -104,8 +107,46 @@ public class JY_US_TotalLessonImple implements JY_US_TotalLessonService {
 	}
 
 
+	@Override
+	public int insertorderdetail(OrderDetailDTO oddto) {
+		return mapper.insertorderdetail(oddto);
+	}
 
 
+	@Override
+	public int insertorderlist(OrderListDTO oldto) {
+		return mapper.insertorderlist(oldto);
+	}
+
+
+	@Override
+	public int updatepoint(MemberDTO memberdto) {
+		return mapper.updatepoint(memberdto);
+	}
+
+
+	@Override
+	public List<OrderDetailDTO> selectorderdetail(int orderlist_no) {
+		return mapper.selectorderdetail(orderlist_no);
+	}
+
+
+	@Override
+	public OrderListDTO selectorderlist(int orderlist_no) {
+		return mapper.selectorderlist(orderlist_no);
+	}
+
+
+	@Override
+	public List<LReviewDTO> select_lesson_lreview(int lesson_no) {
+		return mapper.select_lesson_lreview(lesson_no);
+	}
+
+
+	@Override
+	public int add_lesson_review(LReviewDTO dto) {
+		return mapper.add_lesson_review(dto);
+	}
 
 
 }

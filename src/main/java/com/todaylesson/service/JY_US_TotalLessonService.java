@@ -4,10 +4,13 @@ import java.util.List;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.CartDTO;
+import com.todaylesson.DTO.LReviewDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 
 public interface JY_US_TotalLessonService {
 
@@ -37,6 +40,18 @@ public interface JY_US_TotalLessonService {
 
 	public MemberDTO select_member_info(String member_id);
 
+	public int insertorderdetail(OrderDetailDTO oddto);
 
+	public int insertorderlist(OrderListDTO oldto);
+	
+	public int updatepoint(MemberDTO memberdto);
+
+	public List<OrderDetailDTO> selectorderdetail(int orderlist_no);
+
+	public OrderListDTO selectorderlist(int orderlist_no);
+
+	public List<LReviewDTO> select_lesson_lreview(int lesson_no);
+
+	public int add_lesson_review(LReviewDTO dto);
 
 }

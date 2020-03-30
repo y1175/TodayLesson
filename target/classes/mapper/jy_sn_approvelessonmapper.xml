@@ -36,11 +36,8 @@ select ifnull(max(lessondetail_chapter),0) from lessondetail where lesson_no = #
 
 </selectKey>
 
-
-
-insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id)
-values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+ 1,#{member_id})
-where lesson_no = #{lesson_no}
+insert into lessondetail(lesson_no, senior_no, lessondetail_title, lessondetail_content, lessondetail_chapter, member_id, lessondetail_running_time, lessondetail_thumb)
+values(#{lesson_no},#{senior_no},#{lessondetail_title},#{lessondetail_content},#{lessondetail_chapter}+ 1,#{member_id}, #{lessondetail_running_time},#{lessondetail_thumb})
 
 </insert>
 

@@ -16,4 +16,11 @@ public class LReviewDTO {
 	private String lreview_content;
 	private String lreview_date;
 	private String lreview_filepath;
+	private String lreview_title;
+	
+	
+	//memberÅ×ÀÌºí²¨
+	private String member_id;
+	private int lesson_no;
+	
 }

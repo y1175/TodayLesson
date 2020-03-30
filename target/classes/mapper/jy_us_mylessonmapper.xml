@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.JY_US_MyLessonMapper">
+
+<select id="mylesson_list" resultType="com.todaylesson.DTO.LessonDTO">
+
+select * from lesson l and 
+(
+select lesson_no from order_detail d join orderlist l
+on d.orderlist_no = l.orderlist_no
+where member_id = #{member_id};
+) n
+where l.lesson_no = n.lesson_no
+
+</select>
+
+
+
+</mapper>

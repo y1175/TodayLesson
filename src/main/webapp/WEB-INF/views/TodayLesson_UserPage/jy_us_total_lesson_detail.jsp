@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"	rel="stylesheet">
+<script	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<!-- include summernote-ko-KR -->
+<script src="/resources/JS/summernote-ko-KR.js"></script>
+
 <style>
 .selected {
 	display: none;
@@ -28,9 +37,20 @@ li>ul>li {
 	color: #00F;
 }
 </style>
+
 <script> 
 
-$(document).ready(function() { 
+$('document').ready(function() { 
+	
+	
+	$('#summernote').summernote({
+		placeholder : 'content',
+		minHeight : 370,
+		maxHeight : null,
+		focus : true,
+		lang : 'ko-KR'
+	});	
+	
 	
 	$("#pas").hide();
 	
@@ -56,7 +76,7 @@ $(document).ready(function() {
 	
 	
 	// 썸머노트로 작성한 부분을 html코드로 변환해서 가져옴
-	$('#summer').html();
+	$('.summer').html();
 
 	
 
@@ -401,6 +421,40 @@ $(".insert_my_cart").click(function(){
 	</div>
 
 
+<div class="container">
+		<form id="reviewForm" name="reviewForm" method="post">
+			<br>
+			<br>
+			<div>
+				<div>
+					<span><strong>리뷰</strong></span> <span id="cCnt"></span>
+				</div>
+				<div>
+					<table class="table">
+						<tr>
+                        <label>제목</label> 
+                        
+                        <input type="text" id="lreview_title" name="lreview_title">
+								<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
+								<br>
+								<div>
+									<a href='#' onClick="fn_review('${dto.lesson_no }')" class="btn pull-right btn-success">리뷰 등록</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no"> 
+				<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<form id="reviewListForm" name="reviewListForm" method="post">
+			<div id="reviewList"></div>
+		</form>
+	</div>
+
 	<script>
 /*
  * 댓글 등록하기(Ajax)
@@ -445,11 +499,12 @@ function fn_comment(lesson_no){
   
   
 /**
- * 초기 페이지 로딩시 댓글 불러오기
+ * 초기 페이지 로딩시 댓글, 리뷰 불러오기
  */
 $(function(){
     
     getCommentList();
+    getLreviewList();
     
 });
  
@@ -641,8 +696,115 @@ function fn_answer(lesson_qa_no){
 
 
 
- 
-</script>
+/**
+ * 리뷰 불러오기(Ajax)
+ */
+function getLreviewList(){
+	
+    $.ajax({
+        type:'get',
+        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_lreview_list'/>",
+        dataType : "json",
+        data:$("#reviewForm").serialize(),
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        success : function(data){
+            
+            let html = "";
+            let cCnt = data.length;
+       
+            
+   if (data.length > 0){
+		console.log(data);
+                for(i=0; i<data.length; i++){
+                   if (i == 0) {
+                   	    html += "<div id='accordian'>";
+                   	    html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li><div class='summer'>"+data[i].lreview_content+"</div></li></ul></li>";
+                       
+           			 }else if(i == data.length-1){
+                         
+                   		html += "<li><h6>"+data[i].member_id+"    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li><div class='summer'>"+data[i].lreview_content +"</div></li></ul></li></ul></div>";
+           			 } else {
+           				html += "<li><h6>"+data[i].member_id+"    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li><div class='summer'>"+data[i].lreview_content +"</div></li></ul></li>";
+
+           			 }
+                }
+   			} else {
+                
+              			html += "<div>";
+              			html += "<div><table class='table'><h6><strong>등록된 리뷰가 없습니다.</strong></h6>";
+               		    html += "</table></div>";
+                		html += "</div>";
+               		 
+            }
+            
+            $("#cCnt").html(cCnt);
+            $("#reviewList").html(html);
+            
+            
+            $(function(){
+            	$("#accordian h6").click(function(){
+            		$("#accordian ul ul").slideUp();
+            		$('.ico_ar').css('transform','none');
+            		if(!$(this).next().is(":visible"))
+            		{
+            			$(this).next().slideDown();
+            			$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
+            		}
+            	})
+            });
+            
+        },
+        error:function(request,status,error){
+            
+       }
+        
+    });
+}
+    
+    
+    /*
+     * 리뷰 등록하기(Ajax)
+     */
+    function fn_review(lesson_no){
+        
+    	let member_id ='${pageContext.request.userPrincipal.name}';
+    		
+    	 if(member_id=='')
+         {
+    	 $("#lreview_title").val("");
+         $("#lreview_content").val("");
+         alert('로그인이 필요합니다.');
+         return false;
+         } 
+    	 
+        $.ajax({
+            type:'POST',
+            url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_review_insert'/>",
+            data:$("#reviewForm").serialize(),
+            success : function(data){
+                if(data=="success")
+                {
+                	alert("리뷰 등록 완료!");
+                    getReviewList();
+                    $("#lreview_title").val("");
+                    $("#lreview_content").val("");
+
+                }
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+         	   console.log('error');
+         	   alert('구매한 고객만 후기를 작성 할 수 있습니다.');
+           }
+            
+        });
+    }
+
+    
+    </script>
 
 
 </body>

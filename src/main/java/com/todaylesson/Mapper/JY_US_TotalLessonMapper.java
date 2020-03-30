@@ -6,10 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.CartDTO;
+import com.todaylesson.DTO.LReviewDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.Lesson_qaDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
+import com.todaylesson.DTO.OrderDetailDTO;
+import com.todaylesson.DTO.OrderListDTO;
 
 @Mapper
 public interface JY_US_TotalLessonMapper {
@@ -43,6 +46,20 @@ public interface JY_US_TotalLessonMapper {
 	public int has_answer_reply(Lesson_qaDTO dto);
 
 	public MemberDTO select_member_info(String member_id);
+
+	public int insertorderdetail(OrderDetailDTO oddto);
+
+	public int insertorderlist(OrderListDTO oldto);
+
+	public int updatepoint(MemberDTO memberdto);
+
+	public List<OrderDetailDTO> selectorderdetail(int orderlist_no);
+
+	public OrderListDTO selectorderlist(int orderlist_no);
+
+	public List<LReviewDTO> select_lesson_lreview(int lesson_no);
+
+	public int add_lesson_review(LReviewDTO dto);
 
 
 }
