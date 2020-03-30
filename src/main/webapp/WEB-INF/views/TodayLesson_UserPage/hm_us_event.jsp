@@ -91,21 +91,34 @@
 </nav>
 
 
-<div class="hm_event_thumbnailmain">
-<c:forEach var="item" items="${list}">
-<div class="hm_event_thumbnail">
-<div>
-<img alt="이벤트 이미지" src="${item.event_thumbnail}">
-</div>
-<div>
-<p>${item.event_startperiod}~${item.event_endperiod}</p>
-<h5>${item.event_title}</h5>
-<h6>${item.event_thumbexplain}</h6>
-</div>
-</div>
-</c:forEach>
-</div> 
+<%-- <div class="hm_event_thumbnailmain">
+   <c:forEach var="item" items="${list}">
+      <div class="hm_event_thumbnail">
+         <div class="hm_event_thumbnail_imgbox">
+            <img alt="이벤트 이미지" src="${item.event_thumbnail}">
+         </div>
+         <div>
+            <p>${item.event_startperiod}~${item.event_endperiod}</p>
+            <h5>${item.event_title}</h5>
+            <h6>${item.event_thumbexplain}</h6>
+         </div>
+      </div>
+   </c:forEach>
+</div>  --%>
 
+<div class="hm_event_thumbnailmain">
+   <c:forEach var="item" items="${list}">
+      <div class="row" style="display: inline-block; margin: 0px 5px">
+            <div class="hm_event_thumbnail" style="">
+               <img alt="이벤트 이미지" src="${item.event_thumbnail}" style="width: 360px;">
+            
+               <p>${item.event_startperiod}~${item.event_endperiod}</p>
+               <h5>${item.event_title}</h5>
+               <h6>${item.event_thumbexplain}</h6>
+            </div>
+      </div>
+   </c:forEach>
+</div> 
 
 
 

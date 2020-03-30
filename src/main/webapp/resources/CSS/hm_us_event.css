@@ -25,14 +25,14 @@
 	list-style: none;
 } */
 
-
-/* .hm_event_thumbnail{
-	display: inline-block;
-	position: relative;
-	width:100%;
-	
-	
-} */
-
+.hm_event_thumbnailmain{
+	text-align: center;
+}
+.hm_event_thumbnail{
+	width: 99%;
+	margin: auto;
+}
+.hm_event_thumbnail_imgbox{
+}
 
 
