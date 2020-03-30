@@ -33,14 +33,14 @@ header javascript -->
       <div class="hs_us_mainheader_topdiv">
          <div class="hs_us_mainheader_topdiv_width">
             <span>지금 당신의 취미를 찾아보세요</span>
-            <!-- 모든사람들이 다 --><span class="hs_us_mainheader_topdiv_cartloginsearchbox">
-               
+            <span class="hs_us_mainheader_topdiv_cartloginsearchbox">
+               <!-- 모든사람들이 다 -->
                <sec:authorize access="isAnonymous()">  
                   <a href=""><i class="fa fa-ushopping-cart"></i></a>
-                  <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a><span style="margin-left: 10px;">|</span><a href="">회원가입</a>
+                  <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a>
+                  <span style="margin-left: 10px;">|</span><a href="">회원가입</a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
-               <%-- <sec:authorize access="isAuthenticated()"> --%>
                <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_USER')">
                   <form action="${pageContext.request.contextPath}/logout" method='post' id="logout-form">
                      <a href=""><i class="fa fa-shopping-cart"></i></a>
@@ -53,22 +53,23 @@ header javascript -->
                      <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                      <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>
-                     <%-- <a href="${pageContext.request.contextPath}/logout">로그아웃</a> --%> 
                   </form>   
                </sec:authorize>
-               
                <a href=""><i class='fas fa-search'></i></a>
             </span>
          </div>
       </div>
-                  <!-- 로그인 modal -->
-                  <%--
-                   onclick="openModal();" -> 로그인 a태그     숨기는건 했는테 모달로 뜨지 않음... 이건 그냥 나중에 다시...  
-                  
-                  <jsp:include page="hs_us_main_sec_logintest.jsp"/>  
-                                 
-                  --%>
-                  <!-- 로그인 modal -->
+      <!-- 로그인 modal   data-toggle="modal" data-target="#hs_LoginModal"  -->
+     <!--  <div class="modal fade" id="hs_LoginModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_AccountModal_title" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
+                      
+               </div>
+            </div>
+         </div>
+      </div>   -->          
+      <!-- 로그인 modal -->
        
        
                   

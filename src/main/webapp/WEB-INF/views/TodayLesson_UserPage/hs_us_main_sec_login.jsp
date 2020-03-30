@@ -28,17 +28,18 @@
 
 </head>
 <body>
-  <div style="width: 50%; margin: auto; text-align: center;" id="todaaylesson">
+
+   <div style="width: 50%; margin: auto; text-align: center;" id="todaaylesson">
       <form method="post" action="/todaylesson">
          <div class="hs_us_mainheader_loginmodalform_div">
             <b>오늘의 레슨에 오신것을 환영합니다!</b>
             <br>
             <span>오늘의 레슨은 서로간의 재능을 연결해 모두의 경쟁력을 높이는 플랫폼 서비스입니다.</span>           
             <div>
-               <%-- 
+               
                <span><c:out value="${error}"/></span>
                <span><c:out value="${logout}"/></span> 
-               --%>
+              
                <label>ID</label>
                <input type='text' name='username' placeholder="아이디 입력하시오" required="required">
                <br>

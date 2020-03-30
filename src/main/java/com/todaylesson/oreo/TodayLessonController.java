@@ -220,6 +220,7 @@ public class TodayLessonController {
           
           
           return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
+          //return "/TodayLesson_UserPage/hs_us_main_sec_login";
        }
       
        //kakao 로그인 창 url 정보넘기기
