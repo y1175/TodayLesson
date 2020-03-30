@@ -11,7 +11,7 @@
 
 
 <!--mypage nav style-->
-<link rel="stylesheet" href="resources/CSS/hs_us_mypage_nav.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}resources/CSS/hs_us_mypage_nav.css?ver=2">
 <!--mypage nav style-->
 
 </head>
@@ -24,10 +24,11 @@
 			</div>
 			<div class="hs_us_mypage_nickbox">
 			   <b class="hs_us_mypage_nick">${pageContext.request.userPrincipal.name}님</b>
+			  <!--  <input type="file" id="member_img" name="file"> -->
             </div>
          </div>
          <div class="col-md-7" style="text-align: center;">   
-            <div class="col-sm-3" style="display: inline-block; border-right: 1px solid rgba(53, 54, 58, 0.1); position: relative; top: 35px;">
+            <div class="col-sm-3" style="display: inline-block; border-right: 1px solid rgba(53, 54, 58, 0.1); position: relative; top: 35px;  left: 70px;">
                <p class="hs_us_mypage_myLevelLessonPoint_title">회원등급</p>
                <p class="hs_us_mypage_myLevelLessonPoint_content">
                   <c:choose>
@@ -40,11 +41,11 @@
                   </c:choose>
                </p> <!-- 회원등급 가져오기 -->
             </div>
-            <div class="col-sm-3" style="display: inline-block; border-right: 1px solid rgba(53, 54, 58, 0.1); position: relative; top: 35px;">
+            <div class="col-sm-3" style="display: inline-block; border-right: 1px solid rgba(53, 54, 58, 0.1); position: relative; top: 35px; left: 70px;">
                <p class="hs_us_mypage_myLevelLessonPoint_title">수강중인 레슨</p>
                <p class="hs_us_mypage_myLevelLessonPoint_content">10</p> <!-- 수강중인 레슨 수 가져오기 -->
             </div>
-            <div class="col-sm-3" style="display: inline-block; position: relative; top: 35px;">
+            <div class="col-sm-3" style="display: inline-block; position: relative; top: 35px; left: 70px;">
                <p class="hs_us_mypage_myLevelLessonPoint_title">적립금</p>
                <p class="hs_us_mypage_myLevelLessonPoint_content">
                   <fmt:formatNumber value="${myPageMyLevel_MyPoint.member_point}" type="number" maxFractionDigits="3"/>

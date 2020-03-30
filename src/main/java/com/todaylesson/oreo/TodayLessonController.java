@@ -183,6 +183,8 @@ public class TodayLessonController {
     	MemberDTO myPageMyLevel_MyPoint=userMyPageService.myPageMyLevel_MyPoint(member_id);
     	model.addAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint);
     	
+    	//마이페이지 프로필변경
+    	
     	return "hs_us_mypage";
     }
    
