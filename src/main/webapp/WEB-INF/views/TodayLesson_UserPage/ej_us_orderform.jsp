@@ -227,8 +227,6 @@ $("#sameaddr").on('click', function() {
  결제수단 선택
   <input type="radio" name="paymethod" value="card">신용카드
 <input type="radio" name="paymethod" value="kakaopay">카카오페이
-<input type="radio" name="paymethod" value="payco">페이코
-<input type="radio" name="paymethod" value="accountpay">무통장입금
 <br>
 
  배송비 무료<br>
@@ -241,14 +239,17 @@ $("#sameaddr").on('click', function() {
 
  <script>
     $("#check_module").click(function () {
-  
-       var IMP = window.IMP; // 생략가능
-       var cost=$(".paymentcost").val();
-    	// $("form").attr("action", "/orderlistdetail");
-       IMP.init('imp65601532');
-       
-       // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-       // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+    	  var IMP = window.IMP; // 생략가능
+    	  var cost=$(".paymentcost").val();
+
+    	 var inputValue = $("input[name='paymethod']:checked").val();
+         if(inputValue=='card')
+        	 {IMP.init('imp57388060');//이니시스
+        	 }
+         else if(inputValue=='kakaopay')
+        	 {IMP.init('imp65601532');//카카오
+        	 }
+         
        IMP.request_pay({
        pg: 'inicis', // version 1.1.0부터 지원.
        /*

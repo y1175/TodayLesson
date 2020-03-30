@@ -241,6 +241,18 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //은지 관리자 상품 삭제
         else if("/ad_product_delete".equals(strUri))
             return false;
+       //후기리스트 
+        else if("/ad_product_reviewlist".equals(strUri))
+            return false;
+        //후기디테일
+        else if("/ad_product_reviewdetail".equals(strUri))
+            return false;
+        //후기 삭제
+        else if("/ad_product_reviewdelete".equals(strUri))
+            return false;
+        
+        
+        //사용자 페이지들
         //은지 스토어 디테일
         else if ("/ej_store_detail".equals(strUri))                   
             return false; 
@@ -268,6 +280,8 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
            return false; 
         else if ("/ad_add_pdOption/insertOption_json".equals(strUri))                   
         	 return false; 
+        
+        
     
 
    //진영

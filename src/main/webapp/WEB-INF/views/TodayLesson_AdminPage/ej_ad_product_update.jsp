@@ -37,18 +37,42 @@
 </script> 
 </head>
 <body>
-	<h2 style="text-align: center;">이벤트 수정</h2>
+	<h2 style="text-align: center;">제품정보 수정</h2>
 	<br>
 	<br>
 	<br>
 
 	<div style="width: 60%; margin: auto;">
 		
-		<form role="form"  name="eventupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_product_update_result"> 
-		<input type ="hidden" id="event_no" name="event_no" value="${dto.event_no}">
+		<form role="form"  name="productupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
+		 action="${pageContext.request.contextPath}/ad_product_update_result"> 
+		<input type ="hidden" id="product_no" name="product_no" value="${dto.product_no}">
 		<br>
-		<label>이벤트 유형</label><br>
+		<label>카테고리</label>
+		<select name="product_category">
+		<option value="1">외국어</option>
+		<option value="2">IT</option>
+		<option value="3">요리</option>
+		<option value="4">DIY</option>
+		<option value="5">운동</option>
+		<option value="6">기타</option>
+		</select>
+		<br>
+		<label>제품명</label><br>
+		 <input type="text" name="product_name" style="width: 40%;" value="${dto.product_name }" required="required"/> <br>
+			<br>
+				<label>가격</label>
+				 <input type="text" name="product_cost" style="width: 40%;" placeholder="가격"  value="${dto.product_cost }" required="required"/>원<br>
+				  <label>할인율</label>
+				 <input type="text" name="product_sale" style="width: 40%;" value="${dto.product_sale }" placeholder="%" required="required"/>%<br>
+			
+				 <label>수량</label>
+				 <input type="text" name="product_stock" style="width: 40%;" value="${dto.product_stock }" placeholder="수량" required="required"/>개<br>
+				
+				<label>상세설명</label><br>
+				<textarea id="summernote" name="product_content"  value="${dto.product_content }"></textarea>
+			<input type="text" name="product_img" value="${dto.product_img }">
+		<%-- <label>이벤트 유형</label><br>
 		<select name="event_group" id="event_group">
 		<option value="${dto.event_group}">
 		<c:choose>
@@ -78,20 +102,20 @@
 			<input type="date" name="event_endperiod" style="width: 30%;" value="${dto.event_endperiod}" required="required"/><br>
 				<label>이벤트 상세설명</label><br>
 				<textarea id="summernote" name="event_content" style="display:none"><c:out value="${dto.event_content}"/></textarea>
-			
+			 --%>
 			
 			<div class="inputArea">
 
 <br>
- <label for="event_thumbnail">썸네일 수정</label>
+ <label for="product_thumbnail">썸네일 수정</label>
  <br>
- <input type="file" id="event_thumbnail" name="file" style="width: 80px;"/>
+ <input type="file" id="product_thumbnail" name="file" style="width: 80px;"/>
  <br>
- <div class="select_img"><img src="${dto.event_thumbnail}" /></div>
+ <div class="select_img"><img src="${dto.product_thumb}" /></div>
  <br>
 
  <script>
-  $("#event_thumbnail").change(function(){
+  $("#product_thumbnail").change(function(){
    if(this.files && this.files[0]) {
     var reader = new FileReader;
     reader.onload = function(data) {
@@ -102,21 +126,21 @@
   });
  </script>
  <br><br>
- <li style="list-style: none;">이벤트 간단설명</li>
- <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100">${dto.event_thumbexplain}</textarea>
+<%--  <li style="list-style: none;">이벤트 간단설명</li>
+ <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100">${dto.event_thumbexplain}</textarea> --%>
 <br>
 <br>
  
  
 <br>
- <input type="button" id="event_update_btn"  onclick="updatethumbnail();"  value="이벤트 등록" style="float: right;" />
+ <input type="button" id="product_update_btn"  onclick="updatethumbnail();"  value="상품 수정" style="float: right;" />
   <script>
   
   function updatethumbnail(){
 	  
-	var updateform = document.eventupdateform;  
+	var updateform = document.productupdateform;  
 	var thumbnail =  updateform.file.value;
-	var newthumbnail = document.getElementById('event_thumbnail');
+	var newthumbnail = document.getElementById('product_thumbnail');
 	console.log(thumbnail);
 	console.log(newthumbnail);
 	if(thumbnail==null){

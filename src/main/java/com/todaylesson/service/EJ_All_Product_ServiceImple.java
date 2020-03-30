@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.todaylesson.DTO.CartDTO;
+import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.PdReviewDTO;
@@ -179,6 +180,24 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	public int deletepro(int product_no) {
 		// TODO Auto-generated method stub
 		return mapper.deletepro(product_no);
+	}
+
+	@Override
+	public int updatepro(ProductDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.updatepro(dto);
+	}
+
+	@Override
+	public int updatepro_nothumbnail(ProductDTO dto) {
+		// TODO Auto-generated method stub
+		return mapper.updatepro_nothumbnail(dto);
+	}
+
+	@Override
+	public List<PdReviewDTO> selectAllReview() {
+		// TODO Auto-generated method stub
+		return mapper.selectAllReview();
 	}
 
 

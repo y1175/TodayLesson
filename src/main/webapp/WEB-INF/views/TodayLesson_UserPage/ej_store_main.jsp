@@ -452,7 +452,7 @@ body{
                         </c:when>
                      </c:choose>
                      <h6 class="hs_user_store_newprodct_title">
-                        <a href="#">${storenewproductlist.product_name}</a>
+                        <a href="ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_newproduct_line"></div>
                      <div class="hs_user_store_newprodct_cost">${storenewproductlist.product_after_cost}원

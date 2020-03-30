@@ -120,21 +120,21 @@ public class EJ_ProductController {
 		
 		return "TodayLesson_AdminPage/ej_ad_productdetail";
 	}
-	
-	/*@RequestMapping("/ad_product_update/${product_no}")
+	//상품 수정입력란 들어가기
+	@RequestMapping("/ad_product_update/{product_no}")
 	public String updatepro(@PathVariable("product_no") int product_no, Model model)
 	{
 
-		ProductDTO dto = service.updatepro(product_no);
+		ProductDTO dto = service.select(product_no);
 		model.addAttribute("dto",dto);
 		
-		return "TodayLesson_AdminPage/ej_ad_product_update.hs_ad_main_section";
+		return "TodayLesson_AdminPage/ej_ad_product_update";
 	}
 
 	
-	
+	//상품수정 결과
 	@RequestMapping("/ad_product_update_result")
-	public String proupdate_result(Model model, EventDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
+	public String proupdate_result(Model model, ProductDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
 
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
@@ -143,26 +143,33 @@ public class EJ_ProductController {
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
+		//가격에 할인율 적용
+		int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;
+		dto.setProduct_after_cost(cost);
+		
 		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "")   
 		{
 		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-		 dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-	      String imgthumb=dto.getEvent_thumbnail();
-	      int result = service.eventupdate(dto);
+		 dto.setProduct_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+	      String imgthumb=dto.getProduct_thumb();
+	      int result = service.updatepro(dto);
 	      model.addAttribute("result", result);
-	      return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
+	      return "TodayLesson_AdminPage/ej_ad_product_updateresult";	      
 	      
 		 
 		} else {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		 System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
-		 int result = service.eventupdatenothumbnail(dto);
+		 int result = service.updatepro_nothumbnail(dto);
 		  model.addAttribute("result", result);
-		  return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
+		  return "TodayLesson_AdminPage/ej_ad_product_updateresult";	      
 	      
 		}
-	}*/
+		
+		
+	}
 	
+	//상품 삭제
 	@RequestMapping("/ad_product_delete/{product_no}")
 	public String prodelete(@PathVariable int product_no, Model model) {
 		
@@ -172,6 +179,14 @@ public class EJ_ProductController {
 		return "TodayLesson_AdminPage/ej_ad_product_delete_result";
 	}
 	
+	//후기리스트
+	@RequestMapping("/ad_product_reviewlist")
+	public String reviewlist(Model model) {
+		List<PdReviewDTO> list = service.selectAllReview();
+		model.addAttribute("list",list);
+		return "TodayLesson_AdminPage/ej_ad_pdreviewlist";
+	}
+	//후기 삭제
 	//스토어 메인
 	
 	@RequestMapping("/ej_store_main")
@@ -193,9 +208,8 @@ public class EJ_ProductController {
 		 model.addAttribute("reply",reply);
 			ProductDTO dto = service.select(product_no);
 			model.addAttribute("dto",dto);
-			List<OptionsDTO> optionlist = service.optionList(product_no);
 			
-			 model.addAttribute("optionlist",optionlist);
+		
 	
 		return "TodayLesson_UserPage/ej_store_detail.us_main_section";
 	}

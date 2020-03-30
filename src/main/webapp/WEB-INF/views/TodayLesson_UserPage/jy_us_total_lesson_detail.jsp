@@ -374,27 +374,7 @@ $(".insert_my_cart").click(function(){
 						<tr>
 							<td>비밀글 <input type="checkbox" name="sec" id="sec">
 							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret" value='N'> 
-								
-						<script>
-                        /*
-						
-                        $('#sec').change(function() {
-                           if ( $('#sec').prop('checked')) {
-                           	document.getElementById('lesson_qa_reply_secret').value='Y';
-                           } else {
-                           document.getElementById('lesson_qa_reply_secret').value='N';
-                        }
-                        
-                        });
-                        
-                      
-                        
-                        
-                        console.log( document.getElementById('lesson_qa_reply_secret').value);
-                        */
-                        
-                        </script> 
-                        
+							
                         <label>제목</label> 
                         
                         <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title">
@@ -432,10 +412,9 @@ $(".insert_my_cart").click(function(){
 				<div>
 					<table class="table">
 						<tr>
-                        <label>제목</label> 
-                        
+                        <td><label>제목</label>
                         <input type="text" id="lreview_title" name="lreview_title">
-								<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
+						<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
 								<br>
 								<div>
 									<a href='#' onClick="fn_review('${dto.lesson_no }')" class="btn pull-right btn-success">리뷰 등록</a>
@@ -696,6 +675,45 @@ function fn_answer(lesson_qa_no){
 
 
 
+/*
+ * 리뷰 등록하기(Ajax)
+ */
+function fn_review(lesson_no){
+    
+	let member_id ='${pageContext.request.userPrincipal.name}';
+		
+	 if(member_id=='')
+     {
+	 $("#lreview_title").val("");
+     $("#lreview_content").val("");
+     alert('로그인이 필요합니다.');
+     return false;
+     } 
+	 
+    $.ajax({
+        type:'POST',
+        url : '/lesson_detail/${dto.lesson_no}/lesson_review_insert',
+        data:$("#reviewForm").serialize(),
+        success : function(data){
+            if(data=="success")
+            {
+            	alert("리뷰 등록 완료!");
+                getReviewList();
+                $("#lreview_title").val("");
+                $("#lreview_content").val("");
+
+            }
+        },
+        error:function(request,status,error){
+     	   console.log('error');
+     	   alert('구매한 고객만 후기를 작성 할 수 있습니다.');
+       }
+        
+    });
+}
+
+
+
 /**
  * 리뷰 불러오기(Ajax)
  */
@@ -703,10 +721,10 @@ function getLreviewList(){
 	
     $.ajax({
         type:'get',
-        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_lreview_list'/>",
-        dataType : "json",
+        url : '/lesson_detail/${dto.lesson_no}/lesson_lreview_list',
+        dataType : 'json',
         data:$("#reviewForm").serialize(),
-        contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
         success : function(data){
             
             let html = "";
@@ -765,46 +783,8 @@ function getLreviewList(){
 }
     
     
-    /*
-     * 리뷰 등록하기(Ajax)
-     */
-    function fn_review(lesson_no){
-        
-    	let member_id ='${pageContext.request.userPrincipal.name}';
-    		
-    	 if(member_id=='')
-         {
-    	 $("#lreview_title").val("");
-         $("#lreview_content").val("");
-         alert('로그인이 필요합니다.');
-         return false;
-         } 
-    	 
-        $.ajax({
-            type:'POST',
-            url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_review_insert'/>",
-            data:$("#reviewForm").serialize(),
-            success : function(data){
-                if(data=="success")
-                {
-                	alert("리뷰 등록 완료!");
-                    getReviewList();
-                    $("#lreview_title").val("");
-                    $("#lreview_content").val("");
 
-                }
-            },
-            error:function(request,status,error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-         	   console.log('error');
-         	   alert('구매한 고객만 후기를 작성 할 수 있습니다.');
-           }
-            
-        });
-    }
-
-    
-    </script>
+   </script>
 
 
 </body>

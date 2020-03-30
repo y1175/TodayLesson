@@ -9,12 +9,30 @@
 	width:80%;
 	margin : auto;
 } 
-
-.hm_event_thumbnail{
-	display: inline-block;
-	margin : 0px
+/* 
+.hm_event_section{
+	width:80%;
+	max-width: 1440px;
+	margin:auto;
 	
 }
+.hm_event_list_area{
+	margin-bottom: 18px;
+	padding:30px 0px;
+	border-bottom: 1px solid #dadada;
+}
+.hm_event_list{
+	list-style: none;
+} */
 
+.hm_event_thumbnailmain{
+	text-align: center;
+}
+.hm_event_thumbnail{
+	width: 99%;
+	margin: auto;
+}
+.hm_event_thumbnail_imgbox{
+}
 
 

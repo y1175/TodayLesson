@@ -338,8 +338,11 @@ public class JY_US_TotalLessonController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "lesson_detail/${dto.lesson_no}/lesson_lreview_list", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "lesson_detail/{lesson_no}/lesson_lreview_list", produces = "application/json; charset=utf8")
 	public ResponseEntity lesson_lreview_list(@PathVariable int lesson_no) {
+		
+		
+		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		ArrayList<HashMap> lrlist = new ArrayList<HashMap>();
 
@@ -353,6 +356,7 @@ public class JY_US_TotalLessonController {
 				hm.put("lreview_title", lesson_lreview_list.get(i).getLreview_title());
 				hm.put("lreview_content", lesson_lreview_list.get(i).getLreview_content());
 				hm.put("lreview_date", lesson_lreview_list.get(i).getLreview_date());
+				hm.put("member_id",lesson_lreview_list.get(i).getMember_id());
 				
 				lrlist.add(hm);
 				
@@ -364,7 +368,7 @@ public class JY_US_TotalLessonController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value="lesson_detail/${dto.lesson_no}/lesson_review_insert")
+	@RequestMapping(value="lesson_detail/{lesson_no}/lesson_review_insert")
 	public String lesson_review_insert(@PathVariable int lesson_no, Authentication authentication,
 			@RequestParam String lreview_title, @RequestParam String lreview_content) {
 
