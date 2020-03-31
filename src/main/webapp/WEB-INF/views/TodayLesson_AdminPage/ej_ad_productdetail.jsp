@@ -11,16 +11,17 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function(){
-	
-	var product_no =${dto.product_no};
+	var product_no=${dto.product_no};
+	var hi="${pageContext.request.contextPath }";
+	console.log('context',hi);
 	$(".product_detail_updatebtn").on('click',function(){
-		location.href="/ad_product_update/"+product_no;
+		location.href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_update/"+product_no;
 		
 	});
 	
 	$(".product_detail_deletebtn").on('click',function(){
 		if(confirm("제품을 삭제하시겠습니까?")){
-			location.href="/ad_product_delete/"+product_no;
+			location.href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_delete/"+product_no;
 		}
 	
 		

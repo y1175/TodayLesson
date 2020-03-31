@@ -113,7 +113,7 @@ text-align: right;
  
 
   $.ajax({
-   url :"/ej_us_orderform/applypointjson",
+   url :"/todaylesson/ej_us_orderform/applypointjson",
    type : "post",
    data : data,
    success : function(){
@@ -162,7 +162,7 @@ text-align: right;
 주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
 
 
-   <input type="radio"  name='addrselect' value="0" id="sameaddrselect" checked="checked">
+   <input type="radio"  name="addrselect" value=0 id="sameaddrselect" checked="checked">
  
  <div id="findaddr">
  <label for='addr'></label>
@@ -260,12 +260,12 @@ $("#sameaddr").on('click', function() {
  결제금액<br>
  <input type="text" name="paymentt2" value="${total_cart }" class="paymentcost" readonly="readonly">
  
-  <!-- <button id="check_module" type="button" class='btn btn-primary'>결제하기</button> -->
+  <button id="check_module" type="button" class='btn btn-primary'>결제하기</button> 
 <button id="testbtn">테스트주문완료</button>
 <script>
 $("#testbtn").click(function(){
 	
-	$("form").attr("action", "/order_cart");
+	$("form").attr("action", "/todaylesson/order_cart");
 		$("form").submit();
 });
 </script>
@@ -338,9 +338,9 @@ $("#testbtn").click(function(){
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
-       		/* 	
-       			$("form").attr("action", "/order_cart");
-       			$("form").submit();   */
+       			
+       			$("form").attr("action", "/todaylesson/order_cart");
+       			$("form").submit();  
        		} else {
     	   
        		var msg = '결제에 실패하였습니다.';
@@ -382,14 +382,14 @@ $(".delete_product_cart").on('click',function(){
 	}
 	
 	$.ajax({
-	      url:"/deletecart_json",
+	      url:"/todaylesson/deletecart_json",
 	      type:"post",
 	      data: data,
 	      success: function(result){
 	    	 if(result>0)
 	    		 {
 	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
-	    	  location.href="/mycart/"+'${memberid}';
+	    	  location.href="/todaylesson/mycart/"+'${memberid}';
 	    		 }
 	    	 else{
 	    		 alert('삭제 실패되었습니다.');
@@ -417,14 +417,14 @@ $(".delete_lesson_cart").on('click',function(){
 	}
 	
 	$.ajax({
-	      url:"/deletecart_json",
+	      url:"/todaylesson/deletecart_json",
 	      type:"post",
 	      data: data,
 	      success: function(result){
 	    	 if(result>0)
 	    		 {
 	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
-	    	  location.href="/mycart/"+'${memberid}';
+	    	  location.href="/todaylesson/mycart/"+'${memberid}';
 	    		 }
 	    	 else{
 	    		 alert('삭제 실패되었습니다.');
@@ -437,12 +437,7 @@ $(".delete_lesson_cart").on('click',function(){
 	
 });
 </script>
- <script>
-   //$("#ordersuccess_btn").hide();
-    /* $("#ordersuccess_btn").click(function () {
-    $("form").attr("action", "/order_cart");
-    }); */
-    </script>
+
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- Optional JavaScript -->

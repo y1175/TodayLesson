@@ -72,6 +72,7 @@ and product_no=#{product_no}
  <selectKey resultType="int" keyProperty="orderlist_no" order="BEFORE">
 select orderlist.orderlist_no from orderlist, order_detail 
  	where order_detail.orderlist_no=orderlist.orderlist_no and product_no=#{product_no} and member_id=#{member_id}
+ 	order by orderlist_date desc limit 1
  </selectKey>
  insert into pdreview(orderlist_no, pdreview_content, pdreview_date)
  values (#{orderlist_no},#{pdreview_content},sysdate())

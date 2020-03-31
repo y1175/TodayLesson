@@ -10,12 +10,12 @@
 
 if (${result} > 0) {
 	alert("삭제를 성공하였습니다");
-	location.href="${pageContext.request.contextPath }/ej_ad_pdreviewlist";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewlist";
 } else {
 	
 
 	alert("삭제를 실패하였습니다");
-	location.href="${pageContext.request.contextPath }/ej_ad_pdreviewlist";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewlist";
 	
 }
 </script>

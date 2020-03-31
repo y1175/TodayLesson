@@ -57,7 +57,7 @@
 	<div style="width: 60%; margin: auto;">
 		<!-- 블로그에서는  -->
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="${pageContext.request.contextPath }/ej_ad_product_insertresult"> 
+		 action="${pageContext.request.contextPath }/todaylessonadmin/ej_ad_product_insertresult"> 
 		
 		<label>카테고리</label>
 		<select name="product_category">

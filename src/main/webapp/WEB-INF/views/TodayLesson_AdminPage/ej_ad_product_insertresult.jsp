@@ -10,12 +10,12 @@
 
 if (${result} > 0) {
 	alert("제품 등록을 성공하였습니다.");
-	location.href="${pageContext.request.contextPath }/ej_ad_productlist";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist";
 } else {
 	
 
 	alert("제품 등록을 실패하였습니다.");
-	location.href="${pageContext.request.contextPath }/ej_ad_productlist";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist";
 	
 }
 </script>

@@ -15,7 +15,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <style>
 
@@ -107,7 +107,7 @@ console.log('val',hh);
 		alert('보유포인트를 초과하였습니다.');
 		}
 	else{
-	if(data.paymentcost>)
+
 		$('.paymentcost').val(data.paymentcost);
 		
   	 $('#orderlist_usepoint').val(data.usepoint);
@@ -245,10 +245,15 @@ $("#sameaddr").on('click', function() {
  <input type="text" name="paymentt2" value="${totalcost }" class="paymentcost" readonly="readonly">
  
   <button id="check_module" type="button" class='btn btn-primary' >결제하기</button>
-
+<button id="test">이거누르면 주문기록됨()</button>
 
 
  <script>
+ $("#test").click(function () {
+ $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlistdetail");
+	$("form").submit();  
+ });
+ 
     $("#check_module").click(function () {
     	  var IMP = window.IMP; // 생략가능
     	  var cost=$(".paymentcost").val();
@@ -317,7 +322,7 @@ $("#sameaddr").on('click', function() {
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
       
        			
-       			$("form").attr("action", "/orderlistdetail");
+       			$("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlistdetail");
        			$("form").submit();  
        		} else {
     	   

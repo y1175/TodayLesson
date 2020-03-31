@@ -286,7 +286,7 @@ body{
 	transition-delay:.4s /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
 	}
 /* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
-.hs_user_store_newproduct_social li a{
+.hs_user_store_newproduct_social li div{
 	color:white;
 	font-size:17px;
 	line-height:40px;
@@ -297,7 +297,8 @@ body{
 	display:block;
 	transition:all .5s ease-in-out
 	}
-.hs_user_store_newproduct_social li a:hover{
+	/* 좋아요 hover시 색바뀜 */
+.hs_user_store_newproduct_social li a div:hover{
 	color:rgb(224, 62, 82);
 	border-color:rgb(224, 62, 82)
 	}
@@ -408,10 +409,10 @@ body{
                      </a>
                      <ul class="hs_user_store_newproduct_social" >
                         <li>
-                           <a href="" class="fas fa-heart"  id="${item.product_no}"></a>
+                           <a href="#" ><div class="fas fa-heart" id="${storenewproductlist.product_no}"></div></a>
                         </li>
                         <li>
-                           <a href="" class="fa fa-shopping-cart"   id="${item.product_no}"></a>
+                         <a href="#" ><div class="fa fa-shopping-cart"" id="${storenewproductlist.product_no}"></div></a>
                         </li>
                      </ul>
                      <span class="hs_user_store_newproduct_label">
@@ -476,51 +477,8 @@ body{
       </div>
    </div>   
  <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
-<%-- <c:forEach var="item" items="${list}"> 
 
-<div id="thumb">
-<a href="ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a><br>
-
-<c:set var="category" value="${item.product_category }"/>
- <c:choose>
-         <c:when test = "${category==1}">
-            외국어
-         </c:when>
-            <c:when test = "${category==2}">
-            IT
-         </c:when>
-            <c:when test = "${category==3}">
-            요리
-         </c:when>
-            <c:when test = "${category==4}">
-            DIY
-         </c:when>
-            <c:when test = "${category==5}">
-            운동
-         </c:when>
-            <c:when test = "${category==6}">
-            기타
-         </c:when>
-          <c:otherwise>
-        기타
-         </c:otherwise> 
-      </c:choose><br>
-<a href="ej_store_detail/${item.product_no}">${item.product_name}</a>
-<input type="image" src="" name="" class="ej_cart_btn"  id="${item.product_no}" value="장바구니">
-<input type="image" src="" class="ej_like_btn" id="${item.product_no}" value="좋아요">
-  
-
-<hr>
-<h4 class="beforecost" id="ej_cost">
-${item.product_cost}원</h4>
-
-<div id="ej_cost"><c:out value="${item.product_sale}"/>%</div> <div id="ej_cost"><h3><c:out value="${item.product_after_cost}"></c:out>원 </h3></div><br>
-</div>
-</c:forEach> --%>
-
-
-<!--  </form> --> 
-   <!-- 스토어 신규 상품 -->
+   <!-- 스토어 -->
    <script type="text/javascript">
    /* Main Banner Slider */
 	var idx = 0; // 함수 호출 횟수
@@ -562,14 +520,9 @@ $("#mycart").click(function(){
 <script>
 
  $(".fas.fa-heart").click(function(){
-
-	 
  var productno=$(this).prop("id");
- console.log('this',this);
- console.log(productno);
+ var memberid='${pageContext.request.userPrincipal.name}';
 
-  
-  var memberid='${pageContext.request.userPrincipal.name}';
   
   var data = {
        product_no : productno,
@@ -581,7 +534,7 @@ $("#mycart").click(function(){
   }else{
  
   $.ajax({
-   url :"/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -614,14 +567,9 @@ $("#mycart").click(function(){
 
 </script>
 <script>
-
- $("fa.fa-shopping-cart").click(function(){
- //alert('replye_btn'); 
+$(".fa.fa-shopping-cart").click(function(){ 
 
  var productno=$(this).prop("id");
- console.log(productno);
-  //var formObj = $(".replyForm form[role='form']");
-  
   var memberid='${pageContext.request.userPrincipal.name}';
   
   var data = {
@@ -635,8 +583,7 @@ $("#mycart").click(function(){
   }else{
  
   $.ajax({
-   url :"/cartjson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
-   //request mapping value랑 맞추면되는듯
+   url :"/todaylesson/cartjson",
    type : "post",
    data : data,
    success : function(result){

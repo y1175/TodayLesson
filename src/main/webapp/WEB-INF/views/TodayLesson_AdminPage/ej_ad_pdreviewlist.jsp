@@ -23,8 +23,8 @@
 <tr>
 <td>${item.pdreview_no }</td>
 <td>${item.product_no}</td>
-<td><a href="ad_product_reviewdetail/${item.pdreview_no}">${item.product_name}</a></td>
-<td><a href="ad_product_reviewdetail/${item.pdreview_no}">${item.pdreview_content }</a></td>
+<td><a href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewdetail/${item.pdreview_no}">${item.product_name}</a></td>
+<td><a href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewdetail/${item.pdreview_no}">${item.pdreview_content }</a></td>
 <td>${item.member_id}</td>
 <td>${item.pdreview_date}</td>
 </tr>

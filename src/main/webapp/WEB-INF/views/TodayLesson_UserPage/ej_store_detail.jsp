@@ -19,6 +19,47 @@
 
 
 <style>
+.ej_grid{
+display:inline-block;
+}
+/* 좋아요 아이콘  */	
+div.fas.fa-heart{
+	color:rgb(255, 180, 180);
+	font-size:17px;
+	line-height:40px;
+	text-align:center;
+	height:40px;
+	width:40px;
+	border:1px solid  gray;
+	border-radius:5px;
+	display:block;
+	transition:all .5s ease-in-out
+	}
+	/* 좋아요 hover시 색바뀜 */
+.fas.fa-heart:hover{
+	color:rgb(224, 62, 82);
+	border-color:rgb(224, 62, 82)
+	}
+	
+	/* 장바구니 아이콘  */	
+div.fa.fa-shopping-cart{
+	color:rgb(166, 166, 166);
+	font-size:17px;
+	line-height:40px;
+	text-align:center;
+	height:40px;
+	width:40px;
+	border:1px solid gray;
+	border-radius:5px;
+	display:block;
+	transition:all .5s ease-in-out
+	}
+	/* 장바구니아이콘 hover시 색바뀜 */
+.fa.fa-shopping-cart:hover{
+	color:rgb(255, 180, 180);
+	border-color:rgb(224, 62, 82)
+	}
+
  #ej_sdetail_top{
 border: 1px solid silver;
 width:400px;
@@ -83,27 +124,7 @@ display: inline-block;}
 <input type="hidden" name="product_name" value="${dto.product_name }"/>
 <input type="hidden" name="product_cost" value="${dto.product_cost }"/>
 <input type="hidden" name="product_after_cost" value="${dto.product_after_cost }"/>
-<%-- <select name="selectoption">
-<c:forEach var="item" items="${optionlist}"> 
-  <option value="${item.option_name}" id="optionname">${item.option_name} +${item.option_cost}원</option>
-  </c:forEach>
-</select><br> --%>
-<!-- <script>
 
-$('#selectoption').change(function() {
-alert($('#selectoption option:selected').val());
-});
-$('#ej_apply_btn').click(function(){
-	alert($('#selectoption option:selected').val());
-});
-$('#selectoption').change(function() {
-	
-	alert($(this).val());
-
-	alert($(this).children('option:selected').text());
-
-});
-</script> -->
 
 
 수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" value=1 required="required"><br>
@@ -112,22 +133,20 @@ $('#selectoption').change(function() {
 
 
 <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
-<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary'  onclick="javascript: form.action='/ej_us_orderform';"><br>
-<input type="image" src="" class="ej_like_btn" id="${dto.product_no}" value="♡">
-<input type="image" src="" name="" class="ej_cart_btn"  id="${dto.product_no}" value="장바구니">
+<div class="ej_grid fist">
+<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary'  onclick="javascript: form.action='${pageContext.request.contextPath}/todaylesson/ej_us_orderform';"><br>
+</div>
+<div class="ej_grid second">
+<a href="#"><div class="fas fa-heart" id="${dto.product_no}"></div></a></div>
+<div class="ej_grid third">
+<a href="#"><div class="fa fa-shopping-cart" id="${dto.product_no}"></div></a></div>
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
  </form>
  </nav>
  </div>
  <script>
-/*  $("#to_orderform").click(function(){
-	 //alert('hih');
-	 $("form").attr("action", "/ej_us_orderform");
- }); */
- </script>
- <script>
 
- $(".ej_cart_btn").click(function(){
+ $(".fa.fa-shopping-cart").click(function(){ 
 	 
   var productno=$(this).prop("id");
   var member_id='${pageContext.request.userPrincipal.name}';
@@ -146,7 +165,7 @@ $('#selectoption').change(function() {
   }else{
  
   $.ajax({
-   url :"/cartwith_amount_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/todaylesson/cartwith_amount_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -178,13 +197,10 @@ $('#selectoption').change(function() {
 </script>
  <script>
 
- $(".ej_like_btn").click(function(){
-
-
- var productno=$(this).prop("id");
- console.log(productno);
-
-  
+ $(".fas.fa-heart").click(function(){
+	 
+	 var productno=$(this).prop("id");
+	 
   var member_id='${pageContext.request.userPrincipal.name}';
   
   var data = {
@@ -198,7 +214,7 @@ $('#selectoption').change(function() {
   }else{
  
   $.ajax({
-   url :"/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -342,7 +358,7 @@ ${dto.product_content}
 
   
   $.ajax({
-   url :"/ej_store_detail/registReply",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/todaylesson/ej_store_detail/registReply",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,

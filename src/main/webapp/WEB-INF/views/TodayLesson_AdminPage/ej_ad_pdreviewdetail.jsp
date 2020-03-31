@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 	$(".pdreview_detail_deletebtn").on('click',function(){
 		if(confirm("도배 또는 악성 후기인 경우 삭제합니다. 삭제하시겠습니까?")){
-			location.href="/ad_product_reviewdelete/"+pdreview_no;
+			location.href="${pageContext.request.contextPath}/todaylessonadmin//ad_product_reviewdelete/"+pdreview_no;
 		}
 	
 		
