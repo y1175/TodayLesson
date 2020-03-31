@@ -113,6 +113,23 @@ public class TodayLessonController {
     @RequestMapping("/todaylessonadmin")
     public String admin(Model model) { 
     	
+    	//일일게시글수 집계
+    	int freeboardWriteCount=adminMainService.freeboardWriteCount();
+    	
+    	model.addAttribute("freeboardWriteCount", freeboardWriteCount);
+    	
+    	//일일신규레슨 집계
+    	
+    	//일일 판매금액 집계
+    	int orderlistCostSum=adminMainService.orderlistCostSum();
+    	
+    	model.addAttribute("orderlistCostSum", orderlistCostSum);
+    	
+    	//일일가입자수 집계
+    	int memberJoinCount=adminMainService.memberJoinCount();
+    	
+    	model.addAttribute("memberJoinCount", memberJoinCount);
+    	
     	//레슨카테고리
     	int lessonITCount=adminMainService.lessonITCount();
     	int lessonCookCount=adminMainService.lessonCookCount();
@@ -143,20 +160,22 @@ public class TodayLessonController {
     	model.addAttribute("productEducationCount", productEducationCount);
     	model.addAttribute("productOtherCount", productOtherCount);
     	
-    	//일일게시글수 집계
-    	int freeboardWriteCount=adminMainService.freeboardWriteCount();
+    	//연령대별 회원현황
+    	int memberAge10Sum=adminMainService.memberAge10Sum();
+    	int memberAge20Sum=adminMainService.memberAge20Sum();
+    	int memberAge30Sum=adminMainService.memberAge30Sum();
+    	int memberAge40Sum=adminMainService.memberAge40Sum();
+    	int memberAge50Sum=adminMainService.memberAge50Sum();
+    	int memberAge60Sum=adminMainService.memberAge60Sum();
+    	int memberAge70PlusSum=adminMainService.memberAge70PlusSum();
     	
-    	model.addAttribute("freeboardWriteCount", freeboardWriteCount);
-    	
-    	//일일 판매금액 집계
-    	int orderlistCostSum=adminMainService.orderlistCostSum();
-    	
-    	model.addAttribute("orderlistCostSum", orderlistCostSum);
-    	
-    	//일일가입자수 집계
-    	int memberJoinCount=adminMainService.memberJoinCount();
-    	
-    	model.addAttribute("memberJoinCount", memberJoinCount);
+    	model.addAttribute("memberAge10Sum", memberAge10Sum);
+    	model.addAttribute("memberAge20Sum", memberAge20Sum);
+    	model.addAttribute("memberAge30Sum", memberAge30Sum);
+    	model.addAttribute("memberAge40Sum", memberAge40Sum);
+    	model.addAttribute("memberAge50Sum", memberAge50Sum);
+    	model.addAttribute("memberAge60Sum", memberAge60Sum);
+    	model.addAttribute("memberAge70PlusSum", memberAge70PlusSum);
     	
     	
     	return "hs_ad_main";
@@ -352,15 +371,8 @@ public class TodayLessonController {
            
            return "naverlogin/naversuccess";
        }
-       //
-       
-/*      @RequestMapping("/logout")
-       public String logout() {
-    	   return "redirect:/todaylesson";
-       }	 
-    	*/
-     //google 로그인
-    
+
+     //google 로그인   
        @RequestMapping(value = "/googleSignInCallback")
        public String doSessionAssignActionPage(HttpServletRequest request) throws Exception {
     
@@ -406,24 +418,23 @@ public class TodayLessonController {
     
        }
        
-       
-       @RequestMapping("/join")
+       //회원가입
+       @RequestMapping("/todaylesson/join")
        public String join(HttpServletRequest request, Model model) throws Exception {	   
     	   
     	   /*은지 sms인증*/
-              String api_key = "NCSRC0XSPD85BDRL"; //위에서 받은 api key를 추가
-              String api_secret = "2LVQYEMQFBIBEG8WVXKQOWQ6KPDDVJQ9";  //위에서 받은 api secret를 추가
+           String api_key = "NCSRC0XSPD85BDRL"; //위에서 받은 api key를 추가
+           String api_secret = "2LVQYEMQFBIBEG8WVXKQOWQ6KPDDVJQ9";  //위에서 받은 api secret를 추가
 
-              com.todaylesson.Sms.Coolsms coolsms = new com.todaylesson.Sms.Coolsms(api_key, api_secret);
-              //이 부분은 홈페이지에서 받은 자바파일을 추가한다음 그 클래스를 import해야 쓸 수 있는 클래스이다.
-              
+           com.todaylesson.Sms.Coolsms coolsms = new com.todaylesson.Sms.Coolsms(api_key, api_secret);
+           //이 부분은 홈페이지에서 받은 자바파일을 추가한다음 그 클래스를 import해야 쓸 수 있는 클래스이다.
 
-              HashMap<String, String> set = new HashMap<String, String>();
+           HashMap<String, String> set = new HashMap<String, String>();
               set.put("from", "01026063254"); // 수신번호
-
               set.put("to", (String)request.getParameter("to")); // 발신번호, jsp에서 전송한 발신번호를 받아 map에 저장한다.
               set.put("text", (String)request.getParameter("text")); // 문자내용, jsp에서 전송한 문자내용을 받아 map에 저장한다.
               set.put("type", "sms"); // 문자 타입
+              
               String text=(String)request.getParameter("text");
               model.addAttribute("to",(String)request.getParameter("to"));
               model.addAttribute("auth_num",text);
@@ -433,7 +444,6 @@ public class TodayLessonController {
               JSONObject result = coolsms.send(set); // 보내기&전송결과받기
 
               if ((boolean)result.get("status") == true) {
-
                 // 메시지 보내기 성공 및 전송결과 출력
                 System.out.println("성공");
                 System.out.println(result.get("group_id")); // 그룹아이디
@@ -442,33 +452,23 @@ public class TodayLessonController {
                 System.out.println(result.get("success_count")); // 메시지아이디
                 System.out.println(result.get("에러메세지수: error_count")); // 여러개 보낼시 오류난 메시지 수
               } else {
-
                 // 메시지 보내기 실패
                 System.out.println("실패");
                 System.out.println(result.get("code")); // REST API 에러코드
                 System.out.println(result.get("message")); // 에러메시지
               }
-           return "TodayLesson_UserPage/todaylesson_joinform";
+           return "TodayLesson_UserPage/todaylesson_joinform.us_main_section";
        }
        
        @RequestMapping("/joinresult")
-		 public String joinresult(@RequestParam("id") String member_id
-				 				, @RequestParam("pwd") String member_pwd
-				 				, @RequestParam("name") String member_name
-				 				, @RequestParam("birth") String member_birth
-				 				, @RequestParam("email") String member_email
-				 				, @RequestParam("phone") String member_phone
-				 				, @RequestParam("zipcode") int member_zipcode
-				 				, @RequestParam("nick") String member_nick
-				
-	 				, @RequestParam("addrselect") int addrselect
-	 				,@RequestParam("roadaddr") String roadaddr
-	 				,@RequestParam("jibunaddr") String jibunaddr
-	 				, @RequestParam("detailaddr") String detailaddr
-				 				,  MemberDTO dto,Model model)
-		 {
+		 public String joinresult(@RequestParam("id") String member_id, @RequestParam("pwd") String member_pwd
+				 				, @RequestParam("name") String member_name, @RequestParam("birth") String member_birth
+				 				, @RequestParam("email") String member_email, @RequestParam("phone") String member_phone
+				 				, @RequestParam("zipcode") int member_zipcode, @RequestParam("nick") String member_nick
+	 				            , @RequestParam("addrselect") int addrselect, @RequestParam("roadaddr") String roadaddr
+	 				            , @RequestParam("jibunaddr") String jibunaddr, @RequestParam("detailaddr") String detailaddr
+				 				, MemberDTO dto,Model model){
 
-			 
 			 dto.setMember_id(member_id);
 			 dto.setMember_pwd(member_pwd);
 			 dto.setMember_name(member_name);
@@ -480,11 +480,11 @@ public class TodayLessonController {
 			 
 			//전체주소(도로or지번주소 + 상세주소) addr에 셋팅
 			 String fulladdr= "";	
-			 if(addrselect==0)
-					{fulladdr=roadaddr;}
-					else
-					{fulladdr=jibunaddr;}
-			 
+			 if(addrselect==0){
+				 fulladdr=roadaddr;
+			 }else{
+				 fulladdr=jibunaddr;
+			 }
 			 
 			 dto.setMember_addr(fulladdr+" "+detailaddr);
 			 
@@ -493,7 +493,6 @@ public class TodayLessonController {
 			 //auth를 list에 넣어서 dto에 셋팅
 			 list.add(new Member_AuthDTO("ROLE_USER",dto.getMember_id()));
 			 dto.setAuthList(list);
-			 
 			 
 			 int result=todaylessonService.insert(dto);
 			 model.addAttribute("result",result);
@@ -509,20 +508,21 @@ public class TodayLessonController {
        }
        
        /*id중복 체크*/
-         @ResponseBody 
-          @RequestMapping(value="/idCheck", method= RequestMethod.POST)
-          public int idCheck(@RequestParam("id") String member_id,Model model)
-          {
-              System.out.println(member_id);
-              int row = loginService.idCheck(member_id);
-              model.addAttribute("data",row);
-              return row;
-          }
+       @ResponseBody 
+       @RequestMapping(value="/idCheck", method= RequestMethod.POST)
+       public int idCheck(@RequestParam("id") String member_id,Model model)
+       {
+           System.out.println(member_id);
+           int row = loginService.idCheck(member_id);
+           model.addAttribute("data",row);
+           return row;
+       }
+       
        /*id 찾기*/
-         @ResponseBody
-         @RequestMapping(value = "/userSearch", method = RequestMethod.POST)
-         public String userIdSearch(@RequestParam("inputName_1") String member_name, 
-               @RequestParam("inputPhone_1") String member_phone) {
+       @ResponseBody
+       @RequestMapping(value = "/userSearch", method = RequestMethod.POST)
+       public String userIdSearch(@RequestParam("inputName_1") String member_name, 
+                                  @RequestParam("inputPhone_1") String member_phone) {
             HashMap<String,Object> map=new HashMap<>();
             System.out.println(member_name);
             System.out.println(member_phone);
@@ -533,27 +533,23 @@ public class TodayLessonController {
             System.out.println(result);
 
             return result;
-         }
-  
-         //pwd 찾기
-         @RequestMapping("/findPw")
-     	public String findPw()
-     	{
-     		
+       }
+        
+       //pwd 찾기
+       @RequestMapping("/findPw")
+       public String findPw()
+       {
      		return "/TodayLesson_UserPage/hm_find_pwd.us_main_section";
-     	}
+       }
 
-     	@RequestMapping(value="/findPassword",method=RequestMethod.POST)
-     	public String findPassword(@RequestParam("inputId_2")String member_id,
-                 @RequestParam("inputEmail_2") String member_email
-                 ,HttpServletRequest request
-                 ,Model model){
-     		
+       @RequestMapping(value="/findPassword",method=RequestMethod.POST)
+       public String findPassword(@RequestParam("inputId_2")String member_id,
+                                  @RequestParam("inputEmail_2") String member_email
+                                  ,HttpServletRequest request, Model model){
      		int result = mailSender.mailSendWithPassword(member_id, member_email, request);
      		System.out.println(member_email);
      		model.addAttribute("result",result);
-     		
      		return "/TodayLesson_UserPage/hm_us_search_pwd";
-     	}
+       }
 
 }

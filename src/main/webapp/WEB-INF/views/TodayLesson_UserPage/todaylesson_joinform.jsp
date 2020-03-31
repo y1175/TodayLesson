@@ -3,36 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<title>Insert title here</title>
-
+<meta charset="utf-8">
+<title>TodayLesson</title>
 </head>
+
 <body>
-<h2>회원가입</h2>
-
-<form method="post" id="smsForm">
-<label>연락처</label>
-<input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
-      required="required" value="${to}"/>
+   <h2>회원가입</h2>
+   <form method="post" id="smsForm">
+      <label>연락처</label>
+      <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " required="required" value="${to}"/>
       <input type="hidden" name="text" id="text2" > 
-     
-      
       <input type="button" name="sendSMS" id="sendSMS" value="인증번호 요청" /><br>
-
       <label>인증번호 확인:</label>
-<input type="text" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
-<div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
-<div class="alert alert-danger" id="alert-danger2">인증번호가 일치하지않습니다.</div>
-
- <%-- <input type="hidden" name="${_csrf.parameterName}"
-    value="${_csrf.token}" /> --%>
-    <input type="hidden" id="authNum" value="${auth_num}">
-</form>
+      <input type="text" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
+      <div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
+      <div class="alert alert-danger" id="alert-danger2">인증번호가 일치하지않습니다.</div>
+      <input type="hidden" id="authNum" value="${auth_num}">
+    </form>
 <form method="post" action="/joinresult">
 <input type="hidden" name="phone" value="${to }"/>
 <label>아이디</label>
@@ -55,18 +42,6 @@ onkeyup="passwordCheckFunction();"
 <input type="text" name="name" id="name" placeholder="이름"><br>
 <label>생년월일</label>
 <input type="date" name="birth" id="birth" ><br>
-<%-- <label>연락처</label>
-<input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
-      required="required" value="${to}"/>
-      <input type="hidden" name="text" id="text2" > 
-     
-      
-      <input type="button" name="sendSMS" id="sendSMS" value="인증번호 요청" /><br>
-
-      <label>인증번호 확인:</label>
-<input type="text" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
-<div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
-<div class="alert alert-danger" id="alert-danger2">인증번호가 일치하지않습니다.</div> --%>
  
  <label>e-mail</label>
 <input type="email" name="email" id="email" placeholder="example@email.com"><br>
@@ -96,33 +71,20 @@ onkeyup="passwordCheckFunction();"
 						name="detailaddr" class="form-control"> 
 
 
-
-
-<!-- <input type="text" name="zipcode" placeholder="도로명주소"><br>
-<input type="text" name="zipcode" placeholder="상세주소"><br> -->
-
-
-
 <label>닉네일</label>
 <input type="text" name="nick" placeholder="닉네임"><br>
 <button type="submit" id="submit" class="btn btn-primary">회원가입</button><br>
 <!-- 시큐리티 토큰 -->
-    <input type="hidden" name="${_csrf.parameterName}"
-    value="${_csrf.token}" />
+    <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
-	<script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
-<script type="text/javascript" src="resources/JS/yi_todaylesson_join.js"></script>
-<script type="text/javascript" src="resources/JS/ej_smscheck.js"></script>
+<!-- Join JS -->
+   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+   <script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
+   <script type="text/javascript" src="resources/JS/yi_todaylesson_join.js"></script>
+   <script type="text/javascript" src="resources/JS/ej_smscheck.js"></script>
+<!-- Join JS -->
 
+</body>
 
-
-<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
 </html>

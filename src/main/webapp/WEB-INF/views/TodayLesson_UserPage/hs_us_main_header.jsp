@@ -8,24 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
 <!--header style-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_main_header.css?ver=2">
 <!--header style-->
-
-<!-- header javascript 
-<script type="text/javascript" src="resources/JS/hs_us_main_header.js"></script>
-header javascript -->
-
- 
- <!-- BOOTSTRAP DEPENDENCIES 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css">
-   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
- BOOTSTRAP DEPENDENCIES END-->
-
-
 
 </head>
 <body>
@@ -38,7 +23,7 @@ header javascript -->
                <sec:authorize access="isAnonymous()">  
                   <a href=""><i class="fa fa-ushopping-cart"></i></a>
                   <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a>
-                  <span style="margin-left: 10px;">|</span><a href="">회원가입</a>
+                  <span style="margin-left: 10px;">|</span><a href="/todaylesson/join">회원가입</a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
                <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_USER')">
@@ -71,8 +56,6 @@ header javascript -->
       </div>   -->          
       <!-- 로그인 modal -->
        
-       
-                  
       <div class="hs_us_mainheader_center">
          <a href="/alluser">
             <img src="${pageContext.request.contextPath}/resources/IMG/User_Logo.png" alt="User_Logo" style="width: 12%;">

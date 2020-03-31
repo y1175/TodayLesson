@@ -17,39 +17,39 @@
 }
 /* 카테고리별 현황 박스 */
 .hs_ad_category_chart{
-	width: 60%;
+	width: 65%;
 	border: 1px solid rgba(53, 54, 58, 0.3);
 	margin: 50px 15px 25px;
 	display: inline-block;
-}
+} 
 /* 레슨카테고리 */
 .hs_ad_lesson_product_cg_chart{
 	width: 47%;
-	height: 20%;
+	height: 23%;
 	margin: 30px 10px;;
 	display: inline-block;
 }
 #hs_lessoncg_chartdiv{
-	font-size: 12px;
+	font-size: 13px;
 }
 #hs_productcg_chartdiv{
-	font-size: 12px;
+	font-size: 13px;
 }
 .hs_ad_lesson_product_cg_chart pre{
 	text-align: center;
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: 600;
 }
-.hs_ad_agjoin_chart{
-	width: 70%;
-	height: 35%;
+/* 연령대별 가입현황 */
+.hs_ad_agejoin_chart{
+	width: 30%;
+	height: 50%;
 	border: 1px solid rgba(53, 54, 58, 0.3);
-	margin: 25px 15px;
-}
-.hs_ad_agjoin_chart2{
-	width: 35%;
-	height: 55%;
-	border: 1px solid rgba(53, 54, 58, 0.3);
-	margin: 25px 15px;
+	margin-top: 50px;
 	display: inline-block;
+}
+.hs_ad_agejoin_chart pre{
+	text-align: center;
+	font-size: 13px;
+	font-weight: 600;
 }
