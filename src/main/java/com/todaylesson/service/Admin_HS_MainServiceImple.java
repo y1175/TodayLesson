@@ -12,6 +12,20 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 	@Resource(name="admin_HS_MainMapper")
 	private Admin_HS_MainMapper adminmainMapper;
 	
+	//일일가입자수 집계
+	@Override
+	public int memberJoinCount() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberJoinCount();
+	}
+		
+	//일일 시니어전환자 집계
+	@Override
+	public int seniorChangeCount() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.seniorChangeCount();
+	}
+	
 	//일일게시글수 집계
 	@Override
 	public int freeboardWriteCount() {
@@ -26,12 +40,7 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 		return adminmainMapper.orderlistCostSum();
 	}
 
-	//일일가입자수 집계
-	@Override
-	public int memberJoinCount() {
-		// TODO Auto-generated method stub
-		return adminmainMapper.memberJoinCount();
-	}
+	
 
 	//레슨카테고리
 	@Override
@@ -149,6 +158,8 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 		// TODO Auto-generated method stub
 		return adminmainMapper.memberAge70PlusSum();
 	}
+
+
 
 	
 }

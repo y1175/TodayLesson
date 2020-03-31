@@ -4,6 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_HS_MainMapper">
 
+    <!-- 일일 회원가입현황 -->
+    <select id="memberJoinCount" resultType="int">
+       select count(*) 
+       from member
+       where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+    <!-- 일일 회원가입현황 -->
     <!-- 일일게시글수 집계 / 수량확인 위해서 1달로 해둠 -->
     <select id="freeboardWriteCount" resultType="int">
        select count(*) 
@@ -18,13 +25,14 @@
        where orderlist_date > DATE_ADD(now(), INTERVAL -1 month);
     </select>
     <!-- 일일 판매금액 집계 -->
-    <!-- 일일 회원가입현황 -->
-    <select id="memberJoinCount" resultType="int">
+    <!-- 일일 시니어전환자 집계 -->
+    <select id="seniorChangeCount" resultType="int">
        select count(*) 
-       from member
-       where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
+       from lesson
+       where lesson_register_date > DATE_ADD(now(), INTERVAL -1 month);
     </select>
-    <!-- 일일 회원가입현황 -->
+    <!-- 일일 시니어전환자 집계 -->
+    
     <!-- 레슨카테고리현황 -->
     <select id="lessonITCount" resultType="int">
        select count(*)

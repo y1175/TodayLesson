@@ -113,22 +113,28 @@ public class TodayLessonController {
     @RequestMapping("/todaylessonadmin")
     public String admin(Model model) { 
     	
+    	//일일가입자수 집계
+    	int memberJoinCount=adminMainService.memberJoinCount();
+    	model.addAttribute("memberJoinCount", memberJoinCount);
+    	
+    	//일일 시니어전환자 집계
+    	int seniorChangeCount=adminMainService.seniorChangeCount();
+    	model.addAttribute("seniorChangeCount", seniorChangeCount);
+    	
+    	
     	//일일게시글수 집계
     	int freeboardWriteCount=adminMainService.freeboardWriteCount();
     	
     	model.addAttribute("freeboardWriteCount", freeboardWriteCount);
-    	
-    	//일일신규레슨 집계
     	
     	//일일 판매금액 집계
     	int orderlistCostSum=adminMainService.orderlistCostSum();
     	
     	model.addAttribute("orderlistCostSum", orderlistCostSum);
     	
-    	//일일가입자수 집계
-    	int memberJoinCount=adminMainService.memberJoinCount();
     	
-    	model.addAttribute("memberJoinCount", memberJoinCount);
+    	
+    	
     	
     	//레슨카테고리
     	int lessonITCount=adminMainService.lessonITCount();

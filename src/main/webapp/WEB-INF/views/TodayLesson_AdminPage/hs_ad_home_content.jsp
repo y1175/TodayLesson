@@ -225,7 +225,7 @@
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
             <i class='fas fa-users'></i>
             <pre>Today</pre>
-            <pre>신규가입자</pre>
+            <pre>신규주니어</pre>
          </div>
          <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; bottom: 40px;">
             <b>
@@ -233,16 +233,16 @@
             </b>
          </div>
       </div>
-      <!-- 신규레슨 -->
+      <!-- 신규시니어 -->
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
             <i class='fas fa-users'></i>
             <pre>Today</pre>
-            <pre>신규레슨</pre>
+            <pre>신규시니어</pre>
          </div>
          <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; bottom: 40px;">
             <b>   
-               <fmt:formatNumber value="${memberJoinCount}" type="number" maxFractionDigits="3"/>
+               <fmt:formatNumber value="${seniorChangeCount}" type="number" maxFractionDigits="3"/>
             </b>
          </div>
       </div>
@@ -262,7 +262,7 @@
       <!-- 게시글 -->
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
-            <i class="material-icons">content_paste</i>
+            <i class="fa fa-file-text-o"></i>
             <pre>Today</pre>
             <pre>게시글</pre>
          </div>
