@@ -177,7 +177,6 @@ public class TodayLessonController {
     	model.addAttribute("memberAge60Sum", memberAge60Sum);
     	model.addAttribute("memberAge70PlusSum", memberAge70PlusSum);
     	
-    	
     	return "hs_ad_main";
     }
     

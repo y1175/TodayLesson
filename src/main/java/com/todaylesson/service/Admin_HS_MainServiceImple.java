@@ -11,6 +11,27 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 
 	@Resource(name="admin_HS_MainMapper")
 	private Admin_HS_MainMapper adminmainMapper;
+	
+	//일일게시글수 집계
+	@Override
+	public int freeboardWriteCount() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.freeboardWriteCount();
+	}
+
+	//일일 판매금액 집계
+	@Override
+	public int orderlistCostSum() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.orderlistCostSum();
+	}
+
+	//일일가입자수 집계
+	@Override
+	public int memberJoinCount() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberJoinCount();
+	}
 
 	//레슨카테고리
 	@Override
@@ -86,25 +107,48 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 		return adminmainMapper.productOtherCount();
 	}
 
-	//일일게시글수 집계
+	//연령대별 회원현황
 	@Override
-	public int freeboardWriteCount() {
+	public int memberAge10Sum() {
 		// TODO Auto-generated method stub
-		return adminmainMapper.freeboardWriteCount();
+		return adminmainMapper.memberAge10Sum();
 	}
 
-	//일일 판매금액 집계
 	@Override
-	public int orderlistCostSum() {
+	public int memberAge20Sum() {
 		// TODO Auto-generated method stub
-		return adminmainMapper.orderlistCostSum();
+		return adminmainMapper.memberAge20Sum();
 	}
 
-	//일일가입자수 집계
 	@Override
-	public int memberJoinCount() {
+	public int memberAge30Sum() {
 		// TODO Auto-generated method stub
-		return adminmainMapper.memberJoinCount();
+		return adminmainMapper.memberAge30Sum();
 	}
+
+	@Override
+	public int memberAge40Sum() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberAge40Sum();
+	}
+
+	@Override
+	public int memberAge50Sum() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberAge50Sum();
+	}
+
+	@Override
+	public int memberAge60Sum() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberAge60Sum();
+	}
+
+	@Override
+	public int memberAge70PlusSum() {
+		// TODO Auto-generated method stub
+		return adminmainMapper.memberAge70PlusSum();
+	}
+
 	
 }

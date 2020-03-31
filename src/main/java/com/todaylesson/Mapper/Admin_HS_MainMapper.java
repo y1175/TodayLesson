@@ -6,6 +6,15 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface Admin_HS_MainMapper {
 
+	//일일게시글수 집계
+	public int freeboardWriteCount();
+
+	//일일 판매금액 집계
+	public int orderlistCostSum();
+
+	//일일가입자수 집계
+	public int memberJoinCount();
+	
 	//레슨카테고리
 	public int lessonITCount();
 
@@ -32,13 +41,21 @@ public interface Admin_HS_MainMapper {
 
 	public int productOtherCount();
 
-	//일일게시글수 집계
-	public int freeboardWriteCount();
+	//연령대별 회원현황
+	public int memberAge10Sum();
 
-	//일일 판매금액 집계
-	public int orderlistCostSum();
+	public int memberAge20Sum();
 
-	//일일가입자수 집계
-	public int memberJoinCount();
+	public int memberAge30Sum();
+
+	public int memberAge40Sum();
+
+	public int memberAge50Sum();
+
+	public int memberAge60Sum();
+
+	public int memberAge70PlusSum();
+
+	
 	
 }

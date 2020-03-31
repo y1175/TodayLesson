@@ -3,6 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_HS_MainMapper">
+
+    <!-- 일일게시글수 집계 / 수량확인 위해서 1달로 해둠 -->
+    <select id="freeboardWriteCount" resultType="int">
+       select count(*) 
+       from freeboard
+       where freeboard_writedate > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+    <!-- 일일게시글수 집계 -->
+    <!-- 일일 판매금액 집계 / 수량확인 위해서 1달로 해둠 -->
+    <select id="orderlistCostSum" resultType="int">
+       select sum(orderlist_cost) 
+       from orderlist 
+       where orderlist_date > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+    <!-- 일일 판매금액 집계 -->
+    <!-- 일일 회원가입현황 -->
+    <select id="memberJoinCount" resultType="int">
+       select count(*) 
+       from member
+       where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
+    </select>
+    <!-- 일일 회원가입현황 -->
     <!-- 레슨카테고리현황 -->
     <select id="lessonITCount" resultType="int">
        select count(*)
@@ -67,27 +89,36 @@
        where  product_category=6
     </select>
     <!-- 상품카테고리현황 -->
-    <!-- 일일게시글수 집계 / 수량확인 위해서 1달로 해둠 -->
-    <select id="freeboardWriteCount" resultType="int">
-       select count(*) 
-       from freeboard
-       where freeboard_writedate > DATE_ADD(now(), INTERVAL -1 month);
+    <!-- 연령대별 회원현황 -->
+    <select id="memberAge10Sum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 10 and 19 , 1, 0)) as age_10
+       from member;
     </select>
-    <!-- 일일게시글수 집계 -->
-    <!-- 일일 판매금액 집계 / 수량확인 위해서 1달로 해둠 -->
-    <select id="orderlistCostSum" resultType="int">
-       select sum(orderlist_cost) 
-       from orderlist 
-       where orderlist_date > DATE_ADD(now(), INTERVAL -1 month);
+    <select id="memberAge20Sum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 20 and 29 , 1, 0)) as age_20
+       from member;
     </select>
-    <!-- 일일 판매금액 집계 -->
-    <!-- 일일 회원가입현황 -->
-    <select id="memberJoinCount" resultType="int">
-       select count(*) 
-       from member
-       where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
+    <select id="memberAge30Sum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 30 and 39 , 1, 0)) as age_30
+       from member;
     </select>
-    <!-- 일일 회원가입현황 -->
+    <select id="memberAge40Sum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 40 and 49 , 1, 0)) as age_40
+       from member;
+    </select>
+    <select id="memberAge50Sum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 50 and 59 , 1, 0)) as age_50
+       from member;
+    </select>
+    <select id="memberAge60Sum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 60 and 69 , 1, 0)) as age_60
+       from member; 
+    </select>
+    <select id="memberAge70PlusSum" resultType="int">
+       select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 70 and 100 , 1, 0)) as age_70plus
+       from member;
+    </select>
+    <!-- 연령대별 회원현황 -->
 </mapper>
 
 
