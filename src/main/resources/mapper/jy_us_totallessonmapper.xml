@@ -168,7 +168,9 @@ and now() <= date(lesson_close_period)
 		,orderlist_paystatus,orderlist_calculatestatus,orderlist_usepoint,orderlist_zipcode,orderlist_msg)
 		values
 		(#{orderlist_no},#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
-		sysdate(),1,#{orderlist_cost},1,1,#{orderlist_usepoint},#{orderlist_zipcode},#{orderlist_msg})
+		sysdate(),1,#{orderlist_cost}
+		,1,1,#{orderlist_usepoint},#{orderlist_zipcode},#{orderlist_msg})
+	
 	</insert>
 	<!-- -->
 

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.todaylesson.DTO.LessonCompDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.DTO.MyLessonDTO;
@@ -28,12 +29,12 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 
 	@Override
 	public List<LessonDetailDTO> mylesson_select(int lesson_no) {
-		return mapper.my_lesson_select(lesson_no);
+		return mapper.mylesson_select(lesson_no);
 	}
 
 	@Override
 	public LessonDetailDTO mylesson_detail_this_chapter(int lessondetail_no) {
-		return mapper.my_lesson_detail_thil_chapter(lessondetail_no);
+		return mapper.my_lesson_detail_this_chapter(lessondetail_no);
 	}
 
 	@Override
@@ -42,15 +43,51 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 	}
 
     @Override
-	public int update_lesson_comp(String member_id, int lessondetail_no, int time_change) {
+	public int update_lesson_comp(String member_id, int lessondetail_no, int time_change, int lesson_no) {
     	HashMap<String, Object> hm=new HashMap<String, Object>();
     	hm.put("member_id", member_id);
     	hm.put("lessondetail_no", lessondetail_no);
     	hm.put("time_change", time_change);
+    	hm.put("lesson_no", lesson_no);
     	
     	
 		//return mapper.update_lesson_comp(member_id, lessondetail_no, time_change);
     	return mapper.update_lesson_comp(hm);
+	}
+
+	@Override
+	public LessonCompDTO select_my_lesson_comp(int lessondetail_no, String member_id, int lesson_no) {
+    	HashMap<String, Object> hm=new HashMap<String, Object>();
+    	hm.put("member_id", member_id);
+    	hm.put("lessondetail_no", lessondetail_no);
+    	hm.put("lesson_no", lesson_no);
+    	
+		return mapper.select_my_lesson_comp(hm);
+	}
+
+	@Override
+	public List<LessonDetailDTO> my_lesson_select(int lesson_no, String member_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lesson_no", lesson_no);
+		hm.put("member_id", member_id);
+		return mapper.my_lesson_select(hm);
+	}
+
+	@Override
+	public void lc_insert(String member_id, int lessondetail_no, int lesson_no) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lesson_no", lesson_no);
+		hm.put("member_id", member_id);
+		hm.put("lessondetail_no", lessondetail_no);
+		mapper.lc_insert(hm);
+	}
+
+	@Override
+	public List<LessonCompDTO> mylesson_comp_select(int lesson_no, String member_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lesson_no", lesson_no);
+		hm.put("member_id", member_id);
+		return mapper.mylesson_comp_select(hm);
 	}
 	
 }

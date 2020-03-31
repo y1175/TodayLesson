@@ -161,5 +161,7 @@ public class JY_US_Senior_Request_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_update_senior_result";
 	}
 	
+
+	
 	
 }

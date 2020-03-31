@@ -171,8 +171,8 @@ $('#all_point').change(function() {
 <input type="hidden" name="orderlist_cost" id="orderlist_cost" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= "${mdto.member_point}">
-수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
-휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
+수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value='${mdto.member_name }' readonly="readonly"><br>
+휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value="${mdto.member_phone }" readonly="readonly"><br>
 주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
 
 

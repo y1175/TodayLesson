@@ -75,6 +75,8 @@ ${dto.lessondetail_content}
 현재 레슨 챕터 <br><c:out value="${dto.lessondetail_chapter}"/>
 
 <input type="hidden" name="lessondetail_no" id="lessondetail_no" value="${dto.lessondetail_no}">
+<input type="hidden" name="lesson_no" id="lesson_no" value="${dto.lesson_no}">
+
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br>
 <input type="submit" name="lesson_comp_update" id="lesson_comp_update">

@@ -57,7 +57,7 @@ $.ajax({
 시니어 등록일 <c:out value="${dto.senior_register_date}"/><br>
 시니어 은행명 <div id = "bank_name"></div>
 시니어 예금주 <c:out value="${dto.senior_account_name}" /><br> 
-시니어 예금주 <c:out value="${dto.senior_account_num}" /><br> 
+시니어 계좌번호 <c:out value="${dto.senior_account_num}" /><br> 
 시니어 사업자 번호 <c:out value ="${dto.senior_crno }"/><br>
 시니어 상호명
 
