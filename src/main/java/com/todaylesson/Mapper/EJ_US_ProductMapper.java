@@ -80,4 +80,10 @@ public interface EJ_US_ProductMapper {
 
 	public List<ProductDTO> selectCategory(int product_category);
 
+	public int updatestock(ProductDTO productdto);
+
+	public int selectstock(int product_no);
+
+	public int updateproductlike(int product_no);
+
 }

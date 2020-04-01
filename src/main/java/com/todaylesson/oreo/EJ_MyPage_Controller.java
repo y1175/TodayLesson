@@ -18,6 +18,7 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.OrderDetailDTO;
 import com.todaylesson.DTO.OrderListDTO;
+import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.service.EJ_All_Product_Service;
 
 @RequestMapping("/todaylessonmypage/")
@@ -145,6 +146,25 @@ public class EJ_MyPage_Controller {
 		{
 		service.insertorder_cart(cart, orderlist_no);
 		//받아온 리스트를 order_detail테이블에 insert하기
+		//각각의 상품 및 재품 stock  update하기
+		//Product테이블에 stock update  ..pdcount받아와야함
+		ProductDTO productdto=new ProductDTO();
+	    int product_no=cart.getProduct_no();
+		int orderamount=cart.getCart_amount();
+		
+		int oldstock=service.selectstock(product_no);//기존 재고 받아오기...레슨도해야되는데 ㅋ
+		int newstock=oldstock-orderamount;
+		
+		productdto.setProduct_no(product_no);
+		productdto.setProduct_stock(newstock);
+
+		service.updatestock(productdto);
+		/*System.out.println("pdcount"+order_count);
+		
+		int newstock=oldstock-order_count;
+		System.out.println("newstock"+newstock);
+		productdto.setProduct_no(product_no);
+		productdto.setProduct_stock(newstock);*/
 		}
 		
 		

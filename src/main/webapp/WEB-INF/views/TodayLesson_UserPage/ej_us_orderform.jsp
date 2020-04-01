@@ -54,7 +54,6 @@
  <input type="hidden" name="product_name" value=${product_name }>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <input type="hidden" name="order_count" value=${pdcount }>
-
  
  <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
  <input type="hidden" name="product_after_cost" value="${product_after_cost }">

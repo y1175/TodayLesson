@@ -29,6 +29,7 @@ $(document).ready(function(){
 리뷰번호 ${dto.pdreview_no }<br>
 상품번호 ${dto.product_no}<br>
 상품명 ${dto.product_name}<br>
+리뷰제목 ${dto.pdreview_title}<br>
 리뷰내용<br>
 ${dto.pdreview_content }<br>
 작성자 ${dto.member_id}<br>

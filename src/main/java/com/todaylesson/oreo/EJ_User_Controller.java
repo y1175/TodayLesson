@@ -52,10 +52,12 @@ public class EJ_User_Controller {
 	@RequestMapping("/ej_store_main/{product_category}")
 	public String slist(@PathVariable("product_category") int product_category, Model model) {
 		System.out.println("product_category"+product_category);
+		
 		if(product_category==0)
 		{
 			List<ProductDTO> list = service.selectAll();
 			model.addAttribute("list",list);
+		
 		}
 		else {
 				List<ProductDTO> list = service.selectcategory(product_category);
@@ -67,7 +69,7 @@ public class EJ_User_Controller {
 	}
 	
 	
-	
+	//상품 디테일
 	@RequestMapping("/ej_store_detail/{product_no}")
 	public String sdetail(@PathVariable("product_no") int product_no, Model model) {
 		
@@ -87,11 +89,12 @@ public class EJ_User_Controller {
 	
 	
 	
-	// 상품 소감(댓글) 작성 registReply
+	// 상품 리뷰(댓글) 작성 registReply
 	@ResponseBody
 	@RequestMapping(value = "/ej_store_detail/registReply", method = RequestMethod.POST)
 	public void registReply (/*PdReviewDTO reply*/
 			@RequestParam String member_id,
+			@RequestParam String pdreview_title ,
 			@RequestParam String pdreview_content ,
 			@RequestParam int product_no,
 			HttpSession session) throws Exception {
@@ -100,6 +103,7 @@ public class EJ_User_Controller {
 		PdReviewDTO pdreviewdto=new PdReviewDTO();
 		pdreviewdto.setMember_id(member_id);
 		pdreviewdto.setProduct_no(product_no);
+		pdreviewdto.setPdreview_title(pdreview_title);
 		pdreviewdto.setPdreview_content(pdreview_content);
 		
 		int result=service.registReply(pdreviewdto);
@@ -111,7 +115,7 @@ public class EJ_User_Controller {
 	
 	
 	
-	
+	//좋아요
 	@ResponseBody
 	@RequestMapping("/likejson")
 	public String likemain(@RequestParam(value="product_no") int product_no
@@ -125,6 +129,7 @@ public class EJ_User_Controller {
 		String result;
 		
 		List<MyLikeDTO> product_in_mylike = service.has_mylike_product(likedto);
+		service.updateproductlike(product_no);
 		
 		if (product_in_mylike.isEmpty()) {
 			service.insertmylike(likedto);
@@ -135,6 +140,7 @@ public class EJ_User_Controller {
 		return result;
 		
 	}
+	//장바구니
 	@ResponseBody
 	@RequestMapping("/cartjson")
 	public String cartmain(@RequestParam(value="product_no") int product_no
@@ -157,13 +163,36 @@ public class EJ_User_Controller {
 			result="false";
 		}
 		return result;
-		
-		
-		
 	}
 	
+	//디테일에서 개수 지정가능한 장바구니
+		@ResponseBody
+		@RequestMapping("/cartwith_amount_json")
+		public String cartwith(@RequestParam(value="product_no") int product_no
+				,@RequestParam(value="member_id") String member_id
+				,@RequestParam(value="cart_amount") int cart_amount)
+		{
+			
+			CartDTO cartdto=new CartDTO();
+			cartdto.setMember_id(member_id);
+			cartdto.setProduct_no(product_no);
+		
+		
+
+			String result;
+			List<CartDTO> product_in_cart = service.has_cart_product(cartdto);
+			
+			if (product_in_cart.isEmpty()) {
+				cartdto.setCart_amount(cart_amount);
+				service.insertcart(cartdto);
+				result="success"; 
+			} else {
+				result="false";
+			}
+			return result;
+		}
 	
-	
+	//주문양식
 	@RequestMapping("/ej_us_orderform")
 	public String orderform(@RequestParam("product_no") int product_no
 			,@RequestParam("pdcount") int pdcount
@@ -190,32 +219,7 @@ public class EJ_User_Controller {
 	}
 	
 
-	@ResponseBody
-	@RequestMapping("/cartwith_amount_json")
-	public String cartwith(@RequestParam(value="product_no") int product_no
-			,@RequestParam(value="member_id") String member_id
-			,@RequestParam(value="cart_amount") int cart_amount)
-	{
-		
-		CartDTO cartdto=new CartDTO();
-		cartdto.setMember_id(member_id);
-		cartdto.setProduct_no(product_no);
-	
-	
-
-		String result;
-		List<CartDTO> product_in_cart = service.has_cart_product(cartdto);
-		
-		if (product_in_cart.isEmpty()) {
-			cartdto.setCart_amount(cart_amount);
-			service.insertcart(cartdto);
-			result="success"; 
-		} else {
-			result="false";
-		}
-		return result;
-	}
-	
+	//주문양식에서 포인트 적용
 	@ResponseBody
 	@RequestMapping("/ej_us_orderform/applypointjson")
 	public void applypoint(@RequestParam(value="usepoint") int usepoint
@@ -229,10 +233,12 @@ public class EJ_User_Controller {
 	}
 	
 	
-	
+	//주문완료
 	@RequestMapping("/orderlistdetail")
 	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto
 			,@RequestParam(value="orderlist_cost", required=false) int orderlist_cost
+			,@RequestParam(value="product_no", required=false) int product_no
+			,@RequestParam(value="order_count") int order_count
 			, @RequestParam(value="addrselect",required=false) int addrselect
 			,@RequestParam(value="roadaddr",required=false) String roadaddr
 			,@RequestParam(value="jibunaddr",required=false) String jibunaddr
@@ -263,6 +269,17 @@ public class EJ_User_Controller {
 	memberdto.setMember_point(updatedpoint);
 	service.updatepoint(memberdto);
 	
+	//Product테이블에 stock update  ..pdcount받아와야함
+	ProductDTO productdto=new ProductDTO();
+	System.out.println("pdcount"+order_count);
+	int oldstock=service.selectstock(product_no);
+	int newstock=oldstock-order_count;
+	System.out.println("newstock"+newstock);
+	productdto.setProduct_no(product_no);
+	productdto.setProduct_stock(newstock);
+
+	service.updatestock(productdto);
+	
 	//주문번호 생성
 		 Calendar cal = Calendar.getInstance();
 		 int year1 = cal.get(Calendar.YEAR);
@@ -281,10 +298,8 @@ public class EJ_User_Controller {
 		 }
 		 
 		 String orderId =ymd+subNum;
-		 System.out.println("오더아이디:"+orderId);
-		 System.out.println("데이터타입확인:"+orderId instanceof String);
 		int orderlist_no=Integer.parseInt(orderId);
-			System.out.println("orderlist_NO:"+orderlist_no);
+		
 		oldto.setOrderlist_no(orderlist_no); 
 		service.insertorderlist(oldto);
 		oddto.setOrderlist_no(orderlist_no);

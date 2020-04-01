@@ -408,7 +408,7 @@ body{
 <br>
 
 <!--  <form role="form" method="post" autocomplete="off">   -->
-
+<c:set var="now" value="<%=new java.util.Date()%>" />
 
    <div class="" style="width: 80%; margin: auto;">
    <!-- 카테고리 선택 아이콘들 -->
@@ -480,17 +480,24 @@ body{
                         <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_newproduct_line"></div>
+                      <c:set var="stock" value="${storenewproductlist.product_stock}"/>
+                           <c:if test="${stock<=0}">
+                           soldout
+                           </c:if>
                      <div class="hs_user_store_newprodct_cost">
                       <fmt:formatNumber value="${storenewproductlist.product_after_cost}" type="number" maxFractionDigits="3"/>원
                         <span class="hs_user_store_newprodct_BFcost">
                        
                            <c:out value="${storenewproductlist.product_cost}원"/>
+                           
                         </span>
+                        
                      </div>
                      <div class="hs_user_store_newprodct_likenum_box">                
                         <span class="hs_user_store_newprodct_likenum">
-                          <!--  <i class="fas fa-heart"></i>
-                           111 -->
+                           <i class="fas fa-heart"></i>
+                           ${storenewproductlist.product_like}
+                          
                         </span>
                      </div>     
                   </div>

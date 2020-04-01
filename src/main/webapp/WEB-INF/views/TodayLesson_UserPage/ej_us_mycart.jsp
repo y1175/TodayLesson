@@ -47,6 +47,7 @@ text-align: right;
 
 
 <c:choose>
+
 <c:when test="${lesson_title==null}"><!--상품정보  -->
 <td><a href="#" class="delete_product_cart" id="${item.product_no}" >x</a></td>
 <td>상품</td>
@@ -55,6 +56,7 @@ text-align: right;
 <td><fmt:formatNumber value="${item.product_after_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>${item.cart_amount }</td>
 </c:when>
+
 <c:when test="${product_name==null}"><!--레슨정보  -->
 <td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" >x</a></td>
 <td>레슨</td>

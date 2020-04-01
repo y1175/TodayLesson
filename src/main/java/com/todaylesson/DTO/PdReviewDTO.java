@@ -15,7 +15,7 @@ public class PdReviewDTO {
 
 	private int pdreview_no;
 	private int orderlist_no;
-	private String pdreview_filepath;
+	private String pdreview_title;
 	private String pdreview_content;
 	private String pdreview_date;
 	//memberÅ×ÀÌºí²¨

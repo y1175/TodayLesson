@@ -14,7 +14,11 @@
 	
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+<!-- include summernote css/js-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<!-- include summernote-ko-KR -->
+<script src="/resources/JS/summernote-ko-KR.js"></script>
 
 
 
@@ -89,7 +93,19 @@ display: inline-block;}
 					width:400px;
 					background-color: white;}
 </style>
-
+<script>
+$('document').ready(function() { 
+	
+	
+	$('#summernote').summernote({
+		placeholder : 'content',
+		minHeight : 370,
+		maxHeight : null,
+		focus : true,
+		lang : 'ko-KR'
+	});	
+});
+</script>
 </head>
 <body>
 
@@ -134,7 +150,7 @@ display: inline-block;}
 
 <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
 <div class="ej_grid fist">
-<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary'  onclick="javascript: form.action='${pageContext.request.contextPath}/todaylesson/ej_us_orderform';"><br>
+<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary' ><br>
 </div>
 <div class="ej_grid second">
 <a href="#"><div class="fas fa-heart" id="${dto.product_no}"></div></a></div>
@@ -146,6 +162,20 @@ display: inline-block;}
  </div>
  <script>
 
+	$("#to_orderform").click(function(){
+		if(${dto.product_stock }<=0)
+			{
+			alert('일시품절된 상품입니다.');
+			}
+		else{
+		 $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/ej_us_orderform");
+			$("form").submit();  
+		}
+		
+	});
+	
+	
+/* 장바구니 아이콘 */
  $(".fa.fa-shopping-cart").click(function(){ 
 	 
   var productno=$(this).prop("id");
@@ -310,49 +340,59 @@ ${dto.product_content}
 
 <tr>
 <td>${item.member_id }</td>
-<td>${item.pdreview_content }</td>
+<td class="reviewTitle">${item.pdreview_title }</td>
+<td class="reviewCon">${item.pdreview_content }</td>
 <td>${item.pdreview_date }</td>
 </tr>
 </c:forEach>
 </table>
 
  <section class="replyList">
- <!--foreach로 db에서 불러오면 되네  -->
 <ol>
 </ol>
-<!-- 
-<script>
-  replyList(); 
-</script> -->
 </section> 
-<div id="replyListTest">
-</div>
+
 <section class="replyForm">
 <form role="form" method="post" autocomplete="off">
 <input type="hidden" name="gdsNum" id="gdsNum" value="${dto.product_no }">
-
+ <td><label>제목</label>
+      <input type="text" id="pdreview_title" class="pdreview_title"name="pdreview_title">
 <div class="input_area">
-	<textarea name="repCon" id="repCon" rows="7" cols="40"></textarea>
+	<textarea name="pdreview_content" class="repCon" id="summernote" rows="3" cols="30"></textarea>
 </div>
 
 <div class="input_area">
 <button type="button" id="reply_btn" class="btn btn-primary">후기 남기기</button>
-
 </div>
+
 </form>
+
 </section>
 
 <script>
+/* $(".reviewCon").hide(); */
+ $(".reviewCon").slideUp();
+
+$(".reviewTitle").click(function(){
+	console.log(this);
+	//전체 댓글내용 다보이니까
+	//this 의 내용만 보이도록 수정하기
+	/* $(".reviewCon").toggle(); */
+	$(this).next(".reviewCon").slideToggle(100);
+}); 
+
  $("#reply_btn").click(function(){
 
   var formObj = $(".replyForm form[role='form']");
   var gdsNum = $("#gdsNum").val();
-  var repCon = $("#repCon").val();
+  var pdreview_title= $(".pdreview_title").val();
+  var repCon = $(".repCon").val();
   var member_id=$("#member_id").val();
   
   var data = {
 		 product_no : gdsNum,
 		 pdreview_content : repCon,
+		 pdreview_title: pdreview_title,
 		 member_id: member_id
     };
 
@@ -363,11 +403,10 @@ ${dto.product_content}
    type : "post",
    data : data,
    success : function(){
-    console.log('success');
-    console.log(data);
-    console.log('this'+this);
+	   
     console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id);
-    $("#repCon").val("");
+    $(".repCon").val("");
+    $(".pdreview_title").val("");
 	 /* 
     if(data.member_id!=null)
     	{
@@ -375,7 +414,8 @@ ${dto.product_content}
     	} */
     var str = "";
 	str+="<tr><td>"+data.member_id+"</td>"
-	str+="<td>"+data.pdreview_content+"</td></tr>"
+	str+="<td>"+data.pdreview_title+"</tr>"
+	/* str+="<td>"+data.pdreview_content+"</td></tr>" */
    
 
   

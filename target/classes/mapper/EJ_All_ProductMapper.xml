@@ -48,9 +48,9 @@ where product_no=#{product_no}
    	, product_category=#{product_category}
    	, product_sale=#{product_sale}
    	, product_after_cost=#{product_after_cost}
-   	where product_no=#{product_no}
-				
+   	where product_no=#{product_no}	
    	</update>
+   	
    	<update id="updatepro_nothumbnail" parameterType="com.todaylesson.DTO.ProductDTO">
    		update product
    	set product_name=#{product_name}
@@ -79,8 +79,8 @@ select orderlist.orderlist_no from orderlist, order_detail
  	where order_detail.orderlist_no=orderlist.orderlist_no and product_no=#{product_no} and member_id=#{member_id}
  	order by orderlist_date desc limit 1
  </selectKey>
- insert into pdreview(orderlist_no, pdreview_content, pdreview_date)
- values (#{orderlist_no},#{pdreview_content},sysdate())
+ insert into pdreview(orderlist_no, pdreview_title, pdreview_content, pdreview_date)
+ values (#{orderlist_no},#{pdreview_title},#{pdreview_content},sysdate())
 </insert>
 
 <!--관리자 댓글 전체 리스트보기  -->
@@ -123,12 +123,16 @@ where member_id=#{member_id}
 	insert into order_detail (orderlist_no,product_no,order_count)
 	 values(#{orderlist_no},#{product_no},#{order_count})
 	</insert>
-	<!-- insert into tbl_order_details(orderDetailsNum, orderId, gdsNum, cartStock)
-     select tbl_order_details_seq.nextval, #{orderId}, gdsNum, cartStock
-         from tbl_cart     -->
+	
 	<insert id="insertmylike" parameterType="com.todaylesson.DTO.MyLikeDTO">
 	insert into mylike(product_no,member_id) values(#{product_no},#{member_id})
 	</insert>
+	
+	<!-- 좋아요 할 때 마다 해당 상품테이블의 좋아요 누적 -->
+	<update id="updateproductlike">
+	update product set product_like=ifnull(product_like,0)+1
+				where product_no=#{product_no}
+	</update>
 	
 	<insert id="insertcart" parameterType="com.todaylesson.DTO.CartDTO">
 	insert into cart(product_no,member_id, cart_amount) values(#{product_no},#{member_id},#{cart_amount})
@@ -145,14 +149,27 @@ where member_id=#{member_id}
 						where member_id=#{member_id}
 	</select>
 	
-	<!-- updatepoint(int remainpoint); -->
+	<!-- updatepoint -->
 	 <update id="updatepoint"  parameterType="com.todaylesson.DTO.MemberDTO">
         update  member
         set member_point = #{member_point}
         where member_id = #{member_id}  
     </update>
-	 
-
+<!--원래 재고 불러오기  -->
+<select id="selectstock" parameterType="int" resultType="int">
+select product_stock from product
+					where product_no=#{product_no}
+</select>
+	<!--주문시 재고 감소  -->
+	  <update id="updatestock"  parameterType="com.todaylesson.DTO.ProductDTO">
+ update  product
+        set product_stock = #{product_stock}
+        where product_no = #{product_no}  
+    </update>
+<!--스토어 메인 좋아요 수 불러오기  -->
+<select id="selectlikenum" parameterType="int" resultType="int">
+select count(*) from mylike where product_no=#{product_no}
+</select>
 	<select id="has_cart_product" resultType="com.todaylesson.DTO.CartDTO" parameterType="com.todaylesson.DTO.CartDTO">
 select * from cart
 where product_no = #{product_no} and member_id=#{member_id}
