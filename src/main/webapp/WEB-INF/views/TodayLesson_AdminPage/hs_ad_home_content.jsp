@@ -223,7 +223,7 @@
       <!-- 신규가입자 -->
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
-            <i class='fas fa-users'></i>
+            <i class='fas fa-user-edit'></i>
             <pre>Today</pre>
             <pre>신규주니어</pre>
          </div>
@@ -236,7 +236,7 @@
       <!-- 신규시니어 -->
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
-            <i class='fas fa-users'></i>
+            <i class='far fa-id-badge'></i>
             <pre>Today</pre>
             <pre>신규시니어</pre>
          </div>
@@ -249,7 +249,7 @@
       <!-- 판매금액 -->
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
-            <i class="material-icons">&#xe84f;</i>
+            <i class='fas fa-file-invoice-dollar'></i>
             <pre>Today</pre>
             <pre>판매금액</pre>
          </div>
@@ -302,7 +302,7 @@
       
      
    </div>
-  
+    
    
    <!-- 가운데 -->
    
