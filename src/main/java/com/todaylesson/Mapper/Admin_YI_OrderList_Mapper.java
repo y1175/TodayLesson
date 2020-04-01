@@ -16,4 +16,8 @@ public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderlist(HashMap<String, 
 
 public int order_modify(HashMap<String,Object> hm);
 
+public List<SQLjoin_OrderList_Order_detail_MemberDTO> refundlist(HashMap<String, Object> hm);
+
+public int order_refund_modify(HashMap<String, Object> hm);
+
 }
