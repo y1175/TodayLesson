@@ -21,8 +21,8 @@
 <!-- Banner JS -->
 </head>
 <body>
-   <div class="hs_Admin_BannerBox">
-      <h4>배너관리</h4>
+   <div class="hs_Admin_Banner">
+      <h4 class="hs_Admin_Banner_Title">배너관리</h4>
       <div>
          <form method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
             <select name="search">
@@ -31,10 +31,10 @@
             </select>
             <input type="text" name="searchtxt">
             <input type="submit" value="검색">
-           
+            <input type="button" id="hs_ad_bannerRegistrationrBtn" class="" value="배너등록">
          </form>
       </div> 
-       <input type="button" id="hs_ad_bannerRegistrationrBtn" class="" value="배너등록">
+       
       <div class="hs_ad_bannerLine"></div>   
        
       <c:forEach var="adminBannerList" items="${adminBannerList}">

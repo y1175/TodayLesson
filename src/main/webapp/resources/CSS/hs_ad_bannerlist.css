@@ -1,7 +1,20 @@
 @charset "utf-8";
-.hs_Admin_BannerBox{
+.hs_Admin_Banner{
 	width: 90%;
 	margin: auto;
 	margin-top: 30px;
 	color: rgb(53, 54, 58);
+}
+.hs_Admin_Banner_Title{
+	font-size: 23px;
+	font-weight: 800;
+}
+#hs_ad_bannerRegistrationrBtn{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	background-color: rgb(224, 62, 82);
 }
