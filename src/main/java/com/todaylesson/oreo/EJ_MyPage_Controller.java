@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
@@ -46,7 +47,30 @@ public class EJ_MyPage_Controller {
 		return "TodayLesson_UserPage/ej_us_mycart.us_my_section";
 	}
 	
-
+	@ResponseBody
+	@RequestMapping("/deletecart_json")
+	public int  deletecart(@RequestParam(value="product_no")int product_no
+			,@RequestParam(value="lesson_no")int lesson_no
+			,@RequestParam(value="member_id")String member_id)
+	{
+		System.out.println("deletecart_prono:"+product_no);
+		System.out.println("deletecart_lesson no:"+lesson_no);
+		
+		CartDTO cartdto=new CartDTO();
+		cartdto.setMember_id(member_id);
+		
+		int result=0;
+		
+		if(lesson_no==0) {//상품삭제
+			cartdto.setProduct_no(product_no);
+		 result=service.deletecart(cartdto);
+		 }
+		else if(product_no==0) {//레슨삭제
+			cartdto.setLesson_no(lesson_no);
+			result=service.deletecart_lesson(cartdto);
+		}
+				return result;
+	}
 	
 	@RequestMapping("/order_cart")
 	public String  order_cart(OrderListDTO oldto

@@ -212,6 +212,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.deletepdreview(pdreview_no);
 	}
 
+	@Override
+	public List<ProductDTO> selectcategory(int product_category) {
+		// TODO Auto-generated method stub
+		return mapper.selectCategory(product_category);
+	}
+
 
 
 }

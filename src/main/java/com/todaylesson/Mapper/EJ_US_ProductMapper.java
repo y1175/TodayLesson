@@ -78,4 +78,6 @@ public interface EJ_US_ProductMapper {
 
 	public int deletepdreview(int product_no);
 
+	public List<ProductDTO> selectCategory(int product_category);
+
 }

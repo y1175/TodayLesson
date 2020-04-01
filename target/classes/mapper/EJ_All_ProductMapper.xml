@@ -7,13 +7,18 @@
 <mapper namespace="com.todaylesson.Mapper.EJ_US_ProductMapper">
 
 
-<!--1.상품관리  -->
+
 <select id="allData" resultType="com.todaylesson.DTO.ProductDTO">
 select *
 from product
 </select>
 
+<select id="selectCategory" parameterType="int" resultType="com.todaylesson.DTO.ProductDTO">
+select *
+from product where product_category=#{product_category}
+</select>
 
+<!--1.상품관리  -->
 <!-- 게시판 insert -->
 <insert id="insertBoard" parameterType="com.todaylesson.DTO.ProductDTO">
 INSERT INTO product (product_name, product_cost, product_stock, product_content, product_img, product_thumb, product_category, product_sale, product_after_cost, product_date)

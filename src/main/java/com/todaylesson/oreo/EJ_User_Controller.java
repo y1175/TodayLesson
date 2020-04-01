@@ -49,11 +49,20 @@ public class EJ_User_Controller {
 	
 	
 	//스토어 메인
-	@RequestMapping("/ej_store_main")
-	public String slist(Model model) {
-		List<ProductDTO> list = service.selectAll();
-		model.addAttribute("list",list);
-		//.us_main_section
+	@RequestMapping("/ej_store_main/{product_category}")
+	public String slist(@PathVariable("product_category") int product_category, Model model) {
+		System.out.println("product_category"+product_category);
+		if(product_category==0)
+		{
+			List<ProductDTO> list = service.selectAll();
+			model.addAttribute("list",list);
+		}
+		else {
+				List<ProductDTO> list = service.selectcategory(product_category);
+				model.addAttribute("list",list);
+		}
+		
+	
 		return "TodayLesson_UserPage/ej_store_main.us_main_section";
 	}
 	
@@ -219,30 +228,7 @@ public class EJ_User_Controller {
 		System.out.println("");
 	}
 	
-	@ResponseBody
-	@RequestMapping("/deletecart_json")
-	public int  deletecart(@RequestParam(value="product_no")int product_no
-			,@RequestParam(value="lesson_no")int lesson_no
-			,@RequestParam(value="member_id")String member_id)
-	{
-		System.out.println("deletecart_prono:"+product_no);
-		System.out.println("deletecart_lesson no:"+lesson_no);
-		
-		CartDTO cartdto=new CartDTO();
-		cartdto.setMember_id(member_id);
-		
-		int result=0;
-		
-		if(lesson_no==0) {//상품삭제
-			cartdto.setProduct_no(product_no);
-		 result=service.deletecart(cartdto);
-		 }
-		else if(product_no==0) {//레슨삭제
-			cartdto.setLesson_no(lesson_no);
-			result=service.deletecart_lesson(cartdto);
-		}
-				return result;
-	}
+	
 	
 	@RequestMapping("/orderlistdetail")
 	public String orderlistdetail(OrderDetailDTO oddto, OrderListDTO oldto

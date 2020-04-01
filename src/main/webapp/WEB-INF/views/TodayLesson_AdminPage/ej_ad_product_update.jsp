@@ -27,7 +27,7 @@
 		
 		});
 		
-		$('#event_thumbnail').on('click',function(){
+		$('#product_thumbnail').on('click',function(){
 			$(this).removeAttr("style");
 		});
 	
@@ -45,7 +45,7 @@
 	<div style="width: 60%; margin: auto;">
 		
 		<form role="form"  name="productupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
-		 action="${pageContext.request.contextPath}/ad_product_update_result"> 
+		 action="${pageContext.request.contextPath}/todaylessonadmin/ad_product_update_result"> 
 		<input type ="hidden" id="product_no" name="product_no" value="${dto.product_no}">
 		<br>
 		<label>카테고리</label>

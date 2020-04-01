@@ -74,10 +74,10 @@ public class EJ_Admin_Product_Controller {
 
 		dto.setProduct_img(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setProduct_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-		String img=dto.getProduct_img();
+	/*	String img=dto.getProduct_img();
 		String imgthumb=dto.getProduct_thumb();
 		System.out.println("이미지경로: "+img);
-		System.out.println("썸네일이미지경로: "+imgthumb);
+		System.out.println("썸네일이미지경로: "+imgthumb);*/
 		int cost=dto.getProduct_cost()*(100-dto.getProduct_sale())/100;
 		dto.setProduct_after_cost(cost);
 		int result = service.insertBoard(dto);
@@ -126,7 +126,9 @@ public class EJ_Admin_Product_Controller {
 		{
 		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
 		 dto.setProduct_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-	      String imgthumb=dto.getProduct_thumb();
+		 dto.setProduct_img(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName); 
+		// String imgthumb=dto.getProduct_thumb();
+	      
 	      int result = service.updatepro(dto);
 	      model.addAttribute("result", result);
 	      return "TodayLesson_AdminPage/ej_ad_product_updateresult";	      

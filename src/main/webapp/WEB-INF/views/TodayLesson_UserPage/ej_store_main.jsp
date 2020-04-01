@@ -16,6 +16,18 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <style>
+.ej_grid{
+display: inline-block;
+width: 80px;
+height: 70px;
+}
+/* .ej_grid a div{
+width:140px;
+color: solid black;
+} */
+div.fas.fa-check-double{
+
+}
 /* Main Bunner 슬라이더(자동 좌우적용) */
 body{
 	margin : opx auto;
@@ -391,20 +403,31 @@ body{
 <body>
  <c:set var="member_id" value="${pageContext.request.userPrincipal.name}"></c:set>
  ${member_id }회원님의
-<a href="mycart/${member_id}" id="mycart">내장바구니</a>
-<a href="mylike/${member_id}" id="mylike">내 좋아요</a><br>
+<a href="/todaylessonmypage/mycart/${member_id}" id="mycart">내장바구니</a>
+<a href="/todaylessonmypage/mylike/${member_id}" id="mylike">내 좋아요</a><br>
+<br>
 
 <!--  <form role="form" method="post" autocomplete="off">   -->
- 
- <!-- 스토어 신규 상품 -->
+
+
    <div class="" style="width: 80%; margin: auto;">
-      <b class="" style="font-size: 25px;"> 스토어신규 </b>
+   <!-- 카테고리 선택 아이콘들 -->
+    <div class="ej_grid all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0"><div class="fas fa-check-double"><br>전체</div></a></div>
+  <div class="ej_grid lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1"><div class="fas fa-globe-americas"><br>외국어</div></a></div>
+    <div class="ej_grid it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2"><div class="fas fa-desktop"><br>IT</div></a></div>
+     <div class="ej_grid cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3"><div class="fas fa-pizza-slice"><br>요리</div></a></div>
+      <div class="ej_grid diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4"><div class="fas fa-hammer"><br>DIY</div></a></div>
+      <div class="ej_grid exer"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><div class="fas fa-running"><br>운동</div></a></div>
+        <div class="ej_grid ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><div class="fas fa-ellipsis-h"><br>기타</div></a></div>
+       <br>
+        <!-- 스토어 상품 -->
+      <b class="" style="font-size: 25px;"> 전체</b>
       <div class="" style="margin-top: 30px;">
          <c:forEach var="storenewproductlist" items="${list}">
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_newproduct">
                   <div class="hs_user_store_newproduct_img">
-                     <a href="ej_store_detail/${storenewproductlist.product_no}">
+                     <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
                      </a>
                      <ul class="hs_user_store_newproduct_social" >
@@ -454,7 +477,7 @@ body{
                         </c:when>
                      </c:choose>
                      <h6 class="hs_user_store_newprodct_title">
-                        <a href="ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
+                        <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_newproduct_line"></div>
                      <div class="hs_user_store_newprodct_cost">

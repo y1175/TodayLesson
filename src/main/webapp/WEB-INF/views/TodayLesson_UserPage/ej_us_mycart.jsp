@@ -265,7 +265,7 @@ $("#sameaddr").on('click', function() {
 <script>
 $("#testbtn").click(function(){
 	
-	$("form").attr("action", "/todaylesson/order_cart");
+	$("form").attr("action", "/todaylessonmypage/order_cart");
 		$("form").submit();
 });
 </script>
@@ -339,7 +339,7 @@ $("#testbtn").click(function(){
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
        			
-       			$("form").attr("action", "/todaylesson/order_cart");
+       			$("form").attr("action", "/todaylessonmypage/order_cart");
        			$("form").submit();  
        		} else {
     	   
@@ -382,14 +382,14 @@ $(".delete_product_cart").on('click',function(){
 	}
 	
 	$.ajax({
-	      url:"/todaylesson/deletecart_json",
+	      url:"/todaylessonmypage/deletecart_json",
 	      type:"post",
 	      data: data,
 	      success: function(result){
 	    	 if(result>0)
 	    		 {
 	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
-	    	  location.href="/todaylesson/mycart/"+'${memberid}';
+	    	  location.href="/todaylessonmypage/mycart/"+'${memberid}';
 	    		 }
 	    	 else{
 	    		 alert('삭제 실패되었습니다.');
@@ -417,14 +417,14 @@ $(".delete_lesson_cart").on('click',function(){
 	}
 	
 	$.ajax({
-	      url:"/todaylesson/deletecart_json",
+	      url:"/todaylessonmypage/deletecart_json",
 	      type:"post",
 	      data: data,
 	      success: function(result){
 	    	 if(result>0)
 	    		 {
 	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
-	    	  location.href="/todaylesson/mycart/"+'${memberid}';
+	    	  location.href="/todaylessonmypage/mycart/"+'${memberid}';
 	    		 }
 	    	 else{
 	    		 alert('삭제 실패되었습니다.');

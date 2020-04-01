@@ -74,6 +74,8 @@ public interface EJ_All_Product_Service {
 
 	public int deletepdreview(int product_no);
 
+	public List<ProductDTO> selectcategory(int product_category);
+
 
 
 

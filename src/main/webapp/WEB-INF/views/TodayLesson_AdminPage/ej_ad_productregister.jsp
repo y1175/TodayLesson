@@ -27,25 +27,6 @@
 			
 		});
 	});
-	//
-	/* 	function sendFile(file, el) {
-		var form_data = new FormData();
-      	form_data.append('file', file);
-      	$.ajax({
-        	data: form_data,
-        	type: "POST",
-        	url: './profileImage.mpf',
-        	cache: false,
-        	contentType: false,
-        	enctype: 'multipart/form-data',
-        	processData: false,
-        	success: function(img_name) {
-          		$(el).summernote('editor.insertImage', img_name);
-        	}
-      	});
-    }
-	 */
-	
 </script>
 </head>
 <body>
@@ -73,13 +54,11 @@
 		 <input type="text" name="product_name" style="width: 40%;" placeholder="제품명" required="required"/> <br>
 			<br>
 				<label>가격</label>
-				 <input type="text" name="product_cost" style="width: 40%;" placeholder="가격"  required="required"/> <br>
+				 <input type="text" name="product_cost" style="width: 40%;" placeholder="가격"  required="required"/>원 <br>
 				  <label>할인율</label>
-				 <input type="text" name="product_sale" style="width: 40%;" placeholder="%" required="required"/> <br>
-			<!-- 	 <label>할인 후 가격</label>
-				 <input type="text" name="product_after_cost" style="width: 40%;" placeholder="할인 후 가격"  required="required"/> <br> -->
+				 <input type="text" name="product_sale" style="width: 40%;" placeholder="%" required="required"/>% <br>
 				 <label>수량</label>
-				 <input type="text" name="product_stock" style="width: 40%;" placeholder="수량" required="required"/> <br>
+				 <input type="text" name="product_stock" style="width: 40%;" placeholder="수량" required="required"/>갸 <br>
 				
 				<label>상세설명</label><br>
 				<textarea id="summernote" name="product_content" placeholder="제품 상세 설명" required="required"></textarea>
