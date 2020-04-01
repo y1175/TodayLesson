@@ -108,50 +108,93 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
                                                       return false;
   //화수
      // 첫화면
-        else if ("/".equals(strUri))                   return false;        
+        else if ("/".equals(strUri))                   
+        	return false;        
      // 첫화면
-        else if ("/todaylesson".equals(strUri))                   return false;
+        else if ("/todaylesson".equals(strUri))                   
+        	return false;
      //관리자화면
-        else if ("/todaylessonadmin".equals(strUri))                   return false;  
+        else if ("/todaylessonadmin".equals(strUri))                   
+        	return false;  
      //시니어화면
-        else if ("/todaylessonsenior".equals(strUri))                   return false;   
+        else if ("/todaylessonsenior".equals(strUri))                   
+        	return false;   
      //마이페이지
-        else if ("/todaylessonmypage".equals(strUri))                   return false; 
+        else if ("/todaylessonmypage".equals(strUri))                   
+        	return false; 
      //로그인
-        else if ("/todaylessonlogin".equals(strUri))                   return false;
+        else if ("/todaylessonlogin".equals(strUri))                   
+        	return false;
      //카카오로그인
-        else if ("/kakaologinurl".equals(strUri))                   return false;
-        else if ("/todaylessonkakaologin".equals(strUri))                   return false;
+        else if ("/kakaologinurl".equals(strUri))                   
+        	return false;
+        else if ("/todaylessonkakaologin".equals(strUri))                   
+        	return false;
      //로그아웃
-        else if ("/logout".equals(strUri))                   return false;
-        
-      
+        else if ("/logout".equals(strUri))                  
+        	return false;
+     //시니어페이지매출현황리스트
+        else if ("/todaylessonsenior/senior_sales_list".equals(strUri))                   
+        	return false;
+      //시니어페이지정산신청
+        else if ("/todaylessonsenior/senior_calculate_requestlist".equals(strUri))                   
+        	return false;
+      //시니어페이지정산신청계좌정보수정
+        else if ("/todaylessonsenior/senior_calculate_accountupdateresult".equals(strUri))                   
+        	return false;
+      //시니어페이지정산내역리스트
+        else if ("/todaylessonsenior/senior_calculate_statementlist".equals(strUri))                   
+        	return false;
+      //관리자페이지 관리자정보
+        else if ("/todaylessonadmin/admin_administrator".equals(strUri))                   
+        	return false;
+      //관리자페이지 배너목록
+        else if ("/todaylessonadmin/admin_banner_list".equals(strUri))                   
+        	return false;
+      //관리자페이지 배너등록
+        else if ("/todaylessonadmin/admin_banner_registration".equals(strUri))                   
+        	return false;  
+      //관리자페이지 배너등록완료
+        else if ("/todaylessonadmin/admin_banner_registrationresult".equals(strUri))                   
+        	return false;  
+ 
+ 
  
         
         
   //용인
-      //TodayLessonController
+      //TodaylessonController 
       //회원가입
-        else if ("/join".equals(strUri))                   return false;
+        else if ("/todaylesson/join".equals(strUri))                   
+        	return false;
       //아이디찾기
-        else if ("/findId".equals(strUri))                   return false;
+        else if ("/findId".equals(strUri))                   
+        	return false;
       //회원가입결과
-        /*else if ("/joinresult".equals(strUri))                   return false;*/
+        /*else if ("/joinresult".equals(strUri))                   
+            return false;*/
       //id찾기
-        else if ("/userSearch".equals(strUri))                   return false;
+        else if ("/userSearch".equals(strUri))                   
+        	return false;
       //User_YI_FreeBoard_Controller
       //자유게시판
-        else if ("/todaylesson/freeboard".equals(strUri))                   return false;
+        else if ("/todaylesson/freeboard".equals(strUri))                   
+        	return false;
       //게시글상세보기
-        else if ("/todaylesson/freeboard_detail/{freeboard_no}".equals(strUri))                   return false;   
+        else if ("/todaylesson/freeboard_detail/{freeboard_no}".equals(strUri))                   
+        	return false;   
       //리플달기 json
-        else if ("/todaylesson/freeboard_detailjson/{freeboard_no}".equals(strUri))    return false;
+        else if ("/todaylesson/freeboard_detailjson/{freeboard_no}".equals(strUri))    
+        	return false;
        //리플달기 
-        else if ("/todaylesson/insert_boardreply/".equals(strUri))    return false;
+        else if ("/todaylesson/insert_boardreply/".equals(strUri))    
+        	return false;
         //자유게시판 글쓰기
-        else if ("/todaylesson/freboard_insert/".equals(strUri))    return false;
+        else if ("/todaylesson/freboard_insert/".equals(strUri))    
+        	return false;
         //자유게시판 글 수정하기
-        else if ("/todaylesson/freeboard_modify/{freeboard_no}".equals(strUri))   return false;
+        else if ("/todaylesson/freeboard_modify/{freeboard_no}".equals(strUri))   
+        	return false;
         
    //혜미
       //혜미비번찾기 
@@ -168,67 +211,66 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
              return false; 
      //혜미 내 정보 수정 완료 될 시 가는 페이지
         else if("/todaylessonmypage/hm_us_mymanageupdate".equals(strUri))
-           return false;
-        //혜미 관리자 회원관리 페이지
+             return false;
+     //혜미 관리자 회원관리 페이지
         else if("/todaylessonadmin/admin_hm_memmanage".equals(strUri))
-           return false;
-        //혜미 관리자 레벨 수정 페이지
+             return false;
+     //혜미 관리자 레벨 수정 페이지
         else if("/todaylessonadmin/adminmember_levelupdate".equals(strUri))
-           return false;
-        //혜미 관리자 회원 디테일
+             return false;
+     //혜미 관리자 회원 디테일
         else if("/todaylessonadmin/hm_memmanagedetail".equals(strUri))
-           return false;
-        //혜미 사용자 1:1문의 페이지로 이동-필요없
+             return false;
+     //혜미 사용자 1:1문의 페이지로 이동-필요없
         else if("/todaylessonmypage/hm_us_question".equals(strUri))
-           return false;
-        //혜미 사용자 1:1문의 등록 페이지로 이동-필요없
+             return false;
+     //혜미 사용자 1:1문의 등록 페이지로 이동-필요없
         else if("/todaylessonmypage/hm_question_insert".equals(strUri))
-           return false;
-        //혜미 1:1문의 등록
+             return false;
+     //혜미 1:1문의 등록
         else if("/todaylessonmypage/hm_question_create".equals(strUri))
-         return false;
-        //혜미 관리자 1:1문의 관리페이지 이동 -필요없
+             return false;
+     //혜미 관리자 1:1문의 관리페이지 이동 -필요없
         else if("/todaylessonmyadmin/todaylessonadmin/hm_ad_question".equals(strUri))
-           return false;
-        //혜미 회원정보수정 updatesms
+             return false;
+     //혜미 회원정보수정 updatesms
         else if("/todaylessonmypage/hm_us_mymanageupdatesms".equals(strUri))
-           return false;
-        //혜미 이벤트 페이지로 이동-필요없
+             return false;
+     //혜미 이벤트 페이지로 이동-필요없
         else if("/todaylessonadmin/hm_ad_event_manage".equals(strUri))
-           return false;
-        //혜미 이벤트 insert
+             return false;
+     //혜미 이벤트 insert
         else if("/todaylessonadmin/hm_ad_event_insert".equals(strUri))
-           return false;
-        //혜미 이벤트 insertresult이동 - 이거 필요없는데... 나중에 다 삭제함
+             return false;
+     //혜미 이벤트 insertresult이동 - 이거 필요없는데... 나중에 다 삭제함
         else if("/todaylessonadmin/hm_ad_event_insertresult".equals(strUri))
-        	return false;
-        //혜미 이벤트 수정폼
+        	 return false;
+     //혜미 이벤트 수정폼
         else if("/todaylessonadmin/hm_ad_event_modify".equals(strUri))
-        	return false;
-        //혜미 사용자 이벤트
+        	 return false;
+     //혜미 사용자 이벤트
         else if("/todaylesson/hm_us_event".equals(strUri))
         	return false;
-        //혜미 사용자 1:1문의 디테일 페이지 이동
+     //혜미 사용자 1:1문의 디테일 페이지 이동
       /*  else if("/todaylessonadmin/hm_us_question_detail/{no}".equals(strUri))
-           return false;*/
-        //혜미 관리자 1:1문의 디테일 페이지 이동
+            return false;*/
+     //혜미 관리자 1:1문의 디테일 페이지 이동
         /*else if("/todaylessonadmin/hm_ad_question_detail".equals(strUri))
-           return false;*/
-
-        //혜미 관리자 1:1문의  관리자 답변달기
+            return false;*/
+     //혜미 관리자 1:1문의  관리자 답변달기
        /* else if("/todaylessonadmin/hm_ad_question_update".equals(strUri))
-           return false;*/
+            return false;*/
 
    //은지
         //은지 관리자 상품조회
         else if ("/todaylessonadmin/ej_ad_product_productlist".equals(strUri))                   
-           return false; 
+            return false; 
         //은지 관리자 상품디테일
         else if ("/todaylessonadmin/ej_ad_product_productdetail".equals(strUri))                   
-              return false; 
+            return false; 
         //은지 관리자 상품등록
         else if ("/todaylessonadmin/ej_ad_product_productregister".equals(strUri))                   
-           return false; 
+            return false; 
         //은지 관리자 상품등록시 나오는 창(추가성공/실패)
         else if ("/todaylessonadmin/ej_ad_product_insertresult".equals(strUri))                   
             return false; 
@@ -255,10 +297,10 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //사용자 페이지들
         //은지 스토어 디테일
         else if ("/todaylesson/ej_store_detail".equals(strUri))                   
-            return false; 
+           return false; 
         //은지스토어 메인
         else if ("/todaylesson/ej_store_main".equals(strUri))                   
-            return false; 
+           return false; 
         //은지 주문폼
         else if ("/todaylesson/ej_us_orderform".equals(strUri))                   
            return false; 
@@ -277,10 +319,6 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //은지 장바구니에서 주문할때
         else if ("/todaylessonmypage/order_cart".equals(strUri))                   
            return false; 
-      
-        
-        
-    
 
    //진영
      

@@ -14,4 +14,5 @@ public class BannerDTO {
 	private int banner_no;
 	private String banner_title;
 	private String banner_filepath;
+	private String banner_registrationdate;
 }

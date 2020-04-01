@@ -58,15 +58,15 @@
        
       <div class="hs_us_mainheader_center">
          <a href="/alluser">
-            <img src="${pageContext.request.contextPath}/resources/IMG/User_Logo.png" alt="User_Logo" style="width: 12%;">
+            <img src="${pageContext.request.contextPath}/resources/IMG/UserLogo5.png" alt="User_Logo3" style="width: 20%;">
          </a>
          <span class="hs_us_mainheader_center_senior">
             <a href="">
-               <button id="senior_request" 
+               <%-- <button id="senior_request" 
                        onclick="window.open('${pageContext.request.contextPath}/senior_request_form/${pageContext.request.userPrincipal.name}','senior_form','width=570,height=420')" 
                        value="시니어 지원하기">
                              시니어지원 🌴
-               </button>
+               </button> --%>
             </a>
          </span>
       </div>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_HS_Banner_Mapper">
+
+   <select id="bannerTotalCount" resultType="int" parameterType="java.util.HashMap">
+      select COUNT(*)
+      from banner
+      <include refid="search_select"></include> 
+   </select>
+
+
+   <select id="adminBannerList" resultType="com.todaylesson.DTO.BannerDTO" parameterType="java.util.HashMap">
+      select banner_no, banner_title, banner_filepath, banner_registrationdate
+      from banner
+      <include refid="search_select"></include> 
+      order by banner_no desc
+      limit #{startrow},5
+   </select>
+   
+   <sql id="search_select">
+      <if test='searchtxt!=null and searchtxt!=""'>
+      <choose>
+         <when test='search.equals("all")'>
+            where banner_title like CONCAT('%',#{searchtxt},'%')
+         </when>
+         <when test='search.equals("event_title")'>
+            where banner_title like CONCAT('%',#{searchtxt},'%')
+         </when>
+      </choose>
+      </if>
+   </sql> 
+
+   <insert id="bannerRegistration" parameterType="com.todaylesson.DTO.BannerDTO" >
+      insert into banner(banner_title, banner_filepath, banner_registrationdate)
+      values(#{banner_title}, #{banner_filepath}, now())
+   </insert>
+
+<!-- <select id="eventdetail" parameterType="int" resultType="com.todaylesson.DTO.EventDTO">
+select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail,event_thumbexplain
+from event
+where event_no = #{event_no}
+</select>
+
+<update id="eventupdate" parameterType="com.todaylesson.DTO.EventDTO">
+update event
+set event_group = #{event_group}
+	,event_title = #{event_title}
+	,event_content = #{event_content}
+	,event_startperiod = #{event_startperiod}
+	,event_endperiod = #{event_endperiod}
+	,event_thumbnail = #{event_thumbnail}
+	,event_thumbexplain = #{event_thumbexplain}
+	where event_no = #{event_no}
+</update>
+
+<update id="eventupdatenothumbnail" parameterType="com.todaylesson.DTO.EventDTO">
+update event
+set event_group = #{event_group}
+	,event_title = #{event_title}
+	,event_content = #{event_content}
+	,event_startperiod = #{event_startperiod}
+	,event_endperiod = #{event_endperiod}
+	,event_thumbexplain =#{event_thumbexplain}
+	where event_no = #{event_no}
+</update>
+
+<delete id="eventdelete" parameterType="int">
+delete from event
+where event_no = #{event_no}
+</delete> -->
+
+
+
+   
+
+</mapper>

@@ -3,6 +3,7 @@
 body{
 	margin : opx auto;
 	padding: 0; 
+	color: rgb(53, 54, 58);
 } 
 
 .hs_us_home_mainBanner{
@@ -36,7 +37,6 @@ body{
 /* 슬라이더 묶는 박스 */
 .hs_us_newlesson_container {
     max-width: 100%;
-    /* margin-bottom: 30px; */
 }
 /* 슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용  */
 .hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a {
@@ -44,21 +44,17 @@ body{
     notice the comments between inline-block items margin-right: 10px;
     width: 23%;
      margin: 12.5px;
-    /*text-align: center;*/
     text-decoration: none;
 }
 /* 썸네일 */
 .hs_storecontent_cg_img{
 	width: 100%;
-	/* padding: 15px 0px; */
-    /* height:200px; */
 }
 /* p tag 공통적용 */
 .hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p {
     margin: 0px;
     color: rgb(53, 54, 58);
     position: relative;
-    /* text-align: center; */
 }
 /* 카테고리 및 시니어 닉네임(첫번째 p를 선택하는 타입넣어줌) */
 .hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:first-of-type{
@@ -94,49 +90,6 @@ body{
 	font-size: 12px;
 	font-weight:400;
 }
-/* 썸네일 안데 장바구니 좋아요 아이콘 */	
-/* .hs_us_newlesson_social {
-	padding:0;
-	margin:0;
-	list-style:none;
-	position:absolute;
-	bottom:100px;
-	right:13px;
-	z-index:1
-	}
-.hs_us_newlesson_social li{
-	opacity:0;
-	transform:translateY(3px);
-	transition:all .5s ease 0s
-	}
-.hs_us_newlesson_items:hover .hs_us_newlesson_social li{
-	margin:0 0 10px;
-	opacity:1;
-	transform:translateY(0)
-	}
-.hs_us_newlesson_items:hover .hs_us_newlesson_social li:nth-child(1){
-	transition-delay:.2s  트랜지션 지연시간(애니메이션을 지연시킬 때)
-	}
-.hs_us_newlesson_items:hover .hs_us_newlesson_social li:nth-child(2){
-	transition-delay:.4s 트랜지션 지연시간(애니메이션을 지연시킬 때)
-	}
-썸네일 안데 장바구니 좋아요 아이콘 위치	
-.hs_us_newlesson_social li a{
-	color:white;
-	font-size:17px;
-	line-height:40px;
-	text-align:center;
-	height:40px;
-	width:40px;
-	border:1px solid white;
-	display:block;
-	transition:all .5s ease-in-out
-	}
-.hs_us_newlesson_social li a:hover{
-	color:rgb(224, 62, 82);
-	border-color:rgb(224, 62, 82)
-	} */
-/* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
 
 .hs_us_newlesson_g-scrolling-carousel {
     position: relative;
@@ -165,7 +118,6 @@ body{
     bottom: 0;
     z-index: 2;
     opacity: 0.94;
-
 }
 
 .jc-right {
@@ -188,17 +140,17 @@ body{
     position: absolute;
     left: 0px;
     right: 0;
-    bottom: 10px;
+    bottom: 115px;
     top: 0;
     margin: auto;
     width: 50px;
     height: 50px;
-    fill: #222;
+    fill: rgb(53, 54, 58);
 }
 
 .jc-right:hover svg,
 .jc-left:hover svg {
-    fill: rgb(0, 153, 255);
+    fill: rgb(224, 62, 82);
 }
 
 @media (pointer: coarse) {
@@ -227,49 +179,50 @@ body{
 }
 /* 신규레슨 */
 
-/* 스토어 신규 상품 */
+
+/* 스토어베스트 , 스토어 신규 */	
 /* 썸네일 _ 설명 묶은 DIV */
-.hs_user_store_newproduct{
+.hs_user_store_product{
 	position:relative;
 	z-index:1;
 	}
 /* 썸네일 a tag*/
-.hs_user_store_newproduct_img a{
+.hs_user_store_product_img a{
 	display:block
 	}
 /* 썸네일  img */
-.hs_user_store_newproduct_img img{
+.hs_user_store_product_img img{
 	width:100%;
 	
 	}
 /* 썸네일 안데 장바구니 좋아요 아이콘 */	
-.hs_user_store_newproduct_social {
+.hs_user_store_product_social {
 	padding:0;
 	margin:0;
 	list-style:none;
 	position:absolute;
-	bottom:100px;
+	bottom:115px;
 	right:13px;
 	z-index:1
 	}
-.hs_user_store_newproduct_social li{
+.hs_user_store_product_social li{
 	opacity:0;
 	transform:translateY(3px);
 	transition:all .5s ease 0s
 	}
-.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li{
+.hs_user_store_product:hover .hs_user_store_product_social li{
 	margin:0 0 10px;
 	opacity:1;
 	transform:translateY(0)
 	}
-.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li:nth-child(1){
+.hs_user_store_product:hover .hs_user_store_product_social li:nth-child(1){
 	transition-delay:.2s  /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
 	}
-.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li:nth-child(2){
+.hs_user_store_product:hover .hs_user_store_product_social li:nth-child(2){
 	transition-delay:.4s /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
 	}
 /* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
-.hs_user_store_newproduct_social li a{
+.hs_user_store_product_social li a{
 	color:white;
 	font-size:17px;
 	line-height:40px;
@@ -280,19 +233,21 @@ body{
 	display:block;
 	transition:all .5s ease-in-out
 	}
-.hs_user_store_newproduct_social li a:hover{
+.hs_user_store_product_social li a:hover{
 	color:rgb(224, 62, 82);
 	border-color:rgb(224, 62, 82)
 	}
 
 /* 세일% 라벨 */		
-.hs_user_store_newproduct_label{
+.hs_user_store_product_label{
 	display:block;
 	width : 38px;
 	height : 38px;
-	padding: 8px;
+	padding: 9px 10px 5px 7px;
 	color:#fff;
 	background-color:FF4141;
+	font-size : 13px;
+	font-weight : 600;
 	position:absolute;
 	top:10px;
 	left : 10px;
@@ -305,35 +260,35 @@ body{
 	
 	}
 /* 상품 설명 */	
-.hs_user_store_newproduct_content{
+.hs_user_store_product_content{
 	padding:10px 0 0
 	}
 /* 상품카테고리 */	
-.hs_user_store_newproduct_category{
+.hs_user_store_product_category{
 	font-size: 10px;
 	font-weight: 900;
 	color: #999;
 }	
 /* 상품명 */
-.hs_user_store_newprodct_title{
+.hs_user_store_prodct_title{
 	font-size:17px;
 	font-weight:600;
 	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
 	margin:10px 0px;
 	transition:all .3s ease 0s
 	}
-.hs_user_store_newprodct_title a{
+.hs_user_store_prodct_title a{
 	color: rgb(53, 54, 58);
 	}
 /* 상품명 상품가격 사이 라인 */	
-.hs_user_store_newproduct_line{
+.hs_user_store_product_line{
 	width: 100%;
 	height: 1px;
 	background-color: rgba(220,220,220,0.5);
 	margin: 5px 0px;
 }
 /* 상품가격(이전 / 세일된 가격)  */
-.hs_user_store_newprodct_cost{
+.hs_user_store_prodct_cost{
 	color: rgb(53, 54, 58);
 	font-size:16px;
 	font-weight:700;
@@ -341,7 +296,7 @@ body{
 	transition:all .3s
 	}
 /* 이전 상품가격 */	
-.hs_user_store_newprodct_BFcost{
+.hs_user_store_prodct_BFcost{
 	color:#999;
 	font-size:16px;
 	font-weight:500;
@@ -350,19 +305,22 @@ body{
 	display:inline-block
 	}
 /* 좋아요수  */
-.hs_user_store_newprodct_likenum_box{
+.hs_user_store_prodct_likenum_box{
 	margin:5px 0px 30px;;
 }
-.hs_user_store_newprodct_likenum{
+.hs_user_store_prodct_likenum{
 	font-size: 12px;
 	font-weight:400;
 }	
-.hs_user_store_newprodct_likenum i{
+.hs_user_store_prodct_likenum i{
 	color: rgb(224, 62, 82);
 
 }
 @media only screen and (max-width:990px){
-	.product-grid8{margin-bottom:30px
+	.hs_user_store_product{
+	    margin-bottom:30px
 	}
 }
-	
+/* 스토어베스트 , 스토어 신규 */	
+
+
