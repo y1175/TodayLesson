@@ -22,14 +22,6 @@ $(document).ready(function(){
         
     })
     
- /*  
-  * 회원탈퇴
-  *  $('#hm_memberwithdrawbtn').on('click',function(){
-    	
-    	
-    	
-    	
-    });*/
 });
 
 function smscheckfunction() {
@@ -54,6 +46,7 @@ function smscheckfunction() {
 		}
 	});
 }
+
 
 
 
