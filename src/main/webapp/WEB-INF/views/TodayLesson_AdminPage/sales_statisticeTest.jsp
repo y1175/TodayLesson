@@ -11,6 +11,12 @@
   width: 70%;
   height: 400px;
 }
+#chartOutPut{
+width		: 100%;
+	height		: 465px;
+	font-size	: 16px;
+	font-weight : bold;
+}
 
 </style>
  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
