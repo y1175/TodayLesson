@@ -16,14 +16,27 @@
 
 <img src="" alt="얼리버드 메인 이미지">
 <%-- <jsp:useBean id="now" class="java.util.Date" /> --%>
-<c:set var="now" value="<%=new Date()%>"/>
+<%-- <c:set var="now" value="<%=new Date()%>"/> --%>
 <br>
-<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /><!-- 오늘 날짜 구하기 -->
-<fmt:parseDate var="opendate" value="${dto.lesson_open_period}" pattern="yyyy-MM-dd"/><!-- 오픈일을 String -> Date형식으로 파싱 -->
-얼리버드 오픈일 date타입으로 파싱 : <c:out value="${opendate}"></c:out><br>
-오늘 날짜 date타입 : <c:out value="${today}"/><br>
-<fmt:parseNumber value="${opendate.time * (60*60*24*7*1000)}" var="open"/><!-- 오픈일에 7일 더하기 -->
-얼리버드 오픈일 + 7일 더하기 : <c:out value="${open}"/><br>
+<%-- <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> --%><!-- 오늘 날짜 구하기 -->
+<%-- <fmt:parseDate var="opendate" value="${dto.lesson_open_period}" pattern="yyyy-MM-dd"/> --%><!-- 오픈일을 String -> Date형식으로 파싱 -->
+
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
+
+레슨시작일  <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/>
+<br>
+오늘 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
+<br>
+
+<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  />
+<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" />
+${itDate - isDate} 일 지남
+
+
+
+
+
 
 <%-- <fmt:parseNumber value="${today.time * 1}" var="today1"/> --%>
 <br>
