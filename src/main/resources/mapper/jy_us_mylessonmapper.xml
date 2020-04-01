@@ -20,12 +20,6 @@ select * from lessondetail where lesson_no = #{lesson_no}
 
 </select>
 
-<insert id="lc_insert">
-
-insert into lessoncomp(lessondetail_no, member_id, lessondetail_comp, lesson_no)
-value(#{lessondetail_no}, #{member_id}, 0, #{lesson_no});
-
-</insert>
 
 <select id="my_lesson_detail_this_chapter" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
@@ -39,19 +33,17 @@ select lesson_title from lesson where lesson_no = #{lesson_no}
 
 </select>
 
-<update id="update_lesson_comp" parameterMap="hashmap" >
+<insert id="update_lesson_comp" parameterMap="hashmap">
 
-update lessoncomp
-set lessondetail_comp = 1
-where lessondetail_no = #{lessondetail_no}
-and member_id = #{member_id}
-and lesson_no = #{lesson_no}
+insert into lessoncomp(lesson_no, lessondetail_no, member_id, lessondetail_comp)
+value(#{lesson_no}, #{lessondetail_no}, #{member_id}, 1)
 
-</update>
+</insert>
 
-<select id="select_my_lesson_comp" parameterMap="hashmap" resultType="com.todaylesson.DTO.LessonCompDTO">
+<select id="select_my_lesson_comp" parameterMap="hashmap" resultType="integer">
 
-select * from lessoncomp 
+select count(lessondetail_comp = 1)
+from lessoncomp 
 where lessondetail_no = #{lessondetail_no} 
 and lesson_no = #{lesson_no} 
 and member_id = #{member_id}
@@ -60,10 +52,9 @@ and member_id = #{member_id}
 
 <select id="mylesson_comp_select" parameterMap="hashmap" resultType="com.todaylesson.DTO.LessonCompDTO">
 
-select * from lessoncomp c left join lessondetail d
-where d.lesson_no = #{lesson_no}
-and c.member_id = #{member_id}
+select distinct c.lessondetail_no, c.member_id, c.lesson_no, c.lessondetail_comp, d.lessondetail_chapter from lessondetail d left join lessoncomp c on d.lesson_no = c.lesson_no where c.member_id = 'sn1';
 
 </select>
+
 
 </mapper>

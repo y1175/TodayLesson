@@ -26,5 +26,7 @@ public class LessonDetailDTO {
 	
 	// 레슨 이름
 	private String lesson_title;
+	//lessoncomp번호
+	private int lessoncomp_no;
 	
 }

@@ -42,13 +42,16 @@ public class JY_US_MyLesson_Controller {
 		List<LessonDetailDTO> list = mlservice.mylesson_select(lesson_no);
 		List<LessonCompDTO> lc = mlservice.mylesson_comp_select(lesson_no, member_id);
 		
-		for (int i = 0; i < lc.size(); i++) {
-			
-		}
-		
+		/*
 		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setLessondetail_comp(lc.get(i).getLessondetail_comp());
-		}
+			int lessondetail_comp = lc.get(i).getLessondetail_comp();
+			System.out.println(lessondetail_comp);
+			if (lessondetail_comp != 1) {
+				list.get(i).setLessondetail_comp(0);
+			} else {
+				list.get(i).setLessondetail_comp(lc.get(i).getLessondetail_comp());
+			}
+		} */
 			model.addAttribute("list", list);
 
 			
@@ -64,8 +67,6 @@ public class JY_US_MyLesson_Controller {
 		LessonDetailDTO dto = mlservice.mylesson_detail_this_chapter(lessondetail_no);
 
 		int lesson_no = dto.getLesson_no();
-
-		mlservice.lc_insert(member_id, lessondetail_no, lesson_no);
 		
 		String lesson_title = mlservice.mylesson_name(lesson_no);
 
@@ -83,20 +84,22 @@ public class JY_US_MyLesson_Controller {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
 
-		LessonCompDTO dto = mlservice.select_my_lesson_comp(lessondetail_no, member_id, lesson_no);
+		int comp = mlservice.select_my_lesson_comp(lessondetail_no, member_id, lesson_no);
 		
-		if (dto.getLesson_no() != 1) {
+		if (comp == 0) {
 		
 			if (time_change == 0) {
 
-				int result = mlservice.update_lesson_comp(member_id, lessondetail_no, time_change, lesson_no);
+				int result = mlservice.update_lesson_comp(lessondetail_no, member_id, lesson_no );
 				model.addAttribute("result", result);
 				model.addAttribute("member_id", member_id);
+				model.addAttribute("lesson_no",lesson_no);
 				return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp";
 
 			} else {
 				model.addAttribute("result", 0);
 				model.addAttribute("member_id", member_id);
+				model.addAttribute("lesson_no",lesson_no);
 				return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp";
 			}
 

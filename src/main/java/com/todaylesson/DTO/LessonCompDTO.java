@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class LessonCompDTO {
 
+	private int lessoncomp_no;
 	private String member_id;
 	private int lessondetail_comp;
 	private int lessondetail_no;

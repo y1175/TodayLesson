@@ -23,15 +23,12 @@ public interface JY_US_MyLessonMapper {
 
 	public String my_lesson_name(int lesson_no);
 
-	//public int update_lesson_comp(String member_id, int lessondetail_no, int time_change);
-
 	public int update_lesson_comp(HashMap<String, Object> hm);
 
-	public LessonCompDTO select_my_lesson_comp(HashMap<String, Object> hm);
-
-	public void lc_insert(HashMap<String, Object> hm);
+	public int select_my_lesson_comp(HashMap<String, Object> hm);
 
 	public List<LessonCompDTO> mylesson_comp_select(HashMap<String, Object> hm);
+
 
 
 
