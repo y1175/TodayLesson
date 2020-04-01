@@ -53,7 +53,7 @@ where orderlist.orderlist_no=#{orderlist_no}
 
 <update id="orderlist_cancel" parameterType="int">
 update orderlist
-set orderlist_orderstatus=5
+set orderlist_orderstatus=4
 where orderlist_no=#{orderlist_no}
 </update>
 

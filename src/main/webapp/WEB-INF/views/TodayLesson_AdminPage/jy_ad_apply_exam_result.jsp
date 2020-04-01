@@ -13,14 +13,14 @@
 
 if (${result} > 0) {
 	alert("승인 중으로 넘기기!");
-	location.href="${pageContext.request.contextPath }/apply_lesson";
+	location.href="${pageContext.request.contextPath }/todaylessonadmin/apply_lesson";
 
 
 } else {
 	
 
 	alert("실패!");
-	location.href="${pageContext.request.contextPath }/apply_lesson";
+	location.href="${pageContext.request.contextPath }/todaylessonadmin/apply_lesson";
 	
 }
 </script>

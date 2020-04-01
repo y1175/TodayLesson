@@ -180,7 +180,7 @@ ${dto.lesson_senior_content}
 <c:out value="${dto.senior_account_num}"/><br>
 
 
-<a href="${pageContext.request.contextPath }/alllesson">목록으로</a>
+<a href="${pageContext.request.contextPath }/todaylessonadmin/alllesson">목록으로</a>
 <br>
 
 </body>

@@ -13,7 +13,7 @@
 
 
 	alert("신청 완료 상태인 레슨만 삭제할 수 있습니다!");
-	location.href="${pageContext.request.contextPath}/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath}/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
 
 
 </script>

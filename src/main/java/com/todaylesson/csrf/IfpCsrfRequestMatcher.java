@@ -297,14 +297,16 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
               return false;*/
         
         //레슨 insert결과
-        else if ("/insert_result".equals(strUri))    
+        else if ("/todaylessonsenior/insert_result".equals(strUri))    
               return false;  
         
         //레슨 디테일
         /*else if (strUri.equals("/lesson_detail/{member_id}"))    
               return false;*/
         
-        
+      //레슨일 여러개 선택
+        else if ("/multiple_time_lesson_date".equals(strUri))    
+              return false; 
         
         //시니어 지원 버튼
         else if ("/senior_request".equals(strUri))    
@@ -319,31 +321,31 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
               return false;*/
         
         // 이미 시니어일 때
-        else if ("/you_are_senior".equals(strUri))    
+        else if ("/todaylessonsenior/you_are_senior".equals(strUri))    
               return false;
         
         // 시니어 지원폼 쓴 다음 넘어가는 곳
-        else if ("/plus_senior".equals(strUri))    
+        else if ("/todaylessonsenior/plus_senior".equals(strUri))    
               return false;
         
         // 레슨 작성 완료
-        else if ("/insert_result".equals(strUri))    
+        else if ("/todaylessonsenior/insert_result".equals(strUri))    
               return false;
        
         // 전체 레슨 조회
-        else if ("/alllesson".equals(strUri))    
+        else if ("/todaylessonadmin/alllesson".equals(strUri))    
               return false; 
         
         // 신청 완료에서 심사중으로 넘기는 페이지
-        else if ("/apply_list".equals(strUri))    
+        else if ("/todaylessonadmin/apply_lesson".equals(strUri))    
               return false; 
         
         // 레슨을 심사중으로 넘기기
-        else if ("/admin_apply_exam".equals(strUri))    
+        else if ("/todaylessonadmin/admin_apply_exam".equals(strUri))    
               return false;
         
         // 심사 필요한 레슨 조회
-        else if ("/wait_lesson".equals(strUri))    
+        else if ("/todaylessonadmin/wait_lesson".equals(strUri))    
               return false; 
         
         // 승인해줘야하는 레슨 디테일
@@ -367,7 +369,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
           return false;*/
         
         // 관리자 시니어 관리
-        else if ("/all_senior".equals(strUri))    
+        else if ("/todaylessonadmin/all_senior".equals(strUri))    
               return false; 
        
         //레슨 수정
@@ -375,7 +377,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
           return false;*/
           
         //레슨 업데이트 결과
-        else if ("/lesson_update_result".equals(strUri))    
+        else if ("/todaylessonsenior/lesson_update_result".equals(strUri))    
               return false; 
         
         //레슨 삭제
@@ -383,18 +385,18 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
           return false;*/
         
         //레슨 삭제 결과
-        else if ("/lesson_delete_result".equals(strUri))    
+        else if ("/todaylessonsenior/lesson_delete_result".equals(strUri))    
               return false; 
         
         //레슨 디테일 추가 결과
-        else if ("/mal_lesson_upload_result".equals(strUri))    
+        else if ("/todaylessonsenior/mal_lesson_upload_result".equals(strUri))    
               return false; 
         
         //레슨 디테일 수정 결과
-        else if ("/mal_lesson_update_result".equals(strUri))    
+        else if ("/todaylessonsenior/mal_lesson_update_result".equals(strUri))    
        	 	return false; 
 
-        else if ("/update_senior_result".equals(strUri))    
+        else if ("/todaylessonsenior/update_senior_result".equals(strUri))    
        	 	return false; 
         
         //결제 완료

@@ -38,7 +38,7 @@ $('textarea').summernote({
 </head>
 <body>
 
-<form name="form" action="${pageContext.request.contextPath }/mal_lesson_update_result" method="post">
+<form name="form" action="${pageContext.request.contextPath }/todaylessonsenior/mal_lesson_update_result" method="post">
 
 <input type="hidden" name= "lessondetail_no" value="${dto.lessondetail_no }">
 

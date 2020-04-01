@@ -113,7 +113,7 @@ function checkDisable()
 
 <!-- 시니어 모드에 있는 시니어 정보 관리로 이동하기 -->
 <h2>시니어 지원하기</h2>
-<form method="post" action="${pageContext.request.contextPath}/update_senior_result" name="frm">
+<form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/update_senior_result" name="frm">
 
 <input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <input type="hidden" id="token" name="token" value="${token}">

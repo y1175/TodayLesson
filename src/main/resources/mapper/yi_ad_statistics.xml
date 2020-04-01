@@ -33,7 +33,7 @@ ORDER BY stat_logdate asc
 </sql>
 <sql id="month_statlog">
 SELECT
-date_format(stat_logdate,'%Y-%m-%d') as stat_logdate
+date_format(stat_logdate,'%Y-%m') as stat_logdate
     ,count(*) as total
 FROM stat_log
 group by month(stat_logdate),year(stat_logdate) 
@@ -48,20 +48,6 @@ group by year(stat_logdate)
 ORDER BY stat_logdate asc
 </sql>
 
-<!-- <select id="createTmp">
-drop table if exists stat_log_tmp;
-create temporary table stat_log_tmp
-as
-select count(stat_logdate) as total ,stat_logdate from stat_log group by stat_logdate
-</select>
-
-<select id="setVariable">
-set @SumVaraible:=0
-</select>
-
-<select id="dropTmp">
-drop table stat_log_tmp
-</select> -->
 
 <select id="distinct_member" resultType="com.todaylesson.DTO.Stat_LogDTO">
 select count(distinct(member_id)) as member_total
@@ -72,12 +58,71 @@ order by stat_logdate asc
 </select>
 
 
-<select id = "chartOutput" resultType = "com.todaylesson.DTO.Stat_LogDTO">
+
+<select id="joinCount" resultType="int" parameterType="java.util.HashMap">
+select count(*)
+from member
+<where>
+<include refid="joinCount_select"></include>
+</where>
+
+</select>
+
+
+<sql id="joinCount_select">
+<choose>
+<when test='countdate.equals("") or countdate.equals(null) '>
+
+<choose>
+
+<when test='join_ymd.equals("week")'>
+week(member_join_date)=week(now())
+and date_format(member_join_date,'%y')=date_format(now(),'%y')
+</when>
+<otherwise>
+date_format(member_join_date,#{join_ymd})=date_format(now(),#{join_ymd})
+</otherwise>
+</choose>
+
+</when>
+
+
+<otherwise>
+<choose>
+
+<when test='join_ymd.equals("week")'>
+week(member_join_date)=week(now())
+and date_format(member_join_date,'%y')=date_format(#{countdate},'%y')
+</when>
+<otherwise>
+date_format(member_join_date,#{join_ymd})=date_format(#{countdate},#{join_ymd})
+</otherwise>
+
+</choose>
+</otherwise>
+
+</choose>
+</sql>
+
+
+
+<select id = "chartOutput" resultType = "com.todaylesson.DTO.AmChartDTO">
 
 select year(stat_logdate) as regYear, month(stat_logdate) as regMonth,
 day(stat_logdate) as regDay, count(*) as total
 FROM stat_log
 group by stat_logdate
+
+</select>
+
+<select id = "chartOutput2" resultType = "com.todaylesson.DTO.AmChartDTO">
+
+select ifnull(year(member_join_date),'2020') as regYear
+, ifnull(month(member_join_date),'1') as regMonth
+,ifnull(day(member_join_date),'1') as regDay
+, count(*) as total
+FROM member
+group by member_join_date;
 
 </select>
 

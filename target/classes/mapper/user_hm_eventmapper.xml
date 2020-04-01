@@ -27,7 +27,7 @@ select event_no,event_group,event_title,event_content,event_startperiod,event_en
 from event
 where event_no = #{event_no}
 </select>
-<!-- 
+
 <select id="eventreply_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_EventDTO">
 select event_reply_no,event_no,event_reply_content,event_reply_date,eventreply.member_id
 from eventreply join member
@@ -35,7 +35,7 @@ on eventreply.member_id = member.member_id
 where eventreply.event_no=#{event_no}
 order by event_reply_no
 </select>
- -->
+
 
 
 

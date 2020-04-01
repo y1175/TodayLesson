@@ -32,6 +32,25 @@ limit   #{startrow}, 15
 	where orderlist_no=#{orderlist_no}
 	</update>
 	
+	<select id="refundlist" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="java.util.HashMap">
+        select *
+	from member 
+	join (orderlist join 
+	(order_detail join <include refid="category_select"></include> )
+	on orderlist.orderlist_no=order_detail.orderlist_no)
+	on member.member_id=orderlist.member_id
+	<include refid="refundlist_search"></include>
+
+	  order by orderlist_date desc
+limit   #{startrow}, 15
+	</select>
+	
+	<update id="order_refund_modify" parameterType="java.util.HashMap">
+	update orderlist
+	set orderlist_paystatus=#{pay_status}
+	where orderlist_no=#{orderlist_no}
+	</update>
+	
 	
 	<!-- product인지 lesson인지 선택 -->
 	<sql id="category_select">
@@ -47,7 +66,7 @@ limit   #{startrow}, 15
 	</choose>
 	</sql>
 	
-	<!-- 검색기능 -->
+	<!--오더리스트 검색기능 -->
 	<sql id="orderlist_search">
 	<where>
 	<if test='search!=null and search!=""'>
@@ -79,14 +98,43 @@ limit   #{startrow}, 15
 		<when test='orderlist_orderstatus=="4"'>
 	and orderlist_orderstatus=4
 	</when>
+
+	</choose>
+	</if>
+	</where>
+	</sql>
+
+<!-- 환불 검색기능 -->
+	<sql id="refundlist_search">
+	<where>
+	orderlist_orderstatus=4
+	<if test='search!=null and search!=""'>
+	and orderlist.orderlist_no=#{search}
+	</if>
 	
-		<when test='orderlist_orderstatus=="5"'>
-	and orderlist_orderstatus=5
+	<if test='start_date!="" and start_date!=null'>	
+	and orderlist_date<![CDATA[>=]]>#{start_date}
+	</if>
+	
+	<if test='end_date!="" and end_date!=null'>	
+	and orderlist_date<![CDATA[<=]]>#{end_date}
+	</if>
+	
+	<if test='orderlist_paystatus!="0"'>
+	<choose>
+	<when test='orderlist_paystatus=="1"'>
+	and orderlist_paystatus=1
 	</when>
 	
-		<when test='orderlist_orderstatus=="6"'>
-	and orderlist_orderstatus=6
+		<when test='orderlist_paystatus=="2"'>
+	and orderlist_paystatus=2
 	</when>
+	
+		<when test='orderlist_paystatus=="3"'>
+	and orderlist_paystatus=3
+	</when>
+
+
 	</choose>
 	</if>
 	</where>
