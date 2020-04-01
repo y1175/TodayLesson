@@ -38,7 +38,7 @@ $('textarea').summernote({
 </head>
 <body>
 
-<form name="form" action="${pageContext.request.contextPath }/mal_lesson_upload_result" method="post" autocomplete="off" enctype="multipart/form-data">
+<form name="form" action="${pageContext.request.contextPath }/todaylessonsenior/mal_lesson_upload_result" method="post" autocomplete="off" enctype="multipart/form-data">
 
 <h2><c:out value="${dto.lesson_title}"/></h2>
 

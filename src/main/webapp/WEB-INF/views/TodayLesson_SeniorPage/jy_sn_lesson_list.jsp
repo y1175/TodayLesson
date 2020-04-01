@@ -23,7 +23,7 @@ width:500px; height:auto;
 <div id="thumb">
 <img alt="레슨 썸네일" src="${item.lesson_thumb }">
 <c:out value="${item.lesson_no}"/>
-<a href="/my_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a>
+<a href="/todaylessonsenior/my_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a>
 
 <c:choose>
 
@@ -97,7 +97,7 @@ width:500px; height:auto;
 </c:forEach>
 
 
-<a href="${pageContext.request.contextPath }/lesson_write/${pageContext.request.userPrincipal.name}">글쓰기</a>
+<a href="${pageContext.request.contextPath }/todaylessonsenior/lesson_write/${pageContext.request.userPrincipal.name}">글쓰기</a>
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 
 </body>

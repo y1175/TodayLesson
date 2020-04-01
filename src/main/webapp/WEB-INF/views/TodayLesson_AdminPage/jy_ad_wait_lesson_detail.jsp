@@ -238,10 +238,10 @@ $(document).ready(function() {
 	<br>
 
 
-	<a href="${pageContext.request.contextPath }/wait_lesson">목록으로</a>
+	<a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson">목록으로</a>
 	<br>
 	<input type=button id="lesson_result_update"
-		onclick="window.open('${pageContext.request.contextPath}/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=420')"
+		onclick="window.open('${pageContext.request.contextPath}/todaylessonadmin/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=420')"
 		value="심사하기">
 
 </body>

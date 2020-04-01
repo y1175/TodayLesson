@@ -14,12 +14,12 @@
 
 
 	function approve(lesson_no) {
-		opener.location.href="${pageContext.request.contextPath}/lesson_approve/${lesson_no}";
+		opener.location.href="${pageContext.request.contextPath}/todaylessonadmin/lesson_approve/${lesson_no}";
 		self.close();
 	} 
 	
 	function reject(lesson_no) {
-		opener.location.href="${pageContext.request.contextPath}/lesson_reject/${lesson_no}";
+		opener.location.href="${pageContext.request.contextPath}/todaylessonadmin/lesson_reject/${lesson_no}";
 		self.close();
 	} 
 	

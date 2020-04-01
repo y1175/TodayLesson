@@ -117,8 +117,8 @@ $(document).ready(function() {
 <c:forEach var="list" items="${list}">
 <tr>
 <td><c:out value="${list.lessondetail_chapter}"/></td>
-<td><a href="${pageContext.request.contextPath }/select_lessondetail_chapter/${list.lessondetail_no}"><c:out value="${list.lessondetail_title}"/></a></td>
-<td><a href="${pageContext.request.contextPath }/update_lessondetail_chapter/${list.lessondetail_no}">레슨 수정</a></td>
+<td><a href="${pageContext.request.contextPath }/todaylessonsenior/select_lessondetail_chapter/${list.lessondetail_no}"><c:out value="${list.lessondetail_title}"/></a></td>
+<td><a href="${pageContext.request.contextPath }/todaylessonsenior/update_lessondetail_chapter/${list.lessondetail_no}">레슨 수정</a></td>
 </tr>
 </c:forEach>
 </tbody>
@@ -126,11 +126,11 @@ $(document).ready(function() {
 
 </div>
 
-<a href="${pageContext.request.contextPath }/my_approve_lesson/${pageContext.request.userPrincipal.name}">목록으로</a>
+<a href="${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson/${pageContext.request.userPrincipal.name}">목록으로</a>
 
 <c:if test="${dto.lesson_type != 1}">
 <br>
-<a href="${pageContext.request.contextPath }/my_approve_lesson_upload/${dto.lesson_no}">레슨 업로드</a>
+<a href="${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson_upload/${dto.lesson_no}">레슨 업로드</a>
 </c:if>
 
 

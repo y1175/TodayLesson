@@ -31,7 +31,7 @@ width:500px; height:auto;
 <div id="thumb">
 <img alt="레슨 썸네일" src="${item.lesson_thumb }">
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/approve_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="/todaylessonsenior/approve_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
 
 <c:choose>

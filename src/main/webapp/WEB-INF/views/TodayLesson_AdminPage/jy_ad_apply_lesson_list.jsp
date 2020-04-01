@@ -29,7 +29,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath }/admin_apply_exam" method="post">
+<form action="${pageContext.request.contextPath }/todaylessonadmin/admin_apply_exam" method="post">
 <table class="table">
 <thead>
 <tr>
@@ -43,7 +43,7 @@ $(document).ready(function(){
 <tr>
 <td><input type="checkbox" name="check" value="${item.lesson_no}"></td>
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/admin_wait_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="/todaylessonadmin/admin_wait_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
 
 <c:choose>
