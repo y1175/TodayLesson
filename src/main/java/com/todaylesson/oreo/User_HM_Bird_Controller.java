@@ -18,12 +18,10 @@ public class User_HM_Bird_Controller {
 	
 	
 	@RequestMapping("/hm_us_bird")
-	public String hm_us_bird(Model model)
+	public String hm_us_bird()
 	{
 	
-		LessonDTO dto = service.test();
 		
-		model.addAttribute("dto",dto);
 		return "/TodayLesson_UserPage/hm_us_bird.us_main_section";
 	}
 	
