@@ -26,5 +26,12 @@ public class OrderListDTO {
 	private int orderlist_calculatestatus;
 	private int orderlist_usepoint;
 	private String orderlist_msg;
+	
+	//AmChart용 데이터
+    private String regYear;
+	private String regMonth;
+	private String regDay;
+	 //금액합계
+	private int costTotal;
 
 }
