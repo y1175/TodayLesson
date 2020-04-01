@@ -42,11 +42,13 @@ value(#{lesson_no}, #{lessondetail_no}, #{member_id}, 1)
 
 <select id="select_my_lesson_comp" parameterMap="hashmap" resultType="integer">
 
-select count(lessondetail_comp = 1)
-from lessoncomp 
-where lessondetail_no = #{lessondetail_no} 
-and lesson_no = #{lesson_no} 
+select count(*)
+from lessoncomp
+where lesson_no = #{lesson_no}
 and member_id = #{member_id}
+and lessondetail_comp = 1
+and lessondetail_no = #{lessondetail_no}
+
 
 </select>
 

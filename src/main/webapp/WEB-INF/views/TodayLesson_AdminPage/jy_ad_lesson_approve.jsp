@@ -14,13 +14,13 @@
 
 if (${result} > 0) {
 	alert("승인 완료!");
-	location.href="${pageContext.request.contextPath }/wait_lesson";
+	location.href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson";
 
 } else {
 	
 
 	alert("승인 실패!");
-	location.href="${pageContext.request.contextPath }/wait_lesson";
+	location.href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson";
 	
 }
 </script>

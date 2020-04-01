@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.todaylesson.DTO.AmChartDTO;
+import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Stat_LogDTO;
 import com.todaylesson.service.Admin_YI_Statistics_Service;
 
@@ -28,6 +30,7 @@ public class Admin_YI_Statistics_Controller {
 			@RequestParam(required=false,defaultValue="date") String ymd
 			,@RequestParam(required=false,defaultValue="") String start_date
 			,@RequestParam(required=false,defaultValue="") String end_date
+			,@RequestParam(required=false,defaultValue="") String countdate
 			,Model model)
 	{
 		System.out.println(ymd);
@@ -60,14 +63,34 @@ public class Admin_YI_Statistics_Controller {
 		model.addAttribute("cumlist",cumlist);
 		model.addAttribute("distinctList",distinctList);
 		
+		
+		/* 가입자 수 */
+		String today="%y-%m-%d";
+		String week="week";
+		String month="%y-%m";
+		String year="%y";
+		
+		int today_joinCount=service.joinCount(today,countdate);
+		int week_joinCount=service.joinCount(week,countdate);
+		int month_joinCount=service.joinCount(month,countdate);
+		int year_joinCount=service.joinCount(year,countdate);
+		
+		System.out.println("countdate:"+countdate);
+		
+		model.addAttribute("today_joinCount",today_joinCount);
+		model.addAttribute("week_joinCount",week_joinCount);
+		model.addAttribute("month_joinCount",month_joinCount);
+		model.addAttribute("year_joinCount",year_joinCount);
+		model.addAttribute("countdate",countdate);
+		
 		return "/TodayLesson_AdminPage/yi_ad_member_statistics";
 	}
 	
-	//AmChart
+	//AmChart1
 	@RequestMapping(value = "/member_statistics", method = RequestMethod.POST)
 	@ResponseBody
 	public List chartOutput()throws Exception {
-	  List<Stat_LogDTO> chartOutput = service.chartOutput();
+	  List<AmChartDTO> chartOutput = service.chartOutput();
 	  ArrayList response = new ArrayList();
 	  for(int i =0; i < chartOutput.size(); i ++) {
 	    HashMap<String , Object> map = new HashMap<String, Object>();
@@ -82,5 +105,24 @@ public class Admin_YI_Statistics_Controller {
 
 	}
 	
+	//AmChart2
+		@RequestMapping(value = "/join_statistics", method = RequestMethod.POST)
+		@ResponseBody
+		public List chartOutput2()throws Exception {
+		  List<AmChartDTO> chartOutput = service.chartOutput2();
+		  ArrayList response = new ArrayList();
+		  for(int i =0; i < chartOutput.size(); i ++) {
+		    HashMap<String , Object> map = new HashMap<String, Object>();
+		    map.put("date", chartOutput.get(i).getRegYear()+"-"+chartOutput.get(i).getRegMonth()+"-"+chartOutput.get(i).getRegDay());
+		    map.put("output", chartOutput.get(i).getTotal());
+		    response.add(map);
+		    System.out.println(map);
+		    System.out.println(response);
+		  }
+		  System.out.println(response);
+		  return response;
+
+		}
+
 	
 }

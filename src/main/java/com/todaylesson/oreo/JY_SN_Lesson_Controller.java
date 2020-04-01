@@ -28,7 +28,6 @@ import com.todaylesson.upload.UploadFileUtils;
 
 
 @Controller
-/*@RequestMapping("/todaylessonsenior/")*/
 public class JY_SN_Lesson_Controller {
 
 	
@@ -37,7 +36,7 @@ public class JY_SN_Lesson_Controller {
 	
 	   
 
-	@RequestMapping("/lesson_list/{member_id}")
+	@RequestMapping("/todaylessonsenior/lesson_list/{member_id}")
 	public String list(Model model,@PathVariable String member_id){
 		int senior_no = lesson_service.select_senior_no(member_id);
 		SeniorDTO dto = lesson_service.select_senior_info(senior_no);
@@ -57,7 +56,7 @@ public class JY_SN_Lesson_Controller {
 	
 	
 	
-	@RequestMapping("/lesson_write/{member_id}")
+	@RequestMapping("/todaylessonsenior/lesson_write/{member_id}")
 	public String write(@PathVariable String member_id,Model model) {
 		int senior_no = lesson_service.select_senior_no(member_id);
 		List<LessonDTO> list = lesson_service.reject_lesson_list(senior_no);
@@ -85,7 +84,7 @@ public class JY_SN_Lesson_Controller {
 
 	
 	
-	@RequestMapping("/insert_result")
+	@RequestMapping("/todaylessonsenior/insert_result")
 	public String insertresult(LessonDTO dto, Model model,MultipartFile file, HttpServletRequest request) throws Exception {
 		
 		if (dto.getLesson_type() != 3) {
@@ -144,14 +143,14 @@ public class JY_SN_Lesson_Controller {
 		
 	}
 	
-	@RequestMapping("/my_lesson_detail/{lesson_no}")
+	@RequestMapping("/todaylessonsenior/my_lesson_detail/{lesson_no}")
 	public String lesson_detail(@PathVariable int lesson_no, Model model) {
 		LessonDTO dto = lesson_service.detail_lesson(lesson_no);
 		model.addAttribute("dto",dto);
 		return "TodayLesson_SeniorPage/jy_sn_lesson_detail.sn_main_section";
 	}
 	
-	@RequestMapping("/lesson_update/{lesson_no}")
+	@RequestMapping("/todaylessonsenior/lesson_update/{lesson_no}")
 	public String lesson_update(@PathVariable int lesson_no, Model model) {
 		LessonDTO dto = lesson_service.detail_lesson(lesson_no);
 		if (dto.getLesson_result() != 0) {
@@ -162,7 +161,7 @@ public class JY_SN_Lesson_Controller {
 		} 
 	}
 	
-	@RequestMapping("/lesson_delete/{lesson_no}")
+	@RequestMapping("/todaylessonsenior/lesson_delete/{lesson_no}")
 	public String lesson_delete(@PathVariable int lesson_no, Model model) {
 		LessonDTO dto = lesson_service.detail_lesson(lesson_no);
 		if (dto.getLesson_result() != 0) {
@@ -176,7 +175,7 @@ public class JY_SN_Lesson_Controller {
 	
 	
 	
-	@RequestMapping("/lesson_update_result")
+	@RequestMapping("/todaylessonsenior/lesson_update_result")
 	public String lesson_update_result (LessonDTO dto, Model model,MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
 		

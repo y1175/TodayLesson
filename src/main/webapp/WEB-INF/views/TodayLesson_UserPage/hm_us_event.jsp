@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,19 +90,25 @@
 </nav>
 
 
-<div class="hm_event_thumbnailmain">
-   <c:forEach var="item" items="${list}">
-      <div class="row" style="display: inline-block; margin: 0px 5px;" onclick="location.href='${pageContext.request.contextPath}/todaylesson/hm_us_event_detail/'+${item.event_no}">
-            <div class="hm_event_thumbnail" >
-               <img alt="이벤트 이미지" src="${item.event_thumbnail}" style="width: 360px;">
-               <p>${item.event_startperiod}~${item.event_endperiod}</p>
-               <h5>${item.event_title}</h5>
-               <h6>${item.event_thumbexplain}</h6>
-            </div>
-      </div>
-   </c:forEach>
-</div> 
-</div>
+		<div class="hm_event_thumbnailmain">
+			<c:forEach var="item" items="${list}">
+				<div class="row" style="display: inline-block; margin: 0px 5px;"
+					onclick="location.href='${pageContext.request.contextPath}/todaylesson/hm_us_event_detail/'+${item.event_no}">
+					<div class="hm_event_thumbnail">
+						<img alt="이벤트 이미지" src="${item.event_thumbnail}"
+							style="width: 360px;">
+						<p>${item.event_startperiod}~${item.event_endperiod}</p>
+						<h5>${item.event_title}</h5>
+						<h6>${item.event_thumbexplain}</h6>
+						<jsp:useBean id="now" class="java.util.Date" />
+						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+						<c:if test="${today <= item.event_endperiod}">(진행중)</c:if>
+						<c:if test="${today > item.event_endperiod}">종료된 이벤트 입니다</c:if>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 
 
 

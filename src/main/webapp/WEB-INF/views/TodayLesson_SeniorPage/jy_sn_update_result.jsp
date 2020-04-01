@@ -13,13 +13,13 @@
 if (${result} > 0) {
 	alert("수정 성공! 내부 검토 후 등록 여부를 알려드리겠습니다.");
 
-	location.href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
 
 } else {
 	
 
 	alert("수정 실패!");
-	location.href="${pageContext.request.contextPath }/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
 	
 }
 </script>

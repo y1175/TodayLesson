@@ -39,7 +39,7 @@ document.getElementById("event_replysubmit_thead-"+event_no).removeAttribute("st
 			for(var i in item)
 				{
 				
-				let member_nick=item[i].member_nick;
+		/* 		let member_nick=item[i].member_nick; */
 				let event_reply_content=item[i].event_reply_content;
 				let event_reply_date=item[i].event_reply_date;
 			/* 	$('.add_reply').append(repdetail); */
@@ -80,7 +80,9 @@ document.getElementById("event_replysubmit_thead-"+event_no).removeAttribute("st
 			
 } /*for문 끝*/
 		}	 /*function reply_view 끝*/
+	});
 	}
+}
 </script>
 </head>
 <body>

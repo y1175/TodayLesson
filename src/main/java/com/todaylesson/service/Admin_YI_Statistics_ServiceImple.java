@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.AmChartDTO;
 import com.todaylesson.DTO.Stat_LogDTO;
 import com.todaylesson.Mapper.Admin_YI_Statistics_Mapper;
 
@@ -25,24 +26,17 @@ public class Admin_YI_Statistics_ServiceImple implements Admin_YI_Statistics_Ser
 		hm.put("end_date", end_date);
 		return mapper.allLog(hm);
 	}
-
+	
 	@Override
-	public void createTmp() {
+	public int joinCount(String join_ymd,String countdate) {
 		// TODO Auto-generated method stub
-		mapper.createTmp();
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("join_ymd",join_ymd);
+		hm.put("countdate",countdate);
+		
+		return mapper.joinCount(hm);
 	}
 
-	@Override
-	public void setVariable() {
-		// TODO Auto-generated method stub
-		mapper.setVariable();
-	}
-
-	@Override
-	public void dropTmp() {
-		// TODO Auto-generated method stub
-		mapper.dropTmp();
-	}
 
 	@Override
 	public List<Stat_LogDTO> distinct_member() {
@@ -51,9 +45,19 @@ public class Admin_YI_Statistics_ServiceImple implements Admin_YI_Statistics_Ser
 	}
 
 	@Override
-	public List<Stat_LogDTO> chartOutput() {
+	public List<AmChartDTO> chartOutput() {
 		// TODO Auto-generated method stub
 		return mapper.chartOutput();
 	}
+
+	@Override
+	public List<AmChartDTO> chartOutput2() {
+		// TODO Auto-generated method stub
+		return mapper.chartOutput2();
+	}
+
+
+
+
 	
 }

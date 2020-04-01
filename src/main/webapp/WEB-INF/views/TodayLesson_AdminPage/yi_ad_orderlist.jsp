@@ -15,12 +15,10 @@
 <form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
 <label>주문상태</label>
 <input type="radio" id="order_all" name="orderlist_orderstatus" value="0"><label for="order_all">전체</label>
-<input type="radio" id="deposit_waiting" name="orderlist_orderstatus" value="1"><label for="deposit_waiting">입금대기</label>
-<input type="radio" id="deposit_complete" name="orderlist_orderstatus" value="2"><label for="deposit_complete">입금완료</label>
-<input type="radio" id="delivery_ready" name="orderlist_orderstatus" value="3"><label for="delivery_ready">배송준비</label>
-<input type="radio" id="deliverying" name="orderlist_orderstatus" value="4"><label for="deliverying">배송중</label>
-<input type="radio" id="order_complete" name="orderlist_orderstatus" value="5"><label for="order_complete">완료</label>
-<input type="radio" id="order_cancel" name="orderlist_orderstatus" value="6"><label for="order_cancel">취소</label>
+<input type="radio" id="order_complete" name="orderlist_orderstatus" value="1"><label for="order_complete">주문완료</label>
+<input type="radio" id="deliverying" name="orderlist_orderstatus" value="2"><label for="deliverying">배송중</label>
+<input type="radio" id="delivery_complete" name="orderlist_orderstatus" value="3"><label for="delivery_complete">배송완료</label>
+<input type="radio" id="order_cancel" name="orderlist_orderstatus" value="4"><label for="order_cancel">주문취소</label>
 <br>
 <label>주문번호</label>
 <input type="text" id="orderlist_search" name="orderlist_search"><br>
@@ -51,11 +49,10 @@
 <c:forEach var="item" items="${list }">
 <tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td><td>정산상태(공사중)</td></tr>
 <tr><td><select name="order_status" class="status_select status_select-${item.orderlist_no}" id="${item.orderlist_no}">
-<option value="1">입금대기</option>
-<option value="2">입금완료</option>
-<option value="3">배송준비</option>
-<option value="4">배송중</option>
-<option value="5">취소</option>
+<option value="1">주문완료</option>
+<option value="2">배송중</option>
+<option value="3">배송완료</option>
+<option value="4">주문취소</option>
 </select></td><td>${item.member_id }</td><td>${item.orderlist_addr }</td><td>${item.product_no }</td></tr>
 
 

@@ -15,7 +15,7 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.service.Admin_HS_Administrator_Service;
 
 @Controller
-/*@RequestMapping("/todaylessonadmin/")*/
+@RequestMapping("/todaylessonadmin/")
 public class Admin_HS_Administrator_Controller {
 	
 	@Resource(name="admin_HS_Administrator_Service")

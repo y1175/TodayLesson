@@ -11,7 +11,7 @@
 <script>
 
 alert("시니어 정보를 입력하셔야 레슨을 신청할 수 있습니다!");
-location.href="${pageContext.request.contextPath }/senior_switch_update/${pageContext.request.userPrincipal.name}";
+location.href="${pageContext.request.contextPath }/todaylessonsenior/senior_switch_update/${pageContext.request.userPrincipal.name}";
 
 </script>
 

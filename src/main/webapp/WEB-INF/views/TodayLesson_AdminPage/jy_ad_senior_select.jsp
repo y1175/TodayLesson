@@ -67,7 +67,7 @@ $.ajax({
 <c:forEach var="list" items="${list}">
 <tr>
 <td>${list.lesson_no}</td>
-<td><a href="${pageContext.request.contextPath}/admin_lesson_detail/${list.lesson_no }">${list.lesson_title}</a></td>
+<td><a href="${pageContext.request.contextPath}/todaylessonadmin/admin_lesson_detail/${list.lesson_no }">${list.lesson_title}</a></td>
 	<c:choose>
 
 		<c:when test="${list.lesson_type == 1}">
@@ -110,6 +110,6 @@ $.ajax({
 </c:forEach>
 </tbody>
 </table>
-<a href="${pageContext.request.contextPath }/all_senior">목록으로</a>
+<a href="${pageContext.request.contextPath }/todaylessonadmin/all_senior">목록으로</a>
 </body>
 </html>

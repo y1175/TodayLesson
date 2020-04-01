@@ -17,9 +17,4 @@ public class Stat_LogDTO {
 	
 	private int total;
 	private int member_total;
-	
-	//AmChart용 데이터
-	private String regYear;
-	private String regMonth;
-	private String regDay;
 }

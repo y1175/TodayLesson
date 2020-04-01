@@ -45,5 +45,6 @@ public class SQLjoin_Member_EventDTO {
 		//eventreply
 		private int event_reply_no;
 		private String event_reply_date;
+		private String event_reply_content;
 	
 }

@@ -191,7 +191,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 
 
-<form method="post" action="${pageContext.request.contextPath }/lesson_update_result" name="form" autocomplete="off" enctype="multipart/form-data"> 
+<form method="post" action="${pageContext.request.contextPath }/todaylessonsenior/lesson_update_result" name="form" autocomplete="off" enctype="multipart/form-data"> 
 
 
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>

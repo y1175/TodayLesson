@@ -19,7 +19,7 @@
 <c:forEach var="list" items="${list }">
 <tr>
 <td>${list.senior_no }</td>
-<td><a href="/select_senior/${list.senior_no}">${list.member_id}</a></td>
+<td><a href="/todaylessonadmin/select_senior/${list.senior_no}">${list.member_id}</a></td>
 <td>${list.senior_register_date}</td>
 <td>${list.senior_nick}</td>
 
