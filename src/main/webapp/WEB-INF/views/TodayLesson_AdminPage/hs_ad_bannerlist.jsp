@@ -6,12 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>TodayLessonAdmin</title>
+
+<!-- CSSstyle --> 
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_bannerlist.css?ver=1">
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Banner_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
+
 <!-- Banner JS -->
    <script src="${pageContext.request.contextPath}/resources/JS/hs_ad_bannerlist.js"></script>
 <!-- Banner JS -->
 </head>
 <body>
-   <div>
+   <div class="hs_Admin_BannerBox">
       <h4>배너관리</h4>
       <div>
          <form method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">

@@ -6,9 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script src="resources/JS/summernote-lite.js"></script>
 <script src="resources/JS/summernote-ko-KR.js"></script>
+
+<!-- CSSstyle --> 
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_ProductReview_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
 
 </head>
 

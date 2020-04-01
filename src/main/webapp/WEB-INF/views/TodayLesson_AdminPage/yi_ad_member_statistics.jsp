@@ -7,27 +7,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
- <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-  <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-  <script src="https://www.amcharts.com/lib/3/pie.js"></script>
-  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>  
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <style>
-#chartOutput{
-width		: 100%;
-	height		: 465px;
-	font-size	: 16px;
-	font-weight : bold;
-}
+   <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+   <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+   <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+   <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+   <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>  
+<!-- CSSstyle --> 
+   <style type="text/css">
+   .hs_ad_main_asidenav_nav_StatMember_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->   
+   <style>
+     #chartOutput{
+       width		: 100%;
+	   height		: 465px;
+	   font-size	: 16px;
+	   font-weight : bold;
+    }
 
-#chartOutput2{
-width		: 100%;
-	height		: 465px;
-	font-size	: 16px;
-	font-weight : bold;
-}
-</style>
+    #chartOutput2{
+       width		: 100%;
+       height		: 465px;
+	   font-size	: 16px;
+	   font-weight : bold;
+    }
+   </style>
+
 </head>
 <body>
 <script>

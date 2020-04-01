@@ -73,11 +73,11 @@
       <div class="hs_us_mainheader_line"></div>
       <div class="hs_us_mainheader_navbox">
          <nav>
-            <a href="">얼리버드</a>
+            <a href="${pageContext.request.contextPath}/hm_us_bird">얼리버드</a>
             <a href="">전체레슨</a>
-            <a href="">자유게시판</a>
-            <a href="">스토어</a>
-            <a href="">이벤트</a>
+            <a href="${pageContext.request.contextPath}/todaylesson/freeboard">자유게시판</a>
+            <a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0">스토어</a>
+            <a href="${pageContext.request.contextPath}/todaylesson/hm_us_event">이벤트</a>
          </nav>
       </div>
       <div class="hs_us_mainheader_line"></div>

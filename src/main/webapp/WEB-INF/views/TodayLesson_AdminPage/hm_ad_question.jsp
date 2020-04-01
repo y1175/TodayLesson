@@ -6,8 +6,17 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question.js"></script>
+
+<!-- CSSstyle --> 
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_question_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
+
 </head>
 <body>
 <h2>1:1문의 관리 페이지</h2>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- CSSstyle -->   
+<!-- CSSstyle --> 
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=1">
    <style type="text/css">
       .hs_sn_main_asidenav_nav_salestitle>a{
@@ -14,6 +14,7 @@
       }
    </style>
 <!-- CSSstyle -->
+
 <!-- jQuery DatePicker -->
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  

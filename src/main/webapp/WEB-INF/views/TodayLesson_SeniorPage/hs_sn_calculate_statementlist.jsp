@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <!-- CSSstyle -->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_statementlist.css?ver=1">  
    <style type="text/css">
@@ -14,7 +15,8 @@
          color: rgb(224, 62, 82);
       }
    </style>
-<!-- CSSstyle -->   
+<!-- CSSstyle -->  
+
 </head>
 <body>
    <div class="hs_senior_calculate_statement">

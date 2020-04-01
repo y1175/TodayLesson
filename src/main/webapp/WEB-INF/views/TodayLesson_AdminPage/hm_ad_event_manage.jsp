@@ -7,8 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_manage.css?ver=2">
-<script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- CSSstyle --> 
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_manage.css?ver=2">
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Event_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
+
+
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event.js"></script>
 </head>
 <body>
