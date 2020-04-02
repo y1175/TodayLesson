@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>얼리버드</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=1">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
@@ -286,7 +286,11 @@
 
 
 	<script
-		src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=2"></script>
+		src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=1"></script>
+
+
+
+
 
 
 	<!-- 레슨슬라이더 -->
@@ -295,6 +299,13 @@
             $(".hm_us_newlesson_g-scrolling-carousel .hm_us_newlesson_items").gScrollingCarousel();
         });
    </script>
+   	<!-- 레슨슬라이더 -->
+	<!-- <script>
+        $(document).ready(function() {
+            $(".hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items").gScrollingCarousel();
+        });
+   </script>
+    -->
 	<script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-36251023-1']);

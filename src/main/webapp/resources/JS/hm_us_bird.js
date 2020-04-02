@@ -156,7 +156,7 @@
 
 
 //레슨슬라이더(신규)
-(function($) {
+/*(function($) {
 	    $.fn.extend({
 	        gScrollingCarousel: function(options) {
 
@@ -305,4 +305,4 @@
 	})(jQuery);
 
 
-
+*/
