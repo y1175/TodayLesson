@@ -20,7 +20,7 @@ import com.todaylesson.DTO.ProductDTO;
 @Mapper
 public interface EJ_US_ProductMapper {
 
-	public List<ProductDTO> allData();
+	public List<ProductDTO> allData(HashMap<String, Object> hm);
 
 	public int insertBoard(ProductDTO dto);
 
@@ -44,7 +44,7 @@ public interface EJ_US_ProductMapper {
 
 	public int insertcart(CartDTO cartdto);
 
-	public List<MyLikeDTO> selectmylike(String member_id);
+	public List<MyLikeDTO> selectmylike(HashMap<String, Object> hm);
 
 	public List<CartDTO> selectmycart(String member_id);
 

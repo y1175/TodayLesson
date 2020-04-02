@@ -16,7 +16,7 @@ import com.todaylesson.DTO.ProductDTO;
 
 public interface EJ_All_Product_Service {
 
-	public List<ProductDTO> selectAll();
+	public List<ProductDTO> selectAll(String order);
 
 	public int insertBoard(ProductDTO     dto);
 
@@ -40,7 +40,7 @@ public interface EJ_All_Product_Service {
 
 	public int insertcart(CartDTO cartdto);
 
-	public List<MyLikeDTO> selectMyLike(String member_id);
+	public List<MyLikeDTO> selectMyLike(String member_id, String category);
 
 	public List<CartDTO> selectMyCart(String member_id);
 

@@ -29,9 +29,11 @@ public class EJ_MyPage_Controller {
 	private EJ_All_Product_Service service;
 	
 	@RequestMapping("/mylike/{member_id}")
-	public String mylike(@PathVariable(value="member_id") String member_id,Model model)
+	public String mylike(@PathVariable(value="member_id") String member_id
+			,@RequestParam(required=false) String category
+			,Model model)
 	{
-		List<MyLikeDTO> likedto=service.selectMyLike(member_id);
+		List<MyLikeDTO> likedto=service.selectMyLike(member_id,category);
 		model.addAttribute("list",likedto);
 		return "TodayLesson_UserPage/ej_us_mylike.us_my_section";
 	}

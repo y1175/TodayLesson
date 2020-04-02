@@ -25,7 +25,7 @@ public class EJ_Admin_Product_Controller {
 	
 	@RequestMapping("/ej_ad_productlist")
 	public String list(Model model) {
-		List<ProductDTO> list = service.selectAll();
+		List<ProductDTO> list = service.selectAll(null);
 		model.addAttribute("list",list);
 		return "TodayLesson_AdminPage/ej_ad_productlist.hs_ad_main_section";
 	}

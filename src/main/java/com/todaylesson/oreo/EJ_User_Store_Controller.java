@@ -40,7 +40,7 @@ import com.todaylesson.DTO.ProductDTO;
 
 @Controller
 @RequestMapping("/todaylesson/")
-public class EJ_User_Controller {
+public class EJ_User_Store_Controller {
 
 	
 	@Resource(name="service")
@@ -50,12 +50,14 @@ public class EJ_User_Controller {
 	
 	//스토어 메인
 	@RequestMapping("/ej_store_main/{product_category}")
-	public String slist(@PathVariable("product_category") int product_category, Model model) {
+	public String slist(@PathVariable("product_category") int product_category,
+			@RequestParam(required=false) String order
+			,Model model) {
 		System.out.println("product_category"+product_category);
 		
 		if(product_category==0)
 		{
-			List<ProductDTO> list = service.selectAll();
+			List<ProductDTO> list = service.selectAll(order);
 			model.addAttribute("list",list);
 		
 		}

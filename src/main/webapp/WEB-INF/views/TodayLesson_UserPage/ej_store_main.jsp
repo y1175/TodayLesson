@@ -16,9 +16,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <style>
+.ej_category{
+width:60px;}
 .ej_grid{
 display: inline-block;
-width: 80px;
+width: 100px;
 height: 70px;
 }
 /* .ej_grid a div{
@@ -412,17 +414,21 @@ body{
 
    <div class="" style="width: 80%; margin: auto;">
    <!-- 카테고리 선택 아이콘들 -->
-    <div class="ej_grid all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0"><div class="fas fa-check-double"><br>전체</div></a></div>
-  <div class="ej_grid lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1"><div class="fas fa-globe-americas"><br>외국어</div></a></div>
-    <div class="ej_grid it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2"><div class="fas fa-desktop"><br>IT</div></a></div>
-     <div class="ej_grid cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3"><div class="fas fa-pizza-slice"><br>요리</div></a></div>
-      <div class="ej_grid diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4"><div class="fas fa-hammer"><br>DIY</div></a></div>
-      <div class="ej_grid exer"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><div class="fas fa-running"><br>운동</div></a></div>
-        <div class="ej_grid ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><div class="fas fa-ellipsis-h"><br>기타</div></a></div>
+   
+    <div class="ej_grid all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0"><img class="ej_category all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/correct.png"><br>전체</a></div>
+  <div class="ej_grid lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1"><img class="ej_category lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/lang.png"><br>외국어</a></div>
+    <div class="ej_grid it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2"><img class="ej_category it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/it.png"><br>IT</a></div>
+     <div class="ej_grid cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3"><img class="ej_category cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/cook.png"><br>요리</a></div>
+      <div class="ej_grid diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4"><img class="ej_category diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/diy.png"><br>DIY</a></div>
+      <div class="ej_grid exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><img class="ej_category exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"><br>운동</a></div>
+        <div class="ej_grid ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><img class="ej_category etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"><br>기타</a></div>
        <br>
         <!-- 스토어 상품 -->
-      <b class="" style="font-size: 25px;"> 전체</b>
+      <b class="" style="font-size: 25px;"> </b>
       <div class="" style="margin-top: 30px;">
+      <a href="?order=like"><div class="ej_mainspan likeorder">좋아요순</div></a>
+<a href="?order=recent"><div class="ej_mainspan recentorder">최신순</div></a>
+
          <c:forEach var="storenewproductlist" items="${list}">
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_newproduct">

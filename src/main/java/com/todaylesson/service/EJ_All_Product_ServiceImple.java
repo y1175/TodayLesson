@@ -25,8 +25,10 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	EJ_US_ProductMapper mapper;
 	
 	@Override
-	public List<ProductDTO> selectAll() {
-		return mapper.allData();
+	public List<ProductDTO> selectAll(String order) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("order", order);
+		return mapper.allData(hm);
 	}
 
 	@Override
@@ -95,9 +97,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	}
 
 	@Override
-	public List<MyLikeDTO> selectMyLike(String member_id) {
+	public List<MyLikeDTO> selectMyLike(String member_id, String category) {
 		// TODO Auto-generated method stub
-		return mapper.selectmylike(member_id);
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("member_id", member_id);
+		hm.put("category", category);
+		return mapper.selectmylike(hm);
 	}
 
 	@Override

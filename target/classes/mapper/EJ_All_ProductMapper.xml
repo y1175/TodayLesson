@@ -7,10 +7,20 @@
 <mapper namespace="com.todaylesson.Mapper.EJ_US_ProductMapper">
 
 
-
-<select id="allData" resultType="com.todaylesson.DTO.ProductDTO">
+<!--스토어메인 parameterType="java.util.HashMap" -->
+<select id="allData" resultType="com.todaylesson.DTO.ProductDTO" parameterType="java.util.HashMap"> 
 select *
 from product
+<choose>
+<when test='order == null || order.equals("")'>
+ </when>
+<when test='order == "like"||order.equals("like")'> 
+order by product_like desc;
+ </when>
+<when test='order == "recent" ||order.equals("recent")'> 
+order by product_date desc;
+ </when>
+</choose>
 </select>
 
 <select id="selectCategory" parameterType="int" resultType="com.todaylesson.DTO.ProductDTO">
@@ -137,12 +147,27 @@ where member_id=#{member_id}
 	<insert id="insertcart" parameterType="com.todaylesson.DTO.CartDTO">
 	insert into cart(product_no,member_id, cart_amount) values(#{product_no},#{member_id},#{cart_amount})
 	</insert>
-	
-	<select id="selectmylike" resultType="com.todaylesson.DTO.MyLikeDTO">
+	<!--내 좋아요 페이지  -->
+	<select id="selectmylike" resultType="com.todaylesson.DTO.MyLikeDTO"  parameterType="java.util.HashMap">
 	select * from mylike left outer join product on mylike.product_no=product.product_no
 						left outer join lesson on mylike.lesson_no=lesson.lesson_no
 						where member_id=#{member_id}
-	</select>
+						<choose>
+<!-- order가 1이나 2일때는 셀렉트박스로 카테고리를 선택 -->
+<when test='category == null || category.equals("")|| category.equals("all")||category == "all" '> <!-- (categoryName == null || categoryName.equals("")) -->
+ </when>
+<when test='category == "lesson" ||category.equals("lesson")'> 
+and mylike.lesson_no is not null;
+ </when>
+<when test='category == "store" ||category.equals("store")'> 
+and mylike.product_no is not null;
+ </when>
+<!--  <otherwise>
+ </otherwise> -->
+</choose>
+</select>
+<!--장바구니  -->
+	
 	<select id="selectmycart" resultType="com.todaylesson.DTO.CartDTO">
 	 select * from cart left outer join product on cart.product_no=product.product_no
 						left outer join lesson on cart.lesson_no=lesson.lesson_no
