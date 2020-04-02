@@ -15,420 +15,65 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<style>
-.ej_category{
-width:60px;}
-.ej_grid{
-display: inline-block;
-width: 100px;
-height: 70px;
-}
-/* .ej_grid a div{
-width:140px;
-color: solid black;
-} */
-div.fas.fa-check-double{
-
-}
-/* Main Bunner 슬라이더(자동 좌우적용) */
-body{
-	margin : opx auto;
-	padding: 0; 
-} 
-
-.hs_us_home_mainBanner{
-	width:100%;
-	margin-top: -10px;
-	height: 400px;
-}
-
-.hs_us_home_mainBannerbox{
-	position:relative;
-	overflow: hidden;
-	height: 400px;
-	width: 100%;
-	background-color: pink
-}
-.hs_us_home_mainBannerslide{
-	width:100%; /* 이미지 크기 * 이미지 개수 + 여유 */
-	display: inline; 
-    /* position:absolute;  이거 풀면 이미지 넘어가면서 배경색 같이나옴 */
-}
-
-.hs_us_home_mainBannerslide>a>img{
-	width:100%;
-	height : 400px;
-	position: absolute;
-	transition: all 2s;
-}  
-/* Main Bunner 슬라이더(자동 좌우적용) */
-
-/* 신규레슨 */
-/* 슬라이더 묶는 박스 */
-.hs_us_newlesson_container {
-    max-width: 100%;
-    /* margin-bottom: 30px; */
-}
-/* 슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용  */
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a {
-    display: inline-block;
-    notice the comments between inline-block items margin-right: 10px;
-    width: 23%;
-     margin: 12.5px;
-    /*text-align: center;*/
-    text-decoration: none;
-}
-/* 썸네일 */
-.hs_storecontent_cg_img{
-	width: 100%;
-	/* padding: 15px 0px; */
-    /* height:200px; */
-}
-/* p tag 공통적용 */
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p {
-    margin: 0px;
-    color: rgb(53, 54, 58);
-    position: relative;
-    /* text-align: center; */
-}
-/* 카테고리 및 시니어 닉네임(첫번째 p를 선택하는 타입넣어줌) */
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:first-of-type{
-	font-size: 10px;
-	font-weight: 900;
-	color: #999;
-	margin:10px 0px 0px;
-}
-/* 2번째 P 타이틀 */
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:nth-of-type(2){
-	font-size:17px;
-	font-weight:600;
-	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
-	margin:10px 0px;
-	transition:all .3s ease 0s
-}
-/* 3번째 p 세일된가격가격  */
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:nth-of-type(3){
-	font-size:16px;
-	font-weight:700;
-	transition:all .3s
-}
-/* 이전가격 */
-.hs_us_newlesson_BFcost{
-	color:#999;
-	font-size:16px;
-	font-weight:500;
-	text-decoration:line-through;
-	margin-left:7px;
-}
-/* 4번째 p 좋아요 수  */
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items a p:nth-of-type(4){
-	font-size: 12px;
-	font-weight:400;
-}
-/* 썸네일 안데 장바구니 좋아요 아이콘 */	
-/* .hs_us_newlesson_social {
-	padding:0;
-	margin:0;
-	list-style:none;
-	position:absolute;
-	bottom:100px;
-	right:13px;
-	z-index:1
-	}
-.hs_us_newlesson_social li{
-	opacity:0;
-	transform:translateY(3px);
-	transition:all .5s ease 0s
-	}
-.hs_us_newlesson_items:hover .hs_us_newlesson_social li{
-	margin:0 0 10px;
-	opacity:1;
-	transform:translateY(0)
-	}
-.hs_us_newlesson_items:hover .hs_us_newlesson_social li:nth-child(1){
-	transition-delay:.2s  트랜지션 지연시간(애니메이션을 지연시킬 때)
-	}
-.hs_us_newlesson_items:hover .hs_us_newlesson_social li:nth-child(2){
-	transition-delay:.4s 트랜지션 지연시간(애니메이션을 지연시킬 때)
-	}
-썸네일 안데 장바구니 좋아요 아이콘 위치	
-.hs_us_newlesson_social li a{
-	color:white;
-	font-size:17px;
-	line-height:40px;
-	text-align:center;
-	height:40px;
-	width:40px;
-	border:1px solid white;
-	display:block;
-	transition:all .5s ease-in-out
-	}
-.hs_us_newlesson_social li a:hover{
-	color:rgb(224, 62, 82);
-	border-color:rgb(224, 62, 82)
-	} */
-/* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
-
-.hs_us_newlesson_g-scrolling-carousel {
-    position: relative;
-}
-
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items {
-    overflow-x: scroll;
-    white-space: nowrap;
-    width: 100%;
-    -webkit-overflow-scrolling: touch;
-}
-
-.hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items::-webkit-scrollbar {
-    display: none;
-}
-
-.jc-right,
-/*동그라미*/
-.jc-left {
-    color: #757575;
-    margin-bottom: auto;
-    margin-top: auto;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    opacity: 0.94;
-
-}
-
-.jc-right {
-    /*위치조절*/
-    right: 0px;
-}
-
-.jc-left {
-    left: -40px;
-}
-
-.jc-right:hover,
-.jc-left:hover {
-    opacity: 0.98;
-}
-
-.jc-right svg,
-/*화살표*/
-.jc-left svg {
-    position: absolute;
-    left: 0px;
-    right: 0;
-    bottom: 10px;
-    top: 0;
-    margin: auto;
-    width: 50px;
-    height: 50px;
-    fill: #222;
-}
-
-.jc-right:hover svg,
-.jc-left:hover svg {
-    fill: rgb(0, 153, 255);
-}
-
-@media (pointer: coarse) {
-
-    .jc-right,
-    .jc-left {
-        display: none !important;
-    }
-}
-
-.noselect {
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-}
-.hs_us_newlesson_content{
-	display: inline-block;
-}
-/* 신규레슨 */
-
-/* 스토어 신규 상품 */
-/* 썸네일 _ 설명 묶은 DIV */
-.hs_user_store_newproduct{
-	position:relative;
-	z-index:1;
-	}
-/* 썸네일 a tag*/
-.hs_user_store_newproduct_img a{
-	display:block
-	}
-/* 썸네일  img */
-.hs_user_store_newproduct_img img{
-	width:100%;
-	
-	}
-/* 썸네일 안데 장바구니 좋아요 아이콘 */	
-.hs_user_store_newproduct_social {
-	padding:0;
-	margin:0;
-	list-style:none;
-	position:absolute;
-	bottom:100px;
-	right:13px;
-	z-index:1
-	}
-.hs_user_store_newproduct_social li{
-	opacity:0;
-	transform:translateY(3px);
-	transition:all .5s ease 0s
-	}
-.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li{
-	margin:0 0 10px;
-	opacity:1;
-	transform:translateY(0)
-	}
-.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li:nth-child(1){
-	transition-delay:.2s  /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
-	}
-.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li:nth-child(2){
-	transition-delay:.4s /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
-	}
-/* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
-.hs_user_store_newproduct_social li div{
-	color:white;
-	font-size:17px;
-	line-height:40px;
-	text-align:center;
-	height:40px;
-	width:40px;
-	border:1px solid white;
-	display:block;
-	transition:all .5s ease-in-out
-	}
-	/* 좋아요 hover시 색바뀜 */
-.hs_user_store_newproduct_social li a div:hover{
-	color:rgb(224, 62, 82);
-	border-color:rgb(224, 62, 82)
-	}
-
-/* 세일% 라벨 */		
-.hs_user_store_newproduct_label{
-	display:block;
-	width : 38px;
-	height : 38px;
-	padding: 8px;
-	color:#fff;
-	background-color:FF4141;
-	position:absolute;
-	top:10px;
-	left : 10px;
-	/* right:10px; */
-	/* padding:4px 15px 4px 30px; */
-	/* -webkit-clip-path:polygon(34% 0,100% 0,100% 100%,0 100%);
-	clip-path:polygon(34% 0,100% 0,100% 100%,0 100%); */
-	-webkit-clip-path:circle(50% at 50% 50%);
-	clip-path:circle(50% at 50% 50%);
-	
-	}
-/* 상품 설명 */	
-.hs_user_store_newproduct_content{
-	padding:10px 0 0
-	}
-/* 상품카테고리 */	
-.hs_user_store_newproduct_category{
-	font-size: 10px;
-	font-weight: 900;
-	color: #999;
-}	
-/* 상품명 */
-.hs_user_store_newprodct_title{
-	font-size:17px;
-	font-weight:600;
-	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
-	margin:10px 0px;
-	transition:all .3s ease 0s
-	}
-.hs_user_store_newprodct_title a{
-	color: rgb(53, 54, 58);
-	}
-/* 상품명 상품가격 사이 라인 */	
-.hs_user_store_newproduct_line{
-	width: 100%;
-	height: 1px;
-	background-color: rgba(220,220,220,0.5);
-	margin: 5px 0px;
-}
-/* 상품가격(이전 / 세일된 가격)  */
-.hs_user_store_newprodct_cost{
-	color: rgb(53, 54, 58);
-	font-size:16px;
-	font-weight:700;
-	/* text-align:left; */
-	transition:all .3s
-	}
-/* 이전 상품가격 */	
-.hs_user_store_newprodct_BFcost{
-	color:#999;
-	font-size:16px;
-	font-weight:500;
-	text-decoration:line-through;
-	margin-left:7px;
-	display:inline-block
-	}
-/* 좋아요수  */
-.hs_user_store_newprodct_likenum_box{
-	margin:5px 0px 30px;;
-}
-.hs_user_store_newprodct_likenum{
-	font-size: 12px;
-	font-weight:400;
-}	
-.hs_user_store_newprodct_likenum i{
-	color: rgb(224, 62, 82);
-
-}
-@media only screen and (max-width:990px){
-	.product-grid8{margin-bottom:30px
-	}
-}
-	
-
-</style>
+<!--style-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css">
+<!--style-->
 </head>
 
 <body>
+<!--회원의 좋아요와 장바구니  -->
+<%-- <span id="ej_like_cart">
  <c:set var="member_id" value="${pageContext.request.userPrincipal.name}"></c:set>
  ${member_id }회원님의
 <a href="/todaylessonmypage/mycart/${member_id}" id="mycart">내장바구니</a>
 <a href="/todaylessonmypage/mylike/${member_id}" id="mylike">내 좋아요</a><br>
 <br>
+</span> --%>
 
-<!--  <form role="form" method="post" autocomplete="off">   -->
-<c:set var="now" value="<%=new java.util.Date()%>" />
-
+<!--메인 슬라이더  -->
+<div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
+      <div class="hs_us_home_mainBannerbox">
+	     <div class="hs_us_home_mainBannerslide">
+		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
+		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" 	alt="s"></a>
+			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
+			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
+	     </div>
+	  </div>
+   </div>
+   <br>	
+   <br>	
    <div class="" style="width: 80%; margin: auto;">
    <!-- 카테고리 선택 아이콘들 -->
    
-    <div class="ej_grid all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0"><img class="ej_category all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/correct.png"><br>전체</a></div>
-  <div class="ej_grid lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1"><img class="ej_category lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/lang.png"><br>외국어</a></div>
-    <div class="ej_grid it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2"><img class="ej_category it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/it.png"><br>IT</a></div>
-     <div class="ej_grid cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3"><img class="ej_category cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/cook.png"><br>요리</a></div>
-      <div class="ej_grid diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4"><img class="ej_category diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/diy.png"><br>DIY</a></div>
-      <div class="ej_grid exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><img class="ej_category exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"><br>운동</a></div>
-        <div class="ej_grid ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><img class="ej_category etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"><br>기타</a></div>
-       <br>
+ <%--   
+    <div class="ej_grid all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0"><img class="ej_category all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/check.png"><br><h4>전체</h4></a></div>
+  <div class="ej_grid lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1"><img class="ej_category lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/translation.png"><br>외국어</a></div>
+    <div class="ej_grid it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2"><img class="ej_category it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/monitor.png"><br>IT</a></div>
+     <div class="ej_grid cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3"><img class="ej_category cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/baker.png"><br>요리</a></div>
+      <div class="ej_grid diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4"><img class="ej_category diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/sewing-machine.png"><br>DIY</a></div>
+      <div class="ej_grid exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><img class="ej_category exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/bike.png"><br>운동</a></div>
+        <div class="ej_grid ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><img class="ej_category etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/ver2/open-menu.png"><br>기타</a></div>
+       <br> --%>
+   <div id="ej_category_box">
+    <div class="ej_category all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0" ><div class="ej_category_border"><img class="ej_categoryimg all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/correct.png"/></div><br>전체</a></div>
+  <div class="ej_category lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1" ><div class="ej_category_border"><img class="ej_categoryimg lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/lang.png"/></div><br>외국어</a></div>
+    <div class="ej_category it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2" ><div class="ej_category_border"><img class="ej_categoryimg it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/it.png"/></div><br>IT</a></div>
+     <div class="ej_category cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3" ><div class="ej_category_border"><img class="ej_categoryimg cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/cook.png"/></div><br>요리</a></div>
+      <div class="ej_category diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4" ><div class="ej_category_border"><img class="ej_categoryimg diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/diy.png"/></div><br>DIY</a></div>
+      <div class="ej_category exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><div class="ej_category_border"><img class="ej_categoryimg exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"/></div><br>운동</a></div>
+        <div class="ej_category ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><div class="ej_category_border"><img class="ej_categoryimg etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"/></div><br>기타</a></div>
+       <br> 
+       </div>
         <!-- 스토어 상품 -->
       <b class="" style="font-size: 25px;"> </b>
       <div class="" style="margin-top: 30px;">
-      <a href="?order=like"><div class="ej_mainspan likeorder">좋아요순</div></a>
-<a href="?order=recent"><div class="ej_mainspan recentorder">최신순</div></a>
-
+      <span id="ej_right">
+      <a href="?order=like" ><button class="btn btn-default">좋아요순</button></a>
+<a href="?order=recent"><button class="btn btn-default">최신순</button></a>
+</span>
+<br>
+<br>
          <c:forEach var="storenewproductlist" items="${list}">
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_newproduct">
@@ -488,7 +133,7 @@ body{
                      <div class="hs_user_store_newproduct_line"></div>
                       <c:set var="stock" value="${storenewproductlist.product_stock}"/>
                            <c:if test="${stock<=0}">
-                           soldout
+                           <div class="ej_soldout">soldout</div>
                            </c:if>
                      <div class="hs_user_store_newprodct_cost">
                       <fmt:formatNumber value="${storenewproductlist.product_after_cost}" type="number" maxFractionDigits="3"/>원
