@@ -15,7 +15,10 @@
 <!-- <script src="TodayLesson\src\main\webapp\resources\JS\summernote-ko-KR.js"></script> -->
  <script src="/resources/JS/summernote-ko-KR.js"></script> 
 <title>글쓰기</title>
-
+<style>
+/* .ej_num_input{
+width: 50px;} */
+</style>
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote({
@@ -51,14 +54,14 @@
 		</select>
 		<br>
 		<label>제품명</label><br>
-		 <input type="text" name="product_name" style="width: 40%;" placeholder="제품명" required="required"/> <br>
+		 <input type="text" name="product_name" size="40" placeholder="제품명" required="required"/> <br>
 			<br>
 				<label>가격</label>
-				 <input type="text" name="product_cost" style="width: 40%;" placeholder="가격"  required="required"/>원 <br>
+				 <input type="text" class="ej_num_input" name="product_cost" size="6" placeholder="가격"  required="required"/>원 <br>
 				  <label>할인율</label>
-				 <input type="text" name="product_sale" style="width: 40%;" placeholder="%" required="required"/>% <br>
+				 <input type="text" class="ej_num_input" name="product_sale" size="6"  maxlength="2" placeholder="%" required="required"/>% <br>
 				 <label>수량</label>
-				 <input type="text" name="product_stock" style="width: 40%;" placeholder="수량" required="required"/>갸 <br>
+				 <input type="text" class="ej_num_input" name="product_stock" size="6"  placeholder="수량" required="required"/>개 <br>
 				
 				<label>상세설명</label><br>
 				<textarea id="summernote" name="product_content" placeholder="제품 상세 설명" required="required"></textarea>

@@ -11,7 +11,10 @@
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- include summernote css/js-->
@@ -19,89 +22,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/resources/JS/summernote-ko-KR.js"></script>
+<!--style-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css"> 
+<!--style-->
 
-
-
-<style>
-.ej_grid{
-display:inline-block;
-}
-/* 좋아요 아이콘  */	
-div.fas.fa-heart{
-	color:rgb(255, 180, 180);
-	font-size:17px;
-	line-height:40px;
-	text-align:center;
-	height:40px;
-	width:40px;
-	border:1px solid  gray;
-	border-radius:5px;
-	display:block;
-	transition:all .5s ease-in-out
-	}
-	/* 좋아요 hover시 색바뀜 */
-.fas.fa-heart:hover{
-	color:rgb(224, 62, 82);
-	border-color:rgb(224, 62, 82)
-	}
-	
-	/* 장바구니 아이콘  */	
-div.fa.fa-shopping-cart{
-	color:rgb(166, 166, 166);
-	font-size:17px;
-	line-height:40px;
-	text-align:center;
-	height:40px;
-	width:40px;
-	border:1px solid gray;
-	border-radius:5px;
-	display:block;
-	transition:all .5s ease-in-out
-	}
-	/* 장바구니아이콘 hover시 색바뀜 */
-.fa.fa-shopping-cart:hover{
-	color:rgb(255, 180, 180);
-	border-color:rgb(224, 62, 82)
-	}
-
- #ej_sdetail_top{
-border: 1px solid silver;
-width:400px;
-
-} 
-#ej_sdetail_top{
-border: 1px solid silver;
-}
-#ej_sdetail_right{
-border: 1px solid silver;
-width:400px;
-float:right;
-background-color: white;
-}
-#ej_top{
-border: 1px solid silver;}
-h4.beforecost{
-text-decoration: line-through;}
-#ej_cost{
-display: inline-block;}
-.jbFixed {
-        position: fixed;
-        top: 0px;
-      }
-#followquick { position:absolute; top:230px; right:50%; margin-right:-670px; }
-.btn-group{border: 0.5px solid silver;
-					width:400px;
-					background-color: white;}
-</style>
 <script>
 $('document').ready(function() { 
-	
+	$('html, body').animate({
+		scrollTop: $('html').offset().top
+	}, 'slow');
 	
 	$('#summernote').summernote({
-		placeholder : 'content',
+		placeholder : '후기를 남겨보세요!',
 		minHeight : 370,
 		maxHeight : null,
-		focus : true,
+		/* focus : true, */
 		lang : 'ko-KR'
 	});	
 });
@@ -109,16 +44,17 @@ $('document').ready(function() {
 </head>
 <body>
 
+<div id="ej_container">
 
-<span id="ej_topimg">
-<!--썸네일 이미지와 동일. 크기는 큼 -->
-<img src="${dto.product_img }" id="ej_sdetail_topimg" width="700">
-</span>
 
   <form role="form" method="post" id="form1" name="form" >
-  <!--autocomplete="off"   -->
-<div id="followquick">
-<nav id="ej_sdetail_right">
+  
+<!--썸네일 이미지 원본 맨위에 보여줌-->
+<div class="ej_top img">
+<img src="${dto.product_img }" id="ej_sdetail_topimg" width="60%">
+</div>
+
+<div class="ej_top right">
 <c:set var="category" value="${dto.product_category }"/>
  <c:choose>
  <c:when test = "${category==1}">외국어</c:when>
@@ -136,30 +72,30 @@ $('document').ready(function() {
 
 
 
-<input type="hidden" name="product_no" value="${dto.product_no }"/>
-<input type="hidden" name="product_name" value="${dto.product_name }"/>
-<input type="hidden" name="product_cost" value="${dto.product_cost }"/>
-<input type="hidden" name="product_after_cost" value="${dto.product_after_cost }"/>
 
-
-
-수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" value=1 required="required"><br>
+수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required"><br>
 배송비 무료<br>
 
 
 
-<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
 <div class="ej_grid fist">
-<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary' ><br>
-</div>
+<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary' ><br></div>
 <div class="ej_grid second">
 <a href="#"><div class="fas fa-heart" id="${dto.product_no}"></div></a></div>
 <div class="ej_grid third">
 <a href="#"><div class="fa fa-shopping-cart" id="${dto.product_no}"></div></a></div>
+
+
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
+<input type="hidden" name="product_no" value="${dto.product_no }"/>
+<input type="hidden" name="product_name" value="${dto.product_name }"/>
+<input type="hidden" name="product_cost" value="${dto.product_cost }"/>
+<input type="hidden" name="product_after_cost" value="${dto.product_after_cost }"/>
+<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}" id="member_id">
+ </div><!--id="ej_sdetail_right"-->
  </form>
- </nav>
- </div>
+
+ 
  <script>
 
 	$("#to_orderform").click(function(){
@@ -277,7 +213,7 @@ $('document').ready(function() {
 
 </script>
 
- <script>
+<!--  <script>
 //follow quick menu
 $(window).scroll(function(){
 var scrollTop = $(document).scrollTop();
@@ -287,11 +223,10 @@ if (scrollTop < 180) {
 $("#followquick").stop();
 $("#followquick").animate( { "top" : scrollTop });
 });
-</script>
-<div class="jbMenu">
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
-<a href="#ej_first">
-  <div class="btn-group" role="group">
+</script> -->
+
+<!-- <div class="btn-group btn-group-justified" role="group" aria-label="..."> -->
+<a href="#ej_first"><div class="btn-group" role="group">
     <button type="button" class="btn btn-default">상품소개</button>
   </div></a>
   <a href="#ej_second"><div class="btn-group" role="group">
@@ -300,12 +235,12 @@ $("#followquick").animate( { "top" : scrollTop });
   <a href="#ej_third"><div class="btn-group" role="group">
     <button type="button" class="btn btn-default">배송/교환/환불</button>
   </div></a>
-</div>
-</div>
+<!-- </div> -->
+
 
 
 <script>
-<!-- 상단바 스크롤해도 고정되게 하는 코드 -->
+<!-- 상단바 스크롤해도 고정되게 하는 코드 --><!-- 
 var jbOffset = $( '.jbMenu' ).offset();
 $( window ).scroll( function() {
   if ( $( document ).scrollTop() > jbOffset.top ) {
@@ -315,8 +250,8 @@ $( window ).scroll( function() {
     $( '.jbMenu' ).removeClass( 'jbFixed' );
   }
 });
-<!--  -->
-</script>
+-->
+</script> 
 
 <br>
 <div id="ej_first">
@@ -358,12 +293,11 @@ ${dto.product_content}
  <td><label>제목</label>
       <input type="text" id="pdreview_title" class="pdreview_title"name="pdreview_title">
 <div class="input_area">
-	<textarea name="pdreview_content" class="repCon" id="summernote" rows="3" cols="30"></textarea>
+	<textarea name="pdreview_content" class="repCon" id="summernote" ></textarea>
 </div>
 
 <div class="input_area">
 <button type="button" id="reply_btn" class="btn btn-primary">후기 남기기</button>
-</div>
 
 </form>
 
@@ -507,12 +441,11 @@ $(".reviewTitle").click(function(){
 국제 배송
 현재 랑콤 공식 온라인 몰에서는 국제 배송 서비스를 제공하지 않습니다.
 </pre>
-
+</div>
+</div>
+<!--container  -->
     
 
 </body>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- Optional JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </html>
