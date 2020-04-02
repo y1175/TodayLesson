@@ -73,7 +73,7 @@
       <div class="hs_us_mainheader_line"></div>
       <div class="hs_us_mainheader_navbox">
          <nav>
-            <a href="${pageContext.request.contextPath}/hm_us_bird">얼리버드</a>
+            <a href="${pageContext.request.contextPath}/todaylesson/hm_us_bird">얼리버드</a>
             <a href="">전체레슨</a>
             <a href="${pageContext.request.contextPath}/todaylesson/freeboard">자유게시판</a>
             <a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0">스토어</a>
