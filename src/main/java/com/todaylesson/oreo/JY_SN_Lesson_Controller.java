@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +38,10 @@ public class JY_SN_Lesson_Controller {
 	
 	   
 
-	@RequestMapping("/todaylessonsenior/lesson_list/{member_id}")
-	public String list(Model model,@PathVariable String member_id){
+	@RequestMapping("/todaylessonsenior/lesson_list")
+	public String list(Model model, Authentication authentication){
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
 		int senior_no = lesson_service.select_senior_no(member_id);
 		SeniorDTO dto = lesson_service.select_senior_info(senior_no);
 		
@@ -56,8 +60,10 @@ public class JY_SN_Lesson_Controller {
 	
 	
 	
-	@RequestMapping("/todaylessonsenior/lesson_write/{member_id}")
-	public String write(@PathVariable String member_id,Model model) {
+	@RequestMapping("/todaylessonsenior/lesson_write")
+	public String write(Model model,  Authentication authentication) {
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
 		int senior_no = lesson_service.select_senior_no(member_id);
 		List<LessonDTO> list = lesson_service.reject_lesson_list(senior_no);
 		

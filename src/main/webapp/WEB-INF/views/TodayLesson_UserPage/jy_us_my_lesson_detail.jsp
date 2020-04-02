@@ -25,7 +25,8 @@ width:500px; height:auto;
 <div class="thumb">
 <img alt="레슨 썸네일" src="${list.lessondetail_thumb }">
 <td><c:out value="${list.lessondetail_chapter}"/></td>
-<td><a href="${pageContext.request.contextPath }/select_lessondetail_this_chapter/${list.lessondetail_no}"><c:out value="${list.lessondetail_title}"/></a></td>
+<c:set var="lessondetail_no" value="${list.lessondetail_no} "></c:set>
+<td><a href="${pageContext.request.contextPath }/todaylessonmypage/select_lessondetail_this_chapter/${lessondetail_no}"><c:out value="${list.lessondetail_title}"/></a></td>
 <td><c:out value="${list.lessondetail_comp }"/></td> 
 </div>
 </tr>

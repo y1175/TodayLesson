@@ -77,7 +77,7 @@ public class JY_US_Senior_Request_Controller {
 	
 	
 	// 시니어 지원 버튼 팝업 > 예 누르면 시니어로 전환됨
-	@RequestMapping("senior_request_form/{member_id}")
+	@RequestMapping("/todaylesson/senior_request_form/{member_id}")
 	public String senior_Request_Button(@PathVariable String member_id, Model model) {
 		int mem_level=seniorservice.check_senior(member_id);
 		

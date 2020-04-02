@@ -27,10 +27,6 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 		return mapper.my_lesson_list(member_id);
 	}
 
-	@Override
-	public List<LessonDetailDTO> mylesson_select(int lesson_no) {
-		return mapper.mylesson_select(lesson_no);
-	}
 
 	@Override
 	public LessonDetailDTO mylesson_detail_this_chapter(int lessondetail_no) {
@@ -68,15 +64,34 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 		hm.put("member_id", member_id);
 		return mapper.my_lesson_select(hm);
 	}
-
-
+	
 	@Override
-	public List<LessonCompDTO> mylesson_comp_select(int lesson_no, String member_id) {
+	public List<LessonDetailDTO> my_lesson_select2(int lesson_no, String member_id) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("lesson_no", lesson_no);
 		hm.put("member_id", member_id);
-		return mapper.mylesson_comp_select(hm);
+		return mapper.my_lesson_select2(hm);
 	}
+
+
+	@Override
+	public int i_click_this_lesson_chapter(int lessondetail_no, String member_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lessondetail_no", lessondetail_no);
+		hm.put("member_id", member_id);
+		return mapper.i_click_this_lesson_chapter(hm);
+	}
+
+
+	@Override
+	public void click_this_lesson_chapter(int lessondetail_no, String member_id, int lesson_no) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lessondetail_no", lessondetail_no);
+		hm.put("member_id", member_id);
+		hm.put("lesson_no", lesson_no);
+		mapper.click_this_lesson_chapter(hm);
+	}
+
 
 	
 }

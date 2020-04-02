@@ -39,7 +39,7 @@
 	
 		
 		$('.offline_lesson').hide();
-		
+		$('.earlybird').hide();
 		
 		
 		$('#lesson_type').change(function() {
@@ -52,6 +52,18 @@
 		}
 		});	
 		
+		
+
+		$(".lesson_earlybird").click(function(){
+
+			let val = $("input:radio[name=lesson_earlybird]:checked").val();
+			if (val == "0") {
+				$('.earlybird').show();
+			} else {
+				$('.earlybird').hide();
+			}
+			
+		});
 		
 		
 		
@@ -228,6 +240,19 @@ function multiple_time_lesson_date(){
 
 <label for="lesson_cost">가격</label><br>
 <input type="number" id="lesson_cost" name="lesson_cost"><br>
+
+<label for="lesson_earlybird">얼리버드 할인</label>
+네
+<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="0">
+아니요
+<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="1"> 
+
+<div class="earlybird">
+(주의사항) : 수수료는 동일 / 얼리버드 시 18% 일괄 할인(얼리버드 할인은 일주일간 진행됩니다.)<br>
+얼리버드 등록 시 메인 홈에서 얼리버드 레슨이 우선시 되어 노출도가 높습니다. <br>
+또한, 얼리버드 카테고리에 
+얼리버드 레슨 등록 & 얼리버드 세일이 마감될 때 노출되어 신규 주니어를 모으는데 용이합니다. 
+</div>
 
 <h6>레슨 심사는 3일~7일 정도 걸리므로 오픈 날짜 설정 시 참고해주세요</h6>
 <label for="lesson_open_period">시작일</label><br>

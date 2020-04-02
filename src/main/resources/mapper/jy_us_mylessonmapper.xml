@@ -14,9 +14,15 @@ where member_id = #{member_id}
 
 </select>
 
-<select id="mylesson_select" resultType="com.todaylesson.DTO.LessonDetailDTO">
+<select id="my_lesson_select" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
-select * from lessondetail where lesson_no = #{lesson_no}
+select lessondetail_no, lessondetail_title, lessondetail_content, lessondetail_chapter, lessondetail_running_time,
+ifnull((select lessondetail_comp 
+from lessondetail d join lessoncomp c 
+on d.lessondetail_no = c.lessondetail_no 
+where c.lessondetail_no = k.lessondetail_no and c.member_id = #{member_id}),0) lessondetail_comp
+from lessondetail k
+where lesson_no = #{lesson_no}
 
 </select>
 
@@ -33,12 +39,15 @@ select lesson_title from lesson where lesson_no = #{lesson_no}
 
 </select>
 
-<insert id="update_lesson_comp" parameterMap="hashmap">
+<update id="update_lesson_comp" parameterMap="hashmap">
 
-insert into lessoncomp(lesson_no, lessondetail_no, member_id, lessondetail_comp)
-value(#{lesson_no}, #{lessondetail_no}, #{member_id}, 1)
+update lessoncomp
+set lessondetail_comp = 1
+where lessondetail_no = #{lessondetail_no}
+and lesson_no = #{lesson_no}
+and member_id = #{member_id}
 
-</insert>
+</update>
 
 <select id="select_my_lesson_comp" parameterMap="hashmap" resultType="integer">
 
@@ -52,11 +61,29 @@ and lessondetail_no = #{lessondetail_no}
 
 </select>
 
-<select id="mylesson_comp_select" parameterMap="hashmap" resultType="com.todaylesson.DTO.LessonCompDTO">
 
-select distinct c.lessondetail_no, c.member_id, c.lesson_no, c.lessondetail_comp, d.lessondetail_chapter from lessondetail d left join lessoncomp c on d.lesson_no = c.lesson_no where c.member_id = 'sn1';
+<select id="i_click_this_lesson_chapter" parameterMap="hashmap" resultType="integer">
+
+
+select count(lessoncomp_no)
+from lessoncomp
+where member_id = #{member_id}
+and lessondetail_comp = 0
+and lessondetail_no = #{lessondetail_no}
+
 
 </select>
+
+
+<insert id="click_this_lesson_chapter" >
+
+insert into 
+lessoncomp(lessondetail_no, member_id, lessondetail_comp, lesson_no)
+value(#{lessondetail_no},#{member_id},0, #{lesson_no})
+
+</insert>
+
+
 
 
 </mapper>

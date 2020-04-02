@@ -36,6 +36,7 @@ import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.service.JY_US_TotalLessonService;
 
 @Controller
+@RequestMapping("/todaylesson/")
 public class JY_US_TotalLessonController {
 
 	@Resource(name = "totallesson_service")

@@ -52,7 +52,7 @@ function time_change(){
 
 </script>
 
-<form method="post" action="${pageContext.request.contextPath }/update_lesson_comp">
+<form method="post" action="${pageContext.request.contextPath }/todaylessonmypage/update_lesson_comp">
 
 <div class ="time_count">
 <input type="hidden" name="display" size=2 id = "time">

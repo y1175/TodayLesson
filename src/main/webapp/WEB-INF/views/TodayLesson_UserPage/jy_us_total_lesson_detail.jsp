@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -291,7 +293,21 @@ $(".insert_my_cart").click(function(){
 
 	레슨 가격
 	<br>
-	<c:out value="${dto.lesson_cost}" />
+	
+	<jsp:useBean id="now" class="java.util.Date" />
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
+	<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
+	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
+	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
+	
+	<c:if test="${dto.lesson_earlybird} eq '0' && (${itDate - isDate}) <= '7'">
+		<c:out value="${dto.lesson_cost} * 0.82" />
+	</c:if>
+	
+	<c:if test="${dto.lesson_earlybird} eq '0' && (${itDate - isDate}) > '7'">
+		<c:out value="${dto.lesson_cost}" />
+	</c:if>
+	
 	<br> 레슨 판매 기간
 	<br>
 	<c:out value="${dto.lesson_open_period}" />

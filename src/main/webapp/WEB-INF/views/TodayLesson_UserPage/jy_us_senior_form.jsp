@@ -18,7 +18,7 @@
 			opener.location.href="${pageContext.request.contextPath}/senior_switch/${pageContext.request.userPrincipal.name}";
 			self.close();
 		} else {
-			opener.location.href="${pageContext.request.contextPath}/you_are_senior";
+			opener.location.href="${pageContext.request.contextPath}/todaylessonsenior/you_are_senior";
 			self.close();
 		}
 				

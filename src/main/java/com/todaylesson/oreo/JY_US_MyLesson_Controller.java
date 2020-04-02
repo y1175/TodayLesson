@@ -19,14 +19,17 @@ import com.todaylesson.DTO.MyLessonDTO;
 import com.todaylesson.service.JY_US_MyLessonService;
 
 @Controller
+@RequestMapping("/todaylessonmypage/")
 public class JY_US_MyLesson_Controller {
 
 	@Autowired
 	private JY_US_MyLessonService mlservice;
 
-	@RequestMapping("my_lesson_list/{member_id}")
-	public String my_lesson_list(@PathVariable String member_id, Model model, Authentication authentication) {
-
+	@RequestMapping("my_lesson_list")
+	public String my_lesson_list(Model model, Authentication authentication) {
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
+		
 		List<LessonDTO> lesson_list = mlservice.mylesson_list(member_id);
 		model.addAttribute("list", lesson_list);
 
@@ -39,25 +42,15 @@ public class JY_US_MyLesson_Controller {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
 
-		List<LessonDetailDTO> list = mlservice.mylesson_select(lesson_no);
-		List<LessonCompDTO> lc = mlservice.mylesson_comp_select(lesson_no, member_id);
+		List<LessonDetailDTO> list = mlservice.my_lesson_select(lesson_no, member_id);
+				
+		System.out.println(list.toString().toString());
+		model.addAttribute("list", list);
 		
-		/*
-		for (int i = 0; i < list.size(); i++) {
-			int lessondetail_comp = lc.get(i).getLessondetail_comp();
-			System.out.println(lessondetail_comp);
-			if (lessondetail_comp != 1) {
-				list.get(i).setLessondetail_comp(0);
-			} else {
-				list.get(i).setLessondetail_comp(lc.get(i).getLessondetail_comp());
-			}
-		} */
-			model.addAttribute("list", list);
-
-			
-			return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_main_section";
+		return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_main_section";
 		
 	}
+	
 
 	@RequestMapping("select_lessondetail_this_chapter/{lessondetail_no}")
 	public String my_lesson_detail_this_chapter(@PathVariable int lessondetail_no, Model model, Authentication authentication) {
@@ -66,7 +59,16 @@ public class JY_US_MyLesson_Controller {
 	
 		LessonDetailDTO dto = mlservice.mylesson_detail_this_chapter(lessondetail_no);
 
+		int result = mlservice.i_click_this_lesson_chapter(lessondetail_no, member_id);
+
 		int lesson_no = dto.getLesson_no();
+		
+		if (result == 0) {
+			
+			mlservice.click_this_lesson_chapter(lessondetail_no, member_id, lesson_no);
+						
+		} 
+		
 		
 		String lesson_title = mlservice.mylesson_name(lesson_no);
 
@@ -97,6 +99,7 @@ public class JY_US_MyLesson_Controller {
 				return "TodayLesson_UserPage/jy_us_select_lessondetail_update_comp";
 
 			} else {
+				
 				model.addAttribute("result", 0);
 				model.addAttribute("member_id", member_id);
 				model.addAttribute("lesson_no",lesson_no);
@@ -105,7 +108,7 @@ public class JY_US_MyLesson_Controller {
 
 		} else {
 	
-			List<LessonDetailDTO> list = mlservice.mylesson_select(lesson_no);
+			List<LessonDetailDTO> list = mlservice.my_lesson_select(lesson_no, member_id);
 			model.addAttribute("list", list);
 			return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_main_section";
 	

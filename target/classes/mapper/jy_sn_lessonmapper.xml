@@ -20,14 +20,14 @@ lesson_member_max,lesson_category,lesson_date_time, lesson_thumb,
 lesson_register_date,lesson_open_period, lesson_close_period, lesson_number, 
 lesson_type, lesson_result, lesson_readno, lesson_junior_count, lesson_like,
 lesson_senior_title, lesson_senior_content, 
-lesson_zipno, lesson_addr, lesson_lat, lesson_long, senior_no)
+lesson_zipno, lesson_addr, lesson_lat, lesson_long, senior_no, lesson_earlybird)
 
 values(#{lesson_title},#{lesson_content},#{lesson_cost},
 #{lesson_member_max},#{lesson_category},#{lesson_date_time},#{lesson_thumb},
 sysdate(),#{lesson_open_period},#{lesson_close_period},#{lesson_number},
 #{lesson_type},0,0,0,0,
 #{lesson_senior_title},#{lesson_senior_content},
-#{lesson_zipno},#{lesson_addr},#{lesson_lat},#{lesson_long},#{senior_no})
+#{lesson_zipno},#{lesson_addr},#{lesson_lat},#{lesson_long},#{senior_no},#{lesson_earlybird})
 
 </insert>
 
