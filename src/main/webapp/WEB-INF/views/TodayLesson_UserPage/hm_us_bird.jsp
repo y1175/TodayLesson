@@ -18,6 +18,41 @@
 
 <img src="/resources/IMG/earlybirdmini.png" alt="얼리버드 미니 배너" class="birdminiimg">
 
+<div class="birdbestmain">
+<c:forEach begin="0"  end="3" step="1" var="bestlesson" items="${list}">
+<div>
+<img alt="test" src="${bestlesson.lesson_thumb}">
+<p>
+<c:choose>
+<c:when test="${bestlesson.lesson_category == 1}">
+<c:out value="운동"/>
+</c:when>
+
+<c:when test="${bestlesson.lesson_category == 2}">
+<c:out value="교육"/>
+</c:when>
+
+<c:when test="${bestlesson.lesson_category == 3}">
+<c:out value="핸드메이드"/>
+</c:when>
+
+<c:when test="${bestlesson.lesson_category == 4}">
+<c:out value="it"/>
+</c:when>
+
+<c:when test="${bestlesson.lesson_category == 5}">
+<c:out value="요리"/>
+</c:when>
+
+<c:otherwise>
+<c:out value="기타"/>
+</c:otherwise>
+</c:choose>
+</p>
+<h5>${bestlesson.lesson_title}</h5>
+</div>
+</c:forEach>
+</div>
 
 
 </div>

@@ -1,5 +1,7 @@
 package com.todaylesson.oreo;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,10 @@ public class User_HM_Bird_Controller {
 	
 	
 	@RequestMapping("/hm_us_bird")
-	public String hm_us_bird()
+	public String hm_us_bird(Model model)
 	{
-	
+		List<LessonDTO> list = service.bestlesson();
+		model.addAttribute("list",list);
 		
 		return "/TodayLesson_UserPage/hm_us_bird.us_main_section";
 	}
