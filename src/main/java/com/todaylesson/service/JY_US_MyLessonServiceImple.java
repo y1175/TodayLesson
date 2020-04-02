@@ -93,5 +93,33 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 	}
 
 
+	@Override
+	public float mylesson_procent(int lesson_no, String member_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lesson_no", lesson_no);
+		hm.put("member_id", member_id);
+		return mapper.mylesson_procent(hm);
+	}
+
+
+	@Override
+	public int reward_point_to_member(String member_id,  int lesson_no) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lesson_no", lesson_no);
+		hm.put("member_id", member_id);
+		mapper.already_rewarded_point(hm);
+		return mapper.reward_point_to_member(member_id);
+	}
+
+
+	@Override
+	public int mylesson_reward(int lesson_no, String member_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lesson_no", lesson_no);
+		hm.put("member_id", member_id);
+		return mapper.mylesson_reward(hm);
+	}
+
+
 	
 }

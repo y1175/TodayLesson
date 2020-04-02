@@ -33,6 +33,15 @@ public interface JY_US_MyLessonMapper {
 
 	public List<LessonDetailDTO> my_lesson_select2(HashMap<String, Object> hm);
 
+	public float mylesson_procent(HashMap<String, Object> hm);
+
+	public int reward_point_to_member(String member_id);
+
+	public void already_rewarded_point(HashMap<String, Object> hm);
+
+	public int mylesson_reward(HashMap<String, Object> hm);
+
+
 
 
 

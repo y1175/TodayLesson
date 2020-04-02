@@ -144,7 +144,7 @@ $(".insert_my_like").click(function(){
   } else {
  
   $.ajax({
-   url :"/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"/todaylesson/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -181,7 +181,7 @@ $(".insert_my_cart").click(function(){
  }else{
 
  $.ajax({
-  url :"/lesson_cart",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+  url :"/todaylesson/lesson_cart",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
   //request mapping value랑 맞추면되는듯
   type : "post",
   data : data,
@@ -298,13 +298,13 @@ $(".insert_my_cart").click(function(){
 	<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
 	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
 	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
-	<c:if test="${dto.lesson_earlybird eq 0 }">
+	<c:if test="${dto.lesson_earlybird eq 1 }">
 	<c:if test="${itDate - isDate <= 7}">
 	<c:out value="${dto.lesson_cost* 0.82}"/>
 	</c:if>
 	</c:if>
 	
-	<c:if test="${dto.lesson_earlybird eq 1}">
+	<c:if test="${dto.lesson_earlybird eq 0}">
 		<c:out value="${dto.lesson_cost}" />
 	</c:if>
 	<c:if test="${itDate - isDate > 7 }">
@@ -479,7 +479,7 @@ function fn_comment(lesson_no){
 	 
     $.ajax({
         type:'POST',
-        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_insert'/>",
+        url : "<c:url value='/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_insert'/>",
         data:$("#commentForm").serialize(),
         success : function(data){
             if(data=="success")
@@ -523,7 +523,7 @@ function getCommentList(){
 	let senior_id = document.getElementById('senior_id').value;
     $.ajax({
         type:'get',
-        url : "<c:url value='/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
+        url : "<c:url value='/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
         dataType : "json",
         data:$("#commentForm").serialize(),
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
@@ -669,7 +669,7 @@ function fn_answer(lesson_qa_no){
 	
  $.ajax({
      type:'post',
-     url : '/lesson_detail/${dto.lesson_no}/lesson_answer_insert',
+     url : '/todaylesson/lesson_detail/${dto.lesson_no}/lesson_answer_insert',
      data : data,
      success : function(result){
          if(result=="success")
@@ -748,7 +748,7 @@ function getLreviewList(){
 	
     $.ajax({
         type:'get',
-        url : '/lesson_detail/${dto.lesson_no}/lesson_lreview_list',
+        url : '/todaylesson/lesson_detail/${dto.lesson_no}/lesson_lreview_list',
         dataType : 'json',
         data:$("#reviewForm").serialize(),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 

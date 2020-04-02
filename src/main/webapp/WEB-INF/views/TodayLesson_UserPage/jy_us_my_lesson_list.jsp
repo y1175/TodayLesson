@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
 
 .thum{
@@ -71,11 +73,62 @@ width:500px; height:auto;
 
 </c:choose>
 
+<c:choose>
+
+<c:when test="${item.lesson_procent  >= 80.0 } && ${item.lesson_reward == 0}">
+
+수강률 <c:out value="${item.lesson_procent }"/>
+<input type ="button" id = "reward_point" value="보상">
+
+</c:when>
+
+<c:otherwise>
+
+수강률 <c:out value="${item.lesson_procent }"/>
+
+</c:otherwise>
+
+</c:choose>
+
+
+
+<script>
+
+
+$("#reward_point").click(function(){
+	  let lesson_no=${item.lesson_no};
+	  
+	  let data = {
+			  lesson_no : lesson_no,
+	  };
+	
+	
+$.ajax({
+url :"/todaylessonmypage/reward_point",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+//request mapping value랑 맞추면되는듯
+type : "post",
+data : data,
+success : function(result){
+   if(result=="success"){
+		alert("10,000 포인트가 적립 되었습니다.");
+} else {
+	alert("포인트가 적립되지 않았습니다.");   
+}
+}  
+,error: function(){
+  console.log('error');
+  }
+}); 
+
+
+});
+
+</script>
+
 
 
 </div>
 </c:forEach>
 
-</body>
 </body>
 </html>

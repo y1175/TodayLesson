@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaylesson.DTO.LessonCompDTO;
 import com.todaylesson.DTO.LessonDTO;
@@ -36,17 +37,31 @@ public class JY_US_MyLesson_Controller {
 		
 		List<LessonDTO> lesson_list = mlservice.mylesson_list(member_id);
 		
-		List<Integer> lesson_procent = new ArrayList();
+		List<Float> lesson_procent = new ArrayList();
+		List<Integer> lesson_reward = new ArrayList();
 		
 		for (int i = 0; i < lesson_list.size(); i++) {
 			int lesson_no = lesson_list.get(i).getLesson_no();
-			lesson_procent.add(lesson_no);
+			float lesson_pro = mlservice.mylesson_procent(lesson_no, member_id);
+			int lesson_rew = mlservice.mylesson_reward(lesson_no, member_id);
+			lesson_procent.add(lesson_pro);
+			lesson_reward.add(lesson_rew);
+		}
+				
+		
+		for (int i = 0; i < lesson_list.size(); i++) {
+			float lesson_p = lesson_procent.get(i);
+			int lesson_r = lesson_reward.get(i);
+
+			lesson_list.get(i).setLesson_procent(lesson_p);
+			lesson_list.get(i).setLesson_reward(lesson_r);
+
 		}
 		
 		System.out.println(lesson_procent.toString());
 		
 		model.addAttribute("list", lesson_list);
-
+		
 		return "TodayLesson_UserPage/jy_us_my_lesson_list.us_main_section";
 	}
 
@@ -127,5 +142,26 @@ public class JY_US_MyLesson_Controller {
 			return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_main_section";
 	
 		}
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("reward_point")
+	public String reward_point_to_member(Authentication authentication, @RequestParam int lesson_no) {
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
+		System.out.println("에이작스 미친넘 뻐큐먹어");
+		int ok = mlservice.reward_point_to_member(member_id, lesson_no);
+		
+		String result = "";
+		
+		if (ok > 0) {
+			result = "success";
+		} else {
+			result = "false";
+		}
+		
+		return result;
+		
 	}
 }

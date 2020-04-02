@@ -47,7 +47,7 @@ width:500px; height:auto;
 <td><c:out value="핸드메이드"/></td>
 </c:when>
 
-<c:when test="${cate == 4}">
+<c:when test="${item.lesson_category == 4}">
 <td><c:out value="it"/></td>
 </c:when>
 

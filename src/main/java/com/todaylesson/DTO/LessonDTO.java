@@ -49,6 +49,11 @@ public class LessonDTO {
 	//얼리버드 senior조인 시 쓰기위해 한개 추가
 	private String senior_nick;
 	
+	// 퍼센트 가져올라고
+	private float lesson_procent;
+	
+	// 보상 여부 가져올라고
+	private int lesson_reward;
 	
 
 	

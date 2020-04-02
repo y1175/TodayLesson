@@ -42,7 +42,8 @@ select lesson_title from lesson where lesson_no = #{lesson_no}
 <update id="update_lesson_comp" parameterMap="hashmap">
 
 update lessoncomp
-set lessondetail_comp = 1
+set lessondetail_comp = 1,
+lessoncomp_date = now()
 where lessondetail_no = #{lessondetail_no}
 and lesson_no = #{lesson_no}
 and member_id = #{member_id}
@@ -78,12 +79,53 @@ and lessondetail_no = #{lessondetail_no}
 <insert id="click_this_lesson_chapter" >
 
 insert into 
-lessoncomp(lessondetail_no, member_id, lessondetail_comp, lesson_no)
-value(#{lessondetail_no},#{member_id},0, #{lesson_no})
+lessoncomp(lessondetail_no, member_id, lessondetail_comp, lesson_no, lessoncomp_date)
+value(#{lessondetail_no},#{member_id},0, #{lesson_no},now())
 
 </insert>
 
 
+<select id="mylesson_procent" parameterMap="hashmap" resultType="float">
+
+select round( count( if(
+ifnull((select lessondetail_comp 
+from lessondetail d join lessoncomp c 
+on d.lessondetail_no = c.lessondetail_no 
+where c.lessondetail_no = k.lessondetail_no 
+and c.member_id = #{member_id}),0), 1, null) )  / 
+(select lesson_number from lesson where lesson_no = #{lesson_no}) * 100, 1) as procent 
+from lessondetail k
+
+</select>
+
+<update id="reward_point_to_member" parameterType="java.lang.String">
+
+update member
+set member_point = member_point+ 10000
+where member_id = #{member_id}
+
+</update>
+
+<update id="already_rewarded_point" parameterMap="hashmap">
+
+update lessoncomp
+set lesson_reward = 1
+where member_id = #{member_id}
+and lesson_no = #{lesson_no}
+
+
+</update>
+
+
+<select id="mylesson_reward" resultType="integer">
+
+select count(*)
+from lessoncomp
+where lesson_no = #{lesson_no}
+and member_id = #{member_id}
+and lesson_reward = 1
+
+</select>
 
 
 </mapper>

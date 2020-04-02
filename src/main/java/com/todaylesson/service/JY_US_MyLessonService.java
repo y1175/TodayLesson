@@ -27,5 +27,11 @@ public interface JY_US_MyLessonService {
 
 	public List<LessonDetailDTO> my_lesson_select2(int lesson_no, String member_id);
 
+	public float mylesson_procent(int lesson_no, String member_id);
+
+	public int reward_point_to_member(String member_id, int lesson_no);
+
+	public int mylesson_reward(int lesson_no, String member_id);
+
 
 }

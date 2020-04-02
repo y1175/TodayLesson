@@ -18,5 +18,7 @@ public class LessonCompDTO {
 	private int lessondetail_comp;
 	private int lessondetail_no;
 	private int lesson_no;
+	private String lessoncomp_date;
+	private int lesson_reward;
 	
 }
