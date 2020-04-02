@@ -14,4 +14,6 @@ public class PopUpDTO {
 	private int popup_no;
 	private String popup_title;
 	private String popup_filepath;
+	private String popup_url;
+	private int popup_use;
 }

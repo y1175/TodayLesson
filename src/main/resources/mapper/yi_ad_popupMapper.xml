@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_YI_Popup_Mapper">
+<select id="popup_info" resultType="com.todaylesson.DTO.PopUpDTO" parameterType="int">
+select *
+from popup
+where popup_no=#{popup_no}
+</select>
+<update id="popup_submit" parameterType="com.todaylesson.DTO.PopUpDTO">
+update popup
+set popup_title=#{popup_title}
+	,popup_filepath=#{popup_filepath}
+	,popup_url=#{popup_url}
+	,popup_use=#{popup_use}
+where popup_no=#{popup_no}
+</update>
+</mapper>
