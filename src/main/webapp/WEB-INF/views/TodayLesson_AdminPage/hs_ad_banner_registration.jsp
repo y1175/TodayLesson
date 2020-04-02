@@ -31,7 +31,7 @@
                   if(this.files && this.files[0]) {
                      var reader = new FileReader;
                      reader.onload = function(data) {
-                        $(".Banner_img img").attr("src", data.target.result).width(300);        
+                        $(".Banner_img img").attr("src", data.target.result).width(1000);   //등록할때 화면에 보이는크기     
                      }
                    reader.readAsDataURL(this.files[0]);
                   }

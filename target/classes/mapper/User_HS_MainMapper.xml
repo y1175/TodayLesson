@@ -15,20 +15,32 @@
 	
 	<!-- 신규레슨 -->
     <select id="newLessonList" resultMap="userMAinMap">
-    select l.lesson_thumb, l.lesson_category, s.senior_nick
-	      ,l.lesson_title, l.lesson_cost, l.lesson_open_period
-    from lesson l join senior s on l.senior_no=s.senior_no
-    <!--  where l.lesson_register_date limit 30,45; -->
-    ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
+       select l.lesson_thumb, l.lesson_category, s.senior_nick
+	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period
+       from lesson l join senior s on l.senior_no=s.senior_no
+       ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
     </select> 
     
     <!-- 스토어신규 -->
     <select id="StoreNewProductList" resultType="com.todaylesson.DTO.ProductDTO">
-    select product_thumb, product_name, product_category, product_cost
-	      ,product_sale, product_after_cost, product_date
-    from product
-    ORDER BY product_date desc ,RAND() LIMIT 16;   
+       <!-- select product_thumb, product_name, product_category, product_cost
+	         ,product_sale, product_after_cost, product_date, product_like
+       from product
+       ORDER BY product_date desc ,RAND() LIMIT 16;   --> 
+       SELECT product_thumb, product_name, product_category, product_cost
+	         ,product_sale, product_after_cost, product_date, product_like,
+       ( @rank := @rank + 1 ) AS rank
+       FROM product AS a,
+       ( SELECT @rank := 0 ) AS b
+       ORDER BY a.product_date desc limit 0, 16
+       
     </select> 
+    
+    <!-- 벤트슬라이더(BannerSlider) -->
+    <select id="mainEventBannerSlider" resultType="com.todaylesson.DTO.BannerDTO">
+       select banner_no, banner_title, banner_filepath, banner_registrationdate
+       from banner
+    </select>
     
 </mapper>
 

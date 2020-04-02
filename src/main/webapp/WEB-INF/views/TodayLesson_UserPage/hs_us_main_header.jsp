@@ -57,7 +57,7 @@
       <!-- 로그인 modal -->
        
       <div class="hs_us_mainheader_center">
-         <a href="/alluser">
+         <a href="${pageContext.request.contextPath}/todaylesson">
             <img src="${pageContext.request.contextPath}/resources/IMG/UserLogo5.png" alt="User_Logo3" style="width: 20%;">
          </a>
          <span class="hs_us_mainheader_center_senior">

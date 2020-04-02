@@ -40,6 +40,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.DTO.ProductDTO;
@@ -191,11 +192,7 @@ public class TodayLessonController {
     	return "hs_sn_main"; 
     }
        
-/*    @RequestMapping("/todaylessonmember")
-    public String member(){
-    	return "hs_us_mypage";
-    } 
-    */
+
     @RequestMapping("/todaylessonmypage")
     public String usermypage(Authentication authentication
     		                ,Model model) {
@@ -217,11 +214,15 @@ public class TodayLessonController {
 	    //신규레슨목록
     	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> newlessonlist 
     	    =userMainService.newLessonList();
+    	model.addAttribute("newlessonlist", newlessonlist);
+    	
     	//신규스토어목록
     	List<ProductDTO> storenewproductlist=userMainService.StoreNewProductList(); 
-    	
-    	model.addAttribute("newlessonlist", newlessonlist);
     	model.addAttribute("storenewproductlist", storenewproductlist);
+    	
+    	//이벤트슬라이더(BannerSlider)
+    	List<BannerDTO> mainEventBannerSlider=userMainService.mainEventBannerSlider();
+    	model.addAttribute("mainEventBannerSlider", mainEventBannerSlider);
     	
     	return "hs_us_main";
     }

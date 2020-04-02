@@ -70,7 +70,7 @@ public class Admin_HS_Banner_Controller {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 		
-		dto.setBanner_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		dto.setBanner_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		String imgthumb=dto.getBanner_filepath();
 		 System.out.println("썸네일이미지경로: "+imgthumb);
 	     int bannerRegistrationResult = adminBannerService.bannerRegistrationResult(dto);

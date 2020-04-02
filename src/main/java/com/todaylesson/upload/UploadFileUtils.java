@@ -11,7 +11,7 @@ import net.coobird.thumbnailator.Thumbnails;
 
 public class UploadFileUtils {
   
- static final int THUMB_WIDTH = 300;
+ static final int THUMB_WIDTH = 1500;
  static final int THUMB_HEIGHT = 300;
  
  public static String fileUpload(String uploadPath,

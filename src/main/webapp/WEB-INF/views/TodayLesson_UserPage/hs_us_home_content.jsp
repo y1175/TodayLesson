@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -91,9 +91,9 @@
                      </p>
                      <hr style="margin: 0px 0px 5px;">
                      <p class="hs_us_newlesson_ATcost">
-                        <c:out value="${newlessonlist.lesson_cost}원"/>
+                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
                         <span class="hs_us_newlesson_BFcost">
-                           <c:out value="${newlessonlist.lesson_cost}원"/>
+                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
                         </span>
                      </p>
                      <p>
@@ -124,27 +124,23 @@
    <!-- 레슨 신규ㅜ -->
    
    <!-- 레슨 추천 -->
-   <!-- 슬라이더 -->
+   <!-- 이벤트 슬라이더 -->
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 100px;">
       <div class="carousel-inner">
-         <div class="carousel-item active">
-            <img src="${pageContext.request.contextPath}/resources/IMG/EventBanner1.png" class="w-100"  alt="...">
-         </div>
-         <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/resources/IMG/EventBanner2.png" class="w-100" alt="...">
-         </div>
-         <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/resources/IMG/EventBanner3.png" class="w-100" alt="...">
-         </div>
-         <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/resources/IMG/EventBanner4.png" class="w-100" alt="...">
-         </div>
-         <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/resources/IMG/EventBanner5.png" class="w-100" alt="...">
-         </div>
-         <div class="carousel-item">
-            <img src="${pageContext.request.contextPath}/resources/IMG/EventBanner6.png" class="w-100" alt="...">
-         </div>
+         <c:forEach var="mainEventBannerSlider" items="${mainEventBannerSlider}">
+            <c:choose>
+               <c:when test="${mainEventBannerSlider.banner_no == 1 }">
+                  <div class="carousel-item active">
+                     <img src="${mainEventBannerSlider.banner_filepath}" class="w-100"  alt="...">
+                  </div>
+               </c:when>
+               <c:otherwise>
+                  <div class="carousel-item">
+                     <img src="${mainEventBannerSlider.banner_filepath}" class="w-100" alt="...">
+                  </div>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -155,7 +151,7 @@
          <span class="sr-only">Next</span>
       </a>
    </div>
-   <!-- 슬라이더 -->
+   <!-- 이벤트 슬라이더 -->
    
    <!-- 스토어 베스트  -->
    <div class="row" style="width: 80%; margin: auto; margin-top: 100px;">
@@ -170,7 +166,7 @@
                      </a>
                      <ul class="hs_user_store_product_social" >
                         <li>
-                           <a href="" class="fas fa-heart"></a>
+                           <a href="${pageContext.request.contextPath}/todaylesson/likejson" class="fas fa-heart"></a>
                         </li>
                         <li>
                            <a href="" class="fa fa-shopping-cart"></a>
@@ -218,15 +214,16 @@
                         <a href="#">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_product_line"></div>
-                     <div class="hs_user_store_prodct_cost">${storenewproductlist.product_after_cost}원
+                     <div class="hs_user_store_prodct_cost">
+                        <fmt:formatNumber value="${storenewproductlist.product_after_cost}" type="number" maxFractionDigits="3"/>원
                         <span class="hs_user_store_prodct_BFcost">
-                           <c:out value="${storenewproductlist.product_cost}원"/>
+                           <fmt:formatNumber value="${storenewproductlist.product_cost}" type="number" maxFractionDigits="3"/>원
                         </span>
                      </div>
                      <div class="hs_user_store_prodct_likenum_box">                
                         <span class="hs_user_store_prodct_likenum">
                            <i class="fas fa-heart"></i>
-                           111
+                           <fmt:formatNumber value="${storenewproductlist.product_like}" type="number" maxFractionDigits="3"/>
                         </span>
                      </div>     
                   </div>
@@ -249,7 +246,7 @@
                      </a>
                      <ul class="hs_user_store_product_social" >
                         <li>
-                           <a href="" class="fas fa-heart"></a>
+                           <a href="${pageContext.request.contextPath}/todaylesson/likejson" class="fas fa-heart"></a>
                         </li>
                         <li>
                            <a href="" class="fa fa-shopping-cart"></a>
