@@ -44,8 +44,10 @@ public class LessonDTO {
 	private String lesson_zipno;
 	private int senior_no;
 	private int lesson_earlybird;
-
+	private int lesson_like;
 	
+	//얼리버드 senior조인 시 쓰기위해 한개 추가
+	private String senior_nick;
 	
 	
 
