@@ -47,7 +47,14 @@
 <tbody>
 
 <c:forEach var="item" items="${list }">
-<tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td><td>정산상태(공사중)</td></tr>
+<tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td>
+<td rowspan="2">
+<select name="calculate_status" class="calculate_select calculate_select-${item.orderlist_no}" id="c${item.orderlist_no}">
+<option value="1">정산대기</option>
+<option value="2">정산가능</option>
+<option value="3">정산완료</option>
+</select></td>
+</tr>
 <tr><td><select name="order_status" class="status_select status_select-${item.orderlist_no}" id="${item.orderlist_no}">
 <option value="1">주문완료</option>
 <option value="2">배송중</option>
@@ -61,8 +68,8 @@
 <script>
 	
 $('.status_select-'+${item.orderlist_no}+' option[value=${item.orderlist_orderstatus }]').attr('selected',true);
-console.log($('.status_select option[value=${item.orderlist_orderstatus }]').val());
 
+$('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calculatestatus }]').attr('selected',true);
 
 
 
@@ -107,6 +114,36 @@ $('.status_select').on("change",function(){
 	}
 	else
 	{location.href="/todaylessonadmin/admin_order_modify/"+orderlist_no+"/"+selected;} 
+});
+
+
+/*정산상태 변경 셀렉터*/
+var before2
+$('.calculate_select').focus(function(){
+	before2=$(this).val();
+});
+$('.calculate_select').on("change",function(){
+	var cal_id=$(this).attr('id');
+	var orderlist_no=cal_id.substring(1,cal_id.length);
+	var selected=$(this).prop('selected',true).val();
+	console.log(orderlist_no);
+	if(!confirm('정산상태를 변경하시겠습니까?'))
+	{
+		$('.calculate_select-'+orderlist_no+' option[value='+before2+']').prop('selected',true);
+		console.log(before2);
+		return false;
+	}
+	else
+	{
+		if( $('.status_select').val()!=3)
+			{
+			alert('배송이 완료된 상품만 정산상태를 변경할 수 있습니다.');
+			$('.calculate_select-'+orderlist_no+' option[value='+before2+']').prop('selected',true);
+			return false;
+			}
+		else
+		{location.href="/todaylessonadmin/admin_order_calculate/"+orderlist_no+"/"+selected;}
+	}
 });
 </script>
 </body>

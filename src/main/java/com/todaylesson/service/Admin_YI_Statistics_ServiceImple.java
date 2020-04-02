@@ -39,9 +39,13 @@ public class Admin_YI_Statistics_ServiceImple implements Admin_YI_Statistics_Ser
 
 
 	@Override
-	public List<Stat_LogDTO> distinct_member() {
+	public List<Stat_LogDTO> distinct_member(String ymd, String start_date, String end_date) {
 		// TODO Auto-generated method stub
-		return mapper.distinct_member();
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("ymd", ymd);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
+		return mapper.distinct_member(hm);
 	}
 
 	@Override

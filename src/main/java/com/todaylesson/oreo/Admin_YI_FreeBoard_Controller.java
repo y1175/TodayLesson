@@ -71,13 +71,13 @@ public class Admin_YI_FreeBoard_Controller {
 				
 					model.addAttribute("replist",replist);
 		
-		return "/TodayLesson_AdminPage/yi_ad_freeboard";
+		return "/TodayLesson_AdminPage/yi_ad_freeboard.hs_ad_main_section";
 	}
 	
 	@RequestMapping("/freeboard_noticewrite")
 	public String admin_noticewrite()
 	{
-		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticeinsert";
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticeinsert.hs_ad_main_section";
 	}
 	
 	@RequestMapping("/freeboard_noticewriteResult")
@@ -109,7 +109,7 @@ public class Admin_YI_FreeBoard_Controller {
 		NoticeDTO dto=service.noticeModifyPlacehold(notice_no);
 		model.addAttribute("dto",dto);
 		
-		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticemodify";
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_noticemodify.hs_ad_main_section";
 	}
 	
 	
@@ -127,7 +127,7 @@ public class Admin_YI_FreeBoard_Controller {
 		
 		int result=service.admin_noticemodify(dto);
 		model.addAttribute("result",result);
-		return "/TodayLesson_AdminPage/yi_ad_freeboard_modifyresult";
+		return "/TodayLesson_AdminPage/yi_ad_freeboard_modifyresult.hs_ad_main_section";
 	}
 	
 	@RequestMapping("/admin_noticedelete/{freeboard_no}")

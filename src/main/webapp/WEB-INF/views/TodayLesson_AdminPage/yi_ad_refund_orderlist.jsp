@@ -12,7 +12,7 @@
 </head>
 <body>
 주문취소 관리
-<form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
+<form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
 <label>결제상태</label>
 <input type="radio" id="order_all" name="orderlist_paystatus" value="0"><label for="order_all">전체</label>
 <input type="radio" id="pay_complete" name="orderlist_paystatus" value="1"><label for="pay_complete">결제완료</label>
@@ -25,10 +25,10 @@
 <label>주문기간</label>
 <input type="date" name="start_date"> ~ <input type="date" name="end_date"><br>
 
-<input type="submit" value="조회">
+ <input type="submit" value="조회">
 </form>
 
-<form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
+<form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
 <select name="orderlist_category">
 <option value="1" selected="selected">스토어</option>
 <option value="2">레슨</option>
@@ -76,17 +76,17 @@ console.log($('.status_select option[value=${item.orderlist_paystatus }]').val()
 
 </form>
 <c:if test="${page.prev }">
-<a href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="이전"/></a>
+<a href="refund_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="이전"/></a>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 </c:if>
-<a href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">${index }</a>
+<a href="refund_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">${index }</a>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="다음"/></a>
+<a href="refund_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="다음"/></a>
 </c:if>
 <script>
 

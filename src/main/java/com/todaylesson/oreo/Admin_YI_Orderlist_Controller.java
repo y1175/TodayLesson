@@ -44,7 +44,7 @@ public class Admin_YI_Orderlist_Controller {
 	{
 		
 		//총 게시글 수
-		int totalCount= service.totalCount(orderlist_category,orderlist_search);
+		int totalCount= service.totalCount(orderlist_orderstatus,orderlist_category,start_date,end_date,orderlist_search);
 		int pageSize=15;
 		int blockSize=5;
 		
@@ -64,7 +64,8 @@ public class Admin_YI_Orderlist_Controller {
 		model.addAttribute("start_date",start_date);
 		model.addAttribute("end_date",end_date);
 		
-		return "/TodayLesson_AdminPage/yi_ad_orderlist";
+		
+		return "/TodayLesson_AdminPage/yi_ad_orderlist.hs_ad_main_section";
 	}
 	
 	//배송상태 수정
@@ -74,6 +75,16 @@ public class Admin_YI_Orderlist_Controller {
 	{
 
 		int result=service.order_modify(orderlist_no,order_status);
+		return "redirect:/todaylessonadmin/admin_orderlist";
+	}
+	
+	//정산상태 수정
+	@RequestMapping("/admin_order_calculate/{orderlist_no}/{calculate_status}")
+	public String order_calculate(@PathVariable int orderlist_no
+			,@PathVariable int calculate_status)
+	{
+
+		int result=service.order_calculate(orderlist_no,calculate_status);
 		return "redirect:/todaylessonadmin/admin_orderlist";
 	}
 	
@@ -94,15 +105,15 @@ public class Admin_YI_Orderlist_Controller {
 	{
 		
 		//총 게시글 수
-		int totalCount= service.totalCount(orderlist_category,orderlist_search);
+		int totalCount= service.refundTotalCount(orderlist_category,start_date,end_date,orderlist_paystatus,orderlist_search);
 		int pageSize=15;
 		int blockSize=5;
-		
+		System.out.println("paystatus:"+orderlist_paystatus);
 		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
 		
-		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.refundlist(orderlist_paystatus,orderlist_category,orderlist_search,start_date,end_date
+		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.refundlist(orderlist_category,orderlist_search,start_date,end_date,orderlist_paystatus
 				,page.getStartRow()
 				,page.getEndRow());
 		System.out.println("list:"+list.get(0).getOrderlist_no());
@@ -114,7 +125,7 @@ public class Admin_YI_Orderlist_Controller {
 		model.addAttribute("start_date",start_date);
 		model.addAttribute("end_date",end_date);
 
-		return "TodayLesson_AdminPage/yi_ad_refund_orderlist";
+		return "TodayLesson_AdminPage/yi_ad_refund_orderlist.hs_ad_main_section";
 
 	}
 	

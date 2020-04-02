@@ -80,7 +80,7 @@ public class User_YI_FreeBoard_Controller {
 			model.addAttribute("replist",replist);
 
 		
-		return "TodayLesson_UserPage/yi_freeboard";
+		return "TodayLesson_UserPage/yi_freeboard.us_main_section";
 	}
 		
 	//글 상세보기
@@ -95,13 +95,13 @@ public class User_YI_FreeBoard_Controller {
 		
 		
 		model.addAttribute("dto",dto);
-		return "TodayLesson_UserPage/yi_freeboard_detail";
+		return "TodayLesson_UserPage/yi_freeboard_detail.us_main_section";
 	}
 	//글 쓰기
 	@RequestMapping("/freeboard_insert")
 	public String freeboard_insert()
 	{
-		return "TodayLesson_UserPage/yi_freeboard_insert";
+		return "TodayLesson_UserPage/yi_freeboard_insert.us_main_section";
 	}
 	//글 쓰기
 	@RequestMapping("/freeboard_insertresult")
@@ -128,7 +128,7 @@ public class User_YI_FreeBoard_Controller {
 	{
 		SQLjoin_Member_FreeBoardDTO dto =service.modify_placehold(freeboard_no);
 		model.addAttribute("dto",dto);
-		return "TodayLesson_UserPage/yi_freeboard_modify";
+		return "TodayLesson_UserPage/yi_freeboard_modify.us_main_section";
 	}
 	//게시글 수정
 	@RequestMapping("/freeboard_modifyresult")
@@ -217,7 +217,7 @@ public class User_YI_FreeBoard_Controller {
 		service.notice_readnoUp(notice_no);
 		NoticeDTO dto= service.notice_detail(notice_no);
 		model.addAttribute("dto",dto);
-		return "TodayLesson_UserPage/yi_notice_detail";
+		return "TodayLesson_UserPage/yi_notice_detail.us_main_section";
 	}
 	
 	//@RequestMapping("/boardreply_delete")

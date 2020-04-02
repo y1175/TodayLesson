@@ -20,4 +20,8 @@ public List<SQLjoin_OrderList_Order_detail_MemberDTO> refundlist(HashMap<String,
 
 public int order_refund_modify(HashMap<String, Object> hm);
 
+public int getRefundCount(HashMap<String, Object> hm);
+
+public int order_calculate(HashMap<String, Object> hm);
+
 }

@@ -9,7 +9,7 @@ public interface Admin_YI_Statistics_Service {
 
 	public List<Stat_LogDTO> allLog(String ymd, String start_date, String end_date);
 
-	public List<Stat_LogDTO> distinct_member();
+	public List<Stat_LogDTO> distinct_member(String ymd, String start_date, String end_date);
 
 	public List<AmChartDTO> chartOutput();
 
