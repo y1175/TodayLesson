@@ -97,7 +97,7 @@ width:500px; height:auto;
 </c:forEach>
 
 
-<a href="${pageContext.request.contextPath }/todaylessonsenior/lesson_write/${pageContext.request.userPrincipal.name}">글쓰기</a>
+<a href="${pageContext.request.contextPath }/todaylessonsenior/lesson_write">글쓰기</a>
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 
 </body>

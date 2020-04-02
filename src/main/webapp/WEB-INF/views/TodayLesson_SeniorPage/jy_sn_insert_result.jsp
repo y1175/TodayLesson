@@ -15,13 +15,13 @@
 if (${result} > 0) {
 	alert("추가 성공! 내부 검토 후 등록 여부를 알려드리겠습니다.");
 
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 
 } else {
 	
 
 	alert("추가 실패!");
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 	
 }
 </script>

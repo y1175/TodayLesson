@@ -1,7 +1,10 @@
 package com.todaylesson.oreo;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.todaylesson.DTO.LessonCompDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
+import com.todaylesson.DTO.LessonListDTO;
 import com.todaylesson.DTO.MyLessonDTO;
 import com.todaylesson.service.JY_US_MyLessonService;
 
@@ -31,6 +35,16 @@ public class JY_US_MyLesson_Controller {
 		String member_id = userDetails.getUsername();
 		
 		List<LessonDTO> lesson_list = mlservice.mylesson_list(member_id);
+		
+		List<Integer> lesson_procent = new ArrayList();
+		
+		for (int i = 0; i < lesson_list.size(); i++) {
+			int lesson_no = lesson_list.get(i).getLesson_no();
+			lesson_procent.add(lesson_no);
+		}
+		
+		System.out.println(lesson_procent.toString());
+		
 		model.addAttribute("list", lesson_list);
 
 		return "TodayLesson_UserPage/jy_us_my_lesson_list.us_main_section";

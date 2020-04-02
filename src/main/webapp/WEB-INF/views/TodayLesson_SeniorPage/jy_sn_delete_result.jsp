@@ -14,13 +14,13 @@
 
 if (${result} > 0) {
 	alert("삭제 성공!");
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 
 } else {
 	
 
 	alert("삭제 실패!");
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${pageContext.request.userPrincipal.name}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 	
 }
 </script>
