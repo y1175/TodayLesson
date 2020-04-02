@@ -79,7 +79,7 @@ public class User_YI_OrderList_Controller {
 		
 		model.addAttribute("detailList",detailList);*/
 		
-		return "/TodayLesson_UserPage/yi_us_orderlist";
+		return "/TodayLesson_UserPage/yi_us_orderlist.us_my_section";
 	}
 	
 	@ResponseBody
@@ -101,7 +101,7 @@ public class User_YI_OrderList_Controller {
 		model.addAttribute("dto",dto);
 	model.addAttribute("list",list);
 		
-		return "/TodayLesson_UserPage/yi_us_orderlist_detail";
+		return "/TodayLesson_UserPage/yi_us_orderlist_detail.us_my_section";
 	}
 	
 	@RequestMapping("/user_myorderlist_cancel/{orderlist_no}")

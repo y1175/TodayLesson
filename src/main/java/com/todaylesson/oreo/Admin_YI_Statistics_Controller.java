@@ -38,7 +38,7 @@ public class Admin_YI_Statistics_Controller {
 		List<Stat_LogDTO> list=service.allLog(ymd,start_date,end_date);
 		
 		//立加 糕滚 格废
-		List<Stat_LogDTO> distinctMember=service.distinct_member();
+		List<Stat_LogDTO> distinctMember=service.distinct_member(ymd,start_date,end_date);
 		
 		//穿利 立加 格废
 		List<Integer> cumlist=new ArrayList<>();
@@ -83,7 +83,7 @@ public class Admin_YI_Statistics_Controller {
 		model.addAttribute("year_joinCount",year_joinCount);
 		model.addAttribute("countdate",countdate);
 		
-		return "/TodayLesson_AdminPage/yi_ad_member_statistics";
+		return "/TodayLesson_AdminPage/yi_ad_member_statistics.hs_ad_main_section";
 	}
 	
 	//AmChart1

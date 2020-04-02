@@ -23,6 +23,7 @@ public class SQLjoin_OrderList_Order_detail_MemberDTO {
 	private String orderlist_date;
 	private int orderlist_orderstatus;
 	private int orderlist_paystatus;
+	private int orderlist_calculatestatus;
 	private int orderlist_cost;
 	private String orderlist_phone;
 	private String orderlist_msg;

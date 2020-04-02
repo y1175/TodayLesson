@@ -19,7 +19,7 @@ public interface Admin_YI_Statistics_Mapper {
 
 	public void dropTmp();
 
-	public List<Stat_LogDTO> distinct_member();
+	public List<Stat_LogDTO> distinct_member(HashMap<String, Object> hm);
 
 	public List<AmChartDTO> chartOutput();
 

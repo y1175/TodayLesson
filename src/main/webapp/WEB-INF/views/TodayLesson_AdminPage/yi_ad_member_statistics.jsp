@@ -11,7 +11,8 @@
    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
    <script src="https://www.amcharts.com/lib/3/pie.js"></script>
    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-   <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>  
+   <script src="https://www.amcharts.com/lib/3/themes/light.js"></script> 
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
 <!-- CSSstyle --> 
    <style type="text/css">
    .hs_ad_main_asidenav_nav_StatMember_Title>a{

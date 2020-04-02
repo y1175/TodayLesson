@@ -18,9 +18,13 @@ public class Admin_YI_OrderListServiceImple implements Admin_YI_OrderListService
 	private Admin_YI_OrderList_Mapper mapper;
 
 	@Override
-	public int totalCount(int orderlist_category, int orderlist_search) {
+	public int totalCount(int orderlist_orderstatus, int orderlist_category, String start_date, String end_date,
+			int orderlist_search) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("orderlist_orderstatus", orderlist_orderstatus);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
 		hm.put("category", orderlist_category);
 		hm.put("search", orderlist_search);
 		return mapper.getCount(hm);
@@ -52,11 +56,11 @@ public class Admin_YI_OrderListServiceImple implements Admin_YI_OrderListService
 	}
 
 	@Override
-	public List<SQLjoin_OrderList_Order_detail_MemberDTO> refundlist(int orderlist_paystatus,
-			int orderlist_category, int orderlist_search, String start_date, String end_date, int startRow,
+	public List<SQLjoin_OrderList_Order_detail_MemberDTO> refundlist(
+			int orderlist_category, int orderlist_search, String start_date, String end_date,int orderlist_paystatus, int startRow,
 			int endRow) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
-		hm.put("orderlist_orderstatus", orderlist_paystatus);
+		hm.put("orderlist_paystatus", orderlist_paystatus);
 		hm.put("category", orderlist_category);
 		hm.put("search", orderlist_search);
 		hm.put("start_date", start_date);
@@ -74,6 +78,29 @@ public class Admin_YI_OrderListServiceImple implements Admin_YI_OrderListService
 		hm.put("pay_status",pay_status);
 		
 		return mapper.order_refund_modify(hm);
+	}
+
+
+	@Override
+	public int refundTotalCount(int orderlist_category, String start_date, String end_date, int orderlist_paystatus,
+			int orderlist_search) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("orderlist_paystatus", orderlist_paystatus);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
+		hm.put("category", orderlist_category);
+		hm.put("search", orderlist_search);
+		return mapper.getRefundCount(hm);
+	}
+
+	@Override
+	public int order_calculate(int orderlist_no, int calculate_status) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("orderlist_no", orderlist_no);
+		hm.put("calculate_status",calculate_status);
+		return mapper.order_calculate(hm);
 	}
 	
 }

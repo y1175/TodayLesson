@@ -5,13 +5,28 @@
 <mapper namespace="com.todaylesson.Mapper.Admin_YI_OrderList_Mapper">
 <!-- 게시물 카운트  -->
 	<select id="getCount" resultType="int" parameterType="java.util.HashMap">
-		select COUNT(*) 
-		from orderlist join order_detail
-		on orderlist.orderlist_no = order_detail.orderlist_no
+    select count(*)
+	from member 
+	join (orderlist join 
+	(order_detail join <include refid="category_select"></include> )
+	on orderlist.orderlist_no=order_detail.orderlist_no)
+	on member.member_id=orderlist.member_id
 		<!-- WHERE절을 include 태그로 삽입 -->
 		<include refid="orderlist_search"></include>
 
 </select>
+	<select id="getRefundCount" resultType="int" parameterType="java.util.HashMap">
+ select count(*)
+	from member 
+	join (orderlist join 
+	(order_detail join <include refid="category_select"></include> )
+	on orderlist.orderlist_no=order_detail.orderlist_no)
+	on member.member_id=orderlist.member_id
+		<!-- WHERE절을 include 태그로 삽입 -->
+
+		<include refid="refundlist_search"></include>
+</select>
+
 
 	<select id="orderlist" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="java.util.HashMap">
         select *
@@ -32,6 +47,12 @@ limit   #{startrow}, 15
 	where orderlist_no=#{orderlist_no}
 	</update>
 	
+	<update id="order_calculate" parameterType="java.util.HashMap">
+	update orderlist
+	set orderlist_calculatestatus=#{calculate_status}
+	where orderlist_no=#{orderlist_no}
+	</update>
+	
 	<select id="refundlist" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="java.util.HashMap">
         select *
 	from member 
@@ -40,7 +61,6 @@ limit   #{startrow}, 15
 	on orderlist.orderlist_no=order_detail.orderlist_no)
 	on member.member_id=orderlist.member_id
 	<include refid="refundlist_search"></include>
-
 	  order by orderlist_date desc
 limit   #{startrow}, 15
 	</select>
@@ -107,7 +127,7 @@ limit   #{startrow}, 15
 <!-- 환불 검색기능 -->
 	<sql id="refundlist_search">
 	<where>
-	orderlist_orderstatus=4
+		orderlist_orderstatus=4
 	<if test='search!=null and search!=""'>
 	and orderlist.orderlist_no=#{search}
 	</if>

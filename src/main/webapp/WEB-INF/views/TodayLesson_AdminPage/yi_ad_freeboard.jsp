@@ -13,7 +13,8 @@
       }
    </style>
 <!-- CSSstyle -->
-
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>게시글 목록</title>
 <script>
 function reply_view(no)
