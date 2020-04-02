@@ -23,7 +23,12 @@ public class User_HM_Bird_Controller {
 	public String hm_us_bird(Model model)
 	{
 		List<LessonDTO> list = service.bestlesson();
+		List<LessonDTO> newbird = service.newbirdlesson();
+		
+		/*List<LessonDTO> endbird = service.endbirdlesson();*/
+		
 		model.addAttribute("list",list);
+		model.addAttribute("newbird",newbird);
 		
 		return "/TodayLesson_UserPage/hm_us_bird.us_main_section";
 	}

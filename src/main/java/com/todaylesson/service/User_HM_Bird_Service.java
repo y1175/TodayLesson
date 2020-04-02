@@ -8,6 +8,10 @@ public interface User_HM_Bird_Service {
 
 	public List<LessonDTO> bestlesson();
 
+	public List<LessonDTO> newbirdlesson();
+
+/*	public List<LessonDTO> endbirdlesson();*/
+
 	
 
 }

@@ -21,6 +21,18 @@ public class User_HM_Bird_ServiceImple implements User_HM_Bird_Service {
 		return mapper.bestlesson();
 	}
 
-	
+	@Override
+	public List<LessonDTO> newbirdlesson() {
+		// TODO Auto-generated method stub
+		return mapper.newbirdlesson();
+	}
+
+	/*@Override
+	public List<LessonDTO> endbirdlesson() {
+		// TODO Auto-generated method stub
+		return mapper.endbirdlesson();
+	}
+
+	*/
 	
 }

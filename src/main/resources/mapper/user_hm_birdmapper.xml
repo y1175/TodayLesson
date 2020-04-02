@@ -8,7 +8,16 @@
 select lesson_no,lesson_title,lesson_thumb,lesson_category,senior_nick,lesson_type,lesson_like
 from lesson inner join senior 
 on lesson.senior_no = senior.senior_no
-where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day)
+where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) and lesson_earlybird = '1'
 order by lesson_readno desc, lesson_no asc
 </select>
+
+<select id="newbirdlesson" resultType="com.todaylesson.DTO.LessonDTO">
+select lesson_no, lesson_title, lesson_thumb, lesson_category, senior_nick,lesson_like,lesson_type
+from lesson inner join senior
+on lesson.senior_no = senior.senior_no
+where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) and lesson_earlybird = '1'
+order by lesson_no desc
+</select>
+
 </mapper>

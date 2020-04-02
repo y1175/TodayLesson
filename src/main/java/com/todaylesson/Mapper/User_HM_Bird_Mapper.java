@@ -14,6 +14,10 @@ public interface User_HM_Bird_Mapper {
 
 	public List<LessonDTO> bestlesson();
 
+	public List<LessonDTO> newbirdlesson();
+
+	/*public List<LessonDTO> endbirdlesson();*/
+
 
 
 	
