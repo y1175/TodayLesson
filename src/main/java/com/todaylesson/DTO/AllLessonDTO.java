@@ -36,7 +36,7 @@ public class AllLessonDTO {
 	private String lesson_senior_content;
 	private String lesson_zipno;
 	private int senior_no;
-	
+	private int lesson_earlybird;
 	
 	private String member_id;
 	private String senior_email;

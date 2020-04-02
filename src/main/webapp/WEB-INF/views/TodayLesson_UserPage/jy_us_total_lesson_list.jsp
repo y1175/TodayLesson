@@ -23,7 +23,7 @@ width:500px; height:auto;
 <div id="thumb">
 <img alt="레슨 썸네일" src="${item.lesson_thumb }">
 <c:out value="${item.lesson_no}"/>
-<a href="/lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a>
+<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a>
 
 
 <c:choose>

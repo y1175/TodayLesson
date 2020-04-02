@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>얼리버드</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=1"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=2"> 
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js"></script> 
+
 </head>
 <body>
 
@@ -25,16 +26,27 @@
 
 <!-- 실시간 베스트 얼리버드 -->
 <div class="row" style="width: 100%; margin: auto; margin-top: 100px;">
-      <b class="" style="font-size: 25px;"> 실시간 베스트 얼리버드 </b>
+      <b style="font-size: 25px;"> 실시간 베스트 얼리버드 </b>
+      
+      <!-- 기준 시간 출력 -->
+      <p id="time-result"></p>
+      <script>
+       var d = new Date();
+       var currentTime = d.getHours() + "시 " + d.getMinutes() + "분 ";
+       var result = document.getElementById("time-result");
+       result.innerHTML = currentTime + " 기준";
+      </script> 
+      
+      
       <div class="" style="margin-top: 30px;">
          <c:forEach begin="0" end="3" step="1"  var="bestlist" items="${list}">
-            <div class="col-md-3 col-sm-6">
-               <div class="hs_user_store_product">
-                  <div class="hs_user_store_product_img">
+            <div class="col-md-3 col-sm-6" style="margin-left:-10px;">
+               <div class="hm_user_bird_best">
+                  <div class="hm_user_bird_best_img">
                      <a href="#">
                         <img src="${bestlist.lesson_thumb}"/>
                      </a>
-                    <ul class="hs_user_store_product_social" >
+                    <ul class="hm_user_bird_best_social" >
                         <li>
                            <a href="" class="fas fa-heart"></a>
                         </li>
@@ -42,11 +54,11 @@
                            <a href="" class="fa fa-shopping-cart"></a>
                         </li>
                      </ul> 
-                     <span class="hs_user_store_product_label">
+                     <span class="hm_user_bird_best_label">
                         <c:out value="27%"/>
                      </span> 
                   </div>
-                  <div class="hs_user_store_product_content">
+                  <div class="hm_user_bird_best_content">
                      <c:set var="category" value="${bestlist.lesson_category }"/>
 								<c:choose>
 									<c:when test="${bestlist.lesson_category == 1}">
@@ -73,19 +85,19 @@
 										<c:out value="기타" />
 									</c:otherwise>
 								</c:choose>
-								<h6 class="hs_user_store_prodct_title">
+								<h6 class="hm_user_bird_best_title">
                         <a href="#">${bestlist.lesson_title}</a>
                      </h6>
-                     <div class="hs_user_store_product_line"></div>
-                     <div class="hs_user_store_prodct_cost">'${bestlist.senior_nick}' 시니어
+                     <div class="hm_user_bird_best_line"></div>
+                     <div class="hm_user_bird_best_nick">'${bestlist.senior_nick}' 시니어
                        <%--  <span class="hs_user_store_prodct_BFcost">
                            <c:out value="${storenewproductlist.product_cost}원"/>
                         </span> --%>
                      </div>
-                     <div class="hs_user_store_prodct_likenum_box">                
-                        <span class="hs_user_store_prodct_likenum">
+                     <div class="hm_user_bird_best_likenum_box">                
+                        <span class="hm_user_bird_best_likenum">
                            <i class="fas fa-heart"></i>
-                           <p>${bestlist.lesson_like}</p>
+                           ${bestlist.lesson_like}
                         </span>
                      </div>     
                   </div>

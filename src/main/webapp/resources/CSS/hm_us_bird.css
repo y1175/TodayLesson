@@ -1,41 +1,41 @@
 @charset "utf-8";
 
-
+/*메인 이미지*/
 .birdmainimg{
 	width:100%;
 	margin-top:-10px;
 }
-
+/*전체를 큰 div로 감쌈*/
 .earlybirdtotal{
 	
 	width:80%;
 	margin:0 auto;
 }
-
+/*배너이미지*/
 img.birdminiimg{
 	
-	margin-top:40px;
+	margin-top:60px;
 }
 
 
 
-/* 스토어베스트 , 스토어 신규 */	
+/* 실시간 베스트 얼리버드*/	
 /* 썸네일 _ 설명 묶은 DIV */
-.hs_user_store_product{
+.hm_user_bird_best{
 	position:relative;
 	z-index:1;
 	}
 /* 썸네일 a tag*/
-.hs_user_store_product_img a{
+.hm_user_bird_best_img a{
 	display:block
 	}
 /* 썸네일  img */
-.hs_user_store_product_img img{
+.hm_user_bird_best_img img{
 	width:100%;
 	
 	}
-/* 썸네일 안데 장바구니 좋아요 아이콘 */	
-.hs_user_store_product_social {
+/* 썸네일 안 장바구니 좋아요 아이콘 */	
+.hm_user_bird_best_social {
 	padding:0;
 	margin:0;
 	list-style:none;
@@ -44,24 +44,24 @@ img.birdminiimg{
 	right:13px;
 	z-index:1
 	}
-.hs_user_store_product_social li{
+.hm_user_bird_best_social li{
 	opacity:0;
 	transform:translateY(3px);
 	transition:all .5s ease 0s
 	}
-.hs_user_store_product:hover .hs_user_store_product_social li{
+.hm_user_bird_best:hover .hm_user_bird_best_social li{
 	margin:0 0 10px;
 	opacity:1;
 	transform:translateY(0)
 	}
-.hs_user_store_product:hover .hs_user_store_product_social li:nth-child(1){
+.hm_user_bird_best:hover .hm_user_bird_best_social li:nth-child(1){
 	transition-delay:.2s  /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
 	}
-.hs_user_store_product:hover .hs_user_store_product_social li:nth-child(2){
+.hm_user_bird_best:hover .hm_user_bird_best_social li:nth-child(2){
 	transition-delay:.4s /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
 	}
-/* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
-.hs_user_store_product_social li a{
+/* 썸네일 안에 장바구니 좋아요 아이콘 위치 */	
+.hm_user_bird_best_social li a{
 	color:white;
 	font-size:17px;
 	line-height:40px;
@@ -72,13 +72,13 @@ img.birdminiimg{
 	display:block;
 	transition:all .5s ease-in-out
 	}
-.hs_user_store_product_social li a:hover{
+.hm_user_bird_best_social li a:hover{
 	color:rgb(224, 62, 82);
 	border-color:rgb(224, 62, 82)
 	}
 
 /* 세일% 라벨 */		
-.hs_user_store_product_label{
+.hm_user_bird_best_label{
 	display:block;
 	width : 38px;
 	height : 38px;
@@ -90,74 +90,61 @@ img.birdminiimg{
 	position:absolute;
 	top:10px;
 	left : 10px;
-	/* right:10px; */
-	/* padding:4px 15px 4px 30px; */
-	/* -webkit-clip-path:polygon(34% 0,100% 0,100% 100%,0 100%);
-	clip-path:polygon(34% 0,100% 0,100% 100%,0 100%); */
 	-webkit-clip-path:circle(50% at 50% 50%);
 	clip-path:circle(50% at 50% 50%);
 	
 	}
-/* 상품 설명 */	
-.hs_user_store_product_content{
+/* 레슨 설명 */	
+.hm_user_bird_best_content{
 	padding:10px 0 0
 	}
-/* 상품카테고리 */	
-.hs_user_store_product_category{
+/* 레슨카테고리 */	
+.hm_user_bird_best_category{
 	font-size: 10px;
 	font-weight: 900;
 	color: #999;
 }	
-/* 상품명 */
-.hs_user_store_prodct_title{
+/* 레슨명 */
+.hm_user_bird_best_title{
 	font-size:17px;
 	font-weight:600;
 	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
 	margin:10px 0px;
 	transition:all .3s ease 0s
 	}
-.hs_user_store_prodct_title a{
+.hm_user_bird_best_title a{
 	color: rgb(53, 54, 58);
 	}
-/* 상품명 상품가격 사이 라인 */	
-.hs_user_store_product_line{
+/* 레슨명 시니어명 사이 라인 */	
+.hm_user_bird_best_line{
 	width: 100%;
 	height: 1px;
 	background-color: rgba(220,220,220,0.5);
 	margin: 5px 0px;
 }
-/* 상품가격(이전 / 세일된 가격)  */
-.hs_user_store_prodct_cost{
+/* 시니어 닉네임  */
+.hm_user_bird_best_nick{
 	color: rgb(53, 54, 58);
 	font-size:16px;
 	font-weight:700;
 	/* text-align:left; */
 	transition:all .3s
 	}
-/* 이전 상품가격 */	
-/* .hs_user_store_prodct_BFcost{
-	color:#999;
-	font-size:16px;
-	font-weight:500;
-	text-decoration:line-through;
-	margin-left:7px;
-	display:inline-block
-	} */
 /* 좋아요수  */
-.hs_user_store_prodct_likenum_box{
+.hm_user_bird_best_likenum_box{
 	margin:5px 0px 30px;;
 }
-.hs_user_store_prodct_likenum{
+.hm_user_bird_best_likenum{
 	font-size: 12px;
 	font-weight:400;
 }	
-.hs_user_store_prodct_likenum i{
+.hm_user_bird_best_likenum i{
 	color: rgb(224, 62, 82);
 
 }
 @media only screen and (max-width:990px){
-	.hs_user_store_product{
+	.hm_user_bird_best{
 	    margin-bottom:30px
 	}
 }
-/* 스토어베스트 , 스토어 신규 */	
+/* 실시간 베스트 얼리버드 */	
