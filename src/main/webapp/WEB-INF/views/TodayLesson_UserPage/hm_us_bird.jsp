@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.Date"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -203,12 +205,26 @@
 
 
 <!-- 마감 얼리버드 레슨 -->
- 	<div class="earlybirdtotal">
+
+	<div
+		style="background-color: rgba(255, 200, 216, 0.9); margin: 60px 0px; padding:20px 0px;">
+ 	<!-- <div class="earlybirdtotal"> -->
 		<!-- 전체를 감싸는 div -->
-		<div id="hm_us_endlesson" style="width: 100%; margin: auto;">
-
-
-			<div>
+		
+		<div id="hm_us_endlesson" style="width: 80%; margin: auto;">
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div style="margin-top:20px;">
 				<h2>
 					<b style="font-size: 25px;"> 곧 마감되는 얼리버드 레슨 </b>
 				</h2>
@@ -220,7 +236,7 @@
 
 						<c:forEach begin="0" end="9" step="1" var="endlessonlist"
 							items="${endbird}">
-
+						
 							<a href=""> <img class="hm_us_endlesson_cg_img"
 								src="${endlessonlist.lesson_thumb}" alt=""> <c:set
 									var="category" value="${endlessonlist.lesson_category }" /> <c:choose>
@@ -261,6 +277,7 @@
 								<hr style="margin: 0px 0px 5px;">
 								<p class="hm_us_endlesson_senior_nick">
 									<c:out value="'${endlessonlist.senior_nick}'시니어" />
+									
 								</p>
 								<p>
 									<i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
@@ -272,8 +289,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		<!-- </div> -->
 	</div> 
+	</div>
 	<!-- 전체 div-->
 	<!-- 레슨 마감 -->
 
@@ -285,8 +303,8 @@
 
 
 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=1"></script>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=2"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hm_us_bird_endlesson.js?ver=1"></script>
 
 
 
@@ -301,7 +319,7 @@
    	<!-- 레슨슬라이더  마감임박-->
 	 <script>
         $(document).ready(function() {
-            $(".hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items").gScrollingCarousel();
+            $(".hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items").ELgScrollingCarousel();
         });  
    </script>
  
@@ -320,5 +338,22 @@
             s.parentNode.insertBefore(ga, s);
         })();
    </script>
+   
+   	<script type="text/javascript">
+        var EL_gaq = EL_gaq || [];
+        EL_gaq.push(['_setAccount', 'UA-36251023-1']);
+        EL_gaq.push(['_setDomainName', 'jqueryscript.net']);
+        EL_gaq.push(['_trackPageview']);
+
+        (function() {
+            var ELga = document.createElement('script');
+            ELga.type = 'text/javascript';
+            ELga.async = true;
+            ELga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var ELs = document.getElementsByTagName('script')[0];
+            ELs.parentNode.insertBefore(ELga, ELs);
+        })();
+   </script>
+   
 </body>
 </html>

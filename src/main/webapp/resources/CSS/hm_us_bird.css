@@ -34,7 +34,7 @@ img.birdminiimg{
 	width:100%;
 	
 	}
-	
+		
 #time-result{
 	font-weight: bold;
 	
@@ -437,9 +437,9 @@ img.birdminiimg{
     display: none;
 }
 
-.jc-right,
+.ELjc-right,
 /* 동그라미 */
-.jc-left {
+.ELjc-left {
     color: #757575;
     margin-bottom: auto;
     margin-top: auto;
@@ -451,23 +451,23 @@ img.birdminiimg{
     opacity: 0.94;
 }
 
-.jc-right {
+.ELjc-right {
   /*   위치조절 */
     right: 0px;
 }
 
-.jc-left {
+.ELjc-left {
     left: -40px;
 }
 
-.jc-right:hover,
-.jc-left:hover {
+.ELjc-right:hover,
+.ELjc-left:hover {
     opacity: 0.98;
 }
 
-.jc-right svg,
+.ELjc-right svg,
 /* 화살표 */
-.jc-left svg {
+.ELjc-left svg {
     position: absolute;
     left: 0px;
     right: 0;
@@ -479,15 +479,15 @@ img.birdminiimg{
     fill: rgb(53, 54, 58);
 }
 
-.jc-right:hover svg,
-.jc-left:hover svg {
+.ELjc-right:hover svg,
+.ELjc-left:hover svg {
     fill: rgb(224, 62, 82);
 }
 
 @media (pointer: coarse) {
 
-    .jc-right,
-    .jc-left {
+    .ELjc-right,
+    .ELjc-left {
         display: none !important;
     }
 }
@@ -509,6 +509,17 @@ img.birdminiimg{
 	display: inline-block; 
 }
 /* 마감레슨 */
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -24,7 +24,7 @@ order by lesson_no desc
 
 <!-- 마감임박 얼리버드 레슨 -->
 <select id="endbirdlesson" resultType="com.todaylesson.DTO.LessonDTO">
-select lesson_no, lesson_title, lesson_thumb,lesson_category, senior_nick, lesson_like, lesson_type
+select lesson_no, lesson_title,lesson_open_period, lesson_thumb,lesson_category, senior_nick, lesson_like, lesson_type
 from lesson inner join senior
 on lesson.senior_no = senior.senior_no
 where lesson_earlybird = '1' 
