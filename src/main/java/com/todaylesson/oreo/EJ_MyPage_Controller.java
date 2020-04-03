@@ -25,7 +25,7 @@ import com.todaylesson.service.EJ_All_Product_Service;
 @Controller
 public class EJ_MyPage_Controller {
 	
-	@Resource(name="service")
+	@Resource(name="us_store_service")
 	private EJ_All_Product_Service service;
 	
 	@RequestMapping("/mylike/{member_id}")

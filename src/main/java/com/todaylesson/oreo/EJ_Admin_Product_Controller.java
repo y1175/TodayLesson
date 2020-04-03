@@ -20,7 +20,7 @@ import com.todaylesson.upload.UploadFileUtils;
 @Controller
 @RequestMapping("/todaylessonadmin/")
 public class EJ_Admin_Product_Controller {
-	@Resource(name="service")
+	@Resource(name="us_store_service")
 	private EJ_All_Product_Service service;
 	
 	@RequestMapping("/ej_ad_productlist")

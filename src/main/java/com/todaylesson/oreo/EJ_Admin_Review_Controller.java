@@ -15,7 +15,7 @@ import com.todaylesson.service.EJ_All_Product_Service;
 @Controller
 @RequestMapping("/todaylessonadmin/")
 public class EJ_Admin_Review_Controller {
-	@Resource(name="service")
+	@Resource(name="us_store_service")
 	private EJ_All_Product_Service service;
 	
 
