@@ -50,8 +50,8 @@ public class EJ_User_Store_Controller {
 	
 	//스토어 메인
 	@RequestMapping("/ej_store_main/{product_category}")
-	public String slist(@PathVariable("product_category") int product_category,
-			@RequestParam(required=false) String order
+	public String slist(@PathVariable("product_category") int product_category
+			,@RequestParam(required=false, defaultValue="recent") String order
 			,Model model) {
 		System.out.println("product_category"+product_category);
 		
@@ -73,9 +73,11 @@ public class EJ_User_Store_Controller {
 	
 	//상품 디테일
 	@RequestMapping("/ej_store_detail/{product_no}")
-	public String sdetail(@PathVariable("product_no") int product_no, Model model) {
+	public String sdetail(@PathVariable("product_no") int product_no
+			,@RequestParam(required=false, defaultValue="recent") String order
+			, Model model) {
 		
-		List<ProductDTO> list = service.selectAll(null);
+		List<ProductDTO> list = service.selectAll(order);
 		model.addAttribute("list",list);
 		
 		List<PdReviewDTO> reply = service.replyList(product_no);

@@ -35,7 +35,7 @@
       <div class="hs_us_home_mainBannerbox">
 	     <div class="hs_us_home_mainBannerslide">
 		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
-		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" 	alt="s"></a>
+		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
 			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
 			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
 	     </div>

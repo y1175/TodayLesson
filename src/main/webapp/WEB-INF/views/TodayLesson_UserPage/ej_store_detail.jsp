@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
@@ -7,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!--jquery  -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!--jquery  -->
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +16,23 @@
     <!-- Optional JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- include summernote css/js-->
+ <!--    Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+
+  <!--owl carousel css, js-->
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.carousel.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.theme.default.css">
+    <script src="/resources/JS/owl.carousel.js"></script>
+  <script src="/resources/JS/owl.carousel.min.js"></script>
+<!--owl carousel css, js-->
+    
+<!--summernote css/js/ko-kr-->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-<!-- include summernote-ko-KR -->
 <script src="/resources/JS/summernote-ko-KR.js"></script>
+<!--summernote css/js/ko-kr-->
+
+
 <!--style-->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css"> 
 <!--style-->
@@ -31,7 +42,20 @@ $('document').ready(function() {
 	$('html, body').animate({
 		scrollTop: $('html').offset().top
 	}, 'slow');
+	/*관련상품카르셀  */
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+	    items:4,
+	    loop:true,
+	    margin:10,
+	    nav: true,/* 
+	    autoplay:true,
+	    autoplayTimeout:1000,
+	    autoplayHoverPause:true */
+	});
 	
+	 $('.owl-carousel').owlCarousel();
+	 
 	$('#summernote').summernote({
 		placeholder : '후기를 남겨보세요!',
 		minHeight : 370,
@@ -41,14 +65,16 @@ $('document').ready(function() {
 	});	
 });
 </script>
+
 </head>
 <body>
+
 
 <div id="ej_container">
 
 
   <form role="form" method="post" id="form1" name="form" >
-  
+ 
 <!--썸네일 이미지 원본 맨위에 보여줌-->
 <div class="ej_top img">
 <img src="${dto.product_img }" id="ej_sdetail_topimg" width="60%">
@@ -75,7 +101,6 @@ $('document').ready(function() {
 
 수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required"><br>
 배송비 무료<br>
-
 
 
 <div class="ej_grid fist">
@@ -212,35 +237,132 @@ $('document').ready(function() {
  });
 
 </script>
+<h3>관련상품</h3>
+<hr>
+ <!--관련상품 슬라이더  -->
 
-<!--  <script>
-//follow quick menu
-$(window).scroll(function(){
-var scrollTop = $(document).scrollTop();
-if (scrollTop < 180) {
- scrollTop = 180;
-}
-$("#followquick").stop();
-$("#followquick").animate( { "top" : scrollTop });
-});
-</script> -->
-
-<!-- <div class="btn-group btn-group-justified" role="group" aria-label="..."> -->
+<!--  <div id="wrapper"> -->
+  <%-- 	<div class="owl-carousel owl-theme">
+  	 <c:forEach var="prolist" items="${list}">
+  		<div class="item">
+  			<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
+  			<h4>${prolist.product_name }</h4></a>
+  		</div>
+  	</c:forEach> 
+  	</div> --%>
+<!--   </div> -->
+ 
+ 
+ 
+ <div class="owl-carousel owl-theme">
+  	
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  			<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  			<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  			<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  			<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  		<div class="item">
+  			<img src="${dto.product_thumb }" alt="thumb">
+  		</div>
+  
+  	</div>
+ 
+ 
+<!--상품소개/후기/배송   -->
 <a href="#ej_first"><div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">상품소개</button>
-  </div></a>
+    <button type="button" class="btn btn-default">상품소개</button></div></a>
   <a href="#ej_second"><div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">후기</button>
-  </div></a>
+    <button type="button" class="btn btn-default">후기</button></div></a>
   <a href="#ej_third"><div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">배송/교환/환불</button>
-  </div></a>
-<!-- </div> -->
+    <button type="button" class="btn btn-default">배송/교환/환불</button></div></a>
+<!--상품소개/후기/배송   -->
 
 
-   <!-- 레슨 신규 -->
+   <%-- <!-- 레슨 신규 -->
    <div id="hs_us_newlesson" style="width: 80%; margin: auto;">
-      <b class="" style="font-size: 25px;"> 레슨신규 </b>
+      <b class="" style="font-size: 25px;"> 관련상품 </b>
       <div class="hs_us_newlesson_container">
          <div class="hs_us_newlesson_g-scrolling-carousel">
             <div class="hs_us_newlesson_items">
@@ -249,60 +371,60 @@ $("#followquick").animate( { "top" : scrollTop });
                      
                      <a href="">
                         <img class="hs_storecontent_cg_img" src="${list.product_thumb}" alt="">
-                    <%--  <c:set var="category" value="${newlessonlist.lesson_category }"/>
+                     <c:set var="procategory" value="${list.product_category }"/>
                      <c:choose>
-                        <c:when test = "${category==1}">
+                        <c:when test = "${procategory==1}">
                            <p>
                               <c:out value="운동"/>
                               <span> ㆍ </span>
                               <c:out value="${newlessonlist.senior_nick}"/>
                            </p>   
                         </c:when>
-                        <c:when test = "${category==2}">
+                        <c:when test = "${procategory==2}">
                            <p>  
                               <c:out value="교육"/>
                               <span> ㆍ </span>
                               <c:out value="${newlessonlist.senior_nick}"/>
                            </p>
                         </c:when>
-                        <c:when test = "${category==3}">
+                        <c:when test = "${procategory==3}">
                            <p>
                               <c:out value="핸드메이드"/>
                               <span> ㆍ </span>
                               <c:out value="${newlessonlist.senior_nick}"/>
                            </p>   
                         </c:when>
-                        <c:when test = "${category==4}">
+                        <c:when test = "${procategory==4}">
                            <p>
                               <c:out value="IT"/>
                               <span> ㆍ </span>
                               <c:out value="${newlessonlist.senior_nick}"/>
                            </p>
                         </c:when>
-                        <c:when test = "${category==5}">
+                        <c:when test = "${procategory==5}">
                            <p>
                               <c:out value="요리"/>
                               <span> ㆍ </span>
                               <c:out value="${newlessonlist.senior_nick}"/>
                            </p>
                         </c:when>
-                        <c:when test = "${category==6}">
+                        <c:when test = "${procategory==6}">
                            <p> 
                               <c:out value="기타"/>
                               <span> ㆍ </span>
                               <c:out value="${newlessonlist.senior_nick}"/>
                            </p>   
                         </c:when>
-                     </c:choose> --%>
+                     </c:choose> 
                      <p>
                         <c:out value="${list.product_name}"/>
                      </p>
                      <hr style="margin: 0px 0px 5px;">
                      <p class="hs_us_newlesson_ATcost">
-                       <%--  <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                      -  <fmt:formatNumber value="123" type="number" maxFractionDigits="3"/>원
                         <span class="hs_us_newlesson_BFcost">
-                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
-                        </span> --%>
+                           <fmt:formatNumber value="324" type="number" maxFractionDigits="3"/>원
+                        </span> 
                      </p>
                      <p>
                         <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
@@ -313,9 +435,9 @@ $("#followquick").animate( { "top" : scrollTop });
                      
                      
                     
-                     <%-- <span class="hs_user_store_newproduct_label">
+                      <span class="hs_user_store_newproduct_label">
                         <c:out value="100"/>%
-                     </span>  --%>
+                     </span> 
                   </c:forEach>
    
             </div>
@@ -323,20 +445,8 @@ $("#followquick").animate( { "top" : scrollTop });
       </div>
    </div>
 
+ --%>
 
-<script>
-<!-- 상단바 스크롤해도 고정되게 하는 코드 --><!-- 
-var jbOffset = $( '.jbMenu' ).offset();
-$( window ).scroll( function() {
-  if ( $( document ).scrollTop() > jbOffset.top ) {
-    $( '.jbMenu' ).addClass( 'jbFixed' );
-  }
-  else {
-    $( '.jbMenu' ).removeClass( 'jbFixed' );
-  }
-});
--->
-</script> 
 
 <br>
 <div id="ej_first">
@@ -451,6 +561,7 @@ $(".reviewTitle").click(function(){
 
 </script>
 
+   
 <div id="ej_third">
 배송/교환/환불
 </div>
