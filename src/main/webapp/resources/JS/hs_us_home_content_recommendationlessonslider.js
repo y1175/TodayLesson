@@ -1,7 +1,6 @@
-//레슨슬라이더(신규)
 (function($) {
 	    $.fn.extend({
-	        gScrollingCarousel: function(options) {
+	        REgScrollingCarousel: function(options) {
 
 	            var defaults = {
 	                scrolling: true,
@@ -28,8 +27,8 @@
 	                }else{
 	                    amount = options.amount;
 	                }
-	                leftElem = $('<span />').addClass('jc-left').html('<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>');
-	                rightElem = $('<span />').addClass('jc-right').html('<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg>');
+	                leftElem = $('<span />').addClass('REjc-left').html('<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>');
+	                rightElem = $('<span />').addClass('REjc-right').html('<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg>');
 	                element.parent().append(leftElem).append(rightElem);
 
 	                maxScrollLeft = element.get(0).scrollWidth - element.get(0).clientWidth;
@@ -99,7 +98,7 @@
 	                });
 	                rightElem.bind("click", function(e){
 	                  leftElem.fadeIn(200);
-	                  items = $(this).siblings(".hs_us_newlesson_items");
+	                  items = $(this).siblings(".hs_us_recommendationLesson_items");
 	                  currx = items.scrollLeft();
 	                  amX = parseInt($(this).parent().width() / amount); // cantidad de elementos x viewport
 	                  am = (amX * amount) - amount;
@@ -109,7 +108,7 @@
 	                });
 	                leftElem.bind("click", function(e){
 	                  rightElem.fadeIn(200);
-	                  items = $(this).siblings(".hs_us_newlesson_items");
+	                  items = $(this).siblings(".hs_us_recommendationLesson_items");
 	                  currx = items.scrollLeft();
 	                  amX = parseInt($(this).parent().width() / amount); // cantidad de elementos x viewport
 	                  am = (amX * amount) - amount;
@@ -146,5 +145,3 @@
 	        }
 	    });
 	})(jQuery);
-
-

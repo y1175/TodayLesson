@@ -32,7 +32,150 @@ body{
 	transition: all 2s;
 }  
 /* Main Bunner 슬라이더(자동 좌우적용) */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* 베스트레슨 */
+/* 슬라이더 묶는 박스 */
+.hs_us_bestLesson_container {
+    max-width: 100%;
+}
+/* 슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용  */
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a {
+    display: inline-block;
+    notice the comments between inline-block items margin-right: 10px;
+    width: 23%;
+    margin: 12.5px;
+    text-decoration: none;
+}
+/* 썸네일 */
+.hs_us_bestLesson_img{
+	width: 100%;
+}
+/* p tag 공통적용 */
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p {
+    margin: 0px;
+    color: rgb(53, 54, 58);
+    position: relative;
+}
+/* 카테고리 및 시니어 닉네임(첫번째 p를 선택하는 타입넣어줌) */
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:first-of-type{
+	font-size: 10px;
+	font-weight: 900;
+	color: #999;
+	margin:10px 0px 0px;
+}
+/* 2번째 P 타이틀 */
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:nth-of-type(2){
+	font-size:17px;
+	font-weight:600;
+	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
+	margin:10px 0px;
+	transition:all .3s ease 0s
+}
+/* 3번째 p 세일된가격가격  */
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:nth-of-type(3){
+	font-size:16px;
+	font-weight:700;
+	transition:all .3s
+}
+/* 이전가격 */
+.hs_us_bestLesson_BFcost{
+	color:#999;
+	font-size:16px;
+	font-weight:500;
+	text-decoration:line-through;
+	margin-left:7px;
+}
+/* 4번째 p 좋아요 수  */
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:nth-of-type(4){
+	font-size: 12px;
+	font-weight:400;
+}
 
+.hs_us_bestLesson_g-scrolling-carousel {
+    position: relative;
+}
+
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items {
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items::-webkit-scrollbar {
+    display: none;
+}
+
+.bestlessonjc-right,
+/*동그라미*/
+.bestlessonjc-left {
+    color: #757575;
+    margin-bottom: auto;
+    margin-top: auto;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0.94;
+}
+
+.bestlessonjc-right {
+    /*위치조절*/
+    right: 0px;
+}
+
+.bestlessonjc-left {
+    left: -40px;
+}
+
+.bestlessonjc-right:hover,
+.bestlessonjc-left:hover {
+    opacity: 0.98;
+}
+
+.bestlessonjc-right svg,
+/*화살표*/
+.bestlessonjc-left svg {
+    position: absolute;
+    left: 0px;
+    right: 0;
+    bottom: 115px;
+    top: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    fill: rgb(53, 54, 58);
+}
+
+.bestlessonjc-right:hover svg,
+.bestlessonjc-left:hover svg {
+    fill: rgb(224, 62, 82);
+}
+
+@media (pointer: coarse) {
+
+    .bestlessonjc-right,
+    .bestlessonjc-left {
+        display: none !important;
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}
+/* 베스트레슨 */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 /* 신규레슨 */
 /* 슬라이더 묶는 박스 */
 .hs_us_newlesson_container {
@@ -174,18 +317,15 @@ body{
     /* Internet Explorer/Edge */
     user-select: none;
 }
-/* .hs_us_newlesson_content{
-	display: inline-block;
-} */
 /* 신규레슨 */
-
-/* 베스트레슨 */
-
-.hs_us_bestLesson_container {
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* 추천레슨 */
+/* 슬라이더 묶는 박스 */
+.hs_us_recommendationLesson_container {
     max-width: 100%;
 }
 /* 슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용  */
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a {
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items a {
     display: inline-block;
     notice the comments between inline-block items margin-right: 10px;
     width: 23%;
@@ -193,24 +333,24 @@ body{
     text-decoration: none;
 }
 /* 썸네일 */
-.hs_us_bestLesson_img{
+.hs_us_recommendationLesson_img{
 	width: 100%;
 }
 /* p tag 공통적용 */
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p {
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items a p {
     margin: 0px;
     color: rgb(53, 54, 58);
     position: relative;
 }
 /* 카테고리 및 시니어 닉네임(첫번째 p를 선택하는 타입넣어줌) */
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:first-of-type{
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items a p:first-of-type{
 	font-size: 10px;
 	font-weight: 900;
 	color: #999;
 	margin:10px 0px 0px;
 }
 /* 2번째 P 타이틀 */
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:nth-of-type(2){
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items a p:nth-of-type(2){
 	font-size:17px;
 	font-weight:600;
 	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
@@ -218,13 +358,13 @@ body{
 	transition:all .3s ease 0s
 }
 /* 3번째 p 세일된가격가격  */
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:nth-of-type(3){
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items a p:nth-of-type(3){
 	font-size:16px;
 	font-weight:700;
 	transition:all .3s
 }
 /* 이전가격 */
-.hs_us_bestLesson_BFcost{
+.hs_us_recommendationLesson_BFcost{
 	color:#999;
 	font-size:16px;
 	font-weight:500;
@@ -232,29 +372,29 @@ body{
 	margin-left:7px;
 }
 /* 4번째 p 좋아요 수  */
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items a p:nth-of-type(4){
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items a p:nth-of-type(4){
 	font-size: 12px;
 	font-weight:400;
 }
 
-.hs_us_bestLesson_g-scrolling-carousel {
+.hs_us_recommendationLesson_g-scrolling-carousel {
     position: relative;
 }
 
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items {
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items {
     overflow-x: scroll;
     white-space: nowrap;
     width: 100%;
     -webkit-overflow-scrolling: touch;
 }
 
-.hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items::-webkit-scrollbar {
+.hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items::-webkit-scrollbar {
     display: none;
 }
 
-.bestlessonjc-right,
+.REjc-right,
 /*동그라미*/
-.bestlessonjc-left {
+.REjc-left {
     color: #757575;
     margin-bottom: auto;
     margin-top: auto;
@@ -266,23 +406,23 @@ body{
     opacity: 0.94;
 }
 
-.bestlessonjc-right {
+.REjc-right {
     /*위치조절*/
     right: 0px;
 }
 
-.bestlessonjc-left {
+.REjc-left {
     left: -40px;
 }
 
-.bestlessonjc-right:hover,
-.bestlessonjc-left:hover {
+.REjc-right:hover,
+.REjc-left:hover {
     opacity: 0.98;
 }
 
-.bestlessonjc-right svg,
+.REjc-right svg,
 /*화살표*/
-.bestlessonjc-left svg {
+.REjc-left svg {
     position: absolute;
     left: 0px;
     right: 0;
@@ -294,15 +434,15 @@ body{
     fill: rgb(53, 54, 58);
 }
 
-.bestlessonjc-right:hover svg,
-.bestlessonjc-left:hover svg {
+.REjc-right:hover svg,
+.REjc-left:hover svg {
     fill: rgb(224, 62, 82);
 }
 
 @media (pointer: coarse) {
 
-    .bestlessonjc-right,
-    .bestlessonjc-left {
+    .REjc-right,
+    .REjc-left {
         display: none !important;
     }
 }
@@ -320,9 +460,8 @@ body{
     /* Internet Explorer/Edge */
     user-select: none;
 }
-
-/* 베스트레슨 */
-
+/* 추천레슨 */
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
 /* 스토어베스트 , 스토어 신규 */	
 /* 썸네일 _ 설명 묶은 DIV */
 .hs_user_store_product{

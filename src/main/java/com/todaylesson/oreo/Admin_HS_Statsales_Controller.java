@@ -35,7 +35,7 @@ public class Admin_HS_Statsales_Controller {
 		
 		
 		
-		return "TodayLesson_AdminPage/sales_statisticeTest.hs_ad_main_section";
+		return "TodayLesson_AdminPage/sales_statisticeTest2.hs_ad_main_section";
 	}
 	
 	//AmChart

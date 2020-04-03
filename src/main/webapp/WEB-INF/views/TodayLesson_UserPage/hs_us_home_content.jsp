@@ -8,7 +8,7 @@
 <title>TodayLesson</title>
 
 <!--Main HOME style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=1">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=3">
 <!--Main HOME style-->
 
 </head>
@@ -29,93 +29,7 @@
 	     <img alt="" src="resources/IMG/Mainimg6.jpg">
 	  </a>
    </div>
-   
-   <!-- 레슨 신규 -->
-   <div id="hs_us_newlesson" style="width: 80%; margin: auto;">
-      <b class="" style="font-size: 25px;"> 레슨신규 </b>
-      <div class="hs_us_newlesson_container">
-         <div class="hs_us_newlesson_g-scrolling-carousel">
-            <div class="hs_us_newlesson_items">
-               
-                  <c:forEach var="newlessonlist" items="${newlessonlist}">
-                     
-                     <a href="">
-                        <img class="hs_storecontent_cg_img" src="${newlessonlist.lesson_thumb}" alt="">
-                     <c:set var="category" value="${newlessonlist.lesson_category }"/>
-                     <c:choose>
-                        <c:when test = "${category==1}">
-                           <p>
-                              <c:out value="운동"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>   
-                        </c:when>
-                        <c:when test = "${category==2}">
-                           <p>  
-                              <c:out value="교육"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>
-                        </c:when>
-                        <c:when test = "${category==3}">
-                           <p>
-                              <c:out value="핸드메이드"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>   
-                        </c:when>
-                        <c:when test = "${category==4}">
-                           <p>
-                              <c:out value="IT"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>
-                        </c:when>
-                        <c:when test = "${category==5}">
-                           <p>
-                              <c:out value="요리"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>
-                        </c:when>
-                        <c:when test = "${category==6}">
-                           <p> 
-                              <c:out value="기타"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>   
-                        </c:when>
-                     </c:choose>
-                     <p>
-                        <c:out value="${newlessonlist.lesson_title}"/>
-                     </p>
-                     <hr style="margin: 0px 0px 5px;">
-                     <p class="hs_us_newlesson_ATcost">
-                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
-                        <span class="hs_us_newlesson_BFcost">
-                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
-                        </span>
-                     </p>
-                     <p>
-                        <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
-                           111
-                     </p>
-                     </a>
-                     
-                     
-                     
-                    
-                     <%-- <span class="hs_user_store_newproduct_label">
-                        <c:out value="100"/>%
-                     </span>  --%>
-                  </c:forEach>
-   
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- 레슨 신규ㅜ -->
-   <!-- 레슨 베스트 -->
+      <!-- 레슨 베스트 -->
    <div id="hs_us_bestLesson" style="width: 80%; margin: auto;">
       <b class="" style="font-size: 25px;"> 레슨베스트 </b>
       <div class="hs_us_bestLesson_container">
@@ -193,6 +107,161 @@
       </div>
    </div>
    <!-- 레슨베스트 -->
+   <!-- 레슨 신규 -->
+   <div id="hs_us_newlesson" style="width: 80%; margin: auto;">
+      <b class="" style="font-size: 25px;"> 레슨신규 </b>
+      <div class="hs_us_newlesson_container">
+         <div class="hs_us_newlesson_g-scrolling-carousel">
+            <div class="hs_us_newlesson_items">
+               
+                  <c:forEach var="newlessonlist" items="${newlessonlist}">
+                     
+                     <a href="">
+                        <img class="hs_storecontent_cg_img" src="${newlessonlist.lesson_thumb}" alt="">
+                     <c:set var="category" value="${newlessonlist.lesson_category }"/>
+                     <c:choose>
+                        <c:when test = "${category==1}">
+                           <p>
+                              <c:out value="운동"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==2}">
+                           <p>  
+                              <c:out value="교육"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==3}">
+                           <p>
+                              <c:out value="핸드메이드"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==4}">
+                           <p>
+                              <c:out value="IT"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==5}">
+                           <p>
+                              <c:out value="요리"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==6}">
+                           <p> 
+                              <c:out value="기타"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                     </c:choose>
+                     <p>
+                        <c:out value="${newlessonlist.lesson_title}"/>
+                     </p>
+                     <hr style="margin: 0px 0px 5px;">
+                     <p class="hs_us_newlesson_ATcost">
+                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        <span class="hs_us_newlesson_BFcost">
+                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        </span>
+                     </p>
+                     <p>
+                        <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
+                           111
+                     </p>
+                     </a>
+                  </c:forEach>
+   
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- 레슨 신규ㅜ -->
+   <!-- 레슨 추천 -->
+   <div id="hs_us_recommendationLesson" style="width: 80%; margin: auto;">
+      <b class="" style="font-size: 25px;"> 레슨신규 </b>
+      <div class="hs_us_recommendationLesson_container">
+         <div class="hs_us_recommendationLesson_g-scrolling-carousel">
+            <div class="hs_us_recommendationLesson_items">
+               
+                  <c:forEach var="newlessonlist" items="${newlessonlist}">
+                     
+                     <a href="">
+                        <img class="hs_us_recommendationLesson_img" src="${newlessonlist.lesson_thumb}" alt="">
+                     <c:set var="category" value="${newlessonlist.lesson_category }"/>
+                     <c:choose>
+                        <c:when test = "${category==1}">
+                           <p>
+                              <c:out value="운동"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==2}">
+                           <p>  
+                              <c:out value="교육"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==3}">
+                           <p>
+                              <c:out value="핸드메이드"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==4}">
+                           <p>
+                              <c:out value="IT"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==5}">
+                           <p>
+                              <c:out value="요리"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==6}">
+                           <p> 
+                              <c:out value="기타"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                     </c:choose>
+                     <p>
+                        <c:out value="${newlessonlist.lesson_title}"/>
+                     </p>
+                     <hr style="margin: 0px 0px 5px;">
+                     <p class="hs_us_recommendationLesson_ATcost">
+                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        <span class="hs_us_recommendationLesson_BFcost">
+                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        </span>
+                     </p>
+                     <p>
+                        <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
+                           111
+                     </p>
+                     </a>
+                  </c:forEach>
+   
+            </div>
+         </div>
+      </div>
+   </div>
    <!-- 레슨 추천 -->
    <!-- 이벤트 슬라이더 -->
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 100px;">
@@ -415,10 +484,30 @@
    <!--Main HOME JS-->
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_us_home_content_newlessonslider.js"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_us_home_content_bestlessonslider.js?ver=1"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_us_home_content_recommendationlessonslider.js"></script>
    <!--Main HOME JS-->  
-   <script type="text/javascript">
- 
+   <!-- 베스트레슨슬라이더 -->
+   <script>
+        $(document).ready(function() {
+            $(".hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items").BLgScrollingCarousel();
+        });
    </script>
+   <script type="text/javascript">
+        var BL_gaq = BL_gaq || [];
+        BL_gaq.push(['_setAccount', 'UA-36251023-1']);
+        BL_gaq.push(['_setDomainName', 'jqueryscript.net']);
+        BL_gaq.push(['_trackPageview']);
+
+        (function() {
+            var BLga = document.createElement('script');
+            BLga.type = 'text/javascript';
+            BLga.async = true;
+            BLga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var BLs = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(BLga, BLs);
+        })();
+   </script>
+   <!-- 베스트레슨슬라이더 -->
    <!-- 신규레슨슬라이더 -->
    <script>
         $(document).ready(function() {
@@ -441,34 +530,27 @@
         })();
    </script>
    <!-- 신규레슨슬라이더 -->
-   <!-- 베스트레슨슬라이더 -->
+   <!-- 추천레슨슬라이더 -->
    <script>
         $(document).ready(function() {
-            $(".hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items").BLgScrollingCarousel();
+            $(".hs_us_recommendationLesson_g-scrolling-carousel .hs_us_recommendationLesson_items").REgScrollingCarousel();
         });
    </script>
    <script type="text/javascript">
-        var BL_gaq = BL_gaq || [];
-        BL_gaq.push(['_setAccount', 'UA-36251023-1']);
-        BL_gaq.push(['_setDomainName', 'jqueryscript.net']);
-        BL_gaq.push(['_trackPageview']);
+        var RE_gaq = RE_gaq || [];
+        RE_gaq.push(['_setAccount', 'UA-36251023-1']);
+        RE_gaq.push(['_setDomainName', 'jqueryscript.net']);
+        RE_gaq.push(['_trackPageview']);
 
         (function() {
-            var BLga = document.createElement('script');
-            BLga.type = 'text/javascript';
-            BLga.async = true;
-            BLga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var BLs = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(BLga, BLs);
+            var REga = document.createElement('script');
+            REga.type = 'text/javascript';
+            REga.async = true;
+            REga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var REs = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(REga, REs);
         })();
    </script>
-
-   
-   <!-- 베스트레슨슬라이더 -->
    <!-- 추천레슨슬라이더 -->
-   <!-- 추천레슨슬라이더 -->
-   <!-- 레슨슬라이더 공통적용 -->
-   
-   <!-- 레슨슬라이더 공통적용  -->
 </body>
 </html>
