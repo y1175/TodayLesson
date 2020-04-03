@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+ 
 .thum{
 width:500px; height:auto;
 }
