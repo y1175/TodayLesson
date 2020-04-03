@@ -155,8 +155,8 @@
 //곧 마감 얼리버드 레슨
 
 
-//레슨슬라이더(신규)
-/*(function($) {
+//레슨슬라이더(마감)
+(function($) {
 	    $.fn.extend({
 	        gScrollingCarousel: function(options) {
 
@@ -305,4 +305,5 @@
 	})(jQuery);
 
 
-*/
+
+

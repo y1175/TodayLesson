@@ -16,7 +16,7 @@ public interface User_HM_Bird_Mapper {
 
 	public List<LessonDTO> newbirdlesson();
 
-	/*public List<LessonDTO> endbirdlesson();*/
+	public List<LessonDTO> endbirdlesson();
 
 
 

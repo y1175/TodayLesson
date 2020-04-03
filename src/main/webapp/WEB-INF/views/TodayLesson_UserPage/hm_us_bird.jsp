@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>얼리버드</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=1">
+	href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=2">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
@@ -203,7 +203,7 @@
 
 
 <!-- 마감 얼리버드 레슨 -->
-<%-- 	<div class="earlybirdtotal">
+ 	<div class="earlybirdtotal">
 		<!-- 전체를 감싸는 div -->
 		<div id="hm_us_endlesson" style="width: 100%; margin: auto;">
 
@@ -273,7 +273,7 @@
 				</div>
 			</div>
 		</div>
-	</div> --%>
+	</div> 
 	<!-- 전체 div-->
 	<!-- 레슨 마감 -->
 
@@ -285,27 +285,26 @@
 
 
 
-	<script
-		src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=1"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=1"></script>
 
 
 
 
 
 
-	<!-- 레슨슬라이더 -->
+	<!-- 레슨슬라이더  신규 -->
 	<script>
         $(document).ready(function() {
             $(".hm_us_newlesson_g-scrolling-carousel .hm_us_newlesson_items").gScrollingCarousel();
-        });
+        });   
    </script>
-   	<!-- 레슨슬라이더 -->
-	<!-- <script>
+   	<!-- 레슨슬라이더  마감임박-->
+	 <script>
         $(document).ready(function() {
             $(".hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items").gScrollingCarousel();
-        });
+        });  
    </script>
-    -->
+ 
 	<script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-36251023-1']);

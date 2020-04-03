@@ -380,10 +380,10 @@ img.birdminiimg{
 /* 슬라이더 묶는 박스 */
 
 
-/* .hm_us_endlesson_container {
+ .hm_us_endlesson_container {
     max-width: 100%;
 }
-슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용 
+/* 슬라이더 안 a tag에 포함된 모든것에 공통적으로 적용  */
 .hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items a {
     display: inline-block;
     notice the comments between inline-block items margin-right: 10px;
@@ -391,32 +391,32 @@ img.birdminiimg{
     margin: 12.5px;
     text-decoration: none;
 }
-썸네일
+/* 썸네일 */
 .hm_us_endlesson_cg_img{
 	width: 100%;
 }
-p tag 공통적용
+/* p tag 공통적용 */
 .hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items a p {
     margin: 0px;
     color: rgb(53, 54, 58);
     position: relative;
 }
-2번째 P 타이틀
+/* 2번째 P 타이틀 */
 .hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items a p:nth-of-type(2){
 	font-size:17px;
 	font-weight:600;
-	text-transform:capitalize; 영어단어 첫글자를 대문자로 바꿔주는거
+	text-transform:capitalize; /* 영어단어 첫글자를 대문자로 바꿔주는거 */
 	margin:10px 0px;
 	transition:all .3s ease 0s
 }
-3번째 시니어 이름
+/* 3번째 시니어 이름 */
 .hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items a p:nth-of-type(3){
 	font-size:16px;
 	font-weight:700;
 	transition:all .3s
 }
 
-4번째 p 좋아요 수 
+/* 4번째 p 좋아요 수  */
 .hm_us_endlesson_g-scrolling-carousel .hm_us_endlesson_items a p:nth-of-type(4){
 	font-size: 12px;
 	font-weight:400;
@@ -438,7 +438,7 @@ p tag 공통적용
 }
 
 .jc-right,
-동그라미
+/* 동그라미 */
 .jc-left {
     color: #757575;
     margin-bottom: auto;
@@ -452,7 +452,7 @@ p tag 공통적용
 }
 
 .jc-right {
-    위치조절
+  /*   위치조절 */
     right: 0px;
 }
 
@@ -466,7 +466,7 @@ p tag 공통적용
 }
 
 .jc-right svg,
-화살표
+/* 화살표 */
 .jc-left svg {
     position: absolute;
     left: 0px;
@@ -506,9 +506,9 @@ p tag 공통적용
     user-select: none;
 }
 .hm_us_newlesson_content{
-	display: inline-block; */
+	display: inline-block; 
 }
-/* 신규레슨 */
+/* 마감레슨 */
 
 
 
