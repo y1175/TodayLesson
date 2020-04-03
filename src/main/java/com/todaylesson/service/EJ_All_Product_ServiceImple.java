@@ -3,6 +3,8 @@ package com.todaylesson.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.Mapper.EJ_US_ProductMapper;
 
 
-@Service(value="service")
+@Service(value="us_store_service")
 public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 
 	@Autowired

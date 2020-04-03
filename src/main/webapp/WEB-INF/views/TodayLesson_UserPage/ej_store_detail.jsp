@@ -238,6 +238,91 @@ $("#followquick").animate( { "top" : scrollTop });
 <!-- </div> -->
 
 
+   <!-- 레슨 신규 -->
+   <div id="hs_us_newlesson" style="width: 80%; margin: auto;">
+      <b class="" style="font-size: 25px;"> 레슨신규 </b>
+      <div class="hs_us_newlesson_container">
+         <div class="hs_us_newlesson_g-scrolling-carousel">
+            <div class="hs_us_newlesson_items">
+               
+                  <c:forEach var="list" items="${list}">
+                     
+                     <a href="">
+                        <img class="hs_storecontent_cg_img" src="${list.product_thumb}" alt="">
+                    <%--  <c:set var="category" value="${newlessonlist.lesson_category }"/>
+                     <c:choose>
+                        <c:when test = "${category==1}">
+                           <p>
+                              <c:out value="운동"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==2}">
+                           <p>  
+                              <c:out value="교육"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==3}">
+                           <p>
+                              <c:out value="핸드메이드"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==4}">
+                           <p>
+                              <c:out value="IT"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==5}">
+                           <p>
+                              <c:out value="요리"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==6}">
+                           <p> 
+                              <c:out value="기타"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                     </c:choose> --%>
+                     <p>
+                        <c:out value="${list.product_name}"/>
+                     </p>
+                     <hr style="margin: 0px 0px 5px;">
+                     <p class="hs_us_newlesson_ATcost">
+                       <%--  <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        <span class="hs_us_newlesson_BFcost">
+                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        </span> --%>
+                     </p>
+                     <p>
+                        <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
+                           111
+                     </p>
+                     </a>
+                     
+                     
+                     
+                    
+                     <%-- <span class="hs_user_store_newproduct_label">
+                        <c:out value="100"/>%
+                     </span>  --%>
+                  </c:forEach>
+   
+            </div>
+         </div>
+      </div>
+   </div>
+
 
 <script>
 <!-- 상단바 스크롤해도 고정되게 하는 코드 --><!-- 

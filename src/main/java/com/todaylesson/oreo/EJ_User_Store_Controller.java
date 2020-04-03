@@ -43,7 +43,7 @@ import com.todaylesson.DTO.ProductDTO;
 public class EJ_User_Store_Controller {
 
 	
-	@Resource(name="service")
+	@Resource(name="us_store_service")
 	private EJ_All_Product_Service service;
 	
 	
@@ -75,7 +75,9 @@ public class EJ_User_Store_Controller {
 	@RequestMapping("/ej_store_detail/{product_no}")
 	public String sdetail(@PathVariable("product_no") int product_no, Model model) {
 		
-	
+		List<ProductDTO> list = service.selectAll(null);
+		model.addAttribute("list",list);
+		
 		List<PdReviewDTO> reply = service.replyList(product_no);
 		 System.out.println("reply object:"+reply);
 		 model.addAttribute("reply",reply);

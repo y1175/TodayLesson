@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+/* 슬라이더 */
+
+
+/* 슬라이더/ */
+#ej_container{
+width: 80%;
+margin: auto;
+}
+#ej_sdetail_topimg{
+width:550px;
+}
+.ej_top{
+	display:inline-block;
+}
+.ej_top.right{
+/* border: 1px solid silver; */
+width:35%;
+float:right;
+/* background-color: white; */
+margin-left: 30px;
+margin-top: 110px;
+}
+
+.btn-group{border: 0.5px solid silver;
+					width:33%;
+					background-color: white;
+					padding:0px;
+					} 
+
+.ej_grid{
+display:inline-block;
+}
+/* 좋아요 아이콘  */	
+div.fas.fa-heart{
+	color:rgb(255, 180, 180);
+	font-size:17px;
+	line-height:40px;
+	text-align:center;
+	height:40px;
+	width:40px;
+	border:1px solid  gray;
+	border-radius:5px;
+	display:block;
+	transition:all .5s ease-in-out
+	}
+	/* 좋아요 hover시 색바뀜 */
+.fas.fa-heart:hover{
+	color:rgb(224, 62, 82);
+	border-color:rgb(224, 62, 82)
+	}
+	
+	/* 장바구니 아이콘  */	
+div.fa.fa-shopping-cart{
+	color:rgb(166, 166, 166);
+	font-size:17px;
+	line-height:40px;
+	text-align:center;
+	height:40px;
+	width:40px;
+	border:1px solid gray;
+	border-radius:5px;
+	display:block;
+	transition:all .5s ease-in-out
+	}
+	/* 장바구니아이콘 hover시 색바뀜 */
+.fa.fa-shopping-cart:hover{
+	color:rgb(255, 180, 180);
+	border-color:rgb(224, 62, 82)
+	}
+
+ #ej_sdetail_top{
+border: 1px solid silver;
+width:400px;
+
+} 
+#ej_sdetail_top{
+border: 1px solid silver;
+}
+
+#ej_top{
+border: 1px solid silver;}
+h4.beforecost{
+text-decoration: line-through;}
+#ej_cost{
+display: inline-block;}
+/* .jbFixed {
+        position: fixed;
+        top: 0px;
+      } */
+/* #followquick { position:absolute; top:230px; right:50%; margin-right:-670px; } */
+
