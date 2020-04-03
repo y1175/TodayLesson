@@ -242,112 +242,16 @@ $('document').ready(function() {
  <!--관련상품 슬라이더  -->
 
 <!--  <div id="wrapper"> -->
-  <%-- 	<div class="owl-carousel owl-theme">
-  	 <c:forEach var="prolist" items="${list}">
+	<div class="owl-carousel owl-theme">
+  	 <c:forEach var="prolist" items="${list}" begin="1" end="12">
   		<div class="item">
   			<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
-  			<h4>${prolist.product_name }</h4></a>
+  			<h4>${prolist.product_name }</h4></a><br>
+  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원
   		</div>
   	</c:forEach> 
-  	</div> --%>
-<!--   </div> -->
- 
- 
- 
- <div class="owl-carousel owl-theme">
-  	
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  			<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  			<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  			<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  			<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  		<div class="item">
-  			<img src="${dto.product_thumb }" alt="thumb">
-  		</div>
-  
-  	</div>
+  	</div> 
+
  
  
 <!--상품소개/후기/배송   -->
@@ -360,92 +264,7 @@ $('document').ready(function() {
 <!--상품소개/후기/배송   -->
 
 
-   <%-- <!-- 레슨 신규 -->
-   <div id="hs_us_newlesson" style="width: 80%; margin: auto;">
-      <b class="" style="font-size: 25px;"> 관련상품 </b>
-      <div class="hs_us_newlesson_container">
-         <div class="hs_us_newlesson_g-scrolling-carousel">
-            <div class="hs_us_newlesson_items">
-               
-                  <c:forEach var="list" items="${list}">
-                     
-                     <a href="">
-                        <img class="hs_storecontent_cg_img" src="${list.product_thumb}" alt="">
-                     <c:set var="procategory" value="${list.product_category }"/>
-                     <c:choose>
-                        <c:when test = "${procategory==1}">
-                           <p>
-                              <c:out value="운동"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>   
-                        </c:when>
-                        <c:when test = "${procategory==2}">
-                           <p>  
-                              <c:out value="교육"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>
-                        </c:when>
-                        <c:when test = "${procategory==3}">
-                           <p>
-                              <c:out value="핸드메이드"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>   
-                        </c:when>
-                        <c:when test = "${procategory==4}">
-                           <p>
-                              <c:out value="IT"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>
-                        </c:when>
-                        <c:when test = "${procategory==5}">
-                           <p>
-                              <c:out value="요리"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>
-                        </c:when>
-                        <c:when test = "${procategory==6}">
-                           <p> 
-                              <c:out value="기타"/>
-                              <span> ㆍ </span>
-                              <c:out value="${newlessonlist.senior_nick}"/>
-                           </p>   
-                        </c:when>
-                     </c:choose> 
-                     <p>
-                        <c:out value="${list.product_name}"/>
-                     </p>
-                     <hr style="margin: 0px 0px 5px;">
-                     <p class="hs_us_newlesson_ATcost">
-                      -  <fmt:formatNumber value="123" type="number" maxFractionDigits="3"/>원
-                        <span class="hs_us_newlesson_BFcost">
-                           <fmt:formatNumber value="324" type="number" maxFractionDigits="3"/>원
-                        </span> 
-                     </p>
-                     <p>
-                        <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
-                           111
-                     </p>
-                     </a>
-                     
-                     
-                     
-                    
-                      <span class="hs_user_store_newproduct_label">
-                        <c:out value="100"/>%
-                     </span> 
-                  </c:forEach>
-   
-            </div>
-         </div>
-      </div>
-   </div>
 
- --%>
 
 
 <br>
