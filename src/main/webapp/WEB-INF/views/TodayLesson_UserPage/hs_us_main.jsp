@@ -45,7 +45,20 @@
 <!-- font style -->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/font.css">  
 <!-- font style -->
+<!-- popup javascript -->
+<script src="${pageContext.request.contextPath}/resources/JS/yi_popup.js"></script>
+<script>
+/*팝업이 사용상태일때*/
+$(document).ready(function(){
+	if(${popup_dto1.popup_use}==1)
+	   {
+	pevent()
+	   }
+	
+}) 
 
+</script>
+<!-- popup javascript -->
 </head>
 <body>
    <header>

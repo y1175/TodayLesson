@@ -11,4 +11,6 @@ public interface Admin_YI_Popup_Mapper {
 
 	public int popup_submit(PopUpDTO dto);
 
+	public int popup_reset(int popup_no);
+
 }

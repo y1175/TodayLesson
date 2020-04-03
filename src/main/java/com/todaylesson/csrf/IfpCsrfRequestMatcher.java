@@ -195,7 +195,15 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
         //자유게시판 글 수정하기
         else if ("/todaylesson/freeboard_modify/{freeboard_no}".equals(strUri))   
         	return false;
-        
+       //팝업관리 팝업등록1
+        else if("/todaylessonadmin/popup_adminresult/1".equals(strUri))
+       	 return false;
+        //팝업관리 팝업등록2
+        else if("/todaylessonadmin/popup_adminresult/2".equals(strUri))
+       	 return false;
+        //팝업관리 팝업등록3
+        else if("/todaylessonadmin/popup_adminresult/3".equals(strUri))
+       	 return false;
    //혜미
       //혜미비번찾기 
         else if ("/findPw".equals(strUri))                   

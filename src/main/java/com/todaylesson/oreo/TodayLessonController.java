@@ -45,11 +45,13 @@ import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.DTO.MyLikeDTO;
+import com.todaylesson.DTO.PopUpDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.Admin_HS_MainService;
+import com.todaylesson.service.Admin_YI_Popup_Service;
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.service.EJ_US_NaverLoginBOService;
 import com.todaylesson.service.TodaylessonService;
@@ -59,7 +61,7 @@ import com.todaylesson.service.User_HS_MyPageService;
 import com.todaylesson.service.YI_Google_AuthInfo;
 
 
-//MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw) -> 유저 홈에 있는것들
+//MainPage(User, Senior, Admin, Login, Logout , Join, FindId, FindPw, popupOpen) -> 유저 홈에 있는것들
 @Controller
 public class TodayLessonController {
    
@@ -118,6 +120,11 @@ public class TodayLessonController {
     @Resource(name="us_store_service")
     private EJ_All_Product_Service userStoreService;
     /* 스토어 좋아요, 장바구니 */
+    
+    /*팝업*/ 
+    @Resource(name="admin_YI_Popup_Service")
+    private Admin_YI_Popup_Service popupService;
+    /*팝업*/
     
     @RequestMapping("/todaylessonadmin")
     public String admin(Model model) { 
@@ -232,6 +239,10 @@ public class TodayLessonController {
     	List<BannerDTO> mainEventBannerSlider=userMainService.mainEventBannerSlider();
     	model.addAttribute("mainEventBannerSlider", mainEventBannerSlider);
     	 
+    	//팝업정보 가져오기
+    	PopUpDTO popup_dto1=popupService.popupinfo(1);
+		model.addAttribute("popup_dto1",popup_dto1);
+    	
     	return "hs_us_main";
     }
        
@@ -616,5 +627,15 @@ public class TodayLessonController {
      		model.addAttribute("result",result);
      		return "/TodayLesson_UserPage/hm_us_search_pwd";
        }
+       
+       //popup
+       @RequestMapping("/popupOpen")
+    	public String popuptest(Model model)
+    	{
+    		PopUpDTO dto1=popupService.popupinfo(1);
+    		model.addAttribute("dto1",dto1);
+    		
+    		return "/TodayLesson_UserPage/yi_popup";
+    	}
 
 }

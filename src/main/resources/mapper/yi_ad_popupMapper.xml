@@ -16,4 +16,13 @@ set popup_title=#{popup_title}
 	,popup_use=#{popup_use}
 where popup_no=#{popup_no}
 </update>
+
+<update id="popup_reset" parameterType="int">
+update popup
+set popup_title=''
+,popup_filepath=''
+,popup_url=''
+,popup_use=0
+where popup_no=#{popup_no}
+</update>
 </mapper>

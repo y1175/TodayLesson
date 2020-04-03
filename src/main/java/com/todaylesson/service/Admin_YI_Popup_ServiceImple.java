@@ -24,5 +24,11 @@ public class Admin_YI_Popup_ServiceImple implements Admin_YI_Popup_Service{
 		// TODO Auto-generated method stub
 		return mapper.popup_submit(dto);
 	}
+
+	@Override
+	public int popup_reset(int popup_no) {
+		// TODO Auto-generated method stub
+		return mapper.popup_reset(popup_no);
+	}
 	
 }

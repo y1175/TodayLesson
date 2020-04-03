@@ -27,45 +27,11 @@ public class Admin_YI_Popup_Controller {
  	@RequestMapping("/popup_admin")
  	public String popup_main(Model model)
  	{
- 		PopUpDTO dto1=service.popupinfo(1);
- 		PopUpDTO dto2=service.popupinfo(2);
- 		PopUpDTO dto3=service.popupinfo(3);
- 		
- 		if(dto1.getPopup_title().equals(""))
- 		{
- 			dto1.setPopup_title("내용을 입력하세요");
- 		}
- 		if(dto2.getPopup_title().equals(""))
- 		{
- 			dto2.setPopup_title("내용을 입력하세요");
- 		}
- 		if(dto3.getPopup_title().equals(""))
- 		{
- 			dto3.setPopup_title("내용을 입력하세요");
- 		}
- 		
- 		if(dto1.getPopup_url().equals(""))
- 		{
- 			dto1.setPopup_url("내용을 입력하세요");
- 		}
- 		if(dto2.getPopup_url().equals(""))
- 		{
- 			dto2.setPopup_url("내용을 입력하세요");
- 		}
- 		if(dto3.getPopup_url().equals(""))
- 		{
- 			dto3.setPopup_url("내용을 입력하세요");
- 		}
- 		
- 		
- 		
- 		
+ 		PopUpDTO dto1=service.popupinfo(1);	
  		model.addAttribute("dto1",dto1);
- 		model.addAttribute("dto3",dto2);
- 		model.addAttribute("dto2",dto3);
  		
  		
- 		return "/TodayLesson_AdminPage/yi_ad_popup_main";
+ 		return "/TodayLesson_AdminPage/yi_ad_popup_main.hs_ad_main_section";
  	}
  	
  	@RequestMapping("/popup_adminresult/{popup_no}")
@@ -82,28 +48,48 @@ public class Admin_YI_Popup_Controller {
  		dto.setPopup_url(popup_url);
  		dto.setPopup_use(popup_use);
  		
- 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
-		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
 
-		if(file != null)   
-		{
-		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		}
+ 		
+			String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+			System.out.println("uploadPath:"+uploadPath);
+			String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+			String fileName = null;
 
-		dto.setPopup_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
-	      String imgthumb=dto.getPopup_filepath();
-	      System.out.println("썸네일이미지경로: "+imgthumb);
- 		
- 		
+			if(file != null)   
+			{
+			 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+			} else {
+			 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			}
+
+			dto.setPopup_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		      String imgthumb=dto.getPopup_filepath();
+		      System.out.println("썸네일이미지경로: "+imgthumb);
+		      
  		
  		int result=service.popup_submit(dto);
  		model.addAttribute("result",result);
  		return "/TodayLesson_AdminPage/yi_ad_popup_adminresult";
  	}
  
+ 	@RequestMapping("/popup_admin_delete/{popup_no}")
+ 	public String popup_adminresult(@PathVariable int popup_no
+ 			,Model model)
+ 	{
+ 		
+ 		int result=service.popup_reset(popup_no);
+ 		model.addAttribute("result",result);
+ 		return "TodayLesson_AdminPage/yi_ad_popup_delete";
+ 	}
+ 	
+ 	@RequestMapping("/popuptest")
+ 	public String popuptest(Model model)
+ 	{
+ 		PopUpDTO dto1=service.popupinfo(1);
+ 		model.addAttribute("dto1",dto1);
+ 		
+ 		return "/TodayLesson_UserPage/yi_popup";
+ 	}
+ 	
 }
