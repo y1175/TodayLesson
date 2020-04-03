@@ -51,7 +51,7 @@
 	                }
 
 	                if(options.scrolling){
-	                    element.bind("DOMMouseScroll mousewheel", function (event) {
+	                    ELelement.bind("DOMMouseScroll mousewheel", function (event) {
 	                            var ELoEvent = event.originalEvent,
 	                            direction = ELoEvent.detail ? ELoEvent.detail * -amount : ELoEvent.wheelDelta,
 	                            position = ELelement.scrollLeft();
@@ -107,9 +107,9 @@
 	                	ELitems = $(this).siblings(".hm_us_endlesson_items");
 	                	ELcurrx = ELitems.scrollLeft();
 	                	ELamX = parseInt($(this).parent().width() / amount); // cantidad de elementos x viewport
-	                	ELam = (amX * amount) - amount;
+	                	ELam = (ELamX * amount) - amount;
 	                	ELmaxScrollLeft = ELitems.get(0).scrollWidth - ELitems.get(0).clientWidth;
-	                  if(ELcurrx+am >= ELmaxScrollLeft) $(this).fadeOut(200);
+	                  if(ELcurrx+ELam >= ELmaxScrollLeft) $(this).fadeOut(200);
 	                  ELitems.animate( { scrollLeft: '+='+ELam }, 200);
 	                });
 	                ELleftElem.bind("click", function(e){
