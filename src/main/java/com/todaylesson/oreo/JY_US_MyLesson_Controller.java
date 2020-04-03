@@ -150,7 +150,6 @@ public class JY_US_MyLesson_Controller {
 	public String reward_point_to_member(Authentication authentication, @RequestParam int lesson_no) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
-		System.out.println("에이작스 미친넘 뻐큐먹어");
 		int ok = mlservice.reward_point_to_member(member_id, lesson_no);
 		
 		String result = "";

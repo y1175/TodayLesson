@@ -45,6 +45,11 @@ li>ul>li {
 $('document').ready(function() { 
 	
 	
+	$('html, body').animate({
+		scrollTop: $('html').offset().top
+	}, 'slow');
+	
+	
 	$('#summernote').summernote({
 		placeholder : 'content',
 		minHeight : 370,
@@ -105,7 +110,6 @@ $('document').ready(function() {
 
 </head>
 <body>
-
 
 
 
@@ -310,15 +314,8 @@ $(".insert_my_cart").click(function(){
 	<c:if test="${itDate - isDate > 7 }">
 	    <c:out value="${dto.lesson_cost}" />
 	</c:if>
-<%-- 
-	<c:if test="${dto.lesson_earlybird} eq '0' && (${itDate - isDate}) <= 7">
-		<c:out value="${dto.lesson_cost} * 0.82" />
-	</c:if>
-	
-	<c:if test="${dto.lesson_earlybird} eq '1' && (${itDate - isDate}) > 7">
-		<c:out value="${dto.lesson_cost}" />
-	</c:if> --%>
-	
+
+
 	<br> 레슨 판매 기간
 	<br>
 	<c:out value="${dto.lesson_open_period}" />
@@ -383,8 +380,8 @@ $(".insert_my_cart").click(function(){
 	<br> 시니어 소개
 	<div class="summer">${dto.lesson_senior_content}</div>
 	<input type="button"
-		onclick="location.href='${pageContext.request.contextPath }/lesson_buy/${dto.lesson_no}'">
-	<a href="${pageContext.request.contextPath }/total_lesson_list">목록으로</a>
+		onclick="location.href='${pageContext.request.contextPath }/todaylesson/lesson_buy/${dto.lesson_no}'">
+	<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list">목록으로</a>
 
 
 

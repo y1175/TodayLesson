@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,14 @@ public class JY_US_TotalLessonServiceImple implements JY_US_TotalLessonService {
 	
 	
 	@Override
-	public List<LessonDTO> ttlesson_list() {
-		return mapper.ttlesson_list();
+	public List<LessonDTO> ttlesson_list(String search, String searchtxt, String order, int startRow, int endRow) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startrow", startRow);
+		hm.put("endrow", endRow);
+		hm.put("order", order);
+		return mapper.ttlesson_list(hm);
 	}
 
 
@@ -147,6 +154,23 @@ public class JY_US_TotalLessonServiceImple implements JY_US_TotalLessonService {
 	public int add_lesson_review(LReviewDTO dto) {
 		return mapper.add_lesson_review(dto);
 	}
+
+
+	@Override
+	public int totalCount(String search, String searchtxt) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+			hm.put("search", search);
+			hm.put("searchtxt", searchtxt);
+			return mapper.getCount(hm);
+	}
+
+
+	@Override
+	public void add_lesson_junior(int lesson_no) {
+		mapper.add_lesson_junior(lesson_no);
+	}
+
+
 
 
 }

@@ -32,6 +32,7 @@ import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.OrderDetailDTO;
 import com.todaylesson.DTO.OrderListDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.service.JY_US_TotalLessonService;
 
@@ -43,10 +44,33 @@ public class JY_US_TotalLessonController {
 	private JY_US_TotalLessonService ttlesson_service;
 	
 	@RequestMapping("total_lesson_list")
-	public String ttlesson_list(Model model) {
+	public String ttlesson_list(Model model,
+			@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="lesson_no") String order) {
 
-		List<LessonDTO> list = ttlesson_service.ttlesson_list();
-		model.addAttribute("list", list);
+		System.out.println(order);
+
+		
+		//총 게시글 수
+		int totalCount= ttlesson_service.totalCount(search, searchtxt);
+		int pageSize=12;
+		int blockSize=5;
+		
+		
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+
+
+		List<LessonDTO> list = ttlesson_service.ttlesson_list(search, searchtxt,order
+				,page.getStartRow()
+				,page.getEndRow());
+
+		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("order",order);
 
 		return "TodayLesson_UserPage/jy_us_total_lesson_list.us_main_section";
 	}
@@ -334,6 +358,9 @@ public class JY_US_TotalLessonController {
 		List<OrderDetailDTO> list=ttlesson_service.selectorderdetail(orderlist_no);//오더 디테일 정보 받아오기
 		model.addAttribute("list",list);
 		model.addAttribute("orderlistdto",orderlistdto);
+		
+		ttlesson_service.add_lesson_junior(oddto.getLesson_no());
+		
 		return "TodayLesson_UserPage/jy_us_orderlist_detail.us_main_section";
 	}
 	

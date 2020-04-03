@@ -1,5 +1,6 @@
 package com.todaylesson.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -17,7 +18,7 @@ import com.todaylesson.DTO.OrderListDTO;
 @Mapper
 public interface JY_US_TotalLessonMapper {
 
-	public List<LessonDTO> ttlesson_list();
+	public List<LessonDTO> ttlesson_list(HashMap<String, Object> hm);
 
 	public AllLessonDTO ttlesson_select(int lesson_no);
 
@@ -60,6 +61,10 @@ public interface JY_US_TotalLessonMapper {
 	public List<LReviewDTO> select_lesson_lreview(int lesson_no);
 
 	public int add_lesson_review(LReviewDTO dto);
+
+	public int getCount(HashMap<String, Object> hm);
+
+	public void add_lesson_junior(int lesson_no);
 
 
 }

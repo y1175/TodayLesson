@@ -5,15 +5,71 @@
 <mapper namespace="com.todaylesson.Mapper.JY_US_TotalLessonMapper">
 
 
+
+<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+		<![CDATA[
+		select COUNT(*) 
+		from lesson
+		where lesson_result = 2
+		and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
+		and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
+		]]>
+		<!-- WHERE절을 include 태그로 삽입 -->
+<include refid="search_select"></include>
+
+</select>
+
+
 	<!-- 승인 난 애들만 볼 수 있으니까 -->
 	<select id="ttlesson_list" resultType="com.todaylesson.DTO.LessonDTO">
 <![CDATA[
 select * from lesson
 where lesson_result=2
-and now() >= date(lesson_open_period) 
-and now() <= date(lesson_close_period)
+and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
+and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
 ]]>
+<include refid="search_select"></include>
+  order by ${order} desc
+limit   #{startrow}, 12
+
 	</select>
+	
+	
+	<!-- 검색기능 쿼리문 -->
+<sql id="search_select">
+
+<if test='category!=null'>
+
+and
+lesson_category=#{lesson_category}
+
+</if>
+
+<if test='searchtxt!=null and searchtxt!=""'>
+
+<choose>
+<when test='search.equals("all")'>
+and
+(
+lesson_title like CONCAT('%', #{searchtxt}, '%')
+or 
+lesson_content like CONCAT('%', #{searchtxt}, '%')
+)					
+</when>
+<when test='search.equals("lesson_title")'>
+and
+ lesson_title like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("lesson_content")'>
+and
+lesson_content like CONCAT('%', #{searchtxt}, '%')
+</when>
+</choose>
+</if>
+
+</sql> 
+
+
 
 
 	<select id="ttlesson_select" resultType="com.todaylesson.DTO.AllLessonDTO">
@@ -202,6 +258,14 @@ order by orderlist_date desc limit 1
  values (#{orderlist_no},#{lreview_title},#{lreview_content},sysdate())
 </insert>
 	
+	
+	<update id="add_lesson_junior">
+	
+	update lesson
+	set lesson_junior_count = lesson_junior_count+1
+	where lesson_no = #{lesson_no}
+	
+	</update>
 
 
 

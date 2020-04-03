@@ -57,7 +57,7 @@
 		$(".lesson_earlybird").click(function(){
 
 			let val = $("input:radio[name=lesson_earlybird]:checked").val();
-			if (val == "0") {
+			if (val == "1") {
 				$('.earlybird').show();
 			} else {
 				$('.earlybird').hide();
@@ -243,9 +243,9 @@ function multiple_time_lesson_date(){
 
 <label for="lesson_earlybird">얼리버드 할인</label>
 네
-<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="0">
+<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="1">
 아니요
-<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="1"> 
+<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="0"> 
 
 <div class="earlybird">
 (주의사항) : 수수료는 동일 / 얼리버드 시 18% 일괄 할인(얼리버드 할인은 일주일간 진행됩니다.)<br>

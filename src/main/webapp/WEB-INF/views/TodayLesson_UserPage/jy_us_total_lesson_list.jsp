@@ -14,9 +14,24 @@ width:500px; height:auto;
 
 </style>
 
+<script>
+
+function order(data)
+{
+location.href="total_lesson_list?order="+data;
+	
+	
+	}
+
+</script>
+
 </head>
 <body>
 
+
+<input type="button" name="order" value="정렬" onclick="order('lesson_readno')">
+<input type="button" name="order" value="정렬" onclick="order('lesson_like')">
+<input type="button" name="order" value="정렬" onclick="order('lesson_register_date')">
 
 <c:forEach var="item" items="${list}">
 
@@ -76,6 +91,34 @@ width:500px; height:auto;
 </div>
 </c:forEach>
 
-</body>
+<form method="get" action="total_lesson_list?currPage=${page.startBlock }">
+<select name="search">
+<option value="all">전체</option>
+<option value="lesson_title">제목</option>
+<option value="lesson_content">내용</option>
+</select>
+<input type="text" name="searchtxt" >
+<input type="submit" value="검색">
+
+</form>
+
+
+
+
+<c:if test="${page.prev }">
+<a href="total_lesson_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&lesson=${order}"><c:out value="이전"/></a>
+</c:if>
+
+<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+<c:if test="${index!= page.currPage }">
+</c:if>
+<a href="total_lesson_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">${index }</a>
+</c:forEach>
+
+<c:if test="${page.next }">
+<a href="total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}"><c:out value="다음"/></a>
+</c:if>
+
+
 </body>
 </html>
