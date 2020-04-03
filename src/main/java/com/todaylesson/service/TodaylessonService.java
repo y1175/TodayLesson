@@ -1,5 +1,7 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,14 @@ public class TodaylessonService {
        //System.out.println(dto.getAuthList().get(0).getMember_id());
 	   int r=mapper.insertMemberSub(dto);
 	   return r;
+	}
+	//로그인시 stat_log에 기록
+	public void loginCount(String id) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("id", id);
+		mapper.loginCount(hm);
+		
 	}
 	
 }
