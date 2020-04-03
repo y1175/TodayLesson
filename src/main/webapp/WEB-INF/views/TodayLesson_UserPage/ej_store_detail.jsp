@@ -6,33 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!--jquery  -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--jquery  -->
-<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- Optional JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
- <!--    Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 
-  <!--owl carousel css, js-->
- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.carousel.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.theme.default.css">
-    <script src="/resources/JS/owl.carousel.js"></script>
-  <script src="/resources/JS/owl.carousel.min.js"></script>
+<!-- Bootstrap4 summernote -->
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- Bootstrap4 summernote -->
+
+<!--summernote css/js/ko-kr-->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+   <script src="/resources/JS/summernote-ko-KR.js"></script>
+<!--summernote css/js/ko-kr-->
+
+<!--owl carousel css, js-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.carousel.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.theme.default.css">
+   <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.min.js"></script>
 <!--owl carousel css, js-->
     
-<!--summernote css/js/ko-kr-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-<script src="/resources/JS/summernote-ko-KR.js"></script>
-<!--summernote css/js/ko-kr-->
-
-
 <!--style-->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css"> 
 <!--style-->

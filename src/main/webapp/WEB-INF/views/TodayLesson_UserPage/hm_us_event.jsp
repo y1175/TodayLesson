@@ -77,17 +77,18 @@
         <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">스토어 이벤트</a>
       </li>    
       <li class="nav-item">
-        <a class="nav-link" href="#" style="font-size:20px;">기  타</a>
+        <a class="nav-link" href="#" style="font-size:20px;margin-right:30px;">기  타</a>
       </li>                                     
+      
     </ul>
-    <form class="form-inline my-2 my-lg-0" method="get" action="hm_us_event?currPage=${page.startBlock }">
-    <select name="search"  class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-     <option value="all">전체</option>
-     <option value="event_title">제목</option>
-    </select>
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchtxt">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-    </form>
+    <form class="form-inline my-2 my-lg-3" method="get" action="hm_us_event?currPage=${page.startBlock }">
+         <select name="search"  class="custom-select mr-sm-4" id="inlineFormCustomSelect" style="width: 80px;">
+            <option value="all">전체</option>
+             <option value="event_title">제목</option>
+         </select>
+         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchtxt">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+      </form>
   </div>
 </nav>
 

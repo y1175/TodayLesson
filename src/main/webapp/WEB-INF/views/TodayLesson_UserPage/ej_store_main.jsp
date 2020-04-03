@@ -7,14 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- jQuery -->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
-<!-- jQuery -->
-<!--  -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 <!--style-->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css">
 <!--style-->

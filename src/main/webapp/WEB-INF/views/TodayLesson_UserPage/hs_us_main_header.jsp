@@ -49,11 +49,16 @@
          <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                      
+                                 <div class="hs_senior_AccountModal_HeaderDiv">
+                                    <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
                </div>
             </div>
          </div>
-      </div>   -->          
+      </div>          -->
       <!-- 로그인 modal -->
        
       <div class="hs_us_mainheader_center">
@@ -74,7 +79,7 @@
       <div class="hs_us_mainheader_navbox">
          <nav>
             <a href="${pageContext.request.contextPath}/todaylesson/hm_us_bird">얼리버드</a>
-            <a href="">전체레슨</a>
+            <a href="${pageContext.request.contextPath}/todaylesson/total_lesson_list">전체레슨</a>
             <a href="${pageContext.request.contextPath}/todaylesson/freeboard">자유게시판</a>
             <a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0">스토어</a>
             <a href="${pageContext.request.contextPath}/todaylesson/hm_us_event">이벤트</a>

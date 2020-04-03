@@ -187,7 +187,7 @@
    <!-- 레슨 신규ㅜ -->
    <!-- 레슨 추천 -->
    <div id="hs_us_recommendationLesson" style="width: 80%; margin: auto;">
-      <b class="" style="font-size: 25px;"> 레슨신규 </b>
+      <b class="" style="font-size: 25px;"> 레슨추천 </b>
       <div class="hs_us_recommendationLesson_container">
          <div class="hs_us_recommendationLesson_g-scrolling-carousel">
             <div class="hs_us_recommendationLesson_items">
@@ -504,7 +504,7 @@
             BLga.async = true;
             BLga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var BLs = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(BLga, BLs);
+            BLs.parentNode.insertBefore(BLga, BLs);
         })();
    </script>
    <!-- 베스트레슨슬라이더 -->
@@ -548,7 +548,7 @@
             REga.async = true;
             REga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var REs = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(REga, REs);
+            REs.parentNode.insertBefore(REga, REs);  //버튼이 널일때 조건삽인인듯??
         })();
    </script>
    <!-- 추천레슨슬라이더 -->
