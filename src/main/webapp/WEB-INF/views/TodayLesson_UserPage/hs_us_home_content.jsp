@@ -8,7 +8,7 @@
 <title>TodayLesson</title>
 
 <!--Main HOME style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=2">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=1">
 <!--Main HOME style-->
 
 </head>
@@ -114,15 +114,85 @@
          </div>
       </div>
    </div>
-
-   
-  
-   
-   
-   
-   
    <!-- 레슨 신규ㅜ -->
+   <!-- 레슨 베스트 -->
+   <div id="hs_us_bestLesson" style="width: 80%; margin: auto;">
+      <b class="" style="font-size: 25px;"> 레슨베스트 </b>
+      <div class="hs_us_bestLesson_container">
+         <div class="hs_us_bestLesson_g-scrolling-carousel">
+            <div class="hs_us_bestLesson_items">
+               
+                  <c:forEach var="newlessonlist" items="${newlessonlist}">
+                     
+                     <a href="">
+                        <img class="hs_us_bestLesson_img" src="${newlessonlist.lesson_thumb}" alt="">
+                     <c:set var="category" value="${newlessonlist.lesson_category }"/>
+                     <c:choose>
+                        <c:when test = "${category==1}">
+                           <p>
+                              <c:out value="운동"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==2}">
+                           <p>  
+                              <c:out value="교육"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==3}">
+                           <p>
+                              <c:out value="핸드메이드"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                        <c:when test = "${category==4}">
+                           <p>
+                              <c:out value="IT"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==5}">
+                           <p>
+                              <c:out value="요리"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>
+                        </c:when>
+                        <c:when test = "${category==6}">
+                           <p> 
+                              <c:out value="기타"/>
+                              <span> ㆍ </span>
+                              <c:out value="${newlessonlist.senior_nick}"/>
+                           </p>   
+                        </c:when>
+                     </c:choose>
+                     <p>
+                        <c:out value="${newlessonlist.lesson_title}"/>
+                     </p>
+                     <hr style="margin: 0px 0px 5px;">
+                     <p class="hs_us_bestLesson_ATcost">
+                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        <span class="hs_us_bestLesson_BFcost">
+                           <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>원
+                        </span>
+                     </p>
+                     <p>
+                        <i class="fas fa-heart" style="color: rgb(224, 62, 82);"></i>
+                           111
+                     </p>
+                     </a>
+                  </c:forEach>
    
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- 레슨베스트 -->
    <!-- 레슨 추천 -->
    <!-- 이벤트 슬라이더 -->
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 100px;">
@@ -166,10 +236,10 @@
                      </a>
                      <ul class="hs_user_store_product_social" >
                         <li>
-                           <a href="${pageContext.request.contextPath}/todaylesson/likejson" class="fas fa-heart"></a>
+                           <a href="${pageContext.request.contextPath}/likejson" class="fas fa-heart"></a>
                         </li>
                         <li>
-                           <a href="" class="fa fa-shopping-cart"></a>
+                           <a href="${pageContext.request.contextPath}/cartjson" class="fa fa-shopping-cart"></a>
                         </li>
                      </ul>
                      <span class="hs_user_store_product_label">
@@ -293,16 +363,16 @@
                      <h6 class="hs_user_store_prodct_title">
                         <a href="#">${storenewproductlist.product_name}</a>
                      </h6>
-                     <div class="hs_user_store_product_line"></div>
-                     <div class="hs_user_store_prodct_cost">${storenewproductlist.product_after_cost}원
+                     <div class="hs_user_store_prodct_cost">
+                        <fmt:formatNumber value="${storenewproductlist.product_after_cost}" type="number" maxFractionDigits="3"/>원
                         <span class="hs_user_store_prodct_BFcost">
-                           <c:out value="${storenewproductlist.product_cost}원"/>
+                           <fmt:formatNumber value="${storenewproductlist.product_cost}" type="number" maxFractionDigits="3"/>원
                         </span>
                      </div>
                      <div class="hs_user_store_prodct_likenum_box">                
                         <span class="hs_user_store_prodct_likenum">
                            <i class="fas fa-heart"></i>
-                           111
+                           <fmt:formatNumber value="${storenewproductlist.product_like}" type="number" maxFractionDigits="3"/>
                         </span>
                      </div>     
                   </div>
@@ -343,12 +413,13 @@
    </script>
    
    <!--Main HOME JS-->
-   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_us_home_content.js?ver=2"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_us_home_content_newlessonslider.js"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_us_home_content_bestlessonslider.js?ver=1"></script>
    <!--Main HOME JS-->  
    <script type="text/javascript">
  
    </script>
-   <!-- 레슨슬라이더 -->
+   <!-- 신규레슨슬라이더 -->
    <script>
         $(document).ready(function() {
             $(".hs_us_newlesson_g-scrolling-carousel .hs_us_newlesson_items").gScrollingCarousel();
@@ -369,6 +440,35 @@
             s.parentNode.insertBefore(ga, s);
         })();
    </script>
+   <!-- 신규레슨슬라이더 -->
+   <!-- 베스트레슨슬라이더 -->
+   <script>
+        $(document).ready(function() {
+            $(".hs_us_bestLesson_g-scrolling-carousel .hs_us_bestLesson_items").BLgScrollingCarousel();
+        });
+   </script>
+   <script type="text/javascript">
+        var BL_gaq = BL_gaq || [];
+        BL_gaq.push(['_setAccount', 'UA-36251023-1']);
+        BL_gaq.push(['_setDomainName', 'jqueryscript.net']);
+        BL_gaq.push(['_trackPageview']);
 
+        (function() {
+            var BLga = document.createElement('script');
+            BLga.type = 'text/javascript';
+            BLga.async = true;
+            BLga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var BLs = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(BLga, BLs);
+        })();
+   </script>
+
+   
+   <!-- 베스트레슨슬라이더 -->
+   <!-- 추천레슨슬라이더 -->
+   <!-- 추천레슨슬라이더 -->
+   <!-- 레슨슬라이더 공통적용 -->
+   
+   <!-- 레슨슬라이더 공통적용  -->
 </body>
 </html>

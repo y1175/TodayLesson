@@ -41,13 +41,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.todaylesson.DTO.BannerDTO;
+import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
+import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.Admin_HS_MainService;
+import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.service.EJ_US_NaverLoginBOService;
 import com.todaylesson.service.TodaylessonService;
 import com.todaylesson.service.User_HS_KakaoLoginService;
@@ -110,6 +113,11 @@ public class TodayLessonController {
     @Autowired
     private Hm_Us_MailSendService mailSender;
     /* 비밀번호찾기 */
+    
+    /* 스토어 좋아요, 장바구니 */
+    @Resource(name="us_store_service")
+    private EJ_All_Product_Service userStoreService;
+    /* 스토어 좋아요, 장바구니 */
     
     @RequestMapping("/todaylessonadmin")
     public String admin(Model model) { 
@@ -223,11 +231,62 @@ public class TodayLessonController {
     	//이벤트슬라이더(BannerSlider)
     	List<BannerDTO> mainEventBannerSlider=userMainService.mainEventBannerSlider();
     	model.addAttribute("mainEventBannerSlider", mainEventBannerSlider);
-    	
+    	 
     	return "hs_us_main";
     }
-          
-       @RequestMapping("/error")
+       
+    //상품좋아요
+  	@ResponseBody
+  	@RequestMapping("/likejson")
+  	public String likemain(@RequestParam(value="product_no") int product_no
+  			,@RequestParam(value="member_id") String member_id)
+  	{
+  		System.out.println("productno:"+product_no+member_id);
+  		MyLikeDTO likedto=new MyLikeDTO();
+  		likedto.setMember_id(member_id);
+  		likedto.setProduct_no(product_no);
+  	
+  		String result;
+  		
+  		List<MyLikeDTO> product_in_mylike = userStoreService.has_mylike_product(likedto);
+  		userStoreService.updateproductlike(product_no);
+  		
+  		if (product_in_mylike.isEmpty()) {
+  			userStoreService.insertmylike(likedto);
+  			result="success"; 
+  		} else {
+  			result="false";
+  		}
+  		return result;
+  		
+  	}
+  	//상품장바구니
+  	@ResponseBody
+  	@RequestMapping("/cartjson")
+  	public String cartmain(@RequestParam(value="product_no") int product_no
+  			,@RequestParam(value="member_id") String member_id)
+  	{
+  		System.out.println("cart임");
+  		System.out.println("productno:"+product_no+member_id);
+  		CartDTO cartdto=new CartDTO();
+  		cartdto.setMember_id(member_id);
+  		cartdto.setProduct_no(product_no);
+  		
+  		String result;
+  		List<CartDTO> product_in_cart = userStoreService.has_cart_product(cartdto);
+  		
+  		if (product_in_cart.isEmpty()) {
+  			cartdto.setCart_amount(1);
+  			userStoreService.insertcart(cartdto);
+  			result="success"; 
+  		} else {
+  			result="false";
+  		}
+  		return result;
+  	}
+  	
+  	/* 권한없음 에러페이지 */   
+  	@RequestMapping("/error")
        public String error()
        {
            return "/todaylesson_sec__error";
