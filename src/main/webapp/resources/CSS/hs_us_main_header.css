@@ -3,6 +3,11 @@
    body{
 	  margin: 0px auto;
    }
+  /*  .hs_us_main_header{
+      position: fixed;
+      top: 0;
+      width: 100%;
+   } */
    /* header 상단부분 컬리 */
    .hs_us_mainheader_topdiv{
 	  background-color: rgb(53, 54, 58);
@@ -15,6 +20,8 @@
    .hs_us_mainheader_topdiv_width{
 	  margin : auto;
 	  width: 80%;
+	  font-size: 15px;
+	  margin-top: 7px;
    }
    /* header 상단부분 지금당신의취미를 찾아보세요 */
    .hs_us_mainheader_topdiv span{
@@ -25,72 +32,103 @@
    .hs_us_mainheader_topdiv_cartloginsearchbox{
 	  float: right;
    }
-   /* header 상단부분  장바구니 로그인 회원가입 a tag */
+   /* header 상단부분  로그인 회원가입 a tag */
    .hs_us_mainheader_topdiv_cartloginsearchbox a{
 	  text-decoration: none;
 	  color: white;
 	  font-weight: 700;
 	  margin-left: 10px; 
    }
-   /* header 중간 로고 시니어 지원 div */
-   .hs_us_mainheader_center{
-	  margin : auto;
-	  width: 80%;
-	  text-align: center;
-   }
    /* header 중간 로고 시니어 지원 a tag */
-   .hs_us_mainheader_center a{
+   .hs_us_mainheader_centerLogo{
       text-decoration: none;	
    }
    /* header 중간 시니어지원 button */
-   .hs_us_mainheader_center_senior button{
-      -webkit-appearance: none;
-      /*background: -webkit-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%); 
-      background: linear-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
-       추후 버튼 색상변경  */
-       background: -webkit-gradient(to right, #ee786e 0%, #fceeb5 50%, #a2ccb6 100%);
-      background: linear-gradient(to right, #ee786e 0%, #fceeb5 50%, #a2ccb6 100%); 
-      background-size: 500%;
+   .draw-border {
+      box-shadow: inset 0 0 0 4px rgb(53, 54, 58);
+      color: rgb(53, 54, 58);
+      transition: color 0.25s 0.08333s;
+      position: relative;
+      top: 48px;
+   }
+
+   .draw-border::before, .draw-border::after {
+      border: 0 solid transparent;
+      box-sizing: border-box;
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: 0;
+      right: 0;
+  }
+
+  .draw-border::before {
+      border-bottom-width: 4px;
+      border-left-width: 4px;
+  }
+
+  .draw-border::after {
+      border-top-width: 4px;
+      border-right-width: 4px;
+  }
+
+  .draw-border:hover {
+      color: rgb(224, 62, 82);
+  }
+
+  .draw-border:hover::before, .draw-border:hover::after {
+      border-color: rgb(224, 62, 82);
+      transition: border-color 0s, width 0.25s, height 0.25s;
+      width: 100%;
+      height: 100%;
+  }
+
+  .draw-border:hover::before {
+      transition-delay: 0s, 0s, 0.25s;
+  }
+
+  .draw-border:hover::after {
+      transition-delay: 0s, 0.25s, 0s;
+  }
+
+  .btn {
+      background: none;
       border: none;
-      border-radius: 5rem;
-      /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); */
-      color: #fff;
       cursor: pointer;
-      font: 1em Raleway, sans-serif;
-      font-weight:800;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      height: 3rem;
-      letter-spacing: .05em;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      width: 12rem; 
-      float : right;
-      margin: 62px 0px 0px 0px;  
-   }
-   .hs_us_mainheader_center_senior button:hover {
-      animation-name: gradient;
-      -webkit-animation-name: gradient;
-      animation-duration: 2s;
-      -webkit-animation-duration: s;
-      animation-iteration-count: 1;
-      -webkit-animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-      -webkit-animation-fill-mode: forwards;
-   }
-   @keyframes gradient {
-      0% {
-         background-position: 0% 50%;
-      }
-      100% {
-         background-position: 100%;
-      }
-   }
+      line-height: 1.5;
+      font: 700 1.5rem 'Roboto Slab', sans-serif;
+      padding: 15px 30px;
+      letter-spacing: 0.05rem;
+  }
+
+  .btn:focus {
+      outline: 2px dotted #55d7dc;
+  }
    /* header 중간 시니어지원 button */  
+/* header 중간  장바구니 */   
+/*    .hs_us_mainheader_cart{
+       width: 80px; 
+       height: 80px; 
+	   border: 2px solid rgb(53, 54, 58);
+	   border-radius: 50%;
+	   position: relative;
+	   top: 20px;
+	   float: right;
+	}
+   .hs_us_mainheader_cart a{
+       text-decoration: none;
+      
+   }
+   .hs_us_mainheader_cart a i{
+       color: rgb(53, 54, 58);
+       font-size: 40px;
+       position: relative;
+       top: 17px;
+       right: 20px;
+   } */
+/* 장바구니  */   
    /* header nav 라인 */
    .hs_us_mainheader_line{
       width: 100%;
@@ -99,10 +137,10 @@
       margin: 10px 0px;
    }
    /* header nav box */ 
+ 
    .hs_us_mainheader_navbox{  
-      /* margin: auto; */
       text-align: center;
-      width: 88%;
+      width: 100%;
    }
    /* header nav category */
    .hs_us_mainheader_navbox nav a{
@@ -110,20 +148,15 @@
       color: rgb(53, 54, 58);
       margin:0px 30px 0px;
       font-weight: 700;
+      font-size: 15px;
+   }
+   .hs_us_mainheader_navbox nav a:hover {
+	  color: rgb(224, 62, 82);
    }
 /* 전체 공통적용 */
 
 /* 로그인 modal  */
-   input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-   }
-   
-   
+
 
 /* 로그인 modal  */
 
