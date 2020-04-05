@@ -28,6 +28,8 @@ function orderSelect()
 	location.href="freeboard?order="+selectOption;
 	}
 </script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard.css?ver=1">
 </head>
 <body>
 <sec:authentication property="principal" var="pinfo"/>	
@@ -99,7 +101,7 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </form>
 
 <sec:authorize access="isAuthenticated()">
-<input type="button" id="write" value="글쓰기" onclick="location.href='/todaylesson/freeboard_insert'"><br>
+<input type="button" id="write" class="freeboard_btn" value="글쓰기" onclick="location.href='/todaylesson/freeboard_insert'"><br>
 </sec:authorize>
 
 <c:if test="${page.prev }">
