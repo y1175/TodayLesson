@@ -12,8 +12,12 @@ insert into senior(member_id,senior_register_date) value(#{member_id},sysdate())
 
 <update id="member_level_up" parameterType="java.lang.String">
 
-update member set member_level = 2
-where member_id = #{member_id}
+update member_auth a inner join member b
+on a.member_id = b.member_id
+set member_level = 2,
+a.member_auth = 'ROLE_SENIOR'
+	,b.enabled = '1'	
+where a.member_id = #{member_id}
 
 </update>
 
