@@ -51,7 +51,7 @@
          </div>
          <div class="col-md-6" style="text-align: center;">
             <a href="${pageContext.request.contextPath}/todaylesson" class="hs_us_mainheader_centerLogo">
-               <img src="${pageContext.request.contextPath}/resources/IMG/TodayLessonMainLogo.png" alt="User_Logo3" style="width: 40%;">
+               <img src="${pageContext.request.contextPath}/resources/IMG/TodayLessonMainLogo2.png" alt="User_Logo3" style="width: 40%;">
             </a>
          </div>
          <div class="col-md-3" style="text-align: right;">
@@ -61,7 +61,9 @@
                   <i class="fa fa-shopping-cart"></i>
                </a>
             </div>  -->  
-            <button class="btn draw-border">시니어지원</button>
+            <a href="${pageContext.request.contextPath}/todaylesson/senior_request_form">
+               <button class="btn draw-border">시니어지원</button>
+            </a>
             <button class="btn draw-border"><i class="fa fa-shopping-cart" style="margin-right: 5px;"></i>장바구니</button>
          </div>
       </div>

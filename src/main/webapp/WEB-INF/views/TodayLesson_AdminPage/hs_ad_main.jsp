@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TodayLessonAdminPage</title>
+<title>TodayLessonAdmin</title>
 
 <!-- jQuery -->
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 

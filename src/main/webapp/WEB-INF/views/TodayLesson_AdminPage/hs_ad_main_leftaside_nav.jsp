@@ -19,7 +19,7 @@
             <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage">회원관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_Senior_Title">
-            <a href="">시니어관리</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/all_senior">시니어관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_MemberOrder_Title">
             <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist">회원주문관리</a>
@@ -29,10 +29,10 @@
       
       <b>레슨관리</b>
          <p class="hs_ad_main_asidenav_nav_Lesson_Title">
-            <a href="">레슨관리</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson">레슨관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_NewLessonEvaluation_Title">
-            <a href="">신규레슨심사</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/wait_lesson">신규레슨심사</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_SeniorSales_Title">
             <a href="">시니어매출현황</a>

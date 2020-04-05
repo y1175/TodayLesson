@@ -35,17 +35,17 @@ public class MemberInsertTest {
 			  // a1¿« ±««—¿∫ admin∞˙ user. auth∞° 2∞≥¿Ãπ«∑Œ service.insert(vo) == 2 ∞° µ«∏È true.
 			  
 			  MemberDTO dto=new MemberDTO(); 
-			  dto.setMember_no(5000);
+			  dto.setMember_no(1);
 			  dto.setMember_id("todaylesson");
-			  dto.setMember_pwd("ad1234");
-			  dto.setMember_name("ø¿¥√¿«∑πΩº");
+			  dto.setMember_pwd("todaylesson");
+			  dto.setMember_name("ø¿¥√¿« ∑πΩº");
 			  dto.setMember_birth("1993-12-26");
 			  dto.setMember_phone("010-5109-7881");
 			  dto.setMember_addr("∫Ò∆Æƒ∑«¡");
 			  dto.setMember_zipcode(12345);
 			  dto.setMember_email("todaylesson144@gmail.com");
-			  dto.setMember_nick("ø¿¥√¿«∑πΩº");
-			  dto.setMember_img("ø¿¥√¿«∑πΩº");
+			  dto.setMember_nick("ø¿¥√¿« ∑πΩº");
+			  dto.setMember_img("ø¿¥√¿« ∑πΩº");
 			  dto.setMember_level(0);
 			  dto.setEnabled(true);
 			  ArrayList<Member_AuthDTO> arr=new ArrayList<>();
