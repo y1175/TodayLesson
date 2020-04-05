@@ -126,7 +126,7 @@ $(document).ready(function() {
 
 </div>
 
-<a href="${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson/${pageContext.request.userPrincipal.name}">목록으로</a>
+<a href="${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson">목록으로</a>
 
 <c:if test="${dto.lesson_type != 1}">
 <br>

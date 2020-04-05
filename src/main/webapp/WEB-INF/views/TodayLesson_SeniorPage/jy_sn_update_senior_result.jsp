@@ -15,13 +15,13 @@
 
 if (${result} > 0) {
 	alert("수정 성공!");
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${member_id};
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list;
 	
 } else {
 	
 
 	alert("수정 실패!");
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list/${member_id}";
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 	
 }
 </script>

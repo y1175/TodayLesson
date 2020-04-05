@@ -15,7 +15,7 @@
 	function senior_switch(){
 		
 		if (${mem_level}==1) {
-			opener.location.href="${pageContext.request.contextPath}/senior_switch/${pageContext.request.userPrincipal.name}";
+			opener.location.href="${pageContext.request.contextPath}/senior_switch";
 			self.close();
 		} else {
 			opener.location.href="${pageContext.request.contextPath}/todaylessonsenior/you_are_senior";

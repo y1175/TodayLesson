@@ -11,7 +11,7 @@
 <body>
 
 <input type="button" id="senior_request" 
-onclick="window.open('${pageContext.request.contextPath}/senior_request_form/${pageContext.request.userPrincipal.name}','senior_form','width=570,height=420')" value="시니어 지원하기">
+onclick="window.open('${pageContext.request.contextPath}/senior_request_form','senior_form','width=570,height=420')" value="시니어 지원하기">
 
 </body>
 </html>

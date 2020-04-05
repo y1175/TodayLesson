@@ -7,6 +7,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +28,12 @@ public class JY_SN_Approve_Lesson_Controller {
 	@Autowired
 	private JY_SN_Approve_LessonService approve_service;
 	
-	@RequestMapping("my_approve_lesson/{member_id}")
-	public String approve_list(@PathVariable String member_id,Model model) {
-		
+	@RequestMapping("my_approve_lesson")
+	public String approve_list(Model model,  Authentication authentication) {
+	
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
+
 		List<LessonDTO> list = approve_service.apl_list(member_id);
 		
 		model.addAttribute("list",list);

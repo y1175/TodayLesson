@@ -14,6 +14,8 @@ import org.apache.maven.plugin.descriptor.MojoDescriptor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -77,8 +79,13 @@ public class JY_US_Senior_Request_Controller {
 	
 	
 	// 시니어 지원 버튼 팝업 > 예 누르면 시니어로 전환됨
-	@RequestMapping("/todaylesson/senior_request_form/{member_id}")
-	public String senior_Request_Button(@PathVariable String member_id, Model model) {
+	@RequestMapping("/todaylesson/senior_request_form")
+	public String senior_Request_Button(	Authentication authentication, Model model) {
+		
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
+			
+			
 		int mem_level=seniorservice.check_senior(member_id);
 		
 		if (mem_level == 1) {
@@ -96,8 +103,11 @@ public class JY_US_Senior_Request_Controller {
 	}
 	
 	// 시니어 지원 버튼 팝업에서 예 누르면 나오는 폼
-	@RequestMapping("/todaylessonsenior/senior_switch/{member_id}")
-	public String senior_Switch(Model model,@PathVariable String member_id, HttpServletRequest request,HttpServletResponse response) throws Exception{
+	@RequestMapping("/todaylessonsenior/senior_switch")
+	public String senior_Switch(Model model, Authentication authentication, HttpServletRequest request,HttpServletResponse response) throws Exception{
+		
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
 		
 		String imp_key 		=	"5422837446408379";
 		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";

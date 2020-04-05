@@ -197,10 +197,10 @@ function multiple_time_lesson_date(){
 <input type="hidden" id="senior_no" name="senior_no" value="${senior_no}">
  
 <label for="lesson_title">레슨명</label><br>
-<input type="text" id="lesson_title" name="lesson_title"><br>
+<input type="text" id="lesson_title" name="lesson_title" required="required"><br>
 
 <label for="lesson_content">레슨 내용</label><br>
-<textarea id="summernote" name="lesson_content"></textarea><br>
+<textarea id="summernote" name="lesson_content" required="required"></textarea><br>
 
 <label for="lesson_thumb">썸네일</label>
 <input type="file" id="lesson_thumb" name="file" />
@@ -222,7 +222,7 @@ function multiple_time_lesson_date(){
  
  
 <label for="lesson_member_max">수강생수</label><br>
-<input type="number" id="lesson_member_max" name="lesson_member_max"><br>
+<input type="number" id="lesson_member_max" name="lesson_member_max" required="required"><br>
 
 <label for="lesson_category">카테고리</label><br>
 <select name="lesson_category">
@@ -237,7 +237,7 @@ function multiple_time_lesson_date(){
 <br>
 
 <label for="lesson_cost">가격</label><br>
-<input type="number" id="lesson_cost" name="lesson_cost"><br>
+<input type="number" id="lesson_cost" name="lesson_cost" required="required"><br>
 
 <label for="lesson_earlybird">얼리버드 할인</label>
 네
@@ -254,10 +254,10 @@ function multiple_time_lesson_date(){
 
 <h6>레슨 심사는 3일~7일 정도 걸리므로 오픈 날짜 설정 시 참고해주세요</h6>
 <label for="lesson_open_period">시작일</label><br>
-<input type="date" id="lesson_open_period" name="lesson_open_period"><br>
+<input type="date" id="lesson_open_period" name="lesson_open_period" required="required"><br>
 
 <label for="lesson_close_period">종료일</label><br>
-<input type="date" id="lesson_close_period" name="lesson_close_period"><br>
+<input type="date" id="lesson_close_period" name="lesson_close_period" required="required"><br>
 
 
 <label for="lesson_type">레슨타입</label><br>
@@ -298,10 +298,10 @@ function multiple_time_lesson_date(){
 
 
 <label for="lesson_senior_title">시니어명</label><br>
-<input type="text" id="lesson_senior_title" name="lesson_senior_title"><br>
+<input type="text" id="lesson_senior_title" name="lesson_senior_title" required="required"><br>
 
 <label for="lesson_senior_content">시니어소개</label><br>
-<textarea id="lesson_senior_content" name="lesson_senior_content" ></textarea><br>
+<textarea id="lesson_senior_content" name="lesson_senior_content" required="required"></textarea><br>
 
 
 
