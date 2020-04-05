@@ -27,13 +27,14 @@ public class User_HM_EventServiceImple implements User_HM_EventService {
 	}
 
 	@Override
-	public List<EventDTO> hm_us_eventlist(String search, String searchtxt, int startRow, int endRow) {
+	public List<EventDTO> hm_us_eventlist(String search, String searchtxt, int startRow, int endRow,String event) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object>hm = new HashMap<String,Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
 		hm.put("endrow", endRow);
+		hm.put("event", event);
 		return mapper.eventlist(hm);
 	}
 

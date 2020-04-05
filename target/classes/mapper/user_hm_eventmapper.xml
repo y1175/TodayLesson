@@ -16,7 +16,17 @@ from event
 select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail,event_thumbexplain
 from event
 <include refid="search_select"></include> 
-order by event_no desc
+<choose>
+<when test='event == null || event.equals("")'>
+ </when>
+<when test='event == "start"||event.equals("start")'> 
+order by event_startperiod desc;
+ </when>
+<when test='event == "end" ||event.equals("end")'> 
+order by event_endperiod desc;
+ </when>
+</choose>
+<!-- order by event_no desc -->
 limit #{startrow},15
 </select>
 

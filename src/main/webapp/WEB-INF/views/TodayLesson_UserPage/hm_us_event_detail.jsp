@@ -115,6 +115,6 @@ ${item.event_content}
 
 </tbody>
 </table>
-
+<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event">목록으로</a>
 </body>
 </html>
