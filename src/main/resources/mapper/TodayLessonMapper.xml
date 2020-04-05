@@ -91,6 +91,11 @@
 		where member_id = #{param1} and member_email = #{param2}
 	</update>
 
+	<!-- stat_log에 기록-->
+<insert id="loginCount" parameterType="java.util.HashMap">
+insert into stat_log(member_id,stat_logdate)
+values(#{id},now())
+</insert>
 </mapper>
 
 

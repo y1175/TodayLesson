@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TodayLessonAdminPage</title>
 
 <!--header style-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_main_header.css?ver=1">

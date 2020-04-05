@@ -9,71 +9,61 @@
 <title>Insert title here</title>
 
 <!--header style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_main_header.css?ver=2">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_main_header.css?ver=1">
 <!--header style-->
 
 </head>
 <body>
-   <div>
+   <div class="hs_us_main_header">
       <div class="hs_us_mainheader_topdiv">
          <div class="hs_us_mainheader_topdiv_width">
             <span>지금 당신의 취미를 찾아보세요</span>
             <span class="hs_us_mainheader_topdiv_cartloginsearchbox">
                <!-- 모든사람들이 다 -->
                <sec:authorize access="isAnonymous()">  
-                  <a href=""><i class="fa fa-ushopping-cart"></i></a>
-                  <a href="/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a>
+                  <a href="${pageContext.request.contextPath}/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a>
                   <span style="margin-left: 10px;">|</span><a href="/todaylesson/join">회원가입</a>
+                  <a href=""><i class='fas fa-search'></i></a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
                <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_USER')">
                   <form action="${pageContext.request.contextPath}/logout" method='post' id="logout-form">
-                     <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                      <a href="/todaylessonmypage">마이페이지</a><span style="margin-left: 10px;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>    
+                     <a href=""><i class='fas fa-search'></i></a>
                   </form>
                </sec:authorize>
                <sec:authorize access="hasRole('ROLE_ADMIN')">
                   <form action="${pageContext.request.contextPath}/logout" method='post' id="logout-form">
-                     <a href=""><i class="fa fa-shopping-cart"></i></a>
                      <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                      <a href="/todaylessonadmin">관리자페이지</a><span style="margin-left: 10px;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+                     <a href=""><i class='fas fa-search'></i></a>
                   </form>   
                </sec:authorize>
-               <a href=""><i class='fas fa-search'></i></a>
             </span>
          </div>
       </div>
-      <!-- 로그인 modal   data-toggle="modal" data-target="#hs_LoginModal"  -->
-     <!--  <div class="modal fade" id="hs_LoginModal" tabindex="-1" role="dialog" aria-labelledby="hs_senior_AccountModal_title" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-               <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                                 <div class="hs_senior_AccountModal_HeaderDiv">
-                                    <b class="hs_senior_AccountModal_Title" id="hs_senior_AccountModal_title">계좌정보수정</b>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                 </div>
-               </div>
-            </div>
-         </div>
-      </div>          -->
-      <!-- 로그인 modal -->
-       
-      <div class="hs_us_mainheader_center">
-         <a href="${pageContext.request.contextPath}/todaylesson">
-            <img src="${pageContext.request.contextPath}/resources/IMG/UserLogo5.png" alt="User_Logo3" style="width: 20%;">
-         </a>
-         <span class="hs_us_mainheader_center_senior">
+      <div class="row" style="width: 80%; margin: auto;">
+         <div class="col-md-3" style="text-align: left;">
             <a href="">
-               <%-- <button id="senior_request" 
-                       onclick="window.open('${pageContext.request.contextPath}/senior_request_form/${pageContext.request.userPrincipal.name}','senior_form','width=570,height=420')" 
-                       value="시니어 지원하기">
-                             시니어지원 🌴
-               </button> --%>
+               <!-- <button class="btn draw-border">시니어지원</button>   -->
             </a>
-         </span>
+         </div>
+         <div class="col-md-6" style="text-align: center;">
+            <a href="${pageContext.request.contextPath}/todaylesson" class="hs_us_mainheader_centerLogo">
+               <img src="${pageContext.request.contextPath}/resources/IMG/TodayLessonMainLogo.png" alt="User_Logo3" style="width: 40%;">
+            </a>
+         </div>
+         <div class="col-md-3" style="text-align: right;">
+            <!-- <span>5</span>
+            <div class="hs_us_mainheader_cart">
+               <a href="">   
+                  <i class="fa fa-shopping-cart"></i>
+               </a>
+            </div>  -->  
+            <button class="btn draw-border">시니어지원</button>
+            <button class="btn draw-border"><i class="fa fa-shopping-cart" style="margin-right: 5px;"></i>장바구니</button>
+         </div>
       </div>
       <div class="hs_us_mainheader_line"></div>
       <div class="hs_us_mainheader_navbox">
