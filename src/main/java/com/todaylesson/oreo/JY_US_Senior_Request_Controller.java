@@ -80,12 +80,11 @@ public class JY_US_Senior_Request_Controller {
 	
 	// 시니어 지원 버튼 팝업 > 예 누르면 시니어로 전환됨
 	@RequestMapping("/todaylesson/senior_request_form")
-	public String senior_Request_Button(	Authentication authentication, Model model) {
+	public String senior_Request_Button(Authentication authentication, Model model) {
 		
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
-			
-			
+		
 		int mem_level=seniorservice.check_senior(member_id);
 		
 		if (mem_level == 1) {
@@ -141,7 +140,10 @@ public class JY_US_Senior_Request_Controller {
 	}
 	
 	@RequestMapping("/todaylessonsenior/senior_switch_update/{member_id}")
-	public String senior_info_update(Model model,@PathVariable String member_id, HttpServletRequest request,HttpServletResponse response) throws Exception {
+	public String senior_info_update( Authentication authentication, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
 		
 		String imp_key 		=	"5422837446408379";
 		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
