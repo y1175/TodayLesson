@@ -38,12 +38,12 @@
      
          <div class="hs_ad_mainheader_navbox">
             <nav>
-               <a href="">회원관리</a>
-               <a href="">레슨관리</a>
-               <a href="">스토어관리</a>
-               <a href="">운영관리</a>
+               <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage">회원관리</a>
+               <a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson">레슨관리</a>
+               <a href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist">스토어관리</a>
+               <a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage">운영관리</a>
                <a href="">통계관리</a>
-               <a href="">기타관리</a>
+               <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list">기타관리</a>
             </nav>
          </div>
          <div class="hs_ad_mainheader_line"></div>

@@ -39,4 +39,29 @@ public class Admin_HS_Banner_ServiceImple implements Admin_HS_Banner_Service {
 		// TODO Auto-generated method stub
 		return adminBannerMapper.bannerRegistration(dto);
 	}
+
+	@Override
+	public BannerDTO adminBannerDatail(int banner_no) {
+		// TODO Auto-generated method stub
+		return adminBannerMapper.adminBannerDatail(banner_no);
+	}
+
+	@Override
+	public int bannerModifyResult(BannerDTO dto) {
+		// TODO Auto-generated method stub
+		return adminBannerMapper.bannerModify(dto);
+	}
+
+	@Override
+	public int bannerModifyNOBannerResult(BannerDTO dto) {
+		// TODO Auto-generated method stub
+		return adminBannerMapper.bannerModifyNOBanner(dto);
+	}
+	
+	@Override
+	public int bannerDeleteResult(int banner_no) {
+		// TODO Auto-generated method stub
+		return adminBannerMapper.bannerDelete(banner_no);
+	}
+
 }

@@ -12,6 +12,16 @@ public interface Admin_HS_Banner_Service {
 
 	public int bannerRegistrationResult(BannerDTO dto);
 
+	public BannerDTO adminBannerDatail(int banner_no);
+
+	public int bannerModifyResult(BannerDTO dto);
+
+	public int bannerModifyNOBannerResult(BannerDTO dto);
+	
+	public int bannerDeleteResult(int banner_no);
+
+	
+
 	
 
 }

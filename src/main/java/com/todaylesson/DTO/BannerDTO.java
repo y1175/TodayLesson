@@ -12,6 +12,7 @@ import lombok.Setter;
 public class BannerDTO {
 
 	private int banner_no;
+	private int banner_group;
 	private String banner_title;
 	private String banner_filepath;
 	private String banner_registrationdate;

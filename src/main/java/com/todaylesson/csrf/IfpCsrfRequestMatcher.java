@@ -157,6 +157,15 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //관리자페이지 배너등록완료
         else if ("/todaylessonadmin/admin_banner_registrationresult".equals(strUri))                   
         	return false;  
+      //관리자페이지 배너수정
+       /* else if ("/todaylessonadmin//admin_banner_modify/{banner_no}".equals(strUri))                   
+        	return false;*/ 
+      //관리자페이지 배너수정완료 
+        else if ("/todaylessonadmin/admin_banner_modifyresult".equals(strUri))                   
+        	return false; 
+      //관리자페이지 배너삭제  
+       /* else if ("/todaylessonadmin/admin_banner_delete/{banner_no}".equals(strUri))                   
+        	return false;*/
  
  
  

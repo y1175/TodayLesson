@@ -7,7 +7,7 @@
 <title>TodayLessonAdminPage</title>
 
 <!--aside nav style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_main_leftaside_nav.css?ver=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_main_leftaside_nav.css?ver=2">
 <!--aside nav style-->
 
 </head>

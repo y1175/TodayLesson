@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,21 +64,79 @@ public class Admin_HS_Banner_Controller {
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 		
-		if(file != null)   
-		{
-		 fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		if(file != null){
+		    
+			fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		    
 		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		    
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			
 		}
 		
 		dto.setBanner_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		String imgthumb=dto.getBanner_filepath();
-		 System.out.println("썸네일이미지경로: "+imgthumb);
-	     int bannerRegistrationResult = adminBannerService.bannerRegistrationResult(dto);
-	     model.addAttribute("bannerRegistrationResult", bannerRegistrationResult);
+		System.out.println("썸네일이미지경로: "+imgthumb);
+	    int bannerRegistrationResult = adminBannerService.bannerRegistrationResult(dto);
+	    model.addAttribute("bannerRegistrationResult", bannerRegistrationResult);
 		
 		
 		return "TodayLesson_AdminPage/hs_ad_banner_registrationresult.hs_ad_main_section";
+	}
+	
+	@RequestMapping("/admin_banner_modify/{banner_no}")
+	public String bannerModify(@PathVariable int banner_no, Model model) {
+		
+		BannerDTO adminBannerDatail=adminBannerService.adminBannerDatail(banner_no);
+		
+		model.addAttribute("adminBannerDatail", adminBannerDatail);
+		
+		return "TodayLesson_AdminPage/hs_ad_banner_modify.hs_ad_main_section";
+	}
+	
+	@RequestMapping("/admin_banner_modifyresult")
+	public String bannerModifyResult(Model model, BannerDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
+		System.out.println("uploadPath:"+uploadPath);
+		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+		
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != ""){
+			
+		    fileName=UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+		    dto.setBanner_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		    String imgthumb=dto.getBanner_filepath();
+		    
+	        int bannerModifyResult = adminBannerService.bannerModifyResult(dto);
+		 
+		    model.addAttribute("bannerModifyResult", bannerModifyResult);
+		    
+		    return "TodayLesson_AdminPage/hs_ad_banner_modifyresult";
+		
+		} else {
+		    fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		    System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+		    
+		    int bannerModifyResult = adminBannerService.bannerModifyNOBannerResult(dto);
+		    
+		    model.addAttribute("bannerModifyResult", bannerModifyResult);
+		    
+		    return "TodayLesson_AdminPage/hs_ad_banner_modifyresult";
+	   }
+		
+		
+	}
+	
+	@RequestMapping("/admin_banner_delete/{banner_no}")
+	public String bannerDelete(@PathVariable int banner_no, Model model) {
+		
+		int bannerDeleteResult = adminBannerService.bannerDeleteResult(banner_no);
+		
+		model.addAttribute("bannerDeleteResult", bannerDeleteResult);
+		
+		return "TodayLesson_AdminPage/hs_ad_banner_deleteresult";
 	}
 
 

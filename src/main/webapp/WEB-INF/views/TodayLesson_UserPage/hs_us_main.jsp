@@ -47,6 +47,7 @@
 <!-- font style -->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/font.css">  
 <!-- font style -->
+
 <!-- popup javascript -->
 <script src="${pageContext.request.contextPath}/resources/JS/yi_popup.js"></script>
 <script>
@@ -61,6 +62,7 @@ $(document).ready(function(){
 
 </script>
 <!-- popup javascript -->
+
 </head>
 <body>
    <header>

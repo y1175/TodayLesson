@@ -3,16 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_HS_Banner_Mapper">
-
+   <!-- 갯수 카운트 -->
    <select id="bannerTotalCount" resultType="int" parameterType="java.util.HashMap">
       select COUNT(*)
       from banner
       <include refid="search_select"></include> 
    </select>
 
-
+   <!-- 전체목록 -->
    <select id="adminBannerList" resultType="com.todaylesson.DTO.BannerDTO" parameterType="java.util.HashMap">
-      select banner_no, banner_title, banner_filepath, banner_registrationdate
+      select banner_no, banner_group, banner_title, banner_filepath, banner_registrationdate
       from banner
       <include refid="search_select"></include> 
       order by banner_no desc
@@ -32,44 +32,43 @@
       </if>
    </sql> 
 
+   <!-- 배너등록 -->
    <insert id="bannerRegistration" parameterType="com.todaylesson.DTO.BannerDTO" >
-      insert into banner(banner_title, banner_filepath, banner_registrationdate)
-      values(#{banner_title}, #{banner_filepath}, now())
+      insert into banner(banner_title, banner_group, banner_filepath, banner_registrationdate)
+      values(#{banner_title}, #{banner_group}, #{banner_filepath}, now())
    </insert>
 
-<!-- <select id="eventdetail" parameterType="int" resultType="com.todaylesson.DTO.EventDTO">
-select event_no,event_group,event_title,event_content,event_startperiod,event_endperiod,event_thumbnail,event_thumbexplain
-from event
-where event_no = #{event_no}
-</select>
+   <!-- 배너상세내역 -->
+   <select id="adminBannerDatail" parameterType="int" resultType="com.todaylesson.DTO.BannerDTO">
+      select banner_no, banner_group, banner_title, banner_filepath, banner_registrationdate
+      from banner
+      where banner_no = #{banner_no}
+   </select>
+ 
+   <!-- 배너수정  이미지포함 -->
+   <update id="bannerModify" parameterType="com.todaylesson.DTO.BannerDTO">
+      update banner
+      set 
+      banner_group = #{banner_group}
+	 ,banner_title = #{banner_title}
+	 ,banner_filepath = #{banner_filepath}
+	  where banner_no = #{banner_no}
+   </update>
 
-<update id="eventupdate" parameterType="com.todaylesson.DTO.EventDTO">
-update event
-set event_group = #{event_group}
-	,event_title = #{event_title}
-	,event_content = #{event_content}
-	,event_startperiod = #{event_startperiod}
-	,event_endperiod = #{event_endperiod}
-	,event_thumbnail = #{event_thumbnail}
-	,event_thumbexplain = #{event_thumbexplain}
-	where event_no = #{event_no}
-</update>
+   <!-- 배너수정 이미지미포함  -->
+   <update id="bannerModifyNOBanner" parameterType="com.todaylesson.DTO.BannerDTO">
+      update banner
+      set 
+      banner_group = #{banner_group}
+	 ,banner_title = #{banner_title}
+	  where banner_no = #{banner_no}
+   </update>
 
-<update id="eventupdatenothumbnail" parameterType="com.todaylesson.DTO.EventDTO">
-update event
-set event_group = #{event_group}
-	,event_title = #{event_title}
-	,event_content = #{event_content}
-	,event_startperiod = #{event_startperiod}
-	,event_endperiod = #{event_endperiod}
-	,event_thumbexplain =#{event_thumbexplain}
-	where event_no = #{event_no}
-</update>
-
-<delete id="eventdelete" parameterType="int">
-delete from event
-where event_no = #{event_no}
-</delete> -->
+   <!-- 배너삭제 -->
+   <delete id="bannerDelete" parameterType="int">
+      delete from banner
+      where banner_no = #{banner_no}
+   </delete> 
 
 
 

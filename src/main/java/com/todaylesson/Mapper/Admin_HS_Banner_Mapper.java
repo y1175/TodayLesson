@@ -16,4 +16,12 @@ public interface Admin_HS_Banner_Mapper {
 
 	public int bannerRegistration(BannerDTO dto);
 
+	public BannerDTO adminBannerDatail(int banner_no);
+
+	public int bannerModify(BannerDTO dto);
+
+	public int bannerModifyNOBanner(BannerDTO dto);
+	
+	public int bannerDelete(int banner_no);
+
 }
