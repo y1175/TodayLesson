@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.todaylesson.DTO.LessonCompDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
-import com.todaylesson.DTO.LessonListDTO;
 import com.todaylesson.DTO.MyLessonDTO;
 import com.todaylesson.service.JY_US_MyLessonService;
 

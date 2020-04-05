@@ -36,6 +36,5 @@ public class MemberDTO {
 	private int member_bank_name;
 	private String member_account_name;
 	private String member_account_num;
-	private int member_gen;
 	
 }

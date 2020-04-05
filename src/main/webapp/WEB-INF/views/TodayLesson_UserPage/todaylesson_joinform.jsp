@@ -6,7 +6,6 @@
 <meta charset="utf-8">
 <title>TodayLesson</title>
 </head>
-
 <body>
    <h2>회원가입</h2>
    <form method="post" id="smsForm">
@@ -78,11 +77,15 @@ onkeyup="passwordCheckFunction();"
     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
 
+<!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+<!-- jQuery -->
+
 <!-- Join JS -->
    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-   <script type="text/javascript" src="resources/JS/yi_findAddr.js"></script>
-   <script type="text/javascript" src="resources/JS/yi_todaylesson_join.js"></script>
-   <script type="text/javascript" src="resources/JS/ej_smscheck.js"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_findAddr.js"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_todaylesson_join.js?ver=1"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/ej_smscheck.js"></script>
 <!-- Join JS -->
 
 </body>
