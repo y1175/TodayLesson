@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 <h2>1:1문의 등록</h2>
 <form name ="hmquestionform" method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_question_create">
 <ul>
-<input type ="hidden" id="member_id" name ="member_id" value="${pageContext.request.userPrincipal.name}">
+<%-- <input type ="hidden" id="member_id" name ="member_id" value="${pageContext.request.userPrincipal.name}"> --%>
 <li>
 <label>문의 분류</label>
 <select id="question_group" name="question_group" required="required">

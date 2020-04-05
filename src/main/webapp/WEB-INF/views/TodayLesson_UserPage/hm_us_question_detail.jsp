@@ -11,7 +11,7 @@
 
 <div>
 <ul>
-<li>
+
 <c:choose>
 <c:when test="${dto.question_group eq '0'}">
 <li>
@@ -39,7 +39,7 @@
 </li>
 </c:when>
 </c:choose>
-</li>
+
 <li>
 작성일 : <c:out value="${dto.question_writedate}"></c:out> 
 </li>
@@ -75,5 +75,6 @@
 </div>
 </c:if>
 
+<a href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question">목록으로</a>
 </body>
 </html>

@@ -9,7 +9,7 @@ public interface User_HM_EventService {
 
 	public int totalCount(String search, String searchtxt);
 
-	public List<EventDTO> hm_us_eventlist(String search, String searchtxt, int startRow, int endRow);
+	public List<EventDTO> hm_us_eventlist(String search, String searchtxt, int startRow, int endRow, String event);
 
 	public EventDTO hm_us_event_detail(int event_no);
 

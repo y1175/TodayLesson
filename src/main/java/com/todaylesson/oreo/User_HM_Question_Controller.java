@@ -60,12 +60,14 @@ public class User_HM_Question_Controller {
 	
 	@RequestMapping("/hm_question_create")
 	private String hm_question_create(
-			@RequestParam("member_id")String member_id
+			Authentication authentication
 			,@RequestParam("question_group") int question_group
 			,@RequestParam("question_title") String question_title
 			,@RequestParam("question_content") String question_content
 			,Model model)
 	{
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("member_id", member_id);
 		map.put("question_group", question_group);

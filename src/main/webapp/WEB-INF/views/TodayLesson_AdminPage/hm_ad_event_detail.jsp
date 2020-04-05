@@ -49,5 +49,6 @@
 			<button class="eventdetailupdatebtn">수정</button>
 			<button class="eventdetaildeletebtn">삭제</button>
 			</div>
+			<a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage">목록으로</a>
 </body>
 </html>

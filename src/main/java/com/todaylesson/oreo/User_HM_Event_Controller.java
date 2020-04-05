@@ -29,6 +29,7 @@ public class User_HM_Event_Controller {
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="start") String event
 			,Model model
 			) {
 		int totalCount= service.totalCount(search, searchtxt);
@@ -40,7 +41,7 @@ public class User_HM_Event_Controller {
 		
 		
 		List<EventDTO> list = service.hm_us_eventlist(search,searchtxt,page.getStartRow()
-				,page.getEndRow());
+				,page.getEndRow(),event);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);

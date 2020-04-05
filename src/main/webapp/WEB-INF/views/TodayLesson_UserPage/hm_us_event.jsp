@@ -92,6 +92,12 @@
   </div>
 </nav>
 
+  <span id="hm_right">
+      <a href="?event=start" ><button class="btn btn-default">최신순</button></a>
+<a href="?event=end"><button class="btn btn-default">마감순</button></a>
+</span>
+
+
 
 		<div class="hm_event_thumbnailmain">
 			<c:forEach var="item" items="${list}">
