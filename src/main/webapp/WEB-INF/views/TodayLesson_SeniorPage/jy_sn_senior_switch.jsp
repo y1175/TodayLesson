@@ -153,8 +153,8 @@ function checkDisable()
 
 <input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
 
-<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
- --%>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
 <input type="submit" value="전송">
 <input type="reset" value="취소">
 

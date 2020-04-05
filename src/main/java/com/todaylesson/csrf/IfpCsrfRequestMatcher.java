@@ -359,12 +359,12 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
               return false;
         
         //시니어 지원 팝업
-        /*else if (strUri.equals("senior_request_form/{member_id}"))    
-              return false; */
+        else if (strUri.equals("/todaylessonsenior/senior_request_form"))    
+              return false;
         
         //시니어 지원 폼(시니어 닉, 이런거 쓰는곳)
-        /* else if ("/senior_switch/{member_id}".equals(strUri))    
-              return false;*/
+        else if ("/todaylessonsenior/senior_switch".equals(strUri))    
+              return false;
         
         // 이미 시니어일 때
         else if ("/todaylessonsenior/you_are_senior".equals(strUri))    
