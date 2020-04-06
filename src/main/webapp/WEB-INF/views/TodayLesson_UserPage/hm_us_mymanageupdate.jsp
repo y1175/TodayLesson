@@ -304,7 +304,7 @@ onkeyup="passwordCheckFunction();"><br>
 	            
 	            if (bank_name[i].code == bank_code) {
 	               let senior_bank_name = bank_name[i].name;
-	               $('#bank_name').append(senior_bank_name);
+	               $('#bank_name').append(member_bank_name);
 	               break;
 	            }
 	         }
