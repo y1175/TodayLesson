@@ -212,7 +212,7 @@
 <!-- 연령대별 성별 가입현황  1-->
 
 <!--AdminMain style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_home_content.css?ver=1">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_home_content.css?ver=2">
 <!--AdminMain style-->
 
 </head>
@@ -224,10 +224,10 @@
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
             <i class='fas fa-user-edit'></i>
-            <pre>Today</pre>
-            <pre>신규주니어</pre>
+            <p>Today</p>
+            <p>신규주니어</p>
          </div>
-         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; bottom: 40px;">
+         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; top: 30px;">
             <b>
                <fmt:formatNumber value="${memberJoinCount}" type="number" maxFractionDigits="3"/>
             </b>
@@ -237,10 +237,10 @@
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
             <i class='far fa-id-badge'></i>
-            <pre>Today</pre>
-            <pre>신규시니어</pre>
+            <p>Today</p>
+            <p>신규시니어</p>
          </div>
-         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; bottom: 40px;">
+         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; top: 30px;">
             <b>   
                <fmt:formatNumber value="${seniorChangeCount}" type="number" maxFractionDigits="3"/>
             </b>
@@ -250,10 +250,10 @@
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
             <i class='fas fa-file-invoice-dollar'></i>
-            <pre>Today</pre>
-            <pre>판매금액</pre>
+            <p>Today</p>
+            <p>판매금액</p>
          </div>
-         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; bottom: 40px;">
+         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; top: 30px;">
             <b>
                <fmt:formatNumber value="${orderlistCostSum}" type="number" maxFractionDigits="3"/>
             </b>
@@ -263,10 +263,10 @@
       <div class="hs_ad_todaybox">
          <div class="col-sm-7" style="display: inline-block; text-align: center;">
             <i class="fa fa-file-text-o"></i>
-            <pre>Today</pre>
-            <pre>게시글</pre>
+            <p>Today</p>
+            <p>게시글</p>
          </div>
-         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; bottom: 40px;">
+         <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; top: 30px;">
             <b>   
                <fmt:formatNumber value="${freeboardWriteCount}" type="number" maxFractionDigits="3"/>
             </b>

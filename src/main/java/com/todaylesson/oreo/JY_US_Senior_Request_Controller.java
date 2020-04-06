@@ -174,10 +174,10 @@ public class JY_US_Senior_Request_Controller {
 	}
 	
 	
-	@RequestMapping("/logout")
+	/*@RequestMapping("/logout")
 	public String logout() {
 		return "TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
-	}
+	}*/
 
 	
 	

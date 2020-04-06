@@ -10,10 +10,12 @@
 	color: rgb(224, 62, 82);
 	margin-bottom: 5px;
 }
-.hs_ad_todaybox pre{
-	margin: 0px;	
+.hs_ad_todaybox p{
 	font-size: 13px;
 	font-weight: 600;
+}
+.hs_ad_todaybox p:nth-of-type(1){
+	margin-bottom: 0px;
 }
 /* 카테고리별 현황 박스 */
 .hs_ad_category_chart{

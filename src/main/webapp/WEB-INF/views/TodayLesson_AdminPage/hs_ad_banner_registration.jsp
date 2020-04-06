@@ -30,7 +30,7 @@
 		       name="bannerRegistrationFrm" id="bannerRegistrationFrm"> 
 		    <div class="col-md-12" style="margin-bottom: 20px;">
 		       <div class="col-sm-1" style="font-size: 15px;">
-		          <label>배너 유형</label>
+		          <label>배너유형</label>
 		       </div>
 		       <div class="col-sm-11">
 		          <select name="banner_group" id="banner_group" class="form-control">
@@ -43,13 +43,13 @@
 		    </div>
 		    <div class="col-md-12" style="margin-bottom: 20px;">
 		       <div class="col-sm-1" style="font-size: 15px;">
-		          <label>이벤트명</label>
+		          <label>배너이름</label>
 		       </div>
 		       <div class="col-sm-11">
 		          <input type="text" id="banner_title" name="banner_title" class="form-control" placeholder="배너이름을 입력해주세요." required="required"/>
 		       </div>
 		    </div>
-		    <div class="col-md-12" style="">
+		    <div class="col-md-12">
 		       <div class="col-sm-1" style="font-size: 15px;">
 		          <label for="banner_filepath">파일첨부</label>
 		       </div>
@@ -63,7 +63,7 @@
 		          <label for="banner_filepath">배너이미지</label>
 		       </div>
 		       <div class="col-sm-11">
-                  <div class="Banner_img">
+                  <div class="Banner_imgRegistration">
                      <img src="" style="padding: 50px;" />
                   </div>
                </div> 
@@ -74,7 +74,7 @@
                   if(this.files && this.files[0]) {
                      var reader = new FileReader;
                      reader.onload = function(data) {
-                        $(".Banner_img img").attr("src", data.target.result).width(1000);   //등록할때 화면에 보이는크기     
+                        $(".Banner_imgRegistration img").attr("src", data.target.result).width(1000);   //등록할때 화면에 보이는크기     
                      }
                    reader.readAsDataURL(this.files[0]);
                   }

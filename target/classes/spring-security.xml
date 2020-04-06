@@ -15,6 +15,7 @@
    <bean id="ifpCsrfRequestMatcher" class="com.todaylesson.csrf.IfpCsrfRequestMatcher"/>
    <bean id="ifpAccessDeniedHandler" class="com.todaylesson.csrf.IfpAccessDeniedHandler"/>
    <bean id="customLoginSuccess" class="com.todaylesson.csrf.CustomLoginSuccessHandler"/>
+   <bean id="CustomLogoutSuccessHandler" class="com.todaylesson.csrf.CustomLogoutSuccessHandler"/>
 
    <security:http use-expressions="true">
       
@@ -30,7 +31,8 @@
 
       <security:form-login login-page="/todaylessonlogin" login-processing-url="/todaylesson" default-target-url="/todaylesson"
       authentication-success-handler-ref="customLoginSuccess"/> 
-      <security:logout logout-success-url="/todaylesson" logout-url="/logout" invalidate-session="true"  delete-cookies="id" />
+      <!-- <security:logout logout-success-url="/todaylesson" logout-url="/logout" invalidate-session="true"  delete-cookies="id" /> -->
+      <security:logout success-handler-ref="CustomLogoutSuccessHandler" logout-url="/logout" invalidate-session="true"  delete-cookies="id" />
       
       <security:remember-me  remember-me-cookie="id" token-validity-seconds="300"/>
       
