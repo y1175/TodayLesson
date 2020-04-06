@@ -1,0 +1,14 @@
+@charset "utf-8";
+#ej_container{
+	padding-top:20px;
+	width:80%;
+	text-align: center;
+}
+.ej_bold{
+	font-weight: bold;
+}
+#ej_line{
+	border-bottom: 1px solid silver;
+	width:80%;
+	text-align: center;
+}

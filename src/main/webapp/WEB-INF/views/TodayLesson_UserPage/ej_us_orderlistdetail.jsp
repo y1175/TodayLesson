@@ -1,31 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="utf-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<!--style-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderlistdetail.css"> 
+<!--style-->
 </head>
 <body>
-
-<!--¿À´õ ¸®½ºÆ® Á¤º¸  -->
-ÁÖ¹®³¯Â¥  ${orderlistdto.orderlist_date }<br>
- ÁÖ¹®¹øÈ£  ${orderlistdto.orderlist_no }<br>
-¼ö·ÉÀÎ  ${orderlistdto.orderlist_receiver }<br>
-¼ö·É ÁÖ¼Ò  ${orderlistdto.orderlist_addr }<br>
-°áÁ¦±İ¾×  ${orderlistdto.orderlist_cost }¿ø<br>
-»ç¿ëÆ÷ÀÎÆ®  ${orderlistdto.orderlist_usepoint  }<br>
-<c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
-<c:set var="addedpoint" value="${(cost*0.1)}"></c:set>
-${addedpoint } Æ÷ÀÎÆ®°¡ Àû¸³µÇ¾ú½À´Ï´Ù!<br>
-¹è¼Û¿äÃ»»çÇ×  ${orderlistdto.orderlist_msg  }
-<hr>
-<!--¿À´õ µğÅ×ÀÏ Á¤º¸  -->
+<div id="ej_container">
+<h4>ì˜¤ëŠ˜ì˜ ë ˆìŠ¨ì„ ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤</h4>
+<h2>ì£¼ë¬¸ì´ ì •ìƒì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.</h2>
+ <h3>ì£¼ë¬¸ë²ˆí˜¸  ${orderlistdto.orderlist_no }</h3><br>
+ 
+ <!--ì˜¤ë” ë””í…Œì¼ ì •ë³´  -->
 <c:forEach var="item" items="${list}"> 
-»óÇ°¸í: ${item.product_name }
-¼ö·®: ${item.order_count }
+<span class="ej_bold">ìƒí’ˆëª…:</span>  ${item.product_name }
+<span class="ej_bold">ìˆ˜ëŸ‰:</span>  ${item.order_count }
 </c:forEach>
+<br>
+<div id="ej_line"></div>
+<!--ì˜¤ë” ë¦¬ìŠ¤íŠ¸ ì •ë³´  -->
+<br>
+<span class="ej_bold">ì£¼ë¬¸ë‚ ì§œ</span>  ${orderlistdto.orderlist_date }<br>
+<span class="ej_bold">ìˆ˜ë ¹ì¸</span>   ${orderlistdto.orderlist_receiver }<br>
+<span class="ej_bold">ìˆ˜ë ¹ ì£¼ì†Œ</span>   ${orderlistdto.orderlist_addr }<br>
+<span class="ej_bold">ê²°ì œê¸ˆì•¡</span>   ${orderlistdto.orderlist_cost }ì›<br>
+<span class="ej_bold">ì‚¬ìš©í¬ì¸íŠ¸</span>   ${orderlistdto.orderlist_usepoint  }<br>
+<c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
+<span class="ej_bold">ì¶•í•˜ë“œë¦½ë‹ˆë‹¤</span>  
+<fmt:parseNumber var="addpoint" value="${(cost*0.1)}" integerOnly="true" /> <span class="ej_bold">${addpoint }í¬ì¸íŠ¸</span>ê°€ ì ë¦½ë˜ì—ˆìŠµë‹ˆë‹¤!<br>
+<span class="ej_bold">ë°°ì†¡ìš”ì²­ì‚¬í•­</span>   ${orderlistdto.orderlist_msg  }
+<hr>
 
+
+</div>
 
 </body>
 </html>
