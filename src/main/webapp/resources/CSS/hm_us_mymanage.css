@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.hmpwdimg{
+	width:200px;
+	margin:20px auto;
+	
+}
+
+.hmmanagemain{
+	margin-top :20px;
+	text-align: center;
+	color: rgb(53, 54, 58);
+}
+.managebtn{
+	border: 1px transparent;
+padding: 5px 15px; 
+border-radius : 3px;
+/* background-color: rgb(224, 62, 82); */
+background-color: rgba(53, 54, 58 , 0.5 );
+/* (어두운색은 투명도로 맞춰도 됨)*/
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}

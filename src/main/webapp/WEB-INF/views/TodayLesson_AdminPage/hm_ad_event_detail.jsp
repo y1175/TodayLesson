@@ -14,6 +14,7 @@
 <body>
 	<jsp:useBean id="now" class="java.util.Date" />
 	<input type="hidden" value="${dto.event_no}" class="event_no">
+	<h1 style="text-align: center; margin : 50px 0px; ">이벤트 상세페이지</h1>
 	<div class="eventdetailmain">
 		<div class="eventdetailgroup">
 			<c:choose>
@@ -45,10 +46,13 @@
 			<p>${dto.event_thumbexplain}</p>
 			</div>
 	</div>
-	<div class="eventdetailbtn">
+			<div class="eventdetailbtn">
+			<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'">목록으로</button>
 			<button class="eventdetailupdatebtn">수정</button>
 			<button class="eventdetaildeletebtn">삭제</button>
 			</div>
-			<a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage">목록으로</a>
+			
+			
+			
 </body>
 </html>

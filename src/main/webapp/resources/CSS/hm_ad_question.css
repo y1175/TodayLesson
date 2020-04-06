@@ -1,0 +1,10 @@
+@charset "utf-8";
+.questionheader{
+	
+width:100%;
+margin-top: 40px;
+}
+
+.questionheader h2{
+	text-align: center;
+}

@@ -20,13 +20,13 @@ from event
 <when test='event == null || event.equals("")'>
  </when>
 <when test='event == "start"||event.equals("start")'> 
-order by event_startperiod desc;
+order by event_startperiod desc
  </when>
 <when test='event == "end" ||event.equals("end")'> 
-order by event_endperiod desc;
+order by event_endperiod desc
  </when>
 </choose>
-<!-- order by event_no desc -->
+order by event_no desc 
 limit #{startrow},15
 </select>
 

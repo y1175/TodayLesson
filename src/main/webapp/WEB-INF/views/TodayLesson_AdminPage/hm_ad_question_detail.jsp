@@ -6,8 +6,10 @@
 <head>
  <meta charset="utf-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_question_detail.css?ver=1">
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question_detail.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question_detail.js?ver=1"></script>
 </head>
 <body>
 <div>
@@ -73,15 +75,24 @@
 <c:choose>
 <c:when test="${empty dto.question_answer }">
 <input type="button" id="hm_ad_questionbtn" class="hm_ad_questionbtn" value="답변하기">
+<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question'" class="questionlistbtn">목록으로</button>
 </c:when>
 <c:when test="${!empty dto.question_answer }">
-<div>
+<div class="answerbox">
 <ul>
-<li>"${dto.question_answer}"</li>
+<c:out value="${dto.question_answer}"></c:out>
 </ul>
+<button class="question_answerupdate">답변 수정</button>
+<button class="question_answerdel">답변삭제</button>
 </div>
 </c:when>
 </c:choose>
+
+
+
+
+
+
 
 <div id="hm_question_answerdiv" style="display : none;">
 <form method="post" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question_update">
@@ -99,6 +110,7 @@ ${dto.member_id} 님 안녕하세요.
 </ul>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 </form>
+<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question'">목록으로</button>
 </div>
 
 

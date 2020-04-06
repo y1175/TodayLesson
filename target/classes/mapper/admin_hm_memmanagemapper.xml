@@ -14,7 +14,7 @@ from member
 
 <!-- 관리자 회원리스트 출력 -->
 <select id="adminmemberlist" resultType="com.todaylesson.DTO.MemberDTO" parameterType="java.util.HashMap">
-select member_no,member_id,member_name,member_nick,member_point,member_level,member_join_date
+select member_no,member_id,member_name,member_birth,member_phone,member_addr,member_zipcode,member_email,member_nick,member_point,member_level,member_join_date
 from member
 <include refid="search_select"></include>
 order by member_no

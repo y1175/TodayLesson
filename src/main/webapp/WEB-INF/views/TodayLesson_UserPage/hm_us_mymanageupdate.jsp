@@ -6,12 +6,14 @@
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<title>오늘의 레슨 회원정보수정</title>                               
+<title>오늘의 레슨 회원정보수정</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_mymanageupdate.css?ver=2">                               
 
 </head>
 <body>
+<div class="mymanageupdatediv">
+
+
 <h2>회원정보 수정</h2>
 <c:set var="dto" value="${dto}"></c:set>
 아이디
@@ -134,29 +136,29 @@ onkeyup="passwordCheckFunction();"><br>
  <br>
  
  
-<label for='addr'>주소</label>
-					<div class='form-row'>
-						<div class='col-5'>
+<label>주소</label>
+					<div>
+						<div>
 							<input type="text" id="sample4_postcode" name='member_zipcode'
-								value="${dto.member_zipcode}" class='form-control'>
+								value="${dto.member_zipcode}" >
 						</div>
 						<input type="button" onclick="sample4_execDaumPostcode()"
-							value="우편번호 찾기" readonly="readonly" class='btn btn-primary'><br>
+							value="우편번호 찾기" readonly="readonly" ><br>
 					</div>
 					<div class='juso'>
 						<input type="text" id="sample4_roadAddress"  value="${dto.member_addr}"
-							name="roadaddr" readonly="readonly" class="form-control">
+							name="roadaddr" readonly="readonly">
 						<input type="radio" id='roadAddress' name='addrselect' value="0"
 							required><label for="addrselect">도로명주소 선택</label> <br>
 
 						<input type="text" id="sample4_jibunAddress" placeholder="지번주소"
-							name="jibunaddr" readonly="readonly" class="form-control">
+							name="jibunaddr" readonly="readonly">
 						<input type="radio" id='jibunAddress' name='addrselect' value="1"><label
 							for="addrselect">지번주소 선택</label><br>
 					</div>
 					<span id="guide" style="color: #999"></span> <label
 						for="detailaddr">상세주소</label> <input type="text" id="detailaddr"
-						name="detailaddr" class="form-control"> 
+						name="detailaddr"> 
 <label>닉네임</label>
 <input type="text" name="member_nick" value="${dto.member_nick}" required="required"><br>
 <button type="submit" id="submit" class="btn btn-primary">정보 수정</button><br>
@@ -165,6 +167,17 @@ onkeyup="passwordCheckFunction();"><br>
 
  <input type="button" class="hm_memberwithdrawbtn" value="회원탈퇴" > 
 <input type="reset" value="취소">
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

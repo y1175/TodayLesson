@@ -14,4 +14,8 @@ $(document).ready(function(){
 		location.href="/todaylessonadmin/hm_memmanagedetail/"+no;
 		
 	});
+	
+
+	
+	
 });

@@ -17,6 +17,7 @@ location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_m
 else{
 	alert('이벤트 등록을 실패하였습니다.');
 /* 	location.href="/hm_ad_event_insert"; 다시 그전으로 돌아가는것*/
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage";
 }
 </script>
 </body>
