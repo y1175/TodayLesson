@@ -18,9 +18,9 @@
 		
 		if (${mem_level}==1) {
 			alert("시니어 전환 시 한번 더 로그인 하셔야합니다!");
-			self.close();
 			logoutform.submit();
-			window.location.reload();
+			self.close();
+			opener.document.location.reload();
 		}
 		
 		else {
