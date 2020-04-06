@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-   <div style="clear:both; background-color:  rgb(53, 54, 58); margin-top: 3000px;">
+   <div style="clear:both; background-color:  rgb(53, 54, 58); margin-top: 100px;">
       <div>
        <p>오늘의 레슨</p>
        <p>오늘의 레슨</p>

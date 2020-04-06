@@ -28,8 +28,8 @@
          <form role="form" method="post" autocomplete="off" enctype="multipart/form-data" class="row"
 		       action="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_registrationresult" 
 		       name="bannerRegistrationFrm" id="bannerRegistrationFrm"> 
-		    <div class="col-md-12">
-		       <div class="col-sm-1">
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		       <div class="col-sm-1" style="font-size: 15px;">
 		          <label>배너 유형</label>
 		       </div>
 		       <div class="col-sm-11">
@@ -41,29 +41,31 @@
 		          </select>
 		       </div>      
 		    </div>
-		    <div class="col-md-12">
-		       <div class="col-sm-1">
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		       <div class="col-sm-1" style="font-size: 15px;">
 		          <label>이벤트명</label>
 		       </div>
 		       <div class="col-sm-11">
 		          <input type="text" id="banner_title" name="banner_title" class="form-control" placeholder="배너이름을 입력해주세요." required="required"/>
 		       </div>
 		    </div>
-		    <div class="col-md-12">
-		       <div class="col-sm-1">
+		    <div class="col-md-12" style="">
+		       <div class="col-sm-1" style="font-size: 15px;">
 		          <label for="banner_filepath">파일첨부</label>
 		       </div>
 		       <div class="col-sm-11">
-		          <input type="file" id="banner_filepath" name="file" />
+		          <i class="material-icons" style="font-size: 30px;">&#xe439;</i>
+		          <input type="file" id="banner_filepath" name="file"  class="custom-file-input" style="position: relative; bottom: 22px;" />
 		       </div>
 		    </div>
-            
-            <div  class="col-md-12">   
-               <div class="col-sm-1">
+            <div  class="col-md-12" style="margin-bottom: 20px; margin-top: -15px;">   
+               <div class="col-sm-1" style="font-size: 15px;">
 		          <label for="banner_filepath">배너이미지</label>
 		       </div>
-               <div class="Banner_img">
-                  <img src="" />
+		       <div class="col-sm-11">
+                  <div class="Banner_img">
+                     <img src="" style="padding: 50px;" />
+                  </div>
                </div> 
             </div>
  
@@ -78,9 +80,9 @@
                   }
                });
            </script>
-           <div class="col-md-12">
-           <input type="button" id="hs_ad_bannerRegistrationrSubmitBtn" value="배너등록"/>
-           <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+           <div class="col-md-12" style="text-align: center;">
+              <input type="button" id="hs_ad_bannerRegistrationrSubmitBtn" value="배너등록"/>
+              <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
            </div>
 	    </form>
 	 </div>

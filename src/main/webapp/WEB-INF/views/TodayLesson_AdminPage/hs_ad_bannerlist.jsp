@@ -8,7 +8,7 @@
 <title>TodayLessonAdmin</title>
 
 <!-- CSSstyle --> 
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_bannerlist.css?ver=3">
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_bannerlist.css?ver=4">
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Banner_Title>a{
          color: rgb(224, 62, 82);
@@ -74,20 +74,21 @@
          </div>
          <div class="hs_ad_bannerLine"></div>
       </c:forEach>
+      <div class="row" style="text-align: center;">
+         <c:if test="${page.prev}">
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}"><c:out value="<<"/></a>
+         </c:if>
+                     <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
+                        <c:if test="${index!= page.currPage}"></c:if>
+                        <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}" class="page-link">${index}</a>
+                     </c:forEach>
+         
+         <c:if test="${page.next}">
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value=">>"/></a>
+         </c:if>
+      </div>
+      
    </div>  
-   
-   <c:if test="${page.prev}">
-      <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}"><c:out value="이전"/></a>
-   </c:if>
-
-   <c:forEach var="index" begin="${page.startBlock}" end="${page.endBlock}">
-      <c:if test="${index!= page.currPage }"></c:if>
-      <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index}</a>
-   </c:forEach>
-
-   <c:if test="${page.next}">
-      <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
-   </c:if>
    
    
 </body>
