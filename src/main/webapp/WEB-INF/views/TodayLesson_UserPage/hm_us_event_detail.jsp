@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=2"> 
-<script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> --%> 
-<script>
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event_detail.css?ver=2"> 
+<%-- <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script>  --%>
+<!-- <script>
 function reply_view(no)
 {
 
@@ -83,16 +83,70 @@ document.getElementById("event_replysubmit_thead-"+event_no).removeAttribute("st
 	});
 	}
 }
-</script>
+</script> -->
+
+
 </head>
 <body>
-<sec:authentication property="principal" var="pinfo"/>
-<!-- ModelAttribute dto -->
-<c:set var="item" value="${dto}"></c:set>
-
-${item.event_content}
 
 
+<%-- <sec:authentication property="principal" var="pinfo"/> --%>
+
+<jsp:useBean id="now" class="java.util.Date" />
+
+
+
+<div class="eventdetailmain">
+<c:set var="dto" value="${dto}"></c:set>
+<div class="eventdetailtitle">
+<div class="eventdetailgroup">
+			<p><c:choose>
+				<c:when test="${dto.event_group eq '0'}">
+					<c:out value="레슨" />
+				</c:when>
+				<c:when test="${dto.event_group eq '1'}">
+					<c:out value="스토어" />
+				</c:when>
+				<c:when test="${dto.event_group eq '2'}">
+					<c:out value="기타" />
+				</c:when>
+			</c:choose></p>
+		</div>
+<h3>${dto.event_title}</h3>
+</div>
+
+
+		<div class="event_period">
+			${dto.event_startperiod}~${dto.event_endperiod}
+				<c:if test="${now < dto.event_endperiod}">(종료)</c:if>
+				<c:if test="${now >= dto.event_endperiod}">(진행중)</c:if>
+			
+		</div>
+		<div class="eventdetailline"></div>
+		<div class="event_content">${dto.event_content}</div>
+
+
+
+<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_us_event'" class="hmuseventbtn">목록으로</button>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
 
 <div class="event_rep_form">
 <form method="post" action="/todaylesson/hm_us_eventreply/${item.event_no}" id="event_rep">
@@ -103,9 +157,9 @@ ${item.event_content}
 <input type="submit" value="댓글달기" name="event_replysubmit">
 </form>
 </div>
+ --%>
 
-
-<table>
+<!-- <table>
 <thead>
 <tr><th>작성자</th><th>내용</th><th>작성일</th><th>삭제</th>
 </tr>
@@ -115,6 +169,7 @@ ${item.event_content}
 
 </tbody>
 </table>
-<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event">목록으로</a>
+-->
+
 </body>
 </html>

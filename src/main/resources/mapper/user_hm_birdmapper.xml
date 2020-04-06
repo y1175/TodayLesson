@@ -9,7 +9,7 @@
 select lesson_no,lesson_title,lesson_thumb,lesson_category,senior_nick,lesson_type,lesson_like
 from lesson inner join senior 
 on lesson.senior_no = senior.senior_no
-where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) and lesson_earlybird = '1'
+where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) and lesson_earlybird = '1' and lesson_result ='2'
 order by lesson_readno desc, lesson_no asc
 </select>
 
@@ -18,7 +18,7 @@ order by lesson_readno desc, lesson_no asc
 select lesson_no, lesson_title, lesson_thumb, lesson_category, senior_nick,lesson_like,lesson_type
 from lesson inner join senior
 on lesson.senior_no = senior.senior_no
-where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) and lesson_earlybird = '1'
+where lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) and lesson_earlybird = '1' and lesson_result ='2'
 order by lesson_no desc
 </select>
 
@@ -28,6 +28,7 @@ select lesson_no, lesson_title,lesson_open_period, lesson_thumb,lesson_category,
 from lesson inner join senior
 on lesson.senior_no = senior.senior_no
 where lesson_earlybird = '1' 
+and lesson_result ='2'
  <![CDATA[ 
             and lesson_open_period < DATE_ADD(now(), INTERVAL -1 day)   
             and lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day) 

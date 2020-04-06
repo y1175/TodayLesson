@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=2"> 
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=1"> 
 <!-- CSSstyle -->
 <!-- JS -->
    <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> 
@@ -60,7 +60,24 @@
 
 <div class="hm_event_total">
  <!-- 이벤트 네비바 -->
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" width: 80%; margin :0 auto 40px;">
+ 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:420px; margin:0 auto 40;">
+ 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center;">
+ <form class="form-inline my-2 my-lg-0" method ="get" action="hm_us_event?currPage=${page.startBlock }">
+ <select name="search"  class="form-control" id="inlineFormCustomSelect" style="margin-right: 20px;">
+     <option value="all">전체</option>
+     <option value="event_title">제목</option>
+ </select>
+ <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+ <button class="hmeventbtn" type="submit">검색</button>
+ </form>
+  </div>
+  
+</nav>
+ 
+ 
+<%--  <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" width: 80%; margin :0 auto 40px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -91,10 +108,12 @@
       </form>
   </div>
 </nav>
+ --%>
 
-  <span id="hm_right">
-      <a href="?event=start" ><button class="btn btn-default">최신순</button></a>
-<a href="?event=end"><button class="btn btn-default">마감순</button></a>
+
+  <span id="hm_right" >
+      <a href="?event=start" ><button class="btn btn-default" style=" width:100px; margin:-10px 0px 10px 30px;">최신순</button></a>
+<a href="?event=end"><button class="btn btn-default" style="width:100px; margin:-10px 0px 10px 0px;">마감순</button></a>
 </span>
 
 

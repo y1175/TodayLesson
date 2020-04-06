@@ -19,6 +19,15 @@
 	margin: auto;
 	margin-bottom: 40px;
 }
-
-
+button.hmeventbtn{
+border: 1px transparent;
+padding: 5px 15px; 
+border-radius : 3px;
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+	
+}
 

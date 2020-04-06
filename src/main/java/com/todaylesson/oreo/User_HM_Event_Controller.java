@@ -36,7 +36,7 @@ public class User_HM_Event_Controller {
 		int pageSize=15;
 		int blockSize=5;
 		
-
+ 
 		PageMaker page = new PageMaker(currPage, totalCount, pageSize, blockSize);
 		
 		

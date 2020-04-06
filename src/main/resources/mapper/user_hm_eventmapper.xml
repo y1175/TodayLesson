@@ -23,6 +23,7 @@ from event
 order by event_startperiod desc
  </when>
 <when test='event == "end" ||event.equals("end")'> 
+where <![CDATA[ event_endperiod >= now() ]]>	
 order by event_endperiod desc
  </when>
 </choose>
