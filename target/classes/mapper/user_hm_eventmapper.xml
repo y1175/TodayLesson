@@ -26,7 +26,7 @@ order by event_startperiod desc
 order by event_endperiod desc
  </when>
 </choose>
-order by event_no desc 
+<!-- order by event_no desc  -->
 limit #{startrow},15
 </select>
 
