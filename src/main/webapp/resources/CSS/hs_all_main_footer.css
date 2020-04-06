@@ -21,6 +21,7 @@ body {
 }
 .hs_footer_SNSlink{
 	font: 16px Roboto, sans-serif;
+	text-align: right;
 }
 .hs_footer_SNSlink>a {
     text-decoration: none;

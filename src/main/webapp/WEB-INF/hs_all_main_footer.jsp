@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_all_main_footer.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_all_main_footer.css?ver=1">
 <!-- CSSstyle -->
 </head>
 <body>
