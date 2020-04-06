@@ -23,6 +23,7 @@ public class JY_US_SeniorServiceImple implements JY_US_SeniorService {
 		
 		// 시니어로 등급 변경
 		mapper.member_level_up(member_id);
+		mapper.member_levelup(member_id);
 	}
 
 	

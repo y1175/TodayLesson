@@ -14,12 +14,17 @@ insert into senior(member_id,senior_register_date) value(#{member_id},sysdate())
 
 update member_auth a inner join member b
 on a.member_id = b.member_id
-set member_level = 2,
-a.member_auth = 'ROLE_SENIOR'
-	,b.enabled = '1'	
+set member_level = 2	
 where a.member_id = #{member_id}
 
 </update>
+
+<insert id="member_levelup">
+
+insert into member_auth(member_auth, member_id)
+value('ROLE_SENIOR', #{member_id})
+
+</insert>
 
 <update id="plus_senior" parameterType="com.todaylesson.DTO.SeniorDTO">
 

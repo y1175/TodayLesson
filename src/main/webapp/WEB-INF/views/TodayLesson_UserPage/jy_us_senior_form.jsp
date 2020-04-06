@@ -15,7 +15,8 @@
 	function senior_switch(){
 		
 		if (${mem_level}==1) {
-			opener.location.href="${pageContext.request.contextPath}/todaylessonsenior/senior_switch";
+			alert("시니어 전환 시 한번 더 로그인 하셔야합니다!");
+			location.href="${pageContext.request.contextPath}/logout";
 			self.close();
 		} else {
 			opener.location.href="${pageContext.request.contextPath}/todaylessonsenior/you_are_senior";

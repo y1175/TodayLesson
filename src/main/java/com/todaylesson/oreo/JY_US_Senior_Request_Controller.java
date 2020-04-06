@@ -139,7 +139,7 @@ public class JY_US_Senior_Request_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_senior_insert_result";
 	}
 	
-	@RequestMapping("/todaylessonsenior/senior_switch_update/{member_id}")
+	@RequestMapping("/todaylessonsenior/senior_switch_update")
 	public String senior_info_update( Authentication authentication, Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
 		
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -173,6 +173,11 @@ public class JY_US_Senior_Request_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_update_senior_result";
 	}
 	
+	
+	@RequestMapping("/logout")
+	public String logout() {
+		return "TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
+	}
 
 	
 	

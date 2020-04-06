@@ -9,7 +9,7 @@
 <body>
 <script>
 alert("이미 시니어입니다! 시니어로 전환은 딱! 한번만 할 수 있어요 :) ");
-location.href="${pageContext.request.contextPath }/todaylesson";
+location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 //이동하는 페이지는 시니어 메인으로 해도 좋음
 </script>
 </body>

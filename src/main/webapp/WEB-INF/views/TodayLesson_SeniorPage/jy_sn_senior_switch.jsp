@@ -6,6 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	
+	location.rload();
+	opener.location.reload();
+	
+});
+
+
+</script>
 </head>
 <body>
 
@@ -67,6 +78,7 @@ function checkDisable()
 }
 
 </script>
+
 
 
 <!-- 시니어 모드에 있는 시니어 정보 관리로 이동하기 -->

@@ -22,6 +22,8 @@ public interface JY_US_SeniorMapper {
 	public SeniorDTO select_senior(String member_id);
 
 	public int update_senior(SeniorDTO dto);
+
+	public void member_levelup(String member_id);
 	
 
 }

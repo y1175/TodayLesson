@@ -455,7 +455,7 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
        	 	return false; 
         
         //결제 완료
-        else if("/orderlist_detail".equals(strUri))
+        else if("/todaylesson/orderlist_detail".equals(strUri))
         	return false;
         
         else if("/update_lesson_comp".equals(strUri))
