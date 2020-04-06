@@ -1,13 +1,55 @@
 @charset "utf-8";
-#ej_content{
-	text-align: center;
+
+#ej_line_narrow{
+	width:15%;
+	border-bottom: 4px solid rgb(224, 62, 82);
+	margin-bottom: 30px;
+}
+.ej_box{
 	
 }
-/* 슬라이더/ */
+.ej_left{
+	text-align: left;
+}
+div.ej_left{
+		float:left;
+		margin-left:200px;
+	margin-bottom: 20px;
+}
+.input_area{
+	width:80%;
+	/* margin-left:0px;
+	margin-right:300px;
+	float:left; */
+	margin: 0px auto;
+}
+/* .note-editor {
+ float:left;
+ 	margin-right:300px;} */
 #ej_container{
 width: 80%;
 margin: auto;
+margin-top: 40px;
+color: rgb(53, 54, 58);
 }
+
+#ej_container_content{
+	text-align: center;
+	margin:auto;
+	
+}
+/* 버튼  */
+.ej_btn{
+	border: 1px transparent;
+padding: 5px 15px; 
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+}
+/* 슬라이더/ */
+
 #ej_sdetail_topimg{
 width:550px;
 }
@@ -15,24 +57,19 @@ width:550px;
 	display:inline-block;
 }
 .ej_top.right{
-/* border: 1px solid silver; */
-width:35%;
+border: 1px solid silver;
+/* width:35%; */
 float:right;
-/* background-color: white; */
-margin-left: 30px;
-margin-top: 110px;
+background-color: white;
+/* margin-left: 30px;
+margin-top: 110px; */
+padding:150px 180px;
 }
-
-.btn-group{border: 0.5px solid silver;
-					width:33%;
-					background-color: white;
-					padding:0px;
-					} 
 
 .ej_grid{
 display:inline-block;
 }
-/* 좋아요 아이콘  */	
+/* 좋아요 아이콘 	 */
 div.fas.fa-heart{
 	color:rgb(255, 180, 180);
 	font-size:17px;
@@ -51,7 +88,7 @@ div.fas.fa-heart{
 	border-color:rgb(224, 62, 82)
 	}
 	
-	/* 장바구니 아이콘  */	
+	/* 장바구니 아이콘 	 */
 div.fa.fa-shopping-cart{
 	color:rgb(166, 166, 166);
 	font-size:17px;
@@ -85,9 +122,105 @@ h4.beforecost{
 text-decoration: line-through;}
 #ej_cost{
 display: inline-block;}
-/* .jbFixed {
-        position: fixed;
-        top: 0px;
-      } */
-/* #followquick { position:absolute; top:230px; right:50%; margin-right:-670px; } */
+/*  */
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu:after,
+#cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu {
+  width: auto;
+  border-bottom: 3px solid rgb(224, 62, 82);
+  font-family: Raleway, sans-serif;
+  line-height: 1;
+}
+#cssmenu ul {/* 
+  background: #ffffff; */
+}
+#cssmenu > ul > li {
+  float: left;
+}
+#cssmenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#cssmenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#cssmenu.align-right > ul > li {
+  float: right;
+}
+#cssmenu.align-right > ul > li > a {
+  margin-right: 0;
+  margin-left: -4px;
+}
+#cssmenu > ul > li > a {
+  z-index: 2;
+  padding: 18px 25px 12px 25px;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #444444;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  margin-right: -4px;
+}
+#cssmenu > ul > li.active > a,
+#cssmenu > ul > li:hover > a,
+#cssmenu > ul > li > a:hover {
+  color: rgb(224, 62, 82);
+  font-weight: bolder;
+}
+#cssmenu > ul > li > a:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 120%;
+ /*  border-top-left-radius: 8px;
+  border-top-right-radius: 8px; */
+  content: "";
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  /* -webkit-transform: perspective(5px) rotateX(2deg); */
+  -webkit-transform-origin: bottom;
+/*   -moz-transform: perspective(5px) rotateX(2deg); */
+  -moz-transform-origin: bottom;
+  /* transform: perspective(5px) rotateX(2deg); */
+  transform-origin: bottom; 
+}
+#cssmenu > ul > li.active > a:after,
+#cssmenu > ul > li:hover > a:after,
+#cssmenu > ul > li > a:hover:after {
+/*   background: #fffbfd; */
+}
+
+/*  */
 

@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
+
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <!-- Bootstrap4 summernote -->
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- Bootstrap4 summernote -->
@@ -24,38 +27,42 @@
    <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.min.js"></script>
 <!--owl carousel css, js-->
     
-<!--style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css"> 
-<!--style-->
+    
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css">  
+<%--  <script src="${pageContext.request.contextPath}/resources/JS/ej_us_storedetail.js"></script> --%>
 
 <script>
-$('document').ready(function() { 
-	$('html, body').animate({
-		scrollTop: $('html').offset().top
-	}, 'slow');
-	/*관련상품카르셀  */
-	var owl = $('.owl-carousel');
-	owl.owlCarousel({
-	    items:4,
-	    loop:true,
-	    margin:10,
-	    nav: true,/* 
-	    autoplay:true,
-	    autoplayTimeout:1000,
-	    autoplayHoverPause:true */
-	});
+$(document).ready(function(){ 
 	
-	 $('.owl-carousel').owlCarousel();
-	 
-	$('#summernote').summernote({
-		placeholder : '후기를 남겨보세요!',
-		minHeight : 370,
-		maxHeight : null,
-		/* focus : true, */
-		lang : 'ko-KR'
-	});	
+	 $('html, body').animate({
+	      scrollTop: $('html').offset().top
+	   }, 'slow');
+	   /*관련상품카르셀  */
+	   var owl = $('.owl-carousel');
+	   owl.owlCarousel({
+	       items:4,
+	       loop:true,
+	       margin:10,
+	       nav: true/* 
+	       autoplay:true,
+	       autoplayTimeout:1000,
+	       autoplayHoverPause:true */
+	   });
+	   
+	    $('.owl-carousel').owlCarousel();
+//썸머노트
+$('#summernote').summernote({
+	placeholder : '후기를 남겨보세요!',
+	minHeight : 370,
+	maxHeight : null,
+	/* focus : true, */
+	lang : 'ko-KR'
+});	
 });
+
 </script>
+
+
 
 </head>
 <body>
@@ -95,7 +102,7 @@ $('document').ready(function() {
 
 
 <div class="ej_grid fist">
-<input type="submit" value="구매하기" id="to_orderform" class='btn btn-primary' ><br></div>
+<input type="submit" value="구매하기" id="to_orderform" class="ej_btn" ><br></div>
 <div class="ej_grid second">
 <a href="#"><div class="fas fa-heart" id="${dto.product_no}"></div></a></div>
 <div class="ej_grid third">
@@ -114,17 +121,7 @@ $('document').ready(function() {
  
  <script>
 
-	$("#to_orderform").click(function(){
-		if(${dto.product_stock }<=0)
-			{
-			alert('일시품절된 상품입니다.');
-			}
-		else{
-		 $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/ej_us_orderform");
-			$("form").submit();  
-		}
-		
-	});
+
 	
 	
 /* 장바구니 아이콘 */
@@ -176,9 +173,7 @@ $('document').ready(function() {
   }
  });
 
-</script>
- <script>
-
+//좋아요 아이콘
  $(".fas.fa-heart").click(function(){
 	 
 	 var productno=$(this).prop("id");
@@ -229,97 +224,109 @@ $('document').ready(function() {
 
 </script>
 <h3>관련상품</h3>
-<hr>
+<div id="ej_line_narrow"></div>
  <!--관련상품 슬라이더  -->
 
 <!--  <div id="wrapper"> -->
 	<div class="owl-carousel owl-theme">
-  	 <c:forEach var="prolist" items="${list}" begin="1" end="12">
+<%--   	 <c:forEach var="prolist" items="${list}" begin="1" end="12"> --%>
   		<div class="item">
-  			<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
+  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
   			<h4>${prolist.product_name }</h4></a><br>
-  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원
+  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
+  			<img alt="a" src="${dto.product_thumb }">
   		</div>
-  	</c:forEach> 
+ <%--  	</c:forEach>  --%>
   	</div> 
 
+ <div id='cssmenu'>
+	<ul>
+   		<li><a href="#ej_box_first">상품소개</a></li>
+   		<li><a href="#ej_box_second">후기</a></li>
+   		<li><a href="#ej_box_third">배송/교환/환불</a></li>
  
- 
-<!--상품소개/후기/배송   -->
-<a href="#ej_first"><div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">상품소개</button></div></a>
-  <a href="#ej_second"><div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">후기</button></div></a>
-  <a href="#ej_third"><div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">배송/교환/환불</button></div></a>
-<!--상품소개/후기/배송   -->
-
-
-
-
-
-<br>
-<div id="ej_first">
-상품소개
+	</ul>
 </div>
-<hr>
+<br>
 
-<div id="ej_content">
+<div id="ej_container_content">
+<div class="ej_box first" id="ej_box_first">
+<span class="ej_left"><h3>상품소개</h3></span>
+</div>
+
 <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_product_topimg.png" >
+<div id="ej_content">
 ${dto.product_content}
-
 </div>
-
-<!-- 후기 -->
 <br>
-<div id="ej_second">
-후기
+<!-- 후기 -->
+<div class="ej_box second"  id="ej_box_second">
+<span class="ej_left"><h3>후기</h3></span>
 </div>
-<hr>
-<table>
+<!-- 댓글리스트 -->
+<table class="table"> 
 <c:forEach var="item" items="${reply}"> 
-
 <tr>
-<td>${item.member_id }</td>
-<td class="reviewTitle">${item.pdreview_title }</td>
-<td class="reviewCon">${item.pdreview_content }</td>
+<td class="reviewTitle">${item.pdreview_title }  </td>
+<td>${item.member_id }  </td>
 <td>${item.pdreview_date }</td>
+</tr>
+<tr>
+<td class="reviewCon">${item.pdreview_content }</td>
 </tr>
 </c:forEach>
 </table>
+<!-- 댓글리스트/ -->
 
+<!-- 방금쓴 댓글(새로고침전) -->
  <section class="replyList">
 <ol>
 </ol>
 </section> 
+<!-- 방금쓴 댓글(새로고침전)/ -->
 
+<!--후기작성폼  -->
 <section class="replyForm">
 <form role="form" method="post" autocomplete="off">
 <input type="hidden" name="gdsNum" id="gdsNum" value="${dto.product_no }">
- <td><label>제목</label>
-      <input type="text" id="pdreview_title" class="pdreview_title"name="pdreview_title">
+ <div class="ej_left"><label>제목</label>
+      <input type="text" id="pdreview_title" class="pdreview_title"name="pdreview_title"></div><br>
+      <br>
+      
 <div class="input_area">
 	<textarea name="pdreview_content" class="repCon" id="summernote" ></textarea>
 </div>
-
-<div class="input_area">
-<button type="button" id="reply_btn" class="btn btn-primary">후기 남기기</button>
+<br>
+<br>
+<button type="button" id="reply_btn" class="ej_btn">후기 남기기</button>
 
 </form>
-
 </section>
+<!--후기작성폼/  -->
 
-<script>
-/* $(".reviewCon").hide(); */
- $(".reviewCon").slideUp();
+   
+<div class="ej_box third"  id="ej_box_third">
+<span class="ej_left"><h3>배송/교환/환불</h3></span>
+</div>
+<hr>
+<img alt="delivery_rule" src="${pageContext.request.contextPath}/resources/IMG/delivery_rule.png">
+</div>
+<!--container_content/  -->
 
-$(".reviewTitle").click(function(){
-	console.log(this);
-	//전체 댓글내용 다보이니까
-	//this 의 내용만 보이도록 수정하기
-	/* $(".reviewCon").toggle(); */
-	$(this).next(".reviewCon").slideToggle(100);
-}); 
+</div>
+<!--container/  -->
+    <script>
+	//후기
+	 $(".reviewCon").slideUp();
+
+	 $(".reviewTitle").click(function(){
+	 	console.log(this);
+	 	//전체 댓글내용 다보이니까
+	 	//this 의 내용만 보이도록 수정하기
+	 	 $(".reviewCon").toggle(); 
+	 	$(this).siblings(".reviewCon").slideToggle(100);
+	 }); 
+	
 
  $("#reply_btn").click(function(){
 
@@ -371,16 +378,6 @@ $(".reviewTitle").click(function(){
  });
 
 </script>
-
-   
-<div id="ej_third">
-배송/교환/환불
-</div>
-<hr>
-<img alt="delivery_rule" src="${pageContext.request.contextPath}/resources/IMG/delivery_rule.png">
-</div>
-</div>
-<!--container  -->
     
 
 </body>
