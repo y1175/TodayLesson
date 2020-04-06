@@ -13,6 +13,13 @@ width:500px; height:auto;
 }
 
 </style>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_NewLessonEvaluation_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
 
 </head>
 <body>

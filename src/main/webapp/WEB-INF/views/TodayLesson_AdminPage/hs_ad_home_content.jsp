@@ -145,7 +145,7 @@
       // Add data
       agememberchart.data = [{
 	         "age": "10대",
-	         "sum": '$memberAge10Sum}'
+	         "sum": '${memberAge10Sum}'
       },{
              "age": "20대",
              "sum": '${memberAge20Sum}'

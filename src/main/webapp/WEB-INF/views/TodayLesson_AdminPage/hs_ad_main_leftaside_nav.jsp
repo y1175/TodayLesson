@@ -31,6 +31,9 @@
          <p class="hs_ad_main_asidenav_nav_Lesson_Title">
             <a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson">레슨관리</a>
          </p>
+         <p class="hs_ad_main_asidenav_nav_NewLessonAccept_Title">
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/apply_lesson">신규레슨접수</a>
+         </p>
          <p class="hs_ad_main_asidenav_nav_NewLessonEvaluation_Title">
             <a href="${pageContext.request.contextPath}/todaylessonadmin/wait_lesson">신규레슨심사</a>
          </p>

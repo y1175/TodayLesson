@@ -63,10 +63,10 @@
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist">주문내역</a>
                </li>
                <li class="hs_us_mypage_mylesson">
-                  <a href="">나의 레슨</a>
+                  <a href="${pageContext.request.contextPath}/todaylessonmypage/my_lesson_list">나의 레슨</a>
                </li>
                <li class="hs_us_mypage_mylessonadmin">
-                  <a href="">나의 레슨관리</a>
+                  <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">나의 레슨관리</a>
                </li>
                <li class="hs_us_mypage_my1:1question">
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question">1:1 문의</a>

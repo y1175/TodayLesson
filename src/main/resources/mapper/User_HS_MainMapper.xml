@@ -18,6 +18,7 @@
        select l.lesson_thumb, l.lesson_category, s.senior_nick
 	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period
        from lesson l join senior s on l.senior_no=s.senior_no
+       where lesson_result=2
        ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
     </select> 
     

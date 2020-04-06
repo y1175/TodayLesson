@@ -8,12 +8,11 @@
 <title>TodayLessonAdminPage</title>
 
 <!--header style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_main_header.css?ver=1">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_main_header.css?ver=1">
 <!--header style-->
 
 </head>
 <body>
-
    <div class="hs_ad_mainheader_width">
       <div class="hs_ad_mainheader_box">
          <sec:authorize access="isAuthenticated()">
@@ -29,11 +28,12 @@
             <a href="">
                <b>관리자모드</b>
             </a>
-            <a href="">
+            <a href="${pageContext.request.contextPath}/todaylessonadmin">
                <img src="${pageContext.request.contextPath}/resources/IMG/SN_AD_Logo.png" alt="SN_AD_Logo" style="width: 15%;">
             </a>
          </div> 
       </div>  
+         
          <div class="hs_ad_mainheader_line"></div>   
      
          <div class="hs_ad_mainheader_navbox">
@@ -46,6 +46,7 @@
                <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list">기타관리</a>
             </nav>
          </div>
+         
          <div class="hs_ad_mainheader_line"></div>
    </div>
 </body>

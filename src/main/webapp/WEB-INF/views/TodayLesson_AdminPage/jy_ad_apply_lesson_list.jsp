@@ -26,6 +26,16 @@ $(document).ready(function(){
 })
 
 </script>
+
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_NewLessonAccept_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
+
+
 </head>
 <body>
 
