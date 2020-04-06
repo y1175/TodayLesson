@@ -11,4 +11,6 @@ public interface Hm_Us_MymanageMapper {
 
 	public int myinfoupdate(MemberDTO dto);
 
+	public int myinfoupdate2(MemberDTO dto);
+
 }

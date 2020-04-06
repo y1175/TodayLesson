@@ -8,4 +8,6 @@ public interface Hm_Us_MymanageService {
 
 	public int MyInfoupdate(MemberDTO dto);
 
+	public int MyInfoupdate2(MemberDTO dto);
+
 }

@@ -1,10 +1,40 @@
 @charset "utf-8";
 
-.mymanageupdatediv {
+#mymanageupdatediv {
 	width: 80%;
 	margin: auto;
 	margin-top: 40px;
 	color: rgb(53, 54, 58);
 	
 	}
+
+#mymanageupdatediv h2{
+	font-size: 24px;
+font-weight: 800;
+margin : 40px 0px;
+}
+.hmupdatebtn{
+	
+		border: 1px transparent;
+	padding: 7px 20px;
+	border-radius: 3px;
+	/* background-color: rgb(224, 62, 82); */
+	background-color: rgba(53, 54, 58, 0.5);
+	font-weight: 600;
+	font-size: 14px;
+	color: white;
+	}
+.hmupdatebtn2{
+			border: 1px transparent;
+	padding: 5px 15px;
+	border-radius: 3px;
+	background-color: rgb(224, 62, 82);
+	/* background-color: rgba(53, 54, 58, 0.5); */
+	font-weight: 600;
+	font-size: 14px;
+	color: white;
+	
+}
+
+
 

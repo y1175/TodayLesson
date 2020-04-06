@@ -196,6 +196,9 @@ public class User_HM_Mymanage_Controller {
 			,@RequestParam("jibunaddr") String jibunaddr
 			,@RequestParam("detailaddr") String detailaddr
 			,@RequestParam("member_nick") String member_nick
+			,@RequestParam("member_bank_name") int member_bank_name
+			,@RequestParam("member_account_name") String member_account_name
+			,@RequestParam("member_account_num") String member_account_num
 			,MemberDTO dto, Model model
 			)
 	{
@@ -209,7 +212,23 @@ public class User_HM_Mymanage_Controller {
 		dto.setMember_phone(member_phone);
 		dto.setMember_zipcode(member_zipcode);
 		dto.setMember_nick(member_nick);
+		
+		if(member_account_name == "") {
+			String fulladdr= "";	
+			if(addrselect==0)
+			{fulladdr=roadaddr;}
+			else
+			{fulladdr=jibunaddr;}
 
+			dto.setMember_addr(fulladdr+" "+detailaddr);
+			
+			int result2 = hm_mymanageservice.MyInfoupdate2(dto);
+			model.addAttribute("result",result2);
+		}else {
+		dto.setMember_bank_name(member_bank_name);
+		dto.setMember_account_name(member_account_name);
+		dto.setMember_account_num(member_account_num);
+		
 		String fulladdr= "";	
 		if(addrselect==0)
 		{fulladdr=roadaddr;}
@@ -220,9 +239,12 @@ public class User_HM_Mymanage_Controller {
 
 		int result1 = hm_mymanageservice.MyInfoupdate(dto);
 		model.addAttribute("result",result1);
+		}
 		
 		return "/TodayLesson_UserPage/hm_us_mymanageupdateresult.us_my_section";
 	}
+	
+	
 	
 /*	È¸¿øÅ»Åð 
 	@RequestMapping("/hm_us_memberwithdraw")

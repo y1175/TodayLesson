@@ -11,62 +11,91 @@
 
 </head>
 <body>
-<div class="mymanageupdatediv">
-
+<div id="mymanageupdatediv">
+<c:set var="dto" value="${dto}"></c:set>
 
 <h2>회원정보 수정</h2>
-<c:set var="dto" value="${dto}"></c:set>
-아이디
-${dto.member_id}
-<form method="post" id="smsForm" >
-<label>연락처</label>
-     <c:choose>
-     <c:when test="${to eq null }">
-     <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
-     value="${dto.member_phone}"/> 
-     </c:when>
-     <c:otherwise>
-     <input type="text" name="to" id="text1" placeholder=" 전화번호 입력 " 
-     value="${to}"/>
-     </c:otherwise>
-     </c:choose>
-     
-      <input type="hidden" name="text" id="text2" > 
-      <input type="button" name="sendSMS" id="sendSMS" value="인증번호 요청" /><br>
-      <label>인증번호 확인:</label>
-<input type="text" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
-<div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
-<div class="alert alert-danger" id="alert-danger2" >인증번호가 일치하지않습니다.</div>
+
+
+<div class="row" style="width: 100%;">
+   <div class="col-md-12">
+      <label for="member_id">아이디</label>
+   </div>
+   <div class="col-md-4" >
+      <input type="text" id="member_id" class="form-control" value="${dto.member_id}" readonly="readonly"
+             style="text-align: center; width:80%;">
+   </div>
+</div>
+
+   <form method="post" id="smsForm"  class="row" style="width: 100%;">
+      <div class="col-md-12" style="margin-top: 10px;">
+         <label>연락처</label>
+      </div>
+      <div class="col-md-12">
+         <div class="col-md-3" style=" padding: 0px;"> 
+         <c:choose>
+            <c:when test="${to eq null }">
+               <input  class="form-control" style="text-align: center;" type="text" name="to" id="text1" placeholder=" 전화번호 입력 " value="${dto.member_phone}"/> 
+            </c:when>
+            <c:otherwise>
+               <input type="text" style="text-align: center;" class="form-control" name="to" id="text1" placeholder=" 전화번호 입력 " value="${to}"/>
+            </c:otherwise>
+         </c:choose>
+         </div>
+         <div class="col-md-2">
+		    <input type="button" name="sendSMS" id="sendSMS" class="hmupdatebtn" value="인증번호 요청" />
+	     </div>
+     </div> 
+     <input type="hidden" name="text" id="text2" > 
+        <div class="col-md-12" style="margin-top: 10px;">
+           <label for="numcheck">인증번호 확인</label>
+        </div>
+        <div class="col-md-12" style="text-align: center;">
+           <div class="col-md-3" style=" padding: 0px;">
+              <input type="text" name="numcheck" class="form-control" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()">
+           </div>
+           <div class="col-md-9" style="font-size: 15px;">
+              <div class="alert alert-success" style="width:35%; height:34px; font-size : 14px; padding: 5px;" id="alert-success2">인증번호가 일치합니다.</div>
+              <div class="alert alert-danger" style="width:35%; height:34px; font-size : 14px; padding: 5px;" id="alert-danger2" >인증번호가 일치하지않습니다.</div>
+           </div>
+        </div>
 
     <input type="hidden" id="authNum" value="${auth_num}">
     <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />         
-</form>
+
+   </form>
 
 
 
 <form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanageupdate" name="frm" id="frm">
-<input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}" ><br>
+<input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}"  ><br>
 <label>비밀번호</label>
-<input type="password" name="member_pwd" id="member_pwd" required="required" placeholder="비밀번호"><br>
+<input type="password"  name="member_pwd" id="member_pwd" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"><br>
 <label>비밀번호확인</label>
-<input type="password" name="pwdcheck" id="pwdcheck" required="required" placeholder="비밀번호확인"
+<input type="password" name="pwdcheck" id="pwdcheck" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호확인"
 onkeyup="passwordCheckFunction();"><br>
 <div class="alert alert-success" id="alert-success">비밀번호가일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지않습니다.</div>
+
+
+
+
 <br><label>이름</label>
-<input type="text" name="member_name" id="member_name" value="${dto.member_name}" required="required"><br>
+<input type="text" name="member_name"  class="form-control"  id="member_name" value="${dto.member_name}" required="required"><br>
 <label>생년월일</label>
-<input type="date" name="member_birth" id="member_birth" value="${dto.member_birth}" required="required"><br>
+<input type="date" name="member_birth"  class="form-control"  id="member_birth" value="${dto.member_birth}" required="required"><br>
  <label>e-mail</label>
-<input type="email" name="member_email" id="member_email" value="${dto.member_email}" required="required"><br>
- <input type="hidden" name="member_phone" id="member_phone" value="${to}" required="required"><br>
+<input type="email" name="member_email"  class="form-control"  id="member_email" value="${dto.member_email}" required="required"><br>
+ <input type="hidden" name="member_phone"   class="form-control"  id="member_phone" value="${to}" required="required"><br>
  
- <h3>계좌정보</h3>
+ 
+ 
+<h4>계좌정보</h4>
 <label>은행명</label>
-<select name="member_bank_name" id="member_bank_name">
+<select name="member_bank_name" id="member_bank_name" class="custom-select">
 <c:if test="${empty dto.member_bank_name }">
 <option disabled="disabled" selected="selected">-----</option>
-</c:if>
+</c:if> 
 <c:if test="${!empty dto.member_bank_name }">
 <option id="bank_name"></option>
 </c:if>
@@ -117,56 +146,64 @@ onkeyup="passwordCheckFunction();"><br>
 <option value="290">부국증권</option>
 </select>
 
+
 <label>예금주</label>
 <c:if test="${!empty dto.member_account_name}">
-<input type="text" id="member_account_name" name="member_account_name" value="${dto.member_account_name}" required="required">
+<input type="text" id="member_account_name"  class="form-control"  name="member_account_name" value="${dto.member_account_name}" required="required">
 </c:if>
 <c:if test="${empty dto.member_account_name }">
-<input type="text" id="member_account_name" name="member_account_name" required="required" value="">
+<input type="text" id="member_account_name"  class="form-control"  name="member_account_name" value="">
 </c:if>
 <label>계좌번호</label>
 <c:if test="${!empty dto.member_account_num }">
-<input type="text" id="member_account_num" name="member_account_num" value="${dto.member_account_num}" required="required">
+<input type="text" id="member_account_num"   class="form-control"  name="member_account_num" value="${dto.member_account_num}" required="required">
 </c:if>
 <c:if test="${empty dto.member_account_num}">
-<input type="text" id="member_account_num" name="member_account_num" value="" required="required">
+<input type="text" id="member_account_num"  class="form-control" name="member_account_num" value="" >
 </c:if>
-<input type="hidden" id="token" name="token" value="${token}">
-<input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
- <br>
+<input type="hidden" id="token" name="token"  class="form-control"  value="${token}">
+<div style="margin: 20px 0px;">
+<input type="button" class="hmupdatebtn" value="계좌 실명 확인" onclick="checkBankHolder();">
+ </div>
  
  
-<label>주소</label>
+					<label>주소</label>
 					<div>
-						<div>
-							<input type="text" id="sample4_postcode" name='member_zipcode'
-								value="${dto.member_zipcode}" >
+						<div style="margin :0px 0px 20px;">
+							<input type="text" id="sample4_postcode"  class="form-control"  name='member_zipcode' value="${dto.member_zipcode}" >
 						</div>
-						<input type="button" onclick="sample4_execDaumPostcode()"
-							value="우편번호 찾기" readonly="readonly" ><br>
+						<input type="button" class="hmupdatebtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" readonly="readonly" ><br>
 					</div>
-					<div class='juso'>
-						<input type="text" id="sample4_roadAddress"  value="${dto.member_addr}"
-							name="roadaddr" readonly="readonly">
-						<input type="radio" id='roadAddress' name='addrselect' value="0"
-							required><label for="addrselect">도로명주소 선택</label> <br>
-
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소"
-							name="jibunaddr" readonly="readonly">
-						<input type="radio" id='jibunAddress' name='addrselect' value="1"><label
-							for="addrselect">지번주소 선택</label><br>
+					
+					
+					<div class='juso' style="margin:20px 0px 20px;">
+						<input type="text"   class="form-control" id="sample4_roadAddress"  value="${dto.member_addr}" name="roadaddr" readonly="readonly">
+						<input type="radio"   id='roadAddress' name='addrselect' value="0" required>
+						<label for="addrselect">도로명주소 선택</label> <br>
+							
+						<input type="text"  class="form-control" id="sample4_jibunAddress" placeholder="지번주소" 	name="jibunaddr" readonly="readonly">
+						<input type="radio" id='jibunAddress' name='addrselect' value="1">
+						<label for="addrselect">지번주소 선택</label><br>
+				
 					</div>
-					<span id="guide" style="color: #999"></span> <label
-						for="detailaddr">상세주소</label> <input type="text" id="detailaddr"
-						name="detailaddr"> 
-<label>닉네임</label>
-<input type="text" name="member_nick" value="${dto.member_nick}" required="required"><br>
-<button type="submit" id="submit" class="btn btn-primary">정보 수정</button><br>
-<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
-</form>
+					
+					
+						<span id="guide" style="color: #999"></span> 
+						<label for="detailaddr">상세주소</label> 
+						<input type="text" id="detailaddr" class="form-control" name="detailaddr"> 
 
- <input type="button" class="hm_memberwithdrawbtn" value="회원탈퇴" > 
-<input type="reset" value="취소">
+
+						<div style="margin:20px 0px;">
+						<label>닉네임</label>
+						<input type="text"  class="form-control" name="member_nick" value="${dto.member_nick}" required="required"><br>
+						</div>
+						<button type="submit" id="submit" class="hmupdatebtn2">정보 수정</button><br>
+						<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+						</form>
+
+
+ <input type="button" class="hmupdatebtn" value="회원탈퇴" > 
+<input type="reset" class="hmupdatebtn" value="취소">
 </div>
 
 

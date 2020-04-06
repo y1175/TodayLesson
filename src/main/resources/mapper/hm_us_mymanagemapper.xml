@@ -27,5 +27,17 @@ set member_pwd =#{member_pwd}
 where member_id =#{member_id}
 </update>
 
+<update id="myinfoupdate2" parameterType="com.todaylesson.DTO.MemberDTO">
+update member
+set member_pwd =#{member_pwd}
+,member_name=#{member_name}
+,member_birth=#{member_birth}
+,member_email=#{member_email}
+,member_phone=#{member_phone}
+,member_zipcode=#{member_zipcode}
+,member_addr=#{member_addr}
+,member_nick=#{member_nick}
+where member_id =#{member_id}
+</update>
 
 </mapper>
