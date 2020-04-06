@@ -213,7 +213,7 @@ public class User_HM_Mymanage_Controller {
 		dto.setMember_zipcode(member_zipcode);
 		dto.setMember_nick(member_nick);
 		
-		if(member_account_name == "") {
+		if(member_account_name == null) {
 			String fulladdr= "";	
 			if(addrselect==0)
 			{fulladdr=roadaddr;}

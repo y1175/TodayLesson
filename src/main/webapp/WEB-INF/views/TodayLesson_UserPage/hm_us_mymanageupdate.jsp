@@ -152,14 +152,14 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="text" id="member_account_name"  class="form-control"  name="member_account_name" value="${dto.member_account_name}" required="required">
 </c:if>
 <c:if test="${empty dto.member_account_name }">
-<input type="text" id="member_account_name"  class="form-control"  name="member_account_name" value="">
+<input type="text" id="member_account_name"  class="form-control"  name="member_account_name" >
 </c:if>
 <label>계좌번호</label>
 <c:if test="${!empty dto.member_account_num }">
 <input type="text" id="member_account_num"   class="form-control"  name="member_account_num" value="${dto.member_account_num}" required="required">
 </c:if>
 <c:if test="${empty dto.member_account_num}">
-<input type="text" id="member_account_num"  class="form-control" name="member_account_num" value="" >
+<input type="text" id="member_account_num"  class="form-control" name="member_account_num"  >
 </c:if>
 <input type="hidden" id="token" name="token"  class="form-control"  value="${token}">
 <div style="margin: 20px 0px;">
