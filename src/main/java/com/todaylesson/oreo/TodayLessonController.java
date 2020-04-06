@@ -407,7 +407,9 @@ public class TodayLessonController {
            String url = googleOAuth2Template.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
            System.out.println("/googleLogin, url : " + url);
            model.addAttribute("google_url", url);
-
+           
+          
+           
            /* 생성한 인증 URL을 View로 전달 */
            return "/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section";
        }
@@ -450,8 +452,8 @@ public class TodayLessonController {
 
      //google 로그인   
        @RequestMapping(value = "/googleSignInCallback")
-       public String doSessionAssignActionPage(HttpServletRequest request) throws Exception {
-    
+       public ModelAndView doSessionAssignActionPage(HttpServletRequest request,Model model) throws Exception {
+    	   ModelAndView view = new ModelAndView();
            String code = request.getParameter("code");
            System.out.println(code);
            
@@ -489,8 +491,24 @@ public class TodayLessonController {
            System.out.println("구글 이메일 : "+result.get("email"));
            System.out.println("구글 sub : "+result.get("sub"));
            
+           if(todaylessonService.oauth2idcheck(result.get("email"))==0)
+           {
+           List<Member_AuthDTO> list=new ArrayList<>();
+			MemberDTO dto=new MemberDTO();
+			dto.setMember_id(result.get("email"));
+			dto.setMember_pwd(result.get("sub"));
+			 //auth를 list에 넣어서 dto에 셋팅
+			 list.add(new Member_AuthDTO("ROLE_USER",dto.getMember_id()));
+			 dto.setAuthList(list);
+			 
+			 todaylessonService.googleinsert(dto);
+
+           }
+           view.addObject("googleId",result.get("email"));
+           view.addObject("googlePwd",result.get("sub"));
+           view.setViewName("/TodayLesson_UserPage/hs_us_main_sec_login.us_main_section");
            
-           return "redirect:/todaylesson";
+           return view;
     
        }
        

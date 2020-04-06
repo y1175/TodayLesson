@@ -96,6 +96,26 @@
 insert into stat_log(member_id,stat_logdate)
 values(#{id},now())
 </insert>
+
+<insert id="oauth2insert" parameterType="com.todaylesson.DTO.MemberDTO">
+			<selectKey resultType="integer" keyProperty="member_no" order="BEFORE">
+		select max(member_no)+1 as member_no
+		from member
+		</selectKey>
+		insert into member(member_no, member_id, member_pwd, member_name, 
+		                   member_birth, member_phone, member_addr, member_zipcode, 
+		                   member_email, member_nick, member_img, member_join_date, enabled,member_key)
+		                   values(#{member_no}, #{member_id}, #{member_pwd}, #{member_id}, 
+		                          '1990-01-01', 'none', 'none', '0',
+		                          #{member_id}, #{member_id}, 'user',now(),1,'OAUTH')
+	</insert>
+	
+	<select id="oauth2idcheck" parameterType="java.util.HashMap" resultType="int">
+	select count(*)
+	from member
+	where member_id=#{id}
+	</select>
+	
 </mapper>
 
 

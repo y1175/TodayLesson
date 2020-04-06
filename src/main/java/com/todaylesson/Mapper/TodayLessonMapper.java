@@ -17,5 +17,7 @@ public interface TodayLessonMapper {
 	
 	public int searchPassword(String member_id, String member_email, String key);
 	public void loginCount(HashMap<String, Object> hm);
+	public void oauth2insert(MemberDTO dto);
+	public int oauth2idcheck(HashMap<String, Object> hm);
 	
 }

@@ -39,5 +39,20 @@ public class TodaylessonService {
 		mapper.loginCount(hm);
 		
 	}
+	public void googleinsert(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		String changepwd= encoder.encode(dto.getMember_pwd());
+	       dto.setMember_pwd(changepwd);
+		   mapper.oauth2insert(dto);
+	       //System.out.println(dto.getAuthList().get(0).getMember_id());
+		   mapper.insertMemberSub(dto);
+		
+	}
+	public int oauth2idcheck(String id) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("id", id);
+		return mapper.oauth2idcheck(hm);
+	}
 	
 }

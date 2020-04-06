@@ -32,6 +32,7 @@ function orderSelect()
 	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard.css?ver=1">
 </head>
 <body>
+
 <sec:authentication property="principal" var="pinfo"/>	
 <table class="table">
 <thead>
