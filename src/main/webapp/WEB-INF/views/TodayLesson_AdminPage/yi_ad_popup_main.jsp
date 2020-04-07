@@ -34,10 +34,9 @@
   <div class="form-group">
 <label>사용여부</label>
 <div class="form-check">
-<input class="form-check-input" type="radio" name="popup_use" class="popup_use" id="yes1" value="1">
+<input class="form-check-input popup_use" type="radio" name="popup_use" id="yes1" value="1">
 <label class="form-check-label" for="yes1">예</label>
-
-<input class="form-check-input" type="radio" name="popup_use" class="popup_use" id="no1" value="0">
+<input class="form-check-input popup_use" type="radio" name="popup_use"  id="no1" value="0">
 <label class="form-check-label" for="no1">아니오</label>
 </div>
 </div>

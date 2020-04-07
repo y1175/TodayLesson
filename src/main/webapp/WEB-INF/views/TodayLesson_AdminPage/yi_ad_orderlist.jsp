@@ -15,42 +15,62 @@
          color: rgb(224, 62, 82);
       }
    </style>
-   <link rel="stylesheet"
+	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=1">
 <!-- CSSstyle -->
 </head>
 <body>
 <div id="yi_container">
-주문내역 관리
+<h3>주문내역 관리</h3>
+
+
 <form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
+
+<div class="form-group">
 <label>주문상태</label>
-<input type="radio" id="order_all" name="orderlist_orderstatus" value="0"><label for="order_all">전체</label>
-<input type="radio" id="order_complete" name="orderlist_orderstatus" value="1"><label for="order_complete">주문완료</label>
-<input type="radio" id="deliverying" name="orderlist_orderstatus" value="2"><label for="deliverying">배송중</label>
-<input type="radio" id="delivery_complete" name="orderlist_orderstatus" value="3"><label for="delivery_complete">배송완료</label>
-<input type="radio" id="order_cancel" name="orderlist_orderstatus" value="4"><label for="order_cancel">주문취소</label>
-<br>
-<label>주문번호</label>
-<input type="text" id="orderlist_search" name="orderlist_search"><br>
+<div class="form-check">
+<input class="form-check-input orderlist_orderstatus" type="radio" id="order_all" name="orderlist_orderstatus" value="0">
+<label class="form-check-label" for="order_all">전체</label>
+<input class="form-check-input orderlist_orderstatus" type="radio" id="order_complete" name="orderlist_orderstatus" value="1">
+<label class="form-check-label" for="order_complete">주문완료</label>
+<input class="form-check-input orderlist_orderstatus" type="radio" id="deliverying" name="orderlist_orderstatus" value="2">
+<label class="form-check-label" for="deliverying">배송중</label>
+<input class="form-check-input orderlist_orderstatus" type="radio" id="delivery_complete" name="orderlist_orderstatus" value="3">
+<label class="form-check-label" for="delivery_complete">배송완료</label>
+<input class="form-check-input orderlist_orderstatus" type="radio" id="order_cancel" name="orderlist_orderstatus" value="4">
+<label class="form-check-label" for="order_cancel">주문취소</label>
+</div>
+</div>
 
+<div class="form-group">
+<label for="orderlist_search">주문번호</label>
+<input class="form-control" type="text" id="orderlist_search" name="orderlist_search" aria-describedby="order_no_search">
+<small id="order_no_search" class="form-text text-muted">주문번호 정확히 입력하세요.</small>
+</div>
+
+<div class="form-group">
 <label>주문기간</label>
-<input type="date" name="start_date"> ~ <input type="date" name="end_date"><br>
-
-<input type="submit" value="조회">
+<input class="form-control" id="start_date" type="date" name="start_date" aria-describedby="orderstart">
+<small id="orderstart" class="form-text text-muted">검색범위를 입력하세요(첫날)</small> ~ 
+<input class="form-control" id="end_date" type="date" name="end_date" aria-describedby="orderend">
+<small id="orderend" class="form-text text-muted" >검색범위를 입력하세요(마지막날)</small>
+</div>
+<input type="submit" class="order_search_btn" value="조회">
 </form>
+
 
 <form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
 <select name="orderlist_category">
 <option value="1" selected="selected">스토어</option>
 <option value="2">레슨</option>
 </select>
-<input type="submit" value="스토어/레슨 선택">
+<input type="submit" class="storeselect-btn" value="스토어/레슨 선택">
 </form>
 
 
 <form action="/todaylessonadmin/admin_order_modify">
-<table>
-<thead>
+<table class="table table-hover">
+<thead class="thead-dark">
 <tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th rowspan="2">금액합계</th><th rowspan="2">정산상태</th></tr>
 <tr><th>주문상태</th><th>주문자 ID</th><th>배송 주소</th><th>상품번호</th></tr>
 </thead>
@@ -106,6 +126,9 @@ $('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calc
 <c:if test="${page.next }">
 <a href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}"><c:out value="다음"/></a>
 </c:if>
+</div>
+
+
 <script>
 
 /*주문배송상태 변경 셀렉터*/
@@ -154,8 +177,8 @@ $('.calculate_select').on("change",function(){
 		else
 		{location.href="/todaylessonadmin/admin_order_calculate/"+orderlist_no+"/"+selected;}
 	}
-});
+})
 </script>
-</div>
+
 </body>
 </html>
