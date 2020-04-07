@@ -5,6 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_sn_ModifyInformation_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->  
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 

@@ -21,7 +21,13 @@
 .layer { display: none; }
 
 </style>
-
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_sn_LessonWrite_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle --> 
 
 <script>
 	$(document).ready(function() {

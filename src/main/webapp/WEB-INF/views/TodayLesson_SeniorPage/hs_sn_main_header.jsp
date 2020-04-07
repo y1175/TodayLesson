@@ -24,10 +24,10 @@
             </form>
          </sec:authorize>
          <div class="hs_sn_mainheader_logo_adminmode">
-            <a href="">
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">
                <b>시니어모드</b>
             </a>
-            <a href="">
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">
                <img src="${pageContext.request.contextPath}/resources/IMG/SN_AD_Logo.png" alt="SN_AD_Logo" style="width: 15%;">
             </a>
             
