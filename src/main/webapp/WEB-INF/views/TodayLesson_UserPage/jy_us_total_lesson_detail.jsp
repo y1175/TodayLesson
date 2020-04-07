@@ -18,6 +18,13 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
    <script src="/resources/JS/summernote-ko-KR.js"></script>
 <!--summernote css/js/ko-kr-->
+<!--owl carousel css, js-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.carousel.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.theme.default.css">
+   <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.min.js"></script>
+<!--owl carousel css, js-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson_detail.css">  
 
 <style>
 .selected {
@@ -45,6 +52,24 @@ li>ul>li {
 
 $('document').ready(function() { 
 	
+	 $('html, body').animate({
+	      scrollTop: $('html').offset().top
+	   }, 'slow');
+	   /*관련상품카르셀  */
+	   var owl = $('.owl-carousel');
+	   owl.owlCarousel({
+	       items:4,
+	       loop:true,
+	       margin:10,
+	       nav: true/* 
+	       autoplay:true,
+	       autoplayTimeout:1000,
+	       autoplayHoverPause:true */
+	   });
+	   
+	    $('.owl-carousel').owlCarousel();
+	    
+	    
 	
 	$('html, body').animate({
 		scrollTop: $('html').offset().top
@@ -112,19 +137,89 @@ $('document').ready(function() {
 </head>
 <body>
 
+<div id="ej_container">
 
 
+  <form role="form" method="post" id="form1" name="form" >
+ 
+<!--썸네일 이미지 원본 맨위에 보여줌-->
+<div class="ej_top img">
+<img src="${dto.lesson_thumb }" id="lesson_thumb" width="60%">
+</div>
+
+<div class="ej_top right">
+<c:choose>
+
+		<c:when test="${dto.lesson_category == 1}">
+			<c:out value="운동" />
+		</c:when>
+
+		<c:when test="${dto.lesson_category == 2}">
+			<c:out value="교육" />
+		</c:when>
+
+		<c:when test="${dto.lesson_category == 3}">
+			<c:out value="핸드메이드" />
+		</c:when>
+
+		<c:when test="${dto.lesson_category == 4}">
+			<c:out value="it" />
+		</c:when>
+
+		<c:otherwise>
+			<c:out value="요리" />
+		</c:otherwise>
+
+	</c:choose>
+	<br>
+          
+<h3><c:out value="${dto.lesson_title}"></c:out><br></h3>
+<h4 class="beforecost" id="ej_cost"><fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+</h4>
+
+	<jsp:useBean id="now" class="java.util.Date"  />
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></div>
+	<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
+	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
+	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
+	<c:if test="${dto.lesson_earlybird eq 1 }">
+	<c:if test="${itDate - isDate <= 7}">
+	<c:out value="${dto.lesson_cost* 0.82}"/>
+	</c:if>
+	</c:if>
+		<c:if test="${dto.lesson_earlybird eq 0}">
+		<c:out value="${dto.lesson_cost}" />
+	</c:if>
+	<c:if test="${itDate - isDate > 7 }">
+	    <c:out value="${dto.lesson_cost}" />
+	</c:if>
+	
+
+
+
+수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required" readonly="readonly"><br>
+배송비 무료<br>
+
+
+<div class="ej_grid fist">
+	<input type="hidden" name="is_it_possible" value="${possible_junior}"/>
+	<!-- 수강 가능 인원이 0이면 구매 못하게 -->
+	
+<c:if test="${possible_junior != 0}">
+<input type="button" value="구매하기" id="to_orderform" class="ej_btn"  onclick="location.href='${pageContext.request.contextPath }/todaylesson/lesson_buy/${dto.lesson_no}'"><br></div>
+</c:if>
+
+<div class="ej_grid second">
+<a href="#"><div class="fas fa-heart insert_my_like" ></div></a></div>
+<div class="ej_grid third">
+<a href="#"><div class="fa fa-shopping-cart insert_my_cart" ></div></a></div>
+
+
+<input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
+ </form>
 
 
 	<!-- 레슨명, 이런 기본적인건 옆에 배치 -->
-
-
-
-
-	<button class="insert_my_like">좋아요</button>
-	<button class="insert_my_cart">카트에 담기</button>
-
-	<br>
 
 
 	<script>
@@ -209,12 +304,42 @@ $(".insert_my_cart").click(function(){
 
 </script>
 
-<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
 
-	레슨명
-	<br>
-	<c:out value="${dto.lesson_title }" />
-	<br> 이 강의는 "
+<h3>관련상품</h3>
+<div id="ej_line_narrow"></div>
+ <!--관련상품 슬라이더  -->
+
+	<div class="owl-carousel owl-theme">
+  	 <c:forEach var="item" items="${list}" begin="1" end="12"> 
+  		<div class="item">
+  			<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/${list.lesson_no}"><img src="${list.lesson_thumb }" alt="thumb"><br>
+  			<h4>${list.lesson_title }</h4>
+  			</a>
+  			<br>
+  			<fmt:formatNumber value="${list.lesson_cost}" type="number" maxFractionDigits="3"/>원 
+  		</div>
+  	</c:forEach>  
+  	</div> 
+  	
+  	
+  	 <div id='cssmenu'>
+	<ul>
+   		<li><a href="#ej_box_first">상품소개</a></li>
+   		<li><a href="#ej_box_second">문의</a></li>
+   		<li><a href="#ej_box_third">후기</a></li>
+   		<li><a href="#ej_box_fourth">배송/교환/환불</a></li>
+ 
+	</ul>
+</div>
+
+<br>
+
+<div id="ej_container_content">
+<div class="ej_box first" id="ej_box_first">
+<span class="ej_left"><h3>레슨소개</h3></span>
+ <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_product_topimg.png" >
+ 
+ <br> 이 강의는 "
 	<c:choose>
 
 		<c:when test="${dto.lesson_category == 1}">
@@ -242,17 +367,18 @@ $(".insert_my_cart").click(function(){
 	<br> 총
 	<c:out value="${dto.lesson_number}" />
 	강으로 구성되어 있습니다.
-
-	<!-- 이 위에 멘트는 다회성, 온라인에만 나오게  -->
-
-	<br> 레슨 내용
-	<br>
+	
+ 
 	<div class="summer">${dto.lesson_content}</div>
 
-	수강 가능한 최대 주니어수
+
+수강 가능한 최대 주니어수
 	<br>
 	<c:out value="${dto.lesson_member_max}" />
-	<br> 현재 수강 중인 주니어 수
+	
+	<br> 
+	
+	현재 수강 중인 주니어 수
 	<br>
 	<c:out value="${dto.lesson_junior_count}" />
 	<br> 수강 가능한 주니어 수
@@ -260,61 +386,13 @@ $(".insert_my_cart").click(function(){
 	<c:set var="possible_junior"
 		value="${dto.lesson_member_max - dto.lesson_junior_count}" />
 	<c:out value="${possible_junior}" />
-	<br> 카테고리
-	<br>
-	<c:choose>
-
-		<c:when test="${dto.lesson_category == 1}">
-			<c:out value="운동" />
-			<br>
-		</c:when>
-
-		<c:when test="${dto.lesson_category == 2}">
-			<c:out value="교육" />
-			<br>
-		</c:when>
-
-		<c:when test="${dto.lesson_category == 3}">
-			<c:out value="핸드메이드" />
-			<br>
-		</c:when>
-
-		<c:when test="${dto.lesson_category == 4}">
-			<c:out value="it" />
-			<br>
-		</c:when>
-
-		<c:when test="${dto.lesson_category == 5}">
-			<c:out value="요리" />
-			<br>
-		</c:when>
-
-		<c:otherwise>
-			<c:out value="기타" />
-			<br>
-		</c:otherwise>
-
-	</c:choose>
-
-	레슨 가격
-	<br>
-	<jsp:useBean id="now" class="java.util.Date"  />
-	<div style="display: none;"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></div>
-	<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
-	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
-	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
-	<c:if test="${dto.lesson_earlybird eq 1 }">
-	<c:if test="${itDate - isDate <= 7}">
-	<c:out value="${dto.lesson_cost* 0.82}"/>
-	</c:if>
-	</c:if>
 	
-	<c:if test="${dto.lesson_earlybird eq 0}">
-		<c:out value="${dto.lesson_cost}" />
-	</c:if>
-	<c:if test="${itDate - isDate > 7 }">
-	    <c:out value="${dto.lesson_cost}" />
-	</c:if>
+
+	
+  	
+<input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
+
+
 
 
 	<br> 레슨 판매 기간
@@ -380,12 +458,11 @@ $(".insert_my_cart").click(function(){
 	<c:out value="${dto.lesson_senior_title}" />
 	<br> 시니어 소개
 	<div class="summer">${dto.lesson_senior_content}</div>
-	<input type="button"
-		onclick="location.href='${pageContext.request.contextPath }/todaylesson/lesson_buy/${dto.lesson_no}'">
 	<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list">목록으로</a>
 
 
-
+<div class="ej_box second" id="ej_box_second">
+<span class="ej_left"><h3>문의</h3></span>
 	<div class="container">
 		<form id="commentForm" name="commentForm" method="post">
 			<br>
@@ -427,6 +504,9 @@ $(".insert_my_cart").click(function(){
 
 
 <div class="container">
+<div class="ej_box third"  id="ej_box_third">
+<span class="ej_left"><h3>후기</h3></span>
+</div>
 		<form id="reviewForm" name="reviewForm" method="post">
 			<br>
 			<br>
@@ -458,6 +538,15 @@ $(".insert_my_cart").click(function(){
 			<div id="reviewList"></div>
 		</form>
 	</div>
+	</div>
+	<div class="ej_box fourth"  id="ej_box_fourth">
+<span class="ej_left"><h3>배송/교환/환불</h3></span>
+</div>
+<hr>
+<img alt="delivery_rule" src="${pageContext.request.contextPath}/resources/IMG/delivery_rule.png">
+	
+	</div>
+</div>
 
 	<script>
 /*
@@ -810,7 +899,6 @@ function getLreviewList(){
     
 
    </script>
-
 
 </body>
 </html>

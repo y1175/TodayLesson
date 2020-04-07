@@ -191,7 +191,7 @@ function multiple_time_lesson_date(){
 <form method="post" action="${pageContext.request.contextPath }/todaylessonsenior/insert_result" name="form" autocomplete="off" enctype="multipart/form-data"> 
 
 
-<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+ <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 
 <!-- 멤버 아이디 -->    
 <input type="hidden" id="senior_no" name="senior_no" value="${senior_no}">

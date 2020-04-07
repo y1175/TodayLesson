@@ -268,5 +268,14 @@ order by orderlist_date desc limit 1
 	</update>
 
 
+<select id="ttlesson_cat_select" resultType="com.todaylesson.DTO.AllLessonDTO">
+
+		select * from lesson join senior
+		on lesson.senior_no =
+		senior.senior_no
+		where lesson_category = #{lesson_cat}
+		
+		</select>
+
 
 </mapper>

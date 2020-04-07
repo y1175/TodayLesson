@@ -81,6 +81,13 @@ public class JY_US_TotalLessonController {
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
 		model.addAttribute("dto", dto);
 
+		int lesson_cat = dto.getLesson_category();
+		List<AllLessonDTO> list = ttlesson_service.ttlesson_cat_select(lesson_cat);
+		model.addAttribute("list",list);
+		
+		System.out.println(list.toString());
+		System.out.println(dto.toString());
+		
 		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
 

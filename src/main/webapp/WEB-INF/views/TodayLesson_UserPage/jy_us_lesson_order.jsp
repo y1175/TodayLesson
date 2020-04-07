@@ -26,6 +26,8 @@
 
 
 <body>
+ <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+
 <h2 text align="center">주문신청서</h2>
 <h4>주문할 레슨</h4>
 <hr>
@@ -360,7 +362,7 @@ $("#sameaddr").on('click', function() {
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
       
        			
-       			$("form").attr("action", "/orderlist_detail");
+       			$("form").attr("action", "/todaylesson/orderlist_detail");
        			$("form").submit();  
        		} else {
     	   

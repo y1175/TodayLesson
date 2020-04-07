@@ -171,6 +171,12 @@ public class JY_US_TotalLessonServiceImple implements JY_US_TotalLessonService {
 	}
 
 
+	@Override
+	public List<AllLessonDTO> ttlesson_cat_select(int lesson_cat) {
+		return mapper.ttlesson_cat_select(lesson_cat);
+	}
+
+
 
 
 }

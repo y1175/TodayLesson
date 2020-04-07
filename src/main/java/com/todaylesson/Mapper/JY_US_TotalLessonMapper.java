@@ -66,5 +66,7 @@ public interface JY_US_TotalLessonMapper {
 
 	public void add_lesson_junior(int lesson_no);
 
+	public List<AllLessonDTO> ttlesson_cat_select(int lesson_cat);
+
 
 }
