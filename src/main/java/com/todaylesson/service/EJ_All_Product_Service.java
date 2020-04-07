@@ -82,6 +82,8 @@ public interface EJ_All_Product_Service {
 
 	public int updateproductlike(int product_no);
 
+	public int selectcategorynum(int product_no);
+
 
 
 

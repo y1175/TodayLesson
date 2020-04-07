@@ -243,6 +243,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.updateproductlike(product_no);
 	}
 
+	@Override
+	public int selectcategorynum(int product_no) {
+		// TODO Auto-generated method stub
+		return mapper.selectcategorynum(product_no);
+	}
+
 
 
 }

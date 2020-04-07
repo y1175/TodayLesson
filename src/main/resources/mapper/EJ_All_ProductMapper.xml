@@ -243,4 +243,10 @@ where product_no=#{product_no} and member_id = #{member_id}
    	where orderlist_no=#{orderlist_no}
    	</select>
    	
+   	<!--해당상품이 어떤카테고리인지 select  -->
+   	<select id="selectcategorynum" parameterType="int" resultType="int">
+   	select product_category
+   	from product
+   	where product_no=#{product_no}
+   	</select>
 </mapper> 

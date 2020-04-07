@@ -77,7 +77,8 @@ public class EJ_User_Store_Controller {
 			,@RequestParam(required=false, defaultValue="recent") String order
 			, Model model) {
 		
-		List<ProductDTO> list = service.selectAll(order);
+		int product_category=service.selectcategorynum(product_no);
+		List<ProductDTO> list = service.selectcategory(product_category);
 		model.addAttribute("list",list);
 		
 		List<PdReviewDTO> reply = service.replyList(product_no);

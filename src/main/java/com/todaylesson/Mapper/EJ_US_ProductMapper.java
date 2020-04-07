@@ -86,4 +86,6 @@ public interface EJ_US_ProductMapper {
 
 	public int updateproductlike(int product_no);
 
+	public int selectcategorynum(int product_no);
+
 }

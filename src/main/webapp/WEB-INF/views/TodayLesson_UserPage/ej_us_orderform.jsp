@@ -11,31 +11,32 @@
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     <!-- Bootstrap CSS/ -->
+    <!-- 주소찾기-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_findAddr.js"></script>
+<!--  주소찾기/-->
+<!--결제 아임포트  -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<style>
-
-</style>
+<!--결제아임포트/  -->
+<!--mystyle  -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderform.css">  
+<!--mystyle/  -->
 </head>
 
 
 
 
 <body>
-<script>
 
-//$("#ordersuccess_btn").hide();
-</script>
-
+<div id="ej_container">
 <h2 text align="center">주문신청서</h2>
 <h4>주문할 취미</h4>
 <hr>
 <input type="hidden" name="product_no" value=${product_no }>
-<table>
+<table class="table">
 <thead>
 <th></th><th>상품명</th><th>개당금액</th><th>수량</th><th>배송비</th><th>주문금액</th>
 </thead>
@@ -314,7 +315,7 @@ $("#sameaddr").on('click', function() {
      
      
        		if (rsp.success) {
-      var msg = '화면의 주문완료 버튼을 눌러주세요';
+  /*     var msg = '화면의 주문완료 버튼을 눌러주세요'; */
       /*  msg += '고유ID : ' + rsp.imp_uid;
        msg += '상점 거래ID : ' + rsp.merchant_uid;
        msg += '결제 금액 : ' + rsp.paid_amount;
@@ -323,6 +324,7 @@ $("#sameaddr").on('click', function() {
        			
        			$("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlistdetail");
        			$("form").submit();  
+       			
        		} else {
     	   
        		var msg = '결제에 실패하였습니다.';
@@ -336,7 +338,7 @@ $("#sameaddr").on('click', function() {
   
  
     </form>
-  
+  </div>
     
 </body>
  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
