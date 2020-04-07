@@ -34,11 +34,11 @@
 
 
 <!-- 검색 --> 
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:30%; margin:40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:23%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage?currPage=${page.startBlock }"
  style="margin:0px auto;">
- <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
 <option value="all">전체</option>
 <option value="member_id">아이디</option>
  <option value="member_name">이름</option>
@@ -158,7 +158,7 @@
   		<div class="modal-dialog" role="document">
    		<div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModallabel">Modal title</h5>
+        <h4 class="modal-title" id="exampleModallabel">회원 상세 정보</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -166,10 +166,7 @@
      	 <div class="modal-body">
      	 			<p id="member_detail">
      	 			</p>
-          			  <!-- <p id="member_id"></p>
-          			  
-            		  닉네임<p id="member_nick"/>
-           			  이름<p id="member_name"/> -->
+          		
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

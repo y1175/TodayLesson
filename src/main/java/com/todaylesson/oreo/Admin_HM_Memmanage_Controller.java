@@ -82,34 +82,6 @@ public class Admin_HM_Memmanage_Controller {
 		
 	}
 	
-	//디테일 정보
-	/*@RequestMapping("/hm_memmanagedetail")
-	public String detail(@RequestParam("member_no")int member_no, Model model)
-	{
-		System.out.println(member_no);
-		MemberDTO dto = service.detail(member_no);
-		model.addAttribute("dto",dto);
-		
-		return "TodayLesson_AdminPage/hm_ad_user_memmanage.hs_ad_main_section";
-	}
-	*/
 	
-	
-	
-	/*@RequestMapping("/member_levelupdate")
-	public void member_levelupdate(
-			@RequestParam("member_id") String member_id
-			,@RequestParam("member_level") int member_level)
-	{
-		
-		
-		HashMap<String, Object> map = new HashMap<>();
-		
-		map.put("member_id", member_id);
-		map.put("member_level", member_level);
-		
-	
-		
-	}*/
 	
 }

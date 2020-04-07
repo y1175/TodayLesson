@@ -18,7 +18,7 @@ public interface Admin_HM_MemmanageMapper {
 
 	public int getCount(HashMap<String, Object> hm);
 
-	public MemberDTO detail(int member_no);
+	
 
 
 	

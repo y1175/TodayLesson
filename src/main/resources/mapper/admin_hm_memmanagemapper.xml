@@ -78,13 +78,5 @@ where member_nick like CONCAT('%',#{searchtxt},'%')
 </if>
 </sql>
 
-
-<!-- 디테일 페이지 -->
-<select id="detail" resultType="com.todaylesson.DTO.MemberDTO" parameterType="int"> 
-select member_no,member_id,member_name,member_birth,member_phone,member_addr,member_zipcode,member_point
-		,member_level, member_email, member_nick, member_join_date
-from member
-where member_no = #{member_no}
-</select>
  
 </mapper>

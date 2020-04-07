@@ -48,10 +48,6 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 		return mapper.getCount(hm);
 	}
 
-	@Override
-	public MemberDTO detail(int member_no) {
-		// TODO Auto-generated method stub
-		return mapper.detail(member_no);
-	}
+
 
 }

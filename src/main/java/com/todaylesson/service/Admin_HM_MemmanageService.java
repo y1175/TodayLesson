@@ -15,6 +15,6 @@ public interface Admin_HM_MemmanageService {
 
 	public int totalCount(String search, String searchtxt);
 
-	public MemberDTO detail(int member_no);
+
 
 }
