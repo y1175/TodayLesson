@@ -9,7 +9,7 @@
 
 
 
-   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<!--    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> -->
 <!-- Bootstrap4 summernote -->
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- Bootstrap4 summernote -->
@@ -33,29 +33,30 @@
 
 <script>
 $(document).ready(function(){ 
-	
+	//스크롤 맨위로
 	 $('html, body').animate({
 	      scrollTop: $('html').offset().top
 	   }, 'slow');
+	
 	   /*관련상품카르셀  */
 	   var owl = $('.owl-carousel');
 	   owl.owlCarousel({
 	       items:4,
 	       loop:true,
 	       margin:10,
-	       nav: true/* 
+	       nav: true,
 	       autoplay:true,
 	       autoplayTimeout:1000,
-	       autoplayHoverPause:true */
+	       autoplayHoverPause:true 
 	   });
 	   
 	    $('.owl-carousel').owlCarousel();
+	    
 //썸머노트
 $('#summernote').summernote({
 	placeholder : '후기를 남겨보세요!',
 	minHeight : 370,
 	maxHeight : null,
-	/* focus : true, */
 	lang : 'ko-KR'
 });	
 });
@@ -87,7 +88,6 @@ $('#summernote').summernote({
             <c:when test = "${category==4}">DIY</c:when>
             <c:when test = "${category==5}">운동</c:when>
             <c:when test = "${category==6}">기타</c:when>
-          <c:otherwise>기타</c:otherwise>
           </c:choose><br>
           
 <h3><c:out value="${dto.product_name}"></c:out><br></h3>
@@ -120,7 +120,11 @@ $('#summernote').summernote({
 
  
  <script>
-
+//구매하기
+ $("#to_orderform").click(function(){
+	 $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/ej_us_orderform");
+		$("form").submit();  
+ });
 
 	
 	
@@ -236,6 +240,51 @@ $('#summernote').summernote({
   			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
   			<img alt="a" src="${dto.product_thumb }">
   		</div>
+  		<div class="item">
+  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
+  			<h4>${prolist.product_name }</h4></a><br>
+  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
+  			<img alt="b" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
+  			<h4>${prolist.product_name }</h4></a><br>
+  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
+  			<h4>${prolist.product_name }</h4></a><br>
+  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  		<div class="item">
+  			<img alt="a" src="${dto.product_thumb }">
+  		</div>
+  	
+  	
+  	
  <%--  	</c:forEach>  --%>
   	</div> 
 
@@ -303,7 +352,7 @@ ${dto.product_content}
 </form>
 </section>
 <!--후기작성폼/  -->
-
+	
    
 <div class="ej_box third"  id="ej_box_third">
 <span class="ej_left"><h3>배송/교환/환불</h3></span>
