@@ -6,24 +6,50 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_popup_main.css?ver=1">
 </head>
 <body>
+<div id="yi_container">
 <h2>popup 관리</h2>
 
-<h3>팝업</h3>
- <img src="${dto1.popup_filepath }" id="popupimg1" alt="popupimg"/>
-<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"' action="/todaylessonadmin/popup_adminresult/1">
-<label>팝업 타이틀</label>
-<input type="text" name="popup_title" id="popup_title1" value="${dto1.popup_title }" required="required"><br>
-<label>연결되는 페이지URL</label>
-<input type="text" name="popup_url" id="popup_url1" value="${dto1.popup_url }" required="required"><br>
-<label>사용여부</label>
-<input type="radio" name="popup_use" class="popup_use" id="yes1" value="1"><label for="yes1">예</label>
-<input type="radio" name="popup_use" class="popup_use" id="no1" value="0"><label for="no1">아니오</label><br>
+<div class="recent-popup"><h3>현재 등록된 팝업</h3></div>
+ <img src="${dto1.popup_filepath }" class="popupimg" id="popupimg1" alt="popupimg"/>
 
-<input type="file" id="popup_thumbnail1" name="file" />
- <br>
- <div class="select_img1"><img src="" /></div>
+
+<form role="form" method="post" autocomplete="off" enctype="multipart/form-data" action="/todaylessonadmin/popup_adminresult/1">
+<div class="form-group">
+<label for="popup_title1">팝업 타이틀</label>
+
+<input class="form-control" type="text" name="popup_title" id="popup_title1" value="${dto1.popup_title }" required="required" aria-describedby="popup_title_tip">
+<small id="popup_title_tip" class="form-text text-muted">상단에 표시되는 제목입니다.</small>
+</div>
+
+<div class="form-group">
+<label for="popup_url1">연결되는 페이지URL</label>
+<input class="form-control" type="text" name="popup_url" id="popup_url1" value="${dto1.popup_url }" required="required" aria-describedby="popup_url_tip">
+<small id="popup_url_tip" class="form-text text-muted">팝업 클릭시 연결될 경로입니다.</small>
+</div>
+
+  <div class="form-group">
+<label>사용여부</label>
+<div class="form-check">
+<input class="form-check-input" type="radio" name="popup_use" class="popup_use" id="yes1" value="1">
+<label class="form-check-label" for="yes1">예</label>
+
+<input class="form-check-input" type="radio" name="popup_use" class="popup_use" id="no1" value="0">
+<label class="form-check-label" for="no1">아니오</label>
+</div>
+</div>
+
+
+<label>이미지 선택</label>
+  <div class="form-group filebox">
+     <label for="popup_thumbnail1">파일 선택</label>
+    <input type="file" name="file" class="form-control-file" id="popup_thumbnail1">
+  </div>
+
+ <div class="select_img1"><img src="" />
  <script>
  if($('#popupimg1').attr("src")=="")
 	 {
@@ -49,10 +75,14 @@
    }
   });
  </script>
+ <div class="detailline"></div>
+ </div>
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
-<input type="submit" value="팝업등록">
-<input type="button" value="팝업삭제" onclick="location.href='/todaylessonadmin/popup_admin_delete/1'">
+<div class="form-group">
+<input type="submit" class="popup-submit-btn" value="팝업등록">
+<input type="button" class="popup-delete-btn" value="팝업삭제" onclick="location.href='/todaylessonadmin/popup_admin_delete/1'">
+</div>
 </form>
-
+</div>
 </body>
 </html>
