@@ -137,14 +137,14 @@ function checkDisable()
 
 <script>
 
-if(${dto.senior_crno == null}){
-	   senior_crno.disabled = true;
-	   senior_crno_name.disabled = true;
-	   no_crno.checked == true
-	} else {
+if(${dto.senior_crno!=null){
 	   senior_crno.disabled = false;
 	   senior_crno_name.disabled = false;
-	}
+} else {
+	       senior_crno.disabled = true;
+		   senior_crno_name.disabled = true;
+		   no_crno.checked == true;
+}
 
 
 </script>
