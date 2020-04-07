@@ -5,18 +5,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Today Lesson</title>
+<c:set var="item" value="${dto }"></c:set>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard_detail.css?ver=2">
 </head>
 <body>
 <c:set var="item" value="${dto }"></c:set>
-글내용
-글번호 : ${item.notice_no } <br>
-작성자 : ${item.member_nick } <br>
-조회수 : ${item.notice_readno } <br>
-제목 : ${notice_title } <br>
-내용 : ${item.notice_content } <br>
+<div id="notice_container">
+	
 
-<a href="/todaylesson/freeboard">목록으로</a>
+<span class="category"><p>카테고리</p></span >
 
+<span class="category_text">공지사항</span>
+
+<div class="yi_freeboard_title">제목 : ${item.notice_title }</div>
+	<div class="writer">작성자 : ${item.member_nick }</div>	<div class="writedate">작성일 : ${item.notice_writedate }</div>
+
+<br>
+
+<div class="detailline"></div>
+<div class="yi_freeboard_content">
+${item.notice_content } <br>
+
+</div>
+<div class="notice_end">
+<a class="goback" href="/todaylesson/freeboard">목록으로</a>
+</div>
+
+
+
+</div>
 </body>
 </html>

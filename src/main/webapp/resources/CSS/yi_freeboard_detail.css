@@ -1,0 +1,140 @@
+#yi_container{	
+	width: 80%;
+	margin: auto;
+	margin-left:20%;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	color: rgb(53, 54, 58);
+	
+	
+}
+#notice_container{	
+	width: 80%;
+	margin: auto;
+	margin-left:30%;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	color: rgb(53, 54, 58);
+	
+	
+}
+
+.category{
+	border: 2px solid rgb(224,224,224);
+	border-radius: 20px;
+	width:80px;
+	text-align: center;
+	display:inline-block;
+}
+
+.category p{
+	font-size:15px;
+	padding-top:7px;
+	font-weight:600;
+	}
+.category_text{
+	font-size:15px;
+	padding-top:7px;
+	font-weight:600;
+	}
+.yi_freeboard_title{
+		font-size:20;
+		font-weight:600;
+		margin: 20px 0px 20px;
+}
+.writedate{
+	margin-bottom:-20px;
+	
+}
+
+.detailline{
+    width: 70%;
+    height: 1px;
+    background-color: rgb(53, 54, 58);
+    margin:20px 0px 20px;
+}
+
+.yi_replycontent{
+	width:70%;
+}
+
+.yi_freeboard_content{
+	width: 706px;
+	
+}
+.table{
+	width:70%;
+}
+
+.comment_btn{
+border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;	
+margin-top:10px;
+
+	
+	
+}
+
+.reply_delete{
+border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color:  rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;	
+			
+}
+
+.freeboard_modify{
+border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;	
+		
+}
+
+.freeboard_delete{
+border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color:  rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;	
+		
+	
+}
+
+.goback{
+border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;	
+text-decoration:none;
+	
+}
+
+.goback:hover{
+	text-decoration:none;
+	color:white;
+}
+
+.notice_end{
+	margin-top:30px;
+	margin-bottom:20px;
+}

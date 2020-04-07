@@ -5,34 +5,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Today Lesson</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard_insert.css?ver=1">
 </head>
 <body>
-
+<div id="yi_container">
 <form action="freeboard_insertresult" method="post">
 
 <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
-<ul>
-<li><label>카테고리</label><br>
-<select name="freeboard_category">
-<option value="1">자유글</option>
-<option value="2">질문과답변</option>
-</select></li>
 
-<li><label>글제목</label><br>
-<input type="text" name="freeboard_title" id="freeboard_title" required="required"></li>
-
-<li><label>글내용</label><br>
-<textarea rows="15" cols="100" name="freeboard_content" id="freeboard_content" required="required">
+<div class="form-group">
+<label>카테고리</label>
+<select name="freeboard_category" class="yi_freeboard_category custom-select mr-sm-2" id="inlineFormCustomSelect">
+<option value="1" >자유글</option>
+<option value="2" >질문과답변</option>
+</select>
+</div>
+<div class="form-group">
+<label>글제목</label><br>
+<input type="text" class="form-control" name="freeboard_title" id="freeboard_title" required="required">
+</div>
+<div class="form-group">
+<label>글내용</label><br>
+<textarea rows="15" cols="100" class="form-control" name="freeboard_content" id="freeboard_content" required="required">
 </textarea>
-</li>
-<li>
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-<input type="submit" value="작성">
-<input type="button" onclick="location.href='/todaylesson/freeboard'" value="목록으로">
-</li>
-</ul>
-</form>
+</div>
 
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<div class="form-group">
+<input type="submit" class="write_btn" value="작성">
+<input type="button" class="goback" onclick="location.href='/todaylesson/freeboard'" value="목록으로">
+</div>
+</form>
+</div>
 </body>
 </html>

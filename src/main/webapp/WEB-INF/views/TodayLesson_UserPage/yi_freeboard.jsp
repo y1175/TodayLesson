@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 목록</title>
+<title>Today Lesson</title>
 <script>
 /* 정렬 자바스크립트 */
  /* 
@@ -28,31 +28,35 @@ function orderSelect()
 	location.href="freeboard?order="+selectOption;
 	}
 </script>
+<script src="${pageContext.request.contextPath}/resources/JS/yi_freeboard.js?ver=1"></script>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard.css?ver=1">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard.css?ver=2">
 </head>
 <body>
-
+<div id="yi_container">
 <sec:authentication property="principal" var="pinfo"/>	
-<table class="table">
-<thead>
-<tr><th>카테고리
-<select name="order" id="orderselect" onchange="orderSelect()">
-<option value="">선택</option>
+<table class="table table-hover">
+<thead class=" yi_thead">
+<tr><th><label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">카테고리</label>
+<select name="order" id="orderselect" class="yi_orderselect custom-select mr-sm-2" id="inlineFormCustomSelect"  onchange="orderSelect()">
+<option value="">카테고리 선택</option>
+<option value="">전체</option>
 <option value="1" >자유글</option>
 <option value="2" >질문과답변</option>
-</select></th>
-<th>번호		<input type="button" name="order" value="정렬" onclick="order('freeboard_no')"></th>
-<th>제목		</th>
-<th>작성자	</th>
-<th>작성일	<input type="button" name="order" value="정렬" onclick="order('freeboard_writedate')"></th>
-<th>조회수	<input type="button" name="order" value="정렬" onclick="order('freeboard_readno')"></th>
+</select>
+</th>
+<th scope="col">번호		<input type="button" name="order" class="yi_order_btn" value="정렬" onclick="order('freeboard_no')"></th>
+<th scope="col">제목		</th>
+<th scope="col">작성자	</th>
+<th scope="col">작성일	<input type="button" name="order" class="yi_order_btn" value="정렬" onclick="order('freeboard_writedate')"></th>
+<th scope="col">조회수	<input type="button" name="order" class="yi_order_btn" value="정렬" onclick="order('freeboard_readno')"></th>
 </tr>
 </thead>
-<tbody>
+<tbody class="yi_notice_tbody">
+
 <c:forEach var="notice" items="${notice }">
 <tr>
-<td>공지사항</td>
+<td style="font-weight:600;">공지사항</td>
 <td>${notice.notice_no }</td>
 <td>			
 <a href="notice_detail/${notice.notice_no }" >${notice.notice_title }</a>
@@ -62,24 +66,26 @@ function orderSelect()
 <td>${notice.notice_readno }</td>
 </tr>
 </c:forEach>
+
 </tbody>
+
 <tbody>
 <c:forEach var="item" items="${list }" varStatus="status">
 
 <tr>
-<td>
+<td style="font-weight:600;">
 <c:choose>
-<c:when test="${item.freeboard_category eq 1 }">자유글</c:when>
+<c:when test="${item.freeboard_category eq 1 }" >자유글</c:when>
 <c:when test="${item.freeboard_category eq 2 }">질문과답변</c:when>
 </c:choose>
 </td>
 <td>${item.freeboard_no}</td>
 <td>
 <sec:authorize access="isAuthenticated()">
-<a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }		[${replist[status.index]}]</a>
+<a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }		</a><span class="yi_replycount">[${replist[status.index]}]</span>
 </sec:authorize>
 <sec:authorize access="isAnonymous()">
-${item.freeboard_title }		[${replist[status.index]}]
+${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]</span>
 </sec:authorize>
 </td>
 <td><c:out value=" ${item.member_nick }"></c:out></td>
@@ -89,36 +95,70 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </c:forEach>
 </tbody>
 </table>
-<form method="get" action="freeboard?currPage=${page.startBlock }">
-<select name="search">
+<form method="get" class="form-inline my-2 my-lg-3" action="freeboard?currPage=${page.startBlock }">
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm">
+<select name="search" class="custom-select mr-sm-4"  id="inlineFormCustomSelect">
 <option value="all">전체</option>
 <option value="member_nick">닉네임</option>
 <option value="freeboard_title">제목</option>
 <option value="freeboard_content">내용</option>
 </select>
-<input type="text" name="searchtxt" >
-<input type="submit" value="검색">
+<input type="text" name="searchtxt" class="form-control mr-sm-2" >
+<input type="submit" value="검색" class="yi_search_btn">
+</div>
 
+<div class="col-sm"></div>
+
+<div class="col-sm">
+<div class="yi_write">
+<sec:authorize access="isAuthenticated()">
+<input type="button" id="write" class="yi_freeboard_btn" value="글쓰기" onclick="location.href='/todaylesson/freeboard_insert'">
+</sec:authorize>
+</div>
+</div>
+
+</div>
+</div>
 </form>
 
-<sec:authorize access="isAuthenticated()">
-<input type="button" id="write" class="freeboard_btn" value="글쓰기" onclick="location.href='/todaylesson/freeboard_insert'"><br>
-</sec:authorize>
 
+
+
+
+
+<div class="paging">
+<!-- 이전페이지블럭 -->
 <c:if test="${page.prev }">
 <a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}"><c:out value="이전"/></a>
 </c:if>
 
+<!-- 현재 페이지블럭 -->
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+
+<!-- if 인덱스가 현재페이지가 아니면 a태그 -->
 <c:if test="${index!= page.currPage }">
-</c:if>
 <a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}&order=${order}">${index }</a>
+</c:if>
+
+<!--  if 인덱스가 현재페이지면 현재페이지 출력 -->
+<c:if test="${index==page.currPage }">
+${index }
+</c:if>
 </c:forEach>
 
+<!-- 다음페이지블럭 -->
 <c:if test="${page.next }">
 <a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&order=${order}"><c:out value="다음"/></a>
 </c:if>
+</div>
+
+</div>
 </body>
+
 </html>
 
 
