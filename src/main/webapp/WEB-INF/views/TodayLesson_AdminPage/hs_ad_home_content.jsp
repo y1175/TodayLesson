@@ -13,6 +13,14 @@
    <script src="https://www.amcharts.com/lib/4/themes/dataviz.js"></script>
    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 <!-- AMCHARTS Resources -->
+<!-- AMCHARTS Resources -->
+   <!-- 매출통계(일별, 주별, 월별, 년별) -->
+   <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+   <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+   <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+   <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+   <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<!-- AMCHARTS Resources -->
 <!-- 레슨카테고리 현황 차트 -->
    <script type="text/javascript">
       am4core.ready(function() {
@@ -209,10 +217,113 @@
 
       }); // end am4core.ready()
    </script>   
-<!-- 연령대별 성별 가입현황  1-->
+<!-- 연령대별 성별 가입현황  -->
+<!-- 매출통계(일별, 주별, 월별, 년별) -->
+   <script>
+   $(document).ready(function(){
+	     $.ajax({
+   
+	   		   type : "POST",
+		       url: "/todaylessonadmin/sales_statistics",
+		       success: function(data) {
+				   console.log(data)
+				   var chart = AmCharts.makeChart("chartOutPut", {
+			  		   "type": "serial",
+				       "theme": "light",
+				       "marginTop":0,
+				       "marginRight": 80,
+				       "graphs": [{
+				           "id":"g1",
+				           "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+				           "bullet": "round",
+				           "bulletSize": 3,  //세로.. 근 사이즈?       
+				           "lineColor": "#e03e52",
+				           "lineThickness": 2, 
+				           "negativeLineColor": "#637bb6",
+				           "type": "smoothedLine",
+				           "valueField": "output",
+				       }],
+				       "valueAxes": [{
+				           "id": "v1",
+				           "axisAlpha": 0,
+				           "position": "left",
+				           "ignoreAxisWidth":true
+				       }],
+				       "balloon": {
+				           "borderThickness": 1,
+				           "shadowAlpha": 0
+				       },
+				       "chartScrollbar": {
+				           "graph":"g1",
+				           "gridAlpha":0,
+				           "color":"#888888",
+				           "scrollbarHeight":50, //위에 가로 스크롤 높이
+				           "backgroundAlpha":0,
+				           "selectedBackgroundAlpha":0.1,
+				           "selectedBackgroundColor":"#888888",
+				           "graphFillAlpha":0,
+				           "autoGridCount":true,
+				           "selectedGraphFillAlpha":0,
+				           "graphLineAlpha":0.2,
+				           "graphLineColor":"#c2c2c2",
+				           "selectedGraphLineColor":"#888888",
+				           "selectedGraphLineAlpha":1
+  				       },
+				       "chartCursor": {
+				           "categoryBalloonDateFormat": "YYYY-MM-DD", //카테고리를 데이터 나타내주는 형식
+				           "cursorAlpha": 0,
+				           "valueLineEnabled":true,
+				           "valueLineBalloonEnabled":true,
+				           "valueLineAlpha":0.8,
+				           "fullWidth":true
+				       },
+				       "valueScrollbar":{
+					         "oppositeAxis":false,
+					         "offset":50, //오른쪽간격..
+					         "scrollbarHeight":10 // 세로 스크롤바  간격?
+					   },
+				       "categoryField": "date",
+				       "categoryAxis": {
+				           /* "minPeriod": "YYYY", */
+				           "parseDates": true,
+				           "minorGridAlpha": 0.1,
+				           "minorGridEnabled": true
+				       },
+				       "export": {
+				           "enabled": true
+				       },
+				       "dataProvider": data
+				   });
 
+				   chart.addListener("rendered", zoomChart);
+				   if(chart.zoomChart){
+					   chart.zoomChart();
+				   }
+
+				   function zoomChart(){
+				       chart.zoomToIndexes(Math.round(chart.dataProvider.length * 0.4), Math.round(chart.dataProvider.length * 0.55));
+				   }
+		       }
+		   })
+  	   })
+   </script>
+<!-- 매출통계(일별, 주별, 월별, 년별) -->
+
+<!-- 매출통계(일별, 주별, 월별, 년별) CSS -->
+   <style type="text/css">
+       #chartOutPut{
+            width : 100%;
+	        height	: 500px;
+     	    font-size	: 16px;
+	        font-weight : bold;
+	        position: relative;
+	        bottom: 350px;
+	        left: 30px;
+      }
+   </style>
+<!-- 매출통계(일별, 주별, 월별, 년별) CSS -->
 <!--AdminMain style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_home_content.css?ver=2">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_home_content.css?ver=4">
 <!--AdminMain style-->
 
 </head>
@@ -275,40 +386,329 @@
    </div>
    <!-- 상단 네모 박스 4개  -->
    <!-- 가운데 -->
-   <div style="width: 100%;">
+   <div style="width: 100%; ">
+   
+      <!-- 스토어판매상품현황 / 주문현황 / 시니어 정산현황 -->
+      <div class="hs_ad_conditionBox">
+         <div class="row" style="width: 100%; margin: 40px 15px 25px; border: 1px solid rgba(53, 54, 58, 0.3); padding: 15px;">
+            <div class="col md-3" style="height: 300px; padding: 0px; border-right: 1px solid rgba(53, 54, 58, 0.3);">
+               <!-- 스토어현황 -->
+               <div style="height: 135px;">
+                  <div class="col md-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>스토어현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>등록상품</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${registrationProductCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>판매상품</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${possibilityProductCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>품절 상품</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${soldOutProductCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+               </div>
+               <!-- 스토어현황 -->
+               <!-- 레슨현황 -->
+               <div style="height: 135px;">
+                  <div class="col md-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>레슨현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>등록레슨</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${registrationLessonCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>오픈레슨</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${openLessonCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>마감레슨</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${closeLessonCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>품절레슨</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${soldOutLessonCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+               </div>
+               <!-- 레슨현황 -->
+            </div>
+            <div class="col md-3" style="height: 300px; padding: 0px; border-right: 1px solid rgba(53, 54, 58, 0.3);">
+               <!-- 주문현황 -->
+               <div style="height: 135px;">
+                  <div class="col md-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>주문현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>주문완료</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${orderCompleteCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>배송중</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${orderDuringShippingCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>배송완료</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${orderShippingCompleteCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">   
+                        <b>주문취소</b>
+                     </div>   
+                     <span>
+                        <fmt:formatNumber value="${orderCancelCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+               </div>
+               <!-- 주문현황 -->
+               <!-- 결제현황 -->
+               <div style="height: 135px;">
+                  <div class="col md-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>결제현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>결제완료</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${paymentCompleteCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>환불진행</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${refundAcceptCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>환불완료</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${refundCompleteCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+               </div>   
+               <!-- 결제현황 -->
+            </div>
+            <div class="col md-3" style="height: 300px; padding: 0px; border-right: 1px solid rgba(53, 54, 58, 0.3);">
+               <!-- 레슨접수현황 -->
+               <div style="height: 135px;">
+                  <div class="col md-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>레슨 접수현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>레슨신규접수</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${newLessonAcceptCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>레슨심사중</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${newLessonAcceptCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                 <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>레슨수락</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${newLessonAcceptanceCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>레슨거절</b>
+                     </div>
+                    <span>
+                        <fmt:formatNumber value="${newLessonRefuseCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+               </div>
+               <!-- 레슨접수현황 -->
+               <!-- 시니어정산현황 -->
+               <div style="height: 135px;">
+                  <div class="col sm-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>시니어 정산현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name"> 
+                        <b>정산대기</b>
+                     </div>
+                    <span>
+                        <fmt:formatNumber value="${seniorCalculateWaitCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name"> 
+                        <b>정산가능</b>
+                     </div>    
+                     <span>
+                        <fmt:formatNumber value="${seniorCalculatePossibleCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">    
+                        <b>정산완료</b>
+                     </div>   
+                     <span>
+                        <fmt:formatNumber value="${seniorCalculateCompleteCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>   
+               </div>
+               <!-- 시니어정산현황 -->
+            </div>
+            <div class="col md-3" style="height: 300px; padding: 0px">
+               <div class="col sm-12" style="text-align: center;">
+                  <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>1:1 문의현황</h5>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name"> 
+                     <b>레슨문의</b>
+                  </div>
+                  <span>
+                     <fmt:formatNumber value="${questionLessonCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name"> 
+                     <b>시니어문의</b>
+                  </div>    
+                  <span>
+                     <fmt:formatNumber value="${questionSeniorCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name">    
+                     <b>스토어문의</b>
+                  </div>   
+                  <span>
+                     <fmt:formatNumber value="${questionStoreCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name">    
+                     <b>주문문의</b>
+                  </div>   
+                  <span>
+                     <fmt:formatNumber value="${questionOrderCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name">    
+                     <b>기타문의</b>
+                  </div>   
+                  <span>
+                     <fmt:formatNumber value="${questionOtherCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name">    
+                     <b>답변대기</b>
+                  </div>   
+                  <span>
+                     <fmt:formatNumber value="${questionAnswerWaitCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+               <div class="col sm-12" style="margin: 5px;">
+                  <div class="hs_ad_condition_name">    
+                     <b>답변완료</b>
+                  </div>   
+                  <span>
+                     <fmt:formatNumber value="${questionAnswerCompleteCount}" type="number" maxFractionDigits="3"/>건
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
    
       <!-- 카테고리 현황 -->
       <div class="hs_ad_category_chart">
          <div class="hs_ad_lesson_product_cg_chart">
             <div id="hs_lessoncg_chartdiv"></div>
-            <pre>레슨 카테고리 현황</pre>
+            <div style="text-align: center; font-size: 13px; font-weight: 600;">
+               <span>레슨 카테고리 현황</span>
+            </div>
          </div>
          <div class="hs_ad_lesson_product_cg_chart">
             <div id="hs_productcg_chartdiv"></div>
-            <pre>상품 카테고리 현황</pre>
+            <div style="text-align: center; font-size: 13px; font-weight: 600;">
+               <span>상품 카테고리 현황</span>
+            </div>
          </div>
       </div>
       <!-- 카테고리 현황 -->
       
-      
       <!-- 연령대별 회원현황  -->
       <div class="hs_ad_agejoin_chart">
-         <div>
          <div id="hs_agejoin_chartdiv" style="font-size: 12px;"></div>
-         <pre>연령대별 회원 현황</pre>
+         <div style="text-align: center; font-size: 13px; font-weight: 600;">
+            <span>연령대별 회원 현황</span>
          </div>
       </div>
       <!-- 연령대별 회원현황  -->
-      
-     
    </div>
     
    
    <!-- 가운데 -->
-   
-   
+    <!-- 매출통계(일별, 주별, 월별, 년별) -->
+      <div class="hs_adHome_Slaes_chart">
+         <div id="chartOutPut"></div>
+         <div style="text-align: center; font-size: 13px; font-weight: 600; position: relative; bottom: 340px;">
+               <span>일별 매출현황</span>
+         </div>
+      </div>
+    <!-- 매출통계(일별, 주별, 월별, 년별) -->
 </div>
-
 
 </body>
 </html>

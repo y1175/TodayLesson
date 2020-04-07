@@ -45,6 +45,7 @@ import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.Member_AuthDTO;
 import com.todaylesson.DTO.MyLikeDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.PopUpDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
@@ -127,7 +128,8 @@ public class TodayLessonController {
     /*팝업*/
     
     @RequestMapping("/todaylessonadmin")
-    public String admin(Model model) { 
+    public String admin(@RequestParam(required=false,defaultValue="date") String ymd,
+    		             Model model) { 
     	
     	//일일가입자수 집계
     	int memberJoinCount=adminMainService.memberJoinCount();
@@ -137,21 +139,112 @@ public class TodayLessonController {
     	int seniorChangeCount=adminMainService.seniorChangeCount();
     	model.addAttribute("seniorChangeCount", seniorChangeCount);
     	
-    	
     	//일일게시글수 집계
     	int freeboardWriteCount=adminMainService.freeboardWriteCount();
-    	
     	model.addAttribute("freeboardWriteCount", freeboardWriteCount);
     	
     	//일일 판매금액 집계
     	int orderlistCostSum=adminMainService.orderlistCostSum();
-    	
     	model.addAttribute("orderlistCostSum", orderlistCostSum);
     	
-    	
-    	
-    	
-    	
+    	//스토어현황
+    	  //등록된상품
+    	  int registrationProductCount=adminMainService.registrationProductCount();
+    	  model.addAttribute("registrationProductCount", registrationProductCount);
+    	  //판매가능상품
+    	  int possibilityProductCount=adminMainService.possibilityProductCount();
+    	  model.addAttribute("possibilityProductCount", possibilityProductCount);
+    	  //품절상품
+    	  int soldOutProductCount=adminMainService.soldOutProductCount();
+    	  model.addAttribute("soldOutProductCount", soldOutProductCount);
+    	  
+    	//레슨현황
+    	  //등록된 레슨 
+    	  int registrationLessonCount=adminMainService.registrationLessonCount();
+    	  model.addAttribute("registrationLessonCount", registrationLessonCount);
+    	  //오픈레슨
+    	  int openLessonCount=adminMainService.openLessonCount();
+    	  model.addAttribute("openLessonCount", openLessonCount);
+    	  //마감레슨
+    	  int closeLessonCount=adminMainService.closeLessonCount();
+    	  model.addAttribute("closeLessonCount", closeLessonCount);
+    	  //품절레슨
+    	  int soldOutLessonCount=adminMainService.soldOutLessonCount();
+    	  model.addAttribute("soldOutLessonCount", soldOutLessonCount);
+    	  
+    	//주문현황
+    	  //주문완료
+    	  int orderCompleteCount=adminMainService.orderCompleteCount();
+    	  model.addAttribute("orderCompleteCount", orderCompleteCount);
+    	  //배송중
+    	  int orderDuringShippingCount=adminMainService.orderDuringShippingCount();
+    	  model.addAttribute("orderDuringShippingCount", orderDuringShippingCount);
+    	  //배송완료
+    	  int orderShippingCompleteCount=adminMainService.orderShippingCompleteCount();
+    	  model.addAttribute("orderShippingCompleteCount", orderShippingCompleteCount);
+    	  //주문취소
+    	  int orderCancelCount=adminMainService.orderCancelCount();
+    	  model.addAttribute("orderCancelCount", orderCancelCount);
+    	  
+    	//결제현황
+    	  //결제완료
+    	  int paymentCompleteCount=adminMainService.paymentCompleteCount();
+    	  model.addAttribute("paymentCompleteCount", paymentCompleteCount);
+    	  //환불진행
+    	  int refundAcceptCount=adminMainService.refundAcceptCount();
+    	  model.addAttribute("refundAcceptCount", refundAcceptCount);
+    	  //환불완료
+    	  int refundCompleteCount=adminMainService.refundCompleteCount();
+    	  model.addAttribute("refundCompleteCount", refundCompleteCount);
+    	  
+    	//레슨접수현황
+    	  //레슨신규접수  
+    	  int newLessonAcceptCount=adminMainService.newLessonAcceptCount();
+    	  model.addAttribute("newLessonAcceptCount", newLessonAcceptCount);
+    	  //레슨심사중
+    	  int newLessonEvaluationCount=adminMainService.newLessonEvaluationCount();
+    	  model.addAttribute("newLessonAcceptCount", newLessonAcceptCount);
+    	  //레슨수락
+    	  int newLessonAcceptanceCount=adminMainService.newLessonAcceptanceCount();
+    	  model.addAttribute("newLessonAcceptanceCount", newLessonAcceptanceCount);
+    	  //레슨거절
+    	  int newLessonRefuseCount=adminMainService.newLessonRefuseCount();
+    	  model.addAttribute("newLessonRefuseCount", newLessonRefuseCount);
+    	  
+    	//시니어정산현황
+    	  //정산대기
+    	  int seniorCalculateWaitCount=adminMainService.seniorCalculateWaitCount();
+    	  model.addAttribute("seniorCalculateWaitCount", seniorCalculateWaitCount);
+    	  //정산가능
+    	  int seniorCalculatePossibleCount=adminMainService.seniorCalculatePossibleCount();
+    	  model.addAttribute("seniorCalculatePossibleCount", seniorCalculatePossibleCount);    	
+    	  //정산완료
+    	  int seniorCalculateCompleteCount=adminMainService.seniorCalculateCompleteCount();
+    	  model.addAttribute("seniorCalculateCompleteCount", seniorCalculateCompleteCount);
+    	  
+    	//1:1문의현황
+    	  //레슨문의
+    	  int questionLessonCount=adminMainService.questionLessonCount();
+    	  model.addAttribute("questionLessonCount", questionLessonCount);
+    	  //시니어문의
+    	  int questionSeniorCount=adminMainService.questionSeniorCount();
+    	  model.addAttribute("questionSeniorCount", questionSeniorCount);
+    	  //스토어문의
+    	  int questionStoreCount=adminMainService.questionStoreCount();
+    	  model.addAttribute("questionStoreCount", questionStoreCount);
+    	  //주문문의
+    	  int questionOrderCount=adminMainService.questionOrderCount();
+    	  model.addAttribute("questionOrderCount", questionOrderCount);
+    	  //기타문의
+    	  int questionOtherCount=adminMainService.questionOtherCount();
+    	  model.addAttribute("questionOtherCount", questionOtherCount);
+    	  //답변대기
+    	  int questionAnswerWaitCount=adminMainService.questionAnswerWaitCount();
+    	  model.addAttribute("questionAnswerWaitCount", questionAnswerWaitCount);
+    	  //답변완료
+    	  int questionAnswerCompleteCount=adminMainService.questionAnswerCompleteCount();
+    	  model.addAttribute("questionAnswerCompleteCount", questionAnswerCompleteCount);
+    	  
     	//레슨카테고리
     	int lessonITCount=adminMainService.lessonITCount();
     	int lessonCookCount=adminMainService.lessonCookCount();
@@ -199,8 +292,32 @@ public class TodayLessonController {
     	model.addAttribute("memberAge60Sum", memberAge60Sum);
     	model.addAttribute("memberAge70PlusSum", memberAge70PlusSum);
     	
+    	//매출통계(일별, 주별, 월별, 년별)
+    	List<OrderListDTO> adMainStatSalesAllChart=adminMainService.adMainStatSalesAllChart(ymd);
+    	model.addAttribute("adMainStatSalesAllChart", adMainStatSalesAllChart);
+    	
     	return "hs_ad_main";
     }
+    
+    //AmChart
+  	@RequestMapping(value = "/todaylessonadmin", method = RequestMethod.POST)
+  	@ResponseBody
+  	public List chartOutput()throws Exception {
+  		
+  		List<OrderListDTO> chartOutput = adminMainService.chartOutput();
+  		ArrayList response = new ArrayList();
+  		  for(int i =0; i < chartOutput.size(); i ++) {
+  		    HashMap<String , Object> map = new HashMap<String, Object>();
+  		    map.put("date", chartOutput.get(i).getRegYear()+"-"+chartOutput.get(i).getRegMonth()+"-"+chartOutput.get(i).getRegDay());
+  		    map.put("output", chartOutput.get(i).getCostTotal());
+  		    response.add(map);
+  		    System.out.println(map);
+  		    System.out.println(response);
+  		  }
+  		  System.out.println(response);
+  		  return response;
+
+  		}
     
     @RequestMapping("/todaylessonsenior")
     public String senior() {
@@ -210,7 +327,7 @@ public class TodayLessonController {
 
     @RequestMapping("/todaylessonmypage")
     public String usermypage(Authentication authentication
-    		                ,Model model) {
+    		                ,Model model, HttpSession session) {
     	//시큐리티 멤버아이디
     	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
     	String member_id = userDetails.getUsername();
@@ -219,6 +336,7 @@ public class TodayLessonController {
     	MemberDTO myPageMyLevel_MyPoint=userMyPageService.myPageMyLevel_MyPoint(member_id);
     	model.addAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint);
     	
+    	session.setAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint); //세션으로 처리하기..
     	//마이페이지 프로필변경
     	
     	return "hs_us_mypage";

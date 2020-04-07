@@ -17,41 +17,68 @@
 .hs_ad_todaybox p:nth-of-type(1){
 	margin-bottom: 0px;
 }
+/* 스토어판매상품현황 / 주문현황 / 시니어 정산현황 */
+.hs_ad_conditionBox{
+	width: 65%;	
+}
+.hs_ad_condition_title{
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.hs_ad_condition_name{
+	display: inline-block;
+	width: 150px;
+}
+.hs_ad_condition_name>b{
+	font-size: 14px;
+}
 /* 카테고리별 현황 박스 */
 .hs_ad_category_chart{
 	width: 65%;
 	border: 1px solid rgba(53, 54, 58, 0.3);
-	margin: 50px 15px 25px;
+	margin: 10px 15px 25px;
+	padding : 15px;
 	display: inline-block;
 } 
 /* 레슨카테고리 */
 .hs_ad_lesson_product_cg_chart{
 	width: 47%;
-	height: 23%;
-	margin: 30px 10px;;
+	height: 25%;
+	margin: 0px 10px;
 	display: inline-block;
 }
 #hs_lessoncg_chartdiv{
 	font-size: 13px;
+
 }
 #hs_productcg_chartdiv{
 	font-size: 13px;
-}
-.hs_ad_lesson_product_cg_chart pre{
-	text-align: center;
-	font-size: 13px;
-	font-weight: 600;
+
 }
 /* 연령대별 가입현황 */
 .hs_ad_agejoin_chart{
 	width: 30%;
-	height: 50%;
 	border: 1px solid rgba(53, 54, 58, 0.3);
 	margin-top: 50px;
 	display: inline-block;
+	float: right;
+	position: relative;
+	bottom: 407px;
+	right: 30px;
+	padding : 15px;
 }
-.hs_ad_agejoin_chart pre{
-	text-align: center;
-	font-size: 13px;
-	font-weight: 600;
+#hs_agejoin_chartdiv{
+	width : 95%;
+	height: 63.9%;
 }
+.hs_adHome_Slaes_chart{
+	width : 97.1%;
+	margin : auto;
+	margin-top : 20px;
+	border: 1px solid rgba(53, 54, 58, 0.3);
+	height: 570px;
+	position: relative;
+	right: 7px;
+}
+

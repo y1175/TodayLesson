@@ -3,35 +3,256 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Admin_HS_MainMapper">
-
+    <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+    
     <!-- 일일 회원가입현황 -->
     <select id="memberJoinCount" resultType="int">
        select count(*) 
        from member
-       where member_join_date > DATE_ADD(now(), INTERVAL -1 month);
+       where member_join_date > DATE_ADD(now(), INTERVAL -1 month)
     </select>
     <!-- 일일 회원가입현황 -->
-    <!-- 일일게시글수 집계 / 수량확인 위해서 1달로 해둠 -->
-    <select id="freeboardWriteCount" resultType="int">
-       select count(*) 
-       from freeboard
-       where freeboard_writedate > DATE_ADD(now(), INTERVAL -1 month);
-    </select>
-    <!-- 일일게시글수 집계 -->
-    <!-- 일일 판매금액 집계 / 수량확인 위해서 1달로 해둠 -->
-    <select id="orderlistCostSum" resultType="int">
-       select sum(orderlist_cost) 
-       from orderlist 
-       where orderlist_date > DATE_ADD(now(), INTERVAL -1 month);
-    </select>
-    <!-- 일일 판매금액 집계 -->
+    
     <!-- 일일 시니어전환자 집계 -->
     <select id="seniorChangeCount" resultType="int">
        select count(*) 
        from senior
-       where senior_register_date > DATE_ADD(now(), INTERVAL -1 month);
+       where senior_register_date > DATE_ADD(now(), INTERVAL -1 month)
     </select>
     <!-- 일일 시니어전환자 집계 -->
+    
+    <!-- 일일게시글수 집계 / 수량확인 위해서 1달로 해둠 -->
+    <select id="freeboardWriteCount" resultType="int">
+       select count(*) 
+       from freeboard
+       where freeboard_writedate > DATE_ADD(now(), INTERVAL -1 month)
+    </select>
+    <!-- 일일게시글수 집계 -->
+    
+    <!-- 일일 판매금액 집계 / 수량확인 위해서 1달로 해둠 -->
+    <select id="orderlistCostSum" resultType="int">
+       select sum(orderlist_cost) 
+       from orderlist 
+       where orderlist_date > DATE_ADD(now(), INTERVAL -1 month)
+    </select>
+    <!-- 일일 판매금액 집계 -->
+    
+    <!-- 소토어현황 -->
+       <!-- 등록된 상품 -->
+       <select id="registrationProductCount" resultType="int">
+          select count(*)
+          from product
+       </select>
+       <!-- 등록된 상품 -->
+       <!-- 판매상품 -->
+       <select id="possibilityProductCount" resultType="int">
+          select count(*)
+          from product
+          where product_stock>0
+       </select>
+       <!-- 판매상품 -->
+       <!-- 품절상품 -->
+       <select id="soldOutProductCount" resultType="int">
+          select count(*)
+          from product
+          where product_stock=0
+       </select>
+       <!-- 품절상품 -->
+    <!-- 소토어현황 -->
+    
+    <!-- 레슨현황 -->
+       <!-- 등록된 레슨 -->
+       <select id="registrationLessonCount" resultType="int">
+          select count(*)
+          from lesson
+       </select>
+       <!-- 등록된 레슨 -->
+       <!-- 오픈레슨 -->
+       <select id="openLessonCount" resultType="int">
+          select count(*)
+          from lesson
+          where lesson_close_period>now()
+       </select>
+       <!-- 오픈레슨 -->
+       <!-- 마감레슨 -->
+       <select id="closeLessonCount" resultType="int">
+          select count(*)
+          from lesson
+          <![CDATA[   
+	         where lesson_close_period<now()
+	      ]]> 
+       </select>
+       <!-- 마감레슨 -->
+       <!-- 품절레슨 -->
+       <select id="soldOutLessonCount" resultType="int">
+          select count(*)
+          from lesson
+          where (lesson_member_max-lesson_junior_count)=0
+       </select>
+       <!-- 품절레슨 -->
+    <!-- 레슨현황 -->
+    
+    <!-- 주문현황 -->
+       <!-- 주문완료 -->
+       <select id="orderCompleteCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_orderstatus=1
+       </select>
+       <!-- 주문완료 -->
+       <!-- 배송중 -->
+       <select id="orderDuringShippingCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_orderstatus=2
+       </select>
+       <!-- 배송중 -->
+       <!-- 배송완료 -->
+       <select id="orderShippingCompleteCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_orderstatus=3
+       </select>
+       <!-- 배송완료 -->
+       <!-- 주문취소 -->
+       <select id="orderCancelCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_orderstatus=4
+       </select>
+       <!-- 주문취소 -->
+    <!-- 주문현황 -->
+    
+    <!-- 결제현황 -->
+       <!-- 결제완료 -->
+       <select id="paymentCompleteCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_paystatus=1
+       </select>
+       <!-- 결제완료 -->
+       <!-- 환불진행 -->
+       <select id="refundAcceptCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_paystatus=2
+       </select>
+       <!-- 환불진행 -->
+       <!-- 환불완료 -->
+       <select id="refundCompleteCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_paystatus=3
+       </select>
+       <!-- 환불완료 -->
+    <!-- 결제현황 -->
+       
+    <!-- 레슨접수현황 -->
+       <!-- 레슨신규접수 -->
+       <select id="newLessonAcceptCount" resultType="int">
+          select count(*)
+          from lesson
+          where lesson_result=0
+       </select>
+       <!-- 레슨신규접수 -->
+       <!-- 레슨심사중 -->
+       <select id="newLessonEvaluationCount" resultType="int">
+          select count(*)
+          from lesson
+          where lesson_result=1
+       </select>
+       <!-- 레슨심사중 -->
+       <!-- 레슨수락 -->
+       <select id="newLessonAcceptanceCount" resultType="int">
+          select count(*)
+          from lesson
+          where lesson_result=2
+       </select>
+       <!-- 레슨수락 -->
+       <!-- 레슨거절 -->
+       <select id="newLessonRefuseCount" resultType="int">
+          select count(*)
+          from lesson
+          where lesson_result=3
+       </select>
+       <!-- 레슨거절 -->
+    <!-- 레슨접수현황 -->
+    
+    <!-- 시니어정산현황 -->
+       <!-- 정산대기 -->
+       <select id="seniorCalculateWaitCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_calculatestatus=1
+       </select>
+       <!-- 정산대기 -->
+       <!-- 정산가능 -->
+       <select id="seniorCalculatePossibleCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_calculatestatus=2
+       </select>
+       <!-- 정산가능 -->
+       <!-- 정산완료 -->
+       <select id="seniorCalculateCompleteCount" resultType="int">
+          select count(*) 
+          from  orderlist
+          where orderlist_calculatestatus=3
+       </select>
+       <!-- 정산완료 -->
+    <!-- 시니어정산현황 -->
+    
+    <!-- 1:1문의현황 -->
+       <!-- 레슨문의 -->
+       <select id="questionLessonCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_group=0
+       </select>
+       <!-- 레슨문의 -->
+       <!-- 시니어문의 -->
+       <select id="questionSeniorCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_group=1
+       </select>
+       <!-- 시니어문의 -->
+       <!-- 스토어문의 -->
+       <select id="questionStoreCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_group=2
+       </select>
+       <!-- 스토어문의 -->
+       <!-- 주문문의 -->
+       <select id="questionOrderCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_group=3
+       </select>
+       <!-- 주문문의 -->
+       <!-- 기타문의 -->
+       <select id="questionOtherCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_group=4
+       </select>
+       <!-- 기타문의 -->
+       <!-- 답변대기 -->
+       <select id="questionAnswerWaitCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_situation=0
+       </select>
+       <!-- 답변대기 -->
+       <!-- 답변완료 -->
+       <select id="questionAnswerCompleteCount" resultType="int">
+          select count(*)
+          from question_1_1
+          where question_situation=1
+       </select>
+       <!-- 답변완료 -->
+    <!-- 1:1문의현황 -->
     
     <!-- 레슨카테고리현황 -->
     <select id="lessonITCount" resultType="int">
@@ -65,6 +286,7 @@
        where lesson_category=6
     </select>
     <!-- 레슨카테고리현황 -->
+    
     <!-- 상품카테고리현황 -->
     <select id="productITCount" resultType="int">
        select count(*)
@@ -97,6 +319,7 @@
        where  product_category=6
     </select>
     <!-- 상품카테고리현황 -->
+    
     <!-- 연령대별 회원현황 -->
     <select id="memberAge10Sum" resultType="int">
        select sum(if(date_format(now(),'%Y')-substring(member_birth,1,4) between 10 and 19 , 1, 0)) as age_10
@@ -127,13 +350,73 @@
        from member;
     </select>
     <!-- 연령대별 회원현황 -->
+    
+    <!-- 매출통계(일별, 주별, 월별, 년별) -->
+    <select id="adMainStatSalesAllChart" resultType="com.todaylesson.DTO.OrderListDTO" parameterMap="hashmap">
+      <choose>
+         <when test='ymd.equals("date")'>
+            <include refid="date_StatSales"></include>
+         </when> 
+         <when test='ymd.equals("week")'>
+            <include refid="week_StatSales"></include>
+         </when>
+         <when test='ymd.equals("month")'>
+            <include refid="month_StatSales"></include>
+         </when>
+         <when test='ymd.equals("year")'>
+            <include refid="year_StatSales"></include>
+         </when>
+      </choose>  
+   </select>
+   
+      <!-- 일별 -->
+      <sql id="date_StatSales">
+         select date_format(orderlist_date,'%Y-%m-%d') as orderlist_date,
+                sum(orderlist_cost) as orderlist_cost
+         from orderlist
+         group by date(orderlist_date) 
+         order by orderlist_date desc
+      </sql>
+      <!-- 일별 -->
+      <!-- 주별 -->
+      <sql id="week_StatSales">
+         select date_format(DATE_SUB(orderlist_date, INTERVAL (DAYOFWEEK(orderlist_date)-1) DAY), '%Y-%m-%d') AS StartDate,  
+                date_format(DATE_SUB(orderlist_date, INTERVAL (DAYOFWEEK(orderlist_date)-7) DAY), '%Y-%m-%d') AS EndDate, 
+                date_format(orderlist_date, '%Y%u') as orderlist_date,
+                sum(orderlist_cost) as orderlist_cost
+         from orderlist
+         group by week(orderlist_date)  
+         order by orderlist_date  desc
+      </sql>
+      <!-- 주별 -->
+      <!-- 월별 -->
+      <sql id="month_StatSales">
+         select date_format(orderlist_date,'%Y-%m') as orderlist_date,
+                sum(orderlist_cost) as orderlist_cost
+         from orderlist
+         group by month(orderlist_date),year(orderlist_date) 
+         order by orderlist_date desc
+      </sql>
+      <!-- 월별 -->
+      <!-- 연별 -->
+      <sql id="year_StatSales">
+         select date_format(orderlist_date,'%Y') as orderlist_date,
+                sum(orderlist_cost) as orderlist_cost
+         from orderlist
+         group by year(orderlist_date) 
+         order by orderlist_date desc
+      </sql>
+      <!-- 연별 -->  
+    <!-- 매출통계(일별, 주별, 월별, 년별) -->
+    
+    <!-- AmChart -->
+    <select id = "chartOutPut" resultType = "com.todaylesson.DTO.OrderListDTO">
+       select year(orderlist_date) as regYear, month(orderlist_date) as regMonth,
+              day(orderlist_date) as regDay, count(*) as costTotal
+       from orderlist
+       group by orderlist_date
+    </select>
+    <!-- AmChart -->
+    
 </mapper>
-
-
-
-
-
-
-
-
 
