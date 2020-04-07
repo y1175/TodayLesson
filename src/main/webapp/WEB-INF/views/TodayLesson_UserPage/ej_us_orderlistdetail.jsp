@@ -18,6 +18,7 @@
  
  <!--오더 디테일 정보  -->
 <c:forEach var="item" items="${list}"> 
+<img src="${item.product_thumb }" alt="thumb">
 <span class="ej_bold">상품명:</span>  ${item.product_name }
 <span class="ej_bold">수량:</span>  ${item.order_count }
 </c:forEach>

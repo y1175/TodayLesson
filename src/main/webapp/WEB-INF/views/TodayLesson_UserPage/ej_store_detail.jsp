@@ -97,7 +97,7 @@ $('#summernote').summernote({
 <span class="ej_top font">가격   </span><h4 class="beforecost" id="ej_cost"><fmt:formatNumber value="${dto.product_cost}" type="number" maxFractionDigits="3"/>원 </h4>
 <div id="ej_cost"><c:out value="${dto.product_sale}"/>%</div> <div id="ej_cost"><h3> <fmt:formatNumber value="${dto.product_after_cost}" type="number" maxFractionDigits="3"/>원 </h3></div><br>
 
-<span class="ej_top font middle logintxt"></span>로그인 후, 적립혜택이 제공됩니다.<br>
+<span class="ej_top font middle logintxt" style="color:red;"></span>로그인 후, 적립혜택이 제공됩니다.<br>
 
 
 

@@ -9,10 +9,10 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
      <!-- Bootstrap CSS/ -->
     <!-- 주소찾기-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -32,8 +32,9 @@
 <body>
 
 <div id="ej_container">
-<h2 text align="center">주문신청서</h2>
-<h4>주문할 취미</h4>
+<h2 text align="center"><b>주문신청서    </b><img alt="ordericon" src="${pageContext.request.contextPath}/resources/IMG/contract.svg"
+style="width:40px; display:inline;"></h2>
+<h4><b>주문할 취미</b></h4>
 <hr>
 <input type="hidden" name="product_no" value=${product_no }>
 <table class="table">
@@ -55,19 +56,17 @@
  <input type="hidden" name="product_name" value=${product_name }>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
  <input type="hidden" name="order_count" value=${pdcount }>
- 
- <%-- <input type="hidden" name="orderlist_cost1" value=${totalcost }> --%>
  <input type="hidden" name="product_after_cost" value="${product_after_cost }">
- 보유 포인트: <fmt:formatNumber value="${mdto.member_point}" type="number" maxFractionDigits="3"/><br>
-포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0>
-<button class='btn btn-primary' id="pointbtn">적용</button><br>
-
- 결제금액<br>
-<%--  <div class="paymentcost3">
- <fmt:formatNumber value="${totalcost }" type="number" maxFractionDigits="3"/> 
- </div> --%>
-<input type="text" value=${totalcost } id="orderlist_cost1" class="paymentcost" readonly="readonly"> 
-
+ 
+ <div class="ej_cost">
+ <b>보유 포인트</b><fmt:formatNumber value="${mdto.member_point}" type="number" maxFractionDigits="3"/><br>
+<b>포인트 사용</b> <input type="text"  id="usepoint" value=0>
+<button class="ej_btn point" id="pointbtn">적용</button>
+<div class="ej_cost right">
+<b style="font-size:25px;">결제금액</b>
+<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:90px; background-color:transparent;" value="${totalcost }" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
+</div>
+</div>
 <script>
     
     $("#pointbtn").click(function(){
@@ -97,7 +96,7 @@ console.log('val',hh);
  
 
   $.ajax({
-   url :"/ej_us_orderform/applypointjson",
+   url :"/todaylesson/ej_us_orderform/applypointjson",
    type : "post",
    data : data,
    success : function(){
@@ -109,7 +108,7 @@ console.log('val',hh);
 	else{
 
 		$('.paymentcost').val(data.paymentcost);
-		
+		totalcost=data.paymentcost;
   	 $('#orderlist_usepoint').val(data.usepoint);
   	 $('.remainpoint').val(data.remainpoint);
   	 console.log(data.paymentcost);
@@ -127,24 +126,24 @@ console.log('val',hh);
  });
     </script>
 
-
+<br><br>
  <form role="form" method="post" autocomplete="off"> 
- <h4>주문자 정보</h4><hr>
- 주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name } readonly="readonly"><br>
- 이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email } readonly="readonly"><br>
-연락처   <input type="text"  class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
+ <h4><b>주문자 정보</b></h4><hr>
+ <b>주문자명</b>   <input type="text" style="border:none; width="300" value=${mdto.member_name } readonly="readonly"><br>
+ <b>이메일</b>  <input type="text" style="border:none; name="member_email"    value=${mdto.member_email } readonly="readonly"><br>
+<b>연락처</b>   <input type="text"   style="border:none;"  value=${mdto.member_phone } readonly="readonly"><br><br>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
- <h4>배송지 정보</h4><hr>
- <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
+<h4><b>배송지 정보</b></h4><hr>
+ <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일    
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="product_no" value=${product_no }>
 <input type="hidden" name="order_count" value=${pdcount }>
 <input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost } class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= ${mdto.member_point}>
-수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
-휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
-주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
+<b>수령자명</b><br><input type="text"  name="orderlist_receiver"    id="rec" value=${mdto.member_name } readonly="readonly"><br>
+<b>휴대전화</b><br><input type="text"  name="orderlist_phone"    id="phone" value=${mdto.member_phone } readonly="readonly"><br>
+<b>주소</b><br><input type="text" name="orderlist_addr" size="150"  id="addr"   value="${mdto.member_addr }" readonly="readonly"><br>
 
 
    <input type="radio"  name='addrselect' value="0" id="sameaddrselect" checked="checked">
@@ -154,33 +153,32 @@ console.log('val',hh);
                <div class='form-row'>
                   <div class='col-5'>
                      <input type="text" id="sample4_postcode" name="orderlist_zipcode"
-                        placeholder="우편번호" value=${mdto.member_zipcode } class='form-control' >
+                        placeholder="우편번호" value=${mdto.member_zipcode } >
                   </div>
-                  <input type="button" onclick="sample4_execDaumPostcode()"
-                     value="우편번호 찾기" readonly="readonly" class='btn btn-primary' ><br>
+                  <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" readonly="readonly" class='ej_btn' ><br>
                </div>
                <div class='juso'>
             
                 <input type="radio" id='roadAddress' name='addrselect' value="1" 
                      ><label for="addrselect">도로명주소 선택</label> <br>
-                  <input type="text" id="sample4_roadAddress" placeholder="도로명주소"
-                     name="roadaddr" readonly="readonly" class="form-control" >
+                  <input type="text" style="width:600px;" id="sample4_roadAddress" placeholder="도로명주소"
+                     name="roadaddr" readonly="readonly"   ><br>
                  
-				 <input type="radio" id='jibunAddress' name='addrselect' value="2"><label
-                     for="addrselect" >지번주소 선택</label><br>
-                  <input type="text" id="sample4_jibunAddress" placeholder="지번주소"
-                     name="jibunaddr" readonly="readonly" class="form-control" >
+				 <input type="radio" id='jibunAddress' name='addrselect' value="2">
+				 <label for="addrselect" >지번주소 선택</label><br>
+                  <input type="text" id="sample4_jibunAddress" style="width:600px;" placeholder="지번주소"
+                     name="jibunaddr" readonly="readonly"  >
                  
                </div>
-               <span id="guide" style="color: #999"></span> <label
-                  for="detailaddr">상세주소</label> <input type="text" id="detailaddr"
-                  name="detailaddr" class="form-control"> 
+               <span id="guide" style="color: #999"></span> 
+               <label for="detailaddr">상세주소</label><br>
+                <input type="text" id="detailaddr"name="detailaddr" style="width:600px;"   placeholder="상세주소"> 
 
 <br>  
 </div> 
 
 <hr>
-배송요청사항<textarea rows="5" name="orderlist_msg" class="form-control" cols="100"></textarea><br>
+<b>배송요청사항</b><br><textarea rows="5" name="orderlist_msg"   cols="100"></textarea><br><br>
 <script>
 
 $("#findaddr").hide();
@@ -234,20 +232,25 @@ $("#sameaddr").on('click', function() {
 });
 </script>
 <br>
-<h4>결제정보</h4><hr>
- 결제수단 선택
+<div class="ej_cost2">
+<h4><b>결제정보</b></h4><hr>
+ <b>결제수단 선택</b>
   <input type="radio" name="paymethod" value="card">신용카드
 <input type="radio" name="paymethod" value="kakaopay">카카오페이
 <br>
 
  배송비 무료<br>
- 결제금액<br>
- <input type="text" name="paymentt2" value="${totalcost }" class="paymentcost" readonly="readonly">
+ <div class="ej_cost2_right">
+ <b>결제금액</b><br>
+ <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:90px; background-color:transparent" name="paymentt2" value="${totalcost }" class="paymentcost" readonly="readonly">원
  
-  <button id="check_module" type="button" class='btn btn-primary' >결제하기</button>
-<button id="test">이거누르면 주문기록됨()</button>
+  <button id="check_module" type="button" class='ej_btn' >결제하기</button>
+  </div>
+  </div>
+  <br>
+<button id="test">이거누르면 주문기록됨(지울거임))</button>
 
-
+	
  <script>
  $("#test").click(function () {
  $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlistdetail");

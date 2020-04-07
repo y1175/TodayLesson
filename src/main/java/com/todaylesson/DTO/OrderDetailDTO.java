@@ -18,6 +18,7 @@ public class OrderDetailDTO {
 	
 	//DTO에만 추가했음
 	private String product_name;
+	private String product_thumb;
 	private String lesson_title;
 	private int product_stock;
 
