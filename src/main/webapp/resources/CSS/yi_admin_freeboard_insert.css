@@ -1,0 +1,39 @@
+#yi_container{	
+	width: 80%;
+margin: auto;
+margin-top: 40px;
+color: rgb(53, 54, 58);
+	
+	
+}
+.form-group{
+	width:65%;
+}
+
+.yi_freeboard_category{
+	width:10%;
+}
+
+.write_btn{
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;	
+	
+}
+
+.goback{
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;	
+	
+}

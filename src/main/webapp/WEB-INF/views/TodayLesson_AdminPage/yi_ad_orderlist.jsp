@@ -15,9 +15,12 @@
          color: rgb(224, 62, 82);
       }
    </style>
+   <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=1">
 <!-- CSSstyle -->
 </head>
 <body>
+<div id="yi_container">
 주문내역 관리
 <form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
 <label>주문상태</label>
@@ -153,5 +156,6 @@ $('.calculate_select').on("change",function(){
 	}
 });
 </script>
+</div>
 </body>
 </html>

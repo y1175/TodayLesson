@@ -7,15 +7,19 @@
 <meta charset="utf-8">
 
 <!-- CSSstyle --> 
+
    <style type="text/css">
       .hs_ad_main_asidenav_nav_FreeBoard_Title>a{
          color: rgb(224, 62, 82);
       }
+
    </style>
+     <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard_admin.css?ver=2">
 <!-- CSSstyle -->
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<title>게시글 목록</title>
+<title>Today Lesson Admin</title>
 <script>
 function reply_view(no)
 {
@@ -140,16 +144,39 @@ else
 </script>
 </head>
 <body>
+<div id="yi_container">
 <sec:authentication property="principal" var="pinfo"/>
-게시판 관리페이지<br>
+<span class="pagetitle">커뮤니티 관리</span>
+<input type="button" class="notice_btn" value="공지등록" onclick="location.href='/todaylessonadmin/freeboard_noticewrite'">	
 
-<input type="button" value="공지등록" onclick="location.href='/todaylessonadmin/freeboard_noticewrite'">	
-<table class="table">
-<thead>
+<form method="get" class="form-inline my-2 my-lg-3" action="admin_freeboard?currPage=${page.startBlock }">
+<div align="right" class="container yi_searchbar">
+<div class="row">
+<div class="col-sm">
+<select name="category" class="custom-select mr-sm-4"  id="inlineFormCustomSelect">
+<option value="3" selected="selected">전체</option>
+<option value="1">자유글</option>
+<option value="2">질문과답변</option>
+</select>
+<select name="search" class="custom-select  mr-sm-4" >
+<option value="all">   전체   </option>
+<option value="member_nick">   닉네임   </option>
+<option value="freeboard_title">  제목   </option>
+<option value="freeboard_content">   내용   </option>
+</select>
+<input type="text" name="searchtxt" class="form-control mr-sm-2" >
+<input type="submit" value="검색" class="yi_search_btn">
+</div>
+</div>
+</div>
+</form>
+
+<table class="table table-hover">
+<thead class="thead-admin-freeboard">
 <tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>관리</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="boardadmin_tbody">
 <c:forEach var="notice" items="${notice }">
 <tr>
 <td>공지사항</td>
@@ -158,7 +185,7 @@ else
 <td>${notice.member_nick }</td>
 <td>${notice.notice_writedate }</td>
 <td>
-<a class="btn btn-primary" data-toggle="collapse" data-target="#notice_detail-${notice.notice_no}" role="button" aria-expanded="false" aria-controls="#detail-${notice.notice_no}">
+<a class="btn board-detail" style="color:white;"  data-toggle="collapse" data-target="#notice_detail-${notice.notice_no}" role="button" aria-expanded="false" aria-controls="#detail-${notice.notice_no}">
     상세보기
   </a>
 
@@ -171,7 +198,7 @@ else
   내용 : ${notice.notice_content}<br>
   <form action="/todaylessonadmin/admin_noticemodify/${notice.notice_no }" method="post">
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
-  <input type="submit" value="수정"><input type="button" value="삭제"
+  <input type="submit" class="noticemodify-btn" value="수정"><input type="button" class="noticedelete-btn" value="삭제"
   onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='/todaylessonadmin/admin_noticedelete/${notice.notice_no}'">
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
   </form>
@@ -186,7 +213,7 @@ else
 </c:forEach>
 </tbody>
 
-<tbody>
+<tbody class="boardadmin_tbody">
 <tr>
 <tr><th>카테고리</th><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>관리</th>
 </tr>
@@ -203,13 +230,13 @@ else
 <td>${item.freeboard_no}</td>
 <td>
 
-${item.freeboard_title }		[${replist[status.index]}]
+${item.freeboard_title }		<span class="replycount">[${replist[status.index]}]</span>
 
 </td>
 <td><c:out value=" ${item.member_nick }"></c:out></td>
 <td><c:out value=" ${item.freeboard_writedate }"></c:out></td>
 <td>
-<a class="btn btn-primary" data-toggle="collapse" data-target="#freeboard_detail-${item.freeboard_no}" role="button" aria-expanded="false" aria-controls="#detail-${item.freeboard_no}">
+<a class="btn board-detail" style="color:white;" data-toggle="collapse" data-target="#freeboard_detail-${item.freeboard_no}" role="button" aria-expanded="false" aria-controls="#detail-${item.freeboard_no}">
    상세보기
   </a>
 </td>
@@ -222,10 +249,10 @@ ${item.freeboard_title }		[${replist[status.index]}]
   
    
   <div>
-  내용 : ${item.freeboard_content}<br>
-<input type="button" value="댓글보기/접기" id="reply_view_btn" onclick="reply_view(${item.freeboard_no})">
-<table>
-<thead id="add_reply_thead-${item.freeboard_no}" style="display:none;">
+  <div class="freeboard_content">${item.freeboard_content}</div>
+<input type="button" class="boardreply-detail" value="댓글보기/접기" id="reply_view_btn" onclick="reply_view(${item.freeboard_no})">
+<table class="ajaxreply-list">
+<thead id="add_reply_thead-${item.freeboard_no}"  style="display:none;">
 <tr><th>작성자</th><th>내용</th><th>작성일</th><th>삭제</th>
 </tr>
 </thead>
@@ -235,10 +262,12 @@ ${item.freeboard_title }		[${replist[status.index]}]
 
 
   <form action="admin_replyinsert/${item.freeboard_no}" method="post">
-  <textarea style="resize: none;" rows="5" cols="100" name="boardreply_content" required="required"></textarea><br>
+  <div class="form-group">
+  <textarea class="form-control" style="resize: none;" rows="5" cols="100" name="boardreply_content" required="required"></textarea><br>
+  </div>
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
-  <input type="submit" value="답변" name="admin_reply">
-  <input type="button" value="삭제" name="admin_delete" 
+  <input type="submit" class="boardreply-insert" value="답변" name="admin_reply">
+  <input type="button" class="board-delete" value="삭제" name="admin_delete" 
   onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='admin_delete/${item.freeboard_no}'">
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
    </form>
@@ -253,22 +282,7 @@ ${item.freeboard_title }		[${replist[status.index]}]
 </c:forEach>
 </tbody>
 </table>
-<form method="get" action="admin_freeboard?currPage=${page.startBlock }">
-<select name="category">
-<option value="3" selected="selected">전체</option>
-<option value="1">자유글</option>
-<option value="2">질문과답변</option>
-</select>
-<select name="search">
-<option value="all">전체</option>
-<option value="member_nick">닉네임</option>
-<option value="freeboard_title">제목</option>
-<option value="freeboard_content">내용</option>
-</select>
-<input type="text" name="searchtxt" >
-<input type="submit" value="검색">
 
-</form>
 
 
 
@@ -278,12 +292,16 @@ ${item.freeboard_title }		[${replist[status.index]}]
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
-</c:if>
 <a href="admin_freeboard?currPage=${index }&category=${category}&search=${search}&searchtxt=${searchtxt}">${index }</a>
+</c:if>
+<c:if test="${index== page.currPage }">
+${index }
+</c:if>
 </c:forEach>
 
 <c:if test="${page.next }">
 <a href="admin_freeboard?currPage=${page.endBlock+1 }&category${category}&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
 </c:if>
+</div>
 </body>
 </html>

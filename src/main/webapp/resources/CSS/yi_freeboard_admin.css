@@ -1,0 +1,281 @@
+#yi_container{	
+	width: 80%;
+margin: auto;
+margin-top: 40px;
+color: rgb(53, 54, 58);
+	
+	
+}
+.pagetitle{
+	font-size:30px;
+}
+.notice_btn{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+}
+
+.notice_btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+
+.noticemodify-btn{
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.noticemodify_btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.noticedelete-btn{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.noticedelete-btn:hover{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82, 0.8);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+
+.thead-admin-freeboard{
+	background-color: rgb(53, 54, 58);
+	color:white;
+	
+
+}
+.thead-admin-freeboard tr th{
+	text-align:center;
+}
+
+.boardadmin_tbody{
+	
+	text-align:center;
+}
+.boardadmin_tbody tr th{
+	background-color:rgb(224, 62, 82);
+color: white;
+	text-align:center;
+}
+
+.board-detail{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.board-detail:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+a .board-detail{
+	color:white;
+	
+}
+
+.replycount{
+	color:rgb(224, 62, 82);
+	font-weight:600;
+	
+}
+
+.ajaxreply-list{
+	margin:auto;
+	text-align:center;
+	
+}
+
+.boardreply-detail{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 10px 10px 10px;	
+}
+
+.boardreply-detail:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+.form-control{
+	
+	width:60%;
+	margin:auto;
+}
+.boardreply_delete{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.boardreply_delete:hover{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82, 0.8);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.boardreply-insert{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 10px 10px 10px;	
+}
+
+.boardreply-insert:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+.board-delete{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.board-delete:hover{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82, 0.8);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.yi_search_btn{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 10px 10px 10px;	
+}
+
+.yi_search_btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+.yi_searchbar{
+	margin-left:20%;
+}
