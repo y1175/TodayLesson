@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TodayLesson</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=2">
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -18,14 +20,42 @@ $(document).ready(function(){
 			
 			for(var i=0;i<item.length;i++)
 				{
-				let orderdetail="";
-
-			orderdetail+="<img src="+"'"+item[i].product_thumb+"'"+" alt='thumb'><br>";
-			orderdetail+="[스토어>"+item[i].product_category+"]<br>";
-			orderdetail+="[상품명:"+item[i].product_name+"]<br>";
-			orderdetail+="가격:"+item[i].orderlist_cost+"<br>";
-			orderdetail+="주문번호:"+item[i].orderlist_no+"<br>";
-				$("#"+item[i].orderlist_no).append(orderdetail);
+				let orderdetail1="";
+				let orderdetail2="";
+				let orderdetail3="";
+				let product_category="";
+				if(item[i].product_category==1)
+				{
+				product_category="외국어";
+				}
+				else if(item[i].product_category==2)
+				{
+				product_category="IT";
+				}
+				else if(item[i].product_category==3)
+				{
+				product_category="요리";
+				}
+				else if(item[i].product_category==4)
+				{
+				product_category="DIY";
+				}
+				else if(item[i].product_category==5)
+				{
+				product_category="운동";
+				}
+				else if(item[i].product_category==6)
+				{
+				product_category="기타";
+				}
+				
+			orderdetail1+="<img src="+"'"+item[i].product_thumb+"'"+" alt='thumb'><br>";
+			orderdetail2+="[스토어>"+product_category+"]<br>";
+			orderdetail2+="상품명:"+item[i].product_name+"<br>";
+			orderdetail3+="가격:"+item[i].orderlist_cost+"<br>";
+				$("#a"+item[i].orderlist_no).append(orderdetail1);
+				$("#b"+item[i].orderlist_no).append(orderdetail2);
+				$("#c"+item[i].orderlist_no).append(orderdetail3);
 				}
 			
 			
@@ -37,17 +67,49 @@ $(document).ready(function(){
 
 </script>
 <body>
-${member_id }님의 주문내역
+<div id="yi_container">
+<h3><span class="memberid">${member_id }</span>님의 주문내역</h3>
 <form action="/todaylessonmypage/user_myorderlist">
-<input type="date" name="start_date"> ~ <input type="date" name="end_date"> <input type="submit" value="조회">
+<div class="row order_period">
+<div class="col">
+<input class="form-control" type="date" name="start_date">
+</div> ~ 
+<div class="col">
+<input class="form-control" type="date" name="end_date">
+</div>
+ <input type="submit" class="order_search_btn" value="조회">
+</div>
 </form>
 
 <c:forEach var="orderlist" items="${list}">
-
-주문일자:${orderlist.orderlist_date }	주문번호: ${orderlist.orderlist_no } 주문상태:${orderlist.orderlist_orderstatus}
-<input type="button" value="상세보기" onclick="location.href='/todaylessonmypage/myorderlist_orderinfo/${orderlist.orderlist_no}'"><br>
-<div class="no" id='${orderlist.orderlist_no}'>
-
+<div class="container"></div>
+주문일자:<span class="data_info">${orderlist.orderlist_date }</span>	
+주문번호:<span class="data_info"> ${orderlist.orderlist_no }</span> 
+주문상태:<c:choose>
+<c:when test='${orderlist.orderlist_orderstatus==1}'>
+<span class="data_info">주문완료</span>
+</c:when>
+<c:when test='${orderlist.orderlist_orderstatus==2}'>
+<span class="data_info">배송중</span>
+</c:when>
+<c:when test='${orderlist.orderlist_orderstatus==3}'>
+<span class="data_info">배송완료</span>
+</c:when>
+<c:when test='${orderlist.orderlist_orderstatus==4}'>
+<span class="data_info">배송취소</span>
+</c:when>
+</c:choose>
+<input type="button" class="order_detail_btn" value="상세보기" onclick="location.href='/todaylessonmypage/myorderlist_orderinfo/${orderlist.orderlist_no}'"><br>
+ <div class="detailline"></div>
+<div class="no" >
+<div class="container">
+<div class="row">
+<div class="col order_thumb" id='a${orderlist.orderlist_no}'></div>
+<div class="col myproduct" id='b${orderlist.orderlist_no}'></div>
+<div class="col ordercost" id='c${orderlist.orderlist_no}'></div>
+</div>
+</div>
+ <div class="detailline"></div>
 </div>
 </c:forEach>
 <c:if test="${page.prev }">
@@ -63,5 +125,6 @@ ${member_id }님의 주문내역
 <c:if test="${page.next }">
 <a href="user_myorderlist?currPage=${page.endBlock+1 }&start_date=${start_date}&end_date=${end_date}"><c:out value="다음"/></a>
 </c:if>
+</div>
 </body>
 </html>
