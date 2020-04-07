@@ -144,7 +144,7 @@ $('document').ready(function() {
  
 <!--썸네일 이미지 원본 맨위에 보여줌-->
 <div class="ej_top img">
-<img src="${dto.lesson_thumb }" id="lesson_thumb" width="60%">
+<img src="${dto.lesson_thumb }" id="lesson_thumb" width="100%">
 </div>
 
 <div class="ej_top right">
@@ -174,31 +174,34 @@ $('document').ready(function() {
 	<br>
           
 <h3><c:out value="${dto.lesson_title}"></c:out><br></h3>
-<h4 class="beforecost" id="ej_cost"><fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
-</h4>
+<%-- <h4 class="beforecost" id="ej_cost">
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+</h4> --%>
 
 	<jsp:useBean id="now" class="java.util.Date"  />
-	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" /></div>
+	<div style="display: none;">
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
 	<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
 	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
 	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
+	</div>
 	<c:if test="${dto.lesson_earlybird eq 1 }">
 	<c:if test="${itDate - isDate <= 7}">
-	<c:out value="${dto.lesson_cost* 0.82}"/>
-	</c:if>
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.82}"/>원
+		</c:if>
 	</c:if>
 		<c:if test="${dto.lesson_earlybird eq 0}">
-		<c:out value="${dto.lesson_cost}" />
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원
 	</c:if>
 	<c:if test="${itDate - isDate > 7 }">
-	    <c:out value="${dto.lesson_cost}" />
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원
 	</c:if>
 	
 
+<br>
 
-
-수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required" readonly="readonly"><br>
 배송비 무료<br>
+
 
 
 <div class="ej_grid fist">
@@ -216,8 +219,8 @@ $('document').ready(function() {
 
 
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
+</div>
  </form>
-
 
 	<!-- 레슨명, 이런 기본적인건 옆에 배치 -->
 
@@ -312,11 +315,11 @@ $(".insert_my_cart").click(function(){
 	<div class="owl-carousel owl-theme">
   	 <c:forEach var="item" items="${list}" begin="1" end="12"> 
   		<div class="item">
-  			<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/${list.lesson_no}"><img src="${list.lesson_thumb }" alt="thumb"><br>
-  			<h4>${list.lesson_title }</h4>
+  			<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/${item.lesson_no}"><img src="${item.lesson_thumb }" alt="thumb"><br>
+  			<h4>${item.lesson_title }</h4>
   			</a>
   			<br>
-  			<fmt:formatNumber value="${list.lesson_cost}" type="number" maxFractionDigits="3"/>원 
+  			<fmt:formatNumber value="${item.lesson_cost}" type="number" maxFractionDigits="3"/>원 
   		</div>
   	</c:forEach>  
   	</div> 
@@ -546,6 +549,7 @@ $(".insert_my_cart").click(function(){
 <img alt="delivery_rule" src="${pageContext.request.contextPath}/resources/IMG/delivery_rule.png">
 	
 	</div>
+</div>
 </div>
 
 	<script>
