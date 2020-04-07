@@ -6,32 +6,60 @@
     <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
     <!-- 쿼리문이랑 같은 이름설정--> 
 	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO" id="salesCalculateMap">
-	   <result property="senior_no" column="senior_no"/>
+	   <!-- MemberDTO -->
 	   <result property="member_id" column="member_id"/>
 	   <result property="member_no" column="member_no"/>
-	   <result property="orderlist_no" column="orderlist_no"/>
-	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> <!-- 매출현황 결제상태  (OrderList Table)-->
-	   <result property="lesson_type" column="lesson_type"/> <!-- 매출현황 레슨타입 (Lesson Table)  -->
-	   <result property="lesson_no" column="lesson_no"/> <!-- 매출현황 레슨번호 (Lesson Table)  -->
-	   <result property="lesson_title" column="lesson_title"/> <!-- 매출현황 레슨명 (Lesson Table) -->
-	   <result property="orderlist_date" column="orderlist_date"/> <!-- 매출현황 구매일 (OrderList Table) -->
-	   <result property="member_name" column="member_name"/> <!-- 매출현황 구매자 (Member Table) -->
-	   <result property="lesson_cost" column="lesson_cost"/> <!-- 매출현황 결제금액 (Lesson Table) -->
-	   <result property="orderlist_usepoint" column="orderlist_usepoint"/> <!-- 매출현황 포인트사용 (OrderList Table) -->
-	   <result property="sales_comm" column="sales_comm"/> <!-- 매출현황 정산수수료  (Sales Table) -->
-	   <result property="sales_surtax" column="sales_surtax"/> <!-- 매출현황 세금계산서부가세  (Sales Table) -->
-	   <result property="sales_search_startdate" column="sales_search_startdate"/> <!-- 매출현황 기간검색 START  (Sales Table) -->
-	   <result property="sales_search_enddate" column="sales_search_enddate"/> <!-- 매출현황 기간검색 END  (Sales Table) -->
-	   <result property="calculate_no" column="calculate_no"/> <!-- 정산신청 정산번호 (Calculate Table) -->
-	   <result property="calculate_date" column="calculate_date"/> <!-- 정산신청 정산신청일 (Calculate Table) -->
-	   <result property="orderlist_calculatestatus" column="orderlist_calculatestatus"/> <!-- 정산신청 정산상태 (Calculate Table) -->
-	   <result property="lesson_open_period" column="lesson_open_period"/> <!-- 정산신청 정산기간_시작 (Calculate Table) -->
- 	   <result property="lesson_close_period" column="lesson_close_period"/> <!-- 정산신청 정산기간_끝 (Calculate Table) -->
- 	   <result property="senior_bank_name" column="senior_bank_name"/> <!-- 정산신청 정산계좌_은행명 (Calculate Table) -->
-	   <result property="senior_account_num" column="senior_account_num"/> <!-- 정산신청 정산계좌_계좌번호 (Calculate Table) -->
-	   <result property="senior_account_name" column="senior_account_name"/> <!-- 정산신청 정산기간_예금주 (Calculate Table) -->
+	   <result property="member_name" column="member_name"/>
+	   <result property="member_point" column="member_point"/>
+	   <result property="member_level" column="member_level"/>
+	   <result property="member_nick" column="member_nick"/>
+	   <!-- MemberDTO -->
+	   <!-- SeniorDTO -->
+	   <result property="senior_no" column="senior_no"/>
+	   <result property="senior_email" column="senior_email"/>
+	   <result property="senior_phone" column="senior_phone"/>
 	   <result property="senior_crno" column="senior_crno"/>
-	   <result property="orderlist_cost" column="orderlist_cost"/>
+	   <result property="senior_nick" column="senior_nick"/>
+	   <result property="senior_bank_name" column="senior_bank_name"/>
+	   <result property="senior_account_name" column="senior_account_name"/>
+	   <result property="senior_account_num" column="senior_account_num"/>
+	   <result property="senior_register_date" column="senior_register_date"/>
+	   <result property="senior_crno_name" column="senior_crno_name"/>
+	   <!-- SeniorDTO -->
+	   <!-- LessonDTO -->
+	   <result property="lesson_no" column="lesson_no"/>
+	   <result property="lesson_title" column="lesson_title"/>
+	   <result property="lesson_cost" column="lesson_cost"/>
+	   <result property="lesson_category" column="lesson_category"/>
+	   <result property="lesson_register_date" column="lesson_register_date"/>
+	   <result property="lesson_open_period" column="lesson_open_period"/>
+	   <result property="lesson_close_period" column="lesson_close_period"/>
+	   <result property="lesson_number" column="lesson_number"/>
+	   <result property="lesson_type" column="lesson_type"/>
+	   <result property="lesson_result" column="lesson_result"/>
+	   <!-- LessonDTO --> 
+	   <!-- OrderListDTO -->
+	   <result property="orderlist_no" column="lesson_type"/>
+	   <result property="product_no" column="product_no"/> 
+	   <result property="orderlist_date" column="orderlist_date"/> 
+	   <result property="orderlist_orderstatus" column="orderlist_orderstatus"/> 
+	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> 
+	   <result property="orderlist_cost" column="orderlist_cost"/> 
+	   <result property="orderlist_calculatestatus" column="orderlist_calculatestatus"/> 
+	   <result property="orderlist_usepoint" column="orderlist_usepoint"/>
+	   <!-- OrderListDTO -->
+	   <!-- OrderDetailDTO -->
+	   <result property="order_detail_no" column="order_detail_no"/> 
+	   <!-- OrderDetailDTO -->
+	   <!-- SalesDTO -->
+	   <result property="sales_comm" column="sales_comm"/>
+	   <result property="sales_surtax" column="sales_surtax"/> 
+	   <!-- SalesDTO -->
+	   <!-- CalculateDTO -->
+	   <result property="calculate_no" column="calculate_no"/> 
+	   <result property="calculate_date" column="calculate_date"/> 
+	   <result property="lessondate_count" column="lessondate_count"/>
+	   <!-- CalculateDTO --> 
 	</resultMap>  
 	
 	<!-- //시니어 멤버아이디로 시니어번호 받아오기 -->
@@ -47,7 +75,7 @@
 	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
 	          floor(sum(lesson_cost*0.1)) as sales_comm, 
 	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
-	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
+	   from sales s right join orderlist o on s.orderlist_no=o.orderlist_no
 	                join order_detail od on od.orderlist_no=o.orderlist_no
 	                join member m on m.member_id=o.member_id
 	                join senior sn on sn.member_id=m.member_id
@@ -57,11 +85,22 @@
                            where sn.senior_no=sn2.senior_no
                            and sn2.member_id=#{member_id}) -->
                            
-      select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
+       <!-- select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
 	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
 	          floor(sum(lesson_cost*0.1)) as sales_comm, 
 	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
 	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
+	                join order_detail od on od.orderlist_no=o.orderlist_no
+	                join member m on m.member_id=o.member_id
+	                join senior sn on sn.member_id=m.member_id
+	                join lesson l on l.lesson_no=od.lesson_no             
+	   where m.member_id=#{member_id}  -->
+        
+       select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
+	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
+	          floor(sum(lesson_cost*0.1)) as sales_comm, 
+	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
+	   from sales s right join orderlist o on s.orderlist_no=o.orderlist_no
 	                join order_detail od on od.orderlist_no=o.orderlist_no
 	                join member m on m.member_id=o.member_id
 	                join senior sn on sn.member_id=m.member_id
@@ -95,11 +134,6 @@
        </if>
     </sql> 
 
-    <!-- 정산신청 총 게시글 수  -->
-	<!-- <select id="calculateRequsetListTotalCount" resultType="int">
-	   select count(*)
-	   from 
-	</select> -->
 	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌 -->
 	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="java.lang.String">
 	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,

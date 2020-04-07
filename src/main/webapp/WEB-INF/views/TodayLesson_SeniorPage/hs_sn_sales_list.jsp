@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSSstyle --> 
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=1">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=3">
    <style type="text/css">
       .hs_sn_main_asidenav_nav_salestitle>a{
          color: rgb(224, 62, 82);
@@ -118,8 +118,6 @@
                <tr>
                   <th>결제금액</th>   
                   <th>포인트사용</th>
-                  <!-- <th>취소금액</th>
-                  <th>취소포인트</th> -->
                   <th>정산수수료</th>
                   <th style="border-right: none;">세금계산서부가세</th>
                </tr>
@@ -127,48 +125,38 @@
             <tbody>
                <c:set var="sales_sum" value="0"/> <!-- 시니어매출합계 -->
                <c:set var="cost_sum" value="0"/> <!-- 결제금액합계 -->
-               <%-- <c:set var="costcancel_sum" value="0"/> --%> <!-- 결제결제취소합계합계 -->
                <c:set var="usepoint_sum" value="0"/> <!-- 포인트사용합계 -->
-               <%-- <c:set var="usepointcancel_sum" value="0"/> --%> <!-- 포인트취소합계 -->
                <c:set var="comm_sum" value="0"/> <!-- 정산수수료합계 -->
                <c:set var="surtaxsum" value="0"/> <!-- 세금계산서 부가세합계-->
                <c:forEach var="salesList" items="${salesList}" varStatus="status">
-               <%-- <c:choose>
-                  <c:when test="${salesList eq null}">
-                     <tr>
-                        <td>
-                           <c:out value="매출내역이 없습니다"/>
-                        </td>
-                     </tr>
-                  </c:when>
-               </c:choose> --%>
-               <%-- <c:otherwise> --%>
                   <tr>
                      <!-- NO. -->
                      <td>
                         <c:out value="${status.count}"/>
                      </td> 
                      <!-- 결제상태 -->
-                     <c:choose>
-                        <c:when test="${salesList.orderlist_paystatus == 2}">
+                     <%-- <c:choose>
+                        <c:when test="${salesList.orderlist_paystatus==1}">
                            <c:out value="결제완료"/>
                         </c:when> 
-                        <c:when test="${salesList.orderlist_paystatus == 5}">
+                        <c:when test="${salesList.orderlist_paystatus==3}">
                            <c:out value="결제취소"/>
                         </c:when>
-                     </c:choose>
+                     </c:choose> --%>
                      <!-- 레슨종류 -->
-                     <c:choose>
-                        <c:when test="${salesList.lesson_type == 1}">
-                           <c:out value="원데이레슨"/>
-                        </c:when> 
-                        <c:when test="${salesList.lesson_type == 2}">
-                           <c:out value="다회성레슨"/>
-                        </c:when>
-                        <c:when test="${salesList.lesson_type == 3}">
-                           <c:out value="동영상레슨"/>
-                        </c:when>
-                     </c:choose>                  
+                     <td>
+                        <c:choose>
+                           <c:when test="${salesList.lesson_type == 1}">
+                              <c:out value="원데이레슨"/>
+                           </c:when> 
+                           <c:when test="${salesList.lesson_type == 2}">
+                              <c:out value="다회성레슨"/>
+                           </c:when>
+                           <c:when test="${salesList.lesson_type == 3}">
+                              <c:out value="동영상레슨"/>
+                           </c:when>
+                        </c:choose>                  
+                     </td>
                      <!-- 레슨번호 -->
                      <td>
                         <c:out value="${salesList.lesson_no}"/>
@@ -198,60 +186,10 @@
                         <td>
                            <fmt:formatNumber value="${salesList.lesson_cost}" type="number" maxFractionDigits="3"/>
                         </td> 
-                     <%-- <c:choose>
-                        <c:when test="${salesList.orderlist_paystatus == 0}">
-                           <td>
-                              <c:out value="${salesList.lesson_cost}"/>
-                           </td> 
-                        </c:when> --%>
-                       <%--  <c:when test="${salesList.orderlist_paystatus == 1}">
-                           <td>
-                             <c:out value="0"/>
-                           </td>
-                        </c:when>
-                     </c:choose> --%>
                      <!-- 포인트사용 -->
                         <td>
                            <fmt:formatNumber value="${salesList.orderlist_usepoint}" type="number" maxFractionDigits="3"/>
                         </td> 
-                     <%-- <c:choose>
-                        <c:when test="${salesList.orderlist_paystatus == 0}">
-                           <td>
-                              <c:out value="${salesList.orderlist_usepoint}"/>
-                           </td> 
-                        </c:when>
-                        <c:when test="${salesList.orderlist_paystatus == 1}">
-                           <td>
-                             <c:out value="0"/>
-                           </td>
-                        </c:when>
-                     </c:choose> --%>
-                     <!-- 취소금액 -->
-                     <%-- <c:choose>
-                        <c:when test="${salesList.orderlist_paystatus == 0}">
-                           <td>
-                              <c:out value="0"/>
-                           </td>
-                        </c:when>
-                        <c:when test="${salesList.orderlist_paystatus == 1}">
-                          <td>
-                             <c:out value="${salesList.lesson_cost}"/>
-                          </td>
-                        </c:when>
-                     </c:choose> --%>
-                     <!-- 취소포인트 -->
-                     <%-- <c:choose>
-                        <c:when test="${salesList.orderlist_paystatus == 0}">
-                           <td>
-                              <c:out value="0"/>
-                           </td>
-                        </c:when>
-                        <c:when test="${salesList.orderlist_paystatus == 1}">
-                          <td>
-                             <c:out value="${salesList.orderlist_usepoint}"/>
-                          </td>
-                        </c:when>
-                     </c:choose> --%>
                      <!-- 정산수수료 -->
                      <td>
                         <fmt:formatNumber value="${salesList.sales_comm}" type="number" maxFractionDigits="3"/>
@@ -274,32 +212,12 @@
                   
                      <!-- 결제금액합계 -->
                      <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_cost}"/> 
-                     <%-- 결제금액/취소금액 같이되었을때... 처리할려고 햇던거 
-                     <c:choose>
-                     <c:when test="${salesList.orderlist_paystatus == 0}">
-                        <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_paystatus}"/> 
-                     </c:when> --%>
-                     <!-- 결제결제취소합계합계 -->
-                     <%-- <c:when test="${salesList.orderlist_paystatus == 1}">
-                        <c:set var="costcancel_sum" value="${costcancel_sum+salesList.orderlist_paystatus}"/> 
-                     </c:when>
-                  </c:choose> --%>
-                  
                      <!-- 포인트사용합계 -->
                      <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_usepoint}"/> 
-                     <%-- 결제금액/취소금액 같이되었을때... 처리할려고 햇던거 
-                     <c:choose>
-                     <c:when test="${salesList.orderlist_paystatus == 0}">
-                        <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_paystatus}"/> 
-                     </c:when> --%>
-                     <!-- 포인트취소합계 -->
-                     <%-- <c:when test="${salesList.orderlist_paystatus == 1}">
-                        <c:set var="usepointcancel_sum" value="${usepointcancel_sum+salesList.orderlist_paystatus}"/>
-                     </c:when> 
-                  </c:choose> --%>
-                  <c:set var="comm_sum" value="${comm_sum+salesList.sales_comm}"/> <!-- 정산수수료합계 -->
-                  <c:set var="surtaxsum" value="${surtaxsum+salesList.sales_surtax}"/> <!-- 세금계산서 부가세합계-->
-              <%--  </c:otherwise> --%>
+                     <!-- 정산수수료합계 -->
+                     <c:set var="comm_sum" value="${comm_sum+salesList.sales_comm}"/> 
+                     <!-- 세금계산서 부가세합계-->
+                     <c:set var="surtaxsum" value="${surtaxsum+salesList.sales_surtax}"/> 
                </c:forEach>
             </tbody>
             <tfoot>
@@ -311,15 +229,9 @@
                   <td> <!-- 결제금액합계 -->
                      <fmt:formatNumber value="${cost_sum}" type="number" maxFractionDigits="3"/>
                   </td> 
-                  <%-- <td> <!-- 결제결제취소합계합계 -->
-                     <c:out value="${costcancel_sum}"/>
-                  </td --%> 
                   <td> <!-- 포인트사용합계 -->
                      <fmt:formatNumber value="${usepoint_sum}" type="number" maxFractionDigits="3"/>
                   </td> 
-                  <%-- <td> <!-- 포인트취소합계 -->
-                     <c:out value="${usepointcancel_sum}"/>
-                  </td> --%> 
                   <td> <!-- 정산수수료합계 -->
                      <fmt:formatNumber value="${comm_sum}" type="number" maxFractionDigits="3"/> 
                   </td> 

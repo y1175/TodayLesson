@@ -73,12 +73,6 @@ public class Senior_HS_Salescalculate_Controller {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
 
-		//정산신청 총 게시글 수
-		/*int totalCount= salescalculateService.calculateRequsetListTotalCount();
-		int pageSize=10;
-		int blockSize=5;*/
-		
-		
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist
 		                          =salescalculateService.calculateRequsetList(member_id);

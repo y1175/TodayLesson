@@ -13,7 +13,6 @@
 <!--mypage nav style-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_mypage_nav.css?ver=1">
 <!--mypage nav style-->
-
 </head>
 <body>
    <div class="hs_us_mypage_box">
@@ -23,7 +22,8 @@
 	           <img alt="" src="" class="hs_us_mypage_img">
 			</div>
 			<div class="hs_us_mypage_nickbox">
-			   <b class="hs_us_mypage_nick">${pageContext.request.userPrincipal.name}님</b>
+			   <%-- <b class="hs_us_mypage_nick">${pageContext.request.userPrincipal.name}님</b> --%>
+			   <b class="hs_us_mypage_nick">${myPageMyLevel_MyPoint.member_nick}님</b>
 			  <!--  <input type="file" id="member_img" name="file"> -->
             </div>
          </div>

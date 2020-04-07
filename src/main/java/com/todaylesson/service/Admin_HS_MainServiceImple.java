@@ -16,6 +16,13 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 	@Resource(name="admin_HS_MainMapper")
 	private Admin_HS_MainMapper adminmainMapper;
 	
+	//관리자 닉네임받기
+	@Override
+	public String adminMemberNick(String member_id) {
+		// TODO Auto-generated method stub
+		return adminmainMapper.adminMemberNick(member_id);
+	}
+	
 	//일일가입자수 집계
 	@Override
 	public int memberJoinCount() {
@@ -360,8 +367,5 @@ public class Admin_HS_MainServiceImple implements Admin_HS_MainService {
 		// TODO Auto-generated method stub
 		return adminmainMapper.chartOutput();
 	}
-
-	
-
 	
 }

@@ -57,6 +57,7 @@ width		: 100%;
 				        "balloon":{
 				          "drop":true,
 				          "adjustBorderColor":false,
+				          "type": "smoothedLine",
 				          "color":"#ffffff"
 				        },
 				        "bullet": "round",

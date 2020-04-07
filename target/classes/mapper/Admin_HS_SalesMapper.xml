@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Admin_HS_Sales_Mapper">
+    <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
+    <!-- 쿼리문이랑 같은 이름설정--> 
+	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO" id="salesCalculateMap">
+	   <!-- MemberDTO -->
+	   <result property="member_id" column="member_id"/>
+	   <result property="member_no" column="member_no"/>
+	   <result property="member_name" column="member_name"/>
+	   <result property="member_point" column="member_point"/>
+	   <result property="member_level" column="member_level"/>
+	   <result property="member_nick" column="member_nick"/>
+	   <!-- MemberDTO -->
+	   <!-- SeniorDTO -->
+	   <result property="senior_no" column="senior_no"/>
+	   <result property="senior_email" column="senior_email"/>
+	   <result property="senior_phone" column="senior_phone"/>
+	   <result property="senior_crno" column="senior_crno"/>
+	   <result property="senior_nick" column="senior_nick"/>
+	   <result property="senior_bank_name" column="senior_bank_name"/>
+	   <result property="senior_account_name" column="senior_account_name"/>
+	   <result property="senior_account_num" column="senior_account_num"/>
+	   <result property="senior_register_date" column="senior_register_date"/>
+	   <result property="senior_crno_name" column="senior_crno_name"/>
+	   <!-- SeniorDTO -->
+	   <!-- LessonDTO -->
+	   <result property="lesson_no" column="lesson_no"/>
+	   <result property="lesson_title" column="lesson_title"/>
+	   <result property="lesson_cost" column="lesson_cost"/>
+	   <result property="lesson_category" column="lesson_category"/>
+	   <result property="lesson_register_date" column="lesson_register_date"/>
+	   <result property="lesson_open_period" column="lesson_open_period"/>
+	   <result property="lesson_close_period" column="lesson_close_period"/>
+	   <result property="lesson_number" column="lesson_number"/>
+	   <result property="lesson_type" column="lesson_type"/>
+	   <result property="lesson_result" column="lesson_result"/>
+	   <!-- LessonDTO --> 
+	   <!-- OrderListDTO -->
+	   <result property="orderlist_no" column="lesson_type"/>
+	   <result property="product_no" column="product_no"/> 
+	   <result property="orderlist_date" column="orderlist_date"/> 
+	   <result property="orderlist_orderstatus" column="orderlist_orderstatus"/> 
+	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> 
+	   <result property="orderlist_cost" column="orderlist_cost"/> 
+	   <result property="orderlist_calculatestatus" column="orderlist_calculatestatus"/> 
+	   <result property="orderlist_usepoint" column="orderlist_usepoint"/>
+	   <!-- OrderListDTO -->
+	   <!-- OrderDetailDTO -->
+	   <result property="order_detail_no" column="order_detail_no"/> 
+	   <!-- OrderDetailDTO -->
+	   <!-- SalesDTO -->
+	   <result property="sales_comm" column="sales_comm"/>
+	   <result property="sales_surtax" column="sales_surtax"/> 
+	   <!-- SalesDTO -->
+	   <!-- CalculateDTO -->
+	   <result property="calculate_no" column="calculate_no"/> 
+	   <result property="calculate_date" column="calculate_date"/> 
+	   <result property="lessondate_count" column="lessondate_count"/>
+	   <!-- CalculateDTO --> 
+	</resultMap>  
+	
+	<!-- 매출현황전체리스트 -->
+	<select id="adminSeniorSalesList" resultMap="salesCalculateMap" parameterMap="hashmap">
+	   select o.orderlist_paystatus, l.lesson_category, l.lesson_type, l.lesson_no, l.lesson_title, 
+	          o.orderlist_date, sn.senior_nick, l.lesson_cost, o.orderlist_usepoint, 
+	          floor(sum(lesson_cost*0.1)) as sales_comm, 
+	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
+	   from sales s right join orderlist o on s.orderlist_no=o.orderlist_no
+	                join order_detail od on od.orderlist_no=o.orderlist_no
+	                join member m on m.member_id=o.member_id
+	                join senior sn on sn.member_id=m.member_id
+	                join lesson l on l.lesson_no=od.lesson_no 
+	  <include refid="search"></include>                          
+	</select>
+	
+	<!-- 검색기능 쿼리문 -->
+    <sql id="search">
+       <if test='searchtxt!=null and searchtxt!=""'>
+          <choose>
+             <when test='search.equals("all")'>
+			    where 
+				   lesson_title like CONCAT('%', #{searchtxt}, '%')
+				or 
+				   senior_nick like CONCAT('%', #{searchtxt}, '%')
+			 </when>
+             <when test='search.equals("lesson_title")'>
+                where lesson_title like CONCAT('%', #{searchtxt}, '%')
+             </when>
+             <when test='search.equals("member_name")'>
+                where senior_nick like CONCAT('%', #{searchtxt}, '%')
+             </when>
+          </choose>
+       </if>
+       <if test='start_date!="" and start_date!=null'>	
+	      and orderlist_date<![CDATA[>=]]>#{start_date}
+	   </if>
+	   <if test='end_date!="" and end_date!=null'>	
+	      and orderlist_date<![CDATA[<=]]>#{end_date}
+	   </if>
+    </sql> 
+
+
+    
+
+
+    
+   
+   
+	
+	
+	
+	
+</mapper>
+
+
+

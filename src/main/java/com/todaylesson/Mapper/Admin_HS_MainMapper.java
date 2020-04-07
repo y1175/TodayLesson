@@ -10,6 +10,9 @@ import com.todaylesson.DTO.OrderListDTO;
 @Mapper
 public interface Admin_HS_MainMapper {
 
+	//관리자 닉네임받기
+	public String adminMemberNick(String member_id);
+	
 	//일일가입자수 집계
 	public int memberJoinCount();
 
@@ -139,6 +142,4 @@ public interface Admin_HS_MainMapper {
 	//AmChart
 	public List<OrderListDTO> chartOutput();
 
-
-	
 }

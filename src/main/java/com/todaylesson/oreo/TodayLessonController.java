@@ -50,6 +50,7 @@ import com.todaylesson.DTO.PopUpDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
+import com.todaylesson.service.JY_SN_Approve_LessonService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.Admin_HS_MainService;
 import com.todaylesson.service.Admin_YI_Popup_Service;
@@ -107,6 +108,9 @@ public class TodayLessonController {
     private Admin_HS_MainService adminMainService;
     /* Admin_Main */
     
+    @Autowired
+	private JY_SN_Approve_LessonService approve_service;
+    
     /* 아이디찾기 */
     @Resource(name="loginService")
     private LoginService loginService;
@@ -129,7 +133,15 @@ public class TodayLessonController {
     
     @RequestMapping("/todaylessonadmin")
     public String admin(@RequestParam(required=false,defaultValue="date") String ymd,
-    		             Model model) { 
+    		            Authentication authentication,
+                        Model model, HttpSession session) {
+        //시큐리티 멤버아이디
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+        String member_id = userDetails.getUsername(); 
+    	
+        //관리자 닉네임받기
+    	String adminMemberNick=adminMainService.adminMemberNick(member_id);
+    	session.setAttribute("adminMemberNick", adminMemberNick);
     	
     	//일일가입자수 집계
     	int memberJoinCount=adminMainService.memberJoinCount();
@@ -203,7 +215,7 @@ public class TodayLessonController {
     	  model.addAttribute("newLessonAcceptCount", newLessonAcceptCount);
     	  //레슨심사중
     	  int newLessonEvaluationCount=adminMainService.newLessonEvaluationCount();
-    	  model.addAttribute("newLessonAcceptCount", newLessonAcceptCount);
+    	  model.addAttribute("newLessonEvaluationCount", newLessonEvaluationCount);
     	  //레슨수락
     	  int newLessonAcceptanceCount=adminMainService.newLessonAcceptanceCount();
     	  model.addAttribute("newLessonAcceptanceCount", newLessonAcceptanceCount);
@@ -332,11 +344,14 @@ public class TodayLessonController {
     	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
     	String member_id = userDetails.getUsername();
     	
+    	int level = approve_service.get_my_lesson(member_id);
+
+    	model.addAttribute("level", level);
+    	
     	//마이페이지 본인레벨 및 포인트 나타내기
     	MemberDTO myPageMyLevel_MyPoint=userMyPageService.myPageMyLevel_MyPoint(member_id);
-    	model.addAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint);
-    	
     	session.setAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint); //세션으로 처리하기..
+    	
     	//마이페이지 프로필변경
     	
     	return "hs_us_mypage";

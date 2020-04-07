@@ -5,7 +5,7 @@
 <mapper namespace="com.todaylesson.Mapper.User_HS_MyPageMapper">
     <!-- mypage 회원등급 -->
 	<select id="myPageMyLevel_MyPoint" resultType="com.todaylesson.DTO.MemberDTO" parameterType="java.lang.String">
-	   select member_level, member_point
+	   select member_level, member_point, member_nick
        from member
        where member_id=#{member_id}
 	</select>

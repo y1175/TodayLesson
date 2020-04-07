@@ -40,13 +40,6 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		
 		return salescalculateMapper.SalesList(hm);
 	}
-
-	//정산신청 총 게시글 수
-	/*@Override
-	public int calculateRequsetListTotalCount() {
-	    // TODO Auto-generated method stub
-	   	return salescalculateMapper.calculateRequsetListTotalCount();
-	} */      
 	       
 	//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 	@Override

@@ -323,7 +323,7 @@
    </style>
 <!-- 매출통계(일별, 주별, 월별, 년별) CSS -->
 <!--AdminMain style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_home_content.css?ver=4">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_home_content.css?ver=5">
 <!--AdminMain style-->
 
 </head>
@@ -392,37 +392,6 @@
       <div class="hs_ad_conditionBox">
          <div class="row" style="width: 100%; margin: 40px 15px 25px; border: 1px solid rgba(53, 54, 58, 0.3); padding: 15px;">
             <div class="col md-3" style="height: 300px; padding: 0px; border-right: 1px solid rgba(53, 54, 58, 0.3);">
-               <!-- 스토어현황 -->
-               <div style="height: 135px;">
-                  <div class="col md-12" style="text-align: center;">
-                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>스토어현황</h5>
-                  </div>
-                  <div class="col sm-12" style="margin: 5px;">
-                     <div class="hs_ad_condition_name">
-                        <b>등록상품</b>
-                     </div>
-                     <span>
-                        <fmt:formatNumber value="${registrationProductCount}" type="number" maxFractionDigits="3"/>건
-                     </span>
-                  </div>
-                  <div class="col sm-12" style="margin: 5px;">
-                     <div class="hs_ad_condition_name">
-                        <b>판매상품</b>
-                     </div>
-                     <span>
-                        <fmt:formatNumber value="${possibilityProductCount}" type="number" maxFractionDigits="3"/>건
-                     </span>
-                  </div>
-                  <div class="col sm-12" style="margin: 5px;">
-                     <div class="hs_ad_condition_name">
-                        <b>품절 상품</b>
-                     </div>
-                     <span>
-                        <fmt:formatNumber value="${soldOutProductCount}" type="number" maxFractionDigits="3"/>건
-                     </span>
-                  </div>
-               </div>
-               <!-- 스토어현황 -->
                <!-- 레슨현황 -->
                <div style="height: 135px;">
                   <div class="col md-12" style="text-align: center;">
@@ -462,6 +431,37 @@
                   </div>
                </div>
                <!-- 레슨현황 -->
+               <!-- 스토어현황 -->
+               <div style="height: 135px;">
+                  <div class="col md-12" style="text-align: center;">
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>스토어현황</h5>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>등록상품</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${registrationProductCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>판매상품</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${possibilityProductCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+                  <div class="col sm-12" style="margin: 5px;">
+                     <div class="hs_ad_condition_name">
+                        <b>품절 상품</b>
+                     </div>
+                     <span>
+                        <fmt:formatNumber value="${soldOutProductCount}" type="number" maxFractionDigits="3"/>건
+                     </span>
+                  </div>
+               </div>
+               <!-- 스토어현황 -->
             </div>
             <div class="col md-3" style="height: 300px; padding: 0px; border-right: 1px solid rgba(53, 54, 58, 0.3);">
                <!-- 주문현황 -->
@@ -554,7 +554,7 @@
                         <b>레슨심사중</b>
                      </div>
                      <span>
-                        <fmt:formatNumber value="${newLessonAcceptCount}" type="number" maxFractionDigits="3"/>건
+                        <fmt:formatNumber value="${newLessonEvaluationCount}" type="number" maxFractionDigits="3"/>건
                      </span>
                   </div>
                  <div class="col sm-12" style="margin: 5px;">

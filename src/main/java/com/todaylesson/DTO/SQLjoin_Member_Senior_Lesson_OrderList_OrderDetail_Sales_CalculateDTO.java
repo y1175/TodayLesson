@@ -34,7 +34,6 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateD
 	private int member_bank_name;
 	private String member_account_name;
 	private String member_account_num;
-	private int member_gen;
 	
 	//SeniorDTO
 	private int senior_no;
@@ -47,6 +46,7 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateD
 	private String senior_account_name;
 	private String senior_account_num;
 	private String senior_register_date;
+	private String senior_crno_name;
 	
 	//LessonDTO
 	private int lesson_no;
@@ -72,21 +72,25 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateD
 	private String lesson_senior_content;
 	private String lesson_zipno;
 	//private int senior_no;
+	private int lesson_earlybird;
+	private int lesson_like;
 	
 	//OrderListDTO
 	private int orderlist_no;
+	//private String member_id;
 	private int product_no;
-	//private String member_id; FK
 	private String orderlist_receiver;
 	private String orderlist_addr;
+	private int orderlist_zipcode;
 	private String orderlist_phone;
 	private int cart_no;
 	private String orderlist_date;
 	private int orderlist_orderstatus;
 	private int orderlist_paystatus;
-	private int orderlist_calculatestatus;
 	private int orderlist_cost;
+	private int orderlist_calculatestatus;
 	private int orderlist_usepoint;
+	private String orderlist_msg;
 	
 	//OrderDetailDTO
 	private int order_detail_no;

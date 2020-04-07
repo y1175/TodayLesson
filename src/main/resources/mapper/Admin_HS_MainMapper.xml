@@ -5,6 +5,14 @@
 <mapper namespace="com.todaylesson.Mapper.Admin_HS_MainMapper">
     <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
     
+    <!-- 관리자 닉네임받기 -->
+    <select id="adminMemberNick" resultType="java.lang.String" parameterType="java.lang.String">
+    select member_nick
+    from member
+    where member_id=#{member_id}
+    </select>
+    <!-- 관리자 닉네임받기 -->
+    
     <!-- 일일 회원가입현황 -->
     <select id="memberJoinCount" resultType="int">
        select count(*) 

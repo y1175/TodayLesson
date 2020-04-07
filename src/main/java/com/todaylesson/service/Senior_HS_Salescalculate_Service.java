@@ -13,9 +13,6 @@ public interface Senior_HS_Salescalculate_Service {
 	//매출현황전체리스트
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> 
 	       salesList(String member_id, String sales_search_startdate, String sales_search_enddate, String search, String searchtxt);
-
-	//정산신청 총 게시글 수
-	//public int calculateRequsetListTotalCount();
 	       
 	//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calculateRequsetList(String member_id);

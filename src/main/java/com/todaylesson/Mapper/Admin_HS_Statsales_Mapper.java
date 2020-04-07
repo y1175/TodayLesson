@@ -13,6 +13,7 @@ public interface Admin_HS_Statsales_Mapper {
 	//매출통계(일별, 주별, 월별, 년별)
 	public List<OrderListDTO> StatSalesAllChart(HashMap<String, Object> hm);
 
+	//AmChart
 	public List<OrderListDTO> chartOutPut();
 
 	

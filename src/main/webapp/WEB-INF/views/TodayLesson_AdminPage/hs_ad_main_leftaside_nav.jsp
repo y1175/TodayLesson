@@ -90,7 +90,7 @@
             <a href="${pageContext.request.contextPath}/todaylessonadmin/popup_admin">팝업관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_Administrator_Title">
-            <a href="${pageContext.request.contextPath}/todaylessonadmin//admin_administrator">관리자설정</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_administrator">관리자설정</a>
          </p>
       
       <div class="hs_ad_main_asidenav_line"></div>   
