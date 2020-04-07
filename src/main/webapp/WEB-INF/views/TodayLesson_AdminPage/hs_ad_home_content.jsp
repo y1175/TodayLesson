@@ -395,7 +395,7 @@
                <!-- 레슨현황 -->
                <div style="height: 135px;">
                   <div class="col md-12" style="text-align: center;">
-                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>레슨현황</h5>
+                     <h5 class="hs_ad_condition_title"><i class='glyphicon' style="color:rgb(224, 62, 82); margin-right: 5px; ">&#xe032;</i>레슨현황</h5>
                   </div>
                   <div class="col sm-12" style="margin: 5px;">
                      <div class="hs_ad_condition_name">
@@ -434,7 +434,7 @@
                <!-- 스토어현황 -->
                <div style="height: 135px;">
                   <div class="col md-12" style="text-align: center;">
-                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>스토어현황</h5>
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-store-alt' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>스토어현황</h5>
                   </div>
                   <div class="col sm-12" style="margin: 5px;">
                      <div class="hs_ad_condition_name">
@@ -506,7 +506,7 @@
                <!-- 결제현황 -->
                <div style="height: 135px;">
                   <div class="col md-12" style="text-align: center;">
-                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>결제현황</h5>
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-coins' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>결제현황</h5>
                   </div>
                   <div class="col sm-12" style="margin: 5px;">
                      <div class="hs_ad_condition_name">
@@ -539,7 +539,7 @@
                <!-- 레슨접수현황 -->
                <div style="height: 135px;">
                   <div class="col md-12" style="text-align: center;">
-                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>레슨 접수현황</h5>
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-window-restore' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>레슨 접수현황</h5>
                   </div>
                   <div class="col sm-12" style="margin: 5px;">
                      <div class="hs_ad_condition_name">
@@ -578,7 +578,7 @@
                <!-- 시니어정산현황 -->
                <div style="height: 135px;">
                   <div class="col sm-12" style="text-align: center;">
-                     <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>시니어 정산현황</h5>
+                     <h5 class="hs_ad_condition_title"><i class='fas fa-calculator' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>시니어 정산현황</h5>
                   </div>
                   <div class="col sm-12" style="margin: 5px;">
                      <div class="hs_ad_condition_name"> 
@@ -609,7 +609,7 @@
             </div>
             <div class="col md-3" style="height: 300px; padding: 0px">
                <div class="col sm-12" style="text-align: center;">
-                  <h5 class="hs_ad_condition_title"><i class='fas fa-edit' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>1:1 문의현황</h5>
+                  <h5 class="hs_ad_condition_title"><i class='fa fa-question' style="color:rgb(224, 62, 82); margin-right: 5px; "></i>1:1 문의현황</h5>
                </div>
                <div class="col sm-12" style="margin: 5px;">
                   <div class="hs_ad_condition_name"> 
