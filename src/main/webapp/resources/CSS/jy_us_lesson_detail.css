@@ -47,6 +47,7 @@ background-color: rgb(224, 62, 82);
 font-weight : 600;
 font-size : 14px;
 color: white;
+margin : 5px 0px;
 }
 /* 슬라이더/ */
 
@@ -59,6 +60,7 @@ width:550px;
 .ej_top.right{
 border: 1px solid silver;
 width:50%; 
+height :30.96%;
 float:right;
 background-color: white;
 /* margin-left: 30px;
@@ -225,3 +227,13 @@ display: inline-block;}
 
 /*  */
 
+#lesson_info_title{
+	text-align: left;
+	line-height: 50px;
+}
+
+
+#lt{
+	
+	margin-top : 0px;
+}

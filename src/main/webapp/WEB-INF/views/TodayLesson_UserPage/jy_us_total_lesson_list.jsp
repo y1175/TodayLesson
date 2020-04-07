@@ -167,7 +167,6 @@ width:500px; height:auto;
 
 
 
-<div class="search_and_page">
 
 <form method="get" action="total_lesson_list?currPage=${page.startBlock }">
 <select name="search">
@@ -196,7 +195,6 @@ width:500px; height:auto;
 <c:if test="${page.next }">
 <a href="total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}"><c:out value="다음"/></a>
 </c:if>
-</div>
 
 </div>
 <script>

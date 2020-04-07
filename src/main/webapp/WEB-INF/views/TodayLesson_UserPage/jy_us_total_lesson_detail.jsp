@@ -144,7 +144,7 @@ $('document').ready(function() {
  
 <!--썸네일 이미지 원본 맨위에 보여줌-->
 <div class="ej_top img">
-<img src="${dto.lesson_thumb }" id="lesson_thumb" width="100%">
+<img src="${dto.lesson_thumb }" id="lesson_thumb" width="150%">
 </div>
 
 <div class="ej_top right">
@@ -171,12 +171,28 @@ $('document').ready(function() {
 		</c:otherwise>
 
 	</c:choose>
-	<br>
-          
-<h3><c:out value="${dto.lesson_title}"></c:out><br></h3>
-<%-- <h4 class="beforecost" id="ej_cost">
-<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
-</h4> --%>
+	
+    /      
+        
+	<c:choose>
+
+		<c:when test="${dto.lesson_type == 1}">
+			<c:out value="원데이 클래스" />
+
+		</c:when>
+
+		<c:when test="${dto.lesson_type == 2}">
+			<c:out value="다회성 클래스" />
+		</c:when>
+
+		<c:otherwise>
+			<c:out value="온라인 클래스" />
+		</c:otherwise>
+	</c:choose>
+	
+	
+<h3 id="lt"><c:out value="${dto.lesson_title}"></c:out></h3>
+
 
 	<jsp:useBean id="now" class="java.util.Date"  />
 	<div style="display: none;">
@@ -187,30 +203,39 @@ $('document').ready(function() {
 	</div>
 	<c:if test="${dto.lesson_earlybird eq 1 }">
 	<c:if test="${itDate - isDate <= 7}">
-	<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.82}"/>원
+	<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.82}"/>원</h4>
 		</c:if>
 	</c:if>
 		<c:if test="${dto.lesson_earlybird eq 0}">
-<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원
+<h4 ><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원</h4>
 	</c:if>
 	<c:if test="${itDate - isDate > 7 }">
-<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원
+<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원</h4>
 	</c:if>
 	
 
-<br>
 
 배송비 무료<br>
-
-
-
+	<c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}" />
+최대 주니어 수 / 현재 수강 가능한 주니어 수 <br>
+<c:out value="${dto.lesson_member_max}" /> / <c:out value="${possible_junior}" /><br>
 <div class="ej_grid fist">
-	<input type="hidden" name="is_it_possible" value="${possible_junior}"/>
+<input type="hidden" id= "is_it_possible" name="is_it_possible" value="${dto.lesson_member_max - dto.lesson_junior_count}"/>
 	<!-- 수강 가능 인원이 0이면 구매 못하게 -->
-	
-<c:if test="${possible_junior != 0}">
-<input type="button" value="구매하기" id="to_orderform" class="ej_btn"  onclick="location.href='${pageContext.request.contextPath }/todaylesson/lesson_buy/${dto.lesson_no}'"><br></div>
-</c:if>
+<button id="to_orderform" class="ej_btn"  onclick="location.href='${pageContext.request.contextPath }/todaylesson/lesson_buy/${dto.lesson_no}'" disabled="">결제하기</button><br></div>
+<br>
+<script>
+
+
+if ($("#is_it_possible").val() == 0) {
+	$("#to_orderform").attr('disabled', true);
+} else {
+	$("#to_orderform").attr('disabled', false);
+}
+
+
+</script>
+
 
 <div class="ej_grid second">
 <a href="#"><div class="fas fa-heart insert_my_like" ></div></a></div>
@@ -227,6 +252,8 @@ $('document').ready(function() {
 
 	<script>
 
+
+	
 $(".insert_my_like").click(function(){
 	 
   let lesson_no=document.getElementById('lesson_no').value;
@@ -342,9 +369,9 @@ $(".insert_my_cart").click(function(){
 <span class="ej_left"><h3>레슨소개</h3></span>
  <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_product_topimg.png" >
  
- <br> 이 강의는 "
+ <h2 id="lesson_info_title">
+ <br> 이 강의는 <br>"
 	<c:choose>
-
 		<c:when test="${dto.lesson_category == 1}">
 			<c:out value="운동" />
 		</c:when>
@@ -364,31 +391,17 @@ $(".insert_my_cart").click(function(){
 		<c:otherwise>
 			<c:out value="요리" />
 		</c:otherwise>
-
 	</c:choose>
 	"에 관심이 있는 분들을 위한 강의이며,
 	<br> 총
 	<c:out value="${dto.lesson_number}" />
 	강으로 구성되어 있습니다.
 	
- 
+ </h2>
 	<div class="summer">${dto.lesson_content}</div>
 
 
-수강 가능한 최대 주니어수
-	<br>
-	<c:out value="${dto.lesson_member_max}" />
-	
-	<br> 
-	
-	현재 수강 중인 주니어 수
-	<br>
-	<c:out value="${dto.lesson_junior_count}" />
-	<br> 수강 가능한 주니어 수
-	<br>
-	<c:set var="possible_junior"
-		value="${dto.lesson_member_max - dto.lesson_junior_count}" />
-	<c:out value="${possible_junior}" />
+
 	
 
 	
@@ -403,38 +416,22 @@ $(".insert_my_cart").click(function(){
 	<c:out value="${dto.lesson_open_period}" />
 	~
 	<c:out value="${dto.lesson_close_period}" />
-	<br> 레슨 타입
-	<br>
-	<c:choose>
 
-		<c:when test="${dto.lesson_type == 1}">
-			<c:out value="원데이 클래스" />
-			<br>
-		</c:when>
-
-		<c:when test="${dto.lesson_type == 2}">
-			<c:out value="다회성 클래스" />
-			<br>
-		</c:when>
-
-		<c:otherwise>
-			<c:out value="온라인 클래스" />
-			<br>
-		</c:otherwise>
-
-	</c:choose>
-
+<br>
 	<div class="layer">
+	<br>
 		레슨 일자 및 시간
 		<c:out value="${dto.lesson_date_time}" />
-		<br> 레슨 주소<br> 우편번호
+		<br> 
+		<br>
+		레슨 주소<br> 우편번호
 		<c:out value="${dto.lesson_zipno}" />
 		<br> 주소
 		<c:out value="${dto.lesson_addr}" />
 		<br>
 		<!-- 여기에 map가져오기 -->
 
-		<div id="map" style="width: 750px; height: 350px;"></div>
+		<div id="map" style="width: 750px; height: 350px; margin: 0px auto;"></div>
 
 		<script
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
@@ -456,12 +453,12 @@ $(".insert_my_cart").click(function(){
 
 
 	</div>
-
-	시니어 명
-	<c:out value="${dto.lesson_senior_title}" />
-	<br> 시니어 소개
+<br>
+	안녕하세요, 시니어 <c:out value="${dto.lesson_senior_title}" /> 입니다.
+	<br>
 	<div class="summer">${dto.lesson_senior_content}</div>
-	<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list">목록으로</a>
+
+<button onclick="location.href='${pageContext.request.contextPath }/todaylesson/total_lesson_list'" class="ej_btn" id="to_list">목록으로</button>
 
 
 <div class="ej_box second" id="ej_box_second">
@@ -810,13 +807,13 @@ function fn_review(lesson_no){
 	 
     $.ajax({
         type:'POST',
-        url : '/lesson_detail/${dto.lesson_no}/lesson_review_insert',
+        url : '/todaylesson/lesson_detail/${dto.lesson_no}/lesson_review_insert',
         data:$("#reviewForm").serialize(),
         success : function(data){
             if(data=="success")
             {
             	alert("리뷰 등록 완료!");
-                getReviewList();
+            	getLreviewList();
                 $("#lreview_title").val("");
                 $("#lreview_content").val("");
 

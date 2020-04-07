@@ -100,11 +100,11 @@ function checkDisable()
 
 <label>사업자번호</label>
 <input type="text" id="senior_crno" name="senior_crno">
-사업자 번호 없음<input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
 
 <label>상호명</label>
 <input type="text" id="senior_crno_name" name="senior_crno_name">
 
+사업자 번호 없음<input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
 
 <h3>계좌정보</h3>
 <label>은행명</label>

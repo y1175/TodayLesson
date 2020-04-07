@@ -108,6 +108,13 @@ function checkDisable()
    }
 }
 
+
+
+  
+
+
+
+
 </script>
 
 
@@ -128,11 +135,28 @@ function checkDisable()
 <label>연락처</label>
 <input type="text" id="senior_phone" name="senior_phone" required="required" value="${dto.senior_phone }">
 
+<script>
+
+if(${dto.senior_crno == null}){
+	   senior_crno.disabled = true;
+	   senior_crno_name.disabled = true;
+	   no_crno.checked == true
+	} else {
+	   senior_crno.disabled = false;
+	   senior_crno_name.disabled = false;
+	}
+
+
+</script>
+
 <label>사업자번호</label>
 <input type="text" id="senior_crno" name="senior_crno" value="${dto.senior_crno}">
 
 <label>상호명</label>
 <input type="text" id="senior_crno_name" name="senior_crno_name" value="${dto.senior_crno_name}">
+
+사업자 번호 없음<input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
+
 
 <h3>계좌정보</h3>
 <label>은행명</label>
@@ -193,8 +217,8 @@ function checkDisable()
 
 <input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
 
-<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
- --%>
+ <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+ 
 <input type="submit" value="전송">
 <input type="reset" value="취소">
 

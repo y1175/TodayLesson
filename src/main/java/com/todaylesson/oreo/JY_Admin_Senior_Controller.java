@@ -17,9 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_Admin_SeniorService;
 
@@ -80,10 +82,29 @@ public class JY_Admin_Senior_Controller {
 	
 	// 전체시니어 목록
 	@RequestMapping("all_senior")
-	public String all_senior(Model model) {
+	public String all_senior(Model model,			
+			@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="senior_no") String order) {
 		
-		List<SeniorDTO> list = ad_senior_service.all_senior();
+		System.out.println(order);
+
+		int totalCount= ad_senior_service.totalCount(search, searchtxt);
+		int pageSize=15;
+		int blockSize=5;
+		
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+
+		List<SeniorDTO> list = ad_senior_service.all_senior(search, searchtxt,order
+				,page.getStartRow()
+				,page.getEndRow());
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("order",order);
+
 		
 		return "TodayLesson_AdminPage/jy_ad_senior_list.hs_ad_main_section";
 	}
