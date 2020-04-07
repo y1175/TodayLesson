@@ -77,7 +77,7 @@
 
       <b>통계관리</b>
          <p class="hs_ad_main_asidenav_nav_StatSales_Title">
-            <a href="">매출통계</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/sales_statistics">매출통계</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_StatMember_Title"> 
             <a href="${pageContext.request.contextPath}/todaylessonadmin/member_statistics">회원통계</a>

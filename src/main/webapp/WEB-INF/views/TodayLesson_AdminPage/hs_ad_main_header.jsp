@@ -42,7 +42,7 @@
                <a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson">레슨관리</a>
                <a href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist">스토어관리</a>
                <a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage">운영관리</a>
-               <a href="">통계관리</a>
+               <a href="${pageContext.request.contextPath}/todaylessonadmin/sales_statistics">통계관리</a>
                <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list">기타관리</a>
             </nav>
          </div>

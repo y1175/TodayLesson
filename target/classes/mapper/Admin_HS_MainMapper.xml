@@ -28,8 +28,8 @@
     <!-- 일일 시니어전환자 집계 -->
     <select id="seniorChangeCount" resultType="int">
        select count(*) 
-       from lesson
-       where lesson_register_date > DATE_ADD(now(), INTERVAL -1 month);
+       from senior
+       where senior_register_date > DATE_ADD(now(), INTERVAL -1 month);
     </select>
     <!-- 일일 시니어전환자 집계 -->
     

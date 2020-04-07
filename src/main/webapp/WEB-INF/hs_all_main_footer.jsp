@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_all_main_footer.css?ver=1">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_all_main_footer.css?ver=2">
 <!-- CSSstyle -->
 </head>
 <body>
-   <div class="hs_footer">
+   <div class="hs_footer" style="position: relative; top: 100px;">
       <div class="hs_footer_content">
       <div class="hs_footer_SNSlink"> 
          <a href="#0" class="c-link c-link--facebook c-tooltip" aria-label="Facebook">
