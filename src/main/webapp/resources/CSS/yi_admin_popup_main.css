@@ -1,0 +1,112 @@
+#yi_container{	
+	width: 50%;
+margin: auto;
+margin-top: 40px;
+color: rgb(53, 54, 58);
+	
+	
+}
+.form-check-label{
+	
+	margin-left:20px;
+}
+
+.filebox label{
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.filebox label:hover {
+ 	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+
+.filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.popup-submit-btn{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+}
+
+.popup-submit-btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.popup-delete-btn{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.popup-delete-btn:hover{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82, 0.8);
+font-weight : 600;
+font-size : 14px;
+color: white;
+margin: 10px 0px 15px 10px;
+}
+
+.detailline{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(53, 54, 58);
+    margin-top:20px;
+}
+.popupimg{
+	
+	margin-left:30%;
+}
+.recent-popup{
+	
+	margin-left:35%;
+}

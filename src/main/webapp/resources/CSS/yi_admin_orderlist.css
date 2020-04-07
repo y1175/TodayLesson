@@ -1,4 +1,77 @@
-#yi_container{
+#yi_container{	
+width: 80%;
+margin: auto;
+margin-left:10%;
+margin-top: 40px;
+color: rgb(53, 54, 58);
+}
+
+.form-control{
+	width:25%
+}
+
+.form-check-label{
 	
+	margin-left:20px;
+}
+
+
+.order_search_btn{
 	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+}
+
+.order_search_btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.storeselect-btn{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
+
+.storeselect-btn:hover{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82, 0.8);
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
+
+
+.table thead tr th{
+	vertical-align:middle;
+	text-align:center;
+}
+
+.table tbody tr td{
+	vertical-align:middle;
+	text-align:center;
 }

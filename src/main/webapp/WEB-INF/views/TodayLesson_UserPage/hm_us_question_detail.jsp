@@ -6,7 +6,9 @@
 <head>
  <meta charset="utf-8">
 <title>오늘의 레슨 1:1문의 상세페이지</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question_detail.css?ver=4">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question_detail.css?ver=3">  
+<script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_us_question_detail.js?ver=2"></script> 
 </head>
 <body>
 
@@ -47,7 +49,7 @@ ${dto.question_title}
 <div class="hmfaqline"></div>
 <p>${dto.question_content}</p>
 </div>
-<input type ="button" class="question_answerbtn" id="question_answerbtn" value="문의 삭제">
+<input type ="button" class="question_answerbtn" id="${dto.question_no}" value="문의 삭제">
 
 
 

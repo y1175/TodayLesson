@@ -21,10 +21,6 @@
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- jQuery DatePicker -->
 <!-- JS -->
-   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hs_sn_sales_list.js?ver=1">
-   
-   
-   </script>
    
    <script type="text/javascript">
    $(document).ready(function(){

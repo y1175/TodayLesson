@@ -195,7 +195,7 @@ else
 <div style="text-align:center;" class="collapse" id="notice_detail-${notice.notice_no}">
   
    
-  내용 : ${notice.notice_content}<br>
+  ${notice.notice_content}<br>
   <form action="/todaylessonadmin/admin_noticemodify/${notice.notice_no }" method="post">
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
   <input type="submit" class="noticemodify-btn" value="수정"><input type="button" class="noticedelete-btn" value="삭제"

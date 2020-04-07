@@ -41,13 +41,13 @@ $(document).ready(function(){
 	   /*관련상품카르셀  */
 	   var owl = $('.owl-carousel');
 	   owl.owlCarousel({
-	       items:4,
+	       items:5,
 	       loop:true,
-	       margin:10,
-	       nav: true,
+	       margin:70,
+	       nav: true ,
 	       autoplay:true,
 	       autoplayTimeout:1000,
-	       autoplayHoverPause:true 
+	       autoplayHoverPause:true  
 	   });
 	   
 	    $('.owl-carousel').owlCarousel();
@@ -80,6 +80,9 @@ $('#summernote').summernote({
 </div>
 
 <div class="ej_top right">
+<%-- <img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/product_detail_banner.png" ><br><br> --%>
+<a href="${pageContext.request.contextPath}/todaylesson/total_lesson_list"><img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/ej_banner_blue_ver2.png" ></a>
+<br><br>
 <c:set var="category" value="${dto.product_category }"/>
  <c:choose>
  <c:when test = "${category==1}">외국어</c:when>
@@ -90,23 +93,32 @@ $('#summernote').summernote({
             <c:when test = "${category==6}">기타</c:when>
           </c:choose><br>
           
-<h3><c:out value="${dto.product_name}"></c:out><br></h3>
-<h4 class="beforecost" id="ej_cost"><fmt:formatNumber value="${dto.product_cost}" type="number" maxFractionDigits="3"/>원 </h4>
+<h2 style="font-weight:bold;"><c:out value="${dto.product_name}"></c:out></h2><br><div class="ej_line top_right"></div>
+<span class="ej_top font">가격   </span><h4 class="beforecost" id="ej_cost"><fmt:formatNumber value="${dto.product_cost}" type="number" maxFractionDigits="3"/>원 </h4>
 <div id="ej_cost"><c:out value="${dto.product_sale}"/>%</div> <div id="ej_cost"><h3> <fmt:formatNumber value="${dto.product_after_cost}" type="number" maxFractionDigits="3"/>원 </h3></div><br>
 
+<span class="ej_top font middle logintxt"></span>로그인 후, 적립혜택이 제공됩니다.<br>
 
 
 
-수량 <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required"><br>
-배송비 무료<br>
 
+<span class="ej_top font">배송</span>배송비 무료<br>
+<span class="ej_top font middle"></span>오후3시 주문상품까지 당일출고<br>
 
+<span class="ej_top font">수량</span> <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required"><br>
+<br>
+<c:set var="cost" value="${dto.product_cost }"/>
+<div id="ej_point_box">적립금</div> <c:set var="pluspoint" value="${cost*0.01 }"/><c:out value="${pluspoint}"/>포인트<br>
+<br>
+<div class="ej_line top_right"></div>
+<!--아이콘 3개  -->
 <div class="ej_grid fist">
-<input type="submit" value="구매하기" id="to_orderform" class="ej_btn" ><br></div>
+<input type="submit" value="구매하기" id="to_orderform" class="ej_btn buy" ><br></div>
 <div class="ej_grid second">
 <a href="#"><div class="fas fa-heart" id="${dto.product_no}"></div></a></div>
 <div class="ej_grid third">
-<a href="#"><div class="fa fa-shopping-cart" id="${dto.product_no}"></div></a></div>
+<a href="#"><div class="fa fa-shopping-cart" id="${dto.product_no}"></div></a></div><br>
+<!--아이콘 3개/  -->
 
 
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
@@ -126,8 +138,6 @@ $('#summernote').summernote({
 		$("form").submit();  
  });
 
-	
-	
 /* 장바구니 아이콘 */
  $(".fa.fa-shopping-cart").click(function(){ 
 	 
@@ -227,66 +237,24 @@ $('#summernote').summernote({
  });
 
 </script>
-<h3>관련상품</h3>
+<span class="ej_font bold"><h3>관련상품</h3></span>
 <div id="ej_line_narrow"></div>
  <!--관련상품 슬라이더  -->
 
 <!--  <div id="wrapper"> -->
 	<div class="owl-carousel owl-theme">
-<%--   	 <c:forEach var="prolist" items="${list}" begin="1" end="12"> --%>
+  	 <c:forEach var="prolist" items="${list}" begin="1" end="10">
+  	 <c:set var="nowno" value="${dto.product_no }"/>
+  	 <c:set var="listno" value="${prolist.product_no }"/>
+  	 <c:if test="${ nowno!=listno}">
   		<div class="item">
-  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
-  			<h4>${prolist.product_name }</h4></a><br>
-  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
-  			<img alt="a" src="${dto.product_thumb }">
+  		 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"></a><br>
+  			<h4>${prolist.product_name }</h4><br>
+  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 
   		</div>
-  		<div class="item">
-  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
-  			<h4>${prolist.product_name }</h4></a><br>
-  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
-  			<img alt="b" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
-  			<h4>${prolist.product_name }</h4></a><br>
-  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  		<%-- 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"><br>
-  			<h4>${prolist.product_name }</h4></a><br>
-  			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 --%>
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  		<div class="item">
-  			<img alt="a" src="${dto.product_thumb }">
-  		</div>
-  	
-  	
-  	
- <%--  	</c:forEach>  --%>
-  	</div> 
+  		</c:if>
+  	</c:forEach> 
+  	</div> <br><br>
 
  <div id='cssmenu'>
 	<ul>
@@ -300,7 +268,7 @@ $('#summernote').summernote({
 
 <div id="ej_container_content">
 <div class="ej_box first" id="ej_box_first">
-<span class="ej_left"><h3>상품소개</h3></span>
+<span class="ej_left"><span class="ej_font bold"><h3>상품소개</h3></span></span>
 </div>
 
 <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_product_topimg.png" >
@@ -310,15 +278,15 @@ ${dto.product_content}
 <br>
 <!-- 후기 -->
 <div class="ej_box second"  id="ej_box_second">
-<span class="ej_left"><h3>후기</h3></span>
+<span class="ej_left"><span class="ej_font bold"><h3>후기</h3></span></span>
 </div>
 <!-- 댓글리스트 -->
 <table class="table"> 
 <c:forEach var="item" items="${reply}"> 
 <tr>
-<td class="reviewTitle">${item.pdreview_title }  </td>
-<td>${item.member_id }  </td>
-<td>${item.pdreview_date }</td>
+<td class="reviewTitle" style="font-weight: bold;">${item.pdreview_title }  </td>
+<td>${item.member_id } </td>
+<td>${item.pdreview_date }  </td>
 </tr>
 <tr>
 <td class="reviewCon">${item.pdreview_content }</td>
@@ -333,7 +301,7 @@ ${dto.product_content}
 </ol>
 </section> 
 <!-- 방금쓴 댓글(새로고침전)/ -->
-
+<button type="button" id="openReplyFormbtn" class="ej_btn">후기남기기</button>
 <!--후기작성폼  -->
 <section class="replyForm">
 <form role="form" method="post" autocomplete="off">
@@ -345,17 +313,15 @@ ${dto.product_content}
 <div class="input_area">
 	<textarea name="pdreview_content" class="repCon" id="summernote" ></textarea>
 </div>
-<br>
-<br>
-<button type="button" id="reply_btn" class="ej_btn">후기 남기기</button>
+<button type="button" id="reply_btn" class="ej_btn">작성</button>
 
-</form>
+</form><br>
 </section>
-<!--후기작성폼/  -->
-	
+                                                 <!--후기작성폼/ -->
+
    
 <div class="ej_box third"  id="ej_box_third">
-<span class="ej_left"><h3>배송/교환/환불</h3></span>
+<span class="ej_left"><span class="ej_font bold"><h3>배송/교환/환불</h3></span></span>
 </div>
 <hr>
 <img alt="delivery_rule" src="${pageContext.request.contextPath}/resources/IMG/delivery_rule.png">
@@ -366,14 +332,14 @@ ${dto.product_content}
 <!--container/  -->
     <script>
 	//후기
-	 $(".reviewCon").slideUp();
+$(".replyForm").slideUp();
+$("#openReplyFormbtn").click(function(){
+	$(".replyForm").toggle();
+	
+});
 
-	 $(".reviewTitle").click(function(){
-	 	console.log(this);
-	 	//전체 댓글내용 다보이니까
-	 	//this 의 내용만 보이도록 수정하기
-	 	 $(".reviewCon").toggle(); 
-	 	$(this).siblings(".reviewCon").slideToggle(100);
+$(".reviewCon").slideUp();$(".reviewTitle").click(function(){
+	 	$(this).parent().next().find('td').eq(0).toggle();
 	 }); 
 	
 

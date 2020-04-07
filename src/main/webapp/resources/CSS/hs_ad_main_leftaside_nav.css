@@ -22,6 +22,9 @@
 .hs_ad_main_asidenav_nav a{
 	color : rgba(53, 54, 58, 0.3);
 }
+.hs_sn_main_asidenav_nav a:link{
+    text-decoration : none;
+}
 .hs_ad_main_asidenav_nav a:hover{
 	text-decoration : none;
 	color: rgb(224, 62, 82);

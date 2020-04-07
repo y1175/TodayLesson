@@ -9,23 +9,46 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_OrderCancel_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=1">
 </head>
 <body>
-주문취소 관리
+<div id="yi_container">
+<h3>주문취소 관리</h3>
 <form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
+<div class="form-group">
 <label>결제상태</label>
-<input type="radio" id="order_all" name="orderlist_paystatus" value="0"><label for="order_all">전체</label>
-<input type="radio" id="pay_complete" name="orderlist_paystatus" value="1"><label for="pay_complete">결제완료</label>
-<input type="radio" id="refunding" name="orderlist_paystatus" value="2"><label for="refunding">환불진행</label>
-<input type="radio" id="refund_complete" name="orderlist_paystatus" value="3"><label for="refund_complete">환불완료</label>
-<br>
-<label>주문번호</label>
-<input type="text" id="orderlist_search" name="orderlist_search"><br>
+<div class="form-check">
+<input class="form-check-input orderlist_orderstatus"  type="radio" id="order_all" name="orderlist_paystatus" value="0">
+<label class="form-check-label" for="order_all">전체</label>
+<input class="form-check-input orderlist_orderstatus"  type="radio" id="pay_complete" name="orderlist_paystatus" value="1">
+<label class="form-check-label" for="pay_complete">결제완료</label>
+<input class="form-check-input orderlist_orderstatus"  type="radio" id="refunding" name="orderlist_paystatus" value="2">
+<label class="form-check-label" for="refunding">환불진행</label>
+<input class="form-check-input orderlist_orderstatus"  type="radio" id="refund_complete" name="orderlist_paystatus" value="3">
+<label class="form-check-label" for="refund_complete">환불완료</label>
+</div>
+</div>
 
+<div class="form-group">
+<label for="orderlist_search">주문번호</label>
+<input class="form-control" type="text" id="orderlist_search" name="orderlist_search" aria-describedby="order_no_search">
+<small id="order_no_search" class="form-text text-muted">주문번호 정확히 입력하세요.</small>
+</div>
+
+<div class="form-group">
 <label>주문기간</label>
-<input type="date" name="start_date"> ~ <input type="date" name="end_date"><br>
-
- <input type="submit" value="조회">
+<input class="form-control" type="date" name="start_date" aria-describedby="orderstart">
+<small id="orderstart" class="form-text text-muted">검색범위를 입력하세요(첫날)</small> ~ 
+<input class="form-control" type="date" name="end_date" aria-describedby="orderend">
+<small id="orderend" class="form-text text-muted" >검색범위를 입력하세요(마지막날)</small>
+</div>
+ <input type="submit" class="order_search_btn" value="조회">
 </form>
 
 <form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
@@ -33,13 +56,13 @@
 <option value="1" selected="selected">스토어</option>
 <option value="2">레슨</option>
 </select>
-<input type="submit" value="스토어/레슨 선택">
+<input type="submit" class="storeselect-btn" value="스토어/레슨 선택">
 </form>
 
 
 <form action="/todaylessonadmin/admin_order_refund">
-<table>
-<thead>
+<table class="table table-hover">
+<thead class="thead-dark">
 <tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th rowspan="2">금액합계</th></tr>
 <tr><th>결제상태</th><th>주문자 ID</th><th>배송 주소</th><th>상품번호</th></tr>
 </thead>
@@ -88,6 +111,8 @@ console.log($('.status_select option[value=${item.orderlist_paystatus }]').val()
 <c:if test="${page.next }">
 <a href="refund_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="다음"/></a>
 </c:if>
+</div>
+
 <script>
 
 /*주문배송상태 변경 셀렉터*/
@@ -106,7 +131,7 @@ $('.status_select').on("change",function(){
 	}
 	else
 	{location.href="/todaylessonadmin/admin_order_refund/"+orderlist_no+"/"+selected;} 
-});
+})
 </script>
 </body>
 </html>

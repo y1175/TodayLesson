@@ -14,6 +14,15 @@ width:500px; height:auto;
 
 </style>
 
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_sn_AllLessonList_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle --> 
+
+
 </head>
 <body>
 

@@ -16,4 +16,6 @@ public interface User_HM_QuestionMapper {
 
 	public Question_1_1DTO hm_question_detail(int question_no);
 
+	public int questiondelete(int question_no);
+
 }

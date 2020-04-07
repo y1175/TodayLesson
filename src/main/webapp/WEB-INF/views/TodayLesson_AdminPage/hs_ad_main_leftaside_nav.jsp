@@ -21,10 +21,7 @@
          <p class="hs_ad_main_asidenav_nav_Senior_Title">
             <a href="${pageContext.request.contextPath}/todaylessonadmin/all_senior">시니어관리</a>
          </p>
-         <p class="hs_ad_main_asidenav_nav_MemberOrder_Title">
-            <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist">회원주문관리</a>
-         </p>   
-      
+
       <div class="hs_ad_main_asidenav_line"></div>
       
       <b>레슨관리</b>
@@ -38,10 +35,10 @@
             <a href="${pageContext.request.contextPath}/todaylessonadmin/wait_lesson">신규레슨심사</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_SeniorSales_Title">
-            <a href="">시니어매출현황</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_sales_list">시니어매출현황</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_SeniorCalculate_Title">
-         <a href="">시니어매출정산</a>
+         <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_calculte_list">시니어매출정산</a>
          </p>
 
       <div class="hs_ad_main_asidenav_line"></div>
@@ -51,10 +48,10 @@
             <a href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist">상품관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_OrderList_Title">
-            <a href="">주문내역관리</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist">주문내역관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_OrderCancel_Title">
-            <a href="">주문취소관리</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/refund_orderlist">주문취소관리</a>
          </p>   
 
       <div class="hs_ad_main_asidenav_line"></div>
@@ -90,7 +87,7 @@
             <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list">배너관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_PopUp_Title">
-            <a href="">팝업관리</a>
+            <a href="${pageContext.request.contextPath}/todaylessonadmin/popup_admin">팝업관리</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_Administrator_Title">
             <a href="${pageContext.request.contextPath}/todaylessonadmin//admin_administrator">관리자설정</a>
