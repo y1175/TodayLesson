@@ -7,6 +7,7 @@
 select question_no,question_group,question_title,question_situation,question_writedate
 from question_1_1
 where member_id = #{member_id}
+order by question_writedate desc
 </select> 
 
 

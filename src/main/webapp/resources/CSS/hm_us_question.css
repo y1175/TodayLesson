@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+.usquestionmain{
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+	color: rgb(53, 54, 58);	
+	text-align: center;
+}
+.usquestionimg{
+	width:80px;
+	
+}
+.usquestionmain h2{
+	margin : 20px 0px;
+}
+.usquestionmain h3{
+	margin:0px 0px 20px;
+}
+.usquestionmain h5{
+	margin:0px 0px 40px;
+}
+.question_btn{
+	border: 1px transparent;
+	padding: 5px 15px;
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 18px;
+	color: white;	
+	margin:40px 0px;
+	width:140px;
+	height: 40px;
+}
+.hm_us_questiondetailbtn{
+	border: 1px transparent;
+	padding: 5px 15px;
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+}

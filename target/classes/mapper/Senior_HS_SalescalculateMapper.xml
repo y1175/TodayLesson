@@ -95,6 +95,11 @@
        </if>
     </sql> 
 
+    <!-- 정산신청 총 게시글 수  -->
+	<!-- <select id="calculateRequsetListTotalCount" resultType="int">
+	   select count(*)
+	   from 
+	</select> -->
 	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌 -->
 	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="java.lang.String">
 	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,

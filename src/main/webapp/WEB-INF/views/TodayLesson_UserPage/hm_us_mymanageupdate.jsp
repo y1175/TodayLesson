@@ -203,7 +203,8 @@ onkeyup="passwordCheckFunction();"><br>
 
 
  <input type="button" class="hmupdatebtn" value="회원탈퇴" > 
-<input type="reset" class="hmupdatebtn" value="취소">
+ <button onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanage'" class="hmupdatebtn">취소</button>
+<!-- <input type="reset" class="hmupdatebtn" value="취소"> -->
 </div>
 
 
