@@ -32,6 +32,7 @@ update senior
 set senior_email = #{senior_email}, 
 senior_phone = #{senior_phone}, 
 senior_crno = #{senior_crno}, 
+senior_crno_name = #{senior_crno}, 
 senior_nick = #{senior_nick}, 
 senior_bank_name = #{senior_bank_name}, 
 senior_account_name = #{senior_account_name}, 
@@ -61,6 +62,7 @@ set senior_nick = #{senior_nick}
 ,senior_email = #{senior_email}
 ,senior_phone = #{senior_phone}
 ,senior_crno = #{senior_crno}
+,senior_crno_name= #{senior_crno_name}
 ,senior_bank_name = #{senior_bank_name}
 ,senior_account_name = #{senior_account_name}
 ,senior_account_num = #{senior_account_num}

@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list.css">
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
 
@@ -20,12 +22,37 @@ width:500px; height:auto;
 <body>
 
 
-<c:forEach var="item" items="${list}">
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;">나의 레슨관리</h2>
+ </div>
+ 
+ 
 
-<div id="thumb">
-<img alt="레슨 썸네일" src="${item.lesson_thumb }">
-<c:out value="${item.lesson_no}"/>
-<a href="${pageContext.request.contextPath }/todaylessonmypage/mylesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a>
+
+ <form method ="get" action="${pageContext.request.contextPath}/todaylessonmypage/my_lesson_list" style="text-align: center;  margin-top: 40px;">
+ <select name="search">
+ <option value="all">전체</option>
+ <option value="lesson_title">제목</option>
+ <option value="lesson_content">내용</option>
+ </select>
+ <input type="text" name="searchtxt">
+ <input type="submit" value="검색">
+ </form>
+ 
+ 
+ 
+ 
+   <div class="my_lesson_line"></div>
+   
+      <c:forEach var="item" items="${list}">
+      
+      <div id="lesson_div" class= "lesson_div">
+        <span class="lessonimg">
+		<img alt="레슨 썸네일" src="${item.lesson_thumb }">
+		</span>
+
+                  <ul class="lesson_text">
+                  <li class="lesson_group">
 
 
 <c:choose>
@@ -55,9 +82,8 @@ width:500px; height:auto;
 </c:otherwise>
 
 </c:choose>
-
-
-<c:choose>
+                  </li>
+					<c:choose>
 
 <c:when test="${item.lesson_type == 1}">
 <c:out value="원데이 클래스"/>
@@ -72,7 +98,8 @@ width:500px; height:auto;
 </c:otherwise>
 
 </c:choose>
-
+					<li class="lesson-head">${item.lesson_title}				</li>
+					
 <c:choose>
 
 <c:when test="${item.lesson_procent  >= 80.0 } && ${item.lesson_reward == 0}">
@@ -89,6 +116,14 @@ width:500px; height:auto;
 </c:otherwise>
 
 </c:choose>
+
+                  </ul>
+</div>
+<div class="event_line"></div>
+ 
+ 
+
+
 
 
 
@@ -127,8 +162,11 @@ success : function(result){
 
 
 
-</div>
 </c:forEach>
+
+
+
+
 
 </body>
 </html>

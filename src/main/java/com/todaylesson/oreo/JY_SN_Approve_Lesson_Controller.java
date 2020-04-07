@@ -36,6 +36,7 @@ public class JY_SN_Approve_Lesson_Controller {
 
 		List<LessonDTO> list = approve_service.apl_list(member_id);
 		
+		
 		model.addAttribute("list",list);
 		
 		return"TodayLesson_SeniorPage/jy_sn_approve_list.sn_main_section";

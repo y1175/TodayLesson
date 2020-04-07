@@ -29,13 +29,15 @@ public class JY_US_TotalLessonServiceImple implements JY_US_TotalLessonService {
 	
 	
 	@Override
-	public List<LessonDTO> ttlesson_list(String search, String searchtxt, String order, int startRow, int endRow) {
+	public List<LessonDTO> ttlesson_list(String search, String searchtxt, String order, int startRow, int endRow, int cate) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startRow);
 		hm.put("endrow", endRow);
 		hm.put("order", order);
+		hm.put("cate", cate);
+
 		return mapper.ttlesson_list(hm);
 	}
 
@@ -157,10 +159,11 @@ public class JY_US_TotalLessonServiceImple implements JY_US_TotalLessonService {
 
 
 	@Override
-	public int totalCount(String search, String searchtxt) {
+	public int totalCount(String search, String searchtxt, int cate) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 			hm.put("search", search);
 			hm.put("searchtxt", searchtxt);
+			hm.put("cate",cate);
 			return mapper.getCount(hm);
 	}
 

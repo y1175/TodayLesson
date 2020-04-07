@@ -24,15 +24,26 @@ width:500px; height:auto;
 </head>
 <body>
 
-<table class="table">
 
-<thead>
-<tr>
-<th scope="col">번호</th><th scope="col">레슨명</th><th scope="col">카테고리</th><th scope="col">레슨타입</th><th scope="col">등록일자</th><th scope="col">오픈일</th><th scope="col">마감일</th><th scope="col">시니어 아이디</th><th scope="col">승인 상태</th>
-</tr>
-</thead>
-
-<tbody>
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;">신규 레슨 심사</h2>
+ </div>
+ 
+ 
+	<table class="table" style="width: 80%; margin: 0px auto 40px;">
+		<thead>
+			<tr class="table-warning">
+				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_no">#</a></th>
+				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_title">레슨명</a></th>
+				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_category">카테고리</a></th>
+				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_type">레슨타입</a></th>
+				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_register_date">등록일자</a></th>
+				<th scope="col">오픈일</th>
+				<th scope="col">마감일</th>
+				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/alllesson?order=member_id">시니어아이디</a></th>				
+			</tr>
+		</thead>
+		<tbody>
 
 <c:forEach var="item" items="${list}">
 <tr>
@@ -86,27 +97,6 @@ width:500px; height:auto;
 <td><c:out value="${item.lesson_close_period}"></c:out></td>
 
 <td><c:out value="${item.member_id}"></c:out></td>
-
-
-<c:choose>
-
-<c:when test="${item.lesson_result == 0}">
-<td><c:out value="신청완료"/></td>
-</c:when>
-
-<c:when test="${item.lesson_result == 1}">
-<td><c:out value="심사중"/></td>
-</c:when>
-
-<c:when test="${item.lesson_result == 2}">
-<td><c:out value="레슨승인"/></td>
-</c:when>
-
-<c:otherwise>
-<td><c:out value="레슨거절"/></td>
-</c:otherwise>
-
-</c:choose>
 
 
 

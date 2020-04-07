@@ -14,7 +14,7 @@ import com.todaylesson.DTO.OrderListDTO;
 
 public interface JY_US_TotalLessonService {
 
-	public List<LessonDTO> ttlesson_list(String search, String searchtxt, String order, int startrow, int endrow);
+	public List<LessonDTO> ttlesson_list(String search, String searchtxt, String order, int startrow, int endrow, int cate);
 
 	public AllLessonDTO ttlesson_select(int lesson_no);
 
@@ -54,7 +54,7 @@ public interface JY_US_TotalLessonService {
 
 	public int add_lesson_review(LReviewDTO dto);
 
-	public int totalCount(String search, String searchtxt);
+	public int totalCount(String search, String searchtxt, int cate);
 
 	public void add_lesson_junior(int lesson_no);
 

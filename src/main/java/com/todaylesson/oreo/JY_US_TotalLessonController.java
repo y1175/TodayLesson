@@ -48,13 +48,14 @@ public class JY_US_TotalLessonController {
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
-			,@RequestParam(required=false, defaultValue="lesson_no") String order) {
+			,@RequestParam(required=false, defaultValue="lesson_no") String order
+			,@RequestParam(required=false, defaultValue= "0") int cate) {
 
 		System.out.println(order);
 
 		
 		//ÃÑ °Ô½Ã±Û ¼ö
-		int totalCount= ttlesson_service.totalCount(search, searchtxt);
+		int totalCount= ttlesson_service.totalCount(search, searchtxt, cate);
 		int pageSize=12;
 		int blockSize=5;
 		
@@ -64,13 +65,14 @@ public class JY_US_TotalLessonController {
 
 		List<LessonDTO> list = ttlesson_service.ttlesson_list(search, searchtxt,order
 				,page.getStartRow()
-				,page.getEndRow());
+				,page.getEndRow(), cate);
 
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 		model.addAttribute("order",order);
+		model.addAttribute("cate",cate);
 
 		return "TodayLesson_UserPage/jy_us_total_lesson_list.us_main_section";
 	}

@@ -8,7 +8,7 @@ import com.todaylesson.DTO.SeniorDTO;
 
 public interface JY_Admin_LessonService {
 
-	public List<AllLessonDTO> all_lesson();
+	public List<AllLessonDTO> all_lesson(String search, String searchtxt, String order, int startrow, int endrow);
 
 	public AllLessonDTO select_lesson(int lesson_no);
 
@@ -16,7 +16,7 @@ public interface JY_Admin_LessonService {
 
 	public int reject(int lesson_no);
 
-	public List<AllLessonDTO> wait_lesson();
+	public List<AllLessonDTO> wait_lesson(String order);
 
 	public List<LessonDTO> select_lesson_list(int senior_no);
 
@@ -25,6 +25,8 @@ public interface JY_Admin_LessonService {
 	public int apply_lesson_result(List<Integer> list);
 
 	public SeniorDTO get_senior_info(int lesson_no);
+
+	public int totalCount(String search, String searchtxt);
 
 
 

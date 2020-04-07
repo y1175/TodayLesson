@@ -15,7 +15,7 @@
 
 if (${result} > 0) {
 	alert("수정 성공!");
-	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list"
+	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 	
 
 	alert("수정 실패!");

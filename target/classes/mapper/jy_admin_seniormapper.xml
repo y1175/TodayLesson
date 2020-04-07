@@ -51,6 +51,13 @@ select * from senior
 
 <include refid="search_select"></include>
 
+<if test="order != 'senior_no'">
+order by ${order} desc
+</if>
+<if test="order == 'senior_no'">
+order by ${order} asc
+</if>
+
 limit   #{startrow}, 15
 </select>
 

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@page import="java.util.Date"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -27,13 +28,13 @@ width:500px; height:auto;
    <!-- 카테고리 선택 아이콘들 -->
    
    <div id="ej_category_box">
-    <div class="ej_category all"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/0" ><div class="ej_category_border"><img class="ej_categoryimg all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/correct.png"/></div><br>전체</a></div>
-  <div class="ej_category lang"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/1" ><div class="ej_category_border"><img class="ej_categoryimg exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"/></div><br>운동</a></div>
-    <div class="ej_category it"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/2" ><div class="ej_category_border"><img class="ej_categoryimg lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/lang.png"/></div><br>교육</a></div>
-     <div class="ej_category cook"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/3" ><div class="ej_category_border"><img class="ej_categoryimg diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/diy.png"/></div><br>핸드메이드</a></div>
-      <div class="ej_category diy"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/4" ><div class="ej_category_border"><img class="ej_categoryimg it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/it.png"/></div><br>IT</a></div>
-      <div class="ej_category exercise"> <a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/5"><div class="ej_category_border"><img class="ej_categoryimg cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/cook.png"/></div><br>요리</a></div>
-        <div class="ej_category ect"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/6"><div class="ej_category_border"><img class="ej_categoryimg etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"/></div><br>기타</a></div>
+    <div class="ej_category all"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=0" ><div class="ej_category_border"><img class="ej_categoryimg all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/correct.png"/></div><br>전체</a></div>
+  <div class="ej_category lang"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=1" ><div class="ej_category_border"><img class="ej_categoryimg exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"/></div><br>운동</a></div>
+    <div class="ej_category it"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=2" ><div class="ej_category_border"><img class="ej_categoryimg lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/lang.png"/></div><br>교육</a></div>
+     <div class="ej_category cook"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=3" ><div class="ej_category_border"><img class="ej_categoryimg diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/diy.png"/></div><br>핸드메이드</a></div>
+      <div class="ej_category diy"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=4" ><div class="ej_category_border"><img class="ej_categoryimg it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/it.png"/></div><br>IT</a></div>
+      <div class="ej_category exercise"> <a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=5"><div class="ej_category_border"><img class="ej_categoryimg cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/cook.png"/></div><br>요리</a></div>
+        <div class="ej_category ect"><a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?cate=6"><div class="ej_category_border"><img class="ej_categoryimg etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"/></div><br>기타</a></div>
        <br> 
        </div>
        
@@ -43,6 +44,20 @@ width:500px; height:auto;
 <a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_readno">조회수</a>
 <a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_like">좋아요</a>
 </div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+ <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/total_lesson_list?currPage=${page.startBlock }"
+ style="margin:0px auto;">
+ 
+  <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+ <option value="all">전체</option>
+<option value="lesson_title">레슨명</option>
+ <option value="lesson_content">레슨내용</option>
+</select>
+ <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-secondary" type="submit">검색</button>
+    </form>
+      </div>
 
 
 <c:forEach var="item" items="${list}">
@@ -143,9 +158,42 @@ width:500px; height:auto;
                       <c:set var="junior_count" value="${item.lesson_member_max - item.lesson_junior_count}"/>
                            <c:if test="${junior_count==0}">
                            <div class="ej_soldout">soldout</div>
+                    
                            </c:if>
-                     <div class="hs_user_store_newprodct_cost">
-                      <fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+    <div class="hs_user_store_newprodct_cost">
+     <jsp:useBean id="now" class="java.util.Date"  />
+	<div style="display: none;">
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
+	<fmt:parseDate value="${item.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
+	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
+	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
+	</div>
+	
+
+		
+		
+	<c:if test="${item.lesson_earlybird eq 1 }">
+	
+	<c:if test="${itDate - isDate <= 7}">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost * 0.82}"/>원
+	</c:if>
+	
+	<c:if test="${itDate - isDate > 7 }">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+	</c:if>
+	
+	</c:if>
+	
+	<c:if test="${item.lesson_earlybird eq 0}">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+	</c:if>
+	
+
+	
+
+	
+	
+	
                          </div>
                      <div class="hs_user_store_newprodct_likenum_box">                
                         <span class="hs_user_store_newprodct_likenum">
@@ -168,16 +216,6 @@ width:500px; height:auto;
 
 
 
-<form method="get" action="total_lesson_list?currPage=${page.startBlock }">
-<select name="search">
-<option value="all">전체</option>
-<option value="lesson_title">제목</option>
-<option value="lesson_content">내용</option>
-</select>
-<input type="text" name="searchtxt" >
-<input type="submit" value="검색">
-
-</form>
 
  
 
@@ -196,7 +234,9 @@ width:500px; height:auto;
 <a href="total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}"><c:out value="다음"/></a>
 </c:if>
 
+
 </div>
+
 <script>
 
 
@@ -293,6 +333,9 @@ $(".fa.fa-shopping-cart").click(function(){
   }); 
   }
  });
+
+
+
 
 </script>
 

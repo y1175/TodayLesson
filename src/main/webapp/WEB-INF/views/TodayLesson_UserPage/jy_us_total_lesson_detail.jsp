@@ -52,6 +52,11 @@ li>ul>li {
 
 $('document').ready(function() { 
 	
+	
+	
+
+    
+    
 	 $('html, body').animate({
 	      scrollTop: $('html').offset().top
 	   }, 'slow');
@@ -61,10 +66,10 @@ $('document').ready(function() {
 	       items:4,
 	       loop:true,
 	       margin:10,
-	       nav: true/* 
+	       nav: true,
 	       autoplay:true,
 	       autoplayTimeout:1000,
-	       autoplayHoverPause:true */
+	       autoplayHoverPause:true
 	   });
 	   
 	    $('.owl-carousel').owlCarousel();
@@ -241,6 +246,8 @@ if ($("#is_it_possible").val() == 0) {
 <a href="#"><div class="fas fa-heart insert_my_like" ></div></a></div>
 <div class="ej_grid third">
 <a href="#"><div class="fa fa-shopping-cart insert_my_cart" ></div></a></div>
+
+
 
 
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>

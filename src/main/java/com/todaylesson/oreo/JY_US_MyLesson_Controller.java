@@ -61,7 +61,7 @@ public class JY_US_MyLesson_Controller {
 		
 		model.addAttribute("list", lesson_list);
 		
-		return "TodayLesson_UserPage/jy_us_my_lesson_list.us_main_section";
+		return "TodayLesson_UserPage/jy_us_my_lesson_list.us_my_section";
 	}
 
 	@RequestMapping("mylesson_detail/{lesson_no}")
@@ -75,7 +75,7 @@ public class JY_US_MyLesson_Controller {
 		System.out.println(list.toString().toString());
 		model.addAttribute("list", list);
 		
-		return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_main_section";
+		return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_my_section";
 		
 	}
 	
@@ -104,7 +104,7 @@ public class JY_US_MyLesson_Controller {
 
 		model.addAttribute("dto", dto);
 
-		return "TodayLesson_UserPage/jy_us_select_lessondetail_this_chapter.us_main_section";
+		return "TodayLesson_UserPage/jy_us_select_lessondetail_this_chapter.us_my_section";
 
 	}
 
@@ -138,7 +138,7 @@ public class JY_US_MyLesson_Controller {
 	
 			List<LessonDetailDTO> list = mlservice.my_lesson_select(lesson_no, member_id);
 			model.addAttribute("list", list);
-			return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_main_section";
+			return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_my_section";
 	
 		}
 	}

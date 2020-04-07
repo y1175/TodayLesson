@@ -13,7 +13,11 @@
 		where lesson_result = 2
 		and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
 		and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
+		
 		]]>
+		<if test="cate gt 0">
+		and lesson_category=#{cate}
+		</if>
 		<!-- WHERE절을 include 태그로 삽입 -->
 <include refid="search_select"></include>
 
@@ -28,6 +32,10 @@ where lesson_result=2
 and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
 and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
 ]]>
+		<if test="cate gt 0">
+		and lesson_category=#{cate}
+		</if>
+		
 <include refid="search_select"></include>
   order by ${order} desc
 limit   #{startrow}, 12
@@ -38,12 +46,6 @@ limit   #{startrow}, 12
 	<!-- 검색기능 쿼리문 -->
 <sql id="search_select">
 
-<if test='category!=null'>
-
-and
-lesson_category=#{lesson_category}
-
-</if>
 
 <if test='searchtxt!=null and searchtxt!=""'>
 

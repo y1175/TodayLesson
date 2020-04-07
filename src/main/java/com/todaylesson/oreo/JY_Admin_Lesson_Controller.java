@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.JY_Admin_LessonService;
@@ -94,9 +95,29 @@ public class JY_Admin_Lesson_Controller {
 	
 	// 전체 레슨 조회
 	@RequestMapping("alllesson")
-	public String all_lesson(Model model) {
-		List<AllLessonDTO> list = adminservice.all_lesson();
+	public String all_lesson(Model model,
+			@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="lesson_no") String order) {
+		
+		int totalCount= adminservice.totalCount(search, searchtxt);
+		int pageSize=15;
+		int blockSize=5;
+		
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+
+		List<AllLessonDTO> list = adminservice.all_lesson(search, searchtxt,order
+				,page.getStartRow()
+				,page.getEndRow());
+		
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("order",order);
+		
+
 		return "TodayLesson_AdminPage/jy_ad_all_lesson.hs_ad_main_section";
 	}
 	
@@ -137,9 +158,10 @@ public class JY_Admin_Lesson_Controller {
 	
 	// 심사 필요한 레슨들 조회
 	@RequestMapping("wait_lesson")
-	public String wait_lesson(Model model) {
-		List<AllLessonDTO> list = adminservice.wait_lesson();
+	public String wait_lesson(Model model, @RequestParam(required=false, defaultValue="lesson_no") String order) {
+		List<AllLessonDTO> list = adminservice.wait_lesson(order);
 		model.addAttribute("list",list);
+		model.addAttribute("order",order);
 		return "TodayLesson_AdminPage/jy_ad_wait_lesson.hs_ad_main_section";
 	}
 	

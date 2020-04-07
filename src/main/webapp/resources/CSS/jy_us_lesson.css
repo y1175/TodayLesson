@@ -69,9 +69,11 @@ ej_selectorder:hover
 /*솔드아웃표시 박스*/
 .ej_soldout{
 	/* border: 1px solid white; */
-	background-color: silver;
+	background-color: pink;
 	width:60px;
 	padding-left: 7px;
+	float : right;
+	font-weight: bolder;
 }
 
 /* 메인공통 */

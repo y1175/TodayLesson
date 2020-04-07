@@ -6,10 +6,20 @@
 
 <select id="all_lesson" resultType="com.todaylesson.DTO.AllLessonDTO">
 
-select *
-from lesson join senior
-on lesson.senior_no = senior.senior_no
+select * 
+from lesson l join senior s
+on l.senior_no = s.senior_no
 
+<include refid="search_select"></include>
+
+<if test="order = 'lesson_register_date'">
+order by ${order} desc
+</if>
+<if test="order != 'lesson_register_date'">
+order by ${order} asc
+</if>
+
+limit   #{startrow}, 15
 </select>
 
 
@@ -67,6 +77,12 @@ select *
 from lesson join senior 
 on lesson.senior_no = senior.senior_no 
 where lesson_result= 1
+<if test="order = 'lesson_register_date'">
+order by ${order} desc
+</if>
+<if test="order != 'lesson_register_date'">
+order by ${order} asc
+</if>
 
 </select>
 
@@ -96,5 +112,45 @@ select * from senior
 where senior_no = #{senior_no}
 
 </select>
+
+
+
+<select id="getCount" resultType="int" parameterType="java.util.HashMap">
+		select COUNT(*) 
+		from lesson l join senior s
+		on l.senior_no = s.senior_no
+		<!-- WHERE절을 include 태그로 삽입 -->
+<include refid="search_select"></include>
+
+</select>
+
+
+	<!-- 검색기능 쿼리문 -->
+<sql id="search_select">
+<where>
+<if test='searchtxt!=null and searchtxt!=""'>
+
+<choose>
+<when test='search.equals("all")'>
+lesson_title like CONCAT('%', #{searchtxt}, '%')
+or 
+member_id like CONCAT('%', #{searchtxt}, '%')
+
+</when>
+<when test='search.equals("member_id")'>
+
+ member_id like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("lesson_title")'>
+
+lesson_title like CONCAT('%', #{searchtxt}, '%')
+</when>
+
+</choose>
+</if>
+</where>
+</sql> 
+
+
 
 </mapper>

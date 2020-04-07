@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,7 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 	private JY_Admin_LessonMapper mapper;
 	
 	
-	@Override
-	public List<AllLessonDTO> all_lesson() {
-		return mapper.all_lesson();
-	}
+
 
 
 	@Override
@@ -46,8 +44,8 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 
 
 	@Override
-	public List<AllLessonDTO> wait_lesson() {
-		return mapper.wait_lesson();
+	public List<AllLessonDTO> wait_lesson(String order) {
+		return mapper.wait_lesson(order);
 	}
 
 
@@ -73,6 +71,27 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 	public SeniorDTO get_senior_info(int lesson_no) {
 		int senior_no = mapper.get_senior_no(lesson_no);
 		return mapper.get_senior_info(senior_no);
+	}
+
+
+	@Override
+	public int totalCount(String search, String searchtxt) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		return mapper.getCount(hm);
+	}
+
+
+	@Override
+	public List<AllLessonDTO> all_lesson(String search, String searchtxt, String order, int startrow, int endrow) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startrow", startrow);
+		hm.put("endrow", endrow);
+		hm.put("order", order);
+		return mapper.all_lesson(hm);
 	}
 
 

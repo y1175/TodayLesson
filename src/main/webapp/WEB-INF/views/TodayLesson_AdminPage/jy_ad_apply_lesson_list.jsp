@@ -38,14 +38,25 @@ $(document).ready(function(){
 
 </head>
 <body>
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;">신규 레슨 심사</h2>
+ </div>
+ 
 
+ 
 <form action="${pageContext.request.contextPath }/todaylessonadmin/admin_apply_exam" method="post">
-<table class="table">
+
+<table class="table" style="width: 80%; margin: 0px auto 40px;">
+<tr class="table-warning">
+<th scope="col"><input type="checkbox" id="checkall"></th>
+				<th scope="col">#</th>
+				<th scope="col">레슨명</th>
+				<th scope="col">카테고리</th>
+				<th scope="col">레슨타입</th>
+				<th scope="col">등록일자</th>
+				<th scope="col">시니어아이디</th>
+			</tr>
 <thead>
-<tr>
-<th scope="col"><input type="checkbox" id="checkall"></th><th scope="col">레슨번호</th><th scope="col">레슨명</th><th scope="col">카테고리</th><th scope="col">레슨타입</th><th scope="col">등록일자</th><th scope="col">시니어 아이디</th><th scope="col">승인 상태</th>
-</tr>
-</thead>
 
 <tbody>
 
@@ -53,7 +64,7 @@ $(document).ready(function(){
 <tr>
 <td><input type="checkbox" name="check" value="${item.lesson_no}"></td>
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/todaylessonadmin/admin_wait_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="${pageContext.request.contextPath }/todaylessonadmin/admin_wait_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
 
 <c:choose>
@@ -101,26 +112,6 @@ $(document).ready(function(){
 
 <td><c:out value="${item.member_id}"></c:out></td>
 
-
-<c:choose>
-
-<c:when test="${item.lesson_result == 0}">
-<td><c:out value="신청완료"/></td>
-</c:when>
-
-<c:when test="${item.lesson_result == 1}">
-<td><c:out value="심사중"/></td>
-</c:when>
-
-<c:when test="${item.lesson_result == 2}">
-<td><c:out value="레슨승인"/></td>
-</c:when>
-
-<c:otherwise>
-<td><c:out value="레슨거절"/></td>
-</c:otherwise>
-
-</c:choose>
 
 
 

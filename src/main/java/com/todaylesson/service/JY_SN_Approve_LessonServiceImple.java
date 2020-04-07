@@ -55,6 +55,11 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 		return mapper.apl_rtime(lessondetail_running_time);
 	}
 
+	@Override
+	public int get_my_lesson(String member_id) {
+		return mapper.getSenior_no(member_id);
+	}
+
 
 
 
