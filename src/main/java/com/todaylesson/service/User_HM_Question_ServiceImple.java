@@ -44,4 +44,16 @@ public class User_HM_Question_ServiceImple implements User_HM_Question_Service {
 	}
 
 
+
+
+	@Override
+	public int questiondelete(int question_no) {
+		// TODO Auto-generated method stub
+		return mapper.questiondelete(question_no);
+	}
+
+
+	
+	
+	
 }

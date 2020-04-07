@@ -39,17 +39,7 @@ public class User_HM_Question_Controller {
 		
 	}
 	
-/*	
-	//insert 테스트용
-	@RequestMapping("/hm_us_question")
-	private String hm_us_question()
-	{
-		
-		
-		return "/TodayLesson_UserPage/hm_us_question";
-	
-	}*/
-	
+
 	//문의 등록페이지 이동
 	@RequestMapping("/hm_question_insert")
 	private String hm_question_insert()
@@ -96,7 +86,18 @@ public class User_HM_Question_Controller {
 		
 	}
 	
-	
 
+	@RequestMapping("/hm_us_question_delete/{no}")
+	private String hm_us_question_delete(@PathVariable int no, Model model)
+	{
+		int question_no = no;
+		
+		int result = service.questiondelete(question_no);
+		model.addAttribute("result",result);
+		
+		return "/TodayLesson_UserPage/hm_us_question_deleteresult";
+		
+	}
+	
 	
 }
