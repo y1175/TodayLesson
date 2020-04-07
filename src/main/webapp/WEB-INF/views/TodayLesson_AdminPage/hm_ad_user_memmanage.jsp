@@ -6,8 +6,10 @@
 <head>
  <meta charset="utf-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_user_memmanage.css?ver=2">
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_user_memmanagelist.js?ver=2"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_user_memmanagelist.js?ver=5"></script>
 <!-- CSSstyle -->
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Member_Title>a{
@@ -16,6 +18,13 @@
    </style>
 <!-- CSSstyle -->
 
+<!-- 모달 비활성때문에 해줌...흑흑흑흑흐긓 -->
+<style>
+  .modal-backdrop {
+        z-index: -1;
+    }
+</style>
+
 
 </head>
 <body>
@@ -23,7 +32,8 @@
  <h2 style="margin-top:40px; text-align: center;">회원 관리</h2>
  </div>
 
- 
+
+<!-- 검색 --> 
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:30%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage?currPage=${page.startBlock }"
@@ -39,7 +49,7 @@
     </form>
   </div>
 </nav>
-
+<!-- 검색완료 -->
 
 
 
@@ -47,29 +57,45 @@
 	<table class="table" style="width: 80%; margin: 0px auto 40px;">
 		<thead>
 			<tr class="table-warning">
-				<th scope="col">#</th>
-				<th scope="col">아이디</th>
-				<th scope="col">이름</th>
-				<th scope="col">닉네임</th>
-				<th scope="col">적립금</th>
-				<th scope="col">회원등급</th>
-				<th scope="col">가입일</th>
-				<th scope="col">상세보기</th>
+				<th scope="col">#</th><!-- 보여줘야함 -->
+				<th scope="col">아이디</th><!-- 보여줘야함 -->
+				<th scope="col">이름</th><!-- 보여줘야함 -->
+				<th scope="col">닉네임</th><!-- 보여줘야함 -->
+				<th scope="col">생일</th>
+				<th scope="col">휴대전화</th>
+				<th scope="col">우편번호</th>
+				<th scope="col">주소</th>
+				<th scope="col">적립금</th><!-- 보여줘야함 -->
+				<th scope="col">회원등급</th><!-- 보여줘야함 -->
+				<th scope="col">이메일</th>
+				<th scope="col">가입일</th><!-- 보여줘야함 -->
+				<th scope="col">상세보기</th><!-- 보여줘야함 -->
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="item" items="${list}">
-				<tr>
-					<td>${item.member_no}</td>
-					<td>${item.member_id}</td>
-					<td>${item.member_name}</td>
-					<td>${item.member_nick}</td>
-					<td>${item.member_point}</td>
+			
+
+							
+				<tr onclick="PopupInfo(this)">
+					<td>${item.member_no}</td> <!-- 보여줘야함 -->
+					<td>${item.member_id}</td> <!-- 보여줘야함 -->
+					<td>${item.member_name}</td> <!-- 보여줘야함 -->
+					<td>${item.member_nick}</td> <!-- 보여줘야함 -->
+					<td>${item.member_birth}</td>
+					<td>${item.member_phone}</td>
+					<td>${item.member_zipcode}</td>
+					<td>${item.member_addr}</td>
+					<td>${item.member_point}</td> <!-- 보여줘야함 -->
+					<td>${item.member_level}</td>
+					<td>${item.member_email}</td>
+					<td>${item.member_join_date}</td>
+						
+
 
 					<!-- 회원등급 & 권한 조정 -->
 					<form method="post" action="adminmember_levelupdate">
-						<td><input type="hidden" name="member_id" id="member_id"
-							value="${item.member_id}"> <select id="member_level"
+						<td><input type="hidden" name="member_id" value="${item.member_id}"> <select id="member_level"
 							name="member_level">
 								<option value="">${item.member_level}레벨</option>
 								<option value="0">0 관리자</option>
@@ -79,90 +105,94 @@
 						</select> <input type="submit" class="btn btn-secondary" value="수정"></td>
 					</form>
 
-
 					<td>${item.member_join_date}</td>
-					<!-- <td><input type="button" name="detailbutton" id="detailbutton" class="detailbutton" value="상세보기"></td> -->
-					<!-- Button trigger modal -->
-					 <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">상세보기</button></td> 
-					<!-- data-target="#exampleModal" -->
 					
+
+					
+					
+					 <td><button type="button" id="detailbutton" class="btn btn-secondary" onclick="PopupInfo(this)" data-toggle="modal"  data-target="#exampleModal" >상세보기</button></td> 
+					<!-- data-target="#exampleModal" -->
 					<script>
-					$('#exampleModal').on('show.bs.modal',function(event){
-						
-						
-						
-					});
+					$('#exampleModal').on('shown.bs.modal', function (event) {
+						  $('#exampleModal').trigger('focus')
+						})
+					
+					
 					</script>
 
+				   <script>
+				     function PopupInfo(clicked_element) {
+				    	 
+				    	
+				    	 
+				
+					   var row_td = clicked_element.getElementsByTagName("td");
+					   var modal = document.getElementById("exampleModal");
+					   
+					   var result = "";
+					   
+					   result += "아이디 : "+row_td[1].innerHTML+"<br/>"
+					   		+ "이름 :" +row_td[2].innerHTML+"님"+"<br/>"
+					   		+ "닉네임 :" +row_td[3].innerHTML+"<br/>" 
+					   		+ "생일 :" +row_td[4].innerHTML+"<br/>"
+					   		+ "휴대전화 :" +row_td[5].innerHTML+"<br/>"
+					   		+ "우편번호 :" +row_td[6].innerHTML+"<br/>"
+					   		+ "주소 :" +row_td[7].innerHTML+"<br/>"
+					   		+ "적립금 :" +row_td[8].innerHTML+"<br/>"
+					   		+ "회원레벨 :" +row_td[9].innerHTML+"레벨"+"<br/>"
+					   		+ "이메일 :" +row_td[10].innerHTML+"<br/>"
+					   		+ "가입일자 :" +row_td[11].innerHTML+"<br/>";
+					   		
+					   		
+					   document.getElementById("member_detail").innerHTML = result;
 					
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"	role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">회원 상세 정보</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-								
-								 <ul>
-								<li>
-								<c:out value="${item.member_no}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_id}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_name}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_nick}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_birth}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_phone}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_zipcode}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_addr}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_point}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_level}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_email}"></c:out>
-								</li>
-								<li>
-								<c:out value="${item.member_join_date}"></c:out>
-								</li>
-								</ul> 
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
+					}
+		
+				</script>
+
+
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1"	role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+   		<div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModallabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      	</div>
+     	 <div class="modal-body">
+     	 			<p id="member_detail">
+     	 			</p>
+          			  <!-- <p id="member_id"></p>
+          			  
+            		  닉네임<p id="member_nick"/>
+           			  이름<p id="member_name"/> -->
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        </div>
+        </div>
+		 
+		
 				</tr>
 				
-				
-				
-				
+			
 				
 			</c:forEach>
 	</tbody>
 	</table>
+	
+	
+	
+			
+	
+
+
 
 
 
