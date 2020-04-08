@@ -81,10 +81,12 @@ color: white;
 			
 				 <label>수량</label><br>
 				 <input type="text" name="product_stock" style="width: 40%;" value="${dto.product_stock }" placeholder="수량" required="required"/>개<br><br>
-				
+				<%-- 
 				<label>상세설명</label><br>
 				<textarea id="summernote" name="product_content"  value="${dto.product_content }"></textarea>
-	
+	 --%>
+	 
+	 <textarea id="summernote" name="product_content" style="display:none"><c:out value="${dto.product_content}"/></textarea>
 			<div class="inputArea">
 
 <br>
