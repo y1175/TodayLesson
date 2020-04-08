@@ -1,14 +1,32 @@
 @charset "utf-8";
+
 .findpwdmain{
-	width: 30%;
+	width: 50%;
 	margin:60px auto;
 	color: rgb(53, 54, 58);
+	/* border-left: 1px solid silver;
+	border-right:1px solid silver; */
 	
 	
 }
+.findpwdmain h5{
+	text-align: center;
+	margin-top:-20px;
+	line-height: 2em;
+}
+.pwdline{
+	 width:70%; 
+	border:1px solid silver;
+	border-radius: 20px;
+	margin :40px auto 10px;
+}
 .findpwdmain h2{
 	margin-bottom:60px;
-	
+	text-align: center;
+}
+.hmpwdbtn{
+	margin-top :40px;
+	text-align: center;
 }
 .findpwdbtn{
 	
@@ -17,8 +35,9 @@
 	border-radius: 3px;
 	background-color: rgba(53, 54, 58, 0.6);
 	font-weight: 600;
-	font-size: 14px;
+	font-size: 18px;
 	color: white;
+	
 	}
 .findpwdbtn2{
 	border: 1px transparent;
@@ -26,7 +45,16 @@
 	border-radius: 3px;
 	background-color: rgb(224, 62, 82);
 	font-weight: 600;
-	font-size: 14px;
+	font-size: 18px;
 	color: white;
 	
+}
+.gotoid{
+	width:50%;
+	margin:0px auto;
+	text-align: center;
+}
+.gotoid p{
+	color: rgb(53, 54, 58);
+	font-weight: 600;
 }
