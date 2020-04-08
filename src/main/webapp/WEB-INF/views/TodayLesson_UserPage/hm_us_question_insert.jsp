@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <title>오늘의 레슨 1:1문의 등록페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question_insert.css?ver=4">  
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js?ver=7"></script> 
+<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js?ver=5"></script> 
 </head>
 <body>
 
@@ -71,6 +71,16 @@ style="width:20%; margin-left:10%; font-weight: 600;">
 
 
 </form>
+
+ <form action="loginresult" method="POST">
+      <div id="html_element"></div>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+
 
 </div>
 
