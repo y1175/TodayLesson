@@ -32,13 +32,13 @@
       
       <b class="hs_sn_main_asidenav_nav_title">매출정산</b>
          <p class="hs_sn_main_asidenav_nav_salestitle">
-            <a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list">매출현황</a>
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${seniorPageInfo.senior_no}">매출현황</a>
          </p>
          <p class="hs_sn_main_asidenav_nav_calRequest_title">
-            <a href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_requestlist">정산신청</a>
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_requestlist/${seniorPageInfo.senior_no}">정산신청</a>
          </p>
          <p class="hs_sn_main_asidenav_nav_calStatment_title">
-            <a href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_statementlist">정산내역</a>
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_statementlist/${seniorPageInfo.senior_no}">정산내역</a>
          </p>
          
       <div class="hs_sn_main_asidenav_line"></div>

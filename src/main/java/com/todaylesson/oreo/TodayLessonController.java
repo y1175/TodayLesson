@@ -48,8 +48,10 @@ import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.PopUpDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
+import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
 import com.todaylesson.service.LoginService;
+import com.todaylesson.service.Senior_HS_MainService;
 import com.todaylesson.service.Admin_HS_MainService;
 import com.todaylesson.service.Admin_YI_Popup_Service;
 import com.todaylesson.service.EJ_All_Product_Service;
@@ -100,6 +102,11 @@ public class TodayLessonController {
     @Resource(name="user_HS_MyPageService")
     private User_HS_MyPageService userMyPageService;
     /* User_MyPage */
+    
+    /* Senior_MyPage */
+    @Resource(name="senior_HS_MainService")
+    private Senior_HS_MainService seniorMainService;
+    /* Senior_MyPage */
     
     /* Admin_Main */
     @Resource(name="admin_HS_MainService")
@@ -327,7 +334,16 @@ public class TodayLessonController {
   		}
     
     @RequestMapping("/todaylessonsenior")
-    public String senior() {
+    public String senior(Authentication authentication
+                        ,Model model, HttpSession session) {
+    	
+    	//시큐리티 멤버아이디
+    	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+    	String member_id = userDetails.getUsername();
+    	
+    	SeniorDTO seniorPageInfo=seniorMainService.seniorPageInfo(member_id);
+    	session.setAttribute("seniorPageInfo", seniorPageInfo);
+    	
     	return "hs_sn_main"; 
     }
        

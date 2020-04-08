@@ -58,121 +58,112 @@
 	   <!-- CalculateDTO --> 
 	</resultMap>  
 	
-	<!-- //시니어 멤버아이디로 시니어번호 받아오기 -->
-	<!-- <select id="get_Seniorno" resultType="int" parameterType="java.lang.String">
-	   select senior_no 
-       from senior
-       where member_id=#{member_id}
-	</select>  -->
+	<!-- 매출현황 토탈카운트 -->
+	<select id="seniorSales_TotalCount" resultType="int"  parameterMap="hashmap">
+	    select count(*)
+	    from orderlist o  
+					join order_detail od on od.orderlist_no=o.orderlist_no
+	                join member m on m.member_id=o.member_id
+	                join senior sn on sn.member_id=m.member_id
+	                join lesson l on l.lesson_no=od.lesson_no
+                    where l.senior_no=#{senior_no}
+	</select>
 	
 	<!-- 매출현황전체리스트 -->
 	<select id="SalesList" resultMap="salesCalculateMap" parameterMap="hashmap">
-	   <!-- select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
-	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
-	          floor(sum(lesson_cost*0.1)) as sales_comm, 
-	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
-	   from sales s right join orderlist o on s.orderlist_no=o.orderlist_no
-	                join order_detail od on od.orderlist_no=o.orderlist_no
-	                join member m on m.member_id=o.member_id
-	                join senior sn on sn.member_id=m.member_id
-	                join lesson l on l.lesson_no=od.lesson_no             
-	   where sn.senior_no=(select sn2.senior_no 
-                           from senior sn2  
-                           where sn.senior_no=sn2.senior_no
-                           and sn2.member_id=#{member_id}) -->
-                           
-       <!-- select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
-	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, 
-	          floor(sum(lesson_cost*0.1)) as sales_comm, 
-	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
-	   from sales s join orderlist o on s.orderlist_no=o.orderlist_no
-	                join order_detail od on od.orderlist_no=o.orderlist_no
-	                join member m on m.member_id=o.member_id
-	                join senior sn on sn.member_id=m.member_id
-	                join lesson l on l.lesson_no=od.lesson_no             
-	   where m.member_id=#{member_id}  -->
-        
-       select o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, 
-	          o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint
-	   from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
-	                join member m on m.member_id=o.member_id
-	                join senior sn on sn.member_id=m.member_id
-	                join lesson l on l.lesson_no=od.lesson_no             
-	   where m.member_id=#{member_id}
-      
-                           
-	   <![CDATA[   
-	         and s.sales_search_startdate>=#{sales_search_startdate}
-	         and s.sales_search_enddate<=#{sales_search_enddate} 
-	         ]]>        
+	    select o.orderlist_no, o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title 
+	          ,o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint, sn.senior_no, sn.senior_crno
+	    from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+	                     join member m on m.member_id=o.member_id
+	                     join senior sn on sn.member_id=m.member_id
+	                     join lesson l on l.lesson_no=od.lesson_no
+                         where l.senior_no=#{senior_no}
+                         order by orderlist_date desc
+                         limit   #{startRow}, 15
+	   <include refid="search_select"></include>  
 	</select>
-	
 	<!-- 검색기능 쿼리문 -->
     <sql id="search_select">
        <if test='searchtxt!=null and searchtxt!=""'>
           <choose>
              <when test='search.equals("all")'>
-			    where 
+			    and 
 				   lesson_title like CONCAT('%', #{searchtxt}, '%')
 				or 
 				   member_name like CONCAT('%', #{searchtxt}, '%')
 			 </when>
              <when test='search.equals("lesson_title")'>
-                where lesson_title like CONCAT('%', #{searchtxt}, '%')
+                and lesson_title like CONCAT('%', #{searchtxt}, '%')
              </when>
              <when test='search.equals("member_name")'>
-                where member_name like CONCAT('%', #{searchtxt}, '%')
+                and member_name like CONCAT('%', #{searchtxt}, '%')
              </when>
           </choose>
        </if>
+       <if test='start_date!="" and start_date!=null'>	
+	      and orderlist_date<![CDATA[>=]]>#{start_date}
+	   </if>
+	   <if test='end_date!="" and end_date!=null'>	
+	      and orderlist_date<![CDATA[<=]]>#{end_date}
+	   </if>
     </sql> 
 
 	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌 -->
-	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="java.lang.String">
-	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
+	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="int">
+	   <!-- select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
 	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
-	   from calculate c join orderlist o on c.orderlist_no=o.orderlist_no
+	   from calculate c right join orderlist o on c.orderlist_no=o.orderlist_no
 	                    join order_detail od on od.orderlist_no=o.orderlist_no
 	                    join lesson l on l.lesson_no=od.lesson_no
                         join member m on m.member_id=o.member_id
                         join senior s on s.member_id=m.member_id
-	   where m.member_id=#{member_id}
+	   where l.senior_no=#{senior_no}
+	   group by o.orderlist_date
+       order by orderlist_date desc -->
+	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
+	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
+	   from calculate c right join orderlist o on c.orderlist_no=o.orderlist_no
+	                    join order_detail od on od.orderlist_no=o.orderlist_no
+	                    join lesson l on l.lesson_no=od.lesson_no
+                        join member m on m.member_id=o.member_id
+                        join senior s on s.member_id=m.member_id
+	   where l.senior_no=#{senior_no}
 	   group by o.orderlist_date
        order by orderlist_date desc
 	</select>
 	
 	<!-- 정산신청 리스트 결제건수 -->
-	<select id="calPayCount" resultMap="salesCalculateMap" parameterType="java.lang.String">
+	<select id="calPayCount" resultMap="salesCalculateMap" parameterType="int">
 	   select count(*)
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
                         join member m on m.member_id=o.member_id
-	   where m.member_id=#{member_id}
+	   where l.senior_no=#{senior_no}
 	   group by o.orderlist_date
        order by orderlist_date desc
 	</select>
 	
 	<!-- 정산신청 리스트 레스수익금액 -->
-	<select id="calRevenueCost" resultMap="salesCalculateMap" parameterType="java.lang.String">
+	<select id="calRevenueCost" resultMap="salesCalculateMap" parameterType="int">
 	   select sum(orderlist_cost) 
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
                         join member m on m.member_id=o.member_id
-       where m.member_id=#{member_id}
+       where l.senior_no=#{senior_no}
        group by o.orderlist_date
        order by orderlist_date desc
 	</select>
 	
 	<!-- 정산신청 리스트 포인트사용 -->
-	<select id="calUsePointSum" resultMap="salesCalculateMap" parameterType="java.lang.String">
+	<select id="calUsePointSum" resultMap="salesCalculateMap" parameterType="int">
 	   select sum(orderlist_usepoint) 
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
                         join member m on m.member_id=o.member_id
-       where m.member_id=#{member_id}
+       where l.senior_no=#{senior_no}
        group by o.orderlist_date
        order by orderlist_date desc
 	</select>

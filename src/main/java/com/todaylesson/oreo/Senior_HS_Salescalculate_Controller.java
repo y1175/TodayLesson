@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Senior_HS_Salescalculate_Service;
@@ -34,38 +35,47 @@ public class Senior_HS_Salescalculate_Controller {
 	private Senior_HS_Salescalculate_Service salescalculateService;
 	
 	//매출현황
-	@RequestMapping("/senior_sales_list")
+	@RequestMapping("/senior_sales_list/{senior_no}")
 	public String salesList(Authentication authentication
-			               ,@RequestParam(required=false, defaultValue="") String sales_search_startdate
-			               ,@RequestParam(required=false, defaultValue="") String sales_search_enddate
+			               ,@PathVariable int senior_no
+			               ,@RequestParam(required=false, defaultValue="") String start_date
+			               ,@RequestParam(required=false, defaultValue="") String end_date
+			               ,@RequestParam(required=false, defaultValue="1") int currPage
 			               ,@RequestParam(required=false, defaultValue="") String search
 			               ,@RequestParam(required=false, defaultValue="") String searchtxt
+			               //,@RequestParam(required=false, defaultValue="freeboard_no") String order
 			               , Model model) {
 		//시큐리티 멤버아이디
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
 		
-		//시니어 멤버아이디로 시니어번호 받아오기
-		//int senior_no = salescalculateService.get_Seniorno(member_id);
+		int seniorSales_TotalCount=salescalculateService.seniorSales_TotalCount(senior_no,search,searchtxt);
+		int pageSize=15;
+		int blockSize=5;
+		
+		
+		PageMaker Totalpage = new PageMaker(currPage, seniorSales_TotalCount, pageSize, blockSize);
 		
 		//매출현황전체리스트
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> salesList=
-	         salescalculateService.salesList(member_id, sales_search_startdate, sales_search_enddate, search, searchtxt); 
+	         salescalculateService.salesList(senior_no, start_date, end_date, search, searchtxt, Totalpage.getStartRow(), Totalpage.getEndRow()); 
 		
 		model.addAttribute("salesList", salesList);
-		//model.addAttribute("start_date",start_date);
-		//model.addAttribute("end_date",end_date);
+		model.addAttribute("Totalpage", Totalpage);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("start_date",start_date);
+		model.addAttribute("end_date",end_date);
 		
 		return "/TodayLesson_SeniorPage/hs_sn_sales_list.sn_main_section";
 	}
 	
 	//정산신청
-	@RequestMapping("/senior_calculate_requestlist")
+	@RequestMapping("/senior_calculate_requestlist/{senior_no}")
 	public String calculateRequestList( SeniorDTO dto, Model model
 			                          , Authentication authentication
 			                          , HttpServletRequest request,HttpServletResponse response
+			                          ,@PathVariable int senior_no
 			                          ,@RequestParam(required=false, defaultValue="1") int currPage
 			                          ) throws Exception {
 		
@@ -75,19 +85,19 @@ public class Senior_HS_Salescalculate_Controller {
 
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_requestlist
-		                          =salescalculateService.calculateRequsetList(member_id);
+		                          =salescalculateService.calculateRequsetList(senior_no);
 		model.addAttribute("cal_requestlist", cal_requestlist);
 		
 		//정산신청 리스트 결제건수
-		List<Integer> cal_paycount=salescalculateService.calPayCount(member_id);
+		List<Integer> cal_paycount=salescalculateService.calPayCount(senior_no);
 		model.addAttribute("cal_paycount", cal_paycount);
 		
 		//정산신청 리스트 레스수익금액
-		List<Integer> cal_lessonrevenuecost=salescalculateService.calRevenueCost(member_id);
+		List<Integer> cal_lessonrevenuecost=salescalculateService.calRevenueCost(senior_no);
 		model.addAttribute("cal_lessonrevenuecost", cal_lessonrevenuecost);
 
 		//정산신청 리스트 포인트사용
-		List<Integer> cal_usepointsum=salescalculateService.calUsePointSum(member_id);
+		List<Integer> cal_usepointsum=salescalculateService.calUsePointSum(senior_no);
 		model.addAttribute("cal_usepointsum", cal_usepointsum);
 		
 		//정산신청 시니어디테일

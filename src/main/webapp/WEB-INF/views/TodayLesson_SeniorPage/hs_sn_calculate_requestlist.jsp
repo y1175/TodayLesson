@@ -63,9 +63,6 @@ $(document).ready(function() {
 </head>
 <body>
 
-                                    
-
-
    <div class="hs_senior_calculate_request">
       <h4 class="hs_senior_calculate_request_title">정산신청</h4>
       <div class="hs_senior_calculate_possible_wait_box">
@@ -392,8 +389,6 @@ $(document).ready(function() {
                <tr>
                   <th>레슨수익금액</th> 
                   <th>포인트사용</th>  
-                  <!-- <th>레슨취소금액</th>
-                  <th>포인트취소</th> -->
                   <th>정산수수료</th>
                   <th style="border-right: none;">세금계산서부가세</th>
                </tr>
@@ -402,7 +397,7 @@ $(document).ready(function() {
                <c:forEach var="cal_requestlist" items="${cal_requestlist}" varStatus="status">
                <c:forEach var="cal_paycount" items="${cal_paycount}">
                <c:forEach var="cal_lessonrevenuecost" items="${cal_lessonrevenuecost}"> 
-               <c:forEach var="cal_usepointsum" items="${cal_usepointsum}"></c:forEach>
+               <c:forEach var="cal_usepointsum" items="${cal_usepointsum}">
                   <tr>
                      <!-- NO. -->
                      <td>
@@ -410,14 +405,14 @@ $(document).ready(function() {
                      </td>
                      <!-- 정산번호 정산신청완료했을시에만 나타나게 -->
                      <td>
-                        <c:choose>
+                        <%-- <c:choose>
                            <c:when test="${cal_requestlist.calculate_no == null}">
                               <c:out value=" - "/>
                            </c:when>
                            <c:when test="${cal_requestlist.calculate_no != null}">
                               <c:out value="${cal_requestlist.calculate_no}"/>
                            </c:when>
-                        </c:choose>
+                        </c:choose> --%>
                      </td> 
                      <!-- 정산상태 -->
                      <td>
@@ -432,18 +427,19 @@ $(document).ready(function() {
                      </td>
                      <!-- 정산신청일  정산 완료 됐을시만 나타나게 -->
                      <td>
-                        <c:choose>
+                        <%-- <c:choose>
                            <c:when test="${cal_requestlist.calculate_date == null}">
                               <c:out value=" - "/>
                            </c:when>
                            <c:when test="${cal_requestlist.calculate_date != null}">
                               <c:out value="${cal_requestlist.calculate_date}"/>
                            </c:when>
-                        </c:choose>
+                        </c:choose> --%>
                      </td> 
                      <!-- 결제건수 -->
                      <td>
-                        <fmt:formatNumber value="${cal_paycount}" type="number" maxFractionDigits="3"/>
+                        <c:out value="${cal_paycount}"/>
+                        <%-- <fmt:formatNumber value="${cal_paycount}" type="number" maxFractionDigits="3"/> --%>
                      </td> 
                   
                      <!-- 정산기간 -->
@@ -458,7 +454,7 @@ $(document).ready(function() {
                         <br>
                         <c:out value="${cal_requestlist.senior_account_num}"/>
                         <br>
-                        <c:out value="${cal_requestlist.s.senior_account_name}"/>
+                        <c:out value="${cal_requestlist.senior_account_name}"/>
                      </td>
                      <!-- 정산금액 -->
                      <td>
@@ -466,27 +462,26 @@ $(document).ready(function() {
                      </td> 
                      <!-- 레슨수익금액 결제완료된금액-->
                      <td>
-                        <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/>
+                        <c:out value="${cal_lessonrevenuecost}"/>
+                        <%-- <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/> --%>
                      </td> 
                      <!-- 포인트사용 -->
                      <td>
-                        <fmt:formatNumber value="${cal_usepointsum}" type="number" maxFractionDigits="3"/>
+                        <c:out value="${cal_usepointsum}"/>
+                        <%-- <fmt:formatNumber value="${cal_usepointsum}" type="number" maxFractionDigits="3"/> --%>
                      </td> 
-                     <!-- 레슨취소금액 -->
-                     <!-- <td>
-                     
-                     </td>  -->
-                     <!-- 취소포인트 -->
-                     <!-- <td>
-                     
-                     </td> --> 
                      <!-- 정산수수료 -->
+                        
+                      <%-- <fmt:parseNumber var="cal_lessonrevenuecost" value="${cal_lessonrevenuecost*0.1}" type="number" integerOnly="true"/> --%>
+                     
                      <td>
-                        <fmt:formatNumber value="${cal_lessonrevenuecost*0.1}" type="number" maxFractionDigits="3"/>
+                        <c:out value="${cal_lessonrevenuecost*0.1}"/>
+                        <%-- <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/> --%>
                      </td> 
                      <!-- 세금계산서부가세 -->
                      <td>
-                        <c:choose>
+                        <c:out value="0"/>
+                        <%-- <c:choose>
                         <c:when test="${salesList.senior_crno == null}"> 
                            <td>
                               <c:out value="0"/>
@@ -497,9 +492,10 @@ $(document).ready(function() {
                               <fmt:formatNumber value="${(cal_lessonrevenuecost/1.1)*0.1}" type="number" maxFractionDigits="3"/>
                            </td>    
                         </c:otherwise>
-                     </c:choose>
+                     </c:choose> --%>
                      </td>
                   </tr>
+               </c:forEach>   
                </c:forEach>  
                </c:forEach>
                </c:forEach>       

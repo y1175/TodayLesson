@@ -197,3 +197,10 @@
 	background-color: rgba(53, 54, 58, 0.2);
 	border-right: 1px solid rgba(53, 54, 58, 0.4);
 }
+#hs_sn_sales_table>tfoot>tr>td{
+	background-color: rgba(53, 54, 58, 0.2);
+	border-right: 1px solid rgba(53, 54, 58, 0.4);
+}
+#hs_sn_sales_table>tbody>tr>td{
+	border-right: 1px solid rgba(53, 54, 58, 0.4);
+}

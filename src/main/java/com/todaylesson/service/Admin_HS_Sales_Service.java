@@ -6,7 +6,9 @@ import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Ca
 
 public interface Admin_HS_Sales_Service {
 
-	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> adminSeniorSalesList(String search,
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> adminSeniorSalesList(String search,
 			String searchtxt, String start_date, String end_date);
+
+	public SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO adminSeniorSalesDetail(int orderlist_no);
 
 }

@@ -67,7 +67,7 @@
       </aside>
       
       <section style="width: 90%; float: right ;">
-      <tiles:insertAttribute name="hs_sn_main_section"/>
+         <tiles:insertAttribute name="hs_sn_main_section"/>
       </section>
    
    </section>

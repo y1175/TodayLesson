@@ -29,5 +29,12 @@ public class Admin_HS_Sales_ServiceImple implements Admin_HS_Sales_Service {
 		return adminSalesMapper.adminSeniorSalesList(hm);
 	}
 
+	@Override
+	public SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO adminSeniorSalesDetail(int orderlist_no) {
+		// TODO Auto-generated method stub
+		return adminSalesMapper.adminSeniorSalesDetail(orderlist_no);
+	}
+
+
 }
 

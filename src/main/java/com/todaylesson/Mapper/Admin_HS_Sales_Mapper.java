@@ -10,7 +10,9 @@ import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Ca
 @Mapper
 public interface Admin_HS_Sales_Mapper {
 
-	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> adminSeniorSalesList(
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> adminSeniorSalesList(
 			HashMap<String, Object> hm);
+
+	public SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO adminSeniorSalesDetail(int orderlist_no);
 
 }

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,8 +39,14 @@ public class Admin_HS_Sales_Controller {
 		return "/TodayLesson_AdminPage/hs_ad_sales_list.hs_ad_main_section";
 	}
 	
-	@RequestMapping("admin_sales_datail")
-	public String adminSalesDetail() {
+	@RequestMapping("admin_sales_datail/{orderlist_no}")
+	public String adminSalesDetail(@PathVariable int orderlist_no, Model model) {
+		
+		SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO adminSeniorSalesDetail=
+				adminSalesService.adminSeniorSalesDetail(orderlist_no);
+		model.addAttribute("adminSeniorSalesDetail", adminSeniorSalesDetail);
+		
 		return"/TodayLesson_AdminPage/hs_ad_sales_detail.hs_ad_main_section";
 	}
+	
 }

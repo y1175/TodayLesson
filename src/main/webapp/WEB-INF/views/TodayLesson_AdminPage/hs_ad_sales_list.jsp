@@ -63,6 +63,7 @@
    <div class="hs_admin_sales">
       <h3 class="hs_admin_sales_title">시니어 매출 현황</h3>
          <div class="hs_admin_sales_searchbox">
+            <form method="post" action="${pageContext.request.contextPath}/todaylessonadmin/admin_sales_list?search=${search}&searchtxt=${searchtxt}">
                <label class="hs_admin_sales_DatesearchTitle">기간검색</label>
                <div class="hs_admin_sales_Datesearchbox">
                   <input type="text" name="start_date" id="hs_admin_start_date" placeholder="YYYY-MM-DD" >  <!-- value="${salesList_form.sales_search_enddate}" -->
@@ -77,9 +78,9 @@
                <div class="hs_admin_sales_Textsearchbox">   
                   <label for=""></label>
                   <select name="search" class="hs_admin_sales_TextsearchOP">
-                     <option value="">전체</option>
-                     <option value="">레슨명</option>
-                     <option value="">시니어</option>
+                     <option value="all">전체</option>
+                     <option value="lesson_title">레슨명</option>
+                     <option value="senior_nick">시니어</option>
                   </select> 
                   <input type="text" id="hs_admin_sales_Textsearch" name="searchtxt" placeholder="검색어를 입력해주세요">
                </div>
@@ -87,6 +88,8 @@
                   <input type="reset" id="hs_admin_Sales_ResetBtn" value="초기화">
                   <input type="submit" id="hs_admin_Sales_SearchBtn" value="검색">
                </div>
+               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+           </form>    
                </div>
          <div class="hs_admin_Sales_OpExcelBox">
             <form action="${pageContext.request.contextPath}/todaylessonadmin/admin_sales_list">
@@ -103,7 +106,7 @@
             <thead style=" border-top: 2px solid rgb(53, 54, 58);">
                <tr>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">NO.</th>
-                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">카테고리</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">주문번호</th>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">레슨종류</th>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">레슨번호</th>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">레슨명</th>
@@ -131,29 +134,9 @@
                      <td>
                         <c:out value="${status.count}"/>
                      </td> 
-                     <!-- 카테고리 -->
+                     <!-- 주문번호 -->
                      <td>
-                        <c:set var="category" value="${adminSeniorSalesList.lesson_category}"/>
-                     <c:choose>
-                        <c:when test = "${category==1}">
-                              <c:out value="운동"/>
-                        </c:when>
-                        <c:when test = "${category==2}">
-                              <c:out value="교육"/>
-                        </c:when>
-                        <c:when test = "${category==3}">
-                              <c:out value="핸드메이드"/>
-                        </c:when>
-                        <c:when test = "${category==4}">
-                              <c:out value="IT"/>
-                        </c:when>
-                        <c:when test = "${category==5}">
-                              <c:out value="요리"/>
-                        </c:when>
-                        <c:when test = "${category==6}">
-                              <c:out value="기타"/>
-                        </c:when>
-                     </c:choose>
+                        <c:out value="${adminSeniorSalesList.orderlist_no}"/>
                      </td>
                      <!-- 레슨종류 -->
                      <td>

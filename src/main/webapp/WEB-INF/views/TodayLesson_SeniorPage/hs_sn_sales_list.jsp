@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSSstyle --> 
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=3">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=4">
    <style type="text/css">
       .hs_sn_main_asidenav_nav_salestitle>a{
          color: rgb(224, 62, 82);
@@ -62,14 +62,13 @@
    <div class="hs_senior_sales">
       <h3 class="hs_senior_sales_title">매출 현황</h3>
       <div class="">
-         <c:forEach var="salesList_form" items="${salesList}">
-            <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?startdate=${salesList_form.sales_search_startdate}&enddate=${salesList_form.sales_search_enddate}&search=${search}&searchtxt=${searchtxt}">
+            <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${Totalpage.startBlock}">
                <div class="hs_senior_sales_searchbox">
                <label class="hs_senior_sales_DatesearchTitle">기간검색</label>
                <div class="hs_senior_sales_Datesearchbox">
-                  <input type="text" name="startdate" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" >  <!-- value="${salesList_form.sales_search_enddate}" -->
+                  <input type="text" name="start_date" id="hs_sn_sales_startdate" placeholder="YYYY-MM-DD" >  <!-- value="${salesList_form.sales_search_enddate}" -->
                   <span class="hs_senior_sales_Date-"> - </span>
-                  <input type="text" name="enddate" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" >
+                  <input type="text" name="end_date" id="hs_sn_sales_enddate" placeholder="YYYY-MM-DD" >
                   <input type="button" name="" id="hs_senior_sales_Datesearch_AllBtn" value="전체">
                   <input type="button" name="" id="hs_senior_sales_Datesearch_TodayBtn" value="오늘">
                   <input type="button" name="" id="hs_senior_sales_Datesearch_WeeklyBtn" value="일주일">
@@ -79,9 +78,9 @@
                <div class="hs_senior_sales_Textsearchbox">   
                   <label for=""></label>
                   <select name="search" class="hs_senior_sales_TextsearchOP">
-                     <option value="">전체</option>
-                     <option value="">레슨명</option>
-                     <option value="">구매자</option>
+                     <option value="all">전체</option>
+                     <option value="lesson_title">레슨명</option>
+                     <option value="member_name">구매자</option>
                   </select> 
                   <input type="text" id="hs_senior_sales_Textsearch" name="searchtxt" placeholder="검색어를 입력해주세요">
                </div>
@@ -97,29 +96,29 @@
                      <option value="">결제취소</option>
                   </select>
                   <button class="hs_senior_Sales_ExcelBtn">엑셀다운로드</button>
-               </div>            
+               </div> 
+               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />           
             </form>
-         </c:forEach>
       </div>     
       <div class="hs_sn_salesList">
          <table id="hs_sn_sales_table" class="table table-hover" >
             <thead style="border-top: 2px solid rgb(53, 54, 58);">
                <tr>
-                  <th rowspan="2">NO.</th>
-                  <th rowspan="2">결제상태</th>
-                  <th rowspan="2">레슨종류</th>
-                  <th rowspan="2">레슨번호</th>
-                  <th rowspan="2">레슨명</th>
-                  <th rowspan="2">구매일</th>
-                  <th rowspan="2">구매자</th>
-                  <th rowspan="2">시니어매출</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);" >NO.</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);" >결제상태</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">레슨종류</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);" >레슨번호</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);" >레슨명</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);" >구매일</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">구매자</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">시니어매출</th>
                   <th colspan="4" style="border-right: none; border-bottom: 1px solid rgba(53, 54, 58, 0.4);">상세내역</th>
                </tr>
                <tr>
-                  <th>결제금액</th>   
-                  <th>포인트사용</th>
-                  <th>정산수수료</th>
-                  <th style="border-right: none;">세금계산서부가세</th>
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58);">결제금액</th>   
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58);">포인트사용</th>
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58);">정산수수료</th>
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58); border-right: none;">세금계산서부가세</th>
                </tr>
             </thead>
             <tbody>
@@ -135,14 +134,16 @@
                         <c:out value="${status.count}"/>
                      </td> 
                      <!-- 결제상태 -->
-                     <%-- <c:choose>
+                     <td>
+                      <c:choose>
                         <c:when test="${salesList.orderlist_paystatus==1}">
                            <c:out value="결제완료"/>
                         </c:when> 
                         <c:when test="${salesList.orderlist_paystatus==3}">
                            <c:out value="결제취소"/>
                         </c:when>
-                     </c:choose> --%>
+                     </c:choose> 
+                     </td>
                      <!-- 레슨종류 -->
                      <td>
                         <c:choose>
@@ -176,9 +177,10 @@
                      <!-- 시니어매출 = 결제금액-(포인트+정산수수료+부가세) -->
                      <c:set var="cost" value="${salesList.lesson_cost}"/> <!-- 결제금액 -->
                      <c:set var="point" value="${salesList.orderlist_usepoint}"/> <!-- 포인트  -->
-                     <c:set var="comm" value="${salesList.sales_comm}"/> <!-- 정산수수료 -->
-                     <c:set var="surtax" value="${salesList.sales_surtax}"/> <!-- 부가세 -->
-                     <c:set var="senior_sales" value="${cost-(point+comm+surtax)}"/>
+                     <c:set var="comm" value="${cost*0.1}"/> <!-- 정산수수료 -->
+                     <c:set var="surtax" value="${(cost*1.1)*0.1}"/> <!-- 부가세 -->
+                     <c:set var="senior_salessum" value="${cost-point-comm}"/>
+                     <fmt:parseNumber var="senior_sales" value="${senior_salessum}" type="number" integerOnly="true"/>
                         <td>
                            <fmt:formatNumber value="${senior_sales}" type="number" maxFractionDigits="3"/>
                         </td> 
@@ -192,21 +194,24 @@
                         </td> 
                      <!-- 정산수수료 -->
                      <td>
-                        <fmt:formatNumber value="${salesList.sales_comm}" type="number" maxFractionDigits="3"/>
+                        <fmt:formatNumber value="${comm}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 세금계산서부가세 -->
-                     <c:choose>
-                        <c:when test="${salesList.senior_crno == null}"> 
+                     <%-- <c:choose>
+                        <c:when test="${salesList.senior_crno!=null}"> 
                            <td>
-                              <c:out value="0"/>
+                              <fmt:formatNumber value="${surtax}" type="number" maxFractionDigits="3"/>
                            </td>
                         </c:when>
                         <c:otherwise>
                            <td>
-                              <fmt:formatNumber value="${salesList.sales_surtax}" type="number" maxFractionDigits="3"/>
+                              <c:out value="0"/>
                            </td>    
                         </c:otherwise>
-                     </c:choose>
+                     </c:choose>  --%>
+                     <td style="border-right: none;">
+                        <c:out value="0"/>
+                     </td> 
                   </tr>
                   <c:set var="sales_sum" value="${sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
                   
@@ -215,12 +220,14 @@
                      <!-- 포인트사용합계 -->
                      <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_usepoint}"/> 
                      <!-- 정산수수료합계 -->
-                     <c:set var="comm_sum" value="${comm_sum+salesList.sales_comm}"/> 
+                     <c:set var="comm_sum" value="${comm_sum+comm}"/> 
                      <!-- 세금계산서 부가세합계-->
-                     <c:set var="surtaxsum" value="${surtaxsum+salesList.sales_surtax}"/> 
+                     <c:set var="surtaxsum" value="${surtaxsum+surtax}"/> 
+                     <fmt:parseNumber var="taxsum" value="${surtaxsum}" type="number" integerOnly="true"/>
+                     
                </c:forEach>
             </tbody>
-            <tfoot>
+            <tfoot style="border-bottom: 2px solid rgb(53, 54, 58); border-top: 2px solid rgb(53, 54, 58); font-weight: bold;">
                <tr>
                   <td colspan="7">합계</td>
                   <td> <!-- 시니어매출합계 -->
@@ -235,13 +242,50 @@
                   <td> <!-- 정산수수료합계 -->
                      <fmt:formatNumber value="${comm_sum}" type="number" maxFractionDigits="3"/> 
                   </td> 
-                  <td> <!-- 세금계산서 부가세합계-->
-                     <fmt:formatNumber value="${surtaxsum}" type="number" maxFractionDigits="3"/> 
+                  <td style="border-right: none;"> <!-- 세금계산서 부가세합계-->
+                     <c:out value="0"/>
+                   <%--  <c:choose>
+                           <c:when test="${salesList.senior_crno!=null}"> 
+                               <fmt:formatNumber value="${taxsum}" type="number" maxFractionDigits="3"/>
+                           </c:when>
+                           <c:otherwise>
+                              
+                           </c:otherwise>
+                     </c:choose>  --%>
+                     
                   </td> 
                </tr>
             </tfoot>
          </table>
       </div>
    </div>
+   
+<div class="">
+<!-- 이전페이지블럭 -->
+<c:if test="${Totalpage.prev }">
+<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${Totalpage.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+</c:if>
+
+<!-- 현재 페이지블럭 -->
+<c:forEach var="index" begin="${Totalpage.startBlock }" end="${Totalpage.endBlock }">
+
+<!-- if 인덱스가 현재페이지가 아니면 a태그 -->
+<c:if test="${index!= Totalpage.currPage }">
+<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+</c:if>
+
+<!--  if 인덱스가 현재페이지면 현재페이지 출력 -->
+<c:if test="${index==Totalpage.currPage }">
+${index }
+</c:if>
+</c:forEach>
+
+<!-- 다음페이지블럭 -->
+<c:if test="${Totalpage.next }">
+<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${Totalpage.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+</c:if>
+</div>
+   
+   
 </body>
 </html>

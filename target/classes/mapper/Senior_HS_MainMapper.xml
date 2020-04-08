@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todaylesson.Mapper.Senior_HS_MainMapper">
+	
+	<select id="seniorPageInfo" resultType="com.todaylesson.DTO.SeniorDTO" parameterType="java.lang.String">
+	   select senior_no, senior_nick
+       from senior
+       where member_id=#{member_id}
+	</select>
+    
+</mapper>
+
+
+
+
+
+
+
+
+

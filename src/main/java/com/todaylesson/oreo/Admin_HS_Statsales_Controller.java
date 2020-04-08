@@ -30,12 +30,8 @@ public class Admin_HS_Statsales_Controller {
 		//매출통계(일별, 주별, 월별, 년별)
 		List<OrderListDTO> StatSalesAllChart=adminStatSalesService.StatSalesAllChart(ymd);
 		model.addAttribute("StatSalesAllChart", StatSalesAllChart);
-		
-		
-		
-		
-		
-		return "TodayLesson_AdminPage/sales_statisticeTest2.hs_ad_main_section";
+
+		return "TodayLesson_AdminPage/hs_ad_sales_statisticeTest.hs_ad_main_section";
 	}
 	
 	//AmChart

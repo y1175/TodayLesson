@@ -60,8 +60,8 @@
 	
 	<!-- 매출현황전체리스트 -->
 	<select id="adminSeniorSalesList" resultMap="salesCalculateMap" parameterMap="hashmap">
-	   select o.orderlist_no,o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title 
-	          ,o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint,sn.senior_no
+	   select o.orderlist_no,o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, o.orderlist_usepoint
+	        , l.lesson_category, sn.senior_nick, o.orderlist_date, m.member_name, l.lesson_cost, sn.senior_no
 	   from orderlist o  join order_detail od on od.orderlist_no=o.orderlist_no
 	                     join member m on m.member_id=o.member_id
 	                     join senior sn on sn.member_id=m.member_id
@@ -82,7 +82,7 @@
              <when test='search.equals("lesson_title")'>
                 where lesson_title like CONCAT('%', #{searchtxt}, '%')
              </when>
-             <when test='search.equals("member_name")'>
+             <when test='search.equals("senior_nick")'>
                 where senior_nick like CONCAT('%', #{searchtxt}, '%')
              </when>
           </choose>
@@ -94,6 +94,18 @@
 	      and orderlist_date<![CDATA[<=]]>#{end_date}
 	   </if>
     </sql> 
+    
+    <!-- 매출현황 상세내역 -->
+    <select id="adminSeniorSalesDetail" resultMap="salesCalculateMap" parameterType="int">
+       select o.orderlist_no,o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title, o.orderlist_usepoint
+	        , l.lesson_category, sn.senior_nick, o.orderlist_date, m.member_name, l.lesson_cost, sn.senior_no
+	   from orderlist o  join order_detail od on od.orderlist_no=o.orderlist_no
+	                     join member m on m.member_id=o.member_id
+	                     join senior sn on sn.member_id=m.member_id
+	                     join lesson l on l.lesson_no=od.lesson_no
+	   where o.orderlist_no=#{orderlist_no}                     
+    </select>
+    
 
 
     
