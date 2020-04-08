@@ -42,6 +42,7 @@ public class AllLessonDTO {
 	private String senior_email;
 	private String senior_phone;
 	private String senior_crno;
+	private String senior_crno_name;
 	private String senior_nick;
 	private String senior_bank_name;
 	private String senior_account_name;

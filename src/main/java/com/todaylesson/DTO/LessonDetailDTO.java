@@ -28,5 +28,10 @@ public class LessonDetailDTO {
 	private String lesson_title;
 	//lessoncomp¹øÈ£
 	private int lessoncomp_no;
+	
+	
+	
+	
+	
 		
 }

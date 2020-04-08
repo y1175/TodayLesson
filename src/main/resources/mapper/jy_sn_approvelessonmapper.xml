@@ -113,7 +113,9 @@ select * from lessondetail where lesson_no = #{lesson_no} order by lessondetail_
 
 <select id="apld_select" parameterType="int" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
-select * from lessondetail where lessondetail_no = #{lessondetail_no}
+select * 
+from lessondetail 
+where lessondetail_no = #{lessondetail_no}
 
 </select>
 
