@@ -1,5 +1,7 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -30,5 +32,13 @@ public class Hm_Us_MymanageServiceImple implements Hm_Us_MymanageService {
 		// TODO Auto-generated method stub
 		return mapper.myinfoupdate2(dto);
 	}
+
+	@Override
+	public String matchpwd(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.matchpwd(member_id);
+	}
+
+
 
 }

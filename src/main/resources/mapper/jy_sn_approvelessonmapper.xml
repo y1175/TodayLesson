@@ -57,13 +57,13 @@ where member_id=#{member_id}
 
 </select>
 
-<select id="apl_list" parameterType="int" resultType="com.todaylesson.DTO.LessonDTO">
+<select id="apl_list" parameterType="java.util.HashMap" resultType="com.todaylesson.DTO.LessonDTO">
 
 select * from lesson
 where senior_no = #{no}
 and lesson_result = 2
 <include refid="search_select"></include>
-
+limit   #{startrow}, 15
 
 </select>
 
@@ -113,7 +113,9 @@ select * from lessondetail where lesson_no = #{lesson_no} order by lessondetail_
 
 <select id="apld_select" parameterType="int" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
-select * from lessondetail where lessondetail_no = #{lessondetail_no}
+select * 
+from lessondetail 
+where lessondetail_no = #{lessondetail_no}
 
 </select>
 

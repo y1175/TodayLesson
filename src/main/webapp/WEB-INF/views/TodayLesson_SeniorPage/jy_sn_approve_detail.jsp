@@ -70,11 +70,11 @@ ${dto.lesson_content}
 </div>
 
 </li>
-<li>
-<b>수강생수</b>
-<span class="jy_text">
 
-<c:out value="${dto.lesson_member_max}"/>명
+<li>
+<b>수강 가능한 최대 주니어 수 / 수강 중인 주니어 수</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_member_max}"/> / <c:out value="${dto.lesson_junior_count}"/> 명
 </span><br>
 </li>
 

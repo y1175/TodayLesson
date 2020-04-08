@@ -32,7 +32,6 @@ public class User_HM_Mymanage_Controller {
 	@Resource(name="passwordEncoder")
 	private BCryptPasswordEncoder encoder;
 
-
 	//¼­ºñ½º
 	@Resource(name="hm_us_mymanage")
 	private Hm_Us_MymanageService hm_mymanageservice;
@@ -96,13 +95,16 @@ public class User_HM_Mymanage_Controller {
 			,@RequestParam("member_pwd") String member_pwd
 			,Model model, HttpServletRequest request,HttpServletResponse response)throws Exception
 	{
-
-
-		String encoded_pwd=encoder.encode(member_pwd);
-		boolean result=encoder.matches(member_pwd , encoded_pwd);
-
-
-		System.out.println(member_pwd);
+		
+		
+		String new_pwd = member_pwd;
+		String old_pwd = hm_mymanageservice.matchpwd(member_id);
+		
+		System.out.println(new_pwd);
+		System.out.println(old_pwd);
+		
+		boolean result = encoder.matches(new_pwd, old_pwd);
+		
 		System.out.println(result);
 
 		if(result==true)
@@ -124,7 +126,7 @@ public class User_HM_Mymanage_Controller {
 		}
 		else {
 
-			return "/TodayLesson_UserPage/hm_us_mymanage2.us_my_section";
+			return "/TodayLesson_UserPage/hm_us_mymanage.us_my_section";
 		}
 	}
 

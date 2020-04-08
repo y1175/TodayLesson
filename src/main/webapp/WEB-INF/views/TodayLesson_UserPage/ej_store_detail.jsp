@@ -28,7 +28,7 @@
 <!--owl carousel css, js-->
     
     
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css?ver=3">  
 <%--  <script src="${pageContext.request.contextPath}/resources/JS/ej_us_storedetail.js"></script> --%>
 
 <script>
@@ -40,9 +40,8 @@ $(document).ready(function(){
 	
 	   /*관련상품카르셀  */
 	   var owl = $('.owl-carousel');
-	   owl.owlCarousel({
+	   owl.owlCarousel({ /*  loop:true, */
 	       items:5,
-	       loop:true,
 	       margin:70,
 	       nav: true ,
 	       autoplay:true,
@@ -75,7 +74,7 @@ $('#summernote').summernote({
   <form role="form" method="post" id="form1" name="form" >
  
 <!--썸네일 이미지 원본 맨위에 보여줌-->
-<div class="ej_top img">
+<div class="ej_top imgbox">
 <img src="${dto.product_img }" id="ej_sdetail_topimg" width="60%">
 </div>
 
@@ -97,7 +96,7 @@ $('#summernote').summernote({
 <span class="ej_top font">가격   </span><h4 class="beforecost" id="ej_cost"><fmt:formatNumber value="${dto.product_cost}" type="number" maxFractionDigits="3"/>원 </h4>
 <div id="ej_cost"><c:out value="${dto.product_sale}"/>%</div> <div id="ej_cost"><h3> <fmt:formatNumber value="${dto.product_after_cost}" type="number" maxFractionDigits="3"/>원 </h3></div><br>
 
-<span class="ej_top font middle logintxt" style="color:red;"></span>로그인 후, 적립혜택이 제공됩니다.<br>
+<span class="ej_top font middle logintxt" ></span><b style="color:rgb(224, 62, 82);">로그인 후, 적립혜택이 제공됩니다.</b><br>
 
 
 
@@ -242,18 +241,17 @@ $('#summernote').summernote({
  <!--관련상품 슬라이더  -->
 
 <!--  <div id="wrapper"> -->
-	<div class="owl-carousel owl-theme">
-  	 <c:forEach var="prolist" items="${list}" begin="1" end="10">
-  	 <c:set var="nowno" value="${dto.product_no }"/>
+	<div class="owl-carousel owl-theme">  	 <c:set var="nowno" value="${dto.product_no }"/>
+  	 <c:forEach var="prolist" items="${list}"  begin="1"><%-- begin="1" end="10" --%>
   	 <c:set var="listno" value="${prolist.product_no }"/>
-  	 <c:if test="${ nowno!=listno}">
+  	<%--  <c:if test="${ nowno!=listno}"> --%>
   		<div class="item">
   		 	<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${prolist.product_no}"><img src="${prolist.product_thumb }" alt="thumb"></a><br>
   			<h4>${prolist.product_name }</h4><br>
   			<fmt:formatNumber value="${prolist.product_cost}" type="number" maxFractionDigits="3"/>원 
   		</div>
-  		</c:if>
-  	</c:forEach> 
+  		 <%-- </c:if> --%>
+  	</c:forEach>
   	</div> <br><br>
 
  <div id='cssmenu'>
@@ -272,7 +270,7 @@ $('#summernote').summernote({
 </div>
 
 <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_product_topimg.png" >
-<div id="ej_content">
+<div id="ej_content" style="text-align: center;">
 ${dto.product_content}
 </div>
 <br>
@@ -315,7 +313,7 @@ ${dto.product_content}
 </div>
 <button type="button" id="reply_btn" class="ej_btn">작성</button>
 
-</form><br>
+</form><br>		
 </section>
                                                  <!--후기작성폼/ -->
 
