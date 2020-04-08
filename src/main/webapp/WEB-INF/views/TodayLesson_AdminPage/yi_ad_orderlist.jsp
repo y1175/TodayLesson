@@ -71,13 +71,16 @@
 <form action="/todaylessonadmin/admin_order_modify">
 <table class="table table-hover">
 <thead class="thead-dark">
-<tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명</th><th rowspan="2">금액합계</th><th rowspan="2">정산상태</th></tr>
+<tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명(판매자)</th><th rowspan="2">금액합계</th><th rowspan="2">정산상태</th></tr>
 <tr><th>주문상태</th><th>주문자 ID</th><th>배송 주소</th><th>상품번호</th></tr>
 </thead>
 <tbody>
 
 <c:forEach var="item" items="${list }">
-<tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td><td>${item.product_name }</td><td rowspan="2">${item.orderlist_cost }</td>
+<tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td>
+<td>${item.product_name }${item.lesson_title }<br>
+<span>(<c:if test='${item.senior_nick==null }'>투데이레슨</c:if>${item.senior_nick}</span>)</td>
+<td rowspan="2">${item.orderlist_cost }</td>
 <td rowspan="2">
 <select name="calculate_status" class="calculate_select calculate_select-${item.orderlist_no}" id="c${item.orderlist_no}">
 <option value="1">정산대기</option>
@@ -90,7 +93,8 @@
 <option value="2">배송중</option>
 <option value="3">배송완료</option>
 <option value="4">주문취소</option>
-</select></td><td>${item.member_id }</td><td>${item.orderlist_addr }</td><td>${item.product_no }</td></tr>
+</select></td><td>${item.member_id }</td><td>${item.orderlist_addr }</td>
+<td><c:if test='${item.product_no!=0 }'>${item.product_no}</c:if>${item.lesson_no }</td></tr>
 
 
 <c:set var="cost" value="${item.orderlist_cost }"></c:set>
@@ -168,7 +172,7 @@ $('.calculate_select').on("change",function(){
 	}
 	else
 	{
-		if( $('.status_select').val()!=3)
+		if( $('.status_select-'+orderlist_no).val()!=3)
 			{
 			alert('배송이 완료된 상품만 정산상태를 변경할 수 있습니다.');
 			$('.calculate_select-'+orderlist_no+' option[value='+before2+']').prop('selected',true);

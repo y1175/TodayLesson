@@ -90,5 +90,15 @@ public class SQLjoin_OrderList_Order_detail_MemberDTO {
 	private int senior_no;
 	private String lesson_date;
 	
+	//senior
+	private String senior_email;
+	private String senior_phone;
+	private String senior_crno;
+	private String senior_nick;
+	private int senior_bank_name;
+	private String senior_account_name;
+	private String senior_account_num;
+	private String senior_register_date;
+	private String senior_crno_name;
 	
 }

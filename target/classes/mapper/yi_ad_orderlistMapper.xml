@@ -80,7 +80,9 @@ limit   #{startrow}, 15
 	order_detail.product_no=product.product_no	
 	</when>
 	<when test='category=="2"'>
-	lesson on
+	(lesson join senior 
+	on lesson.senior_no=senior.senior_no) 
+	on
 	order_detail.lesson_no=lesson.lesson_no
 	</when>
 	</choose>
