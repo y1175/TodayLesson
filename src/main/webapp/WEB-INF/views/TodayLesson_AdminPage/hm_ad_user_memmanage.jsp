@@ -7,7 +7,7 @@
  <meta charset="utf-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_user_memmanage.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_user_memmanage.css?ver=3">
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_user_memmanagelist.js?ver=5"></script>
 <!-- CSSstyle -->

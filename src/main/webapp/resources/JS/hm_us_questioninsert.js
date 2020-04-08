@@ -22,7 +22,16 @@ $(document).ready(function(){
 			document.hmquestionform.question_title.focus();
 			return false;
 		}else{
-			bad_check();
+			var result = bad_check();
+			console.log(result);
+			
+			if(result == true){
+				document.hmquestionform.submit();
+				
+			}else{
+				document.hmquestionform.reset();
+			}
+			
 		}
 		
 	});
@@ -33,11 +42,11 @@ $(document).ready(function(){
 function bad_check(){
 	
 
-	var YokList = new Array('개새끼','개색기','script','iframe');
+	var YokList = new Array('개새끼','개색기','바보','script','iframe');
 	var Tmp;
 	var Tmp2;
 	
-	for(i=0; i<YokList.length; i++){
+	 for(i=0 ; i<YokList.length ; i++){
 		
 		Tmp = hmquestionform.question_content.value.toLowerCase().indexOf(YokList[i]);
 		Tmp2 = hmquestionform.question_title.value.toLowerCase().indexOf(YokList[i]);
@@ -51,7 +60,7 @@ function bad_check(){
 			document.hmquestionform.question_title.focus();
 			return false;
 		}else{
-			document.hmquestionform.submit();
+			return true;
 		}
 	}
 };

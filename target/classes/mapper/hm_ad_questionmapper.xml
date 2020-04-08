@@ -14,7 +14,7 @@ from question_1_1
 select question_no,question_group,member_id,question_title,question_situation,question_writedate
 from question_1_1
 <include refid="search_select"></include>
-order by question_no
+order by question_no desc
 limit #{startrow}, 15
 </select>
 
@@ -40,7 +40,7 @@ where question_title like CONCAT('%',#{searchtxt},'%')
 
 <!-- 디테일 정보 -->
 <select id="hm_ad_question_detail" parameterType="int" resultType="com.todaylesson.DTO.Question_1_1DTO">
-select question_no,question_group,question_title,question_content,question_answer,member_id,question_situation,question_writedate
+select question_no,question_group,question_title,question_content,question_answer,member_id,question_situation,question_writedate,question_answerwritedate
 from question_1_1
 where question_no = #{question_no}
 </select> 
@@ -54,4 +54,13 @@ set question_answer = #{question_answer}
 where question_no = #{question_no}
 </update>
 
+
+<!-- 답변삭제하기 -->
+<update id="hm_ad_question_delete" parameterType="int">
+update question_1_1
+set question_answer = null
+,question_answerwritedate = null
+,question_situation = 0
+where question_no = #{question_no}
+</update>
 </mapper>

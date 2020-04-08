@@ -1,6 +1,116 @@
 @charset "utf-8";
-
-.answerbox{
-	border:1px solid black;
+.adfaqdetailmain{
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+	color: rgb(53, 54, 58);	
 	
+}
+.adfaqgroup{
+	border: 1px solid silver;
+	border-radius: 30px;
+	width:100px;
+	height: 30px;
+	font-size: 20px;
+	font-weight:600;
+	text-align: center;
+	margin-left:5%;
+	
+}
+.adfaqdetailmain h3{
+	margin-left:5%;
+}
+.hmadfaq{
+	margin:20px auto;
+	border:1px solid silver;
+	border-radius: 20px;
+	width:90%;
+	min-height: 300px; 
+}
+.hmadfaq h6{
+	float: right;
+	margin: 20px;
+}
+.hmadfaq p{
+	margin-left:5%;
+}
+.hmfaqline{
+	height: 50px;
+}
+
+.hm_ad_questionbtn{
+	border: 1px transparent;
+	padding: 7px 20px;
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+	float:right;
+	margin-right: 10px;
+	display: block;
+	
+}
+.questionlistbtn{
+	border: 1px transparent;
+	padding: 7px 20px;
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+	float:right;
+	margin-right: 10px;
+	display: block;
+}
+.question_answerupdate{
+	border: 1px transparent;
+	padding: 7px 20px;
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+	float:right;
+	margin-right: 10px;
+	display: block;
+}
+.hm_ad_questionbtn2{
+	border: 1px transparent;
+	padding: 7px 20px;
+	border-radius : 3px;
+	background-color: rgb(224, 62, 82);
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+	float:right;
+	margin-right: 10px;
+	display: block;
+}
+.hmfaqdetailbtn{
+	margin-right: 5%;
+}
+.hm_ad_questionbtn3{
+	border: 1px transparent;
+	padding: 7px 20px;
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+	float:right;
+	margin-right:10px;
+	display: block;
+}
+.hm_ad_questionbtn4{
+	border: 1px transparent;
+	padding: 7px 20px;
+	border-radius : 3px;
+	background-color: rgb(224, 62, 82);
+	font-weight : 600;
+	font-size : 14px;
+	color: white;	
+	float:right;
+	margin-right: 10px;
+	display: block;
 }

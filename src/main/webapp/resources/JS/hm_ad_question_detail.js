@@ -6,12 +6,20 @@ $(document).ready(function(){
 		$('.questionlistbtn').hide();
 	});
 	
-	
-$("#question_answerbtn").click(function(){
-		
-	$('#hm_question_answerdiv').hide();
-	
-	});
 
+$("#hm_answercancel").click(function(){
 	
+	$('#hm_question_answerdiv').hide();
+	location.reload(true);
+});
+
+$(".hm_ad_questionbtn2").on('click',function(){
+	
+	
+	var no = $(this).prop("id");
+	location.href="/todaylessonadmin/hm_ad_question_delete/"+no;
+	
+	
+});
+
 });

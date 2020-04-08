@@ -5,9 +5,8 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_question.css?ver=2">
+<title>오늘의 레슨 관리자 1:1문의</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_question.css?ver=4">
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question.js"></script>
 
 <!-- CSSstyle --> 
@@ -20,25 +19,38 @@ pageEncoding="UTF-8"%>
 
 </head>
 <body>
+
+
+
+
 <div class="questionheader">
+
+
 <h2>1:1문의 관리 페이지</h2>
-</div>
+	
+<!-- 검색 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:30%; margin:40px auto;">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
- <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question?currPage=${page.startBlock }"
- style="margin:0px auto;">
- <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-<option value="all">전체</option>
-<option value="question_title">제목</option>
-<option value="member_id">아이디</option>
-</select>
- <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary" type="submit">검색</button>
-    </form>
+   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+     <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question?currPage=${page.startBlock }"
+    style="margin:0px auto;">
+    <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
+    <option value="all">전체</option>
+    <option value="question_title">제목</option>
+    <option value="member_id">아이디</option>
+    </select>
+   <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+   <button class="hmadfaqbtn" type="submit">검색</button>
+   </form>
   </div>
 </nav>
+<!-- 검색 끝 -->
 
-	<table class="table" style="width:80%; margin:0px auto 40px;">
+
+
+
+
+
+	<table class="table" >
 		<thead>
 			<tr class="table-warning">
 				<th scope="col">#</th>
@@ -72,23 +84,33 @@ pageEncoding="UTF-8"%>
 							<td><p>기 타</p></td>
 						</c:when>
 					</c:choose>
+					
+					
 					<td><span>${item.member_id}</span></td>
+					
 					<td><span>${item.question_title}</span></td>
+					
 					<c:choose>
 						<c:when test="${item.question_situation eq '0' }">
-							<td><p>답변대기</p></td>
+							<td><p class="waitanswer">답변대기</p></td>
 						</c:when>
 						<c:when test="${item.question_situation eq '1' }">
-							<td><p>답변완료</p></td>
+							<td><p class="endanswer">답변완료</p></td>
 						</c:when>
 					</c:choose>
+					
 					<td><span>${item.question_writedate}</span></td>
+					
 					<td><input type="button" name="questionbtn" id="questionbtn"
 						class="questionbtn" value="상세보기"></td>
 				</tr>
+				
 			</c:forEach>
 		</tbody>
 	</table>
+
+
+
 
 
 <c:if test="${page.prev }">
@@ -107,7 +129,7 @@ pageEncoding="UTF-8"%>
 
 
 
-
+</div>
 
 
 </body>

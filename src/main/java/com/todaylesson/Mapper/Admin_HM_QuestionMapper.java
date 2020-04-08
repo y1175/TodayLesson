@@ -19,6 +19,8 @@ public interface Admin_HM_QuestionMapper {
 
 	public int hm_ad_question_update(HashMap<String, Object> map);
 
+	public int hm_ad_question_delete(int question_no);
+
 
 
 }

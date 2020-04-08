@@ -15,6 +15,8 @@ pageEncoding="UTF-8"%>
 
 
 <div class="usquestionmain">
+
+
 <img alt="faq" src="/resources/IMG/faq.png" class="usquestionimg">
 <h2>1:1 문의하기</h2>
 <div>
@@ -25,6 +27,9 @@ pageEncoding="UTF-8"%>
 <input type ="button" class="question_btn" id="question_btn" value="문의하기">
 </div>
 </div>
+
+
+
 <c:if test="${!empty list}" > 
 
 

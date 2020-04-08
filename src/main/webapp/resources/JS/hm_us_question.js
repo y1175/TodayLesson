@@ -10,8 +10,7 @@ $(document).ready(function(){
 		
 
 		var no = $(this).prop("id");
-		console.log(no);
-		console.log(this);
+	
 		location.href="/todaylessonmypage/hm_us_question_detail/"+no;
 		
 		

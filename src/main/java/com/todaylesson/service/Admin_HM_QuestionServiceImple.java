@@ -49,8 +49,14 @@ public class Admin_HM_QuestionServiceImple implements Admin_HM_QuestionService {
 		return mapper.hm_ad_question_update(map);
 	}
 
+	@Override
+	public int hm_ad_question_delete(int question_no) {
+		// TODO Auto-generated method stub
+		return mapper.hm_ad_question_delete(question_no);
 	}
 
+	}
 
+	
 
 

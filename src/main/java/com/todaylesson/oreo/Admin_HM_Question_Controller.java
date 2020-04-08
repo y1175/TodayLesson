@@ -83,4 +83,18 @@ public class Admin_HM_Question_Controller {
 		return "/TodayLesson_AdminPage/hm_ad_question_updateresult.hs_ad_main_section";
 	}
 
+	
+	//답변삭제
+	@RequestMapping("/hm_ad_question_delete/{no}")
+	private String hm_ad_question_delete(@PathVariable int no,Model model) {
+		
+		int question_no = no;
+		
+		int result = service.hm_ad_question_delete(question_no);
+		
+		model.addAttribute("result",result);
+		model.addAttribute("question_no",question_no);
+		return "/TodayLesson_AdminPage/hm_ad_question_deleteresult.hs_ad_main_section"; 
+	}
+	
 }

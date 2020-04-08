@@ -1,10 +1,43 @@
 @charset "utf-8";
 .questionheader{
 	
-width:100%;
+width: 80%;
+margin: auto;
 margin-top: 40px;
+color: rgb(53, 54, 58);
 }
 
 .questionheader h2{
 	text-align: center;
+}
+.hmadfaqbtn{
+	border: 1px transparent;
+	padding: 7px 20px; 
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+}
+th{
+	text-align:center;
+}
+td{
+	text-align: center;
+}
+.questionbtn{
+	border: 1px transparent;
+	padding: 7px 20px; 
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+}
+.waitanswer{
+	color: rgb(224, 62, 82);
+	font-weight: 600;
+}
+.endanswer{
+	font-weight: 600;
 }
