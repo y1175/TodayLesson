@@ -4,6 +4,52 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.JY_SN_Approve_LessonMapper">
 
+
+<select id="totalCount" resultType="int" parameterType="java.util.HashMap">
+		select COUNT(*) 
+		from lesson 
+		where senior_no = #{no}
+
+<include refid="search_select"></include>
+
+</select>
+
+
+
+	
+	<!-- 검색기능 쿼리문 -->
+<sql id="search_select">
+
+
+<if test='searchtxt!=null and searchtxt!=""'>
+
+<choose>
+<when test='search.equals("all")'>
+and
+(
+lesson_title like CONCAT('%', #{searchtxt}, '%')
+or 
+lesson_content like CONCAT('%', #{searchtxt}, '%')
+)					
+</when>
+<when test='search.equals("lesson_title")'>
+and
+ lesson_title like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("lesson_content")'>
+and
+lesson_content like CONCAT('%', #{searchtxt}, '%')
+</when>
+</choose>
+</if>
+
+</sql> 
+
+
+
+
+
+
 <select id="getSenior_no" parameterType="java.lang.String" resultType="int">
 
 select senior_no from senior
@@ -14,8 +60,10 @@ where member_id=#{member_id}
 <select id="apl_list" parameterType="int" resultType="com.todaylesson.DTO.LessonDTO">
 
 select * from lesson
-where senior_no = #{senior_no}
+where senior_no = #{no}
 and lesson_result = 2
+<include refid="search_select"></include>
+
 
 </select>
 

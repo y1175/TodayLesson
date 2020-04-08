@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.service.JY_SN_Approve_LessonService;
 import com.todaylesson.upload.UploadFileUtils;
 
@@ -29,15 +30,32 @@ public class JY_SN_Approve_Lesson_Controller {
 	private JY_SN_Approve_LessonService approve_service;
 	
 	@RequestMapping("my_approve_lesson")
-	public String approve_list(Model model,  Authentication authentication) {
+	public String approve_list(Model model,  Authentication authentication
+			,@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="lesson_no") String order) {
 	
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
 
-		List<LessonDTO> list = approve_service.apl_list(member_id);
+		int totalCount= approve_service.totalCount(search, searchtxt, member_id);
+		int pageSize=15;
+		int blockSize=5;
+		
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+
+		
+		List<LessonDTO> list = approve_service.apl_list(member_id,search, searchtxt,order
+				,page.getStartRow()
+				,page.getEndRow());
 		
 		
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("order",order);
 		
 		return"TodayLesson_SeniorPage/jy_sn_approve_list.sn_main_section";
 	}
@@ -139,11 +157,7 @@ public class JY_SN_Approve_Lesson_Controller {
 	
 	
 	
-	@RequestMapping("facebook_login")
-	public String facebook_login() {	
-		
-		return "facebook_login";
-	}
+
 	
 	
 	

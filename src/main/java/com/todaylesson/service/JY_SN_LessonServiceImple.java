@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,6 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 		return mapper.insert_lesson(dto);
 	}
 
-	@Override
-	public List<LessonDTO> list(int senior_no) {
-		return mapper.list_lesson(senior_no);
-	}
 
 	@Override
 	public int select_senior_no(String member_id) {
@@ -55,6 +52,30 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 	@Override
 	public SeniorDTO select_senior_info(int senior_no) {
 		return mapper.select_senior_info(senior_no);
+	}
+
+	@Override
+	public List<LessonDTO> list(int senior_no, String search, String searchtxt, int order, int i, int j, int order2) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("startrow", i);
+		hm.put("endrow", j);
+		hm.put("order", order);
+		hm.put("senior_no", senior_no);
+		return mapper.list_lesson(hm);
+	}
+
+	@Override
+	public int totalCount(String search, String searchtxt, int order, int senior_no) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("senior_no", senior_no);
+		hm.put("order", order);
+
+		
+		return mapper.totalCount(hm);
 	}
 
 	

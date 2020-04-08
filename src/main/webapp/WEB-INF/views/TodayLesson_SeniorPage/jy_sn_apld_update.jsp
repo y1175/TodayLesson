@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -36,22 +38,28 @@ $('textarea').summernote({
 </head>
 <body>
 
+<div id="jy_container">
+
+
 <form name="form" action="${pageContext.request.contextPath }/todaylessonsenior/mal_lesson_update_result" method="post">
 
 <input type="hidden" name= "lessondetail_no" value="${dto.lessondetail_no }">
 
-<label for="lessondetail_title">레슨 명</label>
-<input type="text" id="lessondetail_title" name="lessondetail_title"  value="${dto.lessondetail_title }">
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="강의 제목을 입력하세요." aria-describedby="basic-addon1" id="lessondetail_title" name="lessondetail_title" value="${dto.lessondetail_title }">
+</div>
 
 <label for="lessondetail_content">레슨 내용</label>
 <textarea id="summernote" name="lessondetail_content" style="display:none" >${dto.lessondetail_content}</textarea>
 
-여기도 썸네일 넣을까 고민중임
+<br>
 
-<input type="submit" value="레슨 등록">
-<input type="reset" value="취소">
+<input type="submit" value="레슨 등록" class="ej_btn">
+<input type="reset" value="취소" class="ej_btn2">
+
 
 </form>
+</div>
 
 </body>
 </html>

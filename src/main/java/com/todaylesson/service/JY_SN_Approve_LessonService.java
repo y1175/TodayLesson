@@ -8,7 +8,7 @@ import com.todaylesson.DTO.LessonDetailDTO;
 public interface JY_SN_Approve_LessonService {
 
 
-	public List<LessonDTO> apl_list(String member_id);
+	public List<LessonDTO> apl_list(String member_id, String search, String searchtxt, String order, int startRow, int endRow);
 
 	public LessonDTO apl_detail(int lesson_no);
 
@@ -21,6 +21,8 @@ public interface JY_SN_Approve_LessonService {
 	public int apld_update(LessonDetailDTO dto);
 
 	public int apl_rt(String lessondetail_running_time);
+
+	public int totalCount(String search, String searchtxt, String member_id);
 
 
 

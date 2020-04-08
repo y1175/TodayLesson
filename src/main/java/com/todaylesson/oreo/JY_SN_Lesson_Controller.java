@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.JY_SN_LessonService;
 import com.todaylesson.upload.UploadFileUtils;
@@ -39,20 +40,41 @@ public class JY_SN_Lesson_Controller {
 	   
 
 	@RequestMapping("/todaylessonsenior/lesson_list")
-	public String list(Model model, Authentication authentication){
+	public String list(Model model, Authentication authentication
+			,@RequestParam(required=false, defaultValue="") String search
+			,@RequestParam(required=false, defaultValue="") String searchtxt
+			,@RequestParam(required=false, defaultValue="1") int currPage
+			,@RequestParam(required=false, defaultValue="4") int order){
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
 		int senior_no = lesson_service.select_senior_no(member_id);
 		SeniorDTO dto = lesson_service.select_senior_info(senior_no);
-		
+				
 		if (dto.getSenior_nick() == null) {
 			
 			return "TodayLesson_SeniorPage/jy_sn_senior_info_null";
 
 		} else {
 		
-		List<LessonDTO> list = lesson_service.list(senior_no);
+		int totalCount= lesson_service.totalCount(search, searchtxt, senior_no, order);
+		int pageSize=15;
+		int blockSize=5;
+			
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+
+			
+		List<LessonDTO> list = lesson_service.list(senior_no,search, searchtxt,order
+				,page.getStartRow()
+				,page.getEndRow(),order);
+		
 		model.addAttribute("list",list);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("order",order);
+		
 	
 		return "TodayLesson_SeniorPage/jy_sn_lesson_list.sn_main_section";
 		}

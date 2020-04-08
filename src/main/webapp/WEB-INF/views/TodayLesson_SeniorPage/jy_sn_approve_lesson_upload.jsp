@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -35,24 +37,36 @@ $('textarea').summernote({
 </script>
 </head>
 <body>
+<div id="jy_container">
 
 <form name="form" action="${pageContext.request.contextPath }/todaylessonsenior/mal_lesson_upload_result" method="post" autocomplete="off" enctype="multipart/form-data">
 
-<h2><c:out value="${dto.lesson_title}"/></h2>
 
+ <div stlye="width:100%;">
+ <h2 style="margin:40px ; text-align: center;"><c:out value="${dto.lesson_title}"/></h2>
+ </div>
+ 
+ 
 
  
 <input type="hidden" id="lesson_no" name="lesson_no" value="${dto.lesson_no}">
 <input type="hidden" id="senior_no" name="senior_no" value="${dto.senior_no}">
 <input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
-<label for="lessondetail_title">레슨 명</label>
-<input type="text" id="lessondetail_title" name="lessondetail_title">
+
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="강의 제목을 입력하세요." aria-describedby="basic-addon1" id="lessondetail_title" name="lessondetail_title">
+</div>
+
+
+
 <br>
 <label for="lessondetail_content">레슨 내용</label>
 <textarea id="summernote" name="lessondetail_content"></textarea>
 
-<label for="lessondetail_thumb">썸네일</label>
-<input type="file" id="lessondetail_thumb" name="file" />
+
+<label for="lessondetail_thumb" style="margin : 20px 0px;">썸네일</label>
+<input type="file" id="lessondetail_thumb"  name="file" />
  
  
  <div class="select_img"><img src="" /></div>
@@ -69,13 +83,15 @@ $('textarea').summernote({
   });
  </script>
 
-레슨 러닝타임 <input type="text" id="rt" name="rt" placeholder="00:00:00" maxlength="8">
+<label for="lessondetail_running_time" style="margin-bottom : 20px;">러닝타임</label>
+<input type="text" id="rt" name="rt" placeholder="00:00:00" maxlength="8" required="required">
 <br>
 
-<input type="submit" value="레슨 등록">
-<input type="reset" value="취소">
+
+<input type="submit" value="레슨 등록" class="ej_btn">
+<input type="reset" value="취소" class="ej_btn">
 
 </form>
-
+</div>
 </body>
 </html>

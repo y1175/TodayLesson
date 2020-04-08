@@ -5,12 +5,63 @@
 <mapper namespace="com.todaylesson.Mapper.JY_SN_LessonMapper">
 
 
-<select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO" parameterType="int">
 
-select * from lesson 
-where senior_no = #{senior_no}
+<select id="totalCount" resultType="int" parameterType="java.util.HashMap">
+
+		select COUNT(*) 
+		from lesson
+		where senior_no = #{senior_no}
+		<if test="order lt 4">
+		and lesson_result=#{order}
+		</if>
+<include refid="search_select"></include>
 
 </select>
+
+
+	<!-- 승인 난 애들만 볼 수 있으니까 -->
+	<select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO">
+		select * from lesson
+		where senior_no = #{senior_no}
+		<if test="order lt 4">
+		and lesson_result=#{order}
+		</if>
+
+		
+<include refid="search_select"></include>
+limit   #{startrow}, 15
+	</select>
+
+
+
+
+	<!-- 검색기능 쿼리문 -->
+<sql id="search_select">
+
+
+<if test='searchtxt!=null and searchtxt!=""'>
+
+<choose>
+<when test='search.equals("all")'>
+and
+(
+lesson_title like CONCAT('%', #{searchtxt}, '%')
+or 
+lesson_content like CONCAT('%', #{searchtxt}, '%')
+)					
+</when>
+<when test='search.equals("lesson_title")'>
+and
+ lesson_title like CONCAT('%', #{searchtxt}, '%')
+</when>
+<when test='search.equals("lesson_content")'>
+and
+lesson_content like CONCAT('%', #{searchtxt}, '%')
+</when>
+</choose>
+</if>
+
+</sql> 
 
 
 <insert id="insert_lesson" parameterType="com.todaylesson.DTO.LessonDTO">

@@ -1,5 +1,6 @@
 package com.todaylesson.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,7 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 	@Autowired
 	private JY_SN_Approve_LessonMapper mapper;
 
-	@Override
-	public List<LessonDTO> apl_list(String member_id) {
-		int senior_no = mapper.getSenior_no(member_id);
-		return mapper.apl_list(senior_no);
-	}
+
 
 	@Override
 	public LessonDTO apl_detail(int lesson_no) {
@@ -53,6 +50,32 @@ public class JY_SN_Approve_LessonServiceImple implements JY_SN_Approve_LessonSer
 	@Override
 	public int apl_rt(String lessondetail_running_time) {
 		return mapper.apl_rtime(lessondetail_running_time);
+	}
+
+	@Override
+	public int totalCount(String search, String searchtxt, String member_id) {
+		HashMap<String, Object> hm=new HashMap<String, Object>();
+		hm.put("search", search);
+		hm.put("searchtxt", searchtxt);
+		hm.put("member_id", member_id);
+		
+		int no = mapper.getSenior_no(member_id);
+		hm.put("no", no);
+		
+		return mapper.totalCount(hm);
+	}
+
+	@Override
+	public List<LessonDTO> apl_list(String member_id, String search, String searchtxt, String order, int startRow, int endRow){
+				HashMap<String, Object> hm=new HashMap<String, Object>();
+				hm.put("search", search);
+				hm.put("searchtxt", searchtxt);
+				hm.put("startrow", startRow);
+				hm.put("endrow", endRow);
+				hm.put("order", order);
+				int no = mapper.getSenior_no(member_id);
+				hm.put("no", no);
+			return mapper.apl_list(hm);
 	}
 
 

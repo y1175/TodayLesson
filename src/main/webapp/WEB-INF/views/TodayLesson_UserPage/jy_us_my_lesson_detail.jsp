@@ -55,6 +55,7 @@ ${list.lessondetail_chapter}
 </div>
 </c:forEach>
 
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonmypage/my_lesson_list'">목록으로</button>
 
 </body>
 </html>

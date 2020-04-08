@@ -1,5 +1,6 @@
 package com.todaylesson.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +13,7 @@ public interface JY_SN_Approve_LessonMapper {
 
 	public int getSenior_no(String member_id);
 
-	public List<LessonDTO> apl_list(int senior_no);
+	public List<LessonDTO> apl_list(HashMap<String, Object> hm);
 
 	public LessonDTO apl_detail(int lesson_no);
 
@@ -25,6 +26,8 @@ public interface JY_SN_Approve_LessonMapper {
 	public int apld_update(LessonDetailDTO dto);
 
 	public int apl_rtime(String lessondetail_running_time);
+
+	public int totalCount(HashMap<String, Object> hm);
 
 
 
