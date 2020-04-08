@@ -108,9 +108,6 @@ public class TodayLessonController {
     private Admin_HS_MainService adminMainService;
     /* Admin_Main */
     
-    @Autowired
-	private JY_SN_Approve_LessonService approve_service;
-    
     /* 아이디찾기 */
     @Resource(name="loginService")
     private LoginService loginService;
@@ -343,11 +340,7 @@ public class TodayLessonController {
     	//시큐리티 멤버아이디
     	UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
     	String member_id = userDetails.getUsername();
-    	
-    	int level = approve_service.get_my_lesson(member_id);
 
-    	model.addAttribute("level", level);
-    	
     	//마이페이지 본인레벨 및 포인트 나타내기
     	MemberDTO myPageMyLevel_MyPoint=userMyPageService.myPageMyLevel_MyPoint(member_id);
     	session.setAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint); //세션으로 처리하기..
@@ -356,7 +349,7 @@ public class TodayLessonController {
     	
     	return "hs_us_mypage";
     }
-   
+    
     @RequestMapping("/todaylesson")
     public String all(Model model){
 	    //신규레슨목록

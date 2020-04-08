@@ -9,10 +9,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!--mypage nav style-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_mypage_nav.css?ver=3">
+<!--mypage nav style-->
+<script type="text/javascript">
+function member_level_1() {
+	alert('주니어는 접근하실 수 없습니다.');
+	location.href="${pageContext.request.contextPath}/todaylessonmypage";
+}
+</script>
 
-<!--mypage nav style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_mypage_nav.css?ver=1">
-<!--mypage nav style-->
 </head>
 <body>
    <div class="hs_us_mypage_box">
@@ -66,7 +72,14 @@
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/my_lesson_list">나의 레슨</a>
                </li>
                <li class="hs_us_mypage_mylessonadmin">
-                  <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">나의 레슨관리</a>
+               <c:choose>
+                     <c:when test="${myPageMyLevel_MyPoint.member_level==1}">
+                        <a href="#" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=420'); return false" value="시니어 지원하기">나의 레슨관리</a>
+                     </c:when>
+                     <c:when test="${myPageMyLevel_MyPoint.member_level==2}">
+                        <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">나의 레슨관리</a>
+                     </c:when>
+                  </c:choose>
                </li>
                <li class="hs_us_mypage_my1:1question">
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question">1:1 문의</a>
