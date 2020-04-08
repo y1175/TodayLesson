@@ -96,16 +96,23 @@ public class User_HM_Mymanage_Controller {
 			,@RequestParam("member_pwd") String member_pwd
 			,Model model, HttpServletRequest request,HttpServletResponse response)throws Exception
 	{
-
-
-		String encoded_pwd=encoder.encode(member_pwd);
-		boolean result=encoder.matches(member_pwd , encoded_pwd);
-
-
-		System.out.println(member_pwd);
+		
+		member_pwd = encoder.encode(member_pwd);
+		/*String encoded_pwd = hm_mymanageservice.matchpwd(member_id);
+		member_pwd = encoder.encode(member_pwd);
+		
+		boolean result = encoder.matches(encoded_pwd, member_pwd);
+		*/
+		HashMap<String, String> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("member_pwd", member_pwd);
+		
+		int result = hm_mymanageservice.matchpwd(map);
+		
+		
 		System.out.println(result);
 
-		if(result==true)
+		if(result==1)
 		{
 			MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
 			model.addAttribute("dto",dto);
@@ -124,7 +131,7 @@ public class User_HM_Mymanage_Controller {
 		}
 		else {
 
-			return "/TodayLesson_UserPage/hm_us_mymanage2.us_my_section";
+			return "/TodayLesson_UserPage/hm_us_mymanage.us_my_section";
 		}
 	}
 
