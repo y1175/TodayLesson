@@ -330,9 +330,34 @@ ${dto.lesson_senior_content}
 </li>
 
 
+<li>
+<b>은행명</b>
+<span class="jy_text">
+<div id = "bank_name"></div>
+</span>
+</li>
+
+<li>
+<b>예금 주</b>
+<span class="jy_text">
+	<c:out value="${dto.senior_account_name}" />
+</span>
+</li>
+
+<li>
+<b>계좌번호</b>
+<span class="jy_text">
+	<c:out value="${dto.senior_account_num}" />
+</span>
+</li>
+
+
+
 
 
 	현재까지 오픈한 레슨 명<br>
+
+
 
 <div class="row">
 <div class="col-md-4">
@@ -500,13 +525,7 @@ ${dto.lesson_senior_content}
 	</ul>
 
 
-	은행 명
-	<div id = "bank_name"></div>
-	예금 주
-	<c:out value="${dto.senior_account_name}" />
-	<br> 계좌 번호
-	<c:out value="${dto.senior_account_num}" />
-	<br>
+
 
 
 	<a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson">목록으로</a>
