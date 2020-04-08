@@ -123,24 +123,21 @@ $(document).ready(function() {
 </svg>	
 </h2>
 			
-				<div id="searchI">
+	
 					<div class="form-group">
 						<label for="inputName_1">이름</label>
-						<div>
-							<input type="text" class="form-control" id="inputName_1" name="inputName_1" placeholder="ex) 갓혜미">
-						</div>
+							<input type="text" class="form-control" id="inputName_1" name="inputName_1" placeholder="ex) 갓혜미">					
 					</div>
 					<div class="form-group">
 						<label for="inputPhone_1">휴대폰번호</label>
-						<div>
-							<input type="text" class="form-control" id="inputPhone_1" name="inputPhone_1" placeholder="ex) 010-7777-7777">
-						</div>
+							<input type="text" class="form-control" id="inputPhone_1" name="inputPhone_1" placeholder="ex) 010-7777-7777">					
 					</div>
+					
 					<div class="form-group">
 						<button id="searchBtn" type="button" class="findidbtn">확인</button>
 					<button type="reset" href="${pageContext.request.contextPath}/todaylessonlogin" class="findidbtn2">취소</button>
 					</div>
-				</div>
+
 				
 				
 			<%-- 	
@@ -190,7 +187,7 @@ $(document).ready(function() {
 <div id="background_modal" class="background_modal" style="display:none">
 	<div class="modal_contents">
 		<h4>
-			<b>손님 아이디는?</b><span class="close">&times;</span>
+			<b>회원님의 아이디는?</b><span class="close">&times;</span>
 		</h4><br>
 			<h2 id="id_value"></h2>
 		<br>

@@ -1,0 +1,68 @@
+#yi_container{
+		width: 50%;
+margin: auto;
+margin-top: 40px;
+color: rgb(53, 54, 58);
+margin-left:35%;
+}
+
+
+.alert{
+	margin:0;
+}
+
+
+h2{
+	margin-bottom:30px;
+}
+
+
+.joinform-btn{
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
+
+.joinform-btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.joinform-btn[disabled]{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.2);
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+.joinform-btn[disabled]:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.2);
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
