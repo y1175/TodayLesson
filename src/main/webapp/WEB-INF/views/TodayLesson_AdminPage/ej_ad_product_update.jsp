@@ -35,6 +35,18 @@
 		
 }); 
 </script> 
+<style>
+ .ej_btn{
+border: 1px transparent;
+padding: 5px 15px; 
+background-color: rgb(224, 62, 82);
+height:40px;
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
+</style>
 </head>
 <body>
 	<h2 style="text-align: center;">제품정보 수정</h2>
@@ -42,7 +54,7 @@
 	<br>
 	<br>
 
-	<div style="width: 60%; margin: auto;">
+	<div style="width: 80%; margin: auto;">
 		
 		<form role="form"  name="productupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath}/todaylessonadmin/ad_product_update_result"> 
@@ -61,54 +73,22 @@
 		<label>제품명</label><br>
 		 <input type="text" name="product_name" style="width: 40%;" value="${dto.product_name }" required="required"/> <br>
 			<br>
-				<label>가격</label>
+				<label>가격</label><br>
 				 <input type="text" name="product_cost" style="width: 40%;" placeholder="가격"  value="${dto.product_cost }" required="required"/>원<br>
-				  <label>할인율</label>
+				 
+				  <label>할인율</label><br>
 				 <input type="text" name="product_sale" style="width: 40%;" value="${dto.product_sale }" placeholder="%" required="required"/>%<br>
 			
-				 <label>수량</label>
-				 <input type="text" name="product_stock" style="width: 40%;" value="${dto.product_stock }" placeholder="수량" required="required"/>개<br>
+				 <label>수량</label><br>
+				 <input type="text" name="product_stock" style="width: 40%;" value="${dto.product_stock }" placeholder="수량" required="required"/>개<br><br>
 				
 				<label>상세설명</label><br>
 				<textarea id="summernote" name="product_content"  value="${dto.product_content }"></textarea>
-			<input type="text" name="product_img" value="${dto.product_img }">
-		<%-- <label>이벤트 유형</label><br>
-		<select name="event_group" id="event_group">
-		<option value="${dto.event_group}">
-		<c:choose>
-				<c:when test="${dto.event_group eq '0'}">
-					<c:out value="레슨" />
-				</c:when>
-				<c:when test="${dto.event_group eq '1'}">
-					<c:out value="스토어" />
-				</c:when>
-				<c:when test="${dto.event_group eq '2'}">
-					<c:out value="기타" />
-				</c:when>
-			</c:choose>
-		</option>
-		<option value="0">레슨</option>
-		<option value="1">스토어</option>
-		<option value="2">기타</option>
-		</select>
-		<br>
-		<br>
-		<label>이벤트명</label><br>
-		 <input type="text" id="event_title" name="event_title" value="${dto.event_title}" style="width: 40%;" placeholder="이벤트명" required="required"/> <br>
-			<br>
-			<label>이벤트 시작기간</label><br>
-			<input type="date" id="event_startperiod" name="event_startperiod" value="${dto.event_startperiod}" style="width: 30%;" required="required"/><br>
-			<label>이벤트 종료기간</label><br>
-			<input type="date" name="event_endperiod" style="width: 30%;" value="${dto.event_endperiod}" required="required"/><br>
-				<label>이벤트 상세설명</label><br>
-				<textarea id="summernote" name="event_content" style="display:none"><c:out value="${dto.event_content}"/></textarea>
-			 --%>
-			
+	
 			<div class="inputArea">
 
 <br>
  <label for="product_thumbnail">썸네일 수정</label>
- <br>
  <input type="file" id="product_thumbnail" name="file" style="width: 80px;"/>
  <br>
  <div class="select_img"><img src="${dto.product_thumb}" /></div>
@@ -133,7 +113,7 @@
  
  
 <br>
- <input type="button" id="product_update_btn"  onclick="updatethumbnail();"  value="상품 수정" style="float: right;" />
+ <input type="button" id="product_update_btn"  onclick="updatethumbnail();"  value="상품 수정" style="float: right;" class="ej_btn"/>
   <script>
   
   function updatethumbnail(){

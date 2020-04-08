@@ -323,7 +323,7 @@ body{
 	margin:0;
 	list-style:none;
 	position:absolute;
-	bottom:100px;
+	bottom:120px;
 	right:13px;
 	z-index:1
 	}
@@ -353,8 +353,10 @@ body{
 	width:40px;
 	border:1px solid white;
 	display:block;
-	transition:all .5s ease-in-out
+	transition:all .5s ease-in-out;
+	background-color:rgba( 213, 213, 213, 0.5 );
 	}
+	
 	/* 좋아요 hover시 색바뀜 */
 .hs_user_store_newproduct_social li a div:hover{
 	color:rgb(224, 62, 82);

@@ -70,7 +70,7 @@ section.replyForm{
 /* 	margin: 0px auto; */
 display:block;
 /*  float:inherit;  */
-margin-right:20%; 
+/* margin-right:20%;  */
 margin-bottom: 20px;
 }
 .note-editor {
@@ -99,10 +99,13 @@ font-weight : 600;
 font-size : 14px; 
 color: white;
 }
+/* 구매하기버튼 */
 .ej_btn.buy{
 	width:120px;
+		border: 1px rgb(224, 62, 82);
+		margin:0px;
 }
-/* 슬라이더/ */
+/* 슬라이더 */
 
 #ej_sdetail_topimg{
 width:550px;
@@ -132,15 +135,18 @@ div.fas.fa-heart{
 	text-align:center;
 	height:40px;
 	width:120px;
-	border:1px solid  gray;
+	border:1px solid gray;
 /* 	border-radius:5px; */
 	display:block;
-	transition:all .5s ease-in-out
+	transition:all .5s ease-in-out;
+	/* margin-top:7px; */
+	margin:0px;
 	}
 	/* 좋아요 hover시 색바뀜 */
 .fas.fa-heart:hover{
 	color:rgb(224, 62, 82);
 	border-color:rgb(224, 62, 82);
+	text-decoration: none;
 	}
 	
 	/* 장바구니 아이콘 	 */
@@ -154,12 +160,15 @@ div.fa.fa-shopping-cart{
 	border:1px solid gray;
 	/* border-radius:5px; */
 	display:block;
-	transition:all .5s ease-in-out
+	transition:all .5s ease-in-out;
+	/* margin-top:7px; */
+	margin:0px;
 	}
 	/* 장바구니아이콘 hover시 색바뀜 */
 .fa.fa-shopping-cart:hover{
 	color:rgb(53, 54, 58);
 	border-color:rgb(53, 54, 58);
+	text-decoration: none;
 	}
 
  #ej_sdetail_top{
@@ -278,4 +287,9 @@ display: inline-block;}
 }
 
 /*  */
+/* .modal-content */
+/* .modal.show */
+.modal{
+	z-index:14400 !important;
+}
 
