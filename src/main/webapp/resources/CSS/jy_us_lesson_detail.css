@@ -1,5 +1,44 @@
 @charset "utf-8";
-
+/* .ej_top.middle{
+	padding-left:80px;
+} */
+/* .item.a.h4:hover{
+	text-decoration: none;
+	color:black;
+} */
+.ej_font.bold{
+	font-weight:bolder;
+}
+.ej_top.font{
+	font-weight:bold;
+	display:inline-block;
+	color:rgb(53, 54, 58);
+/* 	padding-right:70px; */
+	width:120px;
+}
+.ej_top.font.middle{
+	padding-left:20px;
+}
+.ej_top.font.middle.logintxt{
+	color:rgb(224, 62, 82);
+	 font-weight: bold;
+	}
+#ej_point_box{
+	background-color: rgb(255,178,102);
+	border:1px solid silver;
+	border-radius: 10px;
+	width:50px;
+	padding:0px;
+	display:inline-block;
+	color:white;
+	font-weight: bold;
+	
+}
+.ej_line.top_right{
+	marginr-top:5px;
+	border-bottom: 1px solid silver;
+	
+}
 #ej_line_narrow{
 	width:15%;
 	border-bottom: 4px solid rgb(224, 62, 82);
@@ -11,21 +50,33 @@
 .ej_left{
 	text-align: left;
 }
+/* 후기 제목입력란 */
 div.ej_left{
-		float:left;
-		margin-left:200px;
-	margin-bottom: 20px;
+		margin:0 auto;
 }
+#openReplyFormbtn{
+	margin-left:70%;
+}
+section.replyForm{
+	display:block;
+	margin:0px auto;
+}
+/* 후기작성란 */
 .input_area{
-	width:80%;
+/* 	width:80%; */
 	/* margin-left:0px;
 	margin-right:300px;
 	float:left; */
-	margin: 0px auto;
+/* 	margin: 0px auto; */
+display:block;
+/*  float:inherit;  */
+margin-right:20%; 
+margin-bottom: 20px;
 }
-/* .note-editor {
- float:left;
- 	margin-right:300px;} */
+.note-editor {
+/*  float:left;
+margin-right:100px;  */
+margin: 0 auto;} 
 #ej_container{
 width: 80%;
 margin: auto;
@@ -42,12 +93,15 @@ color: rgb(53, 54, 58);
 .ej_btn{
 	border: 1px transparent;
 padding: 5px 15px; 
-border-radius : 3px;
+/* border-radius : 3px; */
 background-color: rgb(224, 62, 82);
+height:40px;
 font-weight : 600;
 font-size : 14px;
 color: white;
-margin : 5px 0px;
+}
+.ej_btn.buy{
+	width:120px;
 }
 /* 슬라이더/ */
 
@@ -58,15 +112,14 @@ width:550px;
 	display:inline-block;
 }
 .ej_top.right{
-border: 1px solid silver;
-width:50%; 
-height :30.96%;
+/* border: 1px solid silver; */
+ width:40%; 
 float:right;
 background-color: white;
 /* margin-left: 30px;
 margin-top: 110px; */
-padding:50px;
-text-align: right;
+padding:30px 10px;
+margin-right:200px;
 }
 
 .ej_grid{
@@ -75,39 +128,39 @@ display:inline-block;
 /* 좋아요 아이콘 	 */
 div.fas.fa-heart{
 	color:rgb(255, 180, 180);
-	font-size:17px;
+	font-size:20px;
 	line-height:40px;
 	text-align:center;
 	height:40px;
-	width:40px;
+	width:120px;
 	border:1px solid  gray;
-	border-radius:5px;
+/* 	border-radius:5px; */
 	display:block;
 	transition:all .5s ease-in-out
 	}
 	/* 좋아요 hover시 색바뀜 */
 .fas.fa-heart:hover{
 	color:rgb(224, 62, 82);
-	border-color:rgb(224, 62, 82)
+	border-color:rgb(224, 62, 82);
 	}
 	
 	/* 장바구니 아이콘 	 */
 div.fa.fa-shopping-cart{
 	color:rgb(166, 166, 166);
-	font-size:17px;
+	font-size:20px;
 	line-height:40px;
 	text-align:center;
 	height:40px;
-	width:40px;
+	width:120px;
 	border:1px solid gray;
-	border-radius:5px;
+	/* border-radius:5px; */
 	display:block;
 	transition:all .5s ease-in-out
 	}
 	/* 장바구니아이콘 hover시 색바뀜 */
 .fa.fa-shopping-cart:hover{
-	color:rgb(255, 180, 180);
-	border-color:rgb(224, 62, 82)
+	color:rgb(53, 54, 58);
+	border-color:rgb(53, 54, 58);
 	}
 
  #ej_sdetail_top{
@@ -224,6 +277,7 @@ display: inline-block;}
 #cssmenu > ul > li > a:hover:after {
 /*   background: #fffbfd; */
 }
+
 
 /*  */
 

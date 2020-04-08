@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data.css">  
 <script>
 
 $(document).ready(function() {
@@ -44,76 +46,164 @@ $(document).ready(function() {
 </head>
 <body>
 
-레슨번호<c:out value="${dto.lesson_no }"/><br>
-레슨명<c:out value="${dto.lesson_title }"/><br>
+<div id="jy_container">
 
+<h1>레슨 상세보기</h1>
 
-레슨 내용
+<ul>
+<li>
+<b>레슨번호</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_no }"/>
+</span><br>
+</li>
+
+<li>
+<b>레슨명</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_title }"/>
+</span><br>
+</li>
+
+<li>
+<b>레슨 내용</b>
 
 <div class="summer">
 ${dto.lesson_content}
 </div>
 
-수강생수<c:out value="${dto.lesson_member_max}"/><br>
+</li>
+<li>
+<b>수강생수</b>
+<span class="jy_text">
 
+<c:out value="${dto.lesson_member_max}"/>
+</span><br>
+</li>
+
+
+<li>
+<b>
 카테고리
+</b>
+<span class="jy_text">
 
 <c:choose>
 
 <c:when test="${dto.lesson_category == 1}">
-<c:out value="운동"/><br>
+<c:out value="운동"/>
 </c:when>
 
 <c:when test="${dto.lesson_category == 2}">
-<c:out value="교육"/><br>
+<c:out value="교육"/>
 </c:when>
 
 <c:when test="${dto.lesson_category == 3}">
-<c:out value="핸드메이드"/><br>
+<c:out value="핸드메이드"/>
 </c:when>
 
 <c:when test="${dto.lesson_category == 4}">
-<c:out value="it"/><br>
+<c:out value="it"/>
 </c:when>
 
 <c:otherwise>
-<c:out value="요리"/><br>
+<c:out value="요리"/>
 </c:otherwise>
 
 </c:choose>
+</span>
+<br>
+</li>
 
-레슨 가격 <c:out value="${dto.lesson_cost}"/><br>
+<li>
+<b>얼리버드 여부</b>
+<span class="jy_text">
+<c:if test="${dto.lesson_earlybird eq 1 }">
+<c:out value="Y"/>
+</c:if>
 
-레슨 시작일 <c:out value="${dto.lesson_open_period}"/><br> 
-레슨 종료일 <c:out value="${dto.lesson_close_period}"/><br> 
+<c:if test="${dto.lesson_earlybird eq 0 }">
+<c:out value="N"/>
+</c:if>
 
+</span>
+</li>
+
+
+<li>
+<b>
+레슨 가격(정상가)
+</b>
+<span class="jy_text">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원
+</span><br>
+</li>
+<li>
+<b>레슨 판매 기간</b> <span class="jy_text">
+<c:out value="${dto.lesson_open_period}"/> ~
+<c:out value="${dto.lesson_close_period}"/>
+</span><br> 
+</li>
+<li>
+<b>
 레슨 타입
+</b>
+
+<span class="jy_text">
 
 <c:choose>
 
 <c:when test="${dto.lesson_type == 1}">
-<c:out value="원데이 클래스"/><br>
+<c:out value="원데이 클래스"/>
 </c:when>
 
 <c:when test="${dto.lesson_type == 2}">
-<c:out value="다회성 클래스"/><br>
+<c:out value="다회성 클래스"/>
 </c:when>
 
 <c:otherwise>
-<c:out value="온라인 클래스"/><br>
+<c:out value="온라인 클래스"/>
 </c:otherwise>
 
 </c:choose>
 
+</span>
+</li>
+
 <div class="offline_lesson">
-레슨 시간 <c:out value="${dto.lesson_date_time}"/><br>
+<li>
+<b>
+레슨 시간 
+</b>
+<span class="jy_text">
 
-레슨 주소<br> 
-우편번호<c:out value="${dto.lesson_zipno}"/><br>
-주소<c:out value="${dto.lesson_addr}"/><br>
+<c:out value="${dto.lesson_date_time}"/>
+</span><br>
+</li>
+
+<li style="text-align: center; margin: 30px 0px">
+<b >레슨 주소</b><br> 
+</li>
+<li>
+<b>우편번호</b>
+<span class="jy_text">
+
+<c:out value="${dto.lesson_zipno}"/>
+</span>
+
+<br>
+</li>
+<li>
+<b>주소</b>
+<span class="jy_text">
+
+
+<c:out value="${dto.lesson_addr}"/>
+</span><br>
 <!-- 여기에 map가져오기 -->
+</li>
 
-<div id="map" style="width:750px;height:350px;"></div>
+<div id="map" style="width:750px;height:350px; margin: 0px auto"></div>
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
 <script>
@@ -136,53 +226,72 @@ ${dto.lesson_content}
 </div>
 
 <div class="not_oneday">
-총 강의 수<c:out value="${dto.lesson_number}"/><br>
-</div>
-시니어 명<c:out value="${dto.lesson_senior_title}"/><br>
 
-시니어 소개
+<li>
+<b>총 강의 수</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_number}"/>강<br>
+</span>
+</li>
+
+</div>
+<li>
+<b>시니어 명</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_senior_title}"/><br>
+</span>
+</li>
+<li>
+<b>시니어 소개</b>
+
 <div class="summer">
 ${dto.lesson_senior_content}
 </div>
+</li>
 
 
 
+<hr>
 
---------------------------<br>
+<h2>시니어 정보</h2>
+<li>
+<b>시니어 아이디</b>
+<span class="jy_text">
 
-시니어 아이디
 <c:out value="${dto.member_id}"/><br>
+</span>
+</li>
+<li>
+<b>시니어 이메일</b>
+<span class="jy_text">
 
-시니어 이메일
 <c:out value="${dto.senior_email}"/><br>
+</span>
+</li>
+<li>
+<b>시니어 사업자 번호</b>
+<span class="jy_text">
 
-시니어 사업자 번호
 <c:out value="${dto.senior_crno}"/><br>
+</span>
+</li>
+<li>
+<b>시니어 닉네임</b>
+<span class="jy_text">
 
-시니어 닉네임
 <c:out value="${dto.senior_nick}"/><br>
-
-<%-- 현재까지 오픈한 레슨 명
-<c:out value="${dto.senior_nick}"/><br>
-
-현재까지 오픈한 레슨 수
-<c:out value="${dto.senior_nick}"/><br> 
-여긴 추후 추가
---%>
-
-은행 명
-<c:out value="${dto.senior_bank_name}"/><br>
-
-예금 주
-<c:out value="${dto.senior_account_name}"/><br>
-
-계좌 번호
-<c:out value="${dto.senior_account_num}"/><br>
+</span>
+</li>
 
 
+
+<li>
 <a href="${pageContext.request.contextPath }/todaylessonadmin/alllesson">목록으로</a>
+</li>
 <br>
+</ul>
 
+</div>
 </body>
 
 

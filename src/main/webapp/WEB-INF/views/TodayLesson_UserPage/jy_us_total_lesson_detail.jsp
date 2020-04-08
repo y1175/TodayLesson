@@ -145,7 +145,7 @@ $('document').ready(function() {
 <div id="ej_container">
 
 
-  <form role="form" method="post" id="form1" name="form" >
+  <form role="form" method="post" id="form1" name="form" style="height: 600px">
  
 <!--썸네일 이미지 원본 맨위에 보여줌-->
 <div class="ej_top img">
@@ -153,6 +153,10 @@ $('document').ready(function() {
 </div>
 
 <div class="ej_top right">
+
+<a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0"><img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/ej_banner_blue.png" ></a>
+<br><br>
+
 <c:choose>
 
 		<c:when test="${dto.lesson_category == 1}">
@@ -206,40 +210,43 @@ $('document').ready(function() {
 	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
 	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
 	</div>
-	<c:if test="${dto.lesson_earlybird eq 1 }">
+	<c:if test="${item.lesson_earlybird eq 1 }">
+	
 	<c:if test="${itDate - isDate <= 7}">
-	<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.82}"/>원</h4>
-		</c:if>
-	</c:if>
-		<c:if test="${dto.lesson_earlybird eq 0}">
-<h4 ><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원</h4>
-	</c:if>
-	<c:if test="${itDate - isDate > 7 }">
-<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원</h4>
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost * 0.82}"/>원
 	</c:if>
 	
+	<c:if test="${itDate - isDate > 7 }">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+	</c:if>
+	
+	</c:if>
+	
+	<c:if test="${item.lesson_earlybird eq 0}">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+	</c:if>
+	
+<span class="ej_top font middle logintxt"></span>로그인 후, 적립혜택이 제공됩니다.<br>
 
 
-배송비 무료<br>
-	<c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}" />
+<span class="ej_top font">배송</span>배송비 무료<br>
+<span class="ej_top font middle"></span>오후3시 주문상품까지 당일출고<br>
+<br>
+
+<c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}" />
 최대 주니어 수 / 현재 수강 가능한 주니어 수 <br>
 <c:out value="${dto.lesson_member_max}" /> / <c:out value="${possible_junior}" /><br>
+
 <div class="ej_grid fist">
-<input type="hidden" id= "is_it_possible" name="is_it_possible" value="${dto.lesson_member_max - dto.lesson_junior_count}"/>
+<input type="hidden" id= "is_it_possible" name="is_it_possible" value="${possible_junior}"/>
 	<!-- 수강 가능 인원이 0이면 구매 못하게 -->
-<button id="to_orderform" class="ej_btn"  onclick="location.href='${pageContext.request.contextPath }/todaylesson/lesson_buy/${dto.lesson_no}'" disabled="">결제하기</button><br></div>
+<%-- <a href="${pageContext.request.contextPath}/todaylesson/lesson_buy/${dto.lesson_no}"> </a>--%>
+<button id="to_orderform" class="ej_btn" >결제하기</button><br></div>
 <br>
-<script>
 
+<div class="ej_line top_right"></div>
 
-if ($("#is_it_possible").val() == 0) {
-	$("#to_orderform").attr('disabled', true);
-} else {
-	$("#to_orderform").attr('disabled', false);
-}
-
-
-</script>
+   
 
 
 <div class="ej_grid second">
@@ -258,7 +265,17 @@ if ($("#is_it_possible").val() == 0) {
 
 
 	<script>
-
+	
+	let pos = $("#is_it_possible").val();
+	
+	 $("#to_orderform").click(function(){
+		 if (pos > 0) {
+		 $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/lesson_buy/${dto.lesson_no}");
+		 $("form").submit();  	
+		} else {
+			alert("품절된 레슨은 수강하실 수 없습니다.");
+		}
+	 });
 
 	
 $(".insert_my_like").click(function(){

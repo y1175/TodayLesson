@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_detail.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <script>
 
 $(document).ready(function(){
@@ -15,6 +16,7 @@ $(document).ready(function(){
 	
 	$('.time_count').hide();
 	
+	$('#lesson_comp_update').hide();
 	
 });
 
@@ -40,8 +42,10 @@ function tTimer() {
     if (it == -1)
     {
         stopInterval();
-        console.log ("카운트 완료");
+        alert("챕터 수강 완료");
         time_change();
+    	$('#lesson_comp_update').show();
+
     }
 }
 
@@ -55,7 +59,7 @@ function time_change(){
 <form method="post" action="${pageContext.request.contextPath }/todaylessonmypage/update_lesson_comp">
 
 <div class ="time_count">
-<input type="hidden" name="display" size=2 id = "time">
+<input type="hidden" name="display" size=2 id ="time">
 <input type="hidden" name="time_change" id ="time_change">
 </div>
 
@@ -64,23 +68,37 @@ startInterval();
 </script>
 
 
-레슨명
+ <div style="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;"><c:out value="${ldto.lesson_title}"/></h2>
+ </div>
+
+<div class="my_lesson_line"></div>
+
+<div class="lesson_basic_info">
+현재 챕터 / 총 강의 수 <br>
+
+<c:out value="${dto.lessondetail_chapter}"/> / <c:out value="${ldto.lesson_number}"/> 
+ </div>
+
 <br>
-<c:out value="${dto.lesson_title}"/><br>
-챕터 명<br><c:out value="${dto.lessondetail_title}"/><br>
-레슨 내용<br>
-<div class="summer">
+
+<div class="chap">
+<c:out value="${dto.lessondetail_title}"/>
+<br>
+</div>
+
+<div class="summer" style=" margin: 0px auto; padding: 0px;">
 ${dto.lessondetail_content}
 </div><br>
-현재 레슨 챕터 <br><c:out value="${dto.lessondetail_chapter}"/>
 
 <input type="hidden" name=lessondetail_no id="lessondetail_no" value="${dto.lessondetail_no}">
 <input type="hidden" name="lesson_no" id="lesson_no" value="${dto.lesson_no}">
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br>
-<input type="submit" name="lesson_comp_update" id="lesson_comp_update">
-
+<div class="sub">
+<input type="submit" name="lesson_comp_update" class="ej_btn" id="lesson_comp_update" />
+</div>
 </form>
 </body>
 </html>

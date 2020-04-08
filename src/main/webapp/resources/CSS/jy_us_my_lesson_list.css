@@ -7,10 +7,14 @@
     margin: 20px 0px;
 }
 .lesson_div{
+	margin : 20px 0px;
 	width : 100%;
-	height : 180px;
+	height : 300px;
 	display: inline-block;
 }
+
+
+
 .lessonimg{
 	width : 25%;
 	float: left;
@@ -24,10 +28,13 @@
 	font-weight: bold;
 	
 }
+
 .lesson-head{
 	font-size: 20px;
 	font-weight: bold;
+	line-height: 100px;
 }
+
 .lesson_text{
 	width: 65%;
 	float: right;
@@ -35,5 +42,18 @@
 	
 	
 } 
+
+
+.ej_btn{
+	border: 1px transparent;
+padding: 5px 15px; 
+/* border-radius : 3px; */
+background-color: rgb(224, 62, 82);
+height:40px;
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
 
 

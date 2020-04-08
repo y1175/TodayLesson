@@ -33,10 +33,6 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 		return mapper.my_lesson_detail_this_chapter(lessondetail_no);
 	}
 
-	@Override
-	public String mylesson_name(int lesson_no) {
-		return mapper.my_lesson_name(lesson_no);
-	}
 
     @Override
 	public int update_lesson_comp(int lessondetail_no, String member_id, int lesson_no) {

@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.todaylesson.DTO.AllLessonDTO;
 import com.todaylesson.DTO.LessonCompDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.DTO.MyLessonDTO;
 import com.todaylesson.service.JY_US_MyLessonService;
+import com.todaylesson.service.JY_US_TotalLessonService;
 
 @Controller
 @RequestMapping("/todaylessonmypage/")
@@ -28,6 +32,11 @@ public class JY_US_MyLesson_Controller {
 
 	@Autowired
 	private JY_US_MyLessonService mlservice;
+	
+	@Resource(name = "totallesson_service")
+	private JY_US_TotalLessonService ttlesson_service;
+	
+	
 
 	@RequestMapping("my_lesson_list")
 	public String my_lesson_list(Model model, Authentication authentication) {
@@ -98,11 +107,12 @@ public class JY_US_MyLesson_Controller {
 		} 
 		
 		
-		String lesson_title = mlservice.mylesson_name(lesson_no);
-
-		dto.setLesson_title(lesson_title);
+		AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);
 
 		model.addAttribute("dto", dto);
+		model.addAttribute("ldto", ldto);
+
+
 
 		return "TodayLesson_UserPage/jy_us_select_lessondetail_this_chapter.us_my_section";
 

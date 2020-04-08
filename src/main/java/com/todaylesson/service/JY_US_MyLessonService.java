@@ -13,8 +13,6 @@ public interface JY_US_MyLessonService {
 
 	public LessonDetailDTO mylesson_detail_this_chapter(int lessondetail_no);
 	
-	public String mylesson_name(int lesson_no);
-
 	public int update_lesson_comp(int lessondetail_no, String member_id, int lesson_no);
 
 	public int select_my_lesson_comp(int lessondetail_no, String member_id, int lesson_no);
@@ -32,6 +30,7 @@ public interface JY_US_MyLessonService {
 	public int reward_point_to_member(String member_id, int lesson_no);
 
 	public int mylesson_reward(int lesson_no, String member_id);
+
 
 
 }

@@ -22,7 +22,6 @@ public interface JY_SN_Approve_LessonService {
 
 	public int apl_rt(String lessondetail_running_time);
 
-	public int get_my_lesson(String member_id);
 
 
 

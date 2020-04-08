@@ -33,11 +33,6 @@ select * from lessondetail where lessondetail_no = #{lessondetail_no}
 
 </select>
 
-<select id="my_lesson_name" resultType="java.lang.String">
-
-select lesson_title from lesson where lesson_no = #{lesson_no}
-
-</select>
 
 <update id="update_lesson_comp" parameterMap="hashmap">
 
@@ -69,7 +64,7 @@ and lessondetail_no = #{lessondetail_no}
 select count(lessoncomp_no)
 from lessoncomp
 where member_id = #{member_id}
-and lessondetail_comp = 0
+and lessondetail_comp = 1
 and lessondetail_no = #{lessondetail_no}
 
 

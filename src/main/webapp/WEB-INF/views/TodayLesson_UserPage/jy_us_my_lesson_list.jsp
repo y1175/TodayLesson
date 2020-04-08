@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -10,13 +9,7 @@
    <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<style>
 
-.thum{
-width:500px; height:auto;
-}
-
-</style>
 
 </head>
 <body>
@@ -42,11 +35,12 @@ width:500px; height:auto;
  
  
  
-   <div class="my_lesson_line"></div>
    
       <c:forEach var="item" items="${list}">
       
+      
       <div id="lesson_div" class= "lesson_div">
+   <div class="my_lesson_line"></div>
         <span class="lessonimg">
 		<img alt="레슨 썸네일" src="${item.lesson_thumb }">
 		</span>
@@ -98,30 +92,40 @@ width:500px; height:auto;
 </c:otherwise>
 
 </c:choose>
-					<li class="lesson-head">${item.lesson_title}				</li>
+
+<c:if test="${item.lesson_type == 3 }">
+<li class="lesson-head">
+<a href="${pageContext.request.contextPath}/todaylessonmypage/mylesson_detail/${item.lesson_no}">${item.lesson_title}</a></li>
+</c:if>
+
+<c:if test="${item.lesson_type != 3 }">
+<li class="lesson-head">
+<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}">${item.lesson_title}</a></li>
+</c:if>
+
+
 					
-<c:choose>
+<c:if test="${item.lesson_type == 3 }">
+<li>
 
-<c:when test="${item.lesson_procent  >= 80.0 } && ${item.lesson_reward == 0}">
 
-수강률 <c:out value="${item.lesson_procent }"/>
-<input type ="button" id = "reward_point" value="보상">
+수강률 <c:out value="${item.lesson_procent }"/>%
+</li>
 
-</c:when>
+<c:if test="${item.lesson_procent  >= 80.0 && item.lesson_reward == 0}">
 
-<c:otherwise>
+<button id ="reward_point" class="ej_btn" onclick="reward(${item.lesson_no});">포인트 받기</button>
 
-수강률 <c:out value="${item.lesson_procent }"/>
+</c:if>
 
-</c:otherwise>
 
-</c:choose>
+
+</c:if>
+
 
                   </ul>
-</div>
-<div class="event_line"></div>
- 
- 
+                  </div> 
+
 
 
 
@@ -130,9 +134,9 @@ width:500px; height:auto;
 <script>
 
 
-$("#reward_point").click(function(){
-	  let lesson_no=${item.lesson_no};
-	  
+function reward(lesson_no){
+	
+
 	  let data = {
 			  lesson_no : lesson_no,
 	  };
@@ -146,6 +150,7 @@ data : data,
 success : function(result){
    if(result=="success"){
 		alert("10,000 포인트가 적립 되었습니다.");
+		location.reload();
 } else {
 	alert("포인트가 적립되지 않았습니다.");   
 }
@@ -156,10 +161,9 @@ success : function(result){
 }); 
 
 
-});
+}
 
 </script>
-
 
 
 </c:forEach>
