@@ -57,7 +57,7 @@ public class JY_SN_Lesson_Controller {
 
 		} else {
 		
-		int totalCount= lesson_service.totalCount(search, searchtxt, senior_no, order);
+		int totalCount= lesson_service.totalCount(search, searchtxt, order,senior_no);
 		int pageSize=15;
 		int blockSize=5;
 			
@@ -65,7 +65,6 @@ public class JY_SN_Lesson_Controller {
 
 			
 		List<LessonDTO> list = lesson_service.list(senior_no,search, searchtxt,order,page.getStartRow(),page.getEndRow());
-				
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);

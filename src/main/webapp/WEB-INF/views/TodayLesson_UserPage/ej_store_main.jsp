@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=2">
 <!--style-->
 </head>
 

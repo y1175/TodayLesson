@@ -25,7 +25,7 @@ public interface JY_SN_LessonService {
 
 	public int insert_Lesson(LessonDTO dto);
 
-	public int totalCount(String search, String searchtxt, int senior_no, int order);
+	public int totalCount(String search, String searchtxt, int order, int senior_no);
 
 
 	

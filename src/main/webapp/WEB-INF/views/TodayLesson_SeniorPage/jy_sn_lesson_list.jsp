@@ -172,6 +172,7 @@ width:500px; height:auto;
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+
 <c:if test="${index!= page.currPage }">
 </c:if>
 <a href="${pageContext.request.contextPath}/todaylessonsenior/lesson_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
@@ -180,7 +181,6 @@ width:500px; height:auto;
 <c:if test="${page.next }">
 <a href="${pageContext.request.contextPath}/todaylessonsenior/lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
 </c:if>
-
 
 
 

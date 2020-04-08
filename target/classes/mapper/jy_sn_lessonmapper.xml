@@ -20,8 +20,8 @@
 
 
 	<!-- 승인 난 애들만 볼 수 있으니까 -->
-	<select id="list_lesson" resultType="com.todaylesson.DTO.LessonDTO">
-		select * from lesson
+	<select id="list_lesson" parameterType="java.util.HashMap" resultType="com.todaylesson.DTO.LessonDTO">
+		select lesson_no, lesson_title, lesson_category, lesson_type, lesson_result
 		where senior_no = #{senior_no}
 		<if test="order lt 4">
 		and lesson_result=#{order}
