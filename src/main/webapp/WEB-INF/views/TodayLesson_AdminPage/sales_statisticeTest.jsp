@@ -130,9 +130,52 @@ width		: 100%;
 
 </head>
 <body>
+<!-- 차트 -->
+   <div id="chartdiv"></div>
+   <div id="chartOutPut"></div>
+<!-- 차트 -->
+   <form action="/todaylessonadmin/sales_statistics">
+      <div class="form-group row">
+         <label for="start_date end_date" class="col-sm-1 col-form-label">기간선택</label>
+         <div class="col-sm-2">
+            <input type="date" id="start_date" class="form-control" name="start_date">
+         </div>
+         <div class="col">
+          -
+         </div>
+         <div class="col-sm-2">
+            <input type="date" id="end_date" name="end_date" class="form-control">
+         </div>
+      </div>
 
-<div id="chartdiv"></div>
-<div id="chartOutPut"></div>
+      <div class="form-group">
+         <input type="radio" name="ymd" value="date"><label>일별</label>
+         <input type="radio" name="ymd" value="month"><label>월별</label>
+         <input type="radio" name="ymd" value="year"><label>연별</label>
+      </div>
+
+      <input type="submit" class="statistics-btn" value="조회">
+   </form>
+   <table class="table table-hover">
+      <thead class="thead-admin-statistics">
+         <tr>
+            <th>NO.</th><th>매출일(년/월/일)</th><th>매출액</th><th>누적매출액</th>
+         </tr>
+      </thead>
+   <tbody class="statistics_tbody">
+      <c:forEach var="item" items="${list }" varStatus="status">
+         <tr> 
+            <td>
+               <c:out value="${status.count}"/>
+            </td>
+            <td>${item.stat_logdate }</td>
+            <td>${item.total }</td>
+            <td>${distinctMember[status.index].member_total }</td>
+
+        </tr>
+      </c:forEach>
+   </tbody>
+</table>
 
 
 </body>

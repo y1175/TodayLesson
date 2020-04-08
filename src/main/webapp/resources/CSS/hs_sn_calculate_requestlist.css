@@ -124,39 +124,90 @@
 	width : 80%;
 }
 /* 정산신청 개인사업자 개인정보 */
-#hs_sn_cal_senior_crno{
+ /* 사업자신청 */
+#hs_sn_cal_calculate_crno_o{
 	border-radius : 3px;
 	border: 1px transparent;
 	padding: 5px 15px;
 	margin-bottom : 10px;
 	width: 74%;
 }
-#hs_sn_cal_senior_name{
+#hs_sn_cal_calculate_crno_name_o{
 	border-radius : 3px;
 	border: 1px transparent;
 	padding: 5px 15px;
 	margin-bottom : 10px;
 	width: 74%;
 }
-#hs_sn_cal_senior_crnophone{
+ #hs_sn_cal_calculate_bank_name_o{
 	border-radius : 3px;
 	border: 1px transparent;
 	padding: 5px 15px;
 	width: 74%;
-}
-#hs_sn_cal_senior_name{
+} 
+#hs_sn_cal_calculate_account_name_o{
 	border-radius : 3px;
 	border: 1px transparent;
 	padding: 5px 15px;
 	margin-bottom : 10px;
 	width: 74%;
 }
-#hs_sn_cal_senior_phone{
+#hs_sn_cal_calculate_account_num_o{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_calculate_name_o{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_calculate_phone_o{
 	border-radius : 3px;
 	border: 1px transparent;
 	padding: 5px 15px;
 	width: 74%;
 }
+/* 개인신청 */
+#hs_sn_cal_calculate_bank_name_x{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_calculate_account_name_x{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+ #hs_sn_cal_calculate_account_num_x{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom: 10px;
+	width: 74%;
+} 
+#hs_sn_cal_calculate_name_x{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	margin-bottom : 10px;
+	width: 74%;
+}
+#hs_sn_cal_calculate_phone_x{
+	border-radius : 3px;
+	border: 1px transparent;
+	padding: 5px 15px;
+	width: 74%;
+}
+
 #hs_senior_CulateRequestModal_calculateguide_detail1>pre{
 	font-weight: 600; 
 	color: rgba(53, 54, 58, 0.4);
@@ -206,5 +257,8 @@
 }
 #hs_senior_calculate_requestList_Table th{
 	background-color: rgba(53, 54, 58, 0.2);
+	border-right: 1px solid rgba(53, 54, 58, 0.4);
+}
+#hs_senior_calculate_requestList_Table>tbody>tr>td{
 	border-right: 1px solid rgba(53, 54, 58, 0.4);
 }

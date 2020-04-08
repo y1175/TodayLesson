@@ -23,7 +23,10 @@ public interface Senior_HS_Salescalculate_Mapper {
 
 	//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_RequestList(int senior_no);
-
+	
+	//정산신청  정산계좌
+	//public List<SeniorDTO> cal_SeniorAccount(String member_id);
+	
 	//정산신청 리스트 결제건수
 	public List<Integer> calPayCount(int senior_no);
 
@@ -33,6 +36,10 @@ public interface Senior_HS_Salescalculate_Mapper {
 	//정산신청 리스트 포인트사용
 	public List<Integer> calUsePointSum(int senior_no);
 
+	//정산신청 정산금액 정산수수료 세금계산서 부가세
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_CommSurtax(int senior_no);
+
+	
 	//정산신청 시니어디테일
 	public SeniorDTO accountDetailDTO(String member_id);
 	
@@ -40,10 +47,10 @@ public interface Senior_HS_Salescalculate_Mapper {
 	public int accountUpdateDTO(SeniorDTO dto);
 
 	//정산신청가능금액
-	//public int calculate_PossibilityCost(String member_id);
+	public int calculate_PossibilityCost(int senior_no);
 
 	//정산대기금액
-	//public int calculate_WaitingCost(String member_id);
+	public int calculate_WaitingCost(int senior_no);
  
 	//정산내역 목록 리스트
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> calStatementList(String member_id);
@@ -56,10 +63,6 @@ public interface Senior_HS_Salescalculate_Mapper {
 
 	//정산내역 리스트 포인트사용
 	public List<Integer> calStatementUsePointSum(String member_id);
-
-	
-
-	
 
 
 }

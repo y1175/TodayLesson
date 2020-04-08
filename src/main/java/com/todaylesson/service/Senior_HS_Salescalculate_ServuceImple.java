@@ -60,7 +60,14 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		// TODO Auto-generated method stub
 		return salescalculateMapper.cal_RequestList(senior_no);
 	}
-
+	
+	//정산신청  정산계좌
+	/*@Override
+	public List<SeniorDTO> cal_SeniorAccount(String member_id) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.cal_SeniorAccount(member_id);
+	}*/
+	
 	//정산신청 리스트 결제건수
 	@Override
 	public List<Integer> calPayCount(int senior_no) {
@@ -81,6 +88,13 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calUsePointSum(senior_no);
 	}
+	
+	//정산신청 정산수수료 세금계산서 부가세
+	@Override
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_CommSurtax(int senior_no) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.cal_CommSurtax(senior_no);
+	}
 
 	//정산신청 시니어디테일
 	@Override
@@ -97,18 +111,18 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	}
 
 	//정산신청가능금액
-	/*@Override
-	public int calculate_PossibilityCost(String member_id) {
+	@Override
+	public int calculate_PossibilityCost(int senior_no) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.calculate_PossibilityCost(member_id);
-	}*/
+		return salescalculateMapper.calculate_PossibilityCost(senior_no);
+	}
 
 	//정산대기금액
-	/*@Override
-	public int calculate_WaitingCost(String member_id) {
+	@Override
+	public int calculate_WaitingCost(int senior_no) {
 		// TODO Auto-generated method stub
-		return salescalculateMapper.calculate_WaitingCost(member_id);
-	}*/
+		return salescalculateMapper.calculate_WaitingCost(senior_no);
+	}
 	
 	//정산내역 목록 리스트
 	@Override

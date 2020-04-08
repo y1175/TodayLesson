@@ -76,18 +76,21 @@ public class Senior_HS_Salescalculate_Controller {
 			                          , Authentication authentication
 			                          , HttpServletRequest request,HttpServletResponse response
 			                          ,@PathVariable int senior_no
-			                          ,@RequestParam(required=false, defaultValue="1") int currPage
 			                          ) throws Exception {
 		
 		//시큐리티 멤버아이디
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
 
-		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
+		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_requestlist
 		                          =salescalculateService.calculateRequsetList(senior_no);
 		model.addAttribute("cal_requestlist", cal_requestlist);
 		
+		//정산신청  정산계좌
+		/*List<SeniorDTO> cal_SeniorAccount=salescalculateService.cal_SeniorAccount(member_id);
+		model.addAttribute("cal_SeniorAccount", cal_SeniorAccount);*/
+				
 		//정산신청 리스트 결제건수
 		List<Integer> cal_paycount=salescalculateService.calPayCount(senior_no);
 		model.addAttribute("cal_paycount", cal_paycount);
@@ -99,6 +102,11 @@ public class Senior_HS_Salescalculate_Controller {
 		//정산신청 리스트 포인트사용
 		List<Integer> cal_usepointsum=salescalculateService.calUsePointSum(senior_no);
 		model.addAttribute("cal_usepointsum", cal_usepointsum);
+		
+		//정산신청 정산수수료 세금계산서 부가세
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_CommSurtax
+				                  =salescalculateService.cal_CommSurtax(senior_no);
+		model.addAttribute("cal_CommSurtax", cal_CommSurtax);
 		
 		//정산신청 시니어디테일
 		SeniorDTO accountdetalidto=salescalculateService.accountDetailDTO(member_id);
@@ -117,21 +125,14 @@ public class Senior_HS_Salescalculate_Controller {
 		
 		
 		//정산신청가능금액
-		/*int calculate_possibilitycost=salescalculateService.calculate_PossibilityCost(member_id);
-		model.addAttribute("calculate_possibilitycost", calculate_possibilitycost);*/
+		int calculate_possibilitycost=salescalculateService.calculate_PossibilityCost(senior_no);
+		model.addAttribute("calculate_possibilitycost", calculate_possibilitycost);
 
 		
 		//정산대기금액
-		/*int calculate_waitingcost=salescalculateService.calculate_WaitingCost(member_id);
-		model.addAttribute("calculate_waitingcost", calculate_waitingcost );*/
+		int calculate_waitingcost=salescalculateService.calculate_WaitingCost(senior_no);
+		model.addAttribute("calculate_waitingcost", calculate_waitingcost );
 		
-		//정산신청 리스트 레스취소금액
-		//List<Integer> cal_lseeoncancelcost=salescalculateService.calCancelCost(senior_no);
-		//model.addAttribute("cal_lseeoncancelcost", cal_lseeoncancelcost);
-	
-		//정산신청 리스트 포인트취소
-		//List<Integer> cal_cancelpointsum=salescalculateService.calCancelPointSum(senior_no);
-		//model.addAttribute("cal_cancelpointsum", cal_cancelpointsum);
 		
 		return "/TodayLesson_SeniorPage/hs_sn_calculate_requestlist.sn_main_section";
 	}
@@ -184,11 +185,19 @@ public class Senior_HS_Salescalculate_Controller {
 	@RequestMapping("/senior_calculate_accountupdateresult")
 	public String calculateRequestAccountUpdateResult (SeniorDTO dto, Model model)  {
 		
-		
-		
 		//정산신청 시니어계좌정보수정
 		int accountupdatedto=salescalculateService.accountUpdateDTO(dto);
 		model.addAttribute("accountupdatedto", accountupdatedto);
+		
+		return "TodayLesson_SeniorPage/hs_sn_calculate_accountupdateresult";
+	}
+	
+	//정산신청
+	@RequestMapping("/senior_calculate_senior_calculate_insertresult")
+	public String calculateRequestResult (SeniorDTO dto, Model model)  {
+		
+		//정산신청 시니어계좌정보수정
+		//int calculateRequestResult=salescalculateService.calculateRequestResult()
 		
 		return "TodayLesson_SeniorPage/hs_sn_calculate_accountupdateresult";
 	}

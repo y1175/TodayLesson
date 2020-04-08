@@ -54,8 +54,21 @@
 	   <!-- CalculateDTO -->
 	   <result property="calculate_no" column="calculate_no"/> 
 	   <result property="calculate_date" column="calculate_date"/> 
-	   <result property="lessondate_count" column="lessondate_count"/>
+	   <result property="calculate_bank_name" column="calculate_bank_name"/>
+	   <result property="calculate_account_name" column="calculate_account_name"/>
+	   <result property="calculate_account_num" column="calculate_account_num"/>
+	   <result property="calculate_crno" column="calculate_crno"/>
+	   <result property="calculate_crno_name" column="calculate_crno_name"/>
+	   <result property="calculate_name" column="calculate_name"/>
+	   <result property="calculate_phone" column="calculate_phone"/>
 	   <!-- CalculateDTO --> 
+	   <!-- 정산신청 정산수수료,세금계산서부가세 DTO에만 추가 -->
+	   <result property="orderdate_count" column="orderdate_count"/>
+	   <result property="calculate_cost_nosurtax" column="calculate_cost_nosurtax"/>
+	   <result property="calculate_cost_surtax" column="calculate_cost_surtax"/>
+	   <result property="calculate_comm" column="calculate_comm"/>
+	   <result property="calculate_surtax" column="calculate_surtax"/>
+	   <!-- 정산신청 정산수수료,세금계산서부가세 DTO에만 추가 -->
 	</resultMap>  
 	
 	<!-- 매출현황 토탈카운트 -->
@@ -108,63 +121,82 @@
 	   </if>
     </sql> 
 
-	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌 -->
+	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 -->
 	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="int">
-	   <!-- select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
-	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
+	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period, 
+	          o.orderlist_date, o.orderlist_orderstatus
 	   from calculate c right join orderlist o on c.orderlist_no=o.orderlist_no
 	                    join order_detail od on od.orderlist_no=o.orderlist_no
 	                    join lesson l on l.lesson_no=od.lesson_no
-                        join member m on m.member_id=o.member_id
-                        join senior s on s.member_id=m.member_id
 	   where l.senior_no=#{senior_no}
-	   group by o.orderlist_date
-       order by orderlist_date desc -->
-	   select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
-	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
-	   from calculate c right join orderlist o on c.orderlist_no=o.orderlist_no
-	                    join order_detail od on od.orderlist_no=o.orderlist_no
-	                    join lesson l on l.lesson_no=od.lesson_no
-                        join member m on m.member_id=o.member_id
-                        join senior s on s.member_id=m.member_id
-	   where l.senior_no=#{senior_no}
-	   group by o.orderlist_date
+	   group by o.orderlist_calculatestatus,o.orderlist_date
        order by orderlist_date desc
 	</select>
+
+    <!-- 정산계좌 사업자번호 -->	
+	<!-- <select id="cal_SeniorAccount" resultType="com.todaylesson.DTO.SeniorDTO" parameterType="java.lang.String">
+	   select senior_no, member_id, senior_email, senior_phone, senior_crno, senior_nick,
+	          senior_bank_name, senior_account_name, senior_account_num, senior_register_date
+	   from senior s1
+	   where senior_no=(select senior_no
+	                    from senior s2
+	                    where s1.senior_no=s2.senior_no
+	                    and member_id=#{member_id})
+	  select senior_no, s1.member_id, senior_email, senior_phone, senior_crno, senior_nick,
+	          senior_bank_name, senior_account_name, senior_account_num, senior_register_date
+	  from senior s1 join member m on s1.member_id=m.member_id
+	  where s1.member_id=#{member_id}                  
+	                    
+	</select> -->
 	
 	<!-- 정산신청 리스트 결제건수 -->
 	<select id="calPayCount" resultMap="salesCalculateMap" parameterType="int">
-	   select count(*)
+	   select count(*) as orderdate_count
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
                         join member m on m.member_id=o.member_id
 	   where l.senior_no=#{senior_no}
-	   group by o.orderlist_date
+	   group by o.orderlist_calculatestatus,o.orderlist_date
        order by orderlist_date desc
 	</select>
 	
 	<!-- 정산신청 리스트 레스수익금액 -->
 	<select id="calRevenueCost" resultMap="salesCalculateMap" parameterType="int">
-	   select sum(orderlist_cost) 
+	   select sum(orderlist_cost) as orderlist_cost 
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
                         join member m on m.member_id=o.member_id
        where l.senior_no=#{senior_no}
-       group by o.orderlist_date
+       group by o.orderlist_calculatestatus,o.orderlist_date
        order by orderlist_date desc
 	</select>
 	
 	<!-- 정산신청 리스트 포인트사용 -->
 	<select id="calUsePointSum" resultMap="salesCalculateMap" parameterType="int">
-	   select sum(orderlist_usepoint) 
+	   select sum(orderlist_usepoint) as orderlist_usepoint
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
                         join member m on m.member_id=o.member_id
        where l.senior_no=#{senior_no}
-       group by o.orderlist_date
+       group by o.orderlist_calculatestatus,o.orderlist_date
+       order by orderlist_date desc
+	</select>
+	
+	<!-- 정산신청 정산금액 정산수수료 세금계산서 및 부가세 -->
+	<select id="cal_CommSurtax" resultMap="salesCalculateMap" parameterType="int">
+	   select sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1))) as calculate_cost_nosurtax
+	        , sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1)+((orderlist_cost/1.1)*0.1))) as calculate_cost_surtax
+	        , sum(orderlist_cost*0.1) as calculate_comm
+	        , sum((orderlist_cost/1.1)*0.1) as calculate_surtax
+       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
+                        join lesson l on od.lesson_no=l.lesson_no
+                        join senior s on l.senior_no=s.senior_no
+                        join member m on m.member_id=o.member_id
+       where l.senior_no=#{senior_no}
+       group by o.orderlist_calculatestatus,o.orderlist_date
        order by orderlist_date desc
 	</select>
 	
@@ -187,47 +219,24 @@
 	</update>
 	
 	<!-- 정산가능금액 -->
-<!--     <select id="calculate_PossibilityCost" resultType="int" parameterType="java.lang.String">
-       select 
-       <choose>
-          <when test="senior_crno==null">
-             floor(sum(orderlist_cost)-sum(orderlist_cost*0.1)-(sum(orderlist_cost/1.1)*0.1)-sum(orderlist_usepoint))
-          </when>
-          <when test="senior_crno!=null">
-             floor(sum(orderlist_cost)-sum(orderlist_cost*0.1)-sum(orderlist_usepoint))
-          </when>
-       </choose>
+    <select id="calculate_PossibilityCost" resultType="int" parameterType="int">
+       select floor(sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1))))
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
-    </select> -->
-    
+                        join member m on m.member_id=o.member_id
+       where o.orderlist_calculatestatus=2 and l.senior_no=#{senior_no}
+    </select>
     
     <!-- 정산대기금액 -->
-	
-	<!-- 정산신청 리스트 레스취소금액 -->
-	<!-- <select id="calCancelCost" resultMap="salesCalculateMap" parameterType="int">
-	   select sum(orderlist_cost) 
+    <select id="calculate_WaitingCost" resultType="int" parameterType="int">
+       select floor(sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1))))
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
                         join senior s on l.senior_no=s.senior_no
-       where s.senior_no=#{senior_no} and o.orderlist_paystatus=1 1결제취소
-       group by o.orderlist_date
-       order by orderlist_date desc
-	</select> -->
-	
-	<!-- 정산신청 리스트 포인트취소 -->
-	<!-- <select id="calCancelPointSum" resultMap="salesCalculateMap" parameterType="int">
-	   select sum(orderlist_usepoint) 
-       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
-                        join lesson l on od.lesson_no=l.lesson_no
-                        join senior s on l.senior_no=s.senior_no
-       where s.senior_no=#{senior_no} and o.orderlist_paystatus=0 1결제취소
-       group by o.orderlist_date
-       order by orderlist_date desc
-	</select> -->
-
-    <!-- 나중에   where 조건문에 정산상태에대한 조건 추가하기 -->
+                        join member m on m.member_id=o.member_id
+       where o.orderlist_calculatestatus=1 and l.senior_no=#{senior_no}
+    </select>
 
     <!-- 정산내역 목록 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌  -->
     <select id="calStatementList" resultMap="salesCalculateMap" parameterType="java.lang.String">

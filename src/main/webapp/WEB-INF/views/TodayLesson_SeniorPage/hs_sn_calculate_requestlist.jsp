@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=1">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=3">  
    <style type="text/css">
       .hs_sn_main_asidenav_nav_calRequest_title>a{
          color: rgb(224, 62, 82);
@@ -71,7 +71,9 @@ $(document).ready(function() {
             <div class="card m card-default" style="margin-top: 10px; height: 160px;"> <!-- 이거 빼고 확인해보기   -->
                <div class="card-block" style="padding: 25px 10px;">
                   <div class="col-sm-7" style="display: inline-block;">
-                     <b>000원</b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
+                     <b style="font-size: 18px;">
+                        <fmt:formatNumber value="${calculate_possibilitycost}" type="number" maxFractionDigits="3"/>원
+                     </b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
                      <br>
                      <div class = "bank_name"></div>
                      <br>
@@ -98,52 +100,52 @@ $(document).ready(function() {
                                  <div class="form-row">
                                     <div class="form-group col-md-4">
                                        <select name="senior_bank_name" id="senior_bank_name" class="form-control" style="font-size: 15px;">
-                                    <option class="bank_name"></option>
-                                    <option value="004">KB국민은행</option>
-                                    <option value="023">SC제일은행</option>
-                                    <option value="039">경남은행</option>
-                                    <option value="034">광주은행</option>
-                                    <option value="003">기업은행</option>
-                                    <option value="011">농협</option>
-                                    <option value="031">대구은행</option>
-                                    <option value="032">부산은행</option>
-                                    <option value="002">산업은행</option>
-                                    <option value="007">수협</option>
-                                    <option value="088">신한은행</option>
-                                    <option value="048">신협</option>
-                                    <option value="005">외환은행</option>
-                                    <option value="020">우리은행</option>
-                                    <option value="071">우체국</option>
-                                    <option value="037">전북은행</option>
-                                    <option value="035">제주은행</option>
-                                    <option value="012">축협</option>
-                                    <option value="081">하나은형(서울은행)</option>
-                                    <option value="027">한국씨티뱅크(한미은행)</option>
-                                    <option value="089">K뱅크</option>
-                                    <option value="090">카카오뱅크</option>
-                                    <option value="209">유안타증권</option>
-                                    <option value="218">현대증권</option>
-                                    <option value="230">미래에셋증권</option>
-                                    <option value="238">대우증권</option>
-                                    <option value="240">삼성증권</option>
-                                    <option value="243">한국투자증권</option>
-                                    <option value="247">우리투자증권</option>
-                                    <option value="261">교보증권</option>
-                                    <option value="262">하이투자증권</option>
-                                    <option value="263">에이치엠씨투자증권</option>
-                                    <option value="264">키움증권</option>
-                                    <option value="265">이트레이드증권</option>
-                                    <option value="266">에스케이증권</option>
-                                    <option value="267">대신증권</option>
-                                    <option value="268">솔로몬투자증권</option>
-                                    <option value="269">한화증권</option>
-                                    <option value="270">하나대투증권</option>
-                                    <option value="278">굿모닝신한증권</option>
-                                    <option value="279">동부증권</option>
-                                    <option value="280">유진투자증권</option>
-                                    <option value="287">메리츠증권</option>
-                                    <option value="289">엔에이치투자증권</option>
-                                    <option value="290">부국증권</option>
+                                          <option class="bank_name"></option>
+                                          <option value="004">KB국민은행</option>
+                                          <option value="023">SC제일은행</option>
+                                          <option value="039">경남은행</option>
+                                          <option value="034">광주은행</option>
+                                          <option value="003">기업은행</option>
+                                          <option value="011">농협</option>
+                                          <option value="031">대구은행</option>
+                                          <option value="032">부산은행</option>
+                                          <option value="002">산업은행</option>
+                                          <option value="007">수협</option>
+                                          <option value="088">신한은행</option>
+                                          <option value="048">신협</option>
+                                          <option value="005">외환은행</option>
+                                          <option value="020">우리은행</option>
+                                          <option value="071">우체국</option>
+                                          <option value="037">전북은행</option>
+                                          <option value="035">제주은행</option>
+                                          <option value="012">축협</option>
+                                          <option value="081">하나은형(서울은행)</option>
+                                          <option value="027">한국씨티뱅크(한미은행)</option>
+                                          <option value="089">K뱅크</option>
+                                          <option value="090">카카오뱅크</option>
+                                          <option value="209">유안타증권</option>
+                                          <option value="218">현대증권</option>
+                                          <option value="230">미래에셋증권</option>
+                                          <option value="238">대우증권</option>
+                                          <option value="240">삼성증권</option>
+                                          <option value="243">한국투자증권</option>
+                                          <option value="247">우리투자증권</option>
+                                          <option value="261">교보증권</option>
+                                          <option value="262">하이투자증권</option>
+                                          <option value="263">에이치엠씨투자증권</option>
+                                          <option value="264">키움증권</option>
+                                          <option value="265">이트레이드증권</option>
+                                          <option value="266">에스케이증권</option>
+                                          <option value="267">대신증권</option>
+                                          <option value="268">솔로몬투자증권</option>
+                                          <option value="269">한화증권</option>
+                                          <option value="270">하나대투증권</option>
+                                          <option value="278">굿모닝신한증권</option>
+                                          <option value="279">동부증권</option>
+                                          <option value="280">유진투자증권</option>
+                                          <option value="287">메리츠증권</option>
+                                          <option value="289">엔에이치투자증권</option>
+                                          <option value="290">부국증권</option>
                                        </select>
                                     </div>
                                     <div class="form-group col-md-8">
@@ -234,19 +236,21 @@ $(document).ready(function() {
                      <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                            <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                              <form method="post" action="">
+                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_insertresult">
                                  <div class="hs_senior_CulateRequestModal_HeaderDiv">
                                     <b class="hs_senior_CulateRequestModal_Title" id="hs_senior_CulateRequestModal_title">정산신청</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
-                                 <div class="form-row" style="width:100%; margin-bottom: 15px;">
-                                    <div class="col-md-6 text-left" style="display: inline-block; float: left;">
-                                       <span>정산가능</span>
+                                 <div class="form-row" style="width:100%; margin-bottom: 15px;border-top: 1px solid rgba(53, 54, 58, 0.3); border-bottom: 1px solid rgba(53, 54, 58, 0.3);">
+                                    <div class="col-md-6 text-left" style="display: inline-block; text-align: left; margin : 15px -20px 15px 20px;">
+                                       <span style="font-size: 20px; font-weight: bold; color:rgba(53, 54, 58, 0.3); ">정산가능금액</span>
                                     </div>
-                                    <div class="col-md-6 text-right" style="display: inline-block; float: right;">
-                                       <span>000원</span>
+                                    <div class="col-md-6 text-right" style="display: inline-block; text-align:right; margin : 15px 20px 15px -20px;">
+                                       <span style="font-size: 20px; font-weight: bold;">
+                                          <fmt:formatNumber value="${calculate_possibilitycost}" type="number" maxFractionDigits="3"/>원
+                                       </span>
                                     </div>
                                  </div>
                                  <!-- 계좌정보 -->
@@ -273,7 +277,7 @@ $(document).ready(function() {
                                                 </td>
                                              </tr>
                                           </table>      
-                                       </div>
+                                       </div> 
                                        <div class="card-block" style=" width:100%; padding: 12px; background-color: rgba(53, 54, 58, 0.3); font-size: 14px;">
                                           <input type="radio" id="hs_senior_CulateRequestModal_crno_o" 
                                                  name="hs_senior_CulateRequestModal_crno_ch" value="1" checked="checked">
@@ -283,22 +287,137 @@ $(document).ready(function() {
                                           <label style="font-weight: 600; font-size: 13px; margin-bottom: 12px;">개인</label>
                                           <!-- 사업자번호 있는 사람  -->
                                           <div id="hs_senior_CulateRequestModal_crno_o_detail" class="hs_senior_CulateRequestModal_crno_o_detail">
-                                             <label for="hs_sn_cal_senior_crno" style="width: 120px; font-weight: 600;">사업자등록번호</label>
-                                             <input type="text" id="hs_sn_cal_senior_crno" name="senior_crno">
+                                             <label for="hs_sn_cal_calculate_crno_o" style="width: 120px; font-weight: 600;">사업자등록번호</label>
+                                             <input type="text" id="hs_sn_cal_calculate_crno_o" name="calculate_crno">
                                              <br>
-                                             <label for="hs_sn_cal_senior_name" style="width: 120px; font-weight: 600;">상호명</label>
-                                             <input type="text" id="hs_sn_cal_senior_name" name="senior_crno_name">
+                                             <label for="hs_sn_cal_calculate_crno_name_o" style="width: 120px; font-weight: 600;">업체명(법인명)</label>
+                                             <input type="text" id="hs_sn_cal_calculate_crno_name_o" name="calculate_crno_name">
                                              <br>
-                                             <label for="hs_sn_cal_senior_crnophone" style="width: 120px; font-weight: 600;">연락처</label>
-                                             <input type="text" id="hs_sn_cal_senior_crnophone" name="senior_phone"> 
+                                             <label for="hs_sn_cal_calculate_bank_name_o" style="width: 120px; font-weight: 600;">정산신청은행</label>
+                                             <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_o" style="font-size: 15px; margin-bottom: 10px;">
+                                                <option class="bank_name"></option>
+                                                <option value="004">KB국민은행</option>
+                                                <option value="023">SC제일은행</option>
+                                                <option value="039">경남은행</option>
+                                                <option value="034">광주은행</option>
+                                                <option value="003">기업은행</option>
+                                                <option value="011">농협</option>
+                                                <option value="031">대구은행</option>
+                                                <option value="032">부산은행</option>
+                                                <option value="002">산업은행</option>
+                                                <option value="007">수협</option>
+                                                <option value="088">신한은행</option>
+                                                <option value="048">신협</option>
+                                                <option value="005">외환은행</option>
+                                                <option value="020">우리은행</option>
+                                                <option value="071">우체국</option>
+                                                <option value="037">전북은행</option>
+                                                <option value="035">제주은행</option>
+                                                <option value="012">축협</option>
+                                                <option value="081">하나은형(서울은행)</option>
+                                                <option value="027">한국씨티뱅크(한미은행)</option>
+                                                <option value="089">K뱅크</option>
+                                                <option value="090">카카오뱅크</option>
+                                                <option value="209">유안타증권</option>
+                                                <option value="218">현대증권</option>
+                                                <option value="230">미래에셋증권</option>
+                                                <option value="238">대우증권</option>
+                                                <option value="240">삼성증권</option>
+                                                <option value="243">한국투자증권</option>
+                                                <option value="247">우리투자증권</option>
+                                                <option value="261">교보증권</option>
+                                                <option value="262">하이투자증권</option>
+                                                <option value="263">에이치엠씨투자증권</option>
+                                                <option value="264">키움증권</option>
+                                                <option value="265">이트레이드증권</option>
+                                                <option value="266">에스케이증권</option>
+                                                <option value="267">대신증권</option>
+                                                <option value="268">솔로몬투자증권</option>
+                                                <option value="269">한화증권</option>
+                                                <option value="270">하나대투증권</option>
+                                                <option value="278">굿모닝신한증권</option>
+                                                <option value="279">동부증권</option>
+                                                <option value="280">유진투자증권</option>
+                                                <option value="287">메리츠증권</option>
+                                                <option value="289">엔에이치투자증권</option>
+                                                <option value="290">부국증권</option>
+                                             </select>
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_account_name_o" style="width: 120px; font-weight: 600;">예금주</label>
+                                             <input type="text" id="hs_sn_cal_calculate_account_name_o" name="calculate_account_name"> 
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_account_num_o" style="width: 120px; font-weight: 600;">계좌번호</label>
+                                             <input type="text" id="hs_sn_cal_calculate_account_num_o" name="calculate_account_num">
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_name_o" style="width: 120px; font-weight: 600;">신청자</label>
+                                             <input type="text" id="hs_sn_cal_calculate_name_o" name="calculate_name">
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_phone_o" style="width: 120px; font-weight: 600;">연락처</label>
+                                             <input type="text" id="hs_sn_cal_calculate_phone_o" name="calculate_phone">
                                           </div>
                                           <!-- 개인 -->
                                           <div id="hs_senior_CulateRequestModal_crno_x_detail" style="display: none;">
-                                             <label for="hs_sn_cal_senior_name" style="width: 120px; font-weight: 600;">이름</label>
-                                             <input type="text" id="hs_sn_cal_senior_name" name="member_name">
+                                             <label for="hs_sn_cal_calculate_bank_name_x" style="width: 120px; font-weight: 600;">정산신청은행</label>
+                                             <select name="senior_bank_name" id="hs_sn_cal_calculate_bank_name_x">
+                                                <option class="bank_name"></option>
+                                                <option value="004">KB국민은행</option>
+                                                <option value="023">SC제일은행</option>
+                                                <option value="039">경남은행</option>
+                                                <option value="034">광주은행</option>
+                                                <option value="003">기업은행</option>
+                                                <option value="011">농협</option>
+                                                <option value="031">대구은행</option>
+                                                <option value="032">부산은행</option>
+                                                <option value="002">산업은행</option>
+                                                <option value="007">수협</option>
+                                                <option value="088">신한은행</option>
+                                                <option value="048">신협</option>
+                                                <option value="005">외환은행</option>
+                                                <option value="020">우리은행</option>
+                                                <option value="071">우체국</option>
+                                                <option value="037">전북은행</option>
+                                                <option value="035">제주은행</option>
+                                                <option value="012">축협</option>
+                                                <option value="081">하나은형(서울은행)</option>
+                                                <option value="027">한국씨티뱅크(한미은행)</option>
+                                                <option value="089">K뱅크</option>
+                                                <option value="090">카카오뱅크</option>
+                                                <option value="209">유안타증권</option>
+                                                <option value="218">현대증권</option>
+                                                <option value="230">미래에셋증권</option>
+                                                <option value="238">대우증권</option>
+                                                <option value="240">삼성증권</option>
+                                                <option value="243">한국투자증권</option>
+                                                <option value="247">우리투자증권</option>
+                                                <option value="261">교보증권</option>
+                                                <option value="262">하이투자증권</option>
+                                                <option value="263">에이치엠씨투자증권</option>
+                                                <option value="264">키움증권</option>
+                                                <option value="265">이트레이드증권</option>
+                                                <option value="266">에스케이증권</option>
+                                                <option value="267">대신증권</option>
+                                                <option value="268">솔로몬투자증권</option>
+                                                <option value="269">한화증권</option>
+                                                <option value="270">하나대투증권</option>
+                                                <option value="278">굿모닝신한증권</option>
+                                                <option value="279">동부증권</option>
+                                                <option value="280">유진투자증권</option>
+                                                <option value="287">메리츠증권</option>
+                                                <option value="289">엔에이치투자증권</option>
+                                                <option value="290">부국증권</option>
+                                             </select>
                                              <br>
-                                             <label for="hs_sn_cal_senior_phone" style="width: 120px; font-weight: 600;">연락처</label>
-                                             <input type="text" id="hs_sn_cal_senior_phone" name="senior_phone">
+                                             <label for="hs_sn_cal_calculate_account_name_x" style="width: 120px; font-weight: 600;">예금주</label>
+                                             <input type="text" id="hs_sn_cal_calculate_account_name_x" name="calculate_account_name"> 
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_account_num_x" style="width: 120px; font-weight: 600;">계좌번호</label>
+                                             <input type="text" id="hs_sn_cal_calculate_account_num_x" name="calculate_account_num">
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_name_x" style="width: 120px; font-weight: 600;">신청자</label>
+                                             <input type="text" id="hs_sn_cal_calculate_name_x" name="calculate_name">
+                                             <br>
+                                             <label for="hs_sn_cal_calculate_phone_x" style="width: 120px; font-weight: 600;">연락처</label>
+                                             <input type="text" id="hs_sn_cal_calculate_phone_x" name="calculate_name">
                                           </div>
                                        </div>
                                        <div id="hs_senior_CulateRequestModal_calculateguide_detail1" class="card-block" style="padding: 20px 0px; font-size: 13px;">
@@ -346,11 +465,14 @@ $(document).ready(function() {
          <div class="card m card-default" style="margin-top: 10px; height: 160px;">
             <div class="card-block" style="padding: 25px 10px;">
             <div class="col-sm-10">
-               <b>원</b>
+               <b style="font-size: 18px;">
+                  <fmt:formatNumber value="${calculate_waitingcost}" type="number" maxFractionDigits="3"/>원
+               </b>
+               <br>
                <br> 
-               <span>* 정산 기준인 레슨 결제일 기준 5일이내의 금액으로
+               <span style="font-size: 14px;">* 정산 기준인 레슨 결제일 기준 5일이내의 금액으로  
                <br>                 
-               <span>각</span><span>레슨 결제 5일 이후 정산가능 금액으로 변경</span>됩니다. 
+               <span style="font-size: 14px;"> 각 </span><span style="color: rgb(224, 62, 82);">레슨 결제 5일 이후 정산가능 금액으로 변경</span>됩니다. 
                </span>
             </div>
             </div>
@@ -359,14 +481,16 @@ $(document).ready(function() {
       </div>
       <div class="col-md-7" style="margin-top: 15px;">
          <b class="hs_senior_calculate_standardtbox_title">정산 기준 안내</b>
-         <div class="col-sm-14" style="padding: 10px;">
-            <span>1. 레슨 결제일 기준 5일 이후 정산가능 금액으로 변경되면, 정산 신청이 가능합니다.</span>
+         <div class="col-sm-14" style="padding: 10px; font-size: 14px; font-weight: 500;">
+            <span>1. 레슨 결제일 기준 5일 이후 정산가능 금액으로 변경되며, 정산 신청이 가능합니다.</span>
             <br>
             <span>2. 정산 신청후 5일 이내 입금 처리됩니다.</span>
             <br>
             <span>3. 계좌인증이 완료 된 정산 계좌가 등록되어 있어야 정산 신청이 가능합니다.</span>
             <br>
-            <span>4. 중개수수료 5% 카드,가상계좌등 결제사수수료 5%제외 합 10제외</span>
+            <span>4. 정산수수료 10%, 주니어포인트사용내역 제외하여 정산금액이 계산됩니다. </span>
+            <br>
+            <span>5. 사업자의 경우 정산금액에서 별도의 세금계산서부가세 금액을 제외하여 정산이 진행됩니다.</span>
          </div>
       </div>
       <div class="hs_senior_CalculateRequest_ExcelBox" style="text-align: right; margin-right: 15px;">
@@ -376,28 +500,26 @@ $(document).ready(function() {
          <table id="hs_senior_calculate_requestList_Table" class="table table-hover">
             <thead style="border-top: 2px solid rgb(53, 54, 58);">
                <tr>
-                  <th rowspan="2">NO.</th>
-                  <th rowspan="2">정산번호</th>
-                  <th rowspan="2">정산상태</th>
-                  <th rowspan="2">정산신청일</th>
-                  <th rowspan="2">결제건수</th>
-                  <th rowspan="2">정산기간</th>
-                  <th rowspan="2">정산계좌</th>
-                  <th rowspan="2">정산금액</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">NO.</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산번호</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산상태</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산신청일</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">결제건수</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산기간</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산계좌</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산금액</th>
                   <th colspan="4" style="border-right: none; border-bottom: 1px solid rgba(53, 54, 58, 0.4);">상세내역</th>
                </tr>
                <tr>
-                  <th>레슨수익금액</th> 
-                  <th>포인트사용</th>  
-                  <th>정산수수료</th>
-                  <th style="border-right: none;">세금계산서부가세</th>
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58);">레슨수익금액</th> 
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58);">포인트사용</th>  
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58);">정산수수료</th>
+                  <th style=" border-bottom: 2px solid rgb(53, 54, 58); border-right: none;">세금계산서부가세</th>
                </tr>
             </thead>
-            <tbody>
+            <tbody style="border-bottom: 2px solid rgb(53, 54, 58);">
                <c:forEach var="cal_requestlist" items="${cal_requestlist}" varStatus="status">
-               <c:forEach var="cal_paycount" items="${cal_paycount}">
-               <c:forEach var="cal_lessonrevenuecost" items="${cal_lessonrevenuecost}"> 
-               <c:forEach var="cal_usepointsum" items="${cal_usepointsum}">
+               <c:if test="${cal_requestlist.orderlist_orderstatus!=4}">
                   <tr>
                      <!-- NO. -->
                      <td>
@@ -405,100 +527,94 @@ $(document).ready(function() {
                      </td>
                      <!-- 정산번호 정산신청완료했을시에만 나타나게 -->
                      <td>
-                        <%-- <c:choose>
-                           <c:when test="${cal_requestlist.calculate_no == null}">
+                        <c:choose>
+                           <c:when test="${cal_requestlist.calculate_no==null || cal_requestlist.calculate_no==0}">
                               <c:out value=" - "/>
                            </c:when>
-                           <c:when test="${cal_requestlist.calculate_no != null}">
+                           <c:when test="${cal_requestlist.calculate_no!=null}">
                               <c:out value="${cal_requestlist.calculate_no}"/>
                            </c:when>
-                        </c:choose> --%>
+                        </c:choose>
                      </td> 
                      <!-- 정산상태 -->
                      <td>
                         <c:choose>
-                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 0}">
+                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 1}">
                               <c:out value="정산대기"/>
                            </c:when>
-                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 1}">
-                              <c:out value="정산신청"/>
+                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 2}">
+                              <c:out value="정산가능"/>
+                           </c:when>
+                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 3}">
+                              <c:out value="정산완료"/>
                            </c:when>
                         </c:choose>
                      </td>
                      <!-- 정산신청일  정산 완료 됐을시만 나타나게 -->
                      <td>
-                        <%-- <c:choose>
+                        <c:choose>
                            <c:when test="${cal_requestlist.calculate_date == null}">
                               <c:out value=" - "/>
                            </c:when>
                            <c:when test="${cal_requestlist.calculate_date != null}">
                               <c:out value="${cal_requestlist.calculate_date}"/>
                            </c:when>
-                        </c:choose> --%>
+                        </c:choose>
                      </td> 
-                     <!-- 결제건수 -->
+                      <!-- 결제건수 -->
                      <td>
-                        <c:out value="${cal_paycount}"/>
-                        <%-- <fmt:formatNumber value="${cal_paycount}" type="number" maxFractionDigits="3"/> --%>
+                        <fmt:formatNumber value="${cal_paycount[status.index].orderdate_count}" type="number" maxFractionDigits="3"/> 
                      </td> 
                   
-                     <!-- 정산기간 -->
+                     <!-- 정산기간  / 결제일기준-->
                      <td>
-                        <c:out value="${cal_requestlist.lesson_open_period}"/>
-                        <span> - </span>
-                        <c:out value="${cal_requestlist.lesson_close_period}"/>
+                        <c:out value="${cal_requestlist.orderlist_date}"/>
                      </td> 
                      <!-- 정산계좌 -->
                      <td>
-                        <c:out value="${cal_requestlist.senior_bank_name}"/>
+                        <c:out value="${cal_SeniorAccount[status.index].senior_bank_name}"/>
                         <br>
-                        <c:out value="${cal_requestlist.senior_account_num}"/>
+                        <c:out value="${cal_SeniorAccount[status.index].senior_account_num}"/>
                         <br>
-                        <c:out value="${cal_requestlist.senior_account_name}"/>
+                        <c:out value="${cal_SeniorAccount[status.index].senior_account_name}"/>
                      </td>
                      <!-- 정산금액 -->
                      <td>
-                     
+                        <c:choose>
+                           <c:when test="${cal_SeniorAccount[status.index].senior_crno == null}"> 
+                              <fmt:formatNumber value="${cal_CommSurtax[status.index].calculate_cost_nosurtax}" type="number" maxFractionDigits="3"/>
+                           </c:when>
+                           <c:when test="${cal_SeniorAccount[status.index].senior_crno != null}"> 
+                              <fmt:formatNumber value="${cal_CommSurtax[status.index].calculate_cost_surtax}" type="number" maxFractionDigits="3"/>
+                           </c:when>
+                        </c:choose>
                      </td> 
                      <!-- 레슨수익금액 결제완료된금액-->
                      <td>
-                        <c:out value="${cal_lessonrevenuecost}"/>
-                        <%-- <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/> --%>
+                        <fmt:formatNumber value="${cal_lessonrevenuecost[status.index].orderlist_cost}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 포인트사용 -->
                      <td>
-                        <c:out value="${cal_usepointsum}"/>
-                        <%-- <fmt:formatNumber value="${cal_usepointsum}" type="number" maxFractionDigits="3"/> --%>
+                        <fmt:formatNumber value="${cal_usepointsum[status.index].orderlist_usepoint}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 정산수수료 -->
-                        
-                      <%-- <fmt:parseNumber var="cal_lessonrevenuecost" value="${cal_lessonrevenuecost*0.1}" type="number" integerOnly="true"/> --%>
-                     
                      <td>
-                        <c:out value="${cal_lessonrevenuecost*0.1}"/>
-                        <%-- <fmt:formatNumber value="${cal_lessonrevenuecost}" type="number" maxFractionDigits="3"/> --%>
+                       <fmt:formatNumber value="${cal_CommSurtax[status.index].calculate_comm}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 세금계산서부가세 -->
-                     <td>
-                        <c:out value="0"/>
-                        <%-- <c:choose>
-                        <c:when test="${salesList.senior_crno == null}"> 
-                           <td>
+                     <td style="border-right: none;">
+                        <c:choose>
+                           <c:when test="${cal_SeniorAccount[status.index].senior_crno == null}"> 
                               <c:out value="0"/>
-                           </td>
-                        </c:when>
-                        <c:otherwise>
-                           <td>
-                              <fmt:formatNumber value="${(cal_lessonrevenuecost/1.1)*0.1}" type="number" maxFractionDigits="3"/>
-                           </td>    
-                        </c:otherwise>
-                     </c:choose> --%>
+                           </c:when>
+                           <c:when test="${cal_SeniorAccount[status.index].senior_crno != null}"> 
+                              <fmt:formatNumber value="${cal_CommSurtax[status.index].calculate_surtax}" type="number" maxFractionDigits="3"/>
+                           </c:when>
+                        </c:choose>
                      </td>
                   </tr>
-               </c:forEach>   
-               </c:forEach>  
-               </c:forEach>
-               </c:forEach>       
+                  </c:if>
+                 </c:forEach> 
             </tbody>
          </table>
       </div>
