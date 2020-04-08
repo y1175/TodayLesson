@@ -3,6 +3,7 @@ package com.todaylesson.oreo;
 import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +21,7 @@ import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.service.JY_SN_Approve_LessonService;
+import com.todaylesson.service.JY_SN_LessonService;
 import com.todaylesson.upload.UploadFileUtils;
 
 @Controller
@@ -28,6 +30,11 @@ public class JY_SN_Approve_Lesson_Controller {
 
 	@Autowired
 	private JY_SN_Approve_LessonService approve_service;
+	
+	@Resource(name="lessonservice")
+	private JY_SN_LessonService lesson_service;
+	
+	  
 	
 	@RequestMapping("my_approve_lesson")
 	public String approve_list(Model model,  Authentication authentication
@@ -131,8 +138,12 @@ public class JY_SN_Approve_Lesson_Controller {
 	public String select_apld_chapter(@PathVariable int lessondetail_no, Model model) {
 		
 		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
-		model.addAttribute("dto",dto);
+		int lesson_no = dto.getLesson_no();
 		
+		LessonDTO ldto = lesson_service.detail_lesson(lesson_no);
+		model.addAttribute("dto",dto);
+		model.addAttribute("ldto",ldto);
+
 		return "TodayLesson_SeniorPage/jy_sn_apld_select.sn_main_section";
 	}
 	
@@ -141,7 +152,10 @@ public class JY_SN_Approve_Lesson_Controller {
 	public String update_apld_chapter(@PathVariable int lessondetail_no, Model model) {
 		
 		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
+
+
 		model.addAttribute("dto",dto);
+
 		
 		return "TodayLesson_SeniorPage/jy_sn_apld_update.sn_main_section";
 	}

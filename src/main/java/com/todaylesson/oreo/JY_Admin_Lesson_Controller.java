@@ -187,8 +187,7 @@ public class JY_Admin_Lesson_Controller {
 		json.put("imp_secret", imp_secret);
 	
 		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
-		model.addAttribute("token",token);
-		
+		model.addAttribute("token",token);	
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);
 		 

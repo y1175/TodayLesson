@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data2.css">  
+
 <script>
 
 $(document).ready(function(){
@@ -18,12 +20,42 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-여기에 레슨 명이랑 총 레슨 수 넣을지 고민중
-챕터 명<br><c:out value="${dto.lessondetail_title}"/><br>
-레슨 내용<br>
+
+<div id="jy_container">
+
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;"><c:out value="${ldto.lesson_title}"/></h2>
+ </div>
+ 
+ 
+ 
+
+<ul>
+<li>
+<b>강의 제목</b>
+<span class="jy_text">
+<c:out value="${dto.lessondetail_title }"/>
+</span><br>
+</li>
+
+<li>
+<b>강의 내용</b>
 <div class="summer">
 ${dto.lessondetail_content}
-</div><br>
-현재 레슨 챕터 <br><c:out value="${dto.lessondetail_chapter }"/>
+</div>
+</li>
+
+<li>
+<b>전체 강의 수 / 현재 레슨 챕터</b>
+<span class="jy_text">
+<c:out value="${ldto.lesson_number }"> </c:out>/<c:out value="${dto.lessondetail_chapter }"/>
+</span>
+</li>
+
+</ul>
+
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/approve_lesson_detail/${ldto.lesson_no}'">목록으로</button>
+
+</div>
 </body>
 </html>
