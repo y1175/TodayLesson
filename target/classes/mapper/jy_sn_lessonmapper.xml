@@ -28,7 +28,7 @@
 		and lesson_result=#{order}
 		</if>
 
-		
+
 <include refid="search_select"></include>
 limit   #{startrow}, 15
 	</select>
