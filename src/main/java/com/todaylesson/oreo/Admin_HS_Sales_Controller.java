@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.service.Admin_HS_Sales_Service;
 
 @Controller
@@ -26,7 +26,7 @@ public class Admin_HS_Sales_Controller {
 			                    ,@RequestParam(required=false, defaultValue="") String end_date
 			                    ,Model model) {
 		
-		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> adminSeniorSalesList=
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> adminSeniorSalesList=
 			adminSalesService.adminSeniorSalesList(search, search, start_date, end_date);
 		
 		model.addAttribute("adminSeniorSalesList", adminSeniorSalesList);

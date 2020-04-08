@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO {
+public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO {
 	
 	//MemberDTO
 	private String member_id;
@@ -98,15 +98,7 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateD
 	//private int product_no;
 	//private int lesson_no;
 	private int order_count;
-	
-	//SalesDTO
-	//private int orderlist_no; FK
-	private int sales_comm;
-	private int sales_surtax;
-	private String sales_search_startdate;
-	private String sales_search_enddate;
-
-	
+		
 	//CalculateDTO
 	//private int orderlist_no; FK
 	private int calculate_no;

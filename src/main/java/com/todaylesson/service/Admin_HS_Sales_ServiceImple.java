@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.Mapper.Admin_HS_Sales_Mapper;
 
 @Service(value="admin_HS_Sales_Service")
@@ -17,7 +17,7 @@ public class Admin_HS_Sales_ServiceImple implements Admin_HS_Sales_Service {
 	private Admin_HS_Sales_Mapper adminSalesMapper;
 
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> adminSeniorSalesList(
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> adminSeniorSalesList(
 			String search, String searchtxt, String start_date, String end_date) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();

@@ -188,11 +188,12 @@
                      <!-- 시니어매출 = 결제금액-(포인트+정산수수료+부가세) -->
                      <c:set var="cost" value="${adminSeniorSalesList.lesson_cost}"/> <!-- 결제금액 -->
                      <c:set var="point" value="${adminSeniorSalesList.orderlist_usepoint}"/> <!-- 포인트  -->
-                     <c:set var="comm" value="${adminSeniorSalesList.sales_comm}"/> <!-- 정산수수료 -->
-                     <c:set var="surtax" value="${adminSeniorSalesList.sales_surtax}"/> <!-- 부가세 -->
-                     <c:set var="senior_sales" value="${cost-(point+comm+surtax)}"/>
+                     <c:set var="comm" value="${cost*0.1}"/> <!-- 정산수수료 -->
+                     <c:set var="surtax" value="${(cost/1.1)*0.1}"/> <!-- 부가세 -->
+                     <c:set var="senior_salessum" value="${cost-point-comm-surtax}"/>
+                     <fmt:parseNumber var="senior_sales" value="${senior_salessum}" type="number" integerOnly="true"/>
                         <td>
-                           <fmt:formatNumber value="${senior_sales}" type="number" maxFractionDigits="3"/>
+                          <fmt:formatNumber value="${senior_sales}" type="number" maxFractionDigits="3"/>
                         </td> 
                      <!-- 결제금액 -->
                         <td>
@@ -204,7 +205,7 @@
                         </td> 
                      <!-- 정산수수료 -->
                      <td>
-                        <fmt:formatNumber value="${adminSeniorSalesList.sales_comm}" type="number" maxFractionDigits="3"/>
+                        <fmt:formatNumber value="${comm}" type="number" maxFractionDigits="3"/>
                      </td> 
                      <!-- 세금계산서부가세 -->
                      <td style="border-right: none;">
@@ -213,21 +214,21 @@
                               <c:out value="0"/>
                            </c:when>
                            <c:otherwise>
-                              <fmt:formatNumber value="${adminSeniorSalesList.sales_surtax}" type="number" maxFractionDigits="3"/>
+                              <fmt:formatNumber value="${surtax}" type="number" maxFractionDigits="3"/>
                            </c:otherwise>
                         </c:choose>
                      </td>
                   </tr>
-                  <c:set var="sales_sum" value="${sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
+                  <c:set var="ad_sales_sum" value="${ad_sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
                   
                      <!-- 결제금액합계 -->
                      <c:set var="ad_cost_sum" value="${ad_cost_sum+adminSeniorSalesList.lesson_cost}"/> 
                      <!-- 포인트사용합계 -->
                      <c:set var="ad_usepoint_sum" value="${ad_usepoint_sum+adminSeniorSalesList.orderlist_usepoint}"/> 
                      <!-- 정산수수료합계 -->
-                     <c:set var="ad_comm_sum" value="${ad_comm_sum+adminSeniorSalesList.sales_comm}"/> 
+                     <c:set var="ad_comm_sum" value="${ad_comm_sum+comm}"/> 
                      <!-- 세금계산서 부가세합계-->
-                     <c:set var="ad_surtaxsum" value="${ad_surtaxsum+adminSeniorSalesList.sales_surtax}"/> 
+                     <c:set var="ad_surtaxsum" value="${ad_surtaxsum+surtax}"/> 
                </c:forEach>
             </tbody>
             <tfoot style="border-bottom: 2px solid rgb(53, 54, 58); border-top: 2px solid rgb(53, 54, 58); font-weight: bold;">

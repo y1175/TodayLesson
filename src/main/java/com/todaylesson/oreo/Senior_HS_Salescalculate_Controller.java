@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.LessonDTO;
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.service.Senior_HS_Salescalculate_Service;
 
@@ -49,7 +49,7 @@ public class Senior_HS_Salescalculate_Controller {
 		//int senior_no = salescalculateService.get_Seniorno(member_id);
 		
 		//매출현황전체리스트
-		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> salesList=
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> salesList=
 	         salescalculateService.salesList(member_id, sales_search_startdate, sales_search_enddate, search, searchtxt); 
 		
 		model.addAttribute("salesList", salesList);
@@ -74,7 +74,7 @@ public class Senior_HS_Salescalculate_Controller {
 		String member_id = userDetails.getUsername();
 
 		//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
-		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_requestlist
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_requestlist
 		                          =salescalculateService.calculateRequsetList(member_id);
 		model.addAttribute("cal_requestlist", cal_requestlist);
 		
@@ -192,7 +192,7 @@ public class Senior_HS_Salescalculate_Controller {
 		String member_id = userDetails.getUsername();
 		
 		//정산내역 리스트
-		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> cal_statementlist
+		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_statementlist
 		                          =salescalculateService.calStatementList(member_id);
 		model.addAttribute("cal_statementlist", cal_statementlist);
 		

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -48,9 +47,8 @@ import com.todaylesson.DTO.MyLikeDTO;
 import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.PopUpDTO;
 import com.todaylesson.DTO.ProductDTO;
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.service.Hm_Us_MailSendService;
-import com.todaylesson.service.JY_SN_Approve_LessonService;
 import com.todaylesson.service.LoginService;
 import com.todaylesson.service.Admin_HS_MainService;
 import com.todaylesson.service.Admin_YI_Popup_Service;
@@ -353,7 +351,7 @@ public class TodayLessonController {
     @RequestMapping("/todaylesson")
     public String all(Model model){
 	    //신규레슨목록
-    	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> newlessonlist 
+    	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> newlessonlist 
     	    =userMainService.newLessonList();
     	model.addAttribute("newlessonlist", newlessonlist);
     	

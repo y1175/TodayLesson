@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.User_HS_MainMapper">
     <!-- 쿼리문이랑 같은 이름설정--> 
-	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO" id="userMAinMap">
+	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO" id="userMAinMap">
 	   <result property="lesson_thumb" column="lesson_thumb"/> <!-- 레슨썸네일 -->
 	   <result property="lesson_category" column="lesson_category"/> <!-- 레슨카테고리 -->
 	   <result property="senior_nick" column="senior_nick"/> <!-- 시니어닉네임 -->

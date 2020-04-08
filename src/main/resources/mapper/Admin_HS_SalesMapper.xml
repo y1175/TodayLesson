@@ -5,7 +5,7 @@
 <mapper namespace="com.todaylesson.Mapper.Admin_HS_Sales_Mapper">
     <parameterMap type="java.util.HashMap" id="hashmap"></parameterMap>
     <!-- 쿼리문이랑 같은 이름설정--> 
-	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO" id="salesCalculateMap">
+	<resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO" id="salesCalculateMap">
 	   <!-- MemberDTO -->
 	   <result property="member_id" column="member_id"/>
 	   <result property="member_no" column="member_no"/>
@@ -51,10 +51,6 @@
 	   <!-- OrderDetailDTO -->
 	   <result property="order_detail_no" column="order_detail_no"/> 
 	   <!-- OrderDetailDTO -->
-	   <!-- SalesDTO -->
-	   <result property="sales_comm" column="sales_comm"/>
-	   <result property="sales_surtax" column="sales_surtax"/> 
-	   <!-- SalesDTO -->
 	   <!-- CalculateDTO -->
 	   <result property="calculate_no" column="calculate_no"/> 
 	   <result property="calculate_date" column="calculate_date"/> 
@@ -64,15 +60,12 @@
 	
 	<!-- 매출현황전체리스트 -->
 	<select id="adminSeniorSalesList" resultMap="salesCalculateMap" parameterMap="hashmap">
-	   select o.orderlist_paystatus, l.lesson_category, l.lesson_type, l.lesson_no, l.lesson_title, 
-	          o.orderlist_date, sn.senior_nick, l.lesson_cost, o.orderlist_usepoint, 
-	          floor(sum(lesson_cost*0.1)) as sales_comm, 
-	          floor(sum(lesson_cost/1.1)*0.1) as sales_surtax
-	   from sales s right join orderlist o on s.orderlist_no=o.orderlist_no
-	                join order_detail od on od.orderlist_no=o.orderlist_no
-	                join member m on m.member_id=o.member_id
-	                join senior sn on sn.member_id=m.member_id
-	                join lesson l on l.lesson_no=od.lesson_no 
+	   select o.orderlist_no,o.orderlist_paystatus, l.lesson_type, l.lesson_no, l.lesson_title 
+	          ,o.orderlist_date, m.member_name, l.lesson_cost, o.orderlist_usepoint,sn.senior_no
+	   from orderlist o  join order_detail od on od.orderlist_no=o.orderlist_no
+	                     join member m on m.member_id=o.member_id
+	                     join senior sn on sn.member_id=m.member_id
+	                     join lesson l on l.lesson_no=od.lesson_no
 	  <include refid="search"></include>                          
 	</select>
 	

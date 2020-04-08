@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.ProductDTO;
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.Mapper.User_HS_MainMapper;
 
 @Service(value="user_HS_MainService")
@@ -19,7 +19,7 @@ public class User_HS_MainServiceImple implements User_HS_MainService {
 
 	//신규레슨목록
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> newLessonList() {
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> newLessonList() {
 		// TODO Auto-generated method stub
 		return usermainMapper.newLessonList();
 	}

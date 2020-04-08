@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.todaylesson.DTO.LessonDTO;
-import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO;
+import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.Mapper.Senior_HS_Salescalculate_Mapper;
 
@@ -27,7 +27,7 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	
 	//매출현황전체리스트
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> 
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> 
 	       salesList(String member_id, String sales_search_startdate, String sales_search_enddate, String search, String searchtxt) {  //String start_date, String end_date, 
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<String, Object>();
@@ -43,7 +43,7 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	       
 	//정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calculateRequsetList(String member_id) {
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> calculateRequsetList(String member_id) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.cal_RequestList(member_id);
 	}
@@ -99,7 +99,7 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	
 	//정산내역 목록 리스트
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_Sales_CalculateDTO> calStatementList(String member_id) {
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> calStatementList(String member_id) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calStatementList(member_id);
 	}
