@@ -13,12 +13,12 @@ var result=${result}
 
 if (result>0)
 	{
-	alert('작성완료');
+	alert('가입이 완료되었습니다.');
 	location.href="/todaylesson";
 	}
 else
 	{
-	alert('작성실패');
+	alert('가입실패');
 	location.href="/todaylesson";
 	}
 </script>

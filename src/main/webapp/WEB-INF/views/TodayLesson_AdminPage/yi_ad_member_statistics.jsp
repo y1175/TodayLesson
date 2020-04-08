@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>TodayLessonAdmin</title>
 
    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -13,7 +13,10 @@
    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script> 
    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+   <script src="${pageContext.request.contextPath}/resources/JS/yi_member_statistics.js?ver=1" type="text/javascript"></script>
 <!-- CSSstyle --> 
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/yi_ad_member_statistics.css?ver=1">
    <style type="text/css">
    .hs_ad_main_asidenav_nav_StatMember_Title>a{
          color: rgb(224, 62, 82);
@@ -38,228 +41,118 @@
 
 </head>
 <body>
-<script>
 
 
-$(document).ready(function(){
- 
-	/*접속자 차트 */
-	$.ajax({
 
-		type : "POST",
-	    url: "/todaylessonadmin/member_statistics",
-	    success: function(data) {
-			console.log(data)
-			var chart = AmCharts.makeChart("chartOutput", {
-			    "type": "serial",
-			    "theme": "light",
-			    "marginRight": 40,
-			    "marginLeft": 40,
-			    "autoMarginOffset": 20,
-			    "mouseWheelZoomEnabled":true,
-			    "valueAxes": [{
-			        "id": "v1",
-			        "axisAlpha": 0,
-			        "position": "left",
-			        "ignoreAxisWidth":true
-			    }],
-			    "balloon": {
-			        "borderThickness": 1,
-			        "shadowAlpha": 0
-			    },
-			    "graphs": [{
-			        "id": "g1",
-			        "balloon":{
-			          "drop":true,
-			          "adjustBorderColor":false,
-			          "color":"#ffffff"
-			        },
-			        "bullet": "round",
-			        "bulletBorderAlpha": 1,
-			        "bulletColor": "#FFFFFF",
-			        "bulletSize": 5,
-			        "hideBulletsCount": 50,
-			        "lineThickness": 2,
-			        "title": "red line",
-			        "useLineColorForBulletBorder": true,
-			        "valueField": "output",
-			        "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
-			    }],
-			    "chartScrollbar": {
-			        "graph": "g1",
-			        "oppositeAxis":false,
-			        "offset":30,
-			        "scrollbarHeight": 80,
-			        "backgroundAlpha": 0,
-			        "selectedBackgroundAlpha": 0.1,
-			        "selectedBackgroundColor": "#888888",
-			        "graphFillAlpha": 0,
-			        "graphLineAlpha": 0.5,
-			        "selectedGraphFillAlpha": 0,
-			        "selectedGraphLineAlpha": 1,
-			        "autoGridCount":true,
-			        "color":"#AAAAAA"
-			    },
-			    "chartCursor": {
-			        "pan": true,
-			        "valueLineEnabled": true,
-			        "valueLineBalloonEnabled": true,
-			        "cursorAlpha":1,
-			        "cursorColor":"#258cbb",
-			        "limitToGraph":"g1",
-			        "valueLineAlpha":0.2,
-			        "valueZoomable":true
-			    },
-			    "valueScrollbar":{
-			      "oppositeAxis":false,
-			      "offset":50,
-			      "scrollbarHeight":10
-			    },
-			    "categoryField": "date",
-			    "categoryAxis": {
-			        "parseDates": true,
-			        "dashLength": 1,
-			        "minorGridEnabled": true
-			    },
-			    "export": {
-			        "enabled": true
-			    },
-			    "dataProvider": data
-			});
+<div id="yi_container">
+<section id="digital_clock">
 
-			chart.addListener("rendered", zoomChart);
+<div class="days">
+  <div class="day">
+    <p class="monday">monday</p>
+  </div>
 
-			zoomChart();
+  <div class="day">
+    <p class="tuesday">tuesday</p>
+  </div>
 
-			function zoomChart() {
-			    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
-			}
-	    }
-	});
-	
-	/*가입자 차트*/
-	  $.ajax({
+  <div class="day">
+    <p class="wednesday">wednesday</p>
+  </div>
 
-			type : "POST",
-		    url: "/todaylessonadmin/join_statistics",
-		    success: function(data) {
-				console.log(data)
-				var chart = AmCharts.makeChart("chartOutput2", {
-				    "type": "serial",
-				    "theme": "light",
-				    "marginRight": 40,
-				    "marginLeft": 40,
-				    "autoMarginOffset": 20,
-				    "mouseWheelZoomEnabled":true,
-				    "valueAxes": [{
-				        "id": "v1",
-				        "axisAlpha": 0,
-				        "position": "left",
-				        "ignoreAxisWidth":true
-				    }],
-				    "balloon": {
-				        "borderThickness": 1,
-				        "shadowAlpha": 0
-				    },
-				    "graphs": [{
-				        "id": "g1",
-				        "balloon":{
-				          "drop":true,
-				          "adjustBorderColor":false,
-				          "color":"#ffffff"
-				        },
-				        "bullet": "round",
-				        "bulletBorderAlpha": 1,
-				        "bulletColor": "#FFFFFF",
-				        "bulletSize": 5,
-				        "hideBulletsCount": 50,
-				        "lineThickness": 2,
-				        "title": "red line",
-				        "useLineColorForBulletBorder": true,
-				        "valueField": "output",
-				        "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
-				    }],
-				    "chartScrollbar": {
-				        "graph": "g1",
-				        "oppositeAxis":false,
-				        "offset":30,
-				        "scrollbarHeight": 80,
-				        "backgroundAlpha": 0,
-				        "selectedBackgroundAlpha": 0.1,
-				        "selectedBackgroundColor": "#888888",
-				        "graphFillAlpha": 0,
-				        "graphLineAlpha": 0.5,
-				        "selectedGraphFillAlpha": 0,
-				        "selectedGraphLineAlpha": 1,
-				        "autoGridCount":true,
-				        "color":"#AAAAAA"
-				    },
-				    "chartCursor": {
-				        "pan": true,
-				        "valueLineEnabled": true,
-				        "valueLineBalloonEnabled": true,
-				        "cursorAlpha":1,
-				        "cursorColor":"#258cbb",
-				        "limitToGraph":"g1",
-				        "valueLineAlpha":0.2,
-				        "valueZoomable":true
-				    },
-				    "valueScrollbar":{
-				      "oppositeAxis":false,
-				      "offset":50,
-				      "scrollbarHeight":10
-				    },
-				    "categoryField": "date",
-				    "categoryAxis": {
-				        "parseDates": true,
-				        "dashLength": 1,
-				        "minorGridEnabled": true
-				    },
-				    "export": {
-				        "enabled": true
-				    },
-				    "dataProvider": data
-				});
+  <div class="day">
+    <p class="thursday">thursday</p>
+  </div>
 
-				chart.addListener("rendered", zoomChart);
+  <div class="day">
+    <p class="friday">friday</p>
+  </div>
 
-				zoomChart();
+  <div class="day">
+    <p class="saturday">saturday</p>
+  </div>
 
-				function zoomChart() {
-				    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
-				}
-		    }
-		});
+  <div class="day">
+    <p class="sunday">sunday</p>
+  </div>
+</div>
 
-})
+<div class="clock">
+  <!-- HOUR -->
+  <div class="numbers">
+    <p class="hours"></p>
+    <p class="placeholder">88</p>
+  </div>
 
-</script>
+  <div class="colon">
+    <p>:</p>
+  </div>
 
+  <!-- MINUTE -->
+  <div class="numbers">
+    <p class="minutes"></p>
+    <p class="placeholder">88</p>
+  </div>
 
-<h2>회원통계</h2>
-<p id="date"></p>
-<script>
-document.getElementById("date").innerHTML = Date();
-</script>
+  <div class="colon">
+    <p>:</p>
+  </div>
 
-<h3>접속자 통계</h3>
+  <!-- SECOND -->
+  <div class="numbers">
+    <p class="seconds"></p>
+    <p class="placeholder">88</p>
+  </div>
+  
+  <!-- AM / PM -->
+  <div class="am-pm">
+
+    <!-- AM -->
+    <div>
+      <p class="am">am</p>
+    </div>
+
+    <!-- PM -->
+    <div>
+      <p class="pm">pm</p>
+    </div>
+  </div>
+
+</div>
+
+</section>
+<h2>접속자 통계</h2>
+<div class="detailline"></div>
 <form action="/todaylessonadmin/member_statistics">
 
+<div class="form-group row">
+<label for="start_date end_date" class="col-sm-1 col-form-label">기간선택</label>
+<div class="col-sm-2">
+<input type="date" id="start_date" class="form-control" name="start_date">
+</div>
+<div class="col">
+~
+</div>
+<div class="col-sm-2">
+<input type="date" id="end_date" name="end_date" class="form-control">
+</div>
+</div>
 
-<label>기간선택</label><br>
-<input type="date" name="start_date">~<input type="date" name="end_date"><br>
+<div class="form-group">
 <input type="radio" name="ymd" value="date"><label>일별</label>
 <input type="radio" name="ymd" value="month"><label>월별</label>
-<input type="radio" name="ymd" value="year"><label>연별</label><br>
-<input type="submit" value="조회">
+<input type="radio" name="ymd" value="year"><label>연별</label>
+</div>
+
+<input type="submit" class="statistics-btn" value="조회">
 </form>
-<table>
-<thead>
+<table class="table table-hover">
+<thead class="thead-admin-statistics">
 <tr>
 <th>접속일(년/월/일)</th><th>접속건수</th><th>접속자수</th><th>누적접속건수</th><th>누적접속자수</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="statistics_tbody">
 
 <c:forEach var="item" items="${list }" varStatus="status">
 <tr>
@@ -274,17 +167,21 @@ document.getElementById("date").innerHTML = Date();
 </tbody>
 </table>
 
-<h4>차트1</h4>
+<h3>접속자 차트</h3>
 <div id = "chartOutput" style = "margin-top : 20px"></div>
 
 
-<h3>신규회원 통계</h3>
+<h2>신규회원 통계</h2>
+<div class="detailline"></div>
 <form action="/todaylessonadmin/member_statistics">
 
-
-<label>선택</label><br>
-<input type="date" name="countdate">
-<input type="submit" value="조회">
+<div class="form-group row">
+<label for="countdate" class="col-sm-1 col-form-label">날짜선택</label>
+<div class="col-sm-2">
+<input type="date" name="countdate" id="countdate" class="form-control">
+</div>
+</div>
+<input type="submit" class="statistics-btn" value="조회">
 </form>
 
 
@@ -294,14 +191,14 @@ document.getElementById("date").innerHTML = Date();
 </c:if>
 
 
-<table>
-<thead>
+<table class="table table:hover">
+<thead class="thead-admin-statistics">
 <tr><th>당일 가입자 수</th><th>이번주 가입자 수</th><th>이번달 가입자 수</th><th>올해 가입자 수</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="statistics_tbody">
 
-<tr>
+<tr style="font-size:20px;font-weight:500;">
 <td>${today_joinCount}</td>
 <td>${week_joinCount}</td>
 <td>${month_joinCount}</td>
@@ -311,8 +208,9 @@ document.getElementById("date").innerHTML = Date();
 </tbody>
 </table>
 
-<h4>차트2</h4>
+<h3>가입자 차트</h3>
 <div id = "chartOutput2" style = "margin-top : 20px"></div>
 
+</div>
 </body>
 </html>
