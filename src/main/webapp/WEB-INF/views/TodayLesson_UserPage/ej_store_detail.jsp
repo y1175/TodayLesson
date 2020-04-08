@@ -41,7 +41,6 @@ $(document).ready(function(){
 	   /*관련상품카르셀  */
 	   var owl = $('.owl-carousel');
 	   owl.owlCarousel({ /*  loop:true, */
-		   loop:true,
 	       items:5,
 	       margin:70,
 	       nav: true ,
@@ -75,7 +74,7 @@ $('#summernote').summernote({
   <form role="form" method="post" id="form1" name="form" >
  
 <!--썸네일 이미지 원본 맨위에 보여줌-->
-<div class="ej_top img">
+<div class="ej_top imgbox">
 <img src="${dto.product_img }" id="ej_sdetail_topimg" width="60%">
 </div>
 

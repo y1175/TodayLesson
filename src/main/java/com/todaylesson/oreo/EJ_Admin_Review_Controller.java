@@ -44,7 +44,7 @@ public class EJ_Admin_Review_Controller {
 			int result = service.deletepdreview(pdreview_no);//삭제 쿼리만들기
 			model.addAttribute("result",result);
 			
-			return "TodayLesson_AdminPage/ej_ad_product_delete_result";
+			return "TodayLesson_AdminPage/ej_ad_pdreview_delete_result";
 		}
 	
 }

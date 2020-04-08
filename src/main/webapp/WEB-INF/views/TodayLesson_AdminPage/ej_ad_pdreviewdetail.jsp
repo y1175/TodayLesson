@@ -27,7 +27,9 @@ $(document).ready(function(){
       #ej_container{
       width:80%;
       margin:0 auto;
+/*       text-align: center; */
       }
+      
      .ej_btn{
 border: 1px transparent;
 padding: 5px 15px; 

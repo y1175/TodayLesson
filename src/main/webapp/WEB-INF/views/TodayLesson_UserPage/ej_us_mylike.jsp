@@ -9,22 +9,27 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <style>
+#ej_container{
+width:90%;
+margin: 0 auto;
+}
 .ej_likespan{
 display: inline-block;
-background-color: silver;
-color: white;
+background-color: rgba( 213, 213, 213, 0.5 );
+color:  rgba(53, 54, 58,0.9); 
 font-weight:bold;
-width:33.33%;
-padding:10px;
+width:33.3%;
+padding:20px;
 margin:0px;
-margin-top:0;
-height:60px;
+/* margin-top:0; */
+/* height:60px; */
 float:left;
 text-align: center;
 }
 #ej_top{
 /* margin-left:30%; */
-width:100%;
+/* width:100%; */
+text-align: center;
 }
 .ej_link{
 color:black;}
@@ -45,6 +50,7 @@ $(".ej_likespan").click(function(){
 });
 
 </script>
+<div id="ej_container">
 <div id="ej_top">
 <a href="?category=all"><div class="ej_likespan all">ÀüÃ¼</div></a>
 <a href="?category=lesson"><div class="ej_likespan lesson">·¹½¼</div></a>
@@ -67,20 +73,22 @@ $(".ej_likespan").click(function(){
 
 <c:if test="${lesson_title==null }">
 <td>»óÇ°</td>
-<td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
-<td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}" class="ej_link">${item.product_name }</a></td>
+<td><a href="${pageContext.request.contextPath}/todaylesson/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
+<td><a href="${pageContext.request.contextPath}/todaylesson/ej_store_detail/${item.product_no}" class="ej_link">${item.product_name }</a></td>
 <td>${item.product_cost }¿ø</td></c:if>
 
 
 <c:if test="${product_name==null }">
 <td>·¹½¼</td>
-<td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
-<td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}" class="ej_link">${item.lesson_title }</a></td>
+<td><a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td><a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}" class="ej_link">${item.lesson_title }</a></td>
 <td>${item.lesson_cost }¿ø</td></c:if>
 
 </tr>
 </c:forEach> 
 </tbody>
 </table>
+
+</div>
 </body>
 </html>

@@ -24,6 +24,7 @@
 <b>수량</b>  ${item.order_count }
 </c:forEach>
 <br>
+<br>
 <div id="ej_line"></div>
 <!--오더 리스트 정보  -->
 <br>

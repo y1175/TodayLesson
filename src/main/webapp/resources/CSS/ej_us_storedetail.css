@@ -109,9 +109,13 @@ color: white;
 
 #ej_sdetail_topimg{
 width:550px;
+
 }
 .ej_top{
 	display:inline-block;
+}
+.ej_top.imgbox{
+	height:600px;
 }
 .ej_top.right{
 /* border: 1px solid silver; */

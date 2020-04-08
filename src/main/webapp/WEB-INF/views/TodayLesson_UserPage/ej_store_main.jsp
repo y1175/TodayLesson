@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=2">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=3">
 <!--style-->
 </head>
 
@@ -61,8 +61,8 @@
       <b class="" style="font-size: 25px;"> </b>
       <div class="" style="margin-top: 30px;">
       <span id="ej_right">
-      <a href="?order=like" ><button class="btn btn-default">좋아요순</button></a>
-<a href="?order=recent"><button class="btn btn-default">최신순</button></a>
+      <a href="?order=like" ><button class="ej_btn order">좋아요순</button></a>
+<a href="?order=recent"><button class="ej_btn order">최신순</button></a>
 </span>
 <br>
 <br>
@@ -70,9 +70,10 @@
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_newproduct">
                   <div class="hs_user_store_newproduct_img">
+                  <div class="hs_user_store_newproduct_img2">
                      <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
-                     </a>
+                     </a></div>
                      <ul class="hs_user_store_newproduct_social" >
                         <li>
                            <a href="#" ><div class="fas fa-heart" id="${storenewproductlist.product_no}"></div></a>

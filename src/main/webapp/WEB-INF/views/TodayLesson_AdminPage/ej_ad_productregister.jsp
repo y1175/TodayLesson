@@ -16,8 +16,17 @@
  <script src="/resources/JS/summernote-ko-KR.js"></script> 
 <title>글쓰기</title>
 <style>
-/* .ej_num_input{
-width: 50px;} */
+.ej_btn{
+	border: 1px transparent;
+padding: 5px 15px; 
+background-color: rgb(224, 62, 82);
+height:40px;
+width:120px;
+font-weight : 600;
+font-size : 14px; 
+color: white;
+float:right;
+}
 </style>
 <script>
 	$(document).ready(function() {
@@ -38,7 +47,7 @@ width: 50px;} */
 	<br>
 	<br>
 
-	<div style="width: 60%; margin: auto;">
+	<div style="width: 80%; margin: auto;">
 		<!-- 블로그에서는  -->
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath }/todaylessonadmin/ej_ad_product_insertresult"> 
@@ -56,11 +65,11 @@ width: 50px;} */
 		<label>제품명</label><br>
 		 <input type="text" name="product_name" size="40" placeholder="제품명" required="required"/> <br>
 			<br>
-				<label>가격</label>
+				<label>가격</label><br>
 				 <input type="text" class="ej_num_input" name="product_cost" size="6" placeholder="가격"  required="required"/>원 <br>
-				  <label>할인율</label>
+				  <label>할인율</label><br>
 				 <input type="text" class="ej_num_input" name="product_sale" size="6"  maxlength="2" placeholder="%" required="required"/>% <br>
-				 <label>수량</label>
+				 <label>수량</label><br>
 				 <input type="text" class="ej_num_input" name="product_stock" size="6"  placeholder="수량" required="required"/>개 <br>
 				
 				<label>상세설명</label><br>
@@ -84,7 +93,7 @@ width: 50px;} */
    }
   });
  </script>
- <input type="submit" value="제품 등록"/>
+ <input type="submit" value="제품 등록" class="ej_btn"/>
   <%-- <%=request.getRealPath("/") %>  --%>
 </div>
 			
