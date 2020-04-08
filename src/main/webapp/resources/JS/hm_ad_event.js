@@ -5,4 +5,7 @@ $(document).ready(function(){
 	location.href="/todaylessonadmin/hm_ad_event_insert";	
 		
 	});
+	
+	//page
+    $('body').bootstrapMaterialDesign();
 });

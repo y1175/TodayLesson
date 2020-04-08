@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Today Lesson</title>
+   
 <script>
 /* 정렬 자바스크립트 */
  /* 
@@ -131,9 +132,11 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 
 
 <div class="paging">
+<ul class="pagination pagination-danger">
 <!-- 이전페이지블럭 -->
 <c:if test="${page.prev }">
-<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}"><c:out value="이전"/></a>
+<li class="page-item"><a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}" class="page-link">PREV
+</a></li>
 </c:if>
 
 <!-- 현재 페이지블럭 -->
@@ -141,19 +144,24 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 
 <!-- if 인덱스가 현재페이지가 아니면 a태그 -->
 <c:if test="${index!= page.currPage }">
-<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}&order=${order}">${index }</a>
+<li class="page-item">
+<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}&order=${order}" class="page-link">${index }
+</a></li>
 </c:if>
 
 <!--  if 인덱스가 현재페이지면 현재페이지 출력 -->
 <c:if test="${index==page.currPage }">
-${index }
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
 </c:if>
 </c:forEach>
 
 <!-- 다음페이지블럭 -->
 <c:if test="${page.next }">
-<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&order=${order}"><c:out value="다음"/></a>
+<li class="page-item">
+<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&order=${order}" class="page-link">NEXT
+</a></li>
 </c:if>
+</ul>
 </div>
 
 </div>

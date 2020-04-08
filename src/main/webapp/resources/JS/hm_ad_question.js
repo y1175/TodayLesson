@@ -13,6 +13,7 @@ $(document).ready(function(){
 		location.href="/todaylessonadmin/hm_ad_question_detail/"+no;
 	});
 	
-	
+	//page
+	  $('body').bootstrapMaterialDesign();
 	
 });
