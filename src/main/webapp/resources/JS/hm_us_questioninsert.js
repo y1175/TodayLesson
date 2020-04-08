@@ -28,6 +28,7 @@ $(document).ready(function(){
 			if(result == true){
 				document.hmquestionform.submit();
 				
+				
 			}else{
 				document.hmquestionform.reset();
 			}
@@ -45,8 +46,35 @@ function bad_check(){
 	var YokList = new Array('개새끼','개색기','바보','script','iframe');
 	var Tmp;
 	var Tmp2;
+	var i = 0;
 	
-	 for(i=0 ; i<YokList.length ; i++){
+	while(i<=YokList.length){
+		Tmp = hmquestionform.question_content.value.toLowerCase().indexOf(YokList[i]);
+		Tmp2 = hmquestionform.question_title.value.toLowerCase().indexOf(YokList[i]);
+		
+		if(Tmp>=0){
+			alert('불건전한 내용이 들어있어 문의가 불가합니다.');
+			document.hmquestionform.question_content.focus();
+			return false;
+		}else if(Tmp2>=0){
+			alert('불건전한 내용이 들어있어 문의가 불가합니다.');
+			document.hmquestionform.question_title.focus();
+			return false;
+		}else{
+			i++;
+			if(i==YokList.length){
+				return true;
+			}
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
+	/* for(var i=0 ; i<YokList.length; i++){
 		
 		Tmp = hmquestionform.question_content.value.toLowerCase().indexOf(YokList[i]);
 		Tmp2 = hmquestionform.question_title.value.toLowerCase().indexOf(YokList[i]);
@@ -62,5 +90,5 @@ function bad_check(){
 		}else{
 			return true;
 		}
-	}
+	}*/
 };
