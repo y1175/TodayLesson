@@ -7,11 +7,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <style>
 .ej_likespan{
-border: 1px black;
 display: inline-block;
 background-color: silver;
+color: white;
+font-weight:bold;
+width:33.33%;
+padding:10px;
+margin:0px;
+margin-top:0;
+height:60px;
+float:left;
+text-align: center;
+}
+#ej_top{
+/* margin-left:30%; */
+width:100%;
+}
+.ej_link{
+color:black;}
+a.ej_link:hover{
+text-decoration: none;
 }
 </style>
 
@@ -27,14 +45,18 @@ $(".ej_likespan").click(function(){
 });
 
 </script>
+<div id="ej_top">
 <a href="?category=all"><div class="ej_likespan all">전체</div></a>
 <a href="?category=lesson"><div class="ej_likespan lesson">레슨</div></a>
 <a href="?category=store"><div class="ej_likespan store">상품</div></a>
+</div>
 <br>
-<table>
+<br>
+<br>
+<table class="table">
 <thead>
 <tr>
-<th>구분</th><th></th><th></th><th></th><th>가격</th>
+<th>구분</th><th></th><th>이름</th><th>가격</th>
 </tr>
 </thead>
 <tbody>
@@ -46,14 +68,14 @@ $(".ej_likespan").click(function(){
 <c:if test="${lesson_title==null }">
 <td>상품</td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
-<td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}">${item.product_name }</a></td>
+<td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}" class="ej_link">${item.product_name }</a></td>
 <td>${item.product_cost }원</td></c:if>
 
 
 <c:if test="${product_name==null }">
 <td>레슨</td>
-<td><a href="#"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
-<td><a href="#">${item.lesson_title }</a></td>
+<td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}" class="ej_link">${item.lesson_title }</a></td>
 <td>${item.lesson_cost }원</td></c:if>
 
 </tr>

@@ -13,7 +13,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<!--my style  -->
+<!--my style  -->	
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderform.css">
   <!--my style/  -->
 <title>Insert title here</title>
@@ -22,6 +22,15 @@
 display:none;}
 .fa-times-circle{
 text-align: right;
+}
+.delete_product_cart:hover{
+text-decoration: none;
+}
+
+/* span.ej_link{
+color:black;} */
+.ej_link:hover{
+text-decoration: none;
 }
 
 </style>
@@ -32,7 +41,7 @@ text-align: right;
 <h2>${memberid }님의 장바구니<br></h2>
 
 <input type="hidden" name="member_id" value="${memberid }" id="member_id"> 
-<table>
+<table class="table" style="border:none;">
 <thead>
 <tr>
 <th>삭제</th><th>구분</th><th></th><th>이름</th><th>가격</th><th>수량</th>
@@ -49,19 +58,19 @@ text-align: right;
 <c:choose>
 
 <c:when test="${lesson_title==null}"><!--상품정보  -->
-<td><a href="#" class="delete_product_cart" id="${item.product_no}" >x</a></td>
+<td><a href="#" class="delete_product_cart" id="${item.product_no}" ><i class="fas fa-times" style="font-size:20px; color:black;"></i></a></td>
 <td>상품</td>
 <td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
-<td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}">${item.product_name }</a></td>
+<td style="color:black;"><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}" class="ej_link"><span class="ej_link">${item.product_name }</span></a></td>
 <td><fmt:formatNumber value="${item.product_after_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>${item.cart_amount }</td>
 </c:when>
 
 <c:when test="${product_name==null}"><!--레슨정보  -->
-<td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" >x</a></td>
+<td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" ><i class="fas fa-times" style="font-size:20px;color:black;"></i></a></td>
 <td>레슨</td>
-<td><a href="#"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
-<td><a href="#">${item.lesson_title}</a></td>
+<td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td style="color:black;"><a href="${pageContext.request.contextPath}/lesson_detail/${item.lessont_no}">${item.lesson_title}</a></td>
 <td><fmt:formatNumber value="${item.lesson_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>1</td>
 </c:when>
@@ -74,24 +83,23 @@ text-align: right;
 </table>
 <hr>
 <div class="sum">
-	<h3>장바구니 합계 : <fmt:formatNumber value="${total_cart }" type="number" maxFractionDigits="3"/>원</h3>
+	<h3><b>장바구니 합계  <fmt:formatNumber value="${total_cart }" type="number" maxFractionDigits="3"/>원</b></h3>
 </div>
 
-<input type="button" class='ej_btn' id="open_orderform_btn"value="주문하기"><br>
+<input type="button" class='ej_btn' id="open_orderform_btn"value="주문하기" style="float:right;width:110px;"><br>
 
 
 <div class="orderInfo">
 
+<div class="ej_cost">
+ <b>보유 포인트</b> <fmt:formatNumber value="${mdto.member_point}" type="number" maxFractionDigits="3"/><!-- <a href="#"> --><i class="far fa-times-circle"  id="cancel_btn" style="font-size:20px;color:black;float:right;"></i><!-- </a> --><br>
+<b>포인트 사용</b> <input type="text"  class="form-control" id="usepoint" value=0 style="width:100px;">
+<button class='ej_btn' id="pointbtn">적용</button>
+<div class="ej_cost right">
+ <b style="font-size:20px;">결제금액</b><br>
+ <input type="text" value="${total_cart }" id="orderlist_cost1" class="paymentcost" readonly="readonly" style="border:none;background-color:transparent;font-size:25px;font-weight:bold;width:100px;">원</div>
+<br></div>
 
- 보유 포인트: <fmt:formatNumber value="${mdto.member_point}" type="number" maxFractionDigits="3"/><a href="#"><i class="far fa-times-circle"  id="cancel_btn"></i></a><br>
-포인트 사용 <input type="text"  class="form-control" id="usepoint" value=0>
-<button class='btn btn-primary' id="pointbtn">적용</button><br>
-
- 결제금액<br>
- <input type="text" value="${total_cart }" id="orderlist_cost1" class="paymentcost" readonly="readonly">
-<br>
-<%-- <c:set var="after_point_cost2" value="${total_cart -usepoint}" />
-결제금액2: ${after_point_cost2 } --%>
 <script>
     
     $("#pointbtn").click(function(){
@@ -146,12 +154,12 @@ text-align: right;
 
 
  <form role="form" method="post" autocomplete="off"> 
- <h4>주문자 정보</h4><hr>
- 주문자명   <input type="text"   class="form-control" width="300" value=${mdto.member_name } readonly="readonly"><br>
- 이메일   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email } readonly="readonly"><br>
-연락처   <input type="text"  class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
+ <h4><b>주문자 정보</b></h4><hr>
+ <b>주문자명</b>   <input type="text"   class="form-control" width="300" value=${mdto.member_name } readonly="readonly"><br>
+ <b>이메일</b>   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email } readonly="readonly"><br>
+<b>연락처</b>   <input type="text"  class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
 <input type="hidden" name="member_id" value='${memberid}'>
- <h4>배송지 정보</h4><hr>
+ <h4><b>배송지 정보</b></h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <%-- <input type="hidden" name="product_no" value=${product_no }>
@@ -159,9 +167,9 @@ text-align: right;
 <input type="hidden" name="orderlist_cost" id="orderlist_cost" value="${total_cart}" class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= ${mdto.member_point}>
-수령자명<input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
-휴대전화<input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
-주소<input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
+<b>수령자명</b><input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
+<b>휴대전화</b><input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
+<b>주소</b><input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
 
 
    <input type="radio"  name="addrselect" value=0 id="sameaddrselect" checked="checked">
@@ -174,7 +182,7 @@ text-align: right;
                         placeholder="우편번호" value=${mdto.member_zipcode } class='form-control' >
                   </div>
                   <input type="button" onclick="sample4_execDaumPostcode()"
-                     value="우편번호 찾기" readonly="readonly" class='btn btn-primary' ><br>
+                     value="우편번호 찾기" readonly="readonly" class='ej_btn' ><br>
                </div>
                <div class='juso'>
             
@@ -197,7 +205,7 @@ text-align: right;
 </div> 
 
 <hr>
-배송요청사항<textarea rows="5" name="orderlist_msg" class="form-control" cols="100"></textarea><br>
+<b>배송요청사항</b><textarea rows="5" name="orderlist_msg" class="form-control" cols="100"></textarea><br>
 <script>
 
 $("#findaddr").hide();
@@ -251,19 +259,24 @@ $("#sameaddr").on('click', function() {
 });
 </script>
 <br>
-<h4>결제정보</h4><hr>
- 결제수단 선택
+<div class="ej_cost2">
+<h4><b>결제정보</b></h4><hr>
+ <b>결제수단 선택</b>
   <input type="radio" name="paymethod" value="card">신용카드
 <input type="radio" name="paymethod" value="kakaopay">카카오페이
 
 <br>
 
  배송비 무료<br>
- 결제금액<br>
- <input type="text" name="paymentt2" value="${total_cart }" class="paymentcost" readonly="readonly">
+ <div class="ej_cost2_right">
+<b> 결제금액</b><br>
+ <input type="text" name="paymentt2" value="${total_cart }" class="paymentcost" readonly="readonly" style="border:none;background-color:transparent;font-size:25px;font-weight:bold;width:100px;">원
  
-  <button id="check_module" type="button" class='btn btn-primary'>결제하기</button> 
-<button id="testbtn">테스트주문완료</button>
+  <button id="check_module" type="button" class='ej_btn' >결제하기</button> </div>
+  </div>
+  
+  <br>
+<button id="testbtn">테스트주문완료(지울거임)</button>
 <script>
 $("#testbtn").click(function(){
 	
