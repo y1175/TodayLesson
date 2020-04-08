@@ -1,74 +1,16 @@
 #yi_container{	
-	width: 80%;
+	width: 70%;
 margin: auto;
 margin-top: 40px;
 color: rgb(53, 54, 58);
 	
 	
 }
-.memberid{
-	font-size:30px;
+h3{
 	font-weight:600;
-	
 }
-
-.order_period{
-	width: 40%;
-	
-}
-.order_search_btn{
-	
-	border: 1px transparent;
-padding: 5px 15px;
-border-radius : 3px;
-background-color: rgb(224, 62, 82);
-background-color: rgba(53, 54, 58 , 0.5 );
-font-weight : 600;
-font-size : 14px;
-color: white;
-}
-
-.order_search_btn:hover{
-	
-	border: 1px transparent;
-padding: 5px 15px;
-border-radius : 3px;
-background-color: rgb(224, 62, 82);
-background-color: rgba(53, 54, 58 , 0.9 );
-font-weight : 600;
-font-size : 14px;
-color: white;
-	
-}
-
-.order_detail_btn{
-	
-	border: 1px transparent;
-padding: 5px 15px;
-border-radius : 3px;
-background-color: rgb(224, 62, 82);
-background-color: rgba(53, 54, 58 , 0.5 );
-font-weight : 600;
-font-size : 14px;
-color: white;
-}
-
-.order_detail_btn:hover{
-	
-	border: 1px transparent;
-padding: 5px 15px;
-border-radius : 3px;
-background-color: rgb(224, 62, 82);
-background-color: rgba(53, 54, 58 , 0.9 );
-font-weight : 600;
-font-size : 14px;
-color: white;
-	
-}
-
-.data_info{
-	font-weight : 600;
-	font-size : 15px;
+h4{
+	font-weight:600;
 }
 
 .detailline{
@@ -79,24 +21,70 @@ color: white;
     margin-bottom:20px;
 }
 
+.detail_info{
+	font-size:20px;
+	font-weight:600;
+	
+}
 .order_thumb{
 	
-	
+
 	
 }
 .myproduct{
-	
+	font-weight:600;
 }
 .ordercost{
 	
 	font-weight:600;
-	font-size: 30px;
+	font-size: 25px;
 }
 
-.delivery_name{
-	font-size: 20px;
+.goback-btn{
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.5 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+
 }
 
-.pay_info{
-	font-size: 20px;
+.goback-btn:hover{
+	
+	border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+background-color: rgba(53, 54, 58 , 0.9 );
+font-weight : 600;
+font-size : 14px;
+color: white;
+	
+}
+
+.ordercancel-btn{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82);
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
+
+.ordercancel-btn:hover{
+	
+		border: 1px transparent;
+padding: 5px 15px;
+border-radius : 3px;
+background-color: rgb(224, 62, 82, 0.8);
+font-weight : 600;
+font-size : 14px;
+color: white;
+
 }

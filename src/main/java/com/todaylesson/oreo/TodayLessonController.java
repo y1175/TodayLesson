@@ -724,7 +724,7 @@ public class TodayLessonController {
        @RequestMapping("/findId")
        public String findId()
        {
-          return "TodayLesson_UserPage/yi_find_id";
+          return "TodayLesson_UserPage/yi_find_id.us_main_section";
        }
        
        /*id중복 체크*/

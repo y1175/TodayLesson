@@ -35,14 +35,17 @@ on  orderlist.orderlist_no= order_detail.orderlist_no
 
 <select id="orderinfo" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="int">
 select *
-from orderlist
-where orderlist_no=#{orderlist_no}
+from member join (orderlist
+join(order_detail join product on order_detail.product_no=product.product_no)
+on  orderlist.orderlist_no= order_detail.orderlist_no)
+on member.member_id= orderlist.member_id
+where orderlist.orderlist_no=#{orderlist_no}
 
 </select>
 
 <select id="orderinfo_detail" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO"
  parameterType="int">
-select product_thumb,product_category,product_cost,orderlist_orderstatus
+select product_thumb,product_category,product_cost,orderlist_orderstatus,product_sale,product_name
 from member join (orderlist
 join(order_detail join product on order_detail.product_no=product.product_no)
 on  orderlist.orderlist_no= order_detail.orderlist_no)
