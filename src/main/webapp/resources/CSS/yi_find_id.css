@@ -7,9 +7,18 @@
 	
 }
 .findidmain h2{
-	margin-bottom:60px;
-	
+	margin-bottom:40px;
+	font-size:30px;
 }
+
+.form-group input{
+	font-size:15px;
+}
+
+.form-group label{
+	font-size:15px;
+}
+
 .findidbtn{
 	
 	border: 1px transparent;
