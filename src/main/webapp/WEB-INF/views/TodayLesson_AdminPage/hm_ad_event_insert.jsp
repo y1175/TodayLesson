@@ -4,6 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- CSSstyle -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_insert.css?ver=2"> 
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Event_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
+
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -12,8 +22,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
  <script src="/resources/JS/summernote-ko-KR.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_insert.js"></script>
-<title>글쓰기</title>
+<title>오늘의 레슨 이벤트 등록</title>
 
+<!-- 썸머노트 -->
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote({
@@ -29,73 +40,111 @@
 
 		
 	});
-	
-	
 </script>
+
+
+
 </head>
 <body>
-	<h2 style="text-align: center;">이벤트 등록</h2>
-	<br>
-	<br>
-	<br>
 
-	<div style="width: 60%; margin: auto;">
+
+
+<div class="hm_ad_event_insertmain">
+<h3>이벤트 등록</h3>
+	
+
+	
 		
 		<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_insertresult" name="eventinsertfrm" id="eventinsertfrm"> 
 		
+		<div class="form-group">
 		
-		<br>
-		<label>이벤트 유형</label><br>
-		<select name="event_group" id="event_group">
+		
+		<label for="event_group">이벤트 유형</label>
+		<select name="event_group" id="event_group" class="form-control" style="width:20%; margin-bottom:20px;">
 		<option value="">유형을 선택해주세요</option>
 		<option value="0">레슨</option>
 		<option value="1">스토어</option>
 		<option value="2">기타</option>
 		</select>
-		<br>
-		<br>
-		<label>이벤트명</label><br>
-		 <input type="text" id="event_title" name="event_title" style="width: 40%;" placeholder="이벤트명" required="required"/> <br>
-			<br>
-			<label>이벤트 시작기간</label><br>
-			<input type="date" id="event_startperiod" name="event_startperiod" style="width: 30%;" required="required"/><br>
-			<label>이벤트 종료기간</label><br>
-			<input type="date" name="event_endperiod" style="width: 30%;" required="required"/><br>
-				<label>이벤트 상세설명</label><br>
-				<textarea id="summernote" name="event_content" placeholder="이벤트 상세 설명" required="required"></textarea>
+		
+			
+	    <label for="event_startperiod">이벤트 시작기간</label>
+		<input type="date" id="event_startperiod" name="event_startperiod"  required="required" class="form-control" style="width:20%; margin-bottom:20px;"/>
+		
+		<label for="event_endperiod">이벤트 종료기간</label>
+		<input type="date" name="event_endperiod" required="required" class="form-control" style="width:20%; margin-bottom:20px;"/>	
+		
+		
+		<label for="event_title">이벤트명</label>
+		<input type="text" id="event_title" name="event_title"  placeholder="이벤트명을 입력해주세요" required="required" class="form-control"  aria-describedby="titleHelp" style="width:50%; "/> 
+		<small id="titleHelp" class="form-text text-muted" style="margin-bottom:20px;">이벤트명은 한글 100자/영문 300자를 넘기지 않아야 합니다.</small>
+		
+		<label>썸네일 간단설명</label>
+	    <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" class="form-control" maxlength="100" aria-describedby="explainHelp" style="width:50%;"></textarea>
+	    <small id="explainHelp" class="form-text text-muted" style="margin-bottom:20px;">썸네일에 대한 간략한 설명을 한글 100자 / 영문 300자 이내로 작성해주세요.</small>
+		
+	
+		
+		</div>
+		
+		
+		
+		
+		<!-- 썸머노트 -->
+		<label for="event_content">이벤트 내용</label>
+		<textarea id="summernote" name="event_content" required="required"></textarea>
+		<!-- 썸머노트 끝 -->
 			
 			
-			<div class="inputArea">
 			
- <label for="event_thumbnail">썸네일</label>
- <input type="file" id="event_thumbnail" name="file" />
- <br>
- <div class="select_img"><img src="" /></div>
+			
+		<div class="form-group" style="margin-top:20px;">
+			
+		<div class="inputArea">
+ 		<label for="event_thumbnail">썸네일</label>
+ 		<input type="file" id="event_thumbnail" name="file" class="form-control-file" style="margin-bottom:20px;"/>
+ 		
+ 		<!-- 썸네일 보여주는 div -->
+ 		<div class="select_img"><img src="" /></div>
  
- <script>
-  $("#event_thumbnail").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(300);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script>
- <br><br>
- <li style="list-style: none;">이벤트 간단설명</li>
- <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100"></textarea>
-<br>
-<br>
- <input type="button" id="hm_ad_event_insertbtn" value="이벤트 등록"/>
-  <%-- <%=request.getRealPath("/") %>  --%>
-  <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+ 		</div>
+ 
+ 
+ 
+ 
+ 			<!-- 썸네일 선택 시 div에 썸네일 보여줌 -->
+ 			<script>
+  			 $("#event_thumbnail").change(function(){
+   			 if(this.files && this.files[0]) {
+    		 var reader = new FileReader;
+   			 reader.onload = function(data) {
+    		 $(".select_img img").attr("src", data.target.result).width(450);        
+   			 }
+   			 reader.readAsDataURL(this.files[0]);
+   			 }
+  			 });
+ 			</script>
+ 			<!-- script 끝 -->
+ 			
+ 			
+
+		
+		<div class="eventbtndiv">
+ 		<input type="button" id="hm_ad_event_insertbtn" class="hmeventinsertbtn" value="이벤트 등록"/>
+ 		<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'" class="hmeventinsertbtn2">취소</button>
+ 		</div>
+ 		
+ 		<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+		
+		
+		</div>
+
+	</form>
+	
+	
 </div>
-			
-		</form>
-	</div>
 
 </body>
 </html>

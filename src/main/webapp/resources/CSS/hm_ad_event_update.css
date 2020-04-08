@@ -1,0 +1,35 @@
+@charset "utf-8";
+.hm_ad_event_updatemain{
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+	color: rgb(53, 54, 58);
+}
+.hm_ad_event_updatemain h3{
+	text-align: center;
+	margin-bottom: 40px;
+}
+.eventbtndiv{
+	margin-top:20px;
+	text-align: right;
+}
+.hmeventupdatebtn{
+	
+	border: 1px transparent;
+	padding: 7px 20px; 
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	
+}
+.hmeventupdatebtn2{
+	border: 1px transparent;
+	padding: 7px 20px; 
+	border-radius : 3px;
+	background-color: rgb(224, 62, 82);
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+}

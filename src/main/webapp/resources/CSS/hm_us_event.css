@@ -1,3 +1,11 @@
+.hm_ad_event_managemain{
+width: 80%;
+margin: auto;
+margin-top: 40px;
+color: rgb(53, 54, 58);
+	
+}
+
 .hm_event_header h2{
 	margin-top:40px;
 	text-align: center;
@@ -30,4 +38,5 @@ color: white;
 	
 	
 }
+
 

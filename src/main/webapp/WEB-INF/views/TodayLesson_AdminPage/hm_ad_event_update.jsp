@@ -5,17 +5,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- CSSstyle -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_update.css?ver=1"> 
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Event_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
 <!-- include summernote css/js-->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
  <script src="/resources/JS/summernote-ko-KR.js"></script>
-<%--  <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_update.js"></script> --%>
-<title>Insert title here</title>
+<title>관리자 이벤트 수정페이지</title>
+
+<!-- 썸머노트 -->
  <script>
  	$(document).ready(function() {
 		$('#summernote').summernote({
@@ -35,23 +45,37 @@
 		
 }); 
 </script> 
+<!-- 썸머노트 끝 -->
+
+
+
 </head>
 <body>
-	<h2 style="text-align: center;">이벤트 수정</h2>
-	<br>
-	<br>
-	<br>
 
-	<div style="width: 60%; margin: auto;">
+
+
+<div class="hm_ad_event_updatemain">
+<h3>이벤트 수정</h3>
+
+
+	
 		
 		<form role="form"  name="eventupdateform" method="post" autocomplete="off" enctype="multipart/form-data"'
 		 action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_modify"> 
-		<input type ="hidden" id="event_no" name="event_no" value="${dto.event_no}">
-		<br>
-		<label>이벤트 유형</label><br>
-		<select name="event_group" id="event_group">
+		 
+		 
+		 <div class="form-group">
+
+		 <input type ="hidden" id="event_no" name="event_no" value="${dto.event_no}">
+		
+		
+		
+		
+		
+		<label for="event_group">이벤트 유형</label>
+		<select name="event_group" id="event_group" class="form-control" style="width:20%; margin-bottom:20px;">
 		<option value="${dto.event_group}">
-		<c:choose>
+		  <c:choose>
 				<c:when test="${dto.event_group eq '0'}">
 					<c:out value="레슨" />
 				</c:when>
@@ -61,57 +85,82 @@
 				<c:when test="${dto.event_group eq '2'}">
 					<c:out value="기타" />
 				</c:when>
-			</c:choose>
+		  </c:choose>
 		</option>
 		<option value="0">레슨</option>
 		<option value="1">스토어</option>
 		<option value="2">기타</option>
 		</select>
-		<br>
-		<br>
-		<label>이벤트명</label><br>
-		 <input type="text" id="event_title" name="event_title" value="${dto.event_title}" style="width: 40%;" placeholder="이벤트명" required="required"/> <br>
-			<br>
-			<label>이벤트 시작기간</label><br>
-			<input type="date" id="event_startperiod" name="event_startperiod" value="${dto.event_startperiod}" style="width: 30%;" required="required"/><br>
-			<label>이벤트 종료기간</label><br>
-			<input type="date" name="event_endperiod" style="width: 30%;" value="${dto.event_endperiod}" required="required"/><br>
-				<label>이벤트 상세설명</label><br>
-				<textarea id="summernote" name="event_content" style="display:none"><c:out value="${dto.event_content}"/></textarea>
+		
+		
+		
+		<label for="event_startperiod">이벤트 시작기간</label>
+		<input type="date" id="event_startperiod" name="event_startperiod" value="${dto.event_startperiod}"  required="required" class="form-control" style="width:20%; margin-bottom:20px;"/>
+		
+		<label for="event_endperiod">이벤트 종료기간</label>
+		<input type="date" name="event_endperiod" required="required" value="${dto.event_endperiod}" class="form-control" style="width:20%; margin-bottom:20px;"/>	
+		
+		
+		<label for="event_title">이벤트명</label>
+		<input type="text" id="event_title" name="event_title" value="${dto.event_title}" placeholder="이벤트명을 입력해주세요" required="required" class="form-control"  aria-describedby="titleHelp" style="width:50%; "/> 
+		<small id="titleHelp" class="form-text text-muted" style="margin-bottom:20px;">이벤트명은 한글 100자/영문 300자를 넘기지 않아야 합니다.</small>
+		
+		<label>썸네일 간단설명</label>
+	    <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" class="form-control" maxlength="100" aria-describedby="explainHelp" style="width:50%;">${dto.event_thumbexplain}</textarea>
+	    <small id="explainHelp" class="form-text text-muted" style="margin-bottom:20px;">썸네일에 대한 간략한 설명을 한글 100자 / 영문 300자 이내로 작성해주세요.</small>
+		
+		</div>	
+		
+				
+		<!-- 썸머노트 -->
+		<label for="event_content">이벤트 상세설명</label><br>
+		<textarea id="summernote" name="event_content" style="display:none"><c:out value="${dto.event_content}"/></textarea>
+		<!-- 썸머노트 끝 -->	
 			
 			
-			<div class="inputArea">
+			
+		<div class="form-group" style="margin-top:20px;">
+		<div class="inputArea">
 
-<br>
- <label for="event_thumbnail">썸네일 수정</label>
- <br>
- <input type="file" id="event_thumbnail" name="file" style="width: 80px;"/>
- <br>
- <div class="select_img"><img src="${dto.event_thumbnail}" /></div>
- <br>
 
+ 		<label for="event_thumbnail">썸네일 수정</label>
+ 		<input type="file" id="event_thumbnail" name="file" style="width: 80px; margin-bottom:20px;"/>
+ 
+ 		<div class="select_img" style="margin-top:20px;"><img src="${dto.event_thumbnail}" /></div>
+		
+		</div>
+		
+		
+		
+
+	    <!-- 썸네일 선택 시 div에 썸네일 보여줌 -->
+ 		<script>
+  		$("#event_thumbnail").change(function(){
+  		 if(this.files && this.files[0]) {
+   		 var reader = new FileReader;
+   		 reader.onload = function(data) {
+    	 $(".select_img img").attr("src", data.target.result).width(450);        
+    	 }
+   		 reader.readAsDataURL(this.files[0]);
+   		 }
+ 		 });
+ 		</script>
+ 		<!-- script 끝 -->
+
+
+ 
+ 
+ 
+		<div class="eventbtndiv">
+ 		<input type="button" id="event_update_btn" onclick="updatethumbnail();" class="hmeventupdatebtn" value="이벤트 등록"/>
+ 		<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'" class="hmeventupdatebtn2">수정 취소</button>
+ 		</div>
+ 
+ 
+ 
+ 
+ <!-- 등록버튼 누를 시 썸네일의 수정 유무에 따라 다르게 script를 잡아준다 -->
  <script>
-  $("#event_thumbnail").change(function(){
-   if(this.files && this.files[0]) {
-    var reader = new FileReader;
-    reader.onload = function(data) {
-     $(".select_img img").attr("src", data.target.result).width(300);        
-    }
-    reader.readAsDataURL(this.files[0]);
-   }
-  });
- </script>
- <br><br>
- <li style="list-style: none;">이벤트 간단설명</li>
- <textarea rows="5" cols="40" id="event_thumbexplain" name="event_thumbexplain" maxlength="100">${dto.event_thumbexplain}</textarea>
-<br>
-<br>
- 
- 
-<br>
- <input type="button" id="event_update_btn"  onclick="updatethumbnail();"  value="이벤트 등록" style="float: right;" />
-  <script>
-  
   function updatethumbnail(){
 	  
 	var updateform = document.eventupdateform;  
@@ -129,12 +178,17 @@
   }
   </script>
   
-  <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
-</div>
+  
+  
+  			<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+  		
+  		</div>
 			
-		</form>
-	</div>
+		
+	</form>
+	
 
+</div>
 
 </body>
 </html>

@@ -6,8 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- CSSstyle -->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_detail.css?ver=1">
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_detail.css?ver=2"> 
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Event_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_detail.js"></script>
 </head>
@@ -47,7 +54,7 @@
 			</div>
 	</div>
 			<div class="eventdetailbtn">
-			<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'">목록으로</button>
+			<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'" class="hmeventdetailbtn">목록으로</button>
 			<button class="eventdetailupdatebtn">수정</button>
 			<button class="eventdetaildeletebtn">삭제</button>
 			</div>

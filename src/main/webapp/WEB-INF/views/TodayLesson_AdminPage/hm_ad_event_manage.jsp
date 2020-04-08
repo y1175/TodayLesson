@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘의레슨 이벤트 관리</title>
 <!-- CSSstyle --> 
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_manage.css?ver=2">
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_manage.css?ver=5">
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Event_Title>a{
          color: rgb(224, 62, 82);
@@ -23,16 +23,24 @@
 
 
 
+<div class="hm_ad_event_managemain">
 
- <form method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
- <select name="search">
- <option value="all">전체</option>
- <option value="event_title">제목</option>
- </select>
- <input type="text" name="searchtxt">
- <input type="submit" value="검색">
- </form>
- 
+<!-- 검색 --> 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:23%; margin:40px auto;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+ <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${page.startBlock }"
+ style="margin:0px auto;">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
+<option value="all">전체</option>
+<option value="event_title">제목</option>
+</select>
+ <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+      <input type="submit" class="hmeventbtn" value="검색"></button>
+    </form>
+  </div>
+</nav>
+<!-- 검색완료 -->
+
 
 
 
@@ -40,7 +48,7 @@
 
 <div>
    <div style="width: 100%; height: 50px; margin-top:40px; margin-bottom:80px;">
-      <input type="button" id="eventinsertbtn" class="eventinsertbtn" value="이벤트등록">
+      <input type="button" id="eventinsertbtn" class="eventinsertbtn" value="이벤트등록" >
    </div>
    
    
@@ -75,7 +83,8 @@
 					</li>
 					<li class="eventperiod">${item.event_startperiod}~${item.event_endperiod}</li>
                   <br><br>
-	              <li class="eventreadmore"><a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_detail/${item.event_no}" class="eventdetail">Read More</a></li>
+	              <li class="eventreadmore"><a href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_detail/${item.event_no}" class="eventdetail"
+	              style="font-size:20px;">Read More</a></li>
                   </ul>
 </div>
 <div class="event_line"></div>
@@ -101,7 +110,7 @@
 </c:if>
 
 
-
+</div>
 
 </body>
 </html>

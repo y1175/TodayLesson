@@ -41,4 +41,23 @@
 	
 } 
 
-
+.hmeventbtn{
+	border: 1px transparent;
+	padding: 7px 20px; 
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	
+}
+.eventinsertbtn{
+	border: 1px transparent;
+	padding: 7px 20px; 
+	border-radius : 3px;
+	background-color: rgba(53, 54, 58 , 0.5 );
+	font-weight : 600;
+	font-size : 14px;
+	color: white;
+	font-size: 16px;
+}
