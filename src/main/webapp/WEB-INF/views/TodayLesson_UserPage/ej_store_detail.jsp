@@ -107,8 +107,8 @@ $('#summernote').summernote({
 
 <span class="ej_top font">수량</span> <input type=text size="1" name="pdcount" id="pdcount" placeholder="1" size="2" value=1 required="required"><br>
 <br>
-<c:set var="cost" value="${dto.product_cost }"/>
-<div id="ej_point_box">적립금</div> <c:set var="pluspoint" value="${cost*0.01 }"/><c:out value="${pluspoint}"/>포인트<br>
+<c:set var="cost" value="${dto.product_after_cost }"/>
+<div id="ej_point_box">적립금</div> <c:set var="pluspoint" value="${cost*0.01 }"/><fmt:parseNumber var="pluspoint" value="${(cost*0.1)}" integerOnly="true" /> <b>${pluspoint }포인트<br>
 <br>
 <div class="ej_line top_right"></div>
 <!--아이콘 3개  -->

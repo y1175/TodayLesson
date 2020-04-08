@@ -3,12 +3,16 @@
 	padding-top:20px;
 	width:80%;
 	text-align: center;
+	margin: 0 auto;
 }
-.ej_bold{
-	font-weight: bold;
-}
+
 #ej_line{
 	border-bottom: 1px solid silver;
 	width:80%;
 	text-align: center;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.ej_align{
+	display: inline-block;
 }

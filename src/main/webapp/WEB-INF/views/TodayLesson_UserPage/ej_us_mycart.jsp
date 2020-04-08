@@ -7,15 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!--my style  -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderform.css">
+  <!--my style/  -->
 <title>Insert title here</title>
 <style>
 .orderInfo{
@@ -77,7 +77,7 @@ text-align: right;
 	<h3>장바구니 합계 : <fmt:formatNumber value="${total_cart }" type="number" maxFractionDigits="3"/>원</h3>
 </div>
 
-<input type="button" class='btn btn-primary' id="open_orderform_btn"value="주문하기"><br>
+<input type="button" class='ej_btn' id="open_orderform_btn"value="주문하기"><br>
 
 
 <div class="orderInfo">
