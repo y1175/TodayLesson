@@ -145,7 +145,7 @@ $('document').ready(function() {
 <div id="ej_container">
 
 
-  <form role="form" method="post" id="form1" name="form" style="height: 600px">
+  <form role="form" method="post" id="form1" name="form" style="height: 400px">
  
 <!--썸네일 이미지 원본 맨위에 보여줌-->
 <div class="ej_top img">
@@ -154,7 +154,7 @@ $('document').ready(function() {
 
 <div class="ej_top right">
 
-<a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0"><img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/ej_banner_blue.png" ></a>
+<a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0"><img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/lesson_detailbanner.png" ></a>
 <br><br>
 
 <c:choose>
@@ -236,19 +236,14 @@ $('document').ready(function() {
 <c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}" />
 최대 주니어 수 / 현재 수강 가능한 주니어 수 <br>
 <c:out value="${dto.lesson_member_max}" /> / <c:out value="${possible_junior}" /><br>
+<div class="ej_line top_right"></div>
+
 
 <div class="ej_grid fist">
 <input type="hidden" id= "is_it_possible" name="is_it_possible" value="${possible_junior}"/>
 	<!-- 수강 가능 인원이 0이면 구매 못하게 -->
 <%-- <a href="${pageContext.request.contextPath}/todaylesson/lesson_buy/${dto.lesson_no}"> </a>--%>
-<button id="to_orderform" class="ej_btn" >결제하기</button><br></div>
-<br>
-
-<div class="ej_line top_right"></div>
-
-   
-
-
+<button id="to_orderform" class="ej_btn" >결제하기</button></div>
 <div class="ej_grid second">
 <a href="#"><div class="fas fa-heart insert_my_like" ></div></a></div>
 <div class="ej_grid third">
