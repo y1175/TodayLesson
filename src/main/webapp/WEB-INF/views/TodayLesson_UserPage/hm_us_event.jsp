@@ -11,7 +11,12 @@
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=1"> 
 <!-- CSSstyle -->
 <!-- JS -->
-   <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> 
+   <%-- <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> 파일이 없어서 주석처리함-용인-  --%>
+   <script>
+   $(document).ready(function() {
+	    $('body').bootstrapMaterialDesign();
+	});
+   </script>
 <!-- JS -->
 </head>
 <body>
@@ -144,20 +149,32 @@
 
 <!-- 페이징 처리  -->
 <br>
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }
+</a></li>
 </c:if>
-<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">NEXT
+</a></li>
 </c:if>
-
+</ul>
 
  
  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -135,7 +135,8 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 <ul class="pagination pagination-danger">
 <!-- 이전페이지블럭 -->
 <c:if test="${page.prev }">
-<li class="page-item"><a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}" class="page-link">PREV
+<li class="page-item">
+<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}" class="page-link">PREV
 </a></li>
 </c:if>
 

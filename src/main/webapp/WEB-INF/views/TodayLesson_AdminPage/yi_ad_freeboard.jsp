@@ -15,12 +15,15 @@
 
    </style>
      <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard_admin.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard_admin.css?ver=3">
 <!-- CSSstyle -->
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>Today Lesson Admin</title>
 <script>
+$(document).ready(function() {
+    $('body').bootstrapMaterialDesign();
+});
 function reply_view(no)
 {
 
@@ -285,23 +288,37 @@ ${item.freeboard_title }		<span class="replycount">[${replist[status.index]}]</s
 
 
 
+<div class="paging">
+<div class="paginginside">
 
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="admin_freeboard?currPage=${page.startBlock-1}&category=${category}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="admin_freeboard?currPage=${page.startBlock-1}&category=${category}&search=${search}&searchtxt=${searchtxt }">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
-<a href="admin_freeboard?currPage=${index }&category=${category}&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<li class="page-item">
+<a class="page-link" href="admin_freeboard?currPage=${index }&category=${category}&search=${search}&searchtxt=${searchtxt}">${index }
+</a></li>
 </c:if>
-<c:if test="${index== page.currPage }">
-${index }
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
 </c:if>
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="admin_freeboard?currPage=${page.endBlock+1 }&category${category}&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="admin_freeboard?currPage=${page.endBlock+1 }&category${category}&search=${search}&searchtxt=${searchtxt}">NEXT
+</a></li>
 </c:if>
+</ul>
+
+</div>
+</div>
+
 </div>
 </body>
 </html>

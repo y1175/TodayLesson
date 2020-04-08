@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>TodayLesson</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=3">
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -71,10 +71,10 @@ $(document).ready(function(){
 <h3><span class="memberid">${member_id }</span>님의 주문내역</h3>
 <form action="/todaylessonmypage/user_myorderlist">
 <div class="row order_period">
-<div class="col">
+<div class="col-sm-5">
 <input class="form-control" type="date" name="start_date">
 </div> ~ 
-<div class="col">
+<div class="col-sm-5">
 <input class="form-control" type="date" name="end_date">
 </div>
  <input type="submit" class="order_search_btn" value="조회">

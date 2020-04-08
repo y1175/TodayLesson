@@ -15,7 +15,7 @@
       }
    </style>
 	<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=1">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=2">
 </head>
 <body>
 <div id="yi_container">
@@ -101,23 +101,44 @@ console.log($('.status_select option[value=${item.orderlist_paystatus }]').val()
 </table>
 
 </form>
+
+<div class="paging">
+<div class="paginginside">
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="refund_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">${index }
+</a></li>
 </c:if>
-<a href="refund_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">${index }</a>
+
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="refund_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">NEXT
+</a></li>
 </c:if>
+</ul>
+</div>
+</div>
+
 </div>
 
 <script>
-
+$(document).ready(function() {
+    $('body').bootstrapMaterialDesign();
+});
 /*주문배송상태 변경 셀렉터*/
 var before
 $('.status_select').focus(function(){

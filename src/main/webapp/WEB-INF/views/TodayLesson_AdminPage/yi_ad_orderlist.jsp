@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<title>TodayLessonAdmin</title>
 <!-- CSSstyle -->
    <style type="text/css">
       .hs_ad_main_asidenav_nav_OrderList_Title>a{
@@ -16,8 +15,9 @@
       }
    </style>
 	<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=1">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_orderlist.css?ver=2">
 <!-- CSSstyle -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <div id="yi_container">
@@ -117,23 +117,44 @@ $('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calc
 </table>
 
 </form>
+<div class="paging">
+<div class="paginginside">
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">${index }
+</a></li>
 </c:if>
-<a href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">${index }</a>
+
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">NEXT
+</a></li>
 </c:if>
+</ul>
+</div>
+</div>
+
 </div>
 
 
 <script>
+$(document).ready(function() {
+    $('body').bootstrapMaterialDesign();
+});
 
 /*주문배송상태 변경 셀렉터*/
 var before
