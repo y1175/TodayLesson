@@ -45,6 +45,7 @@ public class JY_SN_Lesson_Controller {
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,@RequestParam(required=false, defaultValue="4") int order){
+		
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
 		int senior_no = lesson_service.select_senior_no(member_id);
@@ -63,12 +64,8 @@ public class JY_SN_Lesson_Controller {
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 
 			
-		List<LessonDTO> list = lesson_service.list(senior_no,search, searchtxt,order
-				,page.getStartRow()
-				,page.getEndRow(),order);
-		
-		model.addAttribute("list",list);
-		
+		List<LessonDTO> list = lesson_service.list(senior_no,search, searchtxt,order,page.getStartRow(),page.getEndRow());
+				
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);

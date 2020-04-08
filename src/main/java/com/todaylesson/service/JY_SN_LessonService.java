@@ -9,7 +9,7 @@ public interface JY_SN_LessonService {
 
 	//public int insert_Lesson(LessonDTO dto);
 
-	public List<LessonDTO> list(int senior_no, String search, String searchtxt, int order, int i, int j, int order2);
+	public List<LessonDTO> list(int senior_no, String search, String searchtxt, int order, int i, int j);
 
 	public int select_senior_no(String member_id);
 

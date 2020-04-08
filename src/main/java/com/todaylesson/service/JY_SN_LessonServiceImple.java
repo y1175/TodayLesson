@@ -55,7 +55,7 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 	}
 
 	@Override
-	public List<LessonDTO> list(int senior_no, String search, String searchtxt, int order, int i, int j, int order2) {
+	public List<LessonDTO> list(int senior_no, String search, String searchtxt, int order, int i, int j) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);

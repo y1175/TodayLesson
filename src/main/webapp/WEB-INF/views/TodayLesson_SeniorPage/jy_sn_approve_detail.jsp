@@ -20,19 +20,16 @@ $(document).ready(function() {
 	// 온라인 클래스의 경우 주소가 없음 > 그니까 온라인의 경우(온라인은 타입 3번) 아예 그 부분을 hide시켜버림
 	let state = ${dto.lesson_type};
 	console.log(state);
-	if ( state == 3 ) {
-		$('.layer').hide();
-		$('.not_oneday').show();
-	} else if(state == 1) {
+	if ( state != 3 ) {
 		$('.layer').show();
-		$('.not_oneday').hide();
 	} else {
-		$('.layer').show();
-		$('.not_oneday').show();
+		$('.layer').hide();
+
 	}
 	
-	
-	
+	$('#summer').html();
+
+
 	
 });
 
@@ -77,7 +74,7 @@ ${dto.lesson_content}
 <b>수강생수</b>
 <span class="jy_text">
 
-<c:out value="${dto.lesson_member_max}"/>
+<c:out value="${dto.lesson_member_max}"/>명
 </span><br>
 </li>
 

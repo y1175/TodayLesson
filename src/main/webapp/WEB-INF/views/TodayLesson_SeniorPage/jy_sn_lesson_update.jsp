@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!-- include libraries(jQuery, bootstrap) -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -56,8 +59,58 @@
 		
 		document.form.lesson_category.value = ${dto.lesson_category};
 		document.form.lesson_type.value = ${dto.lesson_type};
+		
 
-	
+		
+		  $( "#lesson_open_period" ).datepicker({
+		    	dateFormat:"yy-mm-dd",
+		    	changeMonth: true, 
+		         changeYear: true,
+		         nextText: '다음 달',
+		         prevText: '이전 달',
+		         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+		         monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+		         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		         minDate: 0,
+		         onClose: function( selectedDate ) {
+		        	  $("#lesson_close_period").datepicker( "option", "minDate", selectedDate );
+		       	}
+		    });	
+		  
+		  $( "#lesson_close_period" ).datepicker({
+		    	dateFormat:"yy-mm-dd",
+		    	changeMonth: true, 
+		         changeYear: true,
+		         nextText: '다음 달',
+		         prevText: '이전 달',
+		         dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		         dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+		         monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+		         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		         minDate: 0,
+		         onClose: function( selectedDate ) {
+                   // 종료일(toDate) datepicker가 닫힐때
+                   // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+                   $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+               }                
+
+
+		    });	
+		  
+		  
+		  
+
+		$(".lesson_earlybird").click(function(){
+
+			let val = $("input:radio[name=lesson_earlybird]:checked").val();
+			if (val == "1") {
+				$('.earlybird').show();
+			} else {
+				$('.earlybird').hide();
+			}
+			
+		});
 		
 		
 	});
@@ -189,23 +242,35 @@ function add_Lesson_Time(lesson_date_and_time){
 
 
 
+<div id="jy_container">
 
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;">레슨 수정</h2>
+ </div>
+ 
+ 
 <form method="post" action="${pageContext.request.contextPath }/todaylessonsenior/lesson_update_result" name="form" autocomplete="off" enctype="multipart/form-data"> 
 
-
+<ul>
 <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 
 <input type="hidden" id="lesson_no" name="lesson_no" value="${dto.lesson_no}">
  
+ <li>
 <label for="lesson_title">레슨명</label><br>
 <input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title }><br>
+</li>
 
 
+<li>
 <label for="lesson_content">레슨 내용</label><br>
 <textarea id="summernote" name="lesson_content" style="display:none"><c:out value="${dto.lesson_content}"/></textarea><br>
+</li>
 
+<li>
 <label for="lesson_thumb">썸네일</label>
 <input type="file" id="lesson_thumb" name="file" />
+ </li>
  
  
  <div class="select_img"><img src="" /></div>
@@ -222,12 +287,15 @@ function add_Lesson_Time(lesson_date_and_time){
   });
  </script>
  
+ <li>
 <label for="lesson_member_max">수강생수</label><br>
 <input type="number" id="lesson_member_max" name="lesson_member_max" value="${dto.lesson_member_max}"><br>
+</li>
 
+<li>
 <label for="lesson_category">카테고리</label><br>
-<select name="lesson_category" >
-  <option value="0">---</option>
+<select name="lesson_category">
+  <option value="0" selected="selected">---</option>
   <option value="1">운동</option>
   <option value="2">교육</option>
   <option value="3">핸드메이드</option>
@@ -236,75 +304,102 @@ function add_Lesson_Time(lesson_date_and_time){
   <option value="6">기타</option>
 </select>
 <br>
+</li>
 
+<li>
 <label for="lesson_cost">가격</label><br>
-<input type="number" id="lesson_cost" name="lesson_cost" value="${dto.lesson_cost}"><br>
+<input type="number" id="lesson_cost" name="lesson_cost" required="required" value="${dto.lesson_cost}"><br>
+</li>
 
-<h6>레슨 심사는 3일~7일 정도 걸리므로 오픈 날짜 설정 시 참고해주세요</h6>
+<li>
+<label for="lesson_earlybird">얼리버드 할인</label>
+네
+<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="1">
+아니요
+<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="0"> 
+</li>
 
 
-<label for="lesson_open_period">시작일</label><br>
-<input type="date" id="lesson_open_period" name="lesson_open_period" value="${dto.lesson_open_period }"><br>
+<div class="earlybird">
+(주의사항) : 수수료는 동일 / 얼리버드 시 18% 일괄 할인(얼리버드 할인은 일주일간 진행됩니다.)<br>
+얼리버드 등록 시 메인 홈에서 얼리버드 레슨이 우선시 되어 노출도가 높습니다. <br>
+또한, 얼리버드 카테고리에 
+얼리버드 레슨 등록 & 얼리버드 세일이 마감될 때 노출되어 신규 주니어를 모으는데 용이합니다. 
+</div>
 
-<label for="lesson_close_period">종료일</label><br>
-<input type="date" id="lesson_close_period" name="lesson_close_period" value="${dto.lesson_close_period }"><br>
+<br>
+<li>
+<h5> * 레슨 심사는 3일~7일 정도 걸리므로 오픈 날짜 설정 시 참고해주세요</h5>
+</li>
 
+<li>
+<label for="lesson_open_period">시작일</label> / <label for="lesson_close_period">종료일</label><br>
+<input type="text" class="lesson_date" id="lesson_open_period" name="lesson_open_period" required="required" value="${dto.lesson_open_period}">
+/ <input type="text" class="lesson_date" id="lesson_close_period" name="lesson_close_period" required="required" value="${dto.lesson_close_period}">
+</li>
 
+<li>
 <label for="lesson_type">레슨타입</label><br>
 <select id="lesson_type" name="lesson_type">
-  <option value="0">---</option>
+  <option value="0" selected="selected">---</option>
   <option value="1">원데이 레슨</option>
   <option value="2">다회성 레슨</option>
   <option value="3">온라인 레슨</option>
 </select>
-<br>
+</li>
 
 
-
+<h5> * 오프라인은 레슨 수정 시 레슨 일정을 다시 입력해주셔야 합니다.</h5>
 <div class="offline_lesson">
 
 <input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name="">
-<br> 오프라인 레슨의 경우 수정 시 이 전에 설정한 날짜와 시간이 초기화 됩니다.<br>
-그러므로 오프라인 레슨 변경 시엔 꼭 값을 다시 입력해주세요 <br>
 
 <div id="lesson_d_t">
 
 
 </div>
 
-
+<li>
 <label>레슨주소</label><br>
 우편번호<br>
 <input type="hidden" id="confmKey" name="confmKey" value="devU01TX0FVVEgyMDIwMDIyNzEwMzUzNTEwOTUwMDM="> 
 <input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px"> 
 <input type="button"value="주소검색" onclick="goPopup();">
 <br>	
-		
+</li>	
+	
+<li>
 도로명주소<br>
-<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" >
+<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly">
 <p class="map"></p>
+
 </div>
+</li>
 
-
+<li>
 <label for="lesson_number">총강의수</label><br>
-<input type="number" id="lesson_number" name="lesson_number" value=""><br>
+<input type="number" id="lesson_number" name="lesson_number" value="${dto.lesson_number}"><br>
+</li>
 
-
+<li>
 <label for="lesson_senior_title">시니어명</label><br>
-<input type="text" id="lesson_senior_title" name="lesson_senior_title" value="${dto.lesson_senior_title}"><br>
+<input type="text" id="lesson_senior_title" name="lesson_senior_title" required="required" value="${dto.lesson_senior_title}"><br>
+</li>
 
+<li>
 <label for="lesson_senior_content">시니어소개</label><br>
-<textarea id="lesson_senior_content" name="lesson_senior_content" style="display:none"><c:out value="${dto.lesson_senior_content}"/></textarea><br>
+<textarea id="lesson_senior_content" name="lesson_senior_content" required="required"> ${dto.lesson_senior_content}
+</textarea><br>
+</li>
 
+<li>
+<input type="submit" value="글 작성" class="ej_btn"/>
+<input type="reset" value="취소" class="ej_btn2"/>
+</li>
 
-
-<input type="submit" value="글 작성"/>
-<input type="reset" value="글 취소"/>
-
+</ul>
 </form>
-
-
-
+</div>
 
 </body>
 </html>

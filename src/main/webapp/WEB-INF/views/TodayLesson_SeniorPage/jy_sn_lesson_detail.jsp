@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data2.css">  
+
+
 <script>
 
 $(document).ready(function() {
@@ -16,15 +21,11 @@ $(document).ready(function() {
 	// 온라인 클래스의 경우 주소가 없음 > 그니까 온라인의 경우(온라인은 타입 3번) 아예 그 부분을 hide시켜버림
 	let state = ${dto.lesson_type};
 	console.log(state);
-	if ( state == 3 ) {
-		$('.offline_lesson').hide();
-		$('.not_oneday').show();
-	} else if(state == 1) {
-		$('.offline_lesson').show();
-		$('.not_oneday').hide();
+	if ( state != 3 ) {
+		$('.layer').show();
 	} else {
-		$('.offline_lesson').show();
-		$('.not_oneday').show();
+		$('.layer').hide();
+
 	}
 	
 	
@@ -46,80 +47,190 @@ $(document).ready(function() {
 </head>
 <body>
 
-레슨번호<c:out value="${dto.lesson_no }"/><br>
-레슨명<c:out value="${dto.lesson_title }"/><br>
+<div id="jy_container">
 
+<h1>레슨 상세보기</h1>
 
-레슨 내용
+<ul>
+<li>
+<b>레슨번호</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_no }"/>
+</span><br>
+</li>
+
+<li>
+<b>레슨명</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_title }"/>
+</span><br>
+</li>
+
+<li>
+<b>레슨 내용</b>
 
 <div class="summer">
 ${dto.lesson_content}
 </div>
 
-수강생수<c:out value="${dto.lesson_member_max}"/><br>
+</li>
 
+<li>
+<b>수강생수</b>
+<span class="jy_text">
+
+<c:out value="${dto.lesson_member_max}"/>명
+</span><br>
+</li>
+
+
+<li>
+<b>
 카테고리
+</b>
+<span class="jy_text">
 
 <c:choose>
 
 <c:when test="${dto.lesson_category == 1}">
-<c:out value="운동"/><br>
+<c:out value="운동"/>
 </c:when>
 
 <c:when test="${dto.lesson_category == 2}">
-<c:out value="교육"/><br>
+<c:out value="교육"/>
 </c:when>
 
 <c:when test="${dto.lesson_category == 3}">
-<c:out value="핸드메이드"/><br>
+<c:out value="핸드메이드"/>
 </c:when>
 
 <c:when test="${dto.lesson_category == 4}">
-<c:out value="it"/><br>
-</c:when>
-
-<c:when test="${dto.lesson_category == 5}">
-<c:out value="요리"/><br>
+<c:out value="it"/>
 </c:when>
 
 <c:otherwise>
-<c:out value="기타"/><br>
+<c:out value="요리"/>
 </c:otherwise>
 
 </c:choose>
+</span>
+<br>
+</li>
 
-레슨 가격 <c:out value="${dto.lesson_cost}"/><br>
+<li>
+<b>얼리버드 여부</b>
+<span class="jy_text">
+<c:if test="${dto.lesson_earlybird eq 1 }">
+<c:out value="Y"/>
+</c:if>
 
-레슨 시작일 <c:out value="${dto.lesson_open_period}"/><br> 
-레슨 종료일 <c:out value="${dto.lesson_close_period}"/><br> 
+<c:if test="${dto.lesson_earlybird eq 0 }">
+<c:out value="N"/>
+</c:if>
 
+</span>
+</li>
+
+
+
+<li>
+<b>
+레슨 가격(정상가)
+</b>
+<span class="jy_text">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost }"/>원
+</span><br>
+</li>
+<li>
+<b>레슨 판매 기간</b> <span class="jy_text">
+<c:out value="${dto.lesson_open_period}"/> ~
+<c:out value="${dto.lesson_close_period}"/>
+</span><br> 
+</li>
+<b>
 레슨 타입
+</b>
+
+<span class="jy_text">
 
 <c:choose>
 
 <c:when test="${dto.lesson_type == 1}">
-<c:out value="원데이 클래스"/><br>
+<c:out value="원데이 클래스"/>
 </c:when>
 
 <c:when test="${dto.lesson_type == 2}">
-<c:out value="다회성 클래스"/><br>
+<c:out value="다회성 클래스"/>
 </c:when>
 
 <c:otherwise>
-<c:out value="온라인 클래스"/><br>
+<c:out value="온라인 클래스"/>
 </c:otherwise>
 
 </c:choose>
 
-<div class="offline_lesson">
-레슨 날짜, 시간 <c:out value="${dto.lesson_date_time}"/><br>
+</span>
+</li>
 
-레슨 주소<br> 
-우편번호<c:out value="${dto.lesson_zipno}"/><br>
-주소<c:out value="${dto.lesson_addr}"/><br>
+
+
+<li style="text-align: center; margin: 30px 0px">
+<b>시니어</b><br> 
+</li>
+
+
+<li>
+<b>시니어 명</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_senior_title}"/>
+</span><br>
+</li>
+
+
+<li>
+<b>시니어 소개</b>
+
+<div class="summer">
+${dto.lesson_senior_content}
+</div>
+
+</li>
+
+
+
+<div class="layer">
+<li>
+<b>
+레슨 시간 
+</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_date_time}"/>
+</span><br>
+</li>
+
+
+<li style="text-align: center; margin: 30px 0px">
+<b >레슨 주소</b><br> 
+</li>
+
+<li>
+<b>우편번호</b>
+<span class="jy_text">
+
+<c:out value="${dto.lesson_zipno}"/>
+</span>
+<br>
+</li>
+
+
+<li>
+<b>주소</b>
+<span class="jy_text">
+<c:out value="${dto.lesson_addr}"/>
+</span><br>
 <!-- 여기에 map가져오기 -->
-
-<div id="map" style="width:750px;height:350px;"></div>
+</li>
+<div id="map" style="width:750px;height:350px; margin: 0px auto"></div>
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
 <script>
@@ -138,44 +249,15 @@ ${dto.lesson_content}
 	});
 </script>
 
+</div>
+</ul>
+<div class="bt">
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_update/${dto.lesson_no}'">수정하기</button>
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_delete/${dto.lesson_no}'">삭제하기</button>
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_list'">목록으로</button>
 
 </div>
-
-<div class = "not_oneday">
-총 강의 수<c:out value="${dto.lesson_number}"/><br>
 </div>
 
-시니어 명<c:out value="${dto.lesson_senior_title}"/><br>
-
-시니어 소개
-<div class="summer">
-${dto.lesson_senior_content}
-</div>
-
-
-<c:choose>
-
-<c:when test="${dto.lesson_result == 0}">
-<td><c:out value="신청완료"/></td>
-</c:when>
-
-<c:when test="${dto.lesson_result == 1}">
-<td><c:out value="심사중"/></td>
-</c:when>
-
-<c:when test="${dto.lesson_result == 2}">
-<td><c:out value="레슨승인"/></td>
-</c:when>
-
-<c:otherwise>
-<td><c:out value="레슨거절"/></td>
-</c:otherwise>
-
-</c:choose>
-
-
-<a href="${pageContext.request.contextPath }/todaylessonsenior/lesson_update/${dto.lesson_no}">수정하기</a>
-<a href="${pageContext.request.contextPath }/todaylessonsenior/lesson_delete/${dto.lesson_no}">삭제하기</a>
-<a href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list">목록으로</a>
 </body>
 </html>
