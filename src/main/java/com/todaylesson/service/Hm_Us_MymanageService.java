@@ -12,7 +12,7 @@ public interface Hm_Us_MymanageService {
 
 	public int MyInfoupdate2(MemberDTO dto);
 
-	public int matchpwd(HashMap<String, String> map);
+	public String matchpwd(String member_id);
 
 
 }

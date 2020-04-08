@@ -4,11 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.Hm_Us_MymanageMapper">
 
-<select id="matchpwd" parameterType="HashMap" resultType="int">
-select count(member_no)
+<select id="matchpwd" parameterType="String" resultType="String">
+select member_pwd
 from member
-where member_pwd = #{member_pwd}
-and member_id = #{member_id}
+where member_id = #{member_id}
 </select>
 
 <select  id="myinfolist" parameterType="String" resultType="com.todaylesson.DTO.MemberDTO">

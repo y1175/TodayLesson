@@ -32,7 +32,6 @@ public class User_HM_Mymanage_Controller {
 	@Resource(name="passwordEncoder")
 	private BCryptPasswordEncoder encoder;
 
-
 	//¼­ºñ½º
 	@Resource(name="hm_us_mymanage")
 	private Hm_Us_MymanageService hm_mymanageservice;
@@ -97,22 +96,18 @@ public class User_HM_Mymanage_Controller {
 			,Model model, HttpServletRequest request,HttpServletResponse response)throws Exception
 	{
 		
-		member_pwd = encoder.encode(member_pwd);
-		/*String encoded_pwd = hm_mymanageservice.matchpwd(member_id);
-		member_pwd = encoder.encode(member_pwd);
 		
-		boolean result = encoder.matches(encoded_pwd, member_pwd);
-		*/
-		HashMap<String, String> map = new HashMap<>();
-		map.put("member_id", member_id);
-		map.put("member_pwd", member_pwd);
+		String new_pwd = member_pwd;
+		String old_pwd = hm_mymanageservice.matchpwd(member_id);
 		
-		int result = hm_mymanageservice.matchpwd(map);
+		System.out.println(new_pwd);
+		System.out.println(old_pwd);
 		
+		boolean result = encoder.matches(new_pwd, old_pwd);
 		
 		System.out.println(result);
 
-		if(result==1)
+		if(result==true)
 		{
 			MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
 			model.addAttribute("dto",dto);

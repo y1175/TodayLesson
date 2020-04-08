@@ -15,7 +15,7 @@ public interface Hm_Us_MymanageMapper {
 
 	public int myinfoupdate2(MemberDTO dto);
 
-	public int matchpwd(HashMap<String, String> map);
+	public String matchpwd(String member_id);
 
 
 }

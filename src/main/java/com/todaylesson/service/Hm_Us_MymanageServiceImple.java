@@ -34,9 +34,9 @@ public class Hm_Us_MymanageServiceImple implements Hm_Us_MymanageService {
 	}
 
 	@Override
-	public int matchpwd(HashMap<String, String> map) {
+	public String matchpwd(String member_id) {
 		// TODO Auto-generated method stub
-		return mapper.matchpwd(map);
+		return mapper.matchpwd(member_id);
 	}
 
 
