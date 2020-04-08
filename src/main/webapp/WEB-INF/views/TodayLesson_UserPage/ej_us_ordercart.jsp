@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%-- <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
@@ -9,30 +9,97 @@
 </head>
 <body>
 
-<!--¿À´õ ¸®½ºÆ® Á¤º¸  -->
-ÁÖ¹®³¯Â¥  ${orderlistdto.orderlist_date }<br>
- ÁÖ¹®¹øÈ£  ${orderlistdto.orderlist_no }<br>
-¼ö·ÉÀÎ  ${orderlistdto.orderlist_receiver }<br>
-¼ö·É ÁÖ¼Ò  ${orderlistdto.orderlist_addr }<br>
-°áÁ¦±İ¾× <fmt:formatNumber value="${orderlistdto.orderlist_cost }" type="number" maxFractionDigits="3"/> ¿ø<br>
-»ç¿ëÆ÷ÀÎÆ® <fmt:formatNumber value="${orderlistdto.orderlist_usepoint  }" type="number" maxFractionDigits="3"/> <br>
+<!--ì˜¤ë” ë¦¬ìŠ¤íŠ¸ ì •ë³´  -->
+ì£¼ë¬¸ë‚ ì§œ  ${orderlistdto.orderlist_date }<br>
+ ì£¼ë¬¸ë²ˆí˜¸  ${orderlistdto.orderlist_no }<br>
+ìˆ˜ë ¹ì¸  ${orderlistdto.orderlist_receiver }<br>
+ìˆ˜ë ¹ ì£¼ì†Œ  ${orderlistdto.orderlist_addr }<br>
+ê²°ì œê¸ˆì•¡ <fmt:formatNumber value="${orderlistdto.orderlist_cost }" type="number" maxFractionDigits="3"/> ì›<br>
+ì‚¬ìš©í¬ì¸íŠ¸ <fmt:formatNumber value="${orderlistdto.orderlist_usepoint  }" type="number" maxFractionDigits="3"/> <br>
 <c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
 <c:set var="addedpoint" value="${(cost*0.1)}"></c:set>
-<fmt:formatNumber value="${addedpoint }" type="number" maxFractionDigits="3"/> Æ÷ÀÎÆ®°¡ Àû¸³µÇ¾ú½À´Ï´Ù!<br>
-¹è¼Û¿äÃ»»çÇ×  ${orderlistdto.orderlist_msg  }
+<fmt:formatNumber value="${addedpoint }" type="number" maxFractionDigits="3"/> í¬ì¸íŠ¸ê°€ ì ë¦½ë˜ì—ˆìŠµë‹ˆë‹¤!<br>
+ë°°ì†¡ìš”ì²­ì‚¬í•­  ${orderlistdto.orderlist_msg  }
 <hr>
-<!--¿À´õ µğÅ×ÀÏ Á¤º¸  -->
+<!--ì˜¤ë” ë””í…Œì¼ ì •ë³´  -->
 <c:forEach var="item" items="${list}"> 
 <c:set var="product_name" value="${item.product_name }"/>
 <c:set var="lesson_title" value="${item.lesson_title }"/>
 <c:if test="${lesson_title==null }">
-»óÇ°¸í: ${item.product_name }  </c:if>
+ìƒí’ˆëª…: ${item.product_name }  </c:if>
 <c:if test="${product_name==null }">
-·¹½¼¸í:${item.lesson_title} </c:if>
-¼ö·®: ${item.order_count }
+ë ˆìŠ¨ëª…:${item.lesson_title} </c:if>
+ìˆ˜ëŸ‰: ${item.order_count }
 <br>
 </c:forEach>
 
+
+</body>
+</html> --%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<!--style-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderlistdetail.css?ver=2"> 
+<!--style-->
+</head>
+<body>
+<div id="ej_container">
+<h4>ì˜¤ëŠ˜ì˜ ë ˆìŠ¨ì„ ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤</h4>
+<h2 >ì£¼ë¬¸ì´ ì •ìƒì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.</h2>
+ <h3 style="color:rgb(224, 62, 82)">ì£¼ë¬¸ë²ˆí˜¸  ${orderlistdto.orderlist_no }</h3><br>
+ 
+ <!--ì˜¤ë” ë””í…Œì¼ ì •ë³´  -->
+<c:forEach var="item" items="${list}"> 
+<c:set var="product_name" value="${item.product_name }"/>
+<c:set var="lesson_title" value="${item.lesson_title }"/>
+<c:if test="${lesson_title==null }"><!--ìƒí’ˆì •ë³´  -->
+<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${item.product_no}"><img src="${item.product_thumb }" alt="thumb"></a>
+<b>ìƒí’ˆëª…</b>  ${item.product_name }
+<b>ê°€ê²© </b> ${item.product_after_cost }
+<b>ìˆ˜ëŸ‰</b>  ${item.order_count }<br>
+</c:if>
+<c:if test="${product_name==null }"><!--ìƒí’ˆì •ë³´  -->
+<a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${item.lesson_no}"><img src="${item.lesson_thumb }" alt="thumb"></a>
+<b>ë ˆìŠ¨ëª…</b>  ${item.lesson_title }
+<b>ê°€ê²© </b> ${item.lesson_cost }
+<b>ìˆ˜ëŸ‰</b>  1
+</c:if>
+</c:forEach>
+<br>
+<div id="ej_line"></div>
+<!--ì˜¤ë” ë¦¬ìŠ¤íŠ¸ ì •ë³´  -->
+<br>
+<div class="ej_align left">
+<b>ì£¼ë¬¸ë‚ ì§œ</b><br>
+<b>ìˆ˜ë ¹ì¸</b> <br>
+<b>ìˆ˜ë ¹ ì£¼ì†Œ</b><br>
+<b>ê²°ì œê¸ˆì•¡</b><br>
+<b>ì‚¬ìš©í¬ì¸íŠ¸</b><br>
+<b style="color:rgb(224, 62, 82)">ì¶•í•˜ë“œë¦½ë‹ˆë‹¤</b><br> 
+<b>ë°°ì†¡ìš”ì²­ì‚¬í•­</b><br>  
+</div>
+
+<div class="ej_align right">
+${orderlistdto.orderlist_date }<br>
+${orderlistdto.orderlist_receiver }<br>
+${orderlistdto.orderlist_addr }<br>
+${orderlistdto.orderlist_cost }ì›<br>
+${orderlistdto.orderlist_usepoint  }<br>
+
+<c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
+<fmt:parseNumber var="addpoint" value="${(cost*0.1)}" integerOnly="true" /> <b style="color:rgb(224, 62, 82)">${addpoint }í¬ì¸íŠ¸ê°€ ì ë¦½ë˜ì—ˆìŠµë‹ˆë‹¤!<br>
+
+ ${orderlistdto.orderlist_msg  }<br>
+</div>
+<!--ej_align right/  -->
+</div>
+<!--ej container/  -->
 
 </body>
 </html>

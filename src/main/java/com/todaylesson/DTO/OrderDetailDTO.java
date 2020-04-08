@@ -20,6 +20,7 @@ public class OrderDetailDTO {
 	private String product_name;
 	private String product_thumb;
 	private String product_after_cost;
+	private int lesson_cost;
 	private String lesson_title;
 	private int product_stock;
 
