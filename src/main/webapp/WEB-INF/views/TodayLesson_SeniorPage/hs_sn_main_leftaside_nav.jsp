@@ -25,7 +25,10 @@
             <a href="${pageContext.request.contextPath}/todaylessonsenior/lesson_write">레슨등록</a>
          </p>   
          <p class="hs_sn_AllLessonList_Title">
-            <a href="${pageContext.request.contextPath}/todaylessonsenior/lesson_list">레슨관리</a>
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/lesson_list">전체레슨</a>
+         </p>
+         <p class="hs_sn_approveLessonList_Title">
+            <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">승인레슨</a>
          </p>
          
       <div class="hs_sn_main_asidenav_line"></div>

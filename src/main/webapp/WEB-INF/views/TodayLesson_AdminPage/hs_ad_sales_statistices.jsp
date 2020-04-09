@@ -199,7 +199,7 @@
                <c:out value="${StatSalesAllChart.orderlist_date}"/>
             </td>
             <td  style="border-right: none;">
-               <fmt:formatNumber value="${StatSalesAllChart.orderlist_cost}" type="number" maxFractionDigits="3"/>
+               <fmt:formatNumber value="${StatSalesAllChart.orderlist_cost}" type="number" maxFractionDigits="3"/>원
             </td>
             <c:set var="total_sumcost" value="${sum_cost+StatSalesAllChart.orderlist_cost}" />
         </tr>
@@ -209,7 +209,7 @@
       <tr >
          <td colspan="2">합계</td>
          <td  style="border-right: none;">
-            <fmt:formatNumber value="${total_sumcost}" type="number" maxFractionDigits="3"/>
+            <fmt:formatNumber value="${total_sumcost}" type="number" maxFractionDigits="3"/>원
          </td>
       </tr>
    </tfoot>

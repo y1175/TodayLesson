@@ -6,11 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>TodayLesson</title>
-<style>
 
-
-
-</style>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_sn_approveLessonList_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle --> 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/jy_sn_approve_list.css?ver=2">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=2">  
