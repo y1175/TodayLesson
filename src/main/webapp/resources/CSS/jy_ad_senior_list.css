@@ -1,80 +1,14 @@
-@charset "utf-8";
-.hs_Admin_Banner{
-	width: 80%;
-	margin: auto;
-	margin-top: 40px;
-	color: rgb(53, 54, 58);
+/*페이지버튼 중앙정렬*/
+.paging{
+	width:100%;
+	text-align:center;
+	margin-bottom: 30px;
+	margin-left: -30px;
 }
-.hs_Admin_Banner_Title{
-	font-size: 24px;
-	font-weight: 800;
+.paginginside{
+	display:inline-block;
 }
-#hs_ad_bannerRegistrationrBtn{
-	border-radius : 3px;
-	border: 1px transparent;
-	padding: 5px 15px;
-	font-weight : 600;
-	font-size : 14px;
-	color: white;
-	background-color: rgb(224, 62, 82);
-}
-.hs_ad_bannerLine{
-	width: 100%;
-    height: 1px;
-    background-color: rgb(224, 224, 224);
-    margin: 20px 0px;
-}
-.hs_admin_banner_SelectOP{
-	width : 15%;
-	border: 1px transparent;
-	border-bottom : 1px solid rgba(53, 54, 58, 0.3);
-	border-top : 1px solid rgba(53, 54, 58, 0.3); 
-	border-left : 1px solid rgba(53, 54, 58, 0.3);
-	padding: 4.5px 0px;
-	font-size: 13px;
-	border-radius: 3px 0px 0px 3px;
-}
-.hs_admin_banner_Textsearch{
-	width: 30%;
-	padding: 5px 0px;
-	border: 1px transparent;
-	border-bottom : 1px solid rgba(53, 54, 58, 0.3);
-	border-top : 1px solid rgba(53, 54, 58, 0.3); 
-	border-right : 1px solid rgba(53, 54, 58, 0.3);
-	font-size: 13px;
-	border-radius: 0px 3px 3px 0px;
-	margin-left: -5px;
-	margin-top: 1px;
-}
-.hs_admin_banner_TextsearchBtn{
-	border-radius : 3px;
-	border: 1px transparent;
-	padding: 4px 29px 6px;
-	margin-left : 10px;
-	font-weight : 600;
-	font-size : 14px;
-	color: white;
-	background-color: rgba(53, 54, 58, 0.7);
-}
-.hs_admin_bannerupdateBtn{
-	border-radius : 3px;
-	border: 1px transparent;
-	padding: 5px 20px;
-	font-weight : 800;
-	font-size : 14px;
-	color: white;
-	background-color: rgba(53, 54, 58, 0.7);
-	margin-right: 10px;
-}
-.hs_admin_bannerdeleteBtn{
-	border-radius : 3px;
-	border: 1px transparent;
-	padding: 5px 20px;
-	font-weight : 800;
-	font-size : 14px;
-	color: white;
-	background-color: rgb(224, 62, 82);
-}
+
 
 /*page*/
 .pagination .page-link:focus{
@@ -129,5 +63,6 @@
     border-color: #f44336;
     box-shadow: 0 4px 5px 0 rgba(244,67,54,.14), 0 1px 10px 0 rgba(244,67,54,.12), 0 2px 4px -1px rgba(244,67,54,.2);
 }
+
 
 

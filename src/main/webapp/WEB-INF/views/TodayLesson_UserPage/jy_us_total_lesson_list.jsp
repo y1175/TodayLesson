@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=1">
 
 <style>
  
@@ -219,21 +219,35 @@ width:500px; height:auto;
 
  
 
-
+<div class="paging">
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="total_lesson_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&lesson=${order}"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="total_lesson_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&lesson=${order}">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="total_lesson_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">${index }
+</a></li>
 </c:if>
-<a href="total_lesson_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">${index }</a>
+
+
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">NEXT
+</a></li>
 </c:if>
-
+</ul>
+</div>
 
 </div>
 

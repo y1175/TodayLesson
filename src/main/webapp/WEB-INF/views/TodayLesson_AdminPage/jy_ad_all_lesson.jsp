@@ -12,6 +12,8 @@
          color: rgb(224, 62, 82);
       }
    </style>
+     <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_all_lesson.css?ver=3">   
 <!-- CSSstyle -->
 
 
@@ -131,21 +133,37 @@
 </tbody>
 </table>
 
+<div class="paging">
+<div class="paginginside">
 
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<li class="page-item">
+<a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }
+</a></li>
 </c:if>
-<a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">NEXT
+</a></li>
 </c:if>
-
+</ul>
+</div>
+</div>
 
 </body>
 </html>

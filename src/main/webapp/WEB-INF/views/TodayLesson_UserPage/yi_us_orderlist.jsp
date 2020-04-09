@@ -12,7 +12,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(document).ready(function(){
-	
 	$.ajax({
 		url:'/todaylessonmypage/myorderlist_detail/'
 		,dataType:'json'
@@ -112,19 +111,35 @@ $(document).ready(function(){
  <div class="detailline"></div>
 </div>
 </c:forEach>
+<div class="paging">
+<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
-<a href="user_myorderlist?currPage=${page.startBlock-1}&start_date=${start_date}&end_date=${end_date}"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="user_myorderlist?currPage=${page.startBlock-1}&start_date=${start_date}&end_date=${end_date}">PREV
+</a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="user_myorderlist?currPage=${index }&start_date=${start_date}&end_date=${end_date}">${index }
+</a></li>
 </c:if>
-<a href="user_myorderlist?currPage=${index }&start_date=${start_date}&end_date=${end_date}">${index }</a>
+
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+
 </c:forEach>
 
 <c:if test="${page.next }">
-<a href="user_myorderlist?currPage=${page.endBlock+1 }&start_date=${start_date}&end_date=${end_date}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="user_myorderlist?currPage=${page.endBlock+1 }&start_date=${start_date}&end_date=${end_date}">NEXT
+</a></li>
 </c:if>
+</ul>
+</div>
+
 </div>
 </body>
 </html>
