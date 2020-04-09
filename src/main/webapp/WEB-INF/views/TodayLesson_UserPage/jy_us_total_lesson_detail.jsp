@@ -28,9 +28,9 @@
 
 
 <style>
-.selected {
+ .selected {
 	display: none;
-}
+} 
 
 #accordian li {
 	list-style: none;
@@ -42,11 +42,13 @@
 
 li>ul {
 	display: none;
-}
+}  
 
-li>ul>li {
+
+/* li>ul>li {
 	color: #00F;
-}
+} */
+
 </style>
 
 <script> 
@@ -412,8 +414,8 @@ $(".insert_my_cart").click(function(){
   <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_info.png" >
  
   <div class="lesson_info_content1" style="	 position: absolute;
-     top:2463px;
-     left:815px;
+     top:2630px;
+     left:730px;
      font-size: 23px;">
 	<c:choose>
 		<c:when test="${dto.lesson_category == 1}">
@@ -439,8 +441,8 @@ $(".insert_my_cart").click(function(){
 	</div>
 	
 	<div class="lesson_info_content2" style="	 position: absolute;
-     top:2530px;
-     right:930px;
+     top:2690px;
+     left:700px;
      font-size: 23px;">
 	<c:out value="${dto.lesson_number}" />
 </div>
@@ -513,12 +515,11 @@ $(".insert_my_cart").click(function(){
 
 <div class="ej_box second" id="ej_box_second">
 <span class="ej_left"><h3>문의</h3></span>
+<hr>
 	<div class="container">
-			<br>
+		
 			<div>
-				<div style="padding: 0px; text-align: right;">
-					<span><strong>Comments</strong></span> <span id="cCnt"></span>
-				</div>
+
 				
 				<!--작성된 문의글 목록  -->
 		<form id="commentListForm" name="commentListForm" method="post">
@@ -553,6 +554,7 @@ $(".insert_my_cart").click(function(){
 
 <div class="ej_box third"  id="ej_box_third">
 <span class="ej_left"><h3>후기</h3></span>
+<hr>
 </div>
 <div class="container">
 		<form id="reviewListForm" name="reviewListForm" method="post">
@@ -582,7 +584,6 @@ $(".insert_my_cart").click(function(){
 		
 	</div>
 	
-	</div>
 	<div class="ej_box fourth"  id="ej_box_fourth">
 <span class="ej_left"><h3>배송/교환/환불</h3></span>
 </div>
@@ -590,8 +591,8 @@ $(".insert_my_cart").click(function(){
 <img alt="delivery_rule" src="${pageContext.request.contextPath}/resources/IMG/delivery_rule.png">
 	
 	</div>
-</div>
-</div>
+
+	</div>
 
 	<script>
 	/* 후기남기기 버튼(silde up, down) */
@@ -658,6 +659,8 @@ function getCommentList(){
 	
 	let member_id ='${pageContext.request.userPrincipal.name}';
 	let senior_id = document.getElementById('senior_id').value;
+	//console.log(member_id);
+	//console.log(senior_id);
     $.ajax({
         type:'get',
         url : "<c:url value='/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
@@ -672,24 +675,26 @@ function getCommentList(){
             
    if (data.length > 0){
 		console.log(data);
+		
 
                 for(i=0; i<data.length; i++){
                    if (i == 0) {
+                	   //console.log(data[i].member_id);
                    	    html += "<div id='accordian'>";
-                   	    html += "<ul><li><h6>"+data[i].member_id+"               " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"            "+data[i].lesson_qa_register_date+  "</li>";
+                   	    html += "<ul><li><h5><b>"+data[i].member_id+"</b>               " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h5>";
+                        html += "<ul><li><h5>"+data[i].lesson_qa_reply_content +"            "+"<span class='date'>"+data[i].lesson_qa_register_date+  "</li></h5>";
                         if (data[i].lesson_qa_answer_content != null) {
-                            html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
+                            html += "<li><h5><b style='color : red;'><i class='far fa-user'></i>시니어 "+ "</b> " +data[i].lesson_qa_answer_content + "</li>";
 						}
               
 						 if (member_id == senior_id) { 
                         	
-							
-                        	html += "<li>";
+							 console.log(data[i].member_id);
+                        	html += "<li class='ans'>";
 				            html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
                            	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
-                        	html += "<input type ='button' onClick='fn_answer("+data[i].lesson_qa_no+")' class='btn pull-right btn-success' value='등록'></li></ul></li>"; 
+	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+                        	html += "<input type ='button' onClick='fn_answer("+data[i].lesson_qa_no+")' class='ej_btn' value='등록'></li></ul></li>"; 
 							 
                         	}  else { 
                         
@@ -700,18 +705,18 @@ function getCommentList(){
                         
                    } else if(i == data.length-1){
                   
-                  		html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"  "+data[i].lesson_qa_register_date + "</li>";
+                  		html += "<li><h5><b>"+data[i].member_id+"</b>    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h5>";
+                        html += "<ul><li><h5>"+data[i].lesson_qa_reply_content +"  "+"<span class='date'>"+data[i].lesson_qa_register_date +"</span>"+"</li>";
                         if (data[i].lesson_qa_answer_content != null) {
-                            html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
+                            html += "<li><h5><b style='color : red;'><i class='far fa-user'></i>시니어 "+ "</b> " +data[i].lesson_qa_answer_content + "</h5></li>";
 						}
 						 if (member_id == senior_id) { 
-                        	
-	                        html += "<li>";
+							 console.log(data[i].member_id);
+	                        html += "<li class='ans'>";
 				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
                            	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
-                        	html += "<input type='button' onClick='fn_answer("+ data[i].lesson_qa_no +")' class='btn pull-right btn-success' value='등록'></li></ul></li></ul></div>"; 
+	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+                        	html += "<input type='button' onClick='fn_answer("+ data[i].lesson_qa_no +")'  class='ej_btn' value='등록'></li></ul></li></ul></div>"; 
                         
                         }  else { 
                         
@@ -722,18 +727,18 @@ function getCommentList(){
                   		
                    } else {
                 	   
-                        html += "<li><h6>"+data[i].member_id+"    " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"  "+data[i].lesson_qa_register_date+ "</li>";
+                        html += "<li><h5><b>"+data[i].member_id+" </b>   " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li><h5>"+data[i].lesson_qa_reply_content +"  "+"<span class='date'>"+data[i].lesson_qa_register_date+"</span>"+ "</li>";
                         if (data[i].lesson_qa_answer_content != null) {
-                            html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
+                            html += "<li><h5><b style='color : red;'><i class='far fa-user'></i>시니어 "+ "</b> " +data[i].lesson_qa_answer_content + " </h5></li>";
 						}
 						 if (member_id == senior_id) { 
-                        	
-	                         html += "<li>";
+							 console.log(data[i].member_id);
+	                         html += "<li class='ans'>";
 				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
 			                 html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-		                     html += "<input type = 'text' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
-                        	 html += "<input type='button' onClick='fn_answer(" +data[i].lesson_qa_no+")' class='btn pull-right btn-success' value='등록'></li></ul></li>"; 
+		                     html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+                        	 html += "<input type='button' onClick='fn_answer(" +data[i].lesson_qa_no+")'  class='ej_btn' value='등록'></li></ul></li>"; 
                         
                         }  else { 
                         
@@ -757,17 +762,17 @@ function getCommentList(){
             $("#commentList").html(html);
             
             
-            $(function(){
-            	$("#accordian h6").click(function(){
-            		$("#accordian ul ul").slideUp();
+             $(function(){
+            	$("#accordian h5").click(function(){
+            		$("#accordian ul ul").hide();
             		$('.ico_ar').css('transform','none');
             		if(!$(this).next().is(":visible"))
             		{
-            			$(this).next().slideDown();
-            			$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
+            			$(this).next().show();
+            			//$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
             		}
             	})
-            })
+            }) 
             
         },
         error:function(request,status,error){
@@ -901,15 +906,15 @@ function getLreviewList(){
                 for(i=0; i<data.length; i++){
                    if (i == 0) {
                    	    html += "<div id='accordian'>";
-                   	    html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
+                   	    html += "<ul><li><h5><b>"+data[i].member_id+"</b> " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
                         html += "<ul><li><div class='summer'>"+data[i].lreview_content+"</div></li></ul></li>";
                        
            			 }else if(i == data.length-1){
                          
-                   		html += "<li><h6>"+data[i].member_id+"    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
+                   		html += "<li><h5><b>"+data[i].member_id+" </b>   " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
                         html += "<ul><li><div class='summer'>"+data[i].lreview_content +"</div></li></ul></li></ul></div>";
            			 } else {
-           				html += "<li><h6>"+data[i].member_id+"    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
+           				html += "<li><h5><b>"+data[i].member_id+"</b>    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
                         html += "<ul><li><div class='summer'>"+data[i].lreview_content +"</div></li></ul></li>";
 
            			 }
@@ -928,16 +933,16 @@ function getLreviewList(){
             
             
             $(function(){
-            	$("#accordian h6").click(function(){
-            		$("#accordian ul ul").slideUp();
+            	$("#accordian h5").click(function(){
+            		$("#accordian ul ul").hide();
             		$('.ico_ar').css('transform','none');
             		if(!$(this).next().is(":visible"))
             		{
-            			$(this).next().slideDown();
-            			$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
+            			$(this).next().show();
+            			//$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
             		}
             	})
-            });
+            }); 
             
         },
         error:function(request,status,error){

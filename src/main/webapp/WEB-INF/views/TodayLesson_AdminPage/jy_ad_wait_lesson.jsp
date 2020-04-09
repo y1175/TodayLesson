@@ -18,6 +18,13 @@ width:500px; height:auto;
       .hs_ad_main_asidenav_nav_NewLessonEvaluation_Title>a{
          color: rgb(224, 62, 82);
       }
+      
+      
+      a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: black; text-decoration: none;}
+ 
+ 
    </style>
 <!-- CSSstyle -->
 
@@ -32,7 +39,7 @@ width:500px; height:auto;
  
 	<table class="table" style="width: 80%; margin: 0px auto 40px;">
 		<thead>
-			<tr class="table-warning">
+			<tr  style="background-color: #fff2f2;">
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_no">#</a></th>
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_title">레슨명</a></th>
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_category">카테고리</a></th>

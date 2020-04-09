@@ -47,7 +47,7 @@ $(document).ready(function(){
 <form action="${pageContext.request.contextPath }/todaylessonadmin/admin_apply_exam" method="post">
 
 <table class="table" style="width: 80%; margin: 0px auto 40px;">
-<tr class="table-warning">
+<tr  style="background-color: #fff2f2;">
 <th scope="col"><input type="checkbox" id="checkall"></th>
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>

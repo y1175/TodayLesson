@@ -214,6 +214,8 @@ text-decoration: line-through;}
 #ej_cost{
 display: inline-block;}
 /*  */
+
+
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 #cssmenu,
 #cssmenu ul,
@@ -230,6 +232,7 @@ display: inline-block;}
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 #cssmenu:after,
 #cssmenu > ul:after {
   content: ".";
@@ -312,7 +315,7 @@ display: inline-block;}
 #cssmenu > ul > li > a:hover:after {
 /*   background: #fffbfd; */
 }
-
+/
 
 /*  */
 
@@ -331,5 +334,37 @@ display: inline-block;}
 	padding :  30px 10px;
 }
 
+li>h5{
+	text-align:left;
+	padding-bottom: 20px; 
+}
+
+.ico_ar{
+	float : right;
+}
+
+ul>li>.summer{
+	float: left;
+}
+
+.date {
+	float: right;
+}
 
 
+.lesson_qa_answer_content{
+width: 90%;	
+}
+
+ul{
+	padding: 0px;
+}
+
+
+.ans{
+	padding: 0px;
+}
+
+.ans>.ej_btn{
+	margin-left: 10px;
+}

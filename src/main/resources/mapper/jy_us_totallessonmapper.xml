@@ -271,12 +271,17 @@ order by orderlist_date desc limit 1
 
 
 <select id="ttlesson_cat_select" resultType="com.todaylesson.DTO.AllLessonDTO">
+		<![CDATA[
 
 		select * from lesson join senior
 		on lesson.senior_no =
 		senior.senior_no
 		where lesson_category = #{lesson_cat}
+		and lesson_result = 2
+		and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
+		and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
 		
+		]]>
 		</select>
 
 

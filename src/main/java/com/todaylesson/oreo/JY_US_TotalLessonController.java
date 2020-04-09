@@ -207,7 +207,7 @@ public class JY_US_TotalLessonController {
 							if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i).getLesson_qa_no()) {
 								hm.put("lesson_qa_answer_content",lesson_reply_answer_list.get(j).getLesson_qa_answer_content());
 								hm.put("lesson_qa_register_date",lesson_reply_answer_list.get(j).getLesson_qa_register_date());
-								hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
+								//hm.put("senior_id", lesson_reply_answer_list.get(j).getMember_id());
 							}
 						}
 
@@ -222,7 +222,7 @@ public class JY_US_TotalLessonController {
 							if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i).getLesson_qa_no()) {
 								hm.put("lesson_qa_answer_content",lesson_reply_answer_list.get(j).getLesson_qa_answer_content());
 								hm.put("lesson_qa_register_date",lesson_reply_answer_list.get(j).getLesson_qa_register_date());
-								hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
+								//hm.put("senior_id", lesson_reply_answer_list.get(j).getMember_id());
 							}
 						}
 
@@ -237,7 +237,7 @@ public class JY_US_TotalLessonController {
 						for (int j = 0; j < lesson_reply_answer_list.size(); j++) {
 							if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i).getLesson_qa_no()) {
 								hm.put("lesson_qa_answer_content", "작성자와 시니어만 확인할 수 있습니다.");
-								hm.put("member_id", "비밀댓글입니다.");
+								hm.put("senior_id", "비밀댓글입니다.");
 							}
 						}
 
@@ -254,7 +254,7 @@ public class JY_US_TotalLessonController {
 						if (lesson_reply_answer_list.get(j).getLesson_qa_originno() == lesson_reply_list.get(i).getLesson_qa_no()) {
 							hm.put("lesson_qa_answer_content",lesson_reply_answer_list.get(j).getLesson_qa_answer_content());
 							hm.put("lesson_qa_register_date",lesson_reply_answer_list.get(j).getLesson_qa_register_date());
-							hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
+							//hm.put("member_id", lesson_reply_answer_list.get(j).getMember_id());
 						}
 					}
 

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=1">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=2">
 
 <style>
  
@@ -20,6 +20,8 @@ width:500px; height:auto;
 
 </head>
 <body>
+
+
    <div class="" style="width: 80%; margin: auto;">
 
 <img class="total_img" alt="img" src="${pageContext.request.contextPath}/resources/IMG/total_lesson_img.png">
@@ -175,7 +177,7 @@ width:500px; height:auto;
 	<c:if test="${item.lesson_earlybird eq 1 }">
 	
 	<c:if test="${itDate - isDate <= 7}">
-	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost * 0.82}"/>원
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost * 0.73}"/>원
 	</c:if>
 	
 	<c:if test="${itDate - isDate > 7 }">

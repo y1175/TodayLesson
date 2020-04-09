@@ -32,7 +32,7 @@ width:500px; height:auto;
  <h2 style="margin-top:40px; text-align: center;">레슨 관리</h2>
  </div>
  
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:30%; margin:40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:28%; margin:40px auto;">
 <div class="collapse navbar-collapse" id="navbarSupportedContent" >
 <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonsenior/lesson_list?currPage=${page.startBlock }"
  style="margin:0px auto;">
@@ -61,7 +61,7 @@ width:500px; height:auto;
 
 	<table class="table" style="width: 80%; margin: 0px auto 40px;">
 		<thead>
-			<tr class="table-warning">
+			<tr  style="background-color: #fff2f2;">
 
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>

@@ -352,12 +352,12 @@ ${dto.lesson_senior_content}
 
 <table class="table " style="font-size: 15px;">
 		<thead>
-		<tr class="table-warning">
+		<tr  style="background-color: #fff2f2;">
 		<th colspan="4" style="text-align: center;">
 					수락된 레슨 목록
 					</th>
 		</tr>
-			<tr class="table-warning">
+			<tr  style="background-color: #fff2f2;">
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>
 				<th scope="col">카테고리</th>
@@ -431,13 +431,13 @@ ${dto.lesson_senior_content}
 	
 <table class="table " style="font-size: 15px;">
 		<thead>
-		<tr class="table-warning">
+		<tr  style="background-color: #fff2f2;">
 		<th colspan="4" style="text-align: center;">
 					거절된 레슨 목록
 					</th>
 		</tr>
 		
-			<tr class="table-warning">
+			<tr  style="background-color: #fff2f2;">
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>
 				<th scope="col">카테고리</th>
@@ -506,13 +506,13 @@ ${dto.lesson_senior_content}
 <div class="col-md-4">
 <table class="table " style="font-size: 15px;">
 		<thead>
-		<tr class="table-warning">
+		<tr  style="background-color: #fff2f2;">
 		<th colspan="4" style="text-align: center;">
 					심사중인 레슨 목록
 					</th>
 		</tr>
 		
-			<tr class="table-warning">
+			<tr  style="background-color: #fff2f2;">
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>
 				<th scope="col">카테고리</th>

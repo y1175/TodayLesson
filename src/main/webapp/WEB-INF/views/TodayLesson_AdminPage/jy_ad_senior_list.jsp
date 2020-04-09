@@ -26,7 +26,7 @@
  </div>
 
  
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:30%; margin:40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:23%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/all_senior?currPage=${page.startBlock }"
  style="margin:0px auto;">
@@ -48,7 +48,7 @@
 
 	<table class="table" style="width: 80%; margin: 0px auto 40px;">
 		<thead>
-			<tr class="table-warning">
+			<tr  style="background-color: #fff2f2;">
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/all_senior?order=senior_no">#</a></th>
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/all_senior?order=member_id">아이디</a></th>
 				<th scope="col">닉네임</th>

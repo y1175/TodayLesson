@@ -14,12 +14,8 @@
 
 if (${result} > 0) {
 	alert("거절 완료!");
-	</script>
+	location.href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson";
 	
-	<h3>거절완료</h3>
-	<a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson">목록으로</a>
-	
-	<script>
 } else {
 	
 

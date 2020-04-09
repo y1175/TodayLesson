@@ -12,7 +12,7 @@
 <script>
 
 if (${result} > 0) {
-	alert("승인 중으로 넘기기!");
+	alert("신청 완료에서 심사 중으로 변경되었습니다!");
 	location.href="${pageContext.request.contextPath }/todaylessonadmin/apply_lesson";
 
 

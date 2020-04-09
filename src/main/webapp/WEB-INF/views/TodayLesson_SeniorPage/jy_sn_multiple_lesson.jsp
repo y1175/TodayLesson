@@ -121,7 +121,7 @@ function add_Lesson_Time(){
 
 
 <table id = "lessontable" style="margin: 0px auto;">
-<thead><tr><th>강의 일</th><th>강의 시간</th><th>삭제</th></tr></thead>
+<thead  style="background-color: #fff2f2;"><tr><th>강의 일</th><th>강의 시간</th><th>삭제</th></tr></thead>
 <tbody>
 
 </tbody>

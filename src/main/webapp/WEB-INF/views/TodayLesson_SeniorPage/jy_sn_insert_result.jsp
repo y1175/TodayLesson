@@ -13,7 +13,7 @@
 <script>
 
 if (${result} > 0) {
-	alert("추가 성공! 내부 검토 후 등록 여부를 알려드리겠습니다.");
+	alert("등록 성공! 내부 검토 후 메일로 등록 여부를 보내드리겠습니다.");
 
 	location.href="${pageContext.request.contextPath }/todaylessonsenior/lesson_list";
 
