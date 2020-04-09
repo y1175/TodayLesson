@@ -25,7 +25,8 @@
 </c:forEach>
 <br>
 <br>
-<div id="ej_line"></div>
+<!-- <div id="ej_line"></div> -->
+<hr>
 <!--오더 리스트 정보  -->
 <br>
 <div class="ej_align left">
@@ -53,7 +54,7 @@ ${orderlistdto.orderlist_usepoint  }<br>
 <!--ej_align right/  -->
 
 <a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0">
-<img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/corona_ej.png" style="display:block; width:40%; margin:0 auto;"></a>
+<img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/corona_ej.png" style="display:block; width:100%; margin:0 auto; margin-top:20px;"></a>
 </div>
 <!--ej container/  -->
 

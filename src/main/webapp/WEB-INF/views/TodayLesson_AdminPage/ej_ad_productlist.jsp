@@ -98,8 +98,9 @@ text-decoration: none;
 
 <body>
 <div id="ej_container">
-<h2 style="text-align: center;">상품관리</h2><br>
-
+<h2 style="text-align: center;"><b>상품관리</b></h2><br>
+ <a href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productregister"><button class="ej_btn" style="float:right; margin-bottom:30px;">상품등록</button></a>
+ 
    <table class="table">
       <thead>
          <tr style="background-color:#fff2f2;">
@@ -142,9 +143,9 @@ text-decoration: none;
    </table>
    
    <div class="paging">
-<div class="paginginside">
+<div class="paginginside" style="text-align: center;">
 
-<ul class="pagination pagination-danger">
+<ul class="pagination pagination-danger" >
 <c:if test="${page.prev }">
 <li class="page-item">
 <a class="page-link" href="/todaylessonadmin/ej_ad_productlist?currPage=${page.startBlock-1}">PREV
@@ -174,7 +175,7 @@ text-decoration: none;
    
    
    
-   <a href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productregister"><button class="ej_btn">상품등록</button></a>
+  
 </div>
 
 </body>

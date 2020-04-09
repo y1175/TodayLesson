@@ -113,7 +113,7 @@ float:right;}
 <body>
 
 <div id="ej_container">
-<h2 style="text-align:center;">후기관리</h2><br>
+<h2 style="text-align:center;"><b>후기관리</b></h2><br>
 <table class="table">
 <thead>
 <tr style="background-color:#fff2f2;">

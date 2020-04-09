@@ -94,13 +94,13 @@ body{
 .hs_us_home_mainBanner{
 	width:100%;
 	margin-top: -10px;
-	height: 200px;/* 원래 400px이엇음 */
+	height: 400px;/* 원래 400px이엇음 */
 }
 
 .hs_us_home_mainBannerbox{
 	position:relative;
 	overflow: hidden;
-	height: 200px;
+	height: 400px;
 	width: 100%;
 	background-color: pink
 }
@@ -112,7 +112,7 @@ body{
 
 .hs_us_home_mainBannerslide>a>img{
 	width:100%;
-	height : 200px;
+	height : 400px;
 	position: absolute;
 	transition: all 2s;
 }  
