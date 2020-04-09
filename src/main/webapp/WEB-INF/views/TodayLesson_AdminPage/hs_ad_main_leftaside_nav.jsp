@@ -38,7 +38,7 @@
             <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_sales_list">시니어매출현황</a>
          </p>
          <p class="hs_ad_main_asidenav_nav_SeniorCalculate_Title">
-         <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_calculte_list">시니어매출정산</a>
+         <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_calculate_list">시니어매출정산</a>
          </p>
 
       <div class="hs_ad_main_asidenav_line"></div>

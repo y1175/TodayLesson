@@ -7,7 +7,7 @@
 <title>TodayLessonAdmin</title>
 
 <!-- CSSstyle --> 
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_banner_registration.css?ver=1">
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_banner_registration.css?ver=2">
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Banner_Title>a{
          color: rgb(224, 62, 82);
@@ -22,7 +22,7 @@
 </head>
 <body>
    <div class="hs_Admin_BannerRegistration">
-      <h4 class="hs_Admin_BannerRegistration_Title">배너 등록</h4>
+      <h2 class="hs_Admin_BannerRegistration_Title">배너등록</h2>
       <div class="hs_ad_BannerRegistration_Line"></div>  
       <div class="" style="width: 100%;">
          <form role="form" method="post" autocomplete="off" enctype="multipart/form-data" class="row"

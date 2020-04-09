@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle --> 
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_banner_modify.css">
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_banner_modify.css?ver=1">
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Banner_Title>a{
          color: rgb(224, 62, 82);
@@ -19,7 +19,7 @@
 </head>
 <body>
    <div class="hs_Admin_BannerModify">
-      <h4 class="hs_Admin_BannerModify_Title">배너수정</h4>
+      <h2 class="hs_Admin_BannerModify_Title">배너수정</h2>
       <div class="hs_ad_BannerModify_Line"></div>
       <div class="" style="width: 100%;">  
          <form  method ="post" autocomplete="off" enctype="multipart/form-data" class="row"

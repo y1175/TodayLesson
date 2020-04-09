@@ -8,7 +8,7 @@
 <title>TodayLessonAdmin</title>
 
 <!-- CSSstyle --> 
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_bannerlist.css?ver=5">
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_ad_bannerlist.css?ver=8">
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Banner_Title>a{
          color: rgb(224, 62, 82);
@@ -22,7 +22,7 @@
 </head>
 <body>
    <div class="hs_Admin_Banner">
-      <h4 class="hs_Admin_Banner_Title">배너관리</h4>
+      <h2 class="hs_Admin_Banner_Title">배너관리</h2>
       <form class="row" method ="post" action="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.startBlock }" style="text-align: center;  margin-top: 40px;">
          <div class="col-md-7" style="text-align: left;">
             <select name="search" class="hs_admin_banner_SelectOP">
@@ -39,10 +39,10 @@
       <div class="hs_ad_bannerLine"></div>   
       <c:forEach var="adminBannerList" items="${adminBannerList}">
          <input type="hidden" value="${adminBannerList.banner_no}" class="banner_no">
-         <div class="row" style="height: 90px;">
+         <div class="row" style="height: 200px;">
             <div class="col-md-6">
                <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_detail/${adminBannerList.banner_no}">
-                  <img src="${adminBannerList.banner_filepath}" alt="banner_filepath" style="" >
+                  <img src="${adminBannerList.banner_filepath}" alt="banner_filepath" style="height: 200px;" >
                </a>
             </div>
             <div class="col-md-4">
@@ -67,16 +67,16 @@
                   <c:out value="${adminBannerList.banner_registrationdate}"/>             
                </p>   
             </div>
-            <div class="col-md-2" style="text-align: center; position: relative; top: 30px;">
+            <div class="col-md-2" style="text-align: center; position: relative; top: 85px;">
                <button class="hs_admin_bannerupdateBtn">수정</button>
                <button class="hs_admin_bannerdeleteBtn">삭제</button>
             </div>
          </div>
          <div class="hs_ad_bannerLine"></div>
       </c:forEach>
-      <div class="row" style="text-align: center;">
+      <div class="row">
       
-      <ul class="pagination pagination-danger">
+      <ul class="pagination pagination-danger" style="margin: auto;">
          <c:if test="${page.prev}">
          <li class="page-item">
             <a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt}">PREV
