@@ -38,7 +38,7 @@
                
                   <c:forEach var="newlessonlist" items="${newlessonlist}">
                      
-                     <a href="">
+                     <a href="${pageContext.request.contextPath }/todaylesson/lesson_detail/${newlessonlist.lesson_no}">
                         <img class="hs_us_bestLesson_img" src="${newlessonlist.lesson_thumb}" alt="">
                      <c:set var="category" value="${newlessonlist.lesson_category }"/>
                      <c:choose>
@@ -116,7 +116,7 @@
                
                   <c:forEach var="newlessonlist" items="${newlessonlist}">
                      
-                     <a href="">
+                     <a href="${pageContext.request.contextPath }/todaylesson/lesson_detail/${newlessonlist.lesson_no}">
                         <img class="hs_storecontent_cg_img" src="${newlessonlist.lesson_thumb}" alt="">
                      <c:set var="category" value="${newlessonlist.lesson_category }"/>
                      <c:choose>
@@ -194,7 +194,7 @@
                
                   <c:forEach var="newlessonlist" items="${newlessonlist}">
                      
-                     <a href="">
+                     <a href="${pageContext.request.contextPath }/todaylesson/lesson_detail/${newlessonlist.lesson_no}">
                         <img class="hs_us_recommendationLesson_img" src="${newlessonlist.lesson_thumb}" alt="">
                      <c:set var="category" value="${newlessonlist.lesson_category }"/>
                      <c:choose>
