@@ -17,7 +17,7 @@ public interface Admin_HS_Statsales_Mapper {
 	public List<OrderListDTO> chartOutPut();
 
 	//매출목록
-	public List<OrderListDTO> StatSalesList(HashMap<String, Object> hm);
+	//public List<OrderListDTO> StatSalesList(HashMap<String, Object> hm);
 
 
 	

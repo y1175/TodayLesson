@@ -18,11 +18,12 @@ public class Admin_HS_Statsales_ServiceImple implements Admin_HS_Statsales_Servi
 
 	//매출통계(일별, 주별, 월별, 년별)
 	@Override
-	public List<OrderListDTO> StatSalesAllChart(String ymd) {
+	public List<OrderListDTO> StatSalesAllChart(String ymd, String start_date, String end_date) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> hm=new HashMap<>();
 		hm.put("ymd", ymd);
-		
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
 		return adminStatSalesMapper.StatSalesAllChart(hm);
 	}
 
@@ -34,15 +35,15 @@ public class Admin_HS_Statsales_ServiceImple implements Admin_HS_Statsales_Servi
 	}
 
 	//매출목록
-	@Override
-	public List<OrderListDTO> StatSalesList(String ymd, String start_date, String end_date) {
-		// TODO Auto-generated method stub
-		HashMap<String, Object> hm=new HashMap<>();
-		hm.put("ymd", ymd);
-		hm.put("start_date", start_date);
-		hm.put("end_date", end_date);
-		return adminStatSalesMapper.StatSalesList(hm);
-	}
+//	@Override
+//	public List<OrderListDTO> StatSalesList(String ymd, String start_date, String end_date) {
+//		// TODO Auto-generated method stub
+//		HashMap<String, Object> hm=new HashMap<>();
+//		hm.put("ymd", ymd);
+//		hm.put("start_date", start_date);
+//		hm.put("end_date", end_date);
+//		return adminStatSalesMapper.StatSalesList(hm);
+//	}
 
 	
 

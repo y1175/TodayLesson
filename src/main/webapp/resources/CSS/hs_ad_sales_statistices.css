@@ -1,0 +1,50 @@
+@charset "EUC-KR";
+.hs_ad_sales_statistices{
+	width: 80%;
+	margin: auto;
+	margin-top: 30px;
+	color: rgb(53, 54, 58);
+}
+.hs_admin_sales_statistices_title{
+	font-weight: 800;
+}
+.sales_statistics-btn{
+	border: 1px transparent;
+    padding: 5px 20px;
+    border-radius : 3px;
+    background-color: rgba(53, 54, 58 , 0.8 );
+    font-weight : 600;
+    font-size : 14px;
+    color: white;
+}
+.sales_statistics-btn:hover{
+	border: 1px transparent;
+    padding: 5px 20px;
+    border-radius : 3px;
+    background-color: rgba(53, 54, 58 , 0.9 );
+    font-weight : 600;
+    font-size : 14px;
+    color: white;
+}
+.thead-hs-Salesstatistics{
+	background-color: rgb(224, 62, 82);
+	color:white;
+}
+.thead-hs-Salesstatistics tr th{
+	text-align:center;
+	border-right: 1px solid white;
+}
+
+.body-hs-Salesstatistics{
+	
+	text-align:center;
+}
+.body-hs-Salesstatistics tr td{
+	border-right: 1px solid rgba(53, 54, 58 , 0.3 );
+}
+.tfoot-hs-Salesstatistics{
+	text-align:center;
+}
+.tfoot-hs-Salesstatistics tr td{
+	border-right: 1px solid rgba(53, 54, 58 , 0.3 );
+}

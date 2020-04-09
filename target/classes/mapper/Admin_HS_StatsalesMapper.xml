@@ -27,6 +27,7 @@
          select date_format(orderlist_date,'%Y-%m-%d') as orderlist_date,
                 sum(orderlist_cost) as orderlist_cost
          from orderlist
+         <include refid="date_select"/>
          group by date(orderlist_date) 
          order by orderlist_date desc
       </sql>
@@ -38,6 +39,7 @@
                 date_format(orderlist_date, '%Y%u') as orderlist_date,
                 sum(orderlist_cost) as orderlist_cost
          from orderlist
+         <include refid="date_select"/>
          group by week(orderlist_date)  
          order by orderlist_date  desc
       </sql>
@@ -47,6 +49,7 @@
          select date_format(orderlist_date,'%Y-%m') as orderlist_date,
                 sum(orderlist_cost) as orderlist_cost
          from orderlist
+         <include refid="date_select"/>
          group by month(orderlist_date),year(orderlist_date) 
          order by orderlist_date desc
       </sql>
@@ -56,6 +59,7 @@
          select date_format(orderlist_date,'%Y') as orderlist_date,
                 sum(orderlist_cost) as orderlist_cost
          from orderlist
+         <include refid="date_select"/>
          group by year(orderlist_date) 
          order by orderlist_date desc
       </sql>
@@ -69,5 +73,53 @@
       from orderlist
       group by orderlist_date
    </select>
+   
+   <!-- 매출통계 리스트 -->
+   <sql id="date_select">
+      <where>
+         <if test='start_date!=""'>
+            rderlist_date>=#{start_date} 
+         </if>
+         <if test='end_date!=""'>
+            and rderlist_date <![CDATA[<=]]>#{end_date} 
+         </if>
+      </where>
+   </sql>
+   
+  <!--  <select id="StatSalesList" resultType = "com.todaylesson.DTO.OrderListDTO">
+      
+      <choose>
+         <when test='ymd.equals("date")'>
+            select sum(orderlist_cost) as orderlist_cost , orderlist_date
+            from orderlist
+            group by date(orderlist_date) 
+            order by orderlist_date desc
+         </when>
+
+         <when test='ymd.equals("week")'>
+            select sum(orderlist_cost) as orderlist_cost , orderlist_date
+            from orderlist
+            group by week(orderlist_date)   
+            order by orderlist_date desc
+         </when>
+
+         <when test='ymd.equals("month")'>
+            select sum(orderlist_cost) as orderlist_cost , orderlist_date
+            from orderlist
+            group by month(orderlist_date) 
+            order by orderlist_date desc
+         </when>
+
+         <when test='ymd.equals("year")'>
+            select sum(orderlist_cost) as orderlist_cost , orderlist_date
+            from orderlist
+            group by year(orderlist_date)  
+            order by orderlist_date desc
+         </when>
+
+     </choose>
+      
+      
+   </select> -->
 
 </mapper>
