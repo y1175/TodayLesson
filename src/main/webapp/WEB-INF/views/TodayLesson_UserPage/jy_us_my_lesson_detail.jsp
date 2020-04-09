@@ -16,7 +16,7 @@
 
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">온라인 레슨</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>온라인 레슨</b></h2>
  </div>
 
    

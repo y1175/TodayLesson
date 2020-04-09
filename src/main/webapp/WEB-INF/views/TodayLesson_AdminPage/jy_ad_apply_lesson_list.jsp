@@ -39,7 +39,7 @@ $(document).ready(function(){
 </head>
 <body>
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">신규 레슨 심사</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>신규 레슨 심사</b></h2>
  </div>
  
 

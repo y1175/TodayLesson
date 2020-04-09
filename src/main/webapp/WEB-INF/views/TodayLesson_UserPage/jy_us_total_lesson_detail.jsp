@@ -413,10 +413,21 @@ $(".insert_my_cart").click(function(){
  <div class="lesson_info">
   <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_info.png" >
  
+ <c:if test="${dto.lesson_type != 3 }">
   <div class="lesson_info_content1" style="	 position: absolute;
      top:2630px;
      left:730px;
      font-size: 23px;">
+     </c:if>
+     
+     <c:if test="${dto.lesson_type == 3 }">
+  <div class="lesson_info_content1" style="	 position: absolute;
+     top:2565px;
+     left:700px;
+     font-size: 23px;">
+     </c:if>
+     
+     
 	<c:choose>
 		<c:when test="${dto.lesson_category == 1}">
 			<c:out value="운동" />
@@ -440,10 +451,23 @@ $(".insert_my_cart").click(function(){
 	</c:choose>
 	</div>
 	
+	 <c:if test="${dto.lesson_type != 3 }">
+	
 	<div class="lesson_info_content2" style="	 position: absolute;
      top:2690px;
      left:700px;
      font-size: 23px;">
+     </c:if>
+     
+          <c:if test="${dto.lesson_type == 3 }">
+  <div class="lesson_info_content2" style="	 position: absolute;
+     top:2627px;
+     left:700px;
+     font-size: 23px;">
+     </c:if>
+     
+     
+     
 	<c:out value="${dto.lesson_number}" />
 </div>
 </div>

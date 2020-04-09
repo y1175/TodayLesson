@@ -51,7 +51,7 @@
 <body>
 	<div id="jy_container">
 
-		<h1>시니어 상세 보기</h1>
+		<h1><b>시니어 상세 보기</b></h1>
 		<ul>
 			<li><b>시니어 번호</b><span class="jy_text"> <c:out
 						value="${dto.senior_no }" /></span></li>

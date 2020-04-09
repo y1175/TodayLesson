@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 <div id="jy_container">
 
-<h1>레슨 상세보기</h1>
+<h1><b>레슨 상세보기</b></h1>
 
 <ul>
 <li>

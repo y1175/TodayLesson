@@ -88,7 +88,7 @@ function checkDisable()
 ">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">시니어 지원 하기</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>시니어 지원 하기</b></h2>
  </div>
 <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/plus_senior" name="frm">
 

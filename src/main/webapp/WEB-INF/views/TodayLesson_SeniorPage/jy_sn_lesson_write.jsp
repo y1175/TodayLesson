@@ -238,7 +238,7 @@ function multiple_time_lesson_date(){
 <div id="jy_container">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">레슨 작성</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>레슨 작성</b></h2>
  </div>
  
  

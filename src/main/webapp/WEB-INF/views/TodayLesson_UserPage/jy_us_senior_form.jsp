@@ -36,7 +36,7 @@
 </script>
 
 <div class="jy_container">
-<h2>시니어 지원</h2>
+<h2><b>시니어 지원</b></h2>
 <hr>
 <div class = "jy_text_box">
 <h3>시니어 회원으로 전환하시겠습니까?</h3>

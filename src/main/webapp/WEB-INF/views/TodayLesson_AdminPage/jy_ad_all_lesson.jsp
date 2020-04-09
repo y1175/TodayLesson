@@ -20,7 +20,7 @@
 </head>
 <body>
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">레슨 관리</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>레슨 관리</b></h2>
  </div>
  
  

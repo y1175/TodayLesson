@@ -16,7 +16,7 @@
 
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">나의 레슨관리</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>나의 레슨관리</b></h2>
  </div>
  
  

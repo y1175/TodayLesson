@@ -42,7 +42,7 @@ $(document).ready(function(){
 <form name="form">
 
 <div class="jy_text_box">
-<h2>오프라인 레슨</h2>
+<h2><b>오프라인 레슨</b></h2>
 
 총 강의 수
 <input type="text" id="lesson_max_number" name="lesson_max_number" placeholder="총 강의 수를 입력하세요.">
