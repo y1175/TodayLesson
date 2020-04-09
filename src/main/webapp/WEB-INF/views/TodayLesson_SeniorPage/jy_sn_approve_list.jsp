@@ -8,9 +8,7 @@
 <title>TodayLesson</title>
 <style>
 
-.thum{
-width:500px; height:auto;
-}
+
 
 </style>
 <link rel="stylesheet"
@@ -19,7 +17,7 @@ width:500px; height:auto;
 <body>
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>수락된 레슨</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>수락된 레슨</b></h2>
  </div>
  
  
