@@ -1,6 +1,6 @@
 @charset "utf-8";
 .findidmain{
-	width: 30%;
+	width: 40%;
 	margin:60px auto;
 	color: rgb(53, 54, 58);
 	
@@ -9,16 +9,27 @@
 .findidmain h2{
 	margin-bottom:40px;
 	font-size:30px;
+	text-align:center;
+}
+.findidmain h5{
+	text-align: center;
+	margin-top:-20px;
+	line-height: 2em;
 }
 
-.form-group input{
+.findid input{
 	font-size:15px;
 }
 
-.form-group label{
+.findid label{
 	font-size:15px;
 }
-
+.idline{
+	 width:70%; 
+	border:1px solid silver;
+	border-radius: 20px;
+	margin :40px auto 10px;
+}
 .findidbtn{
 	
 	border: 1px transparent;
@@ -38,4 +49,12 @@
 	font-size: 14px;
 	color: white;
 	
+}
+.submitdiv{
+	width:100%;
+	text-align:center;
+	margin-bottom: 30px;
+}
+.sbmitdivinside{
+	display:inline-block;
 }

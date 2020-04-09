@@ -4,15 +4,10 @@
 <html>
 <head>
  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>TodayLesson</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_find_id.css?ver=3">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+	href="${pageContext.request.contextPath}/resources/CSS/yi_find_id.css?ver=4">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script>
 
 
@@ -115,30 +110,42 @@ $(document).ready(function() {
 <body>
 <div class="findidmain">
 
-<h2>아이디 찾기
-<svg class="bi bi-envelope-open" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M.243 6.929l.514-.858L8 10.417l7.243-4.346.514.858L8 11.583.243 6.93z" clip-rule="evenodd"/>
-  <path fill-rule="evenodd" d="M7.184 10.68L.752 14.432l-.504-.864L6.68 9.816l.504.864zm1.632 0l6.432 3.752.504-.864L9.32 9.816l-.504.864z" clip-rule="evenodd"/>
-  <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 00-.94 0l-6 3.2A1 1 0 001 5.4V14a1 1 0 001 1h12a1 1 0 001-1V5.4a1 1 0 00-.53-.882l-6-3.2zM7.06.435a2 2 0 011.882 0l6 3.2A2 2 0 0116 5.4V14a2 2 0 01-2 2H2a2 2 0 01-2-2V5.4a2 2 0 011.059-1.765l6-3.2z" clip-rule="evenodd"/>
-</svg>	
+<h2>아이디 찾기<i class='fas fa-search' style='font-size:36px'></i>
 </h2>
+<h5>기존에 가입하신 <b>이름</b>과 <b>휴대폰번호</b>를 입력해주시면 <b>아이디</b>가 출력됩니다.<br>가입하신 아이디를 확인하세요.</h5>
 			
-	
-					<div class="form-group">
+	<div class="idline">
+	<div style="width:70%; margin:40px auto;">
+					<div class="form-group findid">
 						<label for="inputName_1">이름</label>
 							<input type="text" class="form-control" id="inputName_1" name="inputName_1" placeholder="ex) 갓혜미">					
 					</div>
-					<div class="form-group">
+					<div class="form-group findid">
 						<label for="inputPhone_1">휴대폰번호</label>
-							<input type="text" class="form-control" id="inputPhone_1" name="inputPhone_1" placeholder="ex) 010-7777-7777">					
+							<input type="text" class="form-control" id="inputPhone_1" name="inputPhone_1" placeholder="ex) 01012341234" aria-describedby="phoneHelp">
+							<small id="phoneHelp" class="form-text text-muted">"-"를 빼고 입력하세요.</small>					
 					</div>
-					
-					<div class="form-group">
+	</div>				
+	</div>
+		<div class="submitdiv">
+		<div class="submitdivinside">
+					<div class="form-group">				
 						<button id="searchBtn" type="button" class="findidbtn">확인</button>
 					<button type="reset" href="${pageContext.request.contextPath}/todaylessonlogin" class="findidbtn2">취소</button>
 					</div>
-
-				
+					</div>
+					
+					<div class="gotoid">
+<p>아이디로 비밀번호를 찾으려면? <a class="findId" href="/findPw">비밀번호 찾기 바로가기</a>
+<svg class="bi bi-box-arrow-in-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8.146 11.354a.5.5 0 010-.708L10.793 8 8.146 5.354a.5.5 0 11.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z" clip-rule="evenodd"/>
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9A.5.5 0 011 8z" clip-rule="evenodd"/>
+  <path fill-rule="evenodd" d="M13.5 14.5A1.5 1.5 0 0015 13V3a1.5 1.5 0 00-1.5-1.5h-8A1.5 1.5 0 004 3v1.5a.5.5 0 001 0V3a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v10a.5.5 0 01-.5.5h-8A.5.5 0 015 13v-1.5a.5.5 0 00-1 0V13a1.5 1.5 0 001.5 1.5h8z" clip-rule="evenodd"/>
+</svg>
+</p>
+</div>
+				</div>
+			
 				
 			<%-- 	
 				<div id="searchP" style="display: none;">
@@ -182,7 +189,8 @@ $(document).ready(function() {
 				
 				
 				
-			
+<div class="submitdiv">
+		<div class="submitdivinside">			
 			
 <div id="background_modal" class="background_modal" style="display:none">
 	<div class="modal_contents">
@@ -197,6 +205,8 @@ $(document).ready(function() {
 
 
 
+	</div>
+	</div>
 	</div>
 </div>
 </body>
