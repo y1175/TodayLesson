@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css">  
+
 <script>
 
 $(document).ready(function() {
@@ -351,19 +355,27 @@ ${dto.lesson_senior_content}
 </span>
 </li>
 
+	</ul>
 
 
 
 
-	현재까지 오픈한 레슨 명<br>
 
 
 
-<div class="row">
+<div class="row" style="margin: 0px; ">
+
+
+
 <div class="col-md-4">
 
-<table class="table" style="width: 30%; margin: 0px auto 40px;">
+<table class="table " style="font-size: 15px;">
 		<thead>
+		<tr class="table-warning">
+		<th colspan="4" style="text-align: center;">
+					수락된 레슨 목록
+					</th>
+		</tr>
 			<tr class="table-warning">
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>
@@ -373,9 +385,7 @@ ${dto.lesson_senior_content}
 			</tr>
 		</thead>
 		<tbody>
-<thead>
-<tbody>
-				
+	
 				
 <c:forEach var="item" items="${list}">
 <c:if test="${item.lesson_result == 2}">
@@ -412,15 +422,15 @@ ${dto.lesson_senior_content}
 <c:choose>
 
 <c:when test="${item.lesson_type eq 1}">
-<td><c:out value="원데이 클래스"/></td>
+<td><c:out value="원데이"/></td>
 </c:when>
 
 <c:when test="${item.lesson_type eq 2}">
-<td><c:out value="다회성 클래스"/></td>
+<td><c:out value="다회성"/></td>
 </c:when>
 
 <c:otherwise>
-<td><c:out value="온라인 클래스"/></td>
+<td><c:out value="온라인"/></td>
 </c:otherwise>
 
 </c:choose>
@@ -435,13 +445,17 @@ ${dto.lesson_senior_content}
 
 	
 	
-	현재까지 거절된 레슨 명<br>
-	<div class="col-md-4">
+<div class="col-md-4">
+
 	
-	
-	
-	<table class="table" style="width: 30%; margin: 0px auto 40px;">
+<table class="table " style="font-size: 15px;">
 		<thead>
+		<tr class="table-warning">
+		<th colspan="4" style="text-align: center;">
+					거절된 레슨 목록
+					</th>
+		</tr>
+		
 			<tr class="table-warning">
 				<th scope="col">#</th>
 				<th scope="col">레슨명</th>
@@ -451,9 +465,7 @@ ${dto.lesson_senior_content}
 			</tr>
 		</thead>
 		<tbody>
-<thead>
-<tbody>
-				
+		
 				
 <c:forEach var="item" items="${list}">
 	<c:if test="${item.lesson_result == '3'}">
@@ -490,15 +502,15 @@ ${dto.lesson_senior_content}
 <c:choose>
 
 <c:when test="${item.lesson_type eq 1}">
-<td><c:out value="원데이 클래스"/></td>
+<td><c:out value="원데이"/></td>
 </c:when>
 
 <c:when test="${item.lesson_type eq 2}">
-<td><c:out value="다회성 클래스"/></td>
+<td><c:out value="다회성"/></td>
 </c:when>
 
 <c:otherwise>
-<td><c:out value="온라인 클래스"/></td>
+<td><c:out value="온라인"/></td>
 </c:otherwise>
 
 </c:choose>
@@ -509,31 +521,91 @@ ${dto.lesson_senior_content}
 </table>
 	
 	</div>
-	--------------<br>
 	
-	<div class="col-md-4">
-	승인 대기중인 레슨 명<br>
-	<c:forEach var="list" items="${list}">
-	<c:if test="${list.lesson_result == '1'}">
-	<c:out value="${list.lesson_title}"/><br>
-	<c:out value="${list.lesson_no}"/><br>
-	</c:if>	
-	</c:forEach>
-	</div>
+<div class="col-md-4">
+<table class="table " style="font-size: 15px;">
+		<thead>
+		<tr class="table-warning">
+		<th colspan="4" style="text-align: center;">
+					심사중인 레슨 목록
+					</th>
+		</tr>
+		
+			<tr class="table-warning">
+				<th scope="col">#</th>
+				<th scope="col">레슨명</th>
+				<th scope="col">카테고리</th>
+				<th scope="col">레슨타입</th>
+
+			</tr>
+		</thead>
+		<tbody>
+		
+				
+<c:forEach var="item" items="${list}">
+<c:if test="${item.lesson_result == 1}">
+
+<tr>
+<td>${item.lesson_no}</td>
+<td><a href="${pageContext.request.contextPath }/todaylessonadmin/admin_lesson_detail/${item.lesson_no}">${item.lesson_title}</a></td>
+
+
+<c:choose>
+<c:when test="${item.lesson_category eq 1}">
+<td><c:out value="운동"/></td>
+</c:when>
+
+<c:when test="${item.lesson_category eq 2}">
+<td><c:out value="교육"/></td>
+</c:when>
+
+<c:when test="${item.lesson_category eq 3}">
+<td><c:out value="핸드메이드"/></td>
+</c:when>
+
+<c:when test="${item.lesson_category eq 4}">
+<td><c:out value="it"/></td>
+</c:when>
+
+<c:otherwise>
+<td><c:out value="요리"/></td>
+</c:otherwise>
+
+</c:choose>
+
+
+<c:choose>
+
+<c:when test="${item.lesson_type eq 1}">
+<td><c:out value="원데이"/></td>
+</c:when>
+
+<c:when test="${item.lesson_type eq 2}">
+<td><c:out value="다회성"/></td>
+</c:when>
+
+<c:otherwise>
+<td><c:out value="온라인"/></td>
+</c:otherwise>
+
+</c:choose>
+</tr>
+</c:if>
+</c:forEach>
+</tbody>
+</table>
+</div>
+
 
 	</div>
-	</ul>
 
 
 
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonadmin/wait_lesson'">목록으로</button>
+<button id="reward_point" class="ej_btn2" onclick="window.open('${pageContext.request.contextPath}/todaylessonadmin/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=420')">심사하기</button>
 
 
-	<a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson">목록으로</a>
-	<br>
-	<input type=button id="lesson_result_update"
-		onclick="window.open('${pageContext.request.contextPath}/todaylessonadmin/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=420')"
-		value="심사하기">
-
+</div>
 </body>
 
 

@@ -26,6 +26,7 @@
 <!--owl carousel css, js-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson_detail.css">  
 
+
 <style>
 .selected {
 	display: none;
@@ -50,6 +51,9 @@ li>ul>li {
 
 <script> 
 
+
+
+  
 $('document').ready(function() { 
 	
 	
@@ -129,6 +133,13 @@ $('document').ready(function() {
 
     });
     
+    
+    
+
+    
+    
+    
+
 	
 });
 
@@ -143,6 +154,8 @@ $('document').ready(function() {
 <body>
 
 <div id="ej_container">
+
+<input type="hidden" name="lesson_no" id="lesson_no" value="${dto.lesson_no}">
 
 
   <form role="form" method="post" id="form1" name="form" style="height: 400px">
@@ -261,6 +274,10 @@ $('document').ready(function() {
 
 	<script>
 	
+    // 풀캘
+
+	
+	
 	let pos = $("#is_it_possible").val();
 	
 	 $("#to_orderform").click(function(){
@@ -373,7 +390,7 @@ $(".insert_my_cart").click(function(){
   	
   	 <div id='cssmenu'>
 	<ul>
-   		<li><a href="#ej_box_first">상품소개</a></li>
+   		<li><a href="#ej_box_first">레슨</a></li>
    		<li><a href="#ej_box_second">문의</a></li>
    		<li><a href="#ej_box_third">후기</a></li>
    		<li><a href="#ej_box_fourth">배송/교환/환불</a></li>
@@ -386,10 +403,18 @@ $(".insert_my_cart").click(function(){
 <div id="ej_container_content">
 <div class="ej_box first" id="ej_box_first">
 <span class="ej_left"><h3>레슨소개</h3></span>
+
+<img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/lesson_point.png" >
  <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_product_topimg.png" >
  
- <h2 id="lesson_info_title">
- <br> 이 강의는 <br>"
+ 
+ <div class="lesson_info">
+  <img alt="topimg" src="${pageContext.request.contextPath}/resources/IMG/lesson_info.png" >
+ 
+  <div class="lesson_info_content1" style="	 position: absolute;
+     top:2463px;
+     left:815px;
+     font-size: 23px;">
 	<c:choose>
 		<c:when test="${dto.lesson_category == 1}">
 			<c:out value="운동" />
@@ -411,12 +436,17 @@ $(".insert_my_cart").click(function(){
 			<c:out value="요리" />
 		</c:otherwise>
 	</c:choose>
-	"에 관심이 있는 분들을 위한 강의이며,
-	<br> 총
-	<c:out value="${dto.lesson_number}" />
-	강으로 구성되어 있습니다.
+	</div>
 	
- </h2>
+	<div class="lesson_info_content2" style="	 position: absolute;
+     top:2530px;
+     right:930px;
+     font-size: 23px;">
+	<c:out value="${dto.lesson_number}" />
+</div>
+</div>
+ </div>
+ 
 	<div class="summer">${dto.lesson_content}</div>
 
 
@@ -430,31 +460,33 @@ $(".insert_my_cart").click(function(){
 
 
 
-	<br> 레슨 판매 기간
+	<br><h3> <b>레슨 판매 기간</b></h3>
 	<br>
-	<c:out value="${dto.lesson_open_period}" />
+	<h4>★<c:out value="${dto.lesson_open_period}" />
 	~
-	<c:out value="${dto.lesson_close_period}" />
+	<c:out value="${dto.lesson_close_period}" />★</h4>
 
 <br>
 	<div class="layer">
 	<br>
-		레슨 일자 및 시간
-		<c:out value="${dto.lesson_date_time}" />
+	
+	
+		 <h3><b>레슨 일자 및 시간</b></h3><br>
+		<h4>★<c:out value="${dto.lesson_date_time}" />★</h4>
 		<br> 
 		<br>
-		레슨 주소<br> 우편번호
-		<c:out value="${dto.lesson_zipno}" />
+		<h3><b>레슨 주소</b></h3>
+		<br> 우편번호
+		<h4><c:out value="${dto.lesson_zipno}" /></h4>
 		<br> 주소
-		<c:out value="${dto.lesson_addr}" />
+		<h4><c:out value="${dto.lesson_addr}" /></h4>
 		<br>
 		<!-- 여기에 map가져오기 -->
 
-		<div id="map" style="width: 750px; height: 350px; margin: 0px auto;"></div>
+<div id="map" style="width:750px;height:350px; margin: 0px auto"></div>
 
-		<script
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
-		<script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c30db34dfed42d05a59b83a50829000e"></script>
+<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new kakao.maps.LatLng(${dto.lesson_lat}, ${dto.lesson_long}), // 지도의 중심좌표
@@ -473,9 +505,9 @@ $(".insert_my_cart").click(function(){
 
 	</div>
 <br>
-	안녕하세요, 시니어 <c:out value="${dto.lesson_senior_title}" /> 입니다.
+	<h4>안녕하세요, 시니어 <c:out value="${dto.lesson_senior_title}" /> 입니다.</h4>
 	<br>
-	<div class="summer">${dto.lesson_senior_content}</div>
+	<div class="summer" style="margin-bottom: 30px;"><h4>${dto.lesson_senior_content}</h4></div>
 
 <button onclick="location.href='${pageContext.request.contextPath }/todaylesson/total_lesson_list'" class="ej_btn" id="to_list">목록으로</button>
 
@@ -487,20 +519,21 @@ $(".insert_my_cart").click(function(){
 			<br>
 			<br>
 			<div>
-				<div>
+				<div style="padding: 0px; text-align: right;">
 					<span><strong>Comments</strong></span> <span id="cCnt"></span>
 				</div>
 				<div>
 					<table class="table">
 						<tr>
-							<td>비밀글 <input type="checkbox" name="sec" id="sec">
-							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret" value='N'> 
-							
-                        <label>제목</label> 
-                        
-                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title">
+
+
+                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요">
+                        </td>
+                        							<td style="padding: 0px">비밀글 <input type="checkbox" name="sec" id="sec" >
+							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret" value='N'></td> 
+							<td>
 								<textarea rows="3" cols="30" id="lesson_qa_reply_content"
-									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
+									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea></td>
 								<br>
 								<div>
 									<a href='#' onClick="fn_comment('${dto.lesson_no }')" class="btn pull-right btn-success">등록</a>
@@ -522,10 +555,10 @@ $(".insert_my_cart").click(function(){
 	</div>
 
 
-<div class="container">
 <div class="ej_box third"  id="ej_box_third">
 <span class="ej_left"><h3>후기</h3></span>
 </div>
+<div class="container">
 		<form id="reviewForm" name="reviewForm" method="post">
 			<br>
 			<br>

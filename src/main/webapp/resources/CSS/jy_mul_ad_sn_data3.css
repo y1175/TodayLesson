@@ -2,7 +2,7 @@
 
 #jy_container{
 	margin : 0px auto;
-	padding : 20px;
+	padding-top:20px;
 	width:80%;
 }
 
@@ -41,6 +41,17 @@ b{
 	margin: 0px auto;
 }
 
+.table{
+	margin: 0px;
+	padding: 0px;
+	border: 5px;
+}
+
+ul{
+	padding: 0px;
+}
+
+
 .ej_btn{
 	border: 1px transparent;
 padding: 5px 15px; 
@@ -52,6 +63,8 @@ font-size : 14px;
 color: white;
 
 }
+
+
 
 .ej_btn2{
 	border: 1px transparent;
@@ -65,8 +78,3 @@ color: white;
 
 }
 
-ul{
-	padding: 0px;
-	margin:0px;
-	padding-inline-start: 0px;
-}

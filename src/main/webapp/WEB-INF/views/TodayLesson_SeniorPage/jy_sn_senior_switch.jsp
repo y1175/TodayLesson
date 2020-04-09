@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
@@ -82,34 +84,71 @@ function checkDisable()
 
 
 <!-- 시니어 모드에 있는 시니어 정보 관리로 이동하기 -->
-<h2>시니어 지원하기</h2>
+<div id="jy_container" style="padding 20px; width:30%; 	margin : 0px auto;
+">
+
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center;">시니어 지원 하기</h2>
+ </div>
 <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/plus_senior" name="frm">
 
 <input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <input type="hidden" id="token" name="token" value="${token}">
 
 
+<ul style="padding: 0px;">
+<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
+<input type="hidden" id="token" name="token" value="${token}">
+
+<li>
 <label>시니어 닉네임</label>
-<input type="text" id="senior_nick" name="senior_nick" required="required">
+<input type="text" id="senior_nick" name="senior_nick" required="required" ">
+</li>
 
+<li>
 <label>이메일</label>
-<input type="text" id="senior_email" name="senior_email" required="required">
+<input type="text" id="senior_email" name="senior_email" required="required" ">
+</li>
 
+<li>
 <label>연락처</label>
-<input type="text" id="senior_phone" name="senior_phone" required="required">
+<input type="text" id="senior_phone" name="senior_phone" required="required" >
+</li>
 
+<script>
+
+if(${dto.senior_crno!=""}){
+	   senior_crno.disabled = false;
+	   senior_crno_name.disabled = false;
+} else {
+	       senior_crno.disabled = true;
+		   senior_crno_name.disabled = true;
+		   no_crno.checked == true;
+}
+
+
+</script>
+
+
+사업자 X <input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
+
+
+<li>
 <label>사업자번호</label>
-<input type="text" id="senior_crno" name="senior_crno">
+<input type="text" id="senior_crno" name="senior_crno" >
+</li>
 
+<li>
 <label>상호명</label>
 <input type="text" id="senior_crno_name" name="senior_crno_name">
+</li>
 
-사업자 번호 없음<input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
+<h3 style="text-align: center; margin: 10px auto;">계좌정보</h3>
 
-<h3>계좌정보</h3>
+<li>
 <label>은행명</label>
 <select name="senior_bank_name">
-<option disabled="disabled" selected="selected">-----</option>
+<option class="bank_name"></option>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
 <option value="039">경남은행</option>
@@ -156,21 +195,32 @@ function checkDisable()
 <option value="289">엔에이치투자증권</option>
 <option value="290">부국증권</option>
 </select>
+</li>
 
+<li>
 <label>예금주</label>
-<input type="text" id="senior_account_name" name="senior_account_name" required="required" value="">
+<input type="text" id="senior_account_name" name="senior_account_name" required="required" >
+</li>
 
+<li>
 <label>계좌번호</label>
-<input type="text" id="senior_account_num" name="senior_account_num" required="required" value="">
+<input type="text" id="senior_account_num" name="senior_account_num" required="required" >
+</li>
 
-<input type="button" value="계좌 실명 확인" onclick="checkBankHolder();">
 
+<li>
+<input type="button"  class="ej_btn2" value="계좌 실명 확인" onclick="checkBankHolder();" >
+</li>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+ 
+ <li>
+<input type="submit" class="ej_btn" value="전송">
+<input type="reset"  class="ej_btn2"  value="취소">
+</li>
 
-<input type="submit" value="전송">
-<input type="reset" value="취소">
-
+</ul>
 </form>
+</div>
 
 </body>
 </html>

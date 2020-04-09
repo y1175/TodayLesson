@@ -17,7 +17,6 @@ if (${result} > 0) {
 	</script>
 	
 	<h3>거절완료</h3>
-	<h5>이제 멜 보내면 됨 혬한테 배워야혀 근데 여기 input text 박스 만들어서 이유 쓸 수 있으면 좋겠다.</h5>
 	<a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson">목록으로</a>
 	
 	<script>

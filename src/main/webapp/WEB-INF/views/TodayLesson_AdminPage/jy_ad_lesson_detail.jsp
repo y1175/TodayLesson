@@ -287,9 +287,9 @@ ${dto.lesson_senior_content}
 
 
 <li>
-<a href="${pageContext.request.contextPath }/todaylessonadmin/alllesson">목록으로</a>
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonadmin/alllesson'">목록으로</button>
 </li>
-<br>
+
 </ul>
 
 </div>
