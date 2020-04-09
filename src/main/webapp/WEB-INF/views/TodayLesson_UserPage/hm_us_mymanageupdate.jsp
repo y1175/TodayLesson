@@ -109,10 +109,10 @@ $(document).ready(function(){
 
 <label>비밀번호</label>
 <input type="password"  name="member_pwd" id="member_pwd" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"
-style="width:35%; height:34px; font-size : 14px; padding: 5px; margin-left:-5px;"><br>
+style="width:35%; height:34px; font-size : 14px; padding: 0px; position: relative; right: 10px; "><br>
 <label>비밀번호확인</label>
 <input type="password" name="pwdcheck" id="pwdcheck" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호확인"
-onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14px; padding: 5px;"><br>
+onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14px; position: relative; right: 10px; ;"><br>
 <div class="alert alert-success" id="alert-success">비밀번호가일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지않습니다.</div>
 
@@ -130,8 +130,13 @@ onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14
  
  
 <h4>계좌정보</h4>
+<div class="row">
+<div class="col-md-6">
+<div class="col-sm-3" style=" text-align: center; position: relative; top: 6px; ">
 <label>은행명</label>
-<select name="member_bank_name" id="member_bank_name" class="custom-select">
+</div>
+<div class="col-sm-9">
+<select name="member_bank_name" id="member_bank_name" class="form-control">
 <c:if test="${empty dto.member_bank_name }">
 <option disabled="disabled" selected="selected">-----</option>
 </c:if> 
@@ -184,16 +189,26 @@ onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14
 <option value="289">엔에이치투자증권</option>
 <option value="290">부국증권</option>
 </select>
-
-
+</div>
+</div>
+<div class="col-md-6">
+<div class="col-sm-3" style=" text-align: center; position: relative; top: 6px; ">
 <label>예금주</label>
+</div>
+<div class="col-sm-9">
 <c:if test="${!empty dto.member_account_name}">
 <input type="text" id="member_account_name"  class="form-control"  name="member_account_name" value="${dto.member_account_name}" required="required">
 </c:if>
 <c:if test="${empty dto.member_account_name }">
 <input type="text" id="member_account_name"  class="form-control"  name="member_account_name" >
 </c:if>
+</div>
+</div>
+<div class="col-md-6" style="margin-top: 20px;">
+<div class="col-sm-3" style=" text-align: center; position: relative; top: 6px; ">
 <label>계좌번호</label>
+</div>
+<div class="col-sm-9">
 <c:if test="${!empty dto.member_account_num }">
 <input type="text" id="member_account_num"   class="form-control"  name="member_account_num" value="${dto.member_account_num}" required="required">
 </c:if>
@@ -201,7 +216,10 @@ onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14
 <input type="text" id="member_account_num"  class="form-control" name="member_account_num"  >
 </c:if>
 <input type="hidden" id="token" name="token"  class="form-control"  value="${token}">
-<div style="margin: 20px 0px;">
+ </div>
+</div> 
+
+<div class="col-md-6" style="margin: 20px 0px; text-align: left;">
 
 <!-- 기존 계좌정보가 없을 때  -->
 <c:if test="${empty dto.member_account_num}">
@@ -211,9 +229,9 @@ onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14
 <c:if test="${!empty dto.member_account_num}">
 <input type="button" class="hmupdatebtn" value="계좌 실명 확인" onclick="checkBankHolder();">
 </c:if>
+</div>
 
- </div>
- 
+</div> 
  
 					<label>주소</label>
 					<div>

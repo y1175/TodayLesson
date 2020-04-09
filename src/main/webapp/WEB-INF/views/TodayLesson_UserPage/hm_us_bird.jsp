@@ -55,7 +55,7 @@
       
 			</div>
 
-			<div style="margin-top: 30px;">
+			<div style="margin-top: 30px; width: 100%;">
 				<c:forEach begin="0" end="3" step="1" var="bestlist" items="${list}" varStatus="status">
 			<%-- 	<p>
 					<c:choose>
@@ -76,7 +76,7 @@
 				</p> --%>
 				 
 				
-					<div class="col-md-3 col-sm-6" style="margin-left: -10px;">
+					<div class="col-md-3" style="">
 						<div class="hm_user_bird_best">
 							<div class="hm_user_bird_best_img">	
 								<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${bestlist.lesson_no}"> <img src="${bestlist.lesson_thumb}" />
