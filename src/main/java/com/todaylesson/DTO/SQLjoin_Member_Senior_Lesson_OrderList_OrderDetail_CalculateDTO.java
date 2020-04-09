@@ -100,10 +100,11 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO {
 	private int order_count;
 		
 	//CalculateDTO
-	//private int orderlist_no; FK
+	//private int lesson_no; FK
 	private int calculate_no;
 	private String calculate_date; //정산신청일
-	private int calculate_bank_name; //정산계좌 은행명
+	//private int calculate_cost; //정산신청금액
+	private String calculate_bank_name; //정산계좌 은행명
 	private String calculate_account_name; //정산계좌 계좌주
 	private String calculate_account_num; // 정산계좌 계좌번호
 	private String calculate_crno; //정산 사업자번호

@@ -142,6 +142,9 @@ public class IfpCsrfRequestMatcher implements RequestMatcher {
       //시니어페이지정산신청계좌정보수정
         else if ("/todaylessonsenior/senior_calculate_accountupdateresult".equals(strUri))                   
         	return false;
+      // 시니어페이지 정산신청 정산신청 insert  
+        else if ("/senior_calculate_senior_calculate_requestresult".equals(strUri)) 
+        	return false;
       //시니어페이지정산내역리스트
         else if ("/todaylessonsenior/senior_calculate_statementlist".equals(strUri))                   
         	return false;

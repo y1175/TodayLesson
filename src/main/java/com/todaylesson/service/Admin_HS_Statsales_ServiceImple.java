@@ -33,6 +33,17 @@ public class Admin_HS_Statsales_ServiceImple implements Admin_HS_Statsales_Servi
 		return adminStatSalesMapper.chartOutPut();
 	}
 
+	//매출목록
+	@Override
+	public List<OrderListDTO> StatSalesList(String ymd, String start_date, String end_date) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("ymd", ymd);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
+		return adminStatSalesMapper.StatSalesList(hm);
+	}
+
 	
 
 }

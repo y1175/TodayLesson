@@ -12,4 +12,7 @@ public interface Admin_HS_Statsales_Service {
 	//AmChart
 	public List<OrderListDTO> chartOutput();
 
+	//매출목록
+	public List<OrderListDTO> StatSalesList(String ymd, String start_date, String end_date);
+
 }
