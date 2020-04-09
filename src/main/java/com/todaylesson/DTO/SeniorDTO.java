@@ -20,7 +20,7 @@ public class SeniorDTO {
 	private String senior_phone;
 	private String senior_crno;
 	private String senior_nick;
-	private int senior_bank_name;
+	private String senior_bank_name;
 	private String senior_account_name;
 	private String senior_account_num;
 	private String senior_register_date;

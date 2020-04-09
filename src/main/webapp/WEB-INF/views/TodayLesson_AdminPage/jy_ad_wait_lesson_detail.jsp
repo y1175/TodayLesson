@@ -13,7 +13,7 @@
 
 <script>
 
-$(document).ready(function() {
+$('document').ready(function() {
 	
 
 	// 온라인 클래스의 경우 주소가 없음 > 그니까 온라인의 경우(온라인은 타입 3번) 아예 그 부분을 hide시켜버림
@@ -21,13 +21,8 @@ $(document).ready(function() {
 	console.log(state);
 	if ( state == 3 ) {
 		$('.offline_lesson').hide();
-		$('.not_oneday').show();
-	} else if(state == 1) {
-		$('.offline_lesson').show();
-		$('.not_oneday').hide();
 	} else {
 		$('.offline_lesson').show();
-		$('.not_oneday').show();
 	}
 
 	// 썸머노트로 작성한 부분을 html코드로 변환해서 가져옴
@@ -35,39 +30,38 @@ $(document).ready(function() {
 	
 	
 
-	let bank_code= "${dto.senior_bank_name}";
-	let token = "${token}";
+		
+		
+		let bank_code= "${dto.senior_bank_name}";
+		let token = "${token}";
 
-	console.log(bank_code);
-	console.log(token);
+		console.log(bank_code);
+		console.log(token);
 
-	$.ajax({
-		method: 'get',
-		url: 'https://api.iamport.kr/banks',
-	    headers: { 
-	    	"Authorization": token
-		}
-	}).done(function(msg) {
-			console.log(msg);
-			let bank_name = msg.response;
-			
-			for (var i = 0; i < bank_name.length; i++) {
-				console.log(bank_name[i]);
-				console.log(bank_name[i].code);
-				console.log(bank_name[i].name);
-				//console.log(bank_code);
-				
-				if (bank_name[i].code == bank_code) {
-					let senior_bank_name = bank_name[i].name;
-					$('#bank_name').append(senior_bank_name);
-					break;
-				}
-			}
-			
-		});
-	
-	
-});
+		$.ajax({
+		   method: 'get',
+		   url: 'https://api.iamport.kr/banks',
+		    headers: { 
+		       "Authorization": token
+		   }
+		}).done(function(msg) {
+		      console.log(msg);
+		      let bank_name = msg.response;
+			 console.log(bank_name.length);
+		      for (var i = 0; i < bank_name.length; i++) {   
+		         if (bank_name[i].code == bank_code) {
+		            let senior_bank_name = bank_name[i].name;
+		            console.log(senior_bank_name);
+		            $('.bank_name').append(senior_bank_name);
+		            //$('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
+		            console.log("dddd");
+		            break;
+		         }
+		      }
+		      
+		   });
+		
+	});
 
 </script>
 
@@ -251,10 +245,7 @@ ${dto.lesson_content}
 	});
 </script>
 
-
 </div>
-
-<div class="not_oneday">
 
 <li>
 <b>총 강의 수</b>
@@ -263,7 +254,6 @@ ${dto.lesson_content}
 </span>
 </li>
 
-</div>
 <li>
 <b>시니어 명</b>
 <span class="jy_text">
@@ -299,12 +289,11 @@ ${dto.lesson_senior_content}
 <li>
 <b>시니어 사업자 번호</b>
 <span class="jy_text">
-<c:if test="${dto.senior_crno} == null ">
+<c:if test="${dto.senior_crno == '' } ">
 	X
 </c:if>
-<c:if test="${dto.senior_crno} != null ">
+<c:if test="${dto.senior_crno != ''} ">
 	<c:out value="${dto.senior_crno}" />
-
 </c:if>
 </span>
 </li>
@@ -313,10 +302,10 @@ ${dto.lesson_senior_content}
 <li>
 <b>시니어 사업자명</b>
 <span class="jy_text">
-<c:if test="${dto.senior_crno_name} == null ">
+<c:if test="${dto.senior_crno_name == ''} ">
 	X
 </c:if>
-<c:if test="${dto.senior_crno_name} != null ">
+<c:if test="${dto.senior_crno_name != '' }">
 	<c:out value="${dto.senior_crno_name}" />
 	
 </c:if>

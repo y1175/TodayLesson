@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <!-- CSSstyle -->
    <style type="text/css">
@@ -15,54 +16,47 @@
    </style>
 <!-- CSSstyle -->  
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
+$('document').ready(function(){
+	
+	
+	let bank_code= "${dto.senior_bank_name}";
+	let token = "${token}";
 
-/* 은행명 */
-$(document).ready(function() {
+	console.log(bank_code);
+	console.log(token);
 
-   let bank_code= "${dto.senior_bank_name}";
-   let token = "${token}";
-
-   console.log(bank_code);
-   console.log(token);
-
-   $.ajax({
-      method: 'get',
-      url: 'https://api.iamport.kr/banks',
-       headers: { 
-          "Authorization": token
-      }
-   }).done(function(msg) {
-         console.log(msg);
-         let bank_name = msg.response;
-         
-         for (var i = 0; i < bank_name.length; i++) {
-            console.log(bank_name[i]);
-            console.log(bank_name[i].code);
-            console.log(bank_name[i].name);
-            console.log(bank_code);
-            
-            if (bank_name[i].code == bank_code) {
-               let senior_bank_name = bank_name[i].name;
-               $('.bank_name').append(senior_bank_name);
-               break;
-            }
-         }
-         
-      });
-   
-   
+	$.ajax({
+	   method: 'get',
+	   url: 'https://api.iamport.kr/banks',
+	    headers: { 
+	       "Authorization": token
+	   }
+	}).done(function(msg) {
+	      console.log(msg);
+	      let bank_name = msg.response;
+		 console.log(bank_name.length);
+	      for (var i = 0; i < bank_name.length; i++) {   
+	         if (bank_name[i].code == bank_code) {
+	            let senior_bank_name = bank_name[i].name;
+	            console.log(senior_bank_name);
+	            $('.bank_name').append(senior_bank_name);
+	            //$('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
+	            console.log("dddd");
+	            break;
+	         }
+	      }
+	      
+	   });
+	
 });
- 
 
 </script>
 </head>
 <body>
 
 <script>
-
 
 function checkBankHolder(){
 
@@ -124,6 +118,8 @@ function checkDisable()
 
 
 
+
+
   
 
 
@@ -158,23 +154,9 @@ function checkDisable()
 <input type="text" id="senior_phone" name="senior_phone" required="required" value="${dto.senior_phone }">
 </li>
 
-<script>
-
-if(${dto.senior_crno!=""}){
-	   senior_crno.disabled = false;
-	   senior_crno_name.disabled = false;
-} else {
-	       senior_crno.disabled = true;
-		   senior_crno_name.disabled = true;
-		   no_crno.checked == true;
-}
-
-
-</script>
-
-
+<li>
 사업자 X <input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
-
+</li>
 
 <li>
 <label>사업자번호</label>
@@ -190,7 +172,7 @@ if(${dto.senior_crno!=""}){
 
 <li>
 <label>은행명</label>
-<select name="senior_bank_name">
+<select name="senior_bank_name" id = "senior_bank_name">
 <option class="bank_name"></option>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
