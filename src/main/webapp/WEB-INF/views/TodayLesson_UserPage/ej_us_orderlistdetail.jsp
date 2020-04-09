@@ -49,8 +49,11 @@ ${orderlistdto.orderlist_usepoint  }<br>
 <fmt:parseNumber var="addpoint" value="${(cost*0.1)}" integerOnly="true" /> <b style="color:rgb(224, 62, 82)">${addpoint }포인트가 적립되었습니다!<br>
 
  ${orderlistdto.orderlist_msg  }<br>
-</div>
+</div><br><br>
 <!--ej_align right/  -->
+
+<a href="${pageContext.request.contextPath}/todaylesson/ej_store_main/0">
+<img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/corona_ej.png" style="display:block; width:40%; margin:0 auto;"></a>
 </div>
 <!--ej container/  -->
 

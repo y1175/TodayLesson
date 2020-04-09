@@ -2,6 +2,7 @@ package com.todaylesson.service;
 
 import java.util.List;
 
+import com.todaylesson.DTO.CalculateDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
 
@@ -48,6 +49,9 @@ public interface Senior_HS_Salescalculate_Service {
 	//정산대기금액
 	public int calculate_WaitingCost(int senior_no);
 
+	//정산신청
+	public int calculateRequestResult(CalculateDTO dto);
+	
 	//정산내역 목록 리스트
 	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> calStatementList(String member_id);
 
@@ -59,6 +63,7 @@ public interface Senior_HS_Salescalculate_Service {
 
 	//정산내역 리스트 포인트사용
 	public List<Integer> calStatementUsePointSum(String member_id);
+
 
 	
 

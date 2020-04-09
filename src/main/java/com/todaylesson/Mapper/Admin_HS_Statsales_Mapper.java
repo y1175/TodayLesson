@@ -16,6 +16,10 @@ public interface Admin_HS_Statsales_Mapper {
 	//AmChart
 	public List<OrderListDTO> chartOutPut();
 
+	//매출목록
+	public List<OrderListDTO> StatSalesList(HashMap<String, Object> hm);
+
+
 	
 
 }

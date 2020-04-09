@@ -236,7 +236,7 @@ $(document).ready(function() {
                      <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                            <div class="modal-body" style="padding: 12px 16px 16px; color: rgb(53, 54, 58);">
-                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_insertresult">
+                              <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_calculate_senior_calculate_requestresult">
                                  <div class="hs_senior_CulateRequestModal_HeaderDiv">
                                     <b class="hs_senior_CulateRequestModal_Title" id="hs_senior_CulateRequestModal_title">정산신청</b>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -342,6 +342,7 @@ $(document).ready(function() {
                                                 <option value="289">엔에이치투자증권</option>
                                                 <option value="290">부국증권</option>
                                              </select>
+                                             <!-- <input type="text" id="hs_sn_cal_calculate_bank_name_o" name="calculate_bank_name">  -->
                                              <br>
                                              <label for="hs_sn_cal_calculate_account_name_o" style="width: 120px; font-weight: 600;">예금주</label>
                                              <input type="text" id="hs_sn_cal_calculate_account_name_o" name="calculate_account_name"> 
@@ -358,7 +359,7 @@ $(document).ready(function() {
                                           <!-- 개인 -->
                                           <div id="hs_senior_CulateRequestModal_crno_x_detail" style="display: none;">
                                              <label for="hs_sn_cal_calculate_bank_name_x" style="width: 120px; font-weight: 600;">정산신청은행</label>
-                                             <select name="senior_bank_name" id="hs_sn_cal_calculate_bank_name_x">
+                                             <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_x">
                                                 <option class="bank_name"></option>
                                                 <option value="004">KB국민은행</option>
                                                 <option value="023">SC제일은행</option>
@@ -406,6 +407,7 @@ $(document).ready(function() {
                                                 <option value="289">엔에이치투자증권</option>
                                                 <option value="290">부국증권</option>
                                              </select>
+                                             <!-- <input type="text" id="hs_sn_cal_calculate_bank_name_x" name="calculate_bank_name">  -->
                                              <br>
                                              <label for="hs_sn_cal_calculate_account_name_x" style="width: 120px; font-weight: 600;">예금주</label>
                                              <input type="text" id="hs_sn_cal_calculate_account_name_x" name="calculate_account_name"> 
@@ -417,7 +419,7 @@ $(document).ready(function() {
                                              <input type="text" id="hs_sn_cal_calculate_name_x" name="calculate_name">
                                              <br>
                                              <label for="hs_sn_cal_calculate_phone_x" style="width: 120px; font-weight: 600;">연락처</label>
-                                             <input type="text" id="hs_sn_cal_calculate_phone_x" name="calculate_name">
+                                             <input type="text" id="hs_sn_cal_calculate_phone_x" name="calculate_phone">
                                           </div>
                                        </div>
                                        <div id="hs_senior_CulateRequestModal_calculateguide_detail1" class="card-block" style="padding: 20px 0px; font-size: 13px;">
@@ -449,6 +451,7 @@ $(document).ready(function() {
                                                                      정산신청하기
                                     </button>
                                  </div>
+                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  
                               </form>
                            </div>
                         </div>
@@ -501,6 +504,7 @@ $(document).ready(function() {
             <thead style="border-top: 2px solid rgb(53, 54, 58);">
                <tr>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">NO.</th>
+                  <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">레슨번호</th>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산번호</th>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산상태</th>
                   <th rowspan="2" style=" border-bottom: 2px solid rgb(53, 54, 58);">정산신청일</th>
@@ -524,6 +528,10 @@ $(document).ready(function() {
                      <!-- NO. -->
                      <td>
                         <c:out value="${status.count}"/>
+                     </td>
+                     <!-- 레슨번호 -->
+                     <td>
+                        <c:out value="${cal_requestlist.lesson_no}"/>
                      </td>
                      <!-- 정산번호 정산신청완료했을시에만 나타나게 -->
                      <td>

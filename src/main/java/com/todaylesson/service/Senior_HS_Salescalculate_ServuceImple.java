@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.CalculateDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
@@ -122,6 +123,17 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	public int calculate_WaitingCost(int senior_no) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calculate_WaitingCost(senior_no);
+	}
+	
+	//정산신청
+	@Override
+	public int calculateRequestResult(CalculateDTO dto) {
+		// TODO Auto-generated method stub
+        /*HashMap<String, Object> hm=new HashMap<String, Object>();
+		
+		hm.put("dto", dto);*/
+		
+		return salescalculateMapper.calculateRequestResult(dto);
 	}
 	
 	//정산내역 목록 리스트

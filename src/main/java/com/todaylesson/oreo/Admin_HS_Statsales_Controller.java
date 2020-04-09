@@ -25,13 +25,18 @@ public class Admin_HS_Statsales_Controller {
 	
 	@RequestMapping("/sales_statistics")
 	public String salesStatistics(@RequestParam(required=false,defaultValue="date") String ymd
+			                    , @RequestParam(required=false,defaultValue="") String start_date
+			                    , @RequestParam(required=false,defaultValue="") String end_date
 			                    , Model model) {
 		
 		//매출통계(일별, 주별, 월별, 년별)
 		List<OrderListDTO> StatSalesAllChart=adminStatSalesService.StatSalesAllChart(ymd);
 		model.addAttribute("StatSalesAllChart", StatSalesAllChart);
+		
+		//매출목록
+		List<OrderListDTO> StatSalesList=adminStatSalesService.StatSalesList(ymd,start_date,end_date);
 
-		return "TodayLesson_AdminPage/hs_ad_sales_statisticeTest.hs_ad_main_section";
+		return "TodayLesson_AdminPage/hs_ad_sales_statistices.hs_ad_main_section";
 	}
 	
 	//AmChart

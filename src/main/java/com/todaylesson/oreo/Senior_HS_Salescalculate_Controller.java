@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.todaylesson.DTO.CalculateDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
@@ -193,13 +194,14 @@ public class Senior_HS_Salescalculate_Controller {
 	}
 	
 	//정산신청
-	@RequestMapping("/senior_calculate_senior_calculate_insertresult")
-	public String calculateRequestResult (SeniorDTO dto, Model model)  {
+	@RequestMapping("/senior_calculate_senior_calculate_requestresult")
+	public String calculateRequestResult (CalculateDTO dto, Model model)  {
 		
-		//정산신청 시니어계좌정보수정
-		//int calculateRequestResult=salescalculateService.calculateRequestResult()
+		//정산신청 
+		int calculateRequestResult=salescalculateService.calculateRequestResult(dto);
+		model.addAttribute("calculateRequestResult", calculateRequestResult);
 		
-		return "TodayLesson_SeniorPage/hs_sn_calculate_accountupdateresult";
+		return "TodayLesson_SeniorPage/hs_sn_calculate_requestresult";
 	}
 
 	//정산내역
