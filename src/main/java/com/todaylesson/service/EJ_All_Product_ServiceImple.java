@@ -202,9 +202,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 	}
 
 	@Override
-	public List<PdReviewDTO> selectAllReview() {
+	public List<PdReviewDTO> selectAllReview(int startrow, int endrow) {
 		// TODO Auto-generated method stub
-		return mapper.selectAllReview();
+		HashMap<String, Object> hm= new HashMap<>();
+		hm.put("startrow", startrow);
+		hm.put("endrow", endrow);
+		return mapper.selectAllReview(hm);
 	}
 
 	@Override
@@ -249,6 +252,26 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		return mapper.selectcategorynum(product_no);
 	}
 
+	@Override
+	public int totalCount() {
+		// TODO Auto-generated method stub
+		return mapper.totalCount();
+	}
+	@Override
+	public int totalCount2() {
+		// TODO Auto-generated method stub
+		return mapper.totalCount2();
+	}
+
+
+	@Override
+	public List<ProductDTO> selectAll2(int startRow, int endRow) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("startrow",startRow);
+		hm.put("endrow",endRow);
+		return mapper.admin_productList(hm);
+	}
 
 
 }

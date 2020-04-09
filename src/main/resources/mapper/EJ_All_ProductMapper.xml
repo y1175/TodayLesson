@@ -23,6 +23,16 @@ order by product_date desc;
 </choose>
 </select>
 
+<select id="totalCount2" resultType="int">
+select count(*)
+from product
+</select>
+<select id="admin_productList" resultType="com.todaylesson.DTO.ProductDTO" parameterType="java.util.HashMap">
+select *
+from product
+limit #{startrow}, 15
+</select>
+
 <select id="selectCategory" parameterType="int" resultType="com.todaylesson.DTO.ProductDTO">
 select *
 from product where product_category=#{product_category}
@@ -93,11 +103,19 @@ select orderlist.orderlist_no from orderlist, order_detail
  values (#{orderlist_no},#{pdreview_title},#{pdreview_content},sysdate())
 </insert>
 
+
+<!-- 후기관리 페이징용 게시물 카운트 -->
+<select id="totalCount" resultType="int">
+select count(*) from pdreview left outer join orderlist on orderlist.orderlist_no=pdreview.orderlist_no
+						left outer join order_detail on orderlist.orderlist_no=order_detail.orderlist_no
+                        left outer join product on product.product_no=order_detail.product_no
+</select>
 <!--관리자 댓글 전체 리스트보기  -->
-<select id="selectAllReview" resultType="com.todaylesson.DTO.PdReviewDTO">
+<select id="selectAllReview" parameterType="java.util.HashMap" resultType="com.todaylesson.DTO.PdReviewDTO">
 select * from pdreview left outer join orderlist on orderlist.orderlist_no=pdreview.orderlist_no
 						left outer join order_detail on orderlist.orderlist_no=order_detail.orderlist_no
-                        left outer join product on product.product_no=order_detail.product_no;
+                        left outer join product on product.product_no=order_detail.product_no
+                        limit #{startrow}, 15
 </select>
 <!-- 관리자 댓글 디테일 -->
 <select id="selectpdreview" parameterType="int" resultType="com.todaylesson.DTO.PdReviewDTO">
