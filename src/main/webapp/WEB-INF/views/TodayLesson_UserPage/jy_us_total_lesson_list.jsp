@@ -23,7 +23,7 @@ width:500px; height:auto;
    <div class="" style="width: 80%; margin: auto;">
 
 <img class="total_img" alt="img" src="${pageContext.request.contextPath}/resources/IMG/total_lesson_img.png">
-
+ 
 
    <!-- 카테고리 선택 아이콘들 -->
    
