@@ -16,7 +16,7 @@
 	<!-- 신규레슨 -->
     <select id="newLessonList" resultMap="userMAinMap">
        select l.lesson_thumb, l.lesson_category, s.senior_nick
-	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period
+	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period, lesson_no
        from lesson l join senior s on l.senior_no=s.senior_no
        where lesson_result=2
        ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
@@ -28,7 +28,7 @@
 	         ,product_sale, product_after_cost, product_date, product_like
        from product
        ORDER BY product_date desc ,RAND() LIMIT 16;   --> 
-       SELECT product_thumb, product_name, product_category, product_cost
+       SELECT product_thumb, product_no, product_name, product_category, product_cost
 	         ,product_sale, product_after_cost, product_date, product_like,
        ( @rank := @rank + 1 ) AS rank
        FROM product AS a,

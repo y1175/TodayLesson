@@ -8,7 +8,7 @@
 <title>TodayLesson</title>
 
 <!--Main HOME style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=3">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=4">
 <!--Main HOME style-->
 
 </head>
@@ -300,15 +300,16 @@
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_product">
                   <div class="hs_user_store_product_img">
-                     <a href="#">
+                                    <div class="hs_user_store_product_img2" style="height:285px;display:block;">
+                     <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
-                     </a>
+                     </a></div>
                      <ul class="hs_user_store_product_social" >
                         <li>
-                           <a href="${pageContext.request.contextPath}/likejson" class="fas fa-heart"></a>
+                           <a href="#" ><div class="fas fa-heart" id="${storenewproductlist.product_no}"></div></a>
                         </li>
                         <li>
-                           <a href="${pageContext.request.contextPath}/cartjson" class="fa fa-shopping-cart"></a>
+                              <a href="#" ><div class="fa fa-shopping-cart" id="${storenewproductlist.product_no}"></div></a>
                         </li>
                      </ul>
                      <span class="hs_user_store_product_label">
@@ -350,7 +351,7 @@
                         </c:when>
                      </c:choose>
                      <h6 class="hs_user_store_prodct_title">
-                        <a href="#">${storenewproductlist.product_name}</a>
+                        <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_product_line"></div>
                      <div class="hs_user_store_prodct_cost">
@@ -374,21 +375,23 @@
    <!-- 스토어 베스트  -->
    <!-- 스토어 신규 상품 -->
    <div class="row" style="width: 80%; margin: auto; margin-top: 50px;">
-      <b class="" style="font-size: 25px;"> 스토어신규 </b>
+      <b class="" style=" font-size: 25px;"> 스토어신규 </b>
       <div class="" style="margin-top: 30px;">
          <c:forEach var="storenewproductlist" items="${storenewproductlist}">
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_product">
                   <div class="hs_user_store_product_img">
-                     <a href="#">
+                  <div class="hs_user_store_product_img2" style="height:285px;">
+                     <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
                      </a>
+                     </div>
                      <ul class="hs_user_store_product_social" >
                         <li>
-                           <a href="${pageContext.request.contextPath}/todaylesson/likejson" class="fas fa-heart"></a>
+                           <a href="#" ><div class="fas fa-heart" id="${storenewproductlist.product_no}"></div></a>
                         </li>
                         <li>
-                           <a href="" class="fa fa-shopping-cart"></a>
+                        <a href="#" ><div class="fa fa-shopping-cart" id="${storenewproductlist.product_no}"></div></a>
                         </li>
                      </ul>
                      <span class="hs_user_store_product_label">
@@ -430,7 +433,7 @@
                         </c:when>
                      </c:choose>
                      <h6 class="hs_user_store_prodct_title">
-                        <a href="#">${storenewproductlist.product_name}</a>
+                        <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">${storenewproductlist.product_name}</a>
                      </h6>
                      <div class="hs_user_store_prodct_cost">
                         <fmt:formatNumber value="${storenewproductlist.product_after_cost}" type="number" maxFractionDigits="3"/>원
@@ -552,5 +555,107 @@
         })();
    </script>
    <!-- 추천레슨슬라이더 -->
+   <!--상품 좋아요와 장바구니  -->
+   <script>
+
+ $(".fas.fa-heart").click(function(){
+ var productno=$(this).prop("id");
+ var memberid='${pageContext.request.userPrincipal.name}';
+
+  
+  var data = {
+       product_no : productno,
+       member_id: memberid
+    };
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('♥');
+    	
+
+    		}
+    	else{
+    		alert('이미 좋아요에 추가된 상품입니다.');
+    	}
+    		
+    }
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+</script>
+<script>
+$(".fa.fa-shopping-cart").click(function(){ 
+
+ var productno=$(this).prop("id");
+  var memberid='${pageContext.request.userPrincipal.name}';
+  
+  var data = {
+       product_no : productno,
+       member_id: memberid
+    };
+  console.log(memberid);
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/todaylesson/cartjson",
+   type : "post",
+   data : data,
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('장바구니에 추가되었습니다.');
+    	
+
+    		}
+    	else{
+    		alert('이미 장바구니에 추가된 상품입니다.');
+    	}
+    		
+    }
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+</script>
 </body>
 </html>

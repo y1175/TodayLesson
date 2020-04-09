@@ -17,7 +17,7 @@
 <%-- <span id="ej_like_cart">
  <c:set var="member_id" value="${pageContext.request.userPrincipal.name}"></c:set>
  ${member_id }회원님의
-<a href="/todaylessonmypage/mycart/${member_id}" id="mycart">내장바구니</a>
+<a href="/todaylessonmypage/mycart/${pageContext.request.userPrincipal.name}" id="mycart">내장바구니</a>
 <a href="/todaylessonmypage/mylike/${member_id}" id="mylike">내 좋아요</a><br>
 <br>
 </span> --%>

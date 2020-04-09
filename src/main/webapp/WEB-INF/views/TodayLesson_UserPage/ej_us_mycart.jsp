@@ -37,7 +37,7 @@ text-decoration: none;
 </head>
 <body>
 
-<!-- <form method="post" action="/order_cart"> -->
+<div id="ej_container">
 <h2>${memberid }님의 장바구니<br></h2>
 
 <input type="hidden" name="member_id" value="${memberid }" id="member_id"> 
@@ -70,7 +70,7 @@ text-decoration: none;
 <td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" ><i class="fas fa-times" style="font-size:20px;color:black;"></i></a></td>
 <td>레슨</td>
 <td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
-<td style="color:black;"><a href="${pageContext.request.contextPath}/lesson_detail/${item.lessont_no}">${item.lesson_title}</a></td>
+<td style="color:black;"><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}">${item.lesson_title}</a></td>
 <td><fmt:formatNumber value="${item.lesson_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>1</td>
 </c:when>
@@ -277,6 +277,7 @@ $("#sameaddr").on('click', function() {
   
   <br>
 <button id="testbtn">테스트주문완료(지울거임)</button>
+
 <script>
 $("#testbtn").click(function(){
 	
@@ -370,6 +371,7 @@ $("#testbtn").click(function(){
    
 
 </form>
+</div>
 <script>
  $("#open_orderform_btn").click(function(){
   $(".orderInfo").slideDown();
