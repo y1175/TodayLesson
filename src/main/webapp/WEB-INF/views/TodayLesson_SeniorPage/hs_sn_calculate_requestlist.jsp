@@ -72,7 +72,14 @@ $(document).ready(function() {
                <div class="card-block" style="padding: 25px 10px;">
                   <div class="col-sm-7" style="display: inline-block;">
                      <b style="font-size: 18px;">
-                        <fmt:formatNumber value="${calculate_possibilitycost}" type="number" maxFractionDigits="3"/>원
+                        <c:choose>
+                           <c:when test="${calculate_possibilitycost==null}">
+                              <c:out value="0원"/>
+                           </c:when>
+                           <c:otherwise>
+                              <fmt:formatNumber value="${calculate_possibilitycost}" type="number" maxFractionDigits="3"/>원
+                           </c:otherwise>
+                        </c:choose>
                      </b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
                      <br>
                      <div class = "bank_name"></div>
@@ -555,6 +562,9 @@ $(document).ready(function() {
                            </c:when>
                            <c:when test="${cal_requestlist.orderlist_calculatestatus == 3}">
                               <c:out value="정산완료"/>
+                           </c:when>
+                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 4}">
+                              <c:out value="정산접수"/>
                            </c:when>
                         </c:choose>
                      </td>

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.todaylesson.DTO.CalculateDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
 
@@ -48,10 +49,10 @@ public interface Senior_HS_Salescalculate_Mapper {
 	public int accountUpdateDTO(SeniorDTO dto);
 
 	//정산신청가능금액
-	public int calculate_PossibilityCost(int senior_no);
+	public Integer calculate_PossibilityCost(int senior_no);
 
 	//정산대기금액
-	public int calculate_WaitingCost(int senior_no);
+	public Integer calculate_WaitingCost(int senior_no);
  
 	//정산신청
 	public int calculateRequestResult(CalculateDTO dto);
@@ -67,6 +68,9 @@ public interface Senior_HS_Salescalculate_Mapper {
 
 	//정산내역 리스트 포인트사용
 	public List<Integer> calStatementUsePointSum(String member_id);
+
+	//정산상태업데이트
+	public int updateOrderCalculateStatus(OrderListDTO orderdto);
 
 	
 

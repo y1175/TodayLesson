@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.todaylesson.DTO.CalculateDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
@@ -126,12 +127,12 @@ public class Senior_HS_Salescalculate_Controller {
 		
 		
 		//정산신청가능금액
-		int calculate_possibilitycost=salescalculateService.calculate_PossibilityCost(senior_no);
+		Integer calculate_possibilitycost=salescalculateService.calculate_PossibilityCost(senior_no);
 		model.addAttribute("calculate_possibilitycost", calculate_possibilitycost);
 
 		
 		//정산대기금액
-		int calculate_waitingcost=salescalculateService.calculate_WaitingCost(senior_no);
+		Integer calculate_waitingcost=salescalculateService.calculate_WaitingCost(senior_no);
 		model.addAttribute("calculate_waitingcost", calculate_waitingcost );
 		
 		
@@ -195,11 +196,23 @@ public class Senior_HS_Salescalculate_Controller {
 	
 	//정산신청
 	@RequestMapping("/senior_calculate_senior_calculate_requestresult")
-	public String calculateRequestResult (CalculateDTO dto, Model model)  {
+	public String calculateRequestResult (CalculateDTO dto, OrderListDTO orderdto, Model model
+			                             , Authentication authentication
+                                         , HttpServletRequest request,HttpServletResponse response)  {
+		
+		//시큐리티 멤버아이디
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+		
+		//정산신청 시니어디테일
+		SeniorDTO accountdetalidto=salescalculateService.accountDetailDTO(member_id);
+		model.addAttribute("accountdetalidto", accountdetalidto);		
 		
 		//정산신청 
 		int calculateRequestResult=salescalculateService.calculateRequestResult(dto);
 		model.addAttribute("calculateRequestResult", calculateRequestResult);
+		
+		int updateOrderCalculateStatus=salescalculateService.updateOrderCalculateStatus(orderdto);
 		
 		return "TodayLesson_SeniorPage/hs_sn_calculate_requestresult";
 	}

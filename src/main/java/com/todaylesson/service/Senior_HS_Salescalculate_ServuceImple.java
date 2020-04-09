@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.todaylesson.DTO.CalculateDTO;
 import com.todaylesson.DTO.LessonDTO;
+import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO;
 import com.todaylesson.DTO.SeniorDTO;
 import com.todaylesson.Mapper.Senior_HS_Salescalculate_Mapper;
@@ -113,14 +114,14 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 
 	//정산신청가능금액
 	@Override
-	public int calculate_PossibilityCost(int senior_no) {
+	public Integer calculate_PossibilityCost(int senior_no) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calculate_PossibilityCost(senior_no);
 	}
 
 	//정산대기금액
 	@Override
-	public int calculate_WaitingCost(int senior_no) {
+	public Integer calculate_WaitingCost(int senior_no) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calculate_WaitingCost(senior_no);
 	}
@@ -162,6 +163,13 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 	public List<Integer> calStatementUsePointSum(String member_id) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.calStatementUsePointSum(member_id);
+	}
+
+	//정산상태업데이트
+	@Override
+	public int updateOrderCalculateStatus(OrderListDTO orderdto) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.updateOrderCalculateStatus(orderdto);
 	}
 
 
