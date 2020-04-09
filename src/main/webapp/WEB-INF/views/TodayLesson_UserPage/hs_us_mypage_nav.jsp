@@ -85,7 +85,7 @@ function member_level_1() {
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question">1:1 문의</a>
                </li>
                <li style="float: right; width: 200px; background-color: rgb(224, 62, 82);  text-align: center; ">
-                  <a href="" style="color: white;">
+                  <a href="/todaylessonmypage/mylike/${pageContext.request.userPrincipal.name}" style="color: white;">
                      <i class='fas fa-heart'></i> 좋아요
                   </a>
                </li>
