@@ -38,6 +38,9 @@ function member_level_1() {
                <p class="hs_us_mypage_myLevelLessonPoint_title">회원등급</p>
                <p class="hs_us_mypage_myLevelLessonPoint_content">
                   <c:choose>
+                     <c:when test="${myPageMyLevel_MyPoint.member_level == 0}">
+                        <c:out value="관리자"></c:out>
+                     </c:when>
                      <c:when test="${myPageMyLevel_MyPoint.member_level == 1}">
                         <c:out value="주니어"></c:out>
                      </c:when>
@@ -49,12 +52,14 @@ function member_level_1() {
             </div>
             <div class="col-sm-4" style="display: inline-block; border-right: 1px solid rgba(53, 54, 58, 0.1); position: relative; top: 35px;">
                <p class="hs_us_mypage_myLevelLessonPoint_title">수강중인 레슨</p>
-               <p class="hs_us_mypage_myLevelLessonPoint_content">10</p> <!-- 수강중인 레슨 수 가져오기 -->
+               <p class="hs_us_mypage_myLevelLessonPoint_content">
+                  <c:out value="${myPageAttendLseeon.mypagelessoncount}"/>개
+               </p> <!-- 수강중인 레슨 수 가져오기 -->
             </div>
             <div class="col-sm-4" style="display: inline-block; position: relative; top: 35px;">
                <p class="hs_us_mypage_myLevelLessonPoint_title">적립금</p>
                <p class="hs_us_mypage_myLevelLessonPoint_content">
-                  <fmt:formatNumber value="${myPageMyLevel_MyPoint.member_point}" type="number" maxFractionDigits="3"/>
+                  <fmt:formatNumber value="${myPageMyLevel_MyPoint.member_point}" type="number" maxFractionDigits="3"/>원
                </p> <!-- 적립금 가져오기 -->
             </div>
          </div>
@@ -81,7 +86,7 @@ function member_level_1() {
                      </c:when>
                   </c:choose>
                </li>
-               <li class="hs_us_mypage_my1:1question">
+               <li class="hs_us_mypage_my1_1question">
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question">1:1 문의</a>
                </li>
                <li style="float: right; width: 200px; background-color: rgb(224, 62, 82);  text-align: center; ">

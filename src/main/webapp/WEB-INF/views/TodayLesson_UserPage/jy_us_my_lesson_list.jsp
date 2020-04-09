@@ -6,6 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_us_mypage_mylesson>a{
+         color: white;
+      }
+      .hs_us_mypage_mymanage>a{
+	     color : #757575;
+       }
+   </style>
+<!-- CSSstyle -->
+
+
    <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list.css">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

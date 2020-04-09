@@ -359,6 +359,9 @@ public class TodayLessonController {
     	MemberDTO myPageMyLevel_MyPoint=userMyPageService.myPageMyLevel_MyPoint(member_id);
     	session.setAttribute("myPageMyLevel_MyPoint", myPageMyLevel_MyPoint); //세션으로 처리하기..
     	
+    	//마이페이지 수강중인 레슨
+    	SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO myPageAttendLseeon=userMyPageService.myPageAttendLseeon(member_id);
+    	session.setAttribute("myPageAttendLseeon", myPageAttendLseeon);
     	//마이페이지 프로필변경
     	
     	return "hs_us_mypage";

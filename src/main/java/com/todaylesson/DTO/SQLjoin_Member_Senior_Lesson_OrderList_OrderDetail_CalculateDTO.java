@@ -119,4 +119,7 @@ public class SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO {
 	private int calculate_cost_nosurtax;
 	private int calculate_cost_surtax;
 
+	//
+	private int mypagelessoncount;
+	
 }

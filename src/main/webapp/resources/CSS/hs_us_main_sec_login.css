@@ -82,3 +82,30 @@
 #naver-login-btn{
 	margin-bottom: 10px;
 }
+.hs_us_mainheader_findidpw{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	margin-top: 10px;
+}
+.hs_us_mainheader_findidpw a{
+	text-decoration: none;
+	color: rgba(53, 54, 58 ,0.5);
+}
+.hs_us_mainheader_findidpw a:hover{
+	text-decoration: none;
+}
+.hs_us_mainheader_join{
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 700;
+	margin-top: 10px;
+}
+.hs_us_mainheader_join a{
+	text-decoration: none;
+	color: rgb(224, 62, 82);
+}
+.hs_us_mainheader_findidpw a:hover{
+	text-decoration: none;
+}
+

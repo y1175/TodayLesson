@@ -8,6 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_us_mypage_mymanage>a{
+	     color : #757575;
+       }
+   </style>
+<!-- CSSstyle -->
+
 <style>
 #ej_container{
 width:90%;

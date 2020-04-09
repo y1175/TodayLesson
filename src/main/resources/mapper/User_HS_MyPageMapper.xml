@@ -3,11 +3,68 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.User_HS_MyPageMapper">
+    <resultMap type="com.todaylesson.DTO.SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO" id="salesCalculateMap">
+	   <!-- MemberDTO -->
+	   <result property="member_id" column="member_id"/>
+	   <result property="member_no" column="member_no"/>
+	   <result property="member_name" column="member_name"/>
+	   <result property="member_point" column="member_point"/>
+	   <result property="member_level" column="member_level"/>
+	   <result property="member_nick" column="member_nick"/>
+	   <!-- MemberDTO -->
+	   <!-- SeniorDTO -->
+	   <result property="senior_no" column="senior_no"/>
+	   <result property="senior_email" column="senior_email"/>
+	   <result property="senior_phone" column="senior_phone"/>
+	   <result property="senior_crno" column="senior_crno"/>
+	   <result property="senior_nick" column="senior_nick"/>
+	   <result property="senior_bank_name" column="senior_bank_name"/>
+	   <result property="senior_account_name" column="senior_account_name"/>
+	   <result property="senior_account_num" column="senior_account_num"/>
+	   <result property="senior_register_date" column="senior_register_date"/>
+	   <result property="senior_crno_name" column="senior_crno_name"/>
+	   <!-- SeniorDTO -->
+	   <!-- LessonDTO -->
+	   <result property="lesson_no" column="lesson_no"/>
+	   <result property="lesson_title" column="lesson_title"/>
+	   <result property="lesson_cost" column="lesson_cost"/>
+	   <result property="lesson_category" column="lesson_category"/>
+	   <result property="lesson_register_date" column="lesson_register_date"/>
+	   <result property="lesson_open_period" column="lesson_open_period"/>
+	   <result property="lesson_close_period" column="lesson_close_period"/>
+	   <result property="lesson_number" column="lesson_number"/>
+	   <result property="lesson_type" column="lesson_type"/>
+	   <result property="lesson_result" column="lesson_result"/>
+	   <!-- LessonDTO --> 
+	   <!-- OrderListDTO -->
+	   <result property="orderlist_no" column="lesson_type"/>
+	   <result property="product_no" column="product_no"/> 
+	   <result property="orderlist_date" column="orderlist_date"/> 
+	   <result property="orderlist_orderstatus" column="orderlist_orderstatus"/> 
+	   <result property="orderlist_paystatus" column="orderlist_paystatus"/> 
+	   <result property="orderlist_cost" column="orderlist_cost"/> 
+	   <result property="orderlist_calculatestatus" column="orderlist_calculatestatus"/> 
+	   <result property="orderlist_usepoint" column="orderlist_usepoint"/>
+	   <!-- OrderListDTO -->
+	   <!-- OrderDetailDTO -->
+	   <result property="order_detail_no" column="order_detail_no"/> 
+	   <!-- OrderDetailDTO -->
+	   <result property="mypagelessoncount" column="mypagelessoncount"/>
+	</resultMap>  
+
     <!-- mypage 회원등급 -->
 	<select id="myPageMyLevel_MyPoint" resultType="com.todaylesson.DTO.MemberDTO" parameterType="java.lang.String">
 	   select member_level, member_point, member_nick
        from member
        where member_id=#{member_id}
+	</select>
+	
+	<select id="myPageAttendLseeon" resultMap="salesCalculateMap" parameterType="java.lang.String">
+	   select count(*) as mypagelessoncount
+	   from lesson 
+	   where lesson_no in(select lesson_no 
+	                      from order_detail d join orderlist l on d.orderlist_no = l.orderlist_no
+                          where member_id = #{member_id})
 	</select>
     
 </mapper>

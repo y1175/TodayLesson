@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_us_mypage_mymanage>a{
+         color: white;
+      }
+   </style>
+<!-- CSSstyle -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_mymanage.css?ver=2">
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
