@@ -19,8 +19,10 @@ $(document).ready(function(){
          $("#smsForm").attr("action",  "hm_us_mymanagesms"); //위에 있는 폼태그를 컨트롤러로 전송한다.
          $("#smsForm").submit();  
          
-        
+         
     })
+    
+
     
 });
 
@@ -37,6 +39,7 @@ function smscheckfunction() {
 				$("#alert-success2").show();
 				$("#alert-danger2").hide();
 				$("#submit").removeAttr("disabled");
+				
 			} else {
 				$("#alert-success2").hide();
 				$("#alert-danger2").show();
@@ -46,8 +49,6 @@ function smscheckfunction() {
 		}
 	});
 }
-
-
 
 
 

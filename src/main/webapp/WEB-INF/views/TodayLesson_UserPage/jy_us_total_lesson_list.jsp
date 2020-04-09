@@ -283,7 +283,8 @@ width:500px; height:auto;
     	if(result=="success")
     		{
     		alert('♥');
-    		}
+    	    location.href = "/todaylesson/total_lesson_list";
+  		}
     	else{
     		alert('이미 좋아요에 추가된 상품입니다.');
     	}
@@ -300,8 +301,7 @@ width:500px; height:auto;
   }
  });
 
-</script>
-<script>
+
 $(".fa.fa-shopping-cart").click(function(){ 
 
  let lessonno=$(this).prop("id");
@@ -331,6 +331,7 @@ $(".fa.fa-shopping-cart").click(function(){
     	if(result=="success")
     		{
     		alert('장바구니에 추가되었습니다.');
+    	    location.href = "/todaylesson/total_lesson_list";
     		}
     	else{
     		alert('이미 장바구니에 추가된 상품입니다.');

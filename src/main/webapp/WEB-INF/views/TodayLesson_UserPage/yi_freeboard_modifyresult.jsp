@@ -12,16 +12,17 @@
 <body>
 <script>
 var result=${result}
+var freeboard_no=${freeboard_no}
 
 if (result>0)
 	{
 	alert('수정완료');
-	history.go(-2);
+	location.href="/todaylesson/freeboard_detail/"+freeboard_no;
 	}
 else
 	{
 	alert('수정실패');
-	location.href="/todaylesson/freeboard";
+	location.href="/todaylesson/freeboard_detail/"+freeboard_no;
 	}
 </script>
 </body>

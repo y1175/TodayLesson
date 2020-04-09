@@ -52,7 +52,7 @@ $('document').ready(function() {
 		         if (bank_name[i].code == bank_code) {
 		            let senior_bank_name = bank_name[i].name;
 		            console.log(senior_bank_name);
-		            $('.bank_name').append(senior_bank_name);
+		            $('#bank_name').append(senior_bank_name);
 		            //$('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
 		            console.log("dddd");
 		            break;
@@ -289,12 +289,8 @@ ${dto.lesson_senior_content}
 <li>
 <b>시니어 사업자 번호</b>
 <span class="jy_text">
-<c:if test="${dto.senior_crno == '' } ">
-	X
-</c:if>
-<c:if test="${dto.senior_crno != ''} ">
+
 	<c:out value="${dto.senior_crno}" />
-</c:if>
 </span>
 </li>
 
@@ -302,13 +298,9 @@ ${dto.lesson_senior_content}
 <li>
 <b>시니어 사업자명</b>
 <span class="jy_text">
-<c:if test="${dto.senior_crno_name == ''} ">
-	X
-</c:if>
-<c:if test="${dto.senior_crno_name != '' }">
+
 	<c:out value="${dto.senior_crno_name}" />
 	
-</c:if>
 
 </span>
 </li>

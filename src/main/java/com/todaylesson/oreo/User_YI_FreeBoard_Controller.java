@@ -148,6 +148,7 @@ public class User_YI_FreeBoard_Controller {
 		int result=service.modify_result(dto);
 		
 		model.addAttribute("result",result);
+		model.addAttribute("freeboard_no",freeboard_no);
 		
 		return "TodayLesson_UserPage/yi_freeboard_modifyresult";
 	}

@@ -287,7 +287,7 @@ ${dto.product_content}
 <td>${item.pdreview_date }  </td>
 </tr>
 <tr>
-<td class="reviewCon">${item.pdreview_content }</td>
+<td class="reviewCon" colspan="3">${item.pdreview_content }</td>
 </tr>
 </c:forEach>
 </table>

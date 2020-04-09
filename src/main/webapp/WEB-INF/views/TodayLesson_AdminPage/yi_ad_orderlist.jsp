@@ -85,7 +85,6 @@
 <select name="calculate_status" class="calculate_select calculate_select-${item.orderlist_no}" id="c${item.orderlist_no}">
 <option value="1">정산대기</option>
 <option value="2">정산가능</option>
-<option value="3">정산완료</option>
 </select></td>
 </tr>
 <tr><td><select name="order_status" class="status_select status_select-${item.orderlist_no}" id="${item.orderlist_no}">

@@ -13,6 +13,7 @@ $(document).ready(function(){
 			    "marginLeft": 40,
 			    "autoMarginOffset": 20,
 			    "mouseWheelZoomEnabled":true,
+			    "colors" : ["#e03e52","#e03e52"],
 			    "valueAxes": [{
 			        "id": "v1",
 			        "axisAlpha": 0,
@@ -61,7 +62,7 @@ $(document).ready(function(){
 			        "valueLineEnabled": true,
 			        "valueLineBalloonEnabled": true,
 			        "cursorAlpha":1,
-			        "cursorColor":"#258cbb",
+			        "cursorColor":"#e03e52",
 			        "limitToGraph":"g1",
 			        "valueLineAlpha":0.2,
 			        "valueZoomable":true
@@ -107,6 +108,7 @@ $(document).ready(function(){
 				    "marginLeft": 40,
 				    "autoMarginOffset": 20,
 				    "mouseWheelZoomEnabled":true,
+				    "colors":["#35363a","#35363a"],
 				    "valueAxes": [{
 				        "id": "v1",
 				        "axisAlpha": 0,
@@ -155,7 +157,7 @@ $(document).ready(function(){
 				        "valueLineEnabled": true,
 				        "valueLineBalloonEnabled": true,
 				        "cursorAlpha":1,
-				        "cursorColor":"#258cbb",
+				        "cursorColor":"#35363a",
 				        "limitToGraph":"g1",
 				        "valueLineAlpha":0.2,
 				        "valueZoomable":true

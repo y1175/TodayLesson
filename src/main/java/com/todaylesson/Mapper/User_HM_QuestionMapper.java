@@ -18,4 +18,8 @@ public interface User_HM_QuestionMapper {
 
 	public int questiondelete(int question_no);
 
+	public int totalCount(HashMap<String, Object> hm);
+
+	public List<Question_1_1DTO> hm_question_listhm(HashMap<String, Object> hm);
+
 }

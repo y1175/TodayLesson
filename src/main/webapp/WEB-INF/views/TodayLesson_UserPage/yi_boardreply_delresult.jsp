@@ -14,12 +14,12 @@ var result=${deleteResult}
 if (result>0)
 	{
 	alert('삭제완료');
-	history.back();
+	window.location=document.referrer;
 	}
 else
 	{
 	alert('삭제실패');
-	history.back();
+	window.location=document.referrer;
 	}
 </script>
 </body>
