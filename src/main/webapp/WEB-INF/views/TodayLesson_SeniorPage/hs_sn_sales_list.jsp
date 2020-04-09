@@ -23,6 +23,37 @@
 <!-- JS -->
    
    <script type="text/javascript">
+   //날짜
+   function formatDate(date)
+  {
+   	var d = new Date(date),
+       month = '' + (d.getMonth() + 1),
+       day = '' + d.getDate(),
+       year = d.getFullYear();
+
+   if (month.length < 2) 
+       month = '0' + month;
+   if (day.length < 2) 
+       day = '0' + day;
+
+   return [year, month, day].join('-');
+  }
+   var now=new Date();
+   var week=new Date();
+   var month=new Date();
+   
+   var dayOfMonth=week.getDate();
+   var monthOfYear=month.getMonth();
+   
+   var weekday=week.setDate(dayOfMonth-7);
+   var monthday=month.setMonth(monthOfYear-1);
+   
+   var todayval= formatDate(now);       
+   var weekval=formatDate(weekday);
+   var monthval=formatDate(monthday); 
+   
+   
+   
    $(document).ready(function(){
 		
 	   $.datepicker.setDefaults({
@@ -52,6 +83,27 @@
         $("#hs_sn_sales_enddate").datepicker();
 
 	 
+
+       
+       //날짜 설정 버튼 (날짜값은 위에 있음) 
+        $("#hs_senior_sales_Datesearch_AllBtn").click(function(){
+        	$("#hs_sn_sales_startdate").val("");
+        	$("#hs_sn_sales_enddate").val("");
+        });
+        $("#hs_senior_sales_Datesearch_TodayBtn").click(function(){
+        	$("#hs_sn_sales_startdate").val(todayval);
+        	$("#hs_sn_sales_enddate").val(todayval);
+        });
+        $("#hs_senior_sales_Datesearch_WeeklyBtn").click(function(){
+        	$("#hs_sn_sales_startdate").val(weekval);
+        	$("#hs_sn_sales_enddate").val(todayval);
+        });
+        $("#hs_senior_sales_Datesearch_MonthBtn").click(function(){
+        	$("#hs_sn_sales_startdate").val(monthval);
+        	$("#hs_sn_sales_enddate").val(todayval);
+        });
+
+        
 });
    
    
@@ -62,7 +114,7 @@
    <div class="hs_senior_sales">
       <h3 class="hs_senior_sales_title">매출 현황</h3>
       <div class="">
-            <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${Totalpage.startBlock}">
+            <form method="get" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.startBlock}">
                <div class="hs_senior_sales_searchbox">
                <label class="hs_senior_sales_DatesearchTitle">기간검색</label>
                <div class="hs_senior_sales_Datesearchbox">
@@ -97,7 +149,7 @@
                   </select>
                   <button class="hs_senior_Sales_ExcelBtn">엑셀다운로드</button>
                </div> 
-               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />           
+               <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  --%>          
             </form>
       </div>     
       <div class="hs_sn_salesList">
@@ -263,7 +315,7 @@
 <div class="">
 <!-- 이전페이지블럭 -->
 <c:if test="${Totalpage.prev }">
-<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${Totalpage.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
 </c:if>
 
 <!-- 현재 페이지블럭 -->
@@ -271,7 +323,7 @@
 
 <!-- if 인덱스가 현재페이지가 아니면 a태그 -->
 <c:if test="${index!= Totalpage.currPage }">
-<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
 </c:if>
 
 <!--  if 인덱스가 현재페이지면 현재페이지 출력 -->
@@ -282,7 +334,7 @@ ${index }
 
 <!-- 다음페이지블럭 -->
 <c:if test="${Totalpage.next }">
-<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list?currPage=${Totalpage.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
 </c:if>
 </div>
    

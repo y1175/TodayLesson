@@ -68,7 +68,7 @@ public class Senior_HS_Salescalculate_Controller {
 		model.addAttribute("searchtxt",searchtxt);
 		model.addAttribute("start_date",start_date);
 		model.addAttribute("end_date",end_date);
-		
+		model.addAttribute("senior_no",senior_no);
 		return "/TodayLesson_SeniorPage/hs_sn_sales_list.sn_main_section";
 	}
 	
