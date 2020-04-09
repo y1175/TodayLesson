@@ -35,6 +35,10 @@ function orderSelect()
 </head>
 <body>
 <div id="yi_container">
+<h2>자유 게시판 <i class='far fa-comments' style='font-size:36px'></i></h2>
+<div class="bb">
+<b>자유롭게 대화를 나누세요!<sec:authorize access="isAnonymous()"> 게시물을 보려면<a href="/todaylessonlogin"> 로그인</a>이 필요합니다.</sec:authorize></b>
+</div>
 <sec:authentication property="principal" var="pinfo"/>	
 <table class="table table-hover">
 <thead class=" yi_thead">
