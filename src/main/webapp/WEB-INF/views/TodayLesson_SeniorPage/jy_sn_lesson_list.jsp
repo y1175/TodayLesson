@@ -131,10 +131,14 @@ width:500px; height:auto;
 
 </c:choose>
 
-<td><c:out value="${item.lesson_register_date }"/></td>
 
-<td><c:out value="${item.lesson_open_period }"/></td>
-<td><c:out value="${item.lesson_close_period }"/></td>
+
+<td><c:out value="${item.lesson_register_date}"/></td>
+
+<td><c:out value="${item.lesson_open_period}"/></td>
+<td><c:out value="${item.lesson_close_period}"/></td>
+
+
 
 <c:choose>
 

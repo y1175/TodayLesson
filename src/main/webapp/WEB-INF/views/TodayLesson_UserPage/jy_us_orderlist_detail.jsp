@@ -5,26 +5,57 @@
 <head>
 <meta>
 <title>Insert title here</title>
+
+
+<!--style-->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderlistdetail.css?ver=2"> 
+<!--style-->
 </head>
 <body>
-
-<!--오더 리스트 정보  -->
-주문날짜  ${orderlistdto.orderlist_date }<br>
- 주문번호  ${orderlistdto.orderlist_no }<br>
-수령인  ${orderlistdto.orderlist_receiver }<br>
-수령 주소  ${orderlistdto.orderlist_addr }<br>
-결제금액  ${orderlistdto.orderlist_cost }원<br>
-사용포인트  ${orderlistdto.orderlist_usepoint  }<br>
-<c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
-<c:set var="addedpoint" value="${(cost*0.1)}"></c:set>
-${addedpoint } 포인트가 적립되었습니다!<br>
-배송요청사항  ${orderlistdto.orderlist_msg  }
-<hr>
-<!--오더 디테일 정보  -->
+<div id="ej_container">
+<h4>오늘의 레슨을 이용해주셔서 감사합니다</h4>
+<h2 >주문이 정상적으로 완료되었습니다.</h2>
+ <h3 style="color:rgb(224, 62, 82)">주문번호  ${orderlistdto.orderlist_no }</h3><br>
+ 
+ <!--오더 디테일 정보  -->
 <c:forEach var="item" items="${list}"> 
-상품명: ${item.product_name }
-수량: ${item.order_count }
+<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/${item.lesson_no}"><img src="${item.product_thumb }" alt="thumb"></a>
+<b>상품명</b>  ${item.lesson_title }
+<b>가격 </b> ${item.lesson-cost }
 </c:forEach>
+<br>
+<br>
+<div id="ej_line"></div>
+<!--오더 리스트 정보  -->
+<br>
+<div class="ej_align left">
+<b>주문날짜</b><br>
+<b>수령인</b> <br>
+<b>수령 주소</b><br>
+<b>결제금액</b><br>
+<b>사용포인트</b><br>
+<b style="color:rgb(224, 62, 82)">축하드립니다</b><br> 
+<b>배송요청사항</b><br>  
+</div>
+
+<div class="ej_align right">
+${orderlistdto.orderlist_date }<br>
+${orderlistdto.orderlist_receiver }<br>
+${orderlistdto.orderlist_addr }<br>
+${orderlistdto.orderlist_cost }원<br>
+${orderlistdto.orderlist_usepoint  }<br>
+
+<c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
+<fmt:parseNumber var="addpoint" value="${(cost*0.1)}" integerOnly="true" /> <b style="color:rgb(224, 62, 82)">${addpoint }포인트가 적립되었습니다!<br>
+
+ ${orderlistdto.orderlist_msg  }<br>
+</div>
+<!--ej_align right/  -->
+</div>
+<!--ej container/  -->
+
+</body>
+
 
 
 </body>
