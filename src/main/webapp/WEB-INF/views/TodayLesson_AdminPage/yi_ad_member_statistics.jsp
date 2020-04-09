@@ -139,7 +139,7 @@
 </div>
 
 <div class="form-group">
-<input type="radio" name="ymd" value="date"><label>일별</label>
+<input type="radio" name="ymd" value="date" checked="checked"><label>일별</label>
 <input type="radio" name="ymd" value="month"><label>월별</label>
 <input type="radio" name="ymd" value="year"><label>연별</label>
 </div>
