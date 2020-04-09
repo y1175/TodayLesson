@@ -55,7 +55,7 @@ width:500px; height:auto;
  <option value="lesson_content">레슨내용</option>
 </select>
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary" type="submit">검색</button>
+      <button class="ej_btn" type="submit">검색</button>
     </form>
       </div>
 

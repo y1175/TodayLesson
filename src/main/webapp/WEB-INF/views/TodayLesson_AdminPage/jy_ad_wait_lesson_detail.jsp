@@ -600,10 +600,10 @@ ${dto.lesson_senior_content}
 	</div>
 
 
-
+<div>
 <button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonadmin/wait_lesson'">목록으로</button>
-<button id="reward_point" class="ej_btn2" onclick="window.open('${pageContext.request.contextPath}/todaylessonadmin/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=420')">심사하기</button>
-
+<button id="reward_point" class="ej_btn2" onclick="window.open('${pageContext.request.contextPath}/todaylessonadmin/lesson_result_update/${dto.lesson_no}','lesson_result_update','width=570,height=237')">심사하기</button>
+</div>
 
 </div>
 </body>

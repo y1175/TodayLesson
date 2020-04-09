@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_senior_form.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
@@ -36,14 +37,16 @@ $(document).ready(function(){
 </head>
 <body>
 
+<div class="jy_container">
 
 <form name="form">
 
+<div class="jy_text_box">
+<h2>오프라인 레슨</h2>
 
 총 강의 수
-<br>* 강의는 10강을 넘길 수 없습니다.
-<input type="text" id="lesson_max_number" name="lesson_max_number" >
-<br>
+<input type="text" id="lesson_max_number" name="lesson_max_number" placeholder="총 강의 수를 입력하세요.">
+<p style="text-align: center;">* 강의는 10강을 넘길 수 없습니다.</p>
 
 레슨일
 <input type="text" id="lesson_date" name="lesson_date" required="required" >  
@@ -53,7 +56,7 @@ $(document).ready(function(){
 <input type="time" id="lesson_time" name="lesson_time" required="required"> 
 
 
-<input type="button" value="추가" onclick="add_Lesson_Time();">
+<input type="button" value="추가" onclick="add_Lesson_Time();" class="ej_btn">
 
 <script>
 
@@ -83,7 +86,7 @@ function add_Lesson_Time(){
 	    }
 	   	
 	}  else  {
-		  $('tbody').append("<tr>"+"<td>"+lesson_date+"</td>"+"<td>"+lesson_time+"</td>"+"<td>"+"<input type='button' value='삭제' onclick='delete_lesson_date(this);' >"+"</td>"+"</tr>");
+		  $('tbody').append("<tr>"+"<td>"+lesson_date+"</td>"+"<td>"+lesson_time+"</td>"+"<td>"+"<input type='button' value='삭제' onclick='delete_lesson_date(this);' class= 'ej_btn2' >"+"</td>"+"</tr>");
 		lesson_date_and_time.push(
 				{lesson_date : lesson_date, 
 				lesson_time : lesson_time}
@@ -114,7 +117,10 @@ function add_Lesson_Time(){
     
 </script>
 
-<table id = "lessontable">
+</div>
+
+
+<table id = "lessontable" style="margin: 0px auto;">
 <thead><tr><th>강의 일</th><th>강의 시간</th><th>삭제</th></tr></thead>
 <tbody>
 
@@ -125,8 +131,9 @@ function add_Lesson_Time(){
 <br>
 <br>
 
-<input type="submit" value="전송" onclick="lesson_date_submit();">
+<input type="submit" value="전송" onclick="lesson_date_submit();" class="ej_btn">
 
 </form>
+</div>
 </body>
 </html>
