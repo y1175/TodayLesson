@@ -19,9 +19,9 @@
  
  <!--오더 디테일 정보  -->
 <c:forEach var="item" items="${list}"> 
-<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/${item.lesson_no}"><img src="${item.product_thumb }" alt="thumb"></a>
+<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list/${item.lesson_no}"><img src="${item.lesson_thumb }" alt="thumb"></a>
 <b>상품명</b>  ${item.lesson_title }
-<b>가격 </b> ${item.lesson-cost }
+<b>가격 </b> ${item.lesson_cost }
 </c:forEach>
 <br>
 <br>
