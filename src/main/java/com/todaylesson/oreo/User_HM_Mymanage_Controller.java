@@ -89,6 +89,8 @@ public class User_HM_Mymanage_Controller {
 
 		return "/TodayLesson_UserPage/hm_us_mymanage.us_my_section";
 	}
+	
+	
 	//내 정보관리 비밀번호 인증 후 true일 때 내 정보 수정
 	@RequestMapping("/hm_us_mymanage2")
 	public String currentUserName(@RequestParam("member_id") String member_id
@@ -99,13 +101,9 @@ public class User_HM_Mymanage_Controller {
 		
 		String new_pwd = member_pwd;
 		String old_pwd = hm_mymanageservice.matchpwd(member_id);
-		
-		System.out.println(new_pwd);
-		System.out.println(old_pwd);
-		
+	
 		boolean result = encoder.matches(new_pwd, old_pwd);
 		
-		System.out.println(result);
 
 		if(result==true)
 		{
@@ -132,12 +130,13 @@ public class User_HM_Mymanage_Controller {
 
 	//내정보 수정
 	@RequestMapping("/hm_us_mymanagesms")
-	public String hmusmymanageupdatesms(Authentication authentication, Model model,HttpServletRequest request)
+	public String hmusmymanageupdatesms(Authentication authentication, Model model,HttpServletRequest request,HttpServletResponse response) throws Exception
 	{
 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
-		 /*은지 sms인증*/
+		
+		 /*sms인증*/
         String api_key = "NCSRC0XSPD85BDRL"; //위에서 받은 api key를 추가
         String api_secret = "2LVQYEMQFBIBEG8WVXKQOWQ6KPDDVJQ9";  //위에서 받은 api secret를 추가
 
@@ -148,7 +147,9 @@ public class User_HM_Mymanage_Controller {
         HashMap<String, String> set = new HashMap<String, String>();
         set.put("from", "01026063254"); // 수신번호
 
-        set.put("to", (String)request.getParameter("to")); // 발신번호, jsp에서 전송한 발신번호를 받아 map에 저장한다.
+        
+     // 발신번호, jsp에서 전송한 발신번호를 받아 map에 저장한다.
+        set.put("to", (String)request.getParameter("to")); 
         set.put("text", (String)request.getParameter("text")); // 문자내용, jsp에서 전송한 문자내용을 받아 map에 저장한다.
         set.put("type", "sms"); // 문자 타입
         String text=(String)request.getParameter("text");
@@ -175,6 +176,18 @@ public class User_HM_Mymanage_Controller {
           System.out.println(result.get("code")); // REST API 에러코드
           System.out.println(result.get("message")); // 에러메시지
         }
+        
+        
+        
+        //한번 더 계좌인증 토큰값 보내기
+        String imp_key 		=	"5422837446408379";
+		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
+
+		JSONObject json = new JSONObject();
+		json.put("imp_key", imp_key);
+		json.put("imp_secret", imp_secret);
+		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
+		model.addAttribute("token",token);
 		
         MemberDTO dto = hm_mymanageservice.MyInfolist(member_id);
 		model.addAttribute("dto",dto);
@@ -198,7 +211,7 @@ public class User_HM_Mymanage_Controller {
 			,@RequestParam("jibunaddr") String jibunaddr
 			,@RequestParam("detailaddr") String detailaddr
 			,@RequestParam("member_nick") String member_nick
-			,@RequestParam("member_bank_name") int member_bank_name
+			,@RequestParam("member_bank_name") String member_bank_name
 			,@RequestParam("member_account_name") String member_account_name
 			,@RequestParam("member_account_num") String member_account_num
 			,MemberDTO dto, Model model
@@ -214,6 +227,7 @@ public class User_HM_Mymanage_Controller {
 		dto.setMember_phone(member_phone);
 		dto.setMember_zipcode(member_zipcode);
 		dto.setMember_nick(member_nick);
+		System.out.println(member_phone);
 		
 		if(member_account_name == null) {
 			String fulladdr= "";	

@@ -11,12 +11,21 @@
 
 </head>
 <body>
+
+
+
+
 <div id="mymanageupdatediv">
-<c:set var="dto" value="${dto}"></c:set>
+
+
+<c:set var="dto" value="${dto}"/>
+
+
 
 <h2>회원정보 수정</h2>
 
 
+<!-- 아이디 readonly로 뿌려줌 -->
 <div class="row" style="width: 100%;">
    <div class="col-md-12">
       <label for="member_id">아이디</label>
@@ -27,32 +36,42 @@
    </div>
 </div>
 
+
+
+<!-- sms 핸드폰 번호 인증 form -->
+
    <form method="post" id="smsForm"  class="row" style="width: 100%;">
       <div class="col-md-12" style="margin-top: 10px;">
          <label>연락처</label>
       </div>
+      
       <div class="col-md-12">
          <div class="col-md-3" style=" padding: 0px;"> 
          <c:choose>
-            <c:when test="${to eq null }">
-               <input  class="form-control" style="text-align: center;" type="text" name="to" id="text1" placeholder=" 전화번호 입력 " value="${dto.member_phone}"/> 
+          <c:when test="${to eq null }">
+            <input  class="form-control" style="text-align: center;" type="text" name="to" id="text1" placeholder=" 전화번호 입력 " value="${dto.member_phone}" />
             </c:when>
             <c:otherwise>
-               <input type="text" style="text-align: center;" class="form-control" name="to" id="text1" placeholder=" 전화번호 입력 " value="${to}"/>
+             <input type="text" style="text-align: center;" class="form-control" name="to" id="text1" placeholder=" 전화번호 입력 " value="${to}"/>  
             </c:otherwise>
          </c:choose>
          </div>
+         
+         
          <div class="col-md-2">
 		    <input type="button" name="sendSMS" id="sendSMS" class="hmupdatebtn" value="인증번호 요청" />
 	     </div>
      </div> 
+     
+     
      <input type="hidden" name="text" id="text2" > 
         <div class="col-md-12" style="margin-top: 10px;">
            <label for="numcheck">인증번호 확인</label>
         </div>
+        
         <div class="col-md-12" style="text-align: center;">
            <div class="col-md-3" style=" padding: 0px;">
-              <input type="text" name="numcheck" class="form-control" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()">
+              <input type="text" name="numcheck" class="form-control" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()" > 
            </div>
            <div class="col-md-9" style="font-size: 15px;">
               <div class="alert alert-success" style="width:35%; height:34px; font-size : 14px; padding: 5px;" id="alert-success2">인증번호가 일치합니다.</div>
@@ -66,9 +85,25 @@
    </form>
 
 
+<!-- sms 핸드폰 인증 form 끝 -->
+
 
 <form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanageupdate" name="frm" id="frm">
-<input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}"  ><br>
+
+<input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}"  >
+<input type="hidden" name="member_phone" id="member_phone">
+
+
+<script>
+$(document).ready(function(){
+	
+	var phone =$('#text1').val();
+	 $('#member_phone').val(phone);
+	/* $('#member_phone').val(phone.split(',').join(''));	 */
+});
+</script>
+
+
 <label>비밀번호</label>
 <input type="password"  name="member_pwd" id="member_pwd" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"><br>
 <label>비밀번호확인</label>
@@ -86,7 +121,7 @@ onkeyup="passwordCheckFunction();"><br>
 <input type="date" name="member_birth"  class="form-control"  id="member_birth" value="${dto.member_birth}" required="required"><br>
  <label>e-mail</label>
 <input type="email" name="member_email"  class="form-control"  id="member_email" value="${dto.member_email}" required="required"><br>
- <input type="hidden" name="member_phone"   class="form-control"  id="member_phone" value="${to}" required="required"><br>
+
  
  
  
@@ -97,7 +132,7 @@ onkeyup="passwordCheckFunction();"><br>
 <option disabled="disabled" selected="selected">-----</option>
 </c:if> 
 <c:if test="${!empty dto.member_bank_name }">
-<option id="bank_name"></option>
+<option id="bank_name" value="${dto.member_bank_name}"></option>
 </c:if>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
@@ -119,7 +154,7 @@ onkeyup="passwordCheckFunction();"><br>
 <option value="012">축협</option>
 <option value="081">하나은형(서울은행)</option>
 <option value="027">한국씨티뱅크(한미은행)</option>
-<option value="089">K뱅크</option>
+<option value="089">케이뱅크</option>
 <option value="090">카카오뱅크</option>
 <option value="209">유안타증권</option>
 <option value="218">현대증권</option>
@@ -163,7 +198,16 @@ onkeyup="passwordCheckFunction();"><br>
 </c:if>
 <input type="hidden" id="token" name="token"  class="form-control"  value="${token}">
 <div style="margin: 20px 0px;">
+
+<!-- 기존 계좌정보가 없을 때  -->
+<c:if test="${empty dto.member_account_num}">
 <input type="button" class="hmupdatebtn" value="계좌 실명 확인" onclick="checkBankHolder();">
+</c:if>
+
+<c:if test="${!empty dto.member_account_num}">
+<input type="button" class="hmupdatebtn" value="계좌 실명 확인" onclick="checkBankHolder();">
+</c:if>
+
  </div>
  
  
@@ -197,14 +241,13 @@ onkeyup="passwordCheckFunction();"><br>
 						<label>닉네임</label>
 						<input type="text"  class="form-control" name="member_nick" value="${dto.member_nick}" required="required"><br>
 						</div>
-						<button type="submit" id="submit" class="hmupdatebtn2">정보 수정</button><br>
+						<button type="submit" id="submit" class="hmupdatebtn2">정보 수정</button>
 						<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 						</form>
 
 
  <input type="button" class="hmupdatebtn" value="회원탈퇴" > 
  <button onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanage'" class="hmupdatebtn">취소</button>
-<!-- <input type="reset" class="hmupdatebtn" value="취소"> -->
 </div>
 
 
@@ -283,7 +326,8 @@ onkeyup="passwordCheckFunction();"><br>
 
 	   let bank_code= "${dto.member_bank_name}";
 	   let token = "${token}";
-
+	 
+	  
 	   console.log(bank_code);
 	   console.log(token);
 
@@ -301,10 +345,11 @@ onkeyup="passwordCheckFunction();"><br>
 	            console.log(bank_name[i]);
 	            console.log(bank_name[i].code);
 	            console.log(bank_name[i].name);
-	            //console.log(bank_code);
+	            
 	            
 	            if (bank_name[i].code == bank_code) {
-	               let senior_bank_name = bank_name[i].name;
+	               let member_bank_name = bank_name[i].name;
+	              
 	               $('#bank_name').append(member_bank_name);
 	               break;
 	            }
@@ -315,11 +360,49 @@ onkeyup="passwordCheckFunction();"><br>
 	   
 	});
 
-	
+	/*은행명 끝*/
 	
 	
 	
 
+
+
+	/* 한글로 저장된 뱅크이름을 다시 int로 변환시켜줌 */
+	function changeBankCode(){
+		
+		 let bank_code= "${dto.member_bank_name}";
+		 let token = "${token}";
+		
+		 $.ajax({
+		      method: 'get',
+		      url: 'https://api.iamport.kr/banks',
+		       headers: { 
+		          "Authorization": token
+		      }
+		   }).done(function(msg) {
+		         console.log(msg);
+		         let bank_name = msg.response;
+		         
+		         for (var i = 0; i < bank_name.length; i++) {
+		            console.log(bank_name[i]);
+		            console.log(bank_name[i].code);
+		            console.log(bank_name[i].name);
+		            
+		            
+		            if (bank_name[i].code == bank_code) {
+		               let member_bank_name = bank_name[i].name;
+		               $('#bank_name').append(member_bank_name);
+		               break;
+		            }
+		         }
+		         
+		      });
+		
+	}
+
+
+	
+	/*계좌인증*/
 	function checkBankHolder(){
 
 		let target = document.getElementById("member_bank_name");
@@ -328,6 +411,7 @@ onkeyup="passwordCheckFunction();"><br>
 		let bank_num = document.getElementById("member_account_num").value;
 		let account_name = document.getElementById("member_account_name").value;
 		
+		console.log(target);
 		console.log(bank_code);
 		console.log(bank_num);
 		console.log(token);
@@ -345,12 +429,8 @@ onkeyup="passwordCheckFunction();"><br>
 		}).done(
 						function(msg) {
 							console.log(msg);
-						/* 	let adn = msg.documents[0].bank_holder;
-							console.log
-							(adn); */
-
 							let bank = msg.response;
-							//let name = bank.parse().bank_holder;
+
 							console.log(bank);
 							console.log(bank["bank_holder"]);
 							
@@ -365,6 +445,9 @@ onkeyup="passwordCheckFunction();"><br>
 						});
 	}
 	</script>
+	
+	
+	
 	<script>
 		$(function(){
 			$("#alert-success").hide();
@@ -394,7 +477,7 @@ onkeyup="passwordCheckFunction();"><br>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<script src="/resources/JS/hm_us_mymanageupdate.js?ver=1"></script>
+	<script src="/resources/JS/hm_us_mymanageupdate.js?ver=5"></script>
 
 </body>
 </html>

@@ -72,14 +72,6 @@ style="width:20%; margin-left:10%; font-weight: 600;">
 
 </form>
 
- <form action="loginresult" method="POST">
-      <div id="html_element"></div>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-    </script>
 
 
 </div>

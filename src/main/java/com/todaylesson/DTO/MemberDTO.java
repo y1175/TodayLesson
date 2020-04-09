@@ -33,7 +33,7 @@ public class MemberDTO {
 	private String member_img;
 	private boolean enabled;
 	private List<Member_AuthDTO> authList;
-	private int member_bank_name;
+	private String member_bank_name;
 	private String member_account_name;
 	private String member_account_num;
 	
