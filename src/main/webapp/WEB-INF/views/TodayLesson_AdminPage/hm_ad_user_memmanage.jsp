@@ -29,7 +29,7 @@
 </head>
 <body>
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">회원 관리</h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>회원 관리</b></h2>
  </div>
 
 
@@ -45,7 +45,7 @@
  <option value="member_nick">닉네임</option>
 </select>
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary" type="submit">검색</button>
+      <button class="btn btn-secondary" style="background-color: rgb(224, 62, 82);" type="submit">검색</button>
     </form>
   </div>
 </nav>
@@ -57,19 +57,19 @@
 	<table class="table" style="width: 80%; margin: 0px auto 40px;">
 		<thead>
 			<tr class="table-warning">
-				<th scope="col">#</th><!-- 보여줘야함 -->
-				<th scope="col">아이디</th><!-- 보여줘야함 -->
-				<th scope="col">이름</th><!-- 보여줘야함 -->
-				<th scope="col">닉네임</th><!-- 보여줘야함 -->
-				<th scope="col">생일</th>
-				<th scope="col">휴대전화</th>
-				<th scope="col">우편번호</th>
-				<th scope="col">주소</th>
-				<th scope="col">적립금</th><!-- 보여줘야함 -->
-				<th scope="col">회원등급</th><!-- 보여줘야함 -->
-				<th scope="col">이메일</th>
-				<th scope="col">가입일</th><!-- 보여줘야함 -->
-				<th scope="col">상세보기</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">#</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">아이디</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">이름</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">닉네임</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">생일</th>
+				<th scope="col" style="background-color:#fff2f2;" >휴대전화</th>
+				<th scope="col" style="background-color:#fff2f2;">우편번호</th>
+				<th scope="col" style="background-color:#fff2f2;">주소</th>
+				<th scope="col" style="background-color:#fff2f2;">적립금</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">회원등급</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">이메일</th>
+				<th scope="col" style="background-color:#fff2f2;">가입일</th><!-- 보여줘야함 -->
+				<th scope="col" style="background-color:#fff2f2;">상세보기</th><!-- 보여줘야함 -->
 			</tr>
 		</thead>
 		<tbody>
@@ -102,7 +102,7 @@
 								<option value="1">1 주니어</option>
 								<option value="2">2 시니어</option>
 								<option value="3">3 블 락</option>
-						</select> <input type="submit" class="btn btn-secondary" value="수정"></td>
+						</select> <input type="submit" class="btn btn-secondary" style="background-color: rgba(53, 54, 58 , 0.5 );" value="수정"></td>
 					</form>
 
 					<td>${item.member_join_date}</td>
@@ -110,7 +110,7 @@
 
 					
 					
-					 <td><button type="button" id="detailbutton" class="btn btn-secondary" onclick="PopupInfo(this)" data-toggle="modal"  data-target="#exampleModal" >상세보기</button></td> 
+					 <td><button type="button" id="detailbutton" class="btn btn-secondary" style="background-color: rgba(53, 54, 58 , 0.5 );" onclick="PopupInfo(this)" data-toggle="modal"  data-target="#exampleModal" >상세보기</button></td> 
 					<!-- data-target="#exampleModal" -->
 					<script>
 					$('#exampleModal').on('shown.bs.modal', function (event) {

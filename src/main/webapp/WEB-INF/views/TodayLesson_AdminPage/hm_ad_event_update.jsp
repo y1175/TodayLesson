@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <!-- CSSstyle -->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_update.css?ver=1"> 
+	href="${pageContext.request.contextPath}/resources/CSS/hm_ad_event_update.css?ver=2"> 
    <style type="text/css">
       .hs_ad_main_asidenav_nav_Event_Title>a{
          color: rgb(224, 62, 82);
@@ -55,7 +55,7 @@
 
 
 <div class="hm_ad_event_updatemain">
-<h3>이벤트 수정</h3>
+<h3><b>이벤트 수정</b></h3>
 
 
 	
@@ -153,7 +153,7 @@
  
 		<div class="eventbtndiv">
  		<input type="button" id="event_update_btn" onclick="updatethumbnail();" class="hmeventupdatebtn" value="이벤트 등록"/>
- 		<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'" class="hmeventupdatebtn2">수정 취소</button>
+ 		<input type="button" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_detail/'+${dto.event_no}" class="hmeventupdatecencelbtn" value="수정취소">
  		</div>
  
  

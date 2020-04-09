@@ -8,46 +8,108 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=1"> 
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_event.css?ver=2"> 
 <!-- CSSstyle -->
 <!-- JS -->
    <%-- <script src="${pageContext.request.contextPath}/resources/JS/hm_us_event.js"></script> 파일이 없어서 주석처리함-용인-  --%>
-   <script>
+ <!--   <script>
    $(document).ready(function() {
 	    $('body').bootstrapMaterialDesign();
 	});
-   </script>
+   </script> -->
 <!-- JS -->
 </head>
 <body>
 
 
+<!-- 이벤트 슬라이더 -->
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
+      <div class="carousel-inner">
+         <c:forEach var="mainEventBannerSlider" items="${banner}" varStatus="status">
+            <c:choose>
+               <c:when test="${status.count == 1}">
+                  <div class="carousel-item active">
+                     <img src="${mainEventBannerSlider.banner_filepath}" class="w-100"  alt="..." style="height:550px;">
+                  </div>
+               </c:when>
+               <c:otherwise>
+                  <div class="carousel-item">
+                     <img src="${mainEventBannerSlider.banner_filepath}" class="w-100" alt="..." style="height:550px;">
+                  </div>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="sr-only">Next</span>
+      </a>
+   </div>
+   <!-- 이벤트 슬라이더 -->
+
+
+
+
+
+
+
+
 <!-- bootstrap 오토 캐러셀 -->
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
 
-	<c:forEach var="bannerevent" items="${banner}">
-
-    <ol class="carousel-indicators">
+ 
+<%-- <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
+   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner">
+ <div class="carousel-inner">
+<c:forEach begin="0" end="2" step="1" var="bannerevent" items="${banner}" varStatus="status" >
     <div class="carousel-item active" style="width:100%; height:550px;">
     <c:if test="${bannerevent.banner_group == 3 }">
+    <c:choose>
+ 	<c:when test="${status.count == 3}">
+ 	 <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
+ 	</c:when>   
+    <c:when test="${status.count == 2}">
+ 	 <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
+ 	</c:when>   
+ 	 <c:when test="${status.count == 1}">
+ 	 <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
+ 	</c:when>   
+    </c:choose>
+    
+    
+    
+    
+     <c:if test="${status.count == 3}"> 
       <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
+   </c:if> 
     </c:if>
     </div>
-   <!--   <div class="carousel-item" style="width:100%; height:550px; ">	
-      <img src="/resources/IMG/eventmain2.jpg" class="d-block w-100" alt="..." style="height:550px;">
-       <div class="carousel-caption d-none d-md-block">
+   <div class="carousel-item" style="width:100%; height:550px; ">	
+  	 <c:if test="${bannerevent.banner_group == 3 }">
+     <c:if test="${status.count == 2}">
+      <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
+      </c:if>
+      </c:if>
+      <div class="carousel-caption d-none d-md-block">
       </div> 
     </div>
     <div class="carousel-item" style="width:100%; height:550px; ">
+     <c:if test="${bannerevent.banner_group == 3 }">
+     <c:if test="${status.count == 1}">
       <img src="/resources/IMG/eventmain3.jpg" class="d-block w-100" alt="..." style="height:550px";>
+      </c:if>
+      </c:if>
        <div class="carousel-caption d-none d-md-block">
-      </div>  -->
+      </div>  
     </div>
+</c:forEach>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -57,30 +119,28 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-  
-</c:forEach>
-
 </div>
+ --%>
 
 
 
 <div class = "hm_event_header">
-<h2>이벤트 모음</h2>
+<h2>오늘의 레슨 <b>EVENT</b></h2>
 </div>
 
 <div class="hm_event_total">
  <!-- 이벤트 네비바 -->
  
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:420px; margin:0 auto 40;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:420px; margin:0 auto 40; ">
  
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center; background-color: #fff2f2; padding: 10px;">
  <form class="form-inline my-2 my-lg-0" method ="get" action="hm_us_event?currPage=${page.startBlock }">
  <select name="search"  class="form-control" id="inlineFormCustomSelect" style="margin-right: 20px;">
      <option value="all">전체</option>
      <option value="event_title">제목</option>
  </select>
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
- <button class="hmeventbtn" type="submit">검색</button>
+ <button class="hmeventbtn" type="submit" style="background-color: rgb(224, 62, 82);">검색</button>
  </form>
   </div>
   

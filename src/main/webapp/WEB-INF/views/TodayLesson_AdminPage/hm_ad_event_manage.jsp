@@ -25,8 +25,11 @@
 
 <div class="hm_ad_event_managemain">
 
+<h2><b>이벤트 관리</b></h2>
+
+
 <!-- 검색 --> 
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:23%; margin:40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:28%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage?currPage=${page.startBlock }"
  style="margin:0px auto;">

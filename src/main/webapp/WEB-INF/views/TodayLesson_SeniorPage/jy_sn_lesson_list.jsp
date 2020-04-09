@@ -29,7 +29,7 @@ width:500px; height:auto;
 <body>
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>레슨 관리</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>레슨 관리</b></h2>
  </div>
  
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:28%; margin:40px auto;">

@@ -21,7 +21,7 @@
 <body>
 	<jsp:useBean id="now" class="java.util.Date" />
 	<input type="hidden" value="${dto.event_no}" class="event_no">
-	<h1 style="text-align: center; margin : 50px 0px; ">이벤트 상세페이지</h1>
+	<h2 style="text-align: center; margin : 50px 0px; "><b>이벤트 상세페이지</b></h2>
 	<div class="eventdetailmain">
 		<div class="eventdetailgroup">
 			<c:choose>
