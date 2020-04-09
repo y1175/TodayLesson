@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +18,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/JS/yi_findAddr.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<style>
-
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderform.css">  
 
 </head>
 
@@ -26,24 +26,26 @@
 
 
 <body>
+<div id="ej_container">
+
  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
 
-<h2 text align="center">주문신청서</h2>
-<h4>주문할 레슨</h4>
+<h2 text align="center"><b>주문신청서</b></h2>
+<h4><b>주문할 레슨</b></h4>
 <hr>
 <input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
-<table>
+<table class="table">
 <thead>
 <tr><th>상품명</th><th>개당금액</th><th>수량</th><th>배송비</th><th>주문금액</th></tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="${ldto.lesson_thumb}" id="lesson_thumb" width="200"></td>
+<td><img src="${ldto.lesson_thumb}" id="ej_order_topimg" width="200"></td>
 <td><h4>${ldto.lesson_title }</h4></td>
 <td>${ldto.lesson_cost }</td>
  <td> 1개</td>
  <td>배송비 무료</td>
- <td>${ldto.lesson_cost }원</td>
+ <td><fmt:formatNumber value="${ldto.lesson_cost}" type="number" maxFractionDigits="3"/>원 </td>
  </tr>
 </tbody>
 </table>
@@ -87,6 +89,7 @@ $('#all_point').change(function() {
  결제금액<br>
  <input type="text" value=${ldto.lesson_cost } id="orderlist_cost1" class="paymentcost" readonly="readonly">
 
+</div>
 <script>
     
 	
