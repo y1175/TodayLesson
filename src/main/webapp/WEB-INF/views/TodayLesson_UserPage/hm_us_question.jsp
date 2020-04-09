@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question.css?ver=1">                               
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question.css?ver=2">                               
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_question.js?ver=4"></script>
 </head>
@@ -120,6 +120,33 @@ pageEncoding="UTF-8"%>
 		</c:forEach>
 		</tbody>
 		</table>
+		<div class="paging">
+		<ul class="pagination pagination-danger">
+<c:if test="${page.prev }">
+<li class="page-item">
+<a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${page.startBlock-1}">PREV
+</a></li>
+</c:if>
+
+<c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
+<c:if test="${index!= page.currPage }">
+<li class="page-item">
+<a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${index }">${index }
+</a></li>
+</c:if>
+<c:if test="${index==page.currPage }">
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
+</c:if>
+</c:forEach>
+
+<c:if test="${page.next }">
+<li class="page-item">
+<a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${page.endBlock+1 }">NEXT
+</a></li>
+</c:if>
+</ul>
+</div>		
+		
 		</c:if>
 
 

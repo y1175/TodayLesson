@@ -19,9 +19,13 @@ public class User_HM_Question_ServiceImple implements User_HM_Question_Service {
 	private User_HM_QuestionMapper mapper;
 
 	@Override
-	public List<Question_1_1DTO> hm_question_list(String member_id) {
+	public List<Question_1_1DTO> hm_question_list(String member_id,int startrow,int endrow) {
 		// TODO Auto-generated method stub
-		return mapper.hm_question_list(member_id);
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("member_id",member_id);
+		hm.put("startrow", startrow);
+		hm.put("endrow", endrow);
+		return mapper.hm_question_listhm(hm);
 	}
 	
 
@@ -50,6 +54,26 @@ public class User_HM_Question_ServiceImple implements User_HM_Question_Service {
 	public int questiondelete(int question_no) {
 		// TODO Auto-generated method stub
 		return mapper.questiondelete(question_no);
+	}
+
+
+
+
+	@Override
+	public int totalCount(String member_id) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("member_id", member_id);
+		return mapper.totalCount(hm);
+	}
+
+
+
+
+	@Override
+	public List<Question_1_1DTO> hm_question_list(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.hm_question_list(member_id);
 	}
 
 

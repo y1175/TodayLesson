@@ -10,6 +10,19 @@ where member_id = #{member_id}
 order by question_no desc
 <!-- order by question_writedate desc -->
 </select> 
+<select id="totalCount" parameterType="java.util.HashMap" resultType="int">
+select count(*)
+from question_1_1
+</select>
+
+<select id="hm_question_listhm" parameterType="java.util.HashMap" resultType="com.todaylesson.DTO.Question_1_1DTO">
+select question_no,question_group,question_title,question_situation,question_writedate,question_answer
+from question_1_1
+where member_id = #{member_id}
+order by question_no desc
+limit #{startrow},15
+<!-- order by question_writedate desc -->
+</select> 
 
 
 <insert id="questioninsert" parameterType="HashMap">
