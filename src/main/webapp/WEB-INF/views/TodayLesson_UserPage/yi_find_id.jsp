@@ -6,7 +6,7 @@
  <meta charset="utf-8">
 <title>TodayLesson</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_find_id.css?ver=4">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_find_id.css?ver=5">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script>
 

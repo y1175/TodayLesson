@@ -51,10 +51,10 @@ $(document).ready(function(){
 			orderdetail1+="<img src="+"'"+item[i].product_thumb+"'"+" alt='thumb'><br>";
 			orderdetail2+="[스토어>"+product_category+"]<br>";
 			orderdetail2+="상품명:"+item[i].product_name+"<br>";
-			orderdetail3+="가격:"+item[i].orderlist_cost+"원"+"<br>";
+			/* orderdetail3+="가격:"+item[i].orderlist_cost+"원"+"<br>"; */
 				$("#a"+item[i].orderlist_no).append(orderdetail1);
 				$("#b"+item[i].orderlist_no).append(orderdetail2);
-				$("#c"+item[i].orderlist_no).append(orderdetail3);
+				/* $("#c"+item[i].orderlist_no).append(orderdetail3); */
 				}
 			
 			
@@ -105,7 +105,7 @@ $(document).ready(function(){
 <div class="row">
 <div class="col order_thumb" id='a${orderlist.orderlist_no}'></div>
 <div class="col myproduct" id='b${orderlist.orderlist_no}'></div>
-<div class="col ordercost" id='c${orderlist.orderlist_no}'></div>
+<div class="col ordercost" id='c${orderlist.orderlist_no}'>${orderlist.orderlist_cost}원</div>
 </div>
 </div>
  <div class="detailline"></div>
