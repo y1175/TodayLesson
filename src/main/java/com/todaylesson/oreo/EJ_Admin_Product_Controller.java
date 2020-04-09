@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
@@ -24,11 +26,24 @@ public class EJ_Admin_Product_Controller {
 	private EJ_All_Product_Service service;
 	
 	@RequestMapping("/ej_ad_productlist")
-	public String list(Model model) {
-		List<ProductDTO> list = service.selectAll(null);
+	public String list(
+			@RequestParam(required=false, defaultValue="1") int currPage
+			,Model model) {
+		
+		//ÃÑ °Ô½Ã±Û ¼ö
+		int totalCount= service.totalCount2();
+		int pageSize=15;
+		int blockSize=5;
+		
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+		
+		List<ProductDTO> list = service.selectAll2(page.getStartRow(),page.getEndRow());
+		
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
 		return "TodayLesson_AdminPage/ej_ad_productlist.hs_ad_main_section";
 	}
+
 	
 	@RequestMapping("/ej_ad_productregister")
 	public String insert(){

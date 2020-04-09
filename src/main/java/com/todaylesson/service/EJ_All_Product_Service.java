@@ -68,7 +68,7 @@ public interface EJ_All_Product_Service {
 
 	public int updatepro_nothumbnail(ProductDTO dto);
 
-	public List<PdReviewDTO> selectAllReview();
+	public List<PdReviewDTO> selectAllReview(int startrow, int endrow);
 
 	public PdReviewDTO selectpdreview(int product_no);
 
@@ -83,6 +83,12 @@ public interface EJ_All_Product_Service {
 	public int updateproductlike(int product_no);
 
 	public int selectcategorynum(int product_no);
+
+	public int totalCount();
+
+	public int totalCount2();
+
+	public List<ProductDTO> selectAll2(int startRow, int endRow);
 
 
 

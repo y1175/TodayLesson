@@ -72,7 +72,7 @@ public interface EJ_US_ProductMapper {
 
 	public int updatepro_nothumbnail(ProductDTO dto);
 
-	public List<PdReviewDTO> selectAllReview();
+	public List<PdReviewDTO> selectAllReview(HashMap<String, Object> hm);
 
 	public PdReviewDTO selectpdreview(int product_no);
 
@@ -87,5 +87,11 @@ public interface EJ_US_ProductMapper {
 	public int updateproductlike(int product_no);
 
 	public int selectcategorynum(int product_no);
+
+	public int totalCount();
+
+	public int totalCount2();
+
+	public List<ProductDTO> admin_productList(HashMap<String, Object> hm);
 
 }

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.PdReviewDTO;
 import com.todaylesson.service.EJ_All_Product_Service;
 
@@ -21,9 +23,20 @@ public class EJ_Admin_Review_Controller {
 
 	//후기리스트
 	@RequestMapping("/ad_product_reviewlist")
-	public String reviewlist(Model model) {
-		List<PdReviewDTO> list = service.selectAllReview();
+	public String reviewlist(
+			@RequestParam(required=false, defaultValue="1") int currPage
+			,Model model) {
+		int totalCount= service.totalCount();
+		int pageSize=15;
+		int blockSize=5;
+		
+		
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
+		
+		
+		List<PdReviewDTO> list = service.selectAllReview(page.getStartRow(),page.getEndRow());
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
 		//
 		return "TodayLesson_AdminPage/ej_ad_pdreviewlist.hs_ad_main_section";
 	}
