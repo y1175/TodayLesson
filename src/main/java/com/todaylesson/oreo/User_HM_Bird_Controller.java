@@ -41,7 +41,7 @@ public class User_HM_Bird_Controller {
 	
 	
 	@ResponseBody
-	@RequestMapping("hm_lesson_like")
+	@RequestMapping("/hm_lesson_like")
 	public String hm_lesson_like(@RequestParam(value = "lesson_no") int lesson_no,
 			@RequestParam(value = "member_id") String member_id) {
 
@@ -57,12 +57,13 @@ public class User_HM_Bird_Controller {
 		} else {
 			result = "false";
 		}
+		System.out.println(result);
 		return result;
 
 	}
 	
 	@ResponseBody
-	@RequestMapping("hm_lesson_cart")
+	@RequestMapping("/hm_lesson_cart")
 	public String hm_lesson_cart(@RequestParam(value = "lesson_no") int lesson_no,
 			@RequestParam(value = "member_id") String member_id) {
 

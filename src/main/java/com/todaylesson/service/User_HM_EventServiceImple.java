@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.SQLjoin_Member_EventDTO;
 import com.todaylesson.Mapper.User_HM_EventMapper;
@@ -48,6 +49,12 @@ public class User_HM_EventServiceImple implements User_HM_EventService {
 	public List<SQLjoin_Member_EventDTO> eventreply_list(int event_no) {
 		// TODO Auto-generated method stub
 		return mapper.eventreply_list(event_no);
+	}
+
+	@Override
+	public List<BannerDTO> hm_us_bannerlist() {
+		// TODO Auto-generated method stub
+		return mapper.hm_us_bannerlist();
 	}
 	
 	

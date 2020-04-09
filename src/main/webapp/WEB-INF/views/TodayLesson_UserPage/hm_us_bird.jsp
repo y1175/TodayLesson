@@ -13,6 +13,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
+
+
 </head>
 <body>
 
@@ -39,24 +41,49 @@
 				</h2>
 				<!-- 기준 시간 출력 -->
 				<p id="time-result"></p>
+				<h5>실시간 조회수가 가장 높은 얼리버드 레슨 <b>TOP4</b></h5>
+			
+			
+			
 				<script>
        var d = new Date();
        var currentTime = d.getHours() + "시 " + d.getMinutes() + "분 ";
        var result = document.getElementById("time-result");
        result.innerHTML = currentTime + " 기준";
       </script>
+      
+      
 			</div>
 
 			<div style="margin-top: 30px;">
-				<c:forEach begin="0" end="3" step="1" var="bestlist" items="${list}">
+				<c:forEach begin="0" end="3" step="1" var="bestlist" items="${list}" varStatus="status">
+			<%-- 	<p>
+					<c:choose>
+							<c:when test="${status.count == 1}">
+							<h3>Best 1</h3>
+							</c:when>
+							<c:when test="${status.count == 2}">
+							<h3>Best 2</h3>
+							</c:when>
+							<c:when test="${status.count == 3}">
+							<h3>Best 3</h3>
+							</c:when>
+							<c:when test="${status.count == 4}">
+							<h3>Best 4</h3>
+							</c:when>
+							</c:choose>
+
+				</p> --%>
+				 
+				
 					<div class="col-md-3 col-sm-6" style="margin-left: -10px;">
 						<div class="hm_user_bird_best">
-							<div class="hm_user_bird_best_img">
-								<a href="#"> <img src="${bestlist.lesson_thumb}" />
+							<div class="hm_user_bird_best_img">	
+								<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${bestlist.lesson_no}"> <img src="${bestlist.lesson_thumb}" />
 								</a>
 								<ul class="hm_user_bird_best_social">
-									<li><a href="" class="fas fa-heart" id="${bestlist.lesson_no}"></a></li>
-									<li><a href="" class="fa fa-shopping-cart" id="${bestlist.lesson_no}"></a></li>
+									<li><a href="#" class="fas fa-heart" id="${bestlist.lesson_no}"></a></li>
+									<li><a href="#" class="fa fa-shopping-cart" id="${bestlist.lesson_no}"></a></li>
 								</ul>
 								<span class="hm_user_bird_best_label"> <c:out value="27%" />
 								</span>
@@ -146,7 +173,7 @@
 						<c:forEach begin="0" end="9" step="1" var="newlessonlist"
 							items="${newbird}">
 
-							<a href=""> <img class="hm_us_newlesson_cg_img"
+							<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${newlessonlist.lesson_no}"> <img class="hm_us_newlesson_cg_img"
 								src="${newlessonlist.lesson_thumb}" alt=""> <c:set
 									var="category" value="${newlessonlist.lesson_category }" /> <c:choose>
 									<c:when test="${category==1}">
@@ -237,7 +264,7 @@
 						<c:forEach begin="0" end="9" step="1" var="endlessonlist"
 							items="${endbird}">
 						
-							<a href=""> <img class="hm_us_endlesson_cg_img"
+							<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${endlessonlist.lesson_no}"> <img class="hm_us_endlesson_cg_img"
 								src="${endlessonlist.lesson_thumb}" alt=""> <c:set
 									var="category" value="${endlessonlist.lesson_category }" /> <c:choose>
 									<c:when test="${category==1}">
@@ -309,109 +336,6 @@
 
 
 
-	<script>
-
-
- $(".fas.fa-heart").click(function(){
- let lessonno=$(this).prop("id");
- let memberid='${pageContext.request.userPrincipal.name}';
-
-  
-  let data = {
-       lesson_no : lessonno,
-       member_id: memberid
-    };
-  if(memberid=='')
-  {
-  alert('로그인이 필요합니다.');
-  }else{
- 
-  $.ajax({
-   url :"/todaylesson/hm_lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
-   //request mapping value랑 맞추면되는듯
-   type : "post",
-   data : data,
-   success : function(result){
-	   console.log('result:',result);
-    if(data.member_id==null)
-       {
-       alert('로그인이 필요합니다.');
-       }
-    else{
-    	if(result=="success")
-    		{
-    		alert('♥');
-    		
-    		}
-    	else{
-    		alert('이미 좋아요에 추가된 상품입니다.');
-    	}
-    		
-    }
-   
-    } 
-   ,error: function(){
-      console.log(data);
-      console.log('error');
-     // alert('로그인이 필요합니다.');
-      }
-  }); 
-  }
- });
-
-
-$(".fa.fa-shopping-cart").click(function(){ 
-
- let lessonno=$(this).prop("id");
-  let memberid='${pageContext.request.userPrincipal.name}';
-  
-  let data = {
-       lesson_no : lessonno,
-       member_id: memberid
-    };
-  console.log(memberid);
-  if(memberid=='')
-  {
-  alert('로그인이 필요합니다.');
-  }else{
- 
-  $.ajax({
-   url :"/todaylesson/hm_lesson_cart",
-   type : "post",
-   data : data,
-   success : function(result){
-	   console.log('result:',result);
-    if(data.member_id==null)
-       {
-       alert('로그인이 필요합니다.');
-       }
-    else{
-    	if(result=="success")
-    		{
-    		alert('장바구니에 추가되었습니다.');
-    		console.log('하트');
-    		}
-    	else{
-    		alert('이미 장바구니에 추가된 상품입니다.');
-    	}
-    		
-    }
-   
-    } 
-   ,error: function(){
-      console.log(data);
-      console.log('error');
-     // alert('로그인이 필요합니다.');
-      }
-  }); 
-  }
- });
-
-
-
-
-</script>
-
 
 
 
@@ -464,6 +388,110 @@ $(".fa.fa-shopping-cart").click(function(){
             ELs.parentNode.insertBefore(ELga, ELs);
         })();
    </script>
+   
+   
+   <script>
+
+
+ $(".fas.fa-heart").click(function(){
+ let lessonno=$(this).prop("id");
+ let memberid='${pageContext.request.userPrincipal.name}';
+
+  
+  let data = {
+       lesson_no : lessonno,
+       member_id: memberid
+    };
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/todaylesson/hm_lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+		{
+		alert('♥');
+	    location.href = "/todaylesson/hm_us_bird";
+		}
+	else{
+		alert('이미 좋아요에 추가된 상품입니다.');
+	}
+    		
+    }
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+
+$(".fa.fa-shopping-cart").click(function(){ 
+
+ let lessonno=$(this).prop("id");
+  let memberid='${pageContext.request.userPrincipal.name}';
+  
+  let data = {
+       lesson_no : lessonno,
+       member_id: memberid
+    };
+  console.log(memberid);
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/todaylesson/hm_lesson_cart",
+   type : "post",
+   data : data,
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('장바구니에 추가되었습니다.');
+    		location.href = "/todaylesson/hm_us_bird";
+    		}
+    	else{
+    		alert('이미 장바구니에 추가된 상품입니다.');
+    	}
+    		
+    }
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+
+
+
+</script>
    
 </body>
 </html>

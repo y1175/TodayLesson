@@ -24,19 +24,21 @@
 
 <!-- bootstrap 오토 캐러셀 -->
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
-  <ol class="carousel-indicators">
+
+	<c:forEach var="bannerevent" items="${banner}">
+
+    <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" style="width:100%; height:550px;">
-      <img src="/resources/IMG/eventmain1.jpg" class="d-block w-100" alt="..." style="height:550px;">
-     <div class="carousel-caption d-none d-md-block" >
-      <!-- 버튼 만들 시 여기 사이에 만들기 -->
-      </div> 
+    <c:if test="${bannerevent.banner_group == 3 }">
+      <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
+    </c:if>
     </div>
-    <div class="carousel-item" style="width:100%; height:550px; ">	
+   <!--   <div class="carousel-item" style="width:100%; height:550px; ">	
       <img src="/resources/IMG/eventmain2.jpg" class="d-block w-100" alt="..." style="height:550px;">
        <div class="carousel-caption d-none d-md-block">
       </div> 
@@ -44,7 +46,7 @@
     <div class="carousel-item" style="width:100%; height:550px; ">
       <img src="/resources/IMG/eventmain3.jpg" class="d-block w-100" alt="..." style="height:550px";>
        <div class="carousel-caption d-none d-md-block">
-      </div> 
+      </div>  -->
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -55,6 +57,9 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+  
+</c:forEach>
+
 </div>
 
 
@@ -146,7 +151,7 @@
 
 
 
-
+<div style="width:80%; margin:0px auto; text-align: center;">
 <!-- 페이징 처리  -->
 <br>
 <ul class="pagination pagination-danger">
@@ -175,6 +180,12 @@
 </a></li>
 </c:if>
 </ul>
+
+</div>
+
+
+
+
 
  
  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

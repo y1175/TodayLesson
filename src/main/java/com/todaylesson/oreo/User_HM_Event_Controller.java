@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.PageMaker;
 import com.todaylesson.DTO.SQLjoin_Member_EventDTO;
@@ -43,10 +44,14 @@ public class User_HM_Event_Controller {
 		List<EventDTO> list = service.hm_us_eventlist(search,searchtxt,page.getStartRow()
 				,page.getEndRow(),event);
 		
+		List<BannerDTO> banner = service.hm_us_bannerlist();
+		
+		
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
+		model.addAttribute("banner",banner);
 		
 		return "/TodayLesson_UserPage/hm_us_event.us_main_section";
 	}

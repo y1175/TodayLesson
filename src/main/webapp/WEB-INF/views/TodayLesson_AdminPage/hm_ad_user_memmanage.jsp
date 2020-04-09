@@ -202,7 +202,7 @@
 
 
 
-
+<div style="width:80%; margin:0px auto; text-align: center;">
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
@@ -228,7 +228,7 @@
 </a></li>
 </c:if>
 </ul>
-
+</div>
 
 </body>
 </html>

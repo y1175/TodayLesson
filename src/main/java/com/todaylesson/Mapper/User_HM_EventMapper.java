@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.SQLjoin_Member_EventDTO;
 
@@ -18,5 +19,7 @@ public interface User_HM_EventMapper {
 	public EventDTO eventdetail(int event_no);
 
 	public List<SQLjoin_Member_EventDTO> eventreply_list(int event_no);
+
+	public List<BannerDTO> hm_us_bannerlist();
 
 }
