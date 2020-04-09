@@ -127,7 +127,7 @@ document.getElementById("event_replysubmit_thead-"+event_no).removeAttribute("st
 
 
 
-<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_us_event'" class="hmuseventbtn">목록으로</button>
+<button onclick="location.href='${pageContext.request.contextPath}/todaylesson/hm_us_event'" class="hmuseventbtn">목록으로</button>
 
 </div>
 

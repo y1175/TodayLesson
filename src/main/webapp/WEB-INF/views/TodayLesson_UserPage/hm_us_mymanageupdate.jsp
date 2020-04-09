@@ -88,6 +88,9 @@
 <!-- sms 핸드폰 인증 form 끝 -->
 
 
+
+
+
 <form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanageupdate" name="frm" id="frm">
 
 <input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}"  >
@@ -105,10 +108,11 @@ $(document).ready(function(){
 
 
 <label>비밀번호</label>
-<input type="password"  name="member_pwd" id="member_pwd" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"><br>
+<input type="password"  name="member_pwd" id="member_pwd" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"
+style="width:35%; height:34px; font-size : 14px; padding: 5px; margin-left:-5px;"><br>
 <label>비밀번호확인</label>
 <input type="password" name="pwdcheck" id="pwdcheck" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호확인"
-onkeyup="passwordCheckFunction();"><br>
+onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14px; padding: 5px;"><br>
 <div class="alert alert-success" id="alert-success">비밀번호가일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지않습니다.</div>
 

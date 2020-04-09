@@ -55,8 +55,8 @@
 								<a href="#"> <img src="${bestlist.lesson_thumb}" />
 								</a>
 								<ul class="hm_user_bird_best_social">
-									<li><a href="" class="fas fa-heart"></a></li>
-									<li><a href="" class="fa fa-shopping-cart"></a></li>
+									<li><a href="" class="fas fa-heart" id="${bestlist.lesson_no}"></a></li>
+									<li><a href="" class="fa fa-shopping-cart" id="${bestlist.lesson_no}"></a></li>
 								</ul>
 								<span class="hm_user_bird_best_label"> <c:out value="27%" />
 								</span>
@@ -305,6 +305,116 @@
 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hm_us_bird.js?ver=2"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/hm_us_bird_endlesson.js?ver=1"></script>
+
+
+
+
+	<script>
+
+
+ $(".fas.fa-heart").click(function(){
+ let lessonno=$(this).prop("id");
+ let memberid='${pageContext.request.userPrincipal.name}';
+
+  
+  let data = {
+       lesson_no : lessonno,
+       member_id: memberid
+    };
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/todaylesson/hm_lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   //request mapping value랑 맞추면되는듯
+   type : "post",
+   data : data,
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('♥');
+    		
+    		}
+    	else{
+    		alert('이미 좋아요에 추가된 상품입니다.');
+    	}
+    		
+    }
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+
+$(".fa.fa-shopping-cart").click(function(){ 
+
+ let lessonno=$(this).prop("id");
+  let memberid='${pageContext.request.userPrincipal.name}';
+  
+  let data = {
+       lesson_no : lessonno,
+       member_id: memberid
+    };
+  console.log(memberid);
+  if(memberid=='')
+  {
+  alert('로그인이 필요합니다.');
+  }else{
+ 
+  $.ajax({
+   url :"/todaylesson/hm_lesson_cart",
+   type : "post",
+   data : data,
+   success : function(result){
+	   console.log('result:',result);
+    if(data.member_id==null)
+       {
+       alert('로그인이 필요합니다.');
+       }
+    else{
+    	if(result=="success")
+    		{
+    		alert('장바구니에 추가되었습니다.');
+    		console.log('하트');
+    		}
+    	else{
+    		alert('이미 장바구니에 추가된 상품입니다.');
+    	}
+    		
+    }
+   
+    } 
+   ,error: function(){
+      console.log(data);
+      console.log('error');
+     // alert('로그인이 필요합니다.');
+      }
+  }); 
+  }
+ });
+
+
+
+
+</script>
+
+
+
+
 
 
 
