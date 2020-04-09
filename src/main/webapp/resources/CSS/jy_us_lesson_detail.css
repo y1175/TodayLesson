@@ -6,6 +6,39 @@
 	text-decoration: none;
 	color:black;
 } */
+.modal{
+	z-index:15000;
+}
+.jy_left{
+	float:left;
+}
+.jy_right{
+	float:right;
+	margin-right:50px;
+}
+#lesson_qa_reply_title{
+	float:left;
+}
+#lesson_qa_reply_content{
+	width:100%;
+	float:left;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#commentListForm
+{
+	/* float:left; */
+	display:block;
+}
+/* #accordian{
+	float:left;
+}
+#accordian.ul{
+	margin-left:0px;
+	padding-left:0px;
+} */
+
+/*  */
 .ej_font.bold{
 	font-weight:bolder;
 }

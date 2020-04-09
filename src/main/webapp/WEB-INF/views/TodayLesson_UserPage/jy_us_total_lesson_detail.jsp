@@ -504,7 +504,6 @@ $(".insert_my_cart").click(function(){
 
 
 	</div>
-<br>
 	<h4>안녕하세요, 시니어 <c:out value="${dto.lesson_senior_title}" /> 입니다.</h4>
 	<br>
 	<div class="summer" style="margin-bottom: 30px;"><h4>${dto.lesson_senior_content}</h4></div>
@@ -515,81 +514,74 @@ $(".insert_my_cart").click(function(){
 <div class="ej_box second" id="ej_box_second">
 <span class="ej_left"><h3>문의</h3></span>
 	<div class="container">
-		<form id="commentForm" name="commentForm" method="post">
-			<br>
 			<br>
 			<div>
 				<div style="padding: 0px; text-align: right;">
 					<span><strong>Comments</strong></span> <span id="cCnt"></span>
 				</div>
-				<div>
-					<table class="table">
-						<tr>
-
-
-                        <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요">
-                        </td>
-                        							<td style="padding: 0px">비밀글 <input type="checkbox" name="sec" id="sec" >
-							<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret" value='N'></td> 
-							<td>
-								<textarea rows="3" cols="30" id="lesson_qa_reply_content"
-									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea></td>
-								<br>
-								<div>
-									<a href='#' onClick="fn_comment('${dto.lesson_no }')" class="btn pull-right btn-success">등록</a>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
+				
+				<!--작성된 문의글 목록  -->
+		<form id="commentListForm" name="commentListForm" method="post">
+			<div id="commentList"></div>
+		</form>
+		<hr>
+		
+	<form id="commentForm" name="commentForm" method="post">
+	    <div class="jy_left">
+        <label>궁금한 게 있으신가요?</label><br>
+          <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요">
+         </div>
+								<textarea rows="3" cols="140" id="lesson_qa_reply_content"
+									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
+									<br><br>
+									
+		<div class="jy_right">
+		<label>비밀글</label><input type="checkbox" name="sec" id="sec" >
+		<a href='#' onClick="fn_comment('${dto.lesson_no }')" class="ej_btn">등록</a>
+		</div>
+				
+				
+				<input type="hidden" name="lesson_qa_reply_secret" id="lesson_qa_reply_secret" value='N'>
 				<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no"> 
 				<input type="hidden" name="senior_id" value="${dto.member_id}" id="senior_id"> 
 				<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />
 			</div>
 		</form>
 	</div>
-	<div class="container">
-		<form id="commentListForm" name="commentListForm" method="post">
-			<div id="commentList"></div>
-		</form>
-	</div>
+
 
 
 <div class="ej_box third"  id="ej_box_third">
 <span class="ej_left"><h3>후기</h3></span>
 </div>
 <div class="container">
-		<form id="reviewForm" name="reviewForm" method="post">
-			<br>
-			<br>
-			<div>
-				<div>
-					<span><strong>리뷰</strong></span> <span id="cCnt"></span>
-				</div>
-				<div>
-					<table class="table">
-						<tr>
-                        <td><label>제목</label>
-                        <input type="text" id="lreview_title" name="lreview_title">
-						<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
-								<br>
-								<div>
-									<a href='#' onClick="fn_review('${dto.lesson_no }')" class="btn pull-right btn-success">리뷰 등록</a>
-								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no"> 
-				<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />
-			</div>
-		</form>
-	</div>
-	<div class="container">
 		<form id="reviewListForm" name="reviewListForm" method="post">
 			<div id="reviewList"></div>
 		</form>
 	</div>
+	<button id="jy_openbtn" class="ej_btn">후기남기기</button>
+	
+
+		<form id="reviewForm" name="reviewForm" method="post">
+			<br>
+			<br>
+		
+					<label>제목</label>
+                        <input type="text" id="lreview_title" name="lreview_title">
+						<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
+								<br>
+								<a href='#' onClick="fn_review('${dto.lesson_no }')" class="ej_btn">리뷰 등록</a>
+							
+							
+							
+				<input type="hidden" name="lesson_no" value="${dto.lesson_no}" id="lesson_no"> 
+				<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />
+			
+		</form>
+		
+		
+	</div>
+	
 	</div>
 	<div class="ej_box fourth"  id="ej_box_fourth">
 <span class="ej_left"><h3>배송/교환/환불</h3></span>
@@ -602,6 +594,11 @@ $(".insert_my_cart").click(function(){
 </div>
 
 	<script>
+	/* 후기남기기 버튼(silde up, down) */
+	$('#reviewForm').slideUp();
+	$('#jy_openbtn').click(function(){
+		$('#reviewForm').toggle();
+	});
 /*
  * 댓글 등록하기(Ajax)
  */
@@ -679,8 +676,8 @@ function getCommentList(){
                 for(i=0; i<data.length; i++){
                    if (i == 0) {
                    	    html += "<div id='accordian'>";
-                   	    html += "<ul><li><h6>"+data[i].member_id+" " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"  "+data[i].lesson_qa_register_date+  "</li>";
+                   	    html += "<ul><li><h6>"+data[i].member_id+"               " +data[i].lesson_qa_reply_title +"<span class='ico_ar'>▼</span></h6>";
+                        html += "<ul><li>"+data[i].lesson_qa_reply_content +"            "+data[i].lesson_qa_register_date+  "</li>";
                         if (data[i].lesson_qa_answer_content != null) {
                             html += "<li>시니어 "+ " " +data[i].lesson_qa_answer_content + " " +data[i].lesson_qa_register_date + "</li>";
 						}
@@ -779,6 +776,7 @@ function getCommentList(){
         
     });
 }
+
 
 
 
