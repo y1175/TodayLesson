@@ -6,7 +6,7 @@
 	width:80%;
 }
 
-h1{
+/* h1{
 	text-align: center;
 	margin: 30px auto;
 }
@@ -14,7 +14,7 @@ h1{
 h2{
 	text-align: center;
 	margin: 30px auto;	
-}
+} */
 
 hr{
 	
@@ -26,10 +26,10 @@ li{
 	list-style: none;
 }
 
-b{
-	font-size: 20px;
+li>b{
+	font-size: 18px;
 	text-align: left;
-}
+} 
 
 .jy_text{
 	float : right;
@@ -71,7 +71,7 @@ color: white;
 	border: 1px transparent;
 padding: 5px 15px; 
 /* border-radius : 3px; */
-background-color: rgb(0, 123, 255);
+background-color: #6c757d;
 height:40px;
 font-weight : 600;
 font-size : 14px;
@@ -79,4 +79,23 @@ color: white;
     float: right;
 
 }
+
+
+
+th{
+	text-align: center;
+}
+td{
+	text-align: center;
+}
+
+
+
+th>a:link { color: black; text-decoration: none;}
+th>a:visited { color: black; text-decoration: none;}
+th>a:hover { color: black; text-decoration: none;}
+
+td>a:link { color: black; text-decoration: none;}
+td>a:visited { color: black; text-decoration: none;}
+td>a:hover { color: black; text-decoration: none;}
 

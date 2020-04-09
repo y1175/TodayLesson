@@ -13,33 +13,36 @@
 </style>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/jy_sn_approve_list.css?ver=2">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=2">  
+	
 </head>
 <body>
+<div id="jy_container">
 
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: left;"><b>수락된 레슨</b></h2>
  </div>
  
  
- 
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:28%; margin:40px auto;">
-<div class="collapse navbar-collapse" id="navbarSupportedContent" >
+ <!-- 검색 --> 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:31.5%; margin:40px auto;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin:0px auto;">
 <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson?currPage=${page.startBlock }"
  style="margin:0px auto;">
- 
- 
- <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
  <option value="all">전체</option>
 <option value="lesson_title">레슨명</option>
  <option value="lesson_content">레슨 내용</option>
 </select>
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary" type="submit">검색</button>
+      <button class="btn btn-secondary" style="background-color: rgb(224, 62, 82);" type="submit">검색</button>
     </form>
   </div>
 </nav>
+<!-- 검색완료 -->
+ 
 
-	<table class="table" style="width: 80%; margin: 0px auto 40px;">
+	<table class="table table-hover" style="width: 100%; margin: 0px auto 40px;">
 		<thead>
 			<tr  style="background-color: #fff2f2;">
 
@@ -154,7 +157,7 @@
 
 </div>
 </div>
-
+</div>
 </body>
 
 </html>

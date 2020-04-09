@@ -66,3 +66,25 @@
 
 
 
+th{
+	text-align: center;
+}
+td{
+	text-align: center;
+}
+
+
+th>a:link { color: black; text-decoration: none;}
+th>a:visited { color: black; text-decoration: none;}
+th>a:hover { color: black; text-decoration: none;}
+
+td>a:link { color: black; text-decoration: none;}
+td>a:visited { color: black; text-decoration: none;}
+td>a:hover { color: black; text-decoration: none;}
+
+
+#jy_container{
+	margin : 0px auto;
+	padding-top:20px;
+	width:80%;
+}

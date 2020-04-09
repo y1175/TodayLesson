@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=2">  
+
 <style>
 
-.thum{
-width:500px; height:auto;
-}
+
 
 </style>
 <!-- CSSstyle -->
@@ -18,12 +18,7 @@ width:500px; height:auto;
       .hs_ad_main_asidenav_nav_NewLessonEvaluation_Title>a{
          color: rgb(224, 62, 82);
       }
-      
-      
-      a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: none;}
- 
+
  
    </style>
 <!-- CSSstyle -->
@@ -31,13 +26,15 @@ width:500px; height:auto;
 </head>
 <body>
 
+<div id="jy_container">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>신규 레슨 심사</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>신규 레슨 심사</b></h2>
  </div>
+ <br>
  
  
-	<table class="table" style="width: 80%; margin: 0px auto 40px;">
+	<table class="table table-hover" style="width: 100%; margin: 0px auto 40px;">
 		<thead>
 			<tr  style="background-color: #fff2f2;">
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/wait_lesson?order=lesson_no">#</a></th>
@@ -112,6 +109,6 @@ width:500px; height:auto;
 </tbody>
 </table>
 
-</body>
+</div>
 </body>
 </html>

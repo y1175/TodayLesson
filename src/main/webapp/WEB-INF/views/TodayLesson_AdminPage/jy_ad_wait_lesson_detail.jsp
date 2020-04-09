@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=1">  
 
 <script>
 
@@ -71,7 +71,7 @@ $('document').ready(function() {
 
 <div id="jy_container">
 
-<h1><b>레슨 상세보기</b></h1>
+<h2><b>레슨 상세보기</b></h2>
 
 <ul>
 <li>

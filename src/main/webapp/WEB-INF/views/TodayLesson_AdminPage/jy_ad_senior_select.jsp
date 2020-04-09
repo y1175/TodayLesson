@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=1">  
 
 <title>Insert title here</title>
 <script>
@@ -51,7 +51,8 @@
 <body>
 	<div id="jy_container">
 
-		<h1><b>시니어 상세 보기</b></h1>
+		<h2 style="text-align: center;"><b>시니어 상세 보기</b></h2>
+		<br>
 		<ul>
 			<li><b>시니어 번호</b><span class="jy_text"> <c:out
 						value="${dto.senior_no }" /></span></li>
@@ -87,11 +88,11 @@
 						value="${dto.senior_crno_name}" /></span></li>
 
 		</ul>
-
+<br>
 		<table class="table ">
 			<thead>
-				<tr class="table-warning">
-					<th scope="col">레슨no</th>
+				<tr class="table-warning" style="background-color: #fff2f2;">
+					<th scope="col">#</th>
 					<th scope="col">레슨 제목</th>
 					<th scope="col">레슨 타입</th>
 					<th scope="col">레슨 결과</th>
@@ -147,7 +148,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonadmin/all_senior'">목록으로</button>
+		<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonadmin/all_senior'" style="margin-top: 10px;">목록으로</button>
 	</div>
 </body>
 </html>

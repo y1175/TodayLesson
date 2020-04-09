@@ -15,38 +15,47 @@
       }
    </style>
    <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_senior_list.css?ver=3">
+	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_senior_list.css?ver=4">
 <!-- CSSstyle -->
 
 
 </head>
 <body>
+
+	<div id="jy_container">
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: center;"><b>시니어 관리</b></h2>
+
  </div>
 
- 
+
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:23%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/all_senior?currPage=${page.startBlock }"
  style="margin:0px auto;">
- <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
 <option value="all">전체</option>
 <option value="member_id">아이디</option>
  <option value="senior_nick">이름</option>
  <option value="senior_account_name">예금주</option>
 </select>
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary" type="submit">검색</button>
+      <button class="btn btn-secondary" style="background-color: rgb(224, 62, 82);" type="submit">검색</button>
     </form>
   </div>
 </nav>
+<!-- 검색완료 -->
+
+
+
+ 
 
 
 
 
 
-	<table class="table" style="width: 80%; margin: 0px auto 40px;">
+
+	<table class="table table-hover" style="width: 80%; margin: 0px auto 40px;">
 		<thead>
 			<tr  style="background-color: #fff2f2;">
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/all_senior?order=senior_no">#</a></th>
@@ -111,7 +120,7 @@
 </ul>
 </div>
 </div>
-
+</div>
 
 </body>
 </html>

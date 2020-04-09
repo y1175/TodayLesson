@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=1">  
 <script>
 
 $(document).ready(function() {
@@ -49,8 +49,9 @@ $(document).ready(function() {
 
 <div id="jy_container">
 
-<h1><b>레슨 상세보기</b></h1>
-
+<h2 style="text-align: center;"><b>레슨 상세보기</b></h2>
+<hr>
+<br>
 <ul>
 <li>
 <b>레슨번호</b>
@@ -183,7 +184,8 @@ ${dto.lesson_content}
 </li>
 
 <li style="text-align: center; margin: 30px 0px">
-<b >레슨 주소</b><br> 
+<h2 style="text-align: center;"><b >레슨 주소</b></h2>
+<hr><br> 
 </li>
 <li>
 <b>우편번호</b>
@@ -251,10 +253,11 @@ ${dto.lesson_senior_content}
 </li>
 
 
+<br>
 
+<h2 style="text-align: center;"><b>시니어 정보<b></b></h2>
 <hr>
-
-<h2>시니어 정보</h2>
+<br>
 <li>
 <b>시니어 아이디</b>
 <span class="jy_text">

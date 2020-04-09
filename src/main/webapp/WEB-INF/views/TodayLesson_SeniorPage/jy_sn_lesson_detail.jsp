@@ -49,7 +49,7 @@ $(document).ready(function() {
 
 <div id="jy_container">
 
-<h1><b>레슨 상세보기</b></h1>
+<h2><b >레슨 상세보기</b></h2><br> 
 
 <ul>
 <li>
@@ -175,7 +175,7 @@ ${dto.lesson_content}
 
 
 <li style="text-align: center; margin: 30px 0px">
-<b>시니어</b><br> 
+<h2><b >시니어</b></h2><br> 
 </li>
 
 
@@ -210,7 +210,7 @@ ${dto.lesson_senior_content}
 
 
 <li style="text-align: center; margin: 30px 0px">
-<b >레슨 주소</b><br> 
+<h2><b >레슨 주소</b></h2><br> 
 </li>
 
 <li>
@@ -251,10 +251,10 @@ ${dto.lesson_senior_content}
 
 </div>
 </ul>
-<div class="bt">
-<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_update/${dto.lesson_no}'">수정하기</button>
-<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_delete/${dto.lesson_no}'">삭제하기</button>
-<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_list'">목록으로</button>
+<div class="bt" >
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_update/${dto.lesson_no}'" style="float: left;">수정하기</button>
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_delete/${dto.lesson_no}'" style="float: left;">삭제하기</button>
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/lesson_list'" style="float: left;">목록으로</button>
 
 </div>
 </div>

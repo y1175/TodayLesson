@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=2">  
+
 <script>
 
 $(document).ready(function(){
@@ -38,15 +40,17 @@ $(document).ready(function(){
 
 </head>
 <body>
+<div id="jy_container">
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>신규 레슨 심사</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>신규 레슨 심사</b></h2>
  </div>
+ <br>
  
 
  
 <form action="${pageContext.request.contextPath }/todaylessonadmin/admin_apply_exam" method="post">
 
-<table class="table" style="width: 80%; margin: 0px auto 40px;">
+<table class="table" style="width: 100%; margin: 0px auto 40px;">
 <tr  style="background-color: #fff2f2;">
 <th scope="col"><input type="checkbox" id="checkall"></th>
 				<th scope="col">#</th>
@@ -120,8 +124,11 @@ $(document).ready(function(){
 </tbody>
 </table>
 
-<input type="submit" value="전송">
-<input type="reset" value="취소"> 
+<input type="reset" value="취소" class="ej_btn2" style="float: right;"> 
+<input type="submit" value="전송" class="ej_btn" style="float: right;">
 </form>
+
+</div>
+
 </body>
 </html>

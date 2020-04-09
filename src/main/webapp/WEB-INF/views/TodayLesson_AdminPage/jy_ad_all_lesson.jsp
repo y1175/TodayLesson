@@ -13,34 +13,40 @@
       }
    </style>
      <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_all_lesson.css?ver=4">   
+	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_all_lesson.css?ver=5">   
 <!-- CSSstyle -->
 
 
 </head>
 <body>
+<div id="jy_container">
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>레슨 관리</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>레슨 관리</b></h2>
  </div>
  
- 
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:28%; margin:40px auto;">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+ <!-- 검색 --> 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:31.5%; margin:40px auto;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin:0px auto;">
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/alllesson?currPage=${page.startBlock }"
  style="margin:0px auto;">
- 
-  <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
  <option value="all">전체</option>
 <option value="lesson_title">레슨명</option>
  <option value="member_id">시니어 아이디</option>
 </select>
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary" type="submit">검색</button>
+      <button class="btn btn-secondary" style="background-color: rgb(224, 62, 82);" type="submit">검색</button>
     </form>
   </div>
 </nav>
+<!-- 검색완료 -->
+ 
 
-	<table class="table" style="width: 80%; margin: 0px auto 40px;">
+ 
+ 
+
+
+	<table class="table table-hover" style="width: 100%; margin: 0px auto 40px;">
 		<thead>
 			<tr  style="background-color: #fff2f2;">
 				<th scope="col"><a href="${pageContext.request.contextPath }/todaylessonadmin/alllesson?order=lesson_no">#</a></th>
@@ -162,6 +168,7 @@
 </a></li>
 </c:if>
 </ul>
+</div>
 </div>
 </div>
 
