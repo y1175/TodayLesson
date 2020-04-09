@@ -58,7 +58,7 @@ ORDER BY stat_logdate asc
 select count(distinct(member_id)) as member_total
 ,stat_logdate 
 from stat_log
-group by stat_logdate 
+group by date(stat_logdate) 
 order by stat_logdate asc
 </when>
 
@@ -135,7 +135,7 @@ date_format(member_join_date,#{join_ymd})=date_format(#{countdate},#{join_ymd})
 select year(stat_logdate) as regYear, month(stat_logdate) as regMonth,
 day(stat_logdate) as regDay, count(*) as total
 FROM stat_log
-group by stat_logdate
+group by day(stat_logdate)
 
 </select>
 
