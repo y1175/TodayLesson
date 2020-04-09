@@ -1,8 +1,16 @@
 @charset "utf-8";
-
+.hm_ad_event_managemain{
+	width: 80%;
+	margin: auto;
+	margin-top: 40px;
+	color: rgb(53, 54, 58);
+}
+.hm_ad_event_managemain h2{
+		text-align: center;
+	margin-bottom: 40px;
+}
 .eventinsertbtn{
 	 float: right;
-	 margin-right:50px;
 	 margin-bottom: 100px;
 }
 .event_line{
@@ -55,7 +63,7 @@
 	border: 1px transparent;
 	padding: 7px 20px; 
 	border-radius : 3px;
-	background-color: rgba(53, 54, 58 , 0.5 );
+	background-color: rgb(224, 62, 82);
 	font-weight : 600;
 	font-size : 14px;
 	color: white;

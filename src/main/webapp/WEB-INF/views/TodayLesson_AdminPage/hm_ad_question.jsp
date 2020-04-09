@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>오늘의 레슨 관리자 1:1문의</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_question.css?ver=4">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_question.css?ver=5">
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question.js"></script>
 
 <!-- CSSstyle --> 
@@ -26,7 +26,7 @@ pageEncoding="UTF-8"%>
 <div class="questionheader">
 
 
-<h2>1:1문의 관리 페이지</h2>
+<h2><b>1:1문의 관리 페이지</b></h2>
 	
 <!-- 검색 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:30%; margin:40px auto;">
@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
     <option value="member_id">아이디</option>
     </select>
    <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
-   <button class="hmadfaqbtn" type="submit">검색</button>
+   <button class="hmadfaqbtn" type="submit" style="background-color: rgb(224, 62, 82);">검색</button>
    </form>
   </div>
 </nav>
@@ -53,13 +53,13 @@ pageEncoding="UTF-8"%>
 	<table class="table" >
 		<thead>
 			<tr class="table-warning">
-				<th scope="col">#</th>
-				<th scope="col">문의유형</th>
-				<th scope="col">아이디</th>
-				<th scope="col">제목</th>
-				<th scope="col">답변상태</th>
-				<th scope="col">문의일</th>
-				<th scope="col">상세보기</th>
+				<th scope="col" style="background-color:#fff2f2;">#</th>
+				<th scope="col" style="background-color:#fff2f2;">문의유형</th>
+				<th scope="col" style="background-color:#fff2f2;">아이디</th>
+				<th scope="col" style="background-color:#fff2f2;">제목</th>
+				<th scope="col" style="background-color:#fff2f2;">답변상태</th>
+				<th scope="col" style="background-color:#fff2f2;">문의일</th>
+				<th scope="col" style="background-color:#fff2f2;">상세보기</th>
 			</tr>
 		</thead>
 		<tbody>

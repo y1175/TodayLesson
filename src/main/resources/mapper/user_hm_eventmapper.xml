@@ -49,8 +49,9 @@ order by event_reply_no
 
 
 <select id="hm_us_bannerlist" resultType="com.todaylesson.DTO.BannerDTO">
-select banner_filepath,banner_group
+select banner_filepath,banner_group,banner_no
 from banner
+where banner_group =3
 order by banner_no desc
 </select>
 
