@@ -28,9 +28,7 @@ SELECT
 date_format(stat_logdate,'%Y-%m-%d') as stat_logdate
     ,count(*) as total
 FROM stat_log
-<if test='start_date!=""'>
-where stat_logdate>=#{start_date} 
-</if>
+<include refid="date_select"/>
 group by date(stat_logdate) 
 ORDER BY stat_logdate asc
 </sql>
@@ -39,6 +37,7 @@ SELECT
 date_format(stat_logdate,'%Y-%m') as stat_logdate
     ,count(*) as total
 FROM stat_log
+<include refid="date_select"/>
 group by month(stat_logdate),year(stat_logdate) 
 ORDER BY stat_logdate asc
 </sql>
@@ -47,10 +46,22 @@ SELECT
 date_format(stat_logdate,'%Y') as stat_logdate
     ,count(*) as total
 FROM stat_log
+<include refid="date_select"/>
 group by year(stat_logdate) 
 ORDER BY stat_logdate asc
 </sql>
 
+<sql id="date_select">
+<where>
+<if test='start_date!=""'>
+ stat_logdate>=#{start_date} 
+</if>
+<if test='end_date!=""'>
+and
+ stat_logdate <![CDATA[<=]]>#{end_date} 
+</if>
+</where>
+</sql>
 
 <select id="distinct_member" resultType="com.todaylesson.DTO.Stat_LogDTO" parameterType="java.util.HashMap">
 <choose>
