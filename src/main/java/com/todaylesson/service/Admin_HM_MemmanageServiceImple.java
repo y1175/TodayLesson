@@ -48,6 +48,18 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 		return mapper.getCount(hm);
 	}
 
+	@Override
+	public int adminlevelup(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.adminlevelup(map);
+	}
+
+	@Override
+	public MemberDTO oldlevel(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.oldlevel(member_id);
+	}
+
 
 
 }

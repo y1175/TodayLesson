@@ -63,25 +63,87 @@ public class Admin_HM_Memmanage_Controller {
 									,@RequestParam("member_level") int member_level
 									,Model model)
 	{
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("member_id", member_id);
-		map.put("member_level", member_level);
-		int result = service.adminlevelupdate(map);
-		model.addAttribute("result",result);
-		if(result>0)
-		{
-			int authresult = service.adminmemberauthupdate(map);
-			model.addAttribute("authresult",authresult);
-			return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";
-		}
-		else{
+		
+		if(member_level==1) {
+		//레벨을 주니어로 바꿀 때 
+			MemberDTO dto = service.oldlevel(member_id);
+			//기존 레벨을 받아온다
+			int oldlevel = dto.getMember_level();
+				if(oldlevel == 2) {
+				//기존 레벨이 2(시니어 일 때)
+									HashMap<String, Object> map = new HashMap<>();
+									map.put("member_id", member_id);
+									map.put("member_level", member_level);
+									int result = service.adminlevelupdate(map);
+									//레벨 업데이트도 시켜주고
+									int result2 = service.adminlevelup(map);
+									//시니어 테이블도 삭제
+				
+										if(result>0 && result2>0) {
+									    //레벨 업데이트와 시니어 테이블이 삭제 됐을 시 ->  
+										int authresult = service.adminmemberauthupdate(map);
+										//권한도 업데이트 시켜줌
+										model.addAttribute("result",result);
+										model.addAttribute("authresult",authresult);
+										return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";
 			
-			return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";	
+						 				}else{
+					
+										return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";	
+										}
+				
+
+			    }else{
+				//올드레벨이 2가 아닐떄
+				HashMap<String, Object> map = new HashMap<>();
+				map.put("member_id", member_id);
+				map.put("member_level", member_level);
+				int result = service.adminlevelupdate(map);
+				
+
+								if(result>0)
+								{
+								int authresult = service.adminmemberauthupdate(map);
+								model.addAttribute("authresult",authresult);
+								model.addAttribute("result",result);
+								return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";
+								}else{
+					
+								return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";	
+								}
+				
+				
+			    	}
+			
+		}else {
+			//레벨을 주니어로 바꾸는게 아닐 때
+			
+			HashMap<String, Object> map = new HashMap<>();
+			map.put("member_id", member_id);
+			map.put("member_level", member_level);
+			int result = service.adminlevelupdate(map);
+								if(result>0) {
+									int authresult = service.adminmemberauthupdate(map);
+									model.addAttribute("authresult",authresult);
+									model.addAttribute("result",result);
+									return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";
+								}else {
+									return "TodayLesson_AdminPage/hm_ad_levelupdateresult.hs_ad_main_section";
+								}
+			
+					
 		}
 		
+
 		
-	}
+		
+		
+		
+		
+		
+		}//메서드
 	
 	
+}//전체
 	
-}
+

@@ -18,6 +18,10 @@ public interface Admin_HM_MemmanageMapper {
 
 	public int getCount(HashMap<String, Object> hm);
 
+	public int adminlevelup(HashMap<String, Object> map);
+
+	public MemberDTO oldlevel(String member_id);
+
 	
 
 

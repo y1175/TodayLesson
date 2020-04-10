@@ -15,6 +15,10 @@ public interface Admin_HM_MemmanageService {
 
 	public int totalCount(String search, String searchtxt);
 
+	public int adminlevelup(HashMap<String, Object> map);
+
+	public MemberDTO oldlevel(String member_id);
+
 
 
 }

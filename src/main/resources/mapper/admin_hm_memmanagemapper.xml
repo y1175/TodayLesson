@@ -55,6 +55,24 @@ where a.member_id = #{member_id}
 </update>
 
 
+<select id="oldlevel" parameterType="String" resultType="com.todaylesson.DTO.MemberDTO">
+select member_level
+from member
+where member_id = #{member_id}
+</select>
+
+
+
+
+<delete id="adminlevelup" parameterType="HashMap"> 
+delete 
+from senior
+where member_id = #{member_id}
+</delete>
+
+
+
+
 <sql id="search_select">
 <if test='searchtxt!=null and searchtxt!=""'>
 <choose>
