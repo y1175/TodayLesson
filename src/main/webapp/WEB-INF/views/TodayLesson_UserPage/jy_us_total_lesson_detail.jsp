@@ -549,7 +549,7 @@ $(".insert_my_cart").click(function(){
 <div class="ej_box second" id="ej_box_second">
 <span class="ej_left"><h3>문의</h3></span>
 <hr>
-	<div class="container">
+	
 		
 			<div>
 
@@ -581,7 +581,7 @@ $(".insert_my_cart").click(function(){
 				<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}" />
 			</div>
 		</form>
-	</div>
+
 
 
 
