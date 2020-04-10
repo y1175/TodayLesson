@@ -86,7 +86,7 @@ function member_level_1() {
                <li class="hs_us_mypage_mylessonadmin">
                <c:choose>
                      <c:when test="${myPageMyLevel_MyPoint.member_level==1}">
-                        <a href="#" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=420'); return false" value="시니어 지원하기">나의 레슨관리</a>
+                        <a href="#" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=253'); return false" value="시니어 지원하기">나의 레슨관리</a>
                      </c:when>
                      <c:when test="${myPageMyLevel_MyPoint.member_level==2}">
                         <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson">나의 레슨관리</a>

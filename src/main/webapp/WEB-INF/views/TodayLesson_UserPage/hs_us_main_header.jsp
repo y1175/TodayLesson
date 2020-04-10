@@ -56,16 +56,16 @@
          </div>
          <div class="col-md-3" style="text-align: right;">
             <sec:authorize access="isAnonymous()">
-               <button class="btn draw-border" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=253,height=420')" value="시니어 지원하기">시니어지원</button>
+               <button class="btn draw-border" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=253')" value="시니어 지원하기">시니어지원</button>
             </sec:authorize>
-            <sec:authorize access="hasAnyRole('ROLE_USER')">
-               <button class="btn draw-border" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=253,height=420')" value="시니어 지원하기">시니어지원</button>
-            </sec:authorize>   
+            <sec:authorize access="hasRole('ROLE_USER')">
+               <button class="btn draw-border" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=253')" value="시니어 지원하기">시니어지원</button>
+            </sec:authorize> 
             <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')">
                <a href="${pageContext.request.contextPath}/todaylessonsenior">
-                  <button class="btn draw-border" svalue="시니어 지원하기">시니어페이지</button>
+                  <button class="btn draw-border" value="시니어페이지">시니어페이지</button>
                </a>
-            </sec:authorize>
+            </sec:authorize> 
             <a href="/todaylessonmypage/mycart/${pageContext.request.userPrincipal.name}" id="mycart">
                <button class="btn draw-border"><i class="fa fa-shopping-cart" style="margin-right: 5px;"></i>장바구니</button>
             </a>
