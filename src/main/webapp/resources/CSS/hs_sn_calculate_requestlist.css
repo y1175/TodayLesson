@@ -1,14 +1,13 @@
 @charset "utf-8";
 /* 전체 DIV */
 .hs_senior_calculate_request{
-	width: 90%;
+	width: 80%;
 	margin: auto;
 	margin-top: 30px;
 	color: rgb(53, 54, 58);
 }
 /* 정산신청 제목 */
 .hs_senior_calculate_request_title{
-	font-size: 23px;
 	font-weight: 800;
 }
 /* 정산가능금액 정산대기금액 DIV */

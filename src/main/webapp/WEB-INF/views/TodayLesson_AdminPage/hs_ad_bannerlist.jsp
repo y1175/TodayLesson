@@ -17,7 +17,7 @@
 <!-- CSSstyle -->
 
 <!-- Banner JS -->
-   <script src="${pageContext.request.contextPath}/resources/JS/hs_ad_bannerlist.js?ver=1"></script>
+   <script src="${pageContext.request.contextPath}/resources/JS/hs_ad_bannerlist.js?ver=2"></script>
 <!-- Banner JS -->
 </head>
 <body>

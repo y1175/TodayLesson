@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSSstyle --> 
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=4">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=6">
    <style type="text/css">
       .hs_sn_main_asidenav_nav_salestitle>a{
          color: rgb(224, 62, 82);
@@ -112,7 +112,7 @@
 </head>
 <body>
    <div class="hs_senior_sales">
-      <h3 class="hs_senior_sales_title">매출 현황</h3>
+      <h2 class="hs_senior_sales_title">매출 현황</h2>
       <div class="">
             <form method="get" action="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.startBlock}">
                <div class="hs_senior_sales_searchbox">

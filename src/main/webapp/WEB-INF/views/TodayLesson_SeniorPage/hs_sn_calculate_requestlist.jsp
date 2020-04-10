@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=3">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=4">  
    <style type="text/css">
       .hs_sn_main_asidenav_nav_calRequest_title>a{
          color: rgb(224, 62, 82);
@@ -23,7 +23,7 @@
 
 <script type="text/javascript">
 /* 은행명 */
-$(document).ready(function() {
+/* $(document).ready(function() {
 
 	let bank_code= "${accountdetalidto.senior_bank_name}";
 	let token = "${token}";
@@ -58,7 +58,42 @@ $(document).ready(function() {
 	
 	
 });
+  */
+  $('document').ready(function(){
+		
+		
+		let bank_code= "${dto.senior_bank_name}";
+		let token = "${token}";
+
+		console.log(bank_code);
+		console.log(token);
+
+		$.ajax({
+		   method: 'get',
+		   url: 'https://api.iamport.kr/banks',
+		    headers: { 
+		       "Authorization": token
+		   }
+		}).done(function(msg) {
+		      console.log(msg);
+		      let bank_name = msg.response;
+			 console.log(bank_name.length);
+		      for (var i = 0; i < bank_name.length; i++) {   
+		         if (bank_name[i].code == bank_code) {
+		            let senior_bank_name = bank_name[i].name;
+		            console.log(senior_bank_name);
+		            $('.bank_name').append(senior_bank_name);
+		            //$('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
+		            console.log("dddd");
+		            break;
+		         }
+		      }
+		      
+		   });
+		
+	});
  
+  
 </script>
 </head>
 <body>
@@ -303,7 +338,7 @@ $(document).ready(function() {
                                              <label for="hs_sn_cal_calculate_bank_name_o" style="width: 120px; font-weight: 600;">정산신청은행</label>
                                              <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_o" style="font-size: 15px; margin-bottom: 10px;">
                                                 <option class="bank_name"></option>
-                                                <option value="004">KB국민은행</option>
+                                                <option value="KB국민은행">KB국민은행</option>
                                                 <option value="023">SC제일은행</option>
                                                 <option value="039">경남은행</option>
                                                 <option value="034">광주은행</option>
@@ -313,18 +348,18 @@ $(document).ready(function() {
                                                 <option value="032">부산은행</option>
                                                 <option value="002">산업은행</option>
                                                 <option value="007">수협</option>
-                                                <option value="088">신한은행</option>
+                                                <option value="신한은행">신한은행</option>
                                                 <option value="048">신협</option>
                                                 <option value="005">외환은행</option>
-                                                <option value="020">우리은행</option>
+                                                <option value="우리은행">우리은행</option>
                                                 <option value="071">우체국</option>
                                                 <option value="037">전북은행</option>
                                                 <option value="035">제주은행</option>
                                                 <option value="012">축협</option>
                                                 <option value="081">하나은형(서울은행)</option>
                                                 <option value="027">한국씨티뱅크(한미은행)</option>
-                                                <option value="089">K뱅크</option>
-                                                <option value="090">카카오뱅크</option>
+                                                <option value="K뱅크">K뱅크</option>
+                                                <option value="카카오뱅크">카카오뱅크</option>
                                                 <option value="209">유안타증권</option>
                                                 <option value="218">현대증권</option>
                                                 <option value="230">미래에셋증권</option>
@@ -368,28 +403,28 @@ $(document).ready(function() {
                                              <label for="hs_sn_cal_calculate_bank_name_x" style="width: 120px; font-weight: 600;">정산신청은행</label>
                                              <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_x">
                                                 <option class="bank_name"></option>
-                                                <option value="004">KB국민은행</option>
-                                                <option value="023">SC제일은행</option>
-                                                <option value="039">경남은행</option>
-                                                <option value="034">광주은행</option>
-                                                <option value="003">기업은행</option>
-                                                <option value="011">농협</option>
-                                                <option value="031">대구은행</option>
-                                                <option value="032">부산은행</option>
+                                                <option value="KB국민은행">KB국민은행</option>
+                                                <option value="SC제일은행">SC제일은행</option>
+                                                <option value="경남은행">경남은행</option>
+                                                <option value="광주은행">광주은행</option>
+                                                <option value="기업은행">기업은행</option>
+                                                <option value="농협">농협</option>
+                                                <option value="대구은행">대구은행</option>
+                                                <option value="부산은행">부산은행</option>
                                                 <option value="002">산업은행</option>
                                                 <option value="007">수협</option>
-                                                <option value="088">신한은행</option>
+                                                <option value="신한은행">신한은행</option>
                                                 <option value="048">신협</option>
                                                 <option value="005">외환은행</option>
-                                                <option value="020">우리은행</option>
+                                                <option value="우리은행">우리은행</option>
                                                 <option value="071">우체국</option>
                                                 <option value="037">전북은행</option>
                                                 <option value="035">제주은행</option>
                                                 <option value="012">축협</option>
                                                 <option value="081">하나은형(서울은행)</option>
                                                 <option value="027">한국씨티뱅크(한미은행)</option>
-                                                <option value="089">K뱅크</option>
-                                                <option value="090">카카오뱅크</option>
+                                                <option value="K뱅크">K뱅크</option>
+                                                <option value="카카오뱅크">카카오뱅크</option>
                                                 <option value="209">유안타증권</option>
                                                 <option value="218">현대증권</option>
                                                 <option value="230">미래에셋증권</option>
