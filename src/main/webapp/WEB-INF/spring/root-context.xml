@@ -67,7 +67,7 @@
  
    <bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
       <property name="scope" value="email"></property>
-      <property name="redirectUri" value="http://3.34.5.108:8080/TodayLesson/googleSignInCallback" />
+      <property name="redirectUri" value="http://localhost:8080/googleSignInCallback" />
    </bean>
  
    <bean id="authInfo" class="com.todaylesson.service.YI_Google_AuthInfo">
