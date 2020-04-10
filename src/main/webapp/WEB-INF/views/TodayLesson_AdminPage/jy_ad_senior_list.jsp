@@ -10,7 +10,7 @@
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_user_memmanagelist.js?ver=2"></script>
 <!-- CSSstyle -->
    <style type="text/css">
-      .hs_ad_main_asidenav_nav_Member_Title>a{
+      .hs_ad_main_asidenav_nav_Senior_Title>a{
          color: rgb(224, 62, 82);
       }
    </style>
