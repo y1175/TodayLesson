@@ -276,15 +276,8 @@ $("#sameaddr").on('click', function() {
   </div>
   
   <br>
-<button id="testbtn">테스트주문완료(지울거임)</button>
 
-<script>
-$("#testbtn").click(function(){
-	
-	$("form").attr("action", "/todaylessonmypage/order_cart");
-		$("form").submit();
-});
-</script>
+
 
  <script>
     $("#check_module").click(function () {

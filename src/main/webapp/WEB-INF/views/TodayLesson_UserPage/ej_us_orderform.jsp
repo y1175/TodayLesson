@@ -248,14 +248,11 @@ $("#sameaddr").on('click', function() {
   </div>
   </div>
   <br>
-<button id="test">이거누르면 주문기록됨(지울거임))</button>
+
 
 	
  <script>
- $("#test").click(function () {
- $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlistdetail");
-	$("form").submit();  
- });
+
  
     $("#check_module").click(function () {
     	  var IMP = window.IMP; // 생략가능
