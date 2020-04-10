@@ -25,7 +25,14 @@ function member_level_1() {
       <div class="row">
          <div class="col-md-5">
             <div class="hs_us_mypage_imgbox">
-	           <img alt="" src="" class="hs_us_mypage_img">
+	             <c:choose>
+                     <c:when test="${myPageMyLevel_MyPoint.member_level == 1}">
+	           <img alt="user" src="${pageContext.request.contextPath}/resources/IMG/user.svg" class="hs_us_mypage_img">
+	           </c:when>
+	            <c:when test="${myPageMyLevel_MyPoint.member_level == 2}">
+	           <img alt="user" src="${pageContext.request.contextPath}/resources/IMG/senior.svg" class="hs_us_mypage_img">
+	           </c:when>
+	           </c:choose>
 			</div>
 			<div class="hs_us_mypage_nickbox">
 			   <%-- <b class="hs_us_mypage_nick">${pageContext.request.userPrincipal.name}님</b> --%>

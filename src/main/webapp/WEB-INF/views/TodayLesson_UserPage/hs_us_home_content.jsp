@@ -8,7 +8,7 @@
 <title>TodayLesson</title>
 
 <!--Main HOME style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=4">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_home_content.css?ver=5">
 <!--Main HOME style-->
 
 </head>

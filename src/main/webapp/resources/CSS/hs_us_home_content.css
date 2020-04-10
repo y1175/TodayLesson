@@ -477,20 +477,35 @@ body{
 	width:100%;
 	
 	}
-/* div.hs_user_store_product_img2{
-	height:285px !important;
-	} */
+ div.hs_user_store_product_img2{
+	height:300px;
+	} 
 /* 썸네일 안데 장바구니 좋아요 아이콘 */	
  .hs_user_store_product_social {
 	padding:0;
 	margin:0 auto;
 	list-style:none;
 	position:absolute;
-	bottom:140px;
+	bottom:135px;
 	right:13px;
 	z-index:1;
 	vertical-align: center;
 	} 
+	
+	/* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
+.hs_user_store_newproduct_social li div{
+	color:white;
+	font-size:17px;
+	line-height:40px;
+	text-align:center;
+	height:40px;
+	width:40px;
+	border:1px solid white;
+	display:block;
+	transition:all .5s ease-in-out;
+	background-color:rgba( 213, 213, 213, 0.5 );
+	}
+	
 
  .hs_user_store_product_social li{
 	opacity:0;
@@ -518,7 +533,7 @@ body{
 	transition-delay:.4s /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
 	}
 /* 썸네일 안데 장바구니 좋아요 아이콘 위치 */	
-.hs_user_store_product_social li a{
+.hs_user_store_product_social li div{
 	color:white;
 	font-size:17px;
 	line-height:40px;
@@ -529,7 +544,7 @@ body{
 	display:block;
 	transition:all .5s ease-in-out
 	}
-.hs_user_store_product_social li a:hover{
+.hs_user_store_product_social li a div:hover{
 	color:rgb(224, 62, 82);
 	border-color:rgb(224, 62, 82)
 	}

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=3">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=4">
 <!--style-->
 </head>
 
@@ -56,10 +56,10 @@
       <div class="ej_category exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><div class="ej_category_border"><img class="ej_categoryimg exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"/></div><br>운동</a></div>
         <div class="ej_category ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><div class="ej_category_border"><img class="ej_categoryimg etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"/></div><br>기타</a></div>
        <br> 
-       </div>
+       </div><br>
         <!-- 스토어 상품 -->
-      <b class="" style="font-size: 25px;"> </b>
-      <div class="" style="margin-top: 30px;">
+     
+      <div class="" style="margin-top: 30px; width:80%; margin:0 auto;">
       <span id="ej_right">
       <a href="?order=like" ><button class="ej_btn order">좋아요순</button></a>
 <a href="?order=recent"><button class="ej_btn order">최신순</button></a>
