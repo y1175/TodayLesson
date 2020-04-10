@@ -23,7 +23,7 @@
 </span> --%>
 
 <!--메인 슬라이더  -->
-<div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
+<%-- <div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
       <div class="hs_us_home_mainBannerbox">
 	     <div class="hs_us_home_mainBannerslide">
 		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
@@ -32,21 +32,34 @@
 			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
 	     </div>
 	  </div>
+   </div> --%>
+     <!-- Main Slider -->
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+      <div class="carousel-inner" >
+         <c:forEach var="mainBannerSlider" items="${banner}" varStatus="status">
+            <c:choose>
+               <c:when test="${status.count == 1}">
+                  <div class="carousel-item active">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100"  alt="...">
+                  </div>
+               </c:when>
+               <c:otherwise>
+                  <div class="carousel-item">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100" alt="...">
+                  </div>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
+      </div>
    </div>
+   <!-- Main Slider -->
    <br>	
    <br>	
-   <div class="" style="width: 80%; margin: auto;">
-   <!-- 카테고리 선택 아이콘들 -->
    
- <%--   
-    <div class="ej_grid all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0"><img class="ej_category all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/check.png"><br><h4>전체</h4></a></div>
-  <div class="ej_grid lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1"><img class="ej_category lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/translation.png"><br>외국어</a></div>
-    <div class="ej_grid it"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/2"><img class="ej_category it" alt="it" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/monitor.png"><br>IT</a></div>
-     <div class="ej_grid cook"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/3"><img class="ej_category cook" alt="cook" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/baker.png"><br>요리</a></div>
-      <div class="ej_grid diy"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/4"><img class="ej_category diy" alt="diy" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/sewing-machine.png"><br>DIY</a></div>
-      <div class="ej_grid exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><img class="ej_category exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/ver2/bike.png"><br>운동</a></div>
-        <div class="ej_grid ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><img class="ej_category etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/ver2/open-menu.png"><br>기타</a></div>
-       <br> --%>
+   
+   
+     <!-- 카테고리 선택 아이콘들 --> 
+   <div class="" style="width: 80%; margin: auto;">
    <div id="ej_category_box">
     <div class="ej_category all"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/0" ><div class="ej_category_border"><img class="ej_categoryimg all" alt="all" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/correct.png"/></div><br>전체</a></div>
   <div class="ej_category lang"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/1" ><div class="ej_category_border"><img class="ej_categoryimg lang" alt="lang" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/lang.png"/></div><br>외국어</a></div>
@@ -59,7 +72,7 @@
        </div><br>
         <!-- 스토어 상품 -->
      
-      <div class="" style="margin-top: 30px; width:80%; margin:0 auto;">
+      <div class="" style="margin-top: 30px;margin:0 auto;">
       <span id="ej_right">
       <a href="?order=like" ><button class="ej_btn order">좋아요순</button></a>
 <a href="?order=recent"><button class="ej_btn order">최신순</button></a>
@@ -70,10 +83,10 @@
             <div class="col-md-3 col-sm-6">
                <div class="hs_user_store_newproduct">
                   <div class="hs_user_store_newproduct_img">
-                  <div class="hs_user_store_newproduct_img2">
+                 <!--  <div class="hs_user_store_newproduct_img2"> -->
                      <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
-                     </a></div>
+                     </a><!-- /div> -->
                      <ul class="hs_user_store_newproduct_social" >
                         <li>
                            <a href="#" ><div class="fas fa-heart" id="${storenewproductlist.product_no}"></div></a>

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.MemberDTO;
@@ -271,6 +272,12 @@ public class EJ_All_Product_ServiceImple implements EJ_All_Product_Service {
 		hm.put("startrow",startRow);
 		hm.put("endrow",endRow);
 		return mapper.admin_productList(hm);
+	}
+
+	@Override
+	public List<BannerDTO> bannerlist() {
+		// TODO Auto-generated method stub
+		return mapper.bannerlist();
 	}
 
 

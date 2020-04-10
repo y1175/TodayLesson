@@ -267,4 +267,12 @@ where product_no=#{product_no} and member_id = #{member_id}
    	from product
    	where product_no=#{product_no}
    	</select>
+   	
+   	<!--배너  -->
+   	<select id="bannerlist" resultType="com.todaylesson.DTO.BannerDTO">
+select banner_filepath,banner_group,banner_no
+from banner
+where banner_group =4
+order by banner_no desc
+</select>
 </mapper> 

@@ -2,6 +2,7 @@ package com.todaylesson.service;
 
 import java.util.List;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.MemberDTO;
@@ -89,6 +90,8 @@ public interface EJ_All_Product_Service {
 	public int totalCount2();
 
 	public List<ProductDTO> selectAll2(int startRow, int endRow);
+
+	public List<BannerDTO> bannerlist();
 
 
 
