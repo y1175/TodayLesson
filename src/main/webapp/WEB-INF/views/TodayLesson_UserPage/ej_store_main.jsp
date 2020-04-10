@@ -69,7 +69,7 @@
       <div class="ej_category exercise"> <a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/5"><div class="ej_category_border"><img class="ej_categoryimg exercise" alt="exercise" src="${pageContext.request.contextPath }/resources/imgUpload/category_icon/exercise.png"/></div><br>운동</a></div>
         <div class="ej_category ect"><a href="${pageContext.request.contextPath }/todaylesson/ej_store_main/6"><div class="ej_category_border"><img class="ej_categoryimg etc" alt="etc" src="${pageContext.request.contextPath}/resources/imgUpload/category_icon/etc.png"/></div><br>기타</a></div>
        <br> 
-       </div><br>
+       </div><br><br>
         <!-- 스토어 상품 -->
      
       <div class="" style="margin-top: 30px;margin:0 auto;">
@@ -77,6 +77,7 @@
       <a href="?order=like" ><button class="ej_btn order">좋아요순</button></a>
 <a href="?order=recent"><button class="ej_btn order">최신순</button></a>
 </span>
+<br>
 <br>
 <br>
          <c:forEach var="storenewproductlist" items="${list}">
