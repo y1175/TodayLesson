@@ -175,7 +175,7 @@ img.birdminiimg{
   height: 25px;
   text-align: center;
   line-height: 20px;
-  background: linear-gradient(to bottom, #FFD8D8, #FAE0D4);
+  background: linear-gradient(to bottom, #E03E52, #FFA7A7);
   border-radius: 10%;
   cursor: pointer;
   box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.2);
@@ -185,7 +185,7 @@ img.birdminiimg{
 .heart span {
   font-size: 20px;
   color: white;
-  text-shadow: 0px 0px 10px rgba(255, 218, 218, 0.4);
+  text-shadow: 0px 0px 10px rgba(224, 62, 82, 0.4);
 }
 .heart:before, .heart:after {
   content: "";

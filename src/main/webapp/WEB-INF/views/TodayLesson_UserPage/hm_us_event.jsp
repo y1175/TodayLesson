@@ -58,70 +58,6 @@
 
 
 
-<!-- bootstrap 오토 캐러셀 -->
-
- 
-<%-- <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
-   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-  </ol>
- <div class="carousel-inner">
-<c:forEach begin="0" end="2" step="1" var="bannerevent" items="${banner}" varStatus="status" >
-    <div class="carousel-item active" style="width:100%; height:550px;">
-    <c:if test="${bannerevent.banner_group == 3 }">
-    <c:choose>
- 	<c:when test="${status.count == 3}">
- 	 <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
- 	</c:when>   
-    <c:when test="${status.count == 2}">
- 	 <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
- 	</c:when>   
- 	 <c:when test="${status.count == 1}">
- 	 <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
- 	</c:when>   
-    </c:choose>
-    
-    
-    
-    
-     <c:if test="${status.count == 3}"> 
-      <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
-   </c:if> 
-    </c:if>
-    </div>
-   <div class="carousel-item" style="width:100%; height:550px; ">	
-  	 <c:if test="${bannerevent.banner_group == 3 }">
-     <c:if test="${status.count == 2}">
-      <img src="${bannerevent.banner_filepath}" class="d-block w-100" alt="..." style="height:550px;">
-      </c:if>
-      </c:if>
-      <div class="carousel-caption d-none d-md-block">
-      </div> 
-    </div>
-    <div class="carousel-item" style="width:100%; height:550px; ">
-     <c:if test="${bannerevent.banner_group == 3 }">
-     <c:if test="${status.count == 1}">
-      <img src="/resources/IMG/eventmain3.jpg" class="d-block w-100" alt="..." style="height:550px";>
-      </c:if>
-      </c:if>
-       <div class="carousel-caption d-none d-md-block">
-      </div>  
-    </div>
-</c:forEach>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
- --%>
-
 
 
 <div class = "hm_event_header">
@@ -146,39 +82,6 @@
   
 </nav>
  
- 
-<%--  <nav class="navbar navbar-expand-lg navbar-light bg-light" style=" width: 80%; margin :0 auto 40px;">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">전체 이벤트</a><span class="sr-only">(current)</span>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">레슨 이벤트</a>
-      </li>     
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="font-size:20px; margin-right:30px; ">스토어 이벤트</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="font-size:20px;margin-right:30px;">기  타</a>
-      </li>                                     
-      
-    </ul>
-    <form class="form-inline my-2 my-lg-3" method="get" action="hm_us_event?currPage=${page.startBlock }">
-         <select name="search"  class="custom-select mr-sm-4" id="inlineFormCustomSelect" style="width: 80px;">
-            <option value="all">전체</option>
-             <option value="event_title">제목</option>
-         </select>
-         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchtxt">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-      </form>
-  </div>
-</nav>
- --%>
 
 
   <span id="hm_right" >
@@ -193,15 +96,14 @@
 				<div class="row" style="display: inline-block; margin: 0px 5px;"
 					onclick="location.href='${pageContext.request.contextPath}/todaylesson/hm_us_event_detail/'+${item.event_no}">
 					<div class="hm_event_thumbnail">
-						<img alt="이벤트 이미지" src="${item.event_thumbnail}"
-							style="width: 360px;">
-						<p>${item.event_startperiod}~${item.event_endperiod}</p>
-						<h5>${item.event_title}</h5>
+						<img alt="이벤트 이미지" src="${item.event_thumbnail}" style="width: 360px;">
+						<p style="margin-top:10px;">${item.event_startperiod}~${item.event_endperiod}</p>
+						<h4><b>${item.event_title}</b></h4>
 						<h6>${item.event_thumbexplain}</h6>
 						<jsp:useBean id="now" class="java.util.Date" />
 						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
-						<c:if test="${today <= item.event_endperiod}">(진행중)</c:if>
-						<c:if test="${today > item.event_endperiod}">종료된 이벤트 입니다</c:if>
+						<c:if test="${today <= item.event_endperiod}"><p><b>(진행중)</b></p></c:if>
+						<c:if test="${today > item.event_endperiod}"><p style="color:rgb(224, 62, 82);"><b>종료된 이벤트 입니다</b></p></c:if>
 					</div>
 				</div>
 			</c:forEach>

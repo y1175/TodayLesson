@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>얼리버드</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/hm_us_bird.css?ver=3">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
@@ -33,15 +33,15 @@
 
 	<!-- 실시간 베스트 얼리버드 -->
 	<div
-		style="background-color: rgba(255, 200, 216, 0.9); margin-bottom: 60px;">
+		style="background-color:#fff2f2; margin-bottom : 60px;">
 		<div class="row" style="width: 80%; margin: auto;">
 			<div>
-				<h2>
+				<h2 style="margin-top:50px;">
 					<b style="font-size: 25px;">실시간 베스트 얼리버드</b>
 				</h2>
 				<!-- 기준 시간 출력 -->
-				<p id="time-result"></p>
-				<h5>실시간 조회수가 가장 높은 얼리버드 레슨 <b>TOP4</b></h5>
+				<p id="time-result" style="font-size:16px;"></p>
+				<h5>실시간 조회수가 가장 높은 얼리버드 레슨 <b style="color: #FF7883;  font-size:30px;">BEST4</b></h5>
 			
 			
 			
@@ -76,7 +76,7 @@
 				</p> --%>
 				 
 				
-					<div class="col-md-3" style="">
+					<div class="col-md-3" style="margin-bottom:30px;">
 						<div class="hm_user_bird_best">
 							<div class="hm_user_bird_best_img">	
 								<a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${bestlist.lesson_no}"> <img src="${bestlist.lesson_thumb}" />
@@ -150,7 +150,7 @@
 
 
 <!-- 신규 얼리버드 레슨 -->
-	<div class="earlybirdtotal">
+	<div class="earlybirdtotal" >
 		<!-- 전체를 감싸는 div -->
 		<div id="hm_us_newlesson" style="width: 100%; margin: auto;">
 
@@ -164,7 +164,7 @@
 				<h2>
 					<b style="font-size: 25px;"> 신규 얼리버드 </b>
 				</h2>
-				<p>지금 막 올라온 신규 얼리버드 레슨들입니다!</p>
+				<p style="font-size:16px;">지금 막 올라온 신규 얼리버드 레슨들입니다!</p>
 			</div>
 			<div class="hm_us_newlesson_container">
 				<div class="hm_us_newlesson_g-scrolling-carousel">
@@ -234,7 +234,7 @@
 <!-- 마감 얼리버드 레슨 -->
 
 	<div
-		style="background-color: rgba(255, 200, 216, 0.9); margin: 60px 0px; padding:20px 0px;">
+		style="background-color:#fff2f2; margin : 60px 0px; padding:20px 0px;">
  	<!-- <div class="earlybirdtotal"> -->
 		<!-- 전체를 감싸는 div -->
 		
@@ -251,15 +251,15 @@
 			
 			
 			
-			<div style="margin-top:20px;">
+			<div style="margin-top:50px;">
 				<h2>
-					<b style="font-size: 25px;"> 곧 마감되는 얼리버드 레슨 </b>
+					<b style="font-size: 25px;"> 곧 <b style="color:#FF7883;">마감</b>되는 얼리버드 레슨 </b>
 				</h2>
-				<p>다시 돌아오지 않을 할인 혜택 놓치지 마세요!</p>
+				<p style="font-size:16px;">다시 돌아오지 않을 할인 혜택 놓치지 마세요!</p>
 			</div>
 			<div class="hm_us_endlesson_container">
 				<div class="hm_us_endlesson_g-scrolling-carousel">
-					<div class="hm_us_endlesson_items">
+					<div class="hm_us_endlesson_items" style="margin-bottom:30px;">
 
 						<c:forEach begin="0" end="9" step="1" var="endlessonlist"
 							items="${endbird}">
