@@ -72,6 +72,8 @@ public interface Senior_HS_Salescalculate_Mapper {
 	//정산상태업데이트
 	public int updateOrderCalculateStatus(OrderListDTO orderdto);
 
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo(int senior_no);
+
 	
 
 

@@ -68,6 +68,8 @@ public interface Senior_HS_Salescalculate_Service {
 	//정산상태업데이트(정산접수)
 	public int updateOrderCalculateStatus(OrderListDTO orderdto);
 
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo(int senior_no);
+
 
 	
 

@@ -38,5 +38,35 @@ public class User_HS_MainServiceImple implements User_HS_MainService {
 		return usermainMapper.mainEventBannerSlider();
 	}
 
+	@Override
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> BestLessonList() {
+		// TODO Auto-generated method stub
+		return usermainMapper.BestLessonList();
+	}
+
+	@Override
+	public List<ProductDTO> StoreBestProductList() {
+		// TODO Auto-generated method stub
+		return usermainMapper.StoreBestProductList();
+	}
+
+	@Override
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> referenceLessonList() {
+		// TODO Auto-generated method stub
+		return usermainMapper.referenceLessonList();
+	}
+
+	@Override
+	public BannerDTO mainIMGBannerSlider() {
+		// TODO Auto-generated method stub
+		return usermainMapper.mainIMGBannerSlider();
+	}
+
+	@Override
+	public List<BannerDTO> mainBannerSlider() {
+		// TODO Auto-generated method stub
+		return usermainMapper.mainBannerSlider();
+	}
+
 	
 }

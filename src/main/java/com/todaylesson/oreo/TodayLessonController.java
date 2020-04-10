@@ -374,14 +374,36 @@ public class TodayLessonController {
     	    =userMainService.newLessonList();
     	model.addAttribute("newlessonlist", newlessonlist);
     	
+    	//베스트레슨목록
+    	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> bestlessonlist 
+    	    =userMainService.BestLessonList();
+    	model.addAttribute("bestlessonlist", bestlessonlist);
+    	
+    	//추천레슨목록
+    	List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> referencelessonlist 
+    	    =userMainService.referenceLessonList();
+    	model.addAttribute("referencelessonlist", referencelessonlist);
+    	
     	//신규스토어목록
     	List<ProductDTO> storenewproductlist=userMainService.StoreNewProductList(); 
     	model.addAttribute("storenewproductlist", storenewproductlist);
+    	
+    	//베스트스토어목록
+    	List<ProductDTO> storeBestproductlist=userMainService.StoreBestProductList(); 
+    	model.addAttribute("storeBestproductlist", storeBestproductlist);
     	
     	//이벤트슬라이더(BannerSlider)
     	List<BannerDTO> mainEventBannerSlider=userMainService.mainEventBannerSlider();
     	model.addAttribute("mainEventBannerSlider", mainEventBannerSlider);
     	 
+    	//이미지 배너
+    	BannerDTO mainIMGBannerSlider=userMainService.mainIMGBannerSlider();
+    	model.addAttribute("mainIMGBannerSlider", mainIMGBannerSlider);
+    	
+    	//메인슬라이더
+    	List<BannerDTO> mainBannerSlider=userMainService.mainBannerSlider();
+    	model.addAttribute("mainBannerSlider", mainBannerSlider);
+    	
     	//팝업정보 가져오기
     	PopUpDTO popup_dto1=popupService.popupinfo(1);
 		model.addAttribute("popup_dto1",popup_dto1);

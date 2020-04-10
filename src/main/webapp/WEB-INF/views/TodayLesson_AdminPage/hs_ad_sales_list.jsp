@@ -180,15 +180,15 @@
                         </td> 
                      <!-- 결제금액 -->
                         <td>
-                           <fmt:formatNumber value="${adminSeniorSalesList.lesson_cost}" type="number" maxFractionDigits="3"/>
+                           <fmt:formatNumber value="${adminSeniorSalesList.lesson_cost}" type="number" maxFractionDigits="3"/>원
                         </td> 
                      <!-- 포인트사용 -->
                         <td>
-                           <fmt:formatNumber value="${adminSeniorSalesList.orderlist_usepoint}" type="number" maxFractionDigits="3"/>
+                           <fmt:formatNumber value="${adminSeniorSalesList.orderlist_usepoint}" type="number" maxFractionDigits="3"/>원
                         </td> 
                      <!-- 정산수수료 -->
                      <td>
-                        <fmt:formatNumber value="${comm}" type="number" maxFractionDigits="3"/>
+                        <fmt:formatNumber value="${comm}" type="number" maxFractionDigits="3"/>원
                      </td> 
                      <!-- 세금계산서부가세 -->
                      <td style="border-right: none;">
@@ -197,7 +197,7 @@
                               <c:out value="0"/>
                            </c:when>
                            <c:otherwise>
-                              <fmt:formatNumber value="${surtax}" type="number" maxFractionDigits="3"/>
+                              <fmt:formatNumber value="${surtax}" type="number" maxFractionDigits="3"/>원
                            </c:otherwise>
                         </c:choose>
                      </td>
@@ -218,24 +218,24 @@
                <tr>
                   <td colspan="7">합계</td>
                  <td> <!-- 시니어매출합계 -->
-                     <fmt:formatNumber value="${ad_sales_sum}" type="number" maxFractionDigits="3"/>
+                     <fmt:formatNumber value="${ad_sales_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td> <!-- 결제금액합계 -->
-                     <fmt:formatNumber value="${ad_cost_sum}" type="number" maxFractionDigits="3"/>
+                     <fmt:formatNumber value="${ad_cost_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td> <!-- 포인트사용합계 -->
-                     <fmt:formatNumber value="${ad_usepoint_sum}" type="number" maxFractionDigits="3"/>
+                     <fmt:formatNumber value="${ad_usepoint_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td> <!-- 정산수수료합계 -->
-                     <fmt:formatNumber value="${ad_comm_sum}" type="number" maxFractionDigits="3"/> 
+                     <fmt:formatNumber value="${ad_comm_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td style="border-right: none;"> <!-- 세금계산서 부가세합계-->
                      <c:choose>
                            <c:when test="${salesList.senior_crno == null}"> 
-                              <c:out value="0"/>
+                              <c:out value="0"/>원
                            </c:when>
                            <c:otherwise>
-                              <fmt:formatNumber value="${ad_surtaxsum}" type="number" maxFractionDigits="3"/> 
+                              <fmt:formatNumber value="${ad_surtaxsum}" type="number" maxFractionDigits="3"/> 원
                            </c:otherwise>
                      </c:choose>
                   </td> 

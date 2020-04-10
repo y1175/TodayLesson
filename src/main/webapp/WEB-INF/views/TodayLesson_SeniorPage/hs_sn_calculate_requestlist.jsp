@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -624,12 +625,30 @@
                         <c:out value="${cal_requestlist.orderlist_date}"/>
                      </td> 
                      <!-- 정산계좌 -->
+                     <c:set var = "calculate_bank_name1" value = "${cal_SeniorInfo[status.index].calculate_bank_name}"/>
+                     <c:set var = "length1" value = "${fn:length(calculate_bank_name1)}"/>
+                     <c:set var = "calculate_bank_name2" value = "${fn:substring(calculate_bank_name1, 1, length)}" />
+                     
+                     <c:set var = "calculate_account_num1" value = "${cal_SeniorInfo[status.index].calculate_account_num}"/>
+                     <c:set var = "length2" value = "${fn:length(calculate_account_num1)}"/>
+                     <c:set var = "calculate_account_num2" value = "${fn:substring(calculate_account_num1, 1, length2)}" />
+                     
+                     <c:set var = "calculate_account_name1" value = "${cal_SeniorInfo[status.index].calculate_account_name}"/>
+                     <c:set var = "length3" value = "${fn:length(calculate_account_name1)}"/>
+                     <c:set var = "calculate_account_name2" value = "${fn:substring(calculate_account_name1, 1, length3)}" />
                      <td>
-                        <c:out value="${cal_SeniorAccount[status.index].senior_bank_name}"/>
-                        <br>
-                        <c:out value="${cal_SeniorAccount[status.index].senior_account_num}"/>
-                        <br>
-                        <c:out value="${cal_SeniorAccount[status.index].senior_account_name}"/>
+                        <c:choose>
+                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 1 || cal_requestlist.orderlist_calculatestatus == 2 }">
+                              <c:out value=" - "/>
+                           </c:when>
+                           <c:when test="${cal_requestlist.orderlist_calculatestatus == 3 || cal_requestlist.orderlist_calculatestatus == 4 }">
+                              <c:out value="${calculate_bank_name2}"/>
+                              <br>
+                              <c:out value="${calculate_account_num2}"/>
+                              <br>
+                              <c:out value="${calculate_account_num2}"/>
+                           </c:when>
+                        </c:choose>
                      </td>
                      <!-- 정산금액 -->
                      <td>
@@ -657,10 +676,10 @@
                      <!-- 세금계산서부가세 -->
                      <td style="border-right: none;">
                         <c:choose>
-                           <c:when test="${cal_SeniorAccount[status.index].senior_crno == null}"> 
+                           <c:when test="${cal_SeniorInfo[status.index].senior_crno == null && cal_requestlist.orderlist_calculatestatus == 1 || cal_requestlist.orderlist_calculatestatus == 2 }"> 
                               <c:out value="0"/>
                            </c:when>
-                           <c:when test="${cal_SeniorAccount[status.index].senior_crno != null}"> 
+                           <c:when test="${cal_SeniorInfo[status.index].senior_crno != null && cal_requestlist.orderlist_calculatestatus == 3 || cal_requestlist.orderlist_calculatestatus == 4 }"> 
                               <fmt:formatNumber value="${cal_CommSurtax[status.index].calculate_surtax}" type="number" maxFractionDigits="3"/>
                            </c:when>
                         </c:choose>

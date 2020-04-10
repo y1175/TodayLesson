@@ -150,20 +150,17 @@
 	</select>
 
     <!-- 정산계좌 사업자번호 -->	
-	<!-- <select id="cal_SeniorAccount" resultType="com.todaylesson.DTO.SeniorDTO" parameterType="java.lang.String">
-	   select senior_no, member_id, senior_email, senior_phone, senior_crno, senior_nick,
-	          senior_bank_name, senior_account_name, senior_account_num, senior_register_date
-	   from senior s1
-	   where senior_no=(select senior_no
-	                    from senior s2
-	                    where s1.senior_no=s2.senior_no
-	                    and member_id=#{member_id})
-	  select senior_no, s1.member_id, senior_email, senior_phone, senior_crno, senior_nick,
-	          senior_bank_name, senior_account_name, senior_account_num, senior_register_date
-	  from senior s1 join member m on s1.member_id=m.member_id
-	  where s1.member_id=#{member_id}                  
-	                    
-	</select> -->
+	<select id="cal_SeniorInfo" resultMap="salesCalculateMap">
+       select calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num, calculate_crno, calculate_no
+       from calculate c right join lesson l  on c.lesson_no=l.lesson_no  
+       group by l.lesson_no
+       union
+       select calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num, calculate_crno, calculate_no
+       from calculate c left join lesson l  on c.lesson_no=l.lesson_no 
+       where l.senior_no=#{senior_no} and c.calculate_no=#{calculate_no}
+       group by l.lesson_no
+       order by calculate_date desc
+	</select>
 	
 	<!-- 정산신청 리스트 결제건수 -->
 	<select id="calPayCount" resultMap="salesCalculateMap" parameterType="int">

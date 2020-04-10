@@ -15,11 +15,41 @@
 	
 	<!-- 신규레슨 -->
     <select id="newLessonList" resultMap="userMAinMap">
-       select l.lesson_thumb, l.lesson_category, s.senior_nick
+       <![CDATA[
+       select l.lesson_thumb, l.lesson_category, s.senior_nick ,l.lesson_like
 	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period, lesson_no
        from lesson l join senior s on l.senior_no=s.senior_no
-       where lesson_result=2
+       where lesson_result=2 and lesson_earlybird = 0
+       and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
+	   and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
        ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
+       ]]>
+    </select> 
+    
+    <!-- 베스트레슨 -->
+    <select id="BestLessonList" resultMap="userMAinMap">
+       <![CDATA[
+       SELECT  l.lesson_thumb, l.lesson_category, s.senior_nick
+	          ,l.lesson_title, l.lesson_cost, l.lesson_open_period, l.lesson_like
+       FROM  lesson l join senior s on l.senior_no=s.senior_no
+       where lesson_result=2
+       and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
+	   and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
+       ORDER By l.lesson_like DESC LIMIT 0,16
+       ]]>
+    </select> 
+    
+    <!-- 신규레슨 -->
+    <select id="referenceLessonList" resultMap="userMAinMap">
+       <![CDATA[
+       select l.lesson_thumb, l.lesson_category, s.senior_nick ,l.lesson_like
+	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period, lesson_no
+       from lesson l join senior s on l.senior_no=s.senior_no
+       where lesson_result=2 and lesson_earlybird = 1
+       and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
+	   and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
+       ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
+       ]]>
     </select> 
     
     <!-- 스토어신규 -->
@@ -34,14 +64,40 @@
        FROM product AS a,
        ( SELECT @rank := 0 ) AS b
        ORDER BY a.product_date desc limit 0, 16
-       
     </select> 
     
-    <!-- 벤트슬라이더(BannerSlider) -->
+    <!-- 스토어베스트 -->
+    <select id="StoreBestProductList" resultType="com.todaylesson.DTO.ProductDTO">
+       SELECT product_thumb, product_name, product_category, product_cost
+	         ,product_sale, product_after_cost, product_date, product_like,
+              ( @rank := @rank + 1 ) AS rank
+       FROM
+              product AS a,
+              ( SELECT @rank := 0 ) AS b
+       ORDER BY a.product_like limit 0, 16
+    </select> 
+    
+    <!-- 이벤트슬라이더(BannerSlider) -->
     <select id="mainEventBannerSlider" resultType="com.todaylesson.DTO.BannerDTO">
        select banner_no, banner_title, banner_filepath, banner_registrationdate
        from banner
        where banner_group=1
+       order by banner_no desc
+    </select>
+    
+    <!-- 이미지배너 -->
+    <select id="mainIMGBannerSlider" resultType="com.todaylesson.DTO.BannerDTO">
+       select banner_no, banner_title, banner_filepath, banner_registrationdate
+       from banner
+       where banner_group=2
+    </select>
+    
+    <!-- 메인슬라이더(BannerSlider) -->
+    <select id="mainBannerSlider" resultType="com.todaylesson.DTO.BannerDTO">
+       select banner_no, banner_title, banner_filepath, banner_registrationdate
+       from banner
+       where banner_group=0
+       order by banner_no desc
     </select>
     
 </mapper>

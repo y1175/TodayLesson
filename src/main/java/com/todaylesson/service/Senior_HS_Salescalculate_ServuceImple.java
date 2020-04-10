@@ -172,6 +172,12 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		return salescalculateMapper.updateOrderCalculateStatus(orderdto);
 	}
 
+	@Override
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo(int senior_no) {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.cal_SeniorInfo(senior_no);
+	}
+
 
 
 }

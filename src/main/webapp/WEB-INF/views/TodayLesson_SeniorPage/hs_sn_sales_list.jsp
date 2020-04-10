@@ -234,19 +234,19 @@
                      <c:set var="senior_salessum" value="${cost-point-comm}"/>
                      <fmt:parseNumber var="senior_sales" value="${senior_salessum}" type="number" integerOnly="true"/>
                         <td>
-                           <fmt:formatNumber value="${senior_sales}" type="number" maxFractionDigits="3"/>
+                           <fmt:formatNumber value="${senior_sales}" type="number" maxFractionDigits="3"/>원
                         </td> 
                      <!-- 결제금액 -->
                         <td>
-                           <fmt:formatNumber value="${salesList.lesson_cost}" type="number" maxFractionDigits="3"/>
+                           <fmt:formatNumber value="${salesList.lesson_cost}" type="number" maxFractionDigits="3"/>원
                         </td> 
                      <!-- 포인트사용 -->
                         <td>
-                           <fmt:formatNumber value="${salesList.orderlist_usepoint}" type="number" maxFractionDigits="3"/>
+                           <fmt:formatNumber value="${salesList.orderlist_usepoint}" type="number" maxFractionDigits="3"/>원
                         </td> 
                      <!-- 정산수수료 -->
                      <td>
-                        <fmt:formatNumber value="${comm}" type="number" maxFractionDigits="3"/>
+                        <fmt:formatNumber value="${comm}" type="number" maxFractionDigits="3"/>원
                      </td> 
                      <!-- 세금계산서부가세 -->
                      <%-- <c:choose>
@@ -262,17 +262,17 @@
                         </c:otherwise>
                      </c:choose>  --%>
                      <td style="border-right: none;">
-                        <c:out value="0"/>
+                        <c:out value="0"/>원
                      </td> 
                   </tr>
                   <c:set var="sales_sum" value="${sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
                   
                      <!-- 결제금액합계 -->
-                     <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_cost}"/> 
+                     <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_cost}"/>
                      <!-- 포인트사용합계 -->
-                     <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_usepoint}"/> 
+                     <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_usepoint}"/>
                      <!-- 정산수수료합계 -->
-                     <c:set var="comm_sum" value="${comm_sum+comm}"/> 
+                     <c:set var="comm_sum" value="${comm_sum+comm}"/>
                      <!-- 세금계산서 부가세합계-->
                      <c:set var="surtaxsum" value="${surtaxsum+surtax}"/> 
                      <fmt:parseNumber var="taxsum" value="${surtaxsum}" type="number" integerOnly="true"/>
@@ -283,19 +283,19 @@
                <tr>
                   <td colspan="7">합계</td>
                   <td> <!-- 시니어매출합계 -->
-                     <fmt:formatNumber value="${sales_sum}" type="number" maxFractionDigits="3"/>
+                     <fmt:formatNumber value="${sales_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td> <!-- 결제금액합계 -->
-                     <fmt:formatNumber value="${cost_sum}" type="number" maxFractionDigits="3"/>
+                     <fmt:formatNumber value="${cost_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td> <!-- 포인트사용합계 -->
-                     <fmt:formatNumber value="${usepoint_sum}" type="number" maxFractionDigits="3"/>
+                     <fmt:formatNumber value="${usepoint_sum}" type="number" maxFractionDigits="3"/>원
                   </td> 
                   <td> <!-- 정산수수료합계 -->
-                     <fmt:formatNumber value="${comm_sum}" type="number" maxFractionDigits="3"/> 
+                     <fmt:formatNumber value="${comm_sum}" type="number" maxFractionDigits="3"/>원 
                   </td> 
                   <td style="border-right: none;"> <!-- 세금계산서 부가세합계-->
-                     <c:out value="0"/>
+                     <c:out value="0"/>원
                    <%--  <c:choose>
                            <c:when test="${salesList.senior_crno!=null}"> 
                                <fmt:formatNumber value="${taxsum}" type="number" maxFractionDigits="3"/>

@@ -194,13 +194,18 @@ $('document').ready(function(){
                         <c:out value="${cal_requestlist.lesson_no}"/>
                      </td>
                      <!-- 지급은행 -->
+                     <c:set var = "calculate_bank_name1" value = "${cal_SeniorInfo[status.index].calculate_bank_name}"/>
+                     <c:set var = "length" value = "${fn:length(calculate_bank_name1)}"/>
+                     <c:set var = "calculate_bank_name2" value = "${fn:substring(calculate_bank_name1, 1, length)}" />
                      <td>
-                     <!-- jstl배열 출력 물어복 -->
-                        <c:out value="${cal_SeniorInfo[status.index].calculate_bank_name}"/>
+                        <c:out value="${calculate_bank_name2}"/>
                      </td> 
                      <!-- 지급계좌 -->
+                     <c:set var = "calculate_account_num1" value = "${cal_SeniorInfo[status.index].calculate_account_num}"/>
+                     <c:set var = "length2" value = "${fn:length(calculate_account_num1)}"/>
+                     <c:set var = "calculate_account_num2" value = "${fn:substring(calculate_account_num1, 1, length2)}" />
                      <td>
-                        <c:out value="${cal_SeniorInfo[status.index].calculate_account_num}"/>
+                        <c:out value="${calculate_account_num2}"/>
                      </td>
                      <!-- 정산신청일-->
                      <td>
