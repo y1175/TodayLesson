@@ -54,8 +54,9 @@ ${orderlistdto.orderlist_usepoint  }<br>
 </div>
 <!--ej container/  -->
 
-</body>
-
+<a href="${pageContext.request.contextPath}/todaylesson/total_lesson_list">
+<img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/corona_ej.png" style="display:block; width:100%; margin:0 auto; margin-top:20px;"></a>
+</div>
 
 
 </body>
