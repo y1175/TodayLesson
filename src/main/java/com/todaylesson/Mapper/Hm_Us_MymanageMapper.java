@@ -17,5 +17,9 @@ public interface Hm_Us_MymanageMapper {
 
 	public String matchpwd(String member_id);
 
+/*	public int withdraw(HashMap<String, Object> map);
+
+	public int withdrawauth(HashMap<String, Object> map);
+*/
 
 }

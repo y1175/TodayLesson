@@ -92,7 +92,7 @@
 
 
 <form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanageupdate" name="frm" id="frm">
-
+<%-- <input type="hidden" name="member_no" id="member_no" value="${dto.member_no }">  --%>
 <input type="hidden" name="member_id" id="member_id" value ="${dto.member_id}"  >
 <input type="hidden" name="member_phone" id="member_phone">
 
@@ -268,7 +268,7 @@ onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14
 						</form>
 
 
- <input type="button" class="hmupdatebtn" value="회원탈퇴" > 
+ <input type="button" class="hmupdatebtn" id="hmwithdraw" value="회원탈퇴" > 
  <button onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanage'" class="hmupdatebtn">취소</button>
 </div>
 

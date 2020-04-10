@@ -24,10 +24,22 @@ $(document).ready(function(){
     
 
     
+   /* $('#hmwithdraw').on('click',function(){
     
-    
-    
-    
+    	var result = confirm('회원탈퇴를 하시겠습니까? 탈퇴하시면 정보는 복구되지 않습니다.');
+    	if(result)
+    		{
+    		var no = $('#member_no').val();
+    		location.href = "/todaylessonmypage/hm_us_memberwithdraw/"+no;
+    		
+    		}
+    	
+    	
+    	
+    	
+    })
+    */
+ 
     
 });
 

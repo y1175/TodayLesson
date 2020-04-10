@@ -11,7 +11,7 @@ where member_id = #{member_id}
 </select>
 
 <select  id="myinfolist" parameterType="String" resultType="com.todaylesson.DTO.MemberDTO">
-select member_id,member_pwd,member_name,member_nick,member_birth,member_zipcode,member_addr,member_phone,member_email,member_bank_name,member_account_name,member_account_num
+select member_no,member_id,member_pwd,member_name,member_nick,member_birth,member_zipcode,member_addr,member_phone,member_email,member_bank_name,member_account_name,member_account_num
 from member
 where member_id=#{member_id}
 </select>
@@ -45,5 +45,15 @@ set member_pwd =#{member_pwd}
 ,member_nick=#{member_nick}
 where member_id =#{member_id}
 </update>
+<!-- 
+<delete id="withdraw" parameterType="HashMap">
+delete from member
+where member_id =#{member_id} and member_no =#{member_no}
+</delete>
 
+
+<delete id="withdrawauth" parameterType="HashMap">
+delete from member_auth
+where member_id =#{member_id}
+</delete> -->
 </mapper>
