@@ -18,7 +18,7 @@
 <!-- CSSstyle -->
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=6">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=7">
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -67,7 +67,7 @@ $(document).ready(function(){
 			if(item[i].orderlist_no!=item[i-1].orderlist_no)
 				{
 				span=1;
-				orderdetail1+="<td class='cost' id="+"'"+"cost"+item[i].orderlist_no+"'"+">가격:"+item[i].orderlist_cost+"원"+"</td></tr>";
+				orderdetail1+="<td class='cost' id="+"'"+"cost"+item[i].orderlist_no+"'"+">"+item[i].orderlist_cost+"원"+"</td></tr>";
 				//orderdetail1+="<td rowspan='3'>가격:"+item[i].orderlist_cost+"원"+"</td></tr>";
 				
 				}
@@ -79,7 +79,7 @@ $(document).ready(function(){
 				}
 			else
 				{
-				orderdetail1+="<td valign='middle' class='cost' id="+"'"+"cost"+item[i].orderlist_no+"'"+">"+item[i].orderlist_cost+"원"+"</td></tr>";
+				orderdetail1+="<td class='cost' id="+"'"+"cost"+item[i].orderlist_no+"'"+">"+item[i].orderlist_cost+"원"+"</td></tr>";
 				}
 			/* orderdetail3+="가격:"+item[i].orderlist_cost+"원"+"<br>"; */
 				$("#"+item[i].orderlist_no).append(orderdetail1);
