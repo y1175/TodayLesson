@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -260,6 +261,34 @@ public class User_HM_Mymanage_Controller {
 		return "/TodayLesson_UserPage/hm_us_mymanageupdateresult.us_my_section";
 	}
 	
+	/*
+
+	@RequestMapping("/hm_us_memberwithdraw/{no}")
+	public String memberwithdraw(Authentication authentication,@PathVariable int no,Model model) {
+		
+		int member_no = no;
+		System.out.println("Å»Åð"+member_no);
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
+		String member_id = userDetails.getUsername();
+		
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("member_id", member_id);
+		map.put("member_no", member_no);
+		
+		int result = hm_mymanageservice.withdraw(map);
+		int result2 = hm_mymanageservice.withdrawauth(map);
+		
+		model.addAttribute("result",result);
+		model.addAttribute("result2",result2);
+		
+		return "/TodayLesson_UserPage/hm_us_memberwithdraw.us_my_section";
+		
+	}*/
+	
+	
+	
+	
+	
 	
 	
 /*	È¸¿øÅ»Åð 
@@ -268,9 +297,7 @@ public class User_HM_Mymanage_Controller {
 		
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
-		
-		String encoded_pwd=encoder.encode(member_pwd);
-		boolean result=encoder.matches(member_pwd , encoded_pwd);
+	
 
 
 		System.out.println(member_pwd);

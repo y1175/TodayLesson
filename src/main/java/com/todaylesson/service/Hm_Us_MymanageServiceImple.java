@@ -38,7 +38,18 @@ public class Hm_Us_MymanageServiceImple implements Hm_Us_MymanageService {
 		// TODO Auto-generated method stub
 		return mapper.matchpwd(member_id);
 	}
-
-
+/*
+	@Override
+	public int withdraw(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.withdraw(map);
+	}
+*/
+	/*@Override
+	public int withdrawauth(HashMap<String, Object> map) {
+		
+		return mapper.withdrawauth(map);
+	}
+*/
 
 }
