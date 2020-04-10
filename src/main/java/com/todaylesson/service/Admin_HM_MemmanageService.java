@@ -19,6 +19,26 @@ public interface Admin_HM_MemmanageService {
 
 	public MemberDTO oldlevel(String member_id);
 
+	public int adminmemberauthdelete(HashMap<String, Object> map);
+
+	public int deladminrole(HashMap<String, Object> map);
+
+	public int leveluptojr(HashMap<String, Object> map);
+
+	public int deljrauth(HashMap<String, Object> map);
+
+	public int delblockauth(HashMap<String, Object> map);
+
+	public int plusadmin(HashMap<String, Object> map);
+
+	public int delauth(HashMap<String, Object> map);
+
+	public int insertsenior(String member_id);
+
+	public int insertblock(HashMap<String, Object> map);
+
+	public int delnotblock(HashMap<String, Object> map);
+
 
 
 }

@@ -60,6 +60,66 @@ public class Admin_HM_MemmanageServiceImple implements Admin_HM_MemmanageService
 		return mapper.oldlevel(member_id);
 	}
 
+	@Override
+	public int adminmemberauthdelete(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.adminmemberauthdelete(map);
+	}
+
+	@Override
+	public int deladminrole(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.deladminrole(map);
+	}
+
+	@Override
+	public int leveluptojr(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.leveluptojr(map);
+	}
+
+	@Override
+	public int deljrauth(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.deljrauth(map);
+	}
+
+	@Override
+	public int delblockauth(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.delblockauth(map);
+	}
+
+	@Override
+	public int plusadmin(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.plusadmin(map);
+	}
+
+	@Override
+	public int delauth(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.delauth(map);
+	}
+
+	@Override
+	public int insertsenior(String member_id) {
+		// TODO Auto-generated method stub
+		return mapper.insertsenior(member_id);
+	}
+
+	@Override
+	public int insertblock(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.insertblock(map);
+	}
+
+	@Override
+	public int delnotblock(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.delnotblock(map);
+	}
+
 
 
 }

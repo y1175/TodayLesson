@@ -9,15 +9,18 @@
 <body>
 <script>
 var result = ${result}
-var authresult = ${authresult}
-if(result>0 && authresult>0)
+if(result>0)
 {
 alert('등급이 수정되었습니다.');
 location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage";
 }
-else{
+else if(result==0){
 	alert('등급 수정을 실패하였습니다.');
 	location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage";
+}else{
+	alert('등급 수정이 불가한 요청입니다.');
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_hm_memmanage";
+	
 }
 </script>
 </body>

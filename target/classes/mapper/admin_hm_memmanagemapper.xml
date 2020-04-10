@@ -22,39 +22,7 @@ limit #{startrow}, 15
 </select>
 
 
-<!-- 회원 레벨 변경 -->
-<update id="adminlevelupdate" parameterType="HashMap">
-update member
-set member_level = #{member_level}
-where member_id = #{member_id}
-</update>
-
-<!-- 회원 레벨이 변경됐을 시 회원 등급별 권한 변경 -->
-<update id="adminmemberauthupdate" parameterType="HashMap">
-update member_auth a inner join member b
-on a.member_id = b.member_id
-<choose>
-<when test='member_level==0'>
-set a.member_auth = 'ROLE_ADMIN'
-	,b.enabled = '1'
-</when>
-<when test='member_level==1'>
-set a.member_auth = 'ROLE_USER'
-	,b.enabled = '1' 
-</when>
-<when test='member_level==2'>
-set a.member_auth = 'ROLE_SENIOR'
-	,b.enabled = '1'
-</when>
-<when test="member_level==3">
-set a.member_auth = 'ROLE_ERROR'
-	,b.enabled = '0'
-</when>
-</choose>
-where a.member_id = #{member_id}
-</update>
-
-
+<!-- 기존 레벨을 리턴해주는 쿼리 -->
 <select id="oldlevel" parameterType="String" resultType="com.todaylesson.DTO.MemberDTO">
 select member_level
 from member
@@ -62,15 +30,110 @@ where member_id = #{member_id}
 </select>
 
 
+<!-- 회원 레벨 변경&등급별 권한 변경 -->
+<update id="adminlevelupdate" parameterType="HashMap">
+update member
+set member_level = #{member_level}
+<choose>
+<when test='#{member_level==0}'>
+,enabled = '1'
+</when>
+<when test='#{member_level==1}'>
+,enabled = '1' 
+</when>
+<when test='#{member_level==2}'>
+,enabled = '1'
+</when>
+<when test="#{member_level==3}">
+,enabled = '0'
+</when>
+</choose>
+where member_id = #{member_id}
+</update>
 
 
+<!-- 시니어에서 주니어가 될 시 기존에 있던 시니어 테이블 삭제 -->
 <delete id="adminlevelup" parameterType="HashMap"> 
 delete 
 from senior
 where member_id = #{member_id}
 </delete>
 
+<!-- 시니어에서 주니어가 될 시 ROLE_USER 권한을 추가해준다 -->
+<insert id="adminmemberauthupdate" parameterType="HashMap">
+insert into member_auth(member_auth,member_id)
+values('ROLE_USER',#{member_id})
+</insert>
 
+<!-- 시니어에서 주니어가 될 시 ROLE_SENIOR 권한을 삭제해준다 -->
+<delete id="adminmemberauthdelete" parameterType="HashMap">
+delete from member_auth
+where member_auth = 'ROLE_SENIOR'
+and member_id = #{member_id}
+</delete>
+
+
+<!-- 관리자에서 주니어가 될 시 ROLE_ADMIN 권한을 삭제해준다 -->
+<delete id="deladminrole" parameterType="HashMap">
+delete from member_auth
+where member_auth = 'ROLE_ADMIN'
+and member_id = #{member_id}
+</delete>
+
+
+<!-- 주니어에게 시니어 ROLE_SENIOR권한을 준다 -->
+<insert id="leveluptojr" parameterType="HashMap">
+insert into member_auth(member_auth,member_id)
+values('ROLE_SENIOR',#{member_id})
+</insert>
+
+<!-- 주니어에서 시니어가 될 때 ROLE_USER 권한을 삭제한다 -->
+<delete id="deljrauth" parameterType="HashMap">
+delete from member_auth
+where member_auth = 'ROLE_USER'
+and member_id = #{member_id}
+</delete>
+
+<!-- 주니어에서 시니어가 될 때 시니어 테이블을 만들어준다 -->
+<insert id="insertsenior" parameterType="String">
+insert into senior(member_id,senior_register_date)
+values(#{member_id},now())
+</insert>
+
+
+<!-- 블락됐던사람이 다시 레벨업될때 그전의 ROLE을 삭제해줌 -->
+<delete id="delblockauth" parameterType="HashMap">
+delete from member_auth
+where member_auth = 'ROLE_ERROR'
+and member_id = #{member_id}
+</delete>
+
+<!-- 관리자 ROLE_ADMIN추가 -->
+<insert id="plusadmin" parameterType="HashMap">
+insert into member_auth(member_auth,member_id)
+values('ROLE_ADMIN',#{member_id})
+</insert>
+
+<!-- 블락시키기 -->
+<insert id="insertblock" parameterType="HashMap">
+insert into member_auth(member_auth,member_id)
+values('ROLE_ERROR',#{member_id})
+</insert>
+
+<!-- 블락시킬 시 기존 권한 삭제 -->
+<delete id="delnotblock" parameterType="HashMap">
+delete from member_auth
+where not member_auth = 'ROLE_ERROR' 
+and member_id = #{member_id}
+</delete>
+
+<!-- 그전에 시니어거나 주니어였을때 ROLE삭제 -->
+<delete id="delauth" parameterType="HashMap">
+delete from member_auth
+where member_auth = 'ROLE_USER'
+or member_auth = 'ROLE_SENIOR'
+and member_id = #{member_id}
+</delete>
 
 
 <sql id="search_select">
