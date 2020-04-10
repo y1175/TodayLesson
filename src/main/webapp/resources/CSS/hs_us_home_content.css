@@ -477,16 +477,14 @@ body{
 	width:100%;
 	
 	}
- div.hs_user_store_product_img2{
-	height:300px;
-	} 
+
 /* 썸네일 안데 장바구니 좋아요 아이콘 */	
  .hs_user_store_product_social {
 	padding:0;
 	margin:0 auto;
 	list-style:none;
 	position:absolute;
-	bottom:135px;
+	bottom:165px;
 	right:13px;
 	z-index:1;
 	vertical-align: center;
