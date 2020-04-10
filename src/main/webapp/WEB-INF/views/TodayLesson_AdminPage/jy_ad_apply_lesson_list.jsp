@@ -125,7 +125,7 @@ $(document).ready(function(){
 </table>
 
 <input type="reset" value="취소" class="ej_btn2" style="float: right;"> 
-<input type="submit" value="전송" class="ej_btn" style="float: right;">
+<input type="submit" value="심사중" class="ej_btn" style="float: right;">
 </form>
 
 </div>

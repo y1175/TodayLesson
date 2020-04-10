@@ -40,14 +40,28 @@ width:500px; height:auto;
        <br> 
        </div>
        
-       
-<div class="lesson_order">       
-<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_register_date">최신순</a>
-<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_readno">조회수</a>
-<a href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_like">좋아요</a>
-</div>
 
+
+
+<!-- 검색 --> 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:29%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+ <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/total_lesson_list?currPage=${page.startBlock }"
+ style="margin:0px auto;">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
+ <option value="all">전체</option>
+<option value="lesson_title">레슨명</option>
+ <option value="lesson_content">레슨내용</option>
+</select>
+ <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+      <button class="ej_btn" style="background-color: rgb(224, 62, 82); padding:3px 15px;" type="submit">검색</button>
+    </form>
+  </div>
+</nav>
+<!-- 검색완료 -->
+
+
+<%--   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/total_lesson_list?currPage=${page.startBlock }"
  style="margin:0px auto;">
  
@@ -59,8 +73,17 @@ width:500px; height:auto;
  <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
       <button class="ej_btn" type="submit">검색</button>
     </form>
-      </div>
+      </div> --%>
+       
+<div class="lesson_order" >       
+<button class="ej_btn order" onclick="location.href='${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_register_date'">최신순</button>
+<button class="ej_btn order" onclick="location.href=' ${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_readno'">조회수순</button>
+<button class="ej_btn order" onclick="location.href='${pageContext.request.contextPath }/todaylesson/total_lesson_list?order=lesson_like'">좋아요순</button>
+</div>
 
+
+
+<br>
 
 <c:forEach var="item" items="${list}">
             <div class="col-md-3 col-sm-6">

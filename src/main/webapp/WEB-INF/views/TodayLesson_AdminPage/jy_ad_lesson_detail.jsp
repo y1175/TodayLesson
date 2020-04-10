@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_NewLessonAccept_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=1">  
 <script>
 

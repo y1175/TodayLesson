@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_detail.css">
+<link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_detail.css?ver=1">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script>
@@ -23,6 +23,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<div id="jy_container">
 
 <script>
 
@@ -55,6 +56,10 @@ function time_change(){
 
 
 </script>
+
+
+
+
 
 <form method="post" action="${pageContext.request.contextPath }/todaylessonmypage/update_lesson_comp">
 
@@ -96,9 +101,8 @@ ${dto.lessondetail_content}
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br>
-<div class="sub">
-<input type="submit" name="lesson_comp_update" class="ej_btn" id="lesson_comp_update" />
-</div>
+<input type="submit" name="lesson_comp_update" class="ej_btn" id="lesson_comp_update" style="float: right;"/>
 </form>
+</div>
 </body>
 </html>

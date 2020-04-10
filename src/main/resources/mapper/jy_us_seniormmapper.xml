@@ -19,12 +19,25 @@ where a.member_id = #{member_id}
 
 </update>
 
-<insert id="member_levelup">
+<!-- <insert id="member_levelup">
 
 insert into member_auth(member_auth, member_id)
 value('ROLE_SENIOR', #{member_id})
 
 </insert>
+
+<delete id="member_auth_up">
+
+delete from member_auth where member_id = (#{member_id})
+
+</delete> -->
+
+<update id="member_auth">
+
+update member_auth set member_auth = 'ROLE_SENIOR' where member_id = #{member_id}
+
+</update>
+
 
 <update id="plus_senior" parameterType="com.todaylesson.DTO.SeniorDTO">
 

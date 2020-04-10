@@ -20,6 +20,17 @@
 	
 </head>
 <body>
+
+<script>
+
+if ( ${list_size} == 0 ) {
+	alert("아직 수락된 레슨이 없습니다! 우선 레슨을 등록해보세요.");
+	location.href="${pageContext.request.contextPath}/todaylessonsenior/lesson_list";
+}
+
+</script>
+
+
 <div id="jy_container">
 
  <div stlye="width:100%;">

@@ -299,7 +299,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_category">카테고리</label><br>
-<select name="lesson_category" class="form-control">
+<select name="lesson_category" class="form-control" style="width: 50%;">
   <option value="0" selected="selected">---</option>
   <option value="1">운동</option>
   <option value="2">교육</option>
@@ -326,9 +326,9 @@ function add_Lesson_Time(lesson_date_and_time){
 
 
 <div class="earlybird">
-(주의사항) : 수수료는 동일 / 얼리버드 시 27% 일괄 할인(얼리버드 할인은 일주일간 진행됩니다.)<br>
+(주의사항) : 수수료는 동일 / 얼리버드 시 18% 일괄 할인(얼리버드 할인은 일주일간 진행됩니다.)<br>
 얼리버드 등록 시 메인 홈에서 얼리버드 레슨이 우선시 되어 노출도가 높습니다. <br>
-또한, 얼리버드 카테고리에 
+또한, 얼리버드 카테고리에 레슨이 추가됩니다.
 얼리버드 레슨 등록 & 얼리버드 세일이 마감될 때 노출되어 신규 주니어를 모으는데 용이합니다. 
 </div>
 
@@ -345,7 +345,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_type">레슨타입</label><br>
-<select id="lesson_type" name="lesson_type" class="form-control">
+<select id="lesson_type" name="lesson_type" class="form-control" style="width: 50%;">
   <option value="0" selected="selected">---</option>
   <option value="1">원데이 레슨</option>
   <option value="2">다회성 레슨</option>

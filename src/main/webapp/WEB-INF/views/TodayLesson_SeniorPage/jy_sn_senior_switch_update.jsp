@@ -15,10 +15,12 @@
       }
    </style>
 <!-- CSSstyle -->  
-
 <script>
 
 $('document').ready(function(){
+	
+	
+	
 	
 	
 	let bank_code= "${dto.senior_bank_name}";
@@ -39,16 +41,21 @@ $('document').ready(function(){
 		 console.log(bank_name.length);
 	      for (var i = 0; i < bank_name.length; i++) {   
 	         if (bank_name[i].code == bank_code) {
-	            let senior_bank_name = bank_name[i].name;
+	            let senior_bank_name = bank_name[i].code;
+	            
 	            console.log(senior_bank_name);
 	            //$('.bank_name').append(senior_bank_name);
-	            $('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
+	            $('select[name="senior_bank_name"]').find('option[value='+senior_bank_name+']').attr("selected",true);
 	            console.log("dddd");
 	            break;
 	         }
 	      }
 	      
 	   });
+	
+	
+	
+	
 	
 });
 
@@ -60,10 +67,19 @@ $('document').ready(function(){
 
 function checkBankHolder(){
 
-   let bank_code= document.frm.senior_bank_name.value;
-   let bank_num = document.frm.senior_account_num.value;
-   let token = document.frm.token.value;
-   let account_name = document.frm.senior_account_name.value;
+	 
+	 
+	   let bank_code = $('#senior_bank_name').val();
+	   let bank_num = $('#senior_account_num').val();
+	   let token = $('#token').val();
+	   let account_name = $('#senior_account_name').val();
+	  // let se_name = $('#se_name').val();
+
+	   
+/*    let bank_code = document.getElementById('senior_bank_name').value;
+   let bank_num = document.getElementById('senior_account_num').value;   
+   let token = document.getElementById('token').value;
+   let account_name = document.getElementById('senior_account_name').value; */
    
    console.log(bank_code);
    console.log(bank_num);
@@ -93,6 +109,8 @@ function checkBankHolder(){
                   
                   if (account_name == bank_holder) {
                      alert("실명 인증 성공");
+                     $('#se_name').val() = 1;
+                     se_bank();
                   } else {
                      alert("실명 인증 실패");
                   }
@@ -122,11 +140,11 @@ function checkDisable()
 
 <div id="jy_container" style="padding 20px;  width: 80%; margin:0px auto;">
 
-<%--  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;">시니어 정보 수정</h2>
+ <div stlye="width:100%;">
+ <h2 style="margin-top:40px; text-align: center; font-weight: bold;">시니어 정보 수정</h2>
  </div>
 <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/update_senior_result" name="frm" >
-
+<%-- 
 <ul style="padding-left: 40%;">
 
 <li>
@@ -232,16 +250,22 @@ function checkDisable()
 
 </ul> --%>
 
- <h2 style="margin-top:40px; text-align: center;">시니어 정보 수정</h2>
 <table style="width:60%; text-align:center; margin:0 auto; border:none;">
-<tr><td><b>시니어 닉네임</b></td><td><input type="text" id="senior_nick" name="senior_nick" required="required" value="${dto.senior_nick }" class="form-control" style="width:70%; margin:5px;"></td></tr>
-<tr><td><b>이메일</b></td><td><input type="text" id="senior_email" name="senior_email" required="required" value="${dto.senior_email }" class="form-control" style="width:70%; margin:5px;"></td></tr>
-<tr><td><b>연락처</b></td><td><input type="text" id="senior_phone" name="senior_phone" required="required" value="${dto.senior_phone }" class="form-control" style="width:70%;margin:5px;"></td></tr>
-<tr><td><b>사업자 X </b></td><td><input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()" style="float:left;"></td></tr>
-<tr><td><b>사업자 번호</b></td><td><input type="text" id="senior_crno" name="senior_crno" value="${dto.senior_crno}" class="form-control" style="width:70%; margin:5px;"></td></tr>
-<tr><td><b>상호명</b></td><td><input type="text" id="senior_crno_name" name="senior_crno_name" value="${dto.senior_crno_name}" class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>시니어 닉네임</b></td>
+<td><input type="text" id="senior_nick" name="senior_nick" required="required" value="${dto.senior_nick }" class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>이메일</b></td>
+<td><input type="text" id="senior_email" name="senior_email" required="required" value="${dto.senior_email }" class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>연락처</b></td
+><td><input type="text" id="senior_phone" name="senior_phone" required="required" value="${dto.senior_phone }" class="form-control" style="width:70%;margin:5px;"></td></tr>
+<tr><td><b>사업자 X </b></td
+><td><input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()" style="float:left;"></td></tr>
+<tr><td><b>사업자 번호</b></td>
+<td><input type="text" id="senior_crno" name="senior_crno" value="${dto.senior_crno}" class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>상호명</b></td>
+<td><input type="text" id="senior_crno_name" name="senior_crno_name" value="${dto.senior_crno_name}" class="form-control" style="width:70%; margin:5px;"></td></tr>
 <tr><td colspan="2"><h3><b>계좌정보</b></h3></td></tr>
-<tr><td><b>은행명</b></td><td><select name="senior_bank_name" id = "senior_bank_name" style="float:left; width:70%; margin:5px;">
+<tr><td><b>은행명</b></td
+><td><select name="senior_bank_name" id = "senior_bank_name" style="float:left; width:70%; margin:5px;" class="custom-select">
 <option class="bank_name"></option>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
@@ -295,15 +319,19 @@ function checkDisable()
 </table>
 <ul style="margin-left:40%; margin-top: 40px;">
  <li>
-<input type="submit" class="ej_btn" value="전송">
+<input type="submit" class="ej_btn" value="전송" id="submit">
 <input type="reset"  class="ej_btn2"  value="취소">
 </li>
 
 </ul>
 <input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <input type="hidden" id="token" name="token" value="${token}">
+<input type="hidden" id="se_name" name="se_name" value="">
+
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
+<img alt="banner" src="${pageContext.request.contextPath}/resources/IMG/senior_img2.png" style="width: 100%;">
+
 </div>
 </body>
 </html>

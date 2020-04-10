@@ -81,8 +81,13 @@ public class JY_US_MyLesson_Controller {
 
 		List<LessonDetailDTO> list = mlservice.my_lesson_select(lesson_no, member_id);
 				
+		int list_size = list.size();
+		
 		System.out.println(list.toString().toString());
+		
 		model.addAttribute("list", list);
+		model.addAttribute("list_size",list_size);
+
 		
 		return "TodayLesson_UserPage/jy_us_my_lesson_detail.us_my_section";
 		

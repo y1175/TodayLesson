@@ -6,14 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list.css">
-
-
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list2.css">
 
 </head>
 <body>
 
 
+
+<script>
+
+if ( ${list_size} == 0) {
+	alert("아직 시니어가 레슨을 등록하지 않았습니다! 잠시만 기다려주세요:)");
+	location.href="${pageContext.request.contextPath}/todaylessonmypage/my_lesson_list";
+}
+
+</script>
+<div id="jy_container">
 
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: center;"><b>온라인 레슨</b></h2>
@@ -21,10 +29,11 @@
 
    
       <c:forEach var="list" items="${list}">
+      <c:if test=""></c:if>
       <div id="lesson_div" class= "lesson_div">
    <div class="my_lesson_line"></div>
         <span class="lessonimg">
-<img alt="레슨 썸네일" src="${list.lessondetail_thumb }">
+<img alt="레슨 썸네일" src="${list.lessondetail_thumb}">
 		</span>
 
                   <ul class="lesson_text">
@@ -55,7 +64,7 @@ ${list.lessondetail_chapter}
 </div>
 </c:forEach>
 
-<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonmypage/my_lesson_list'">목록으로</button>
-
+<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonmypage/my_lesson_list'" style="float: right;">목록으로</button>
+</div>
 </body>
 </html>

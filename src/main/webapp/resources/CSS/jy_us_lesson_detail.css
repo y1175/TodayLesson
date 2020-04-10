@@ -368,3 +368,19 @@ ul{
 .ans>.ej_btn{
 	margin-left: 10px;
 }
+
+.ej_btn2{
+	border: 1px transparent;
+padding: 5px 15px; 
+/* border-radius : 3px; */
+background-color: #6c757d ;
+height:40px;
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}
+h4{
+	margin: 0px;
+	padding: 0px;
+}

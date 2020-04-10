@@ -39,8 +39,8 @@
 <tr>
 <td><img src="${ldto.lesson_thumb}" id="ej_order_topimg" width="200"></td>
 <td><h4>${ldto.lesson_title }</h4></td>
-<td>${ldto.lesson_cost }</td>
- <td> 1개</td>
+<td><fmt:formatNumber value= "${ldto.lesson_cost}" type="number" maxFractionDigits="3"/> </td>
+<td> 1개</td>
  <td>배송비 무료</td>
  <td><fmt:formatNumber value="${ldto.lesson_cost}" type="number" maxFractionDigits="3"/>원 </td>
  </tr>
@@ -56,7 +56,7 @@
 <button class="ej_btn point" id="pointbtn">적용</button>
 <div class="ej_cost right">
  <b style="font-size:25px;">결제금액</b>
-<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:90px; background-color:transparent;" value="${ldto.lesson_cost }" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
+<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px; background-color:transparent;" value="${ldto.lesson_cost }" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
 </div>
 </div>
 <script>
@@ -181,7 +181,7 @@ $('#all_point').change(function() {
                         placeholder="우편번호" value=${mdto.member_zipcode } class='form-control' >
                   </div>
                   <input type="button" onclick="sample4_execDaumPostcode()"
-                     value="우편번호 찾기" readonly="readonly" class='btn btn-primary' ><br>
+                     value="우편번호 찾기" readonly="readonly" class='ej_btn' ><br>
                </div>
                <div class='juso'>
             
@@ -269,7 +269,7 @@ $("#sameaddr").on('click', function() {
  배송비 무료<br>
  <div class="ej_cost2_right">
  <b>결제금액</b><br>
- <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:90px;  background-color:transparent" name="paymentt2" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">
+ <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px;  background-color:transparent" name="paymentt2" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">원
  ${totalcost } ${totalcost } ${totalcost }
   <button id="check_module" type="button" class='ej_btn'>결제하기</button>
   </div>

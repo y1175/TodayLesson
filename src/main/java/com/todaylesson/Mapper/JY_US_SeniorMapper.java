@@ -23,7 +23,12 @@ public interface JY_US_SeniorMapper {
 
 	public int update_senior(SeniorDTO dto);
 
-	public void member_levelup(String member_id);
+//	public void member_levelup(String member_id);
+//
+	//public void member_auth_up(String member_id);
+	
+	public void member_auth(String member_id);
+
 	
 
 }

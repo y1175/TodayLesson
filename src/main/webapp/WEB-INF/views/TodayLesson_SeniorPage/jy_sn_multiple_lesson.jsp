@@ -45,15 +45,15 @@ $(document).ready(function(){
 <h2><b>오프라인 레슨</b></h2>
 
 총 강의 수
-<input type="text" id="lesson_max_number" name="lesson_max_number" placeholder="총 강의 수를 입력하세요.">
+<input type="text" id="lesson_max_number" name="lesson_max_number" placeholder="총 강의 수를 입력하세요."  class="form-control">
 <p style="text-align: center;">* 강의는 10강을 넘길 수 없습니다.</p>
 
 레슨일
-<input type="text" id="lesson_date" name="lesson_date" required="required" >  
+<input type="text" id="lesson_date" name="lesson_date" required="required"  class="form-control">  
 
 <br>
 강의 시작시간
-<input type="time" id="lesson_time" name="lesson_time" required="required"> 
+<input type="time" id="lesson_time" name="lesson_time" required="required" class="form-control"> 
 
 
 <input type="button" value="추가" onclick="add_Lesson_Time();" class="ej_btn">

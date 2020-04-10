@@ -23,47 +23,57 @@ $(document).ready(function(){
 <body>
 
 <script>
-
 function checkBankHolder(){
 
-	let bank_code= document.frm.senior_bank_name.value;
-	let bank_num = document.frm.senior_account_num.value;
-	let token = document.frm.token.value;
-	let account_name = document.frm.senior_account_name.value;
-	
-	console.log(bank_code);
-	console.log(bank_num);
-	
-	$.ajax({
-		method: 'get',
-		url: 'https://api.iamport.kr/vbanks/holder',
-	    headers: { "Authorization": token
-		}, 
-		data : {
-			bank_code : bank_code,
-			bank_num : bank_num
-		}
-	}).done(
-					function(msg) {
-						console.log(msg);
-					/* 	let adn = msg.documents[0].bank_holder;
-						console.log
-						(adn); */
+	 
+	 
+	   let bank_code = $('#senior_bank_name').val();
+	   let bank_num = $('#senior_account_num').val();
+	   let token = $('#token').val();
+	   let account_name = $('#senior_account_name').val();
+	  // let se_name = $('#se_name').val();
 
-						let bank = msg.response;
-						//let name = bank.parse().bank_holder;
-						console.log(bank);
-						console.log(bank["bank_holder"]);
-						
-						var bank_holder = bank["bank_holder"];
-						
-						if (account_name == bank_holder) {
-							alert("실명 인증 성공");
-						} else {
-							alert("실명 인증 실패");
-						}
-					
-					});
+	   
+/*    let bank_code = document.getElementById('senior_bank_name').value;
+let bank_num = document.getElementById('senior_account_num').value;   
+let token = document.getElementById('token').value;
+let account_name = document.getElementById('senior_account_name').value; */
+
+console.log(bank_code);
+console.log(bank_num);
+
+$.ajax({
+   method: 'get',
+   url: 'https://api.iamport.kr/vbanks/holder',
+    headers: { "Authorization": token
+   }, 
+   data : {
+      bank_code : bank_code,
+      bank_num : bank_num
+   }
+}).done(
+            function(msg) {
+               console.log(msg);
+            /*    let adn = msg.documents[0].bank_holder;
+               console.log
+               (adn); */
+
+               let bank = msg.response;
+               //let name = bank.parse().bank_holder;
+               console.log(bank);
+               console.log(bank["bank_holder"]);
+               
+               let bank_holder = bank["bank_holder"];
+               
+               if (account_name == bank_holder) {
+                  alert("실명 인증 성공");
+                  $('#se_name').val() = 1;
+                  se_bank();
+               } else {
+                  alert("실명 인증 실패");
+               }
+            
+            });
 }
 
 	
@@ -87,66 +97,26 @@ function checkDisable()
 <div id="jy_container" >
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>시니어 지원 하기</b></h2>
+ <h2 style="margin-top:40px; text-align: center; font-weight: bold;">시니어 지원하기</h2>
  </div>
 <form method="post" action="${pageContext.request.contextPath}/todaylessonsenior/plus_senior" name="frm">
 
-<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
-<input type="hidden" id="token" name="token" value="${token}">
-
-
-<ul style="padding: 0px;">
-<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
-<input type="hidden" id="token" name="token" value="${token}">
-
-<li>
-<label>시니어 닉네임</label>
-<input type="text" id="senior_nick" name="senior_nick" required="required" class="form-control" style="width:20%;">
-</li>
-
-<li>
-<label>이메일</label>
-<input type="text" id="senior_email" name="senior_email" required="required"  class="form-control" style="width:20%;">
-</li>
-
-<li>
-<label>연락처</label>
-<input type="text" id="senior_phone" name="senior_phone" required="required"  class="form-control" style="width:20%;">
-</li>
-
-<script>
-
-if(${dto.senior_crno!=""}){
-	   senior_crno.disabled = false;
-	   senior_crno_name.disabled = false;
-} else {
-	       senior_crno.disabled = true;
-		   senior_crno_name.disabled = true;
-		   no_crno.checked == true;
-}
-
-
-</script>
-
-
-사업자 X <input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()">
-
-
-<li>
-<label>사업자번호</label>
-<input type="text" id="senior_crno" name="senior_crno" class="form-control" style="width:20%;">
-</li>
-
-<li>
-<label>상호명</label>
-<input type="text" id="senior_crno_name" name="senior_crno_name" class="form-control" style="width:20%;">
-</li>
-
-<h3 style="text-align: center; margin: 10px auto;">계좌정보</h3>
-
-<li>
-<label>은행명</label>
-<select name="senior_bank_name">
+<table style="width:60%; text-align:center; margin:0 auto; border:none;">
+<tr><td><b>시니어 닉네임</b></td>
+<td><input type="text" id="senior_nick" name="senior_nick" required="required"  class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>이메일</b></td>
+<td><input type="text" id="senior_email" name="senior_email" required="required"  class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>연락처</b></td
+><td><input type="text" id="senior_phone" name="senior_phone" required="required"  class="form-control" style="width:70%;margin:5px;"></td></tr>
+<tr><td><b>사업자 X </b></td
+><td><input type="checkbox" id="no_crno" name="no_crno" onClick="checkDisable()" style="float:left;"></td></tr>
+<tr><td><b>사업자 번호</b></td>
+<td><input type="text" id="senior_crno" name="senior_crno" class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td><b>상호명</b></td>
+<td><input type="text" id="senior_crno_name" name="senior_crno_name" class="form-control" style="width:70%; margin:5px;"></td></tr>
+<tr><td colspan="2"><h3><b>계좌정보</b></h3></td></tr>
+<tr><td><b>은행명</b></td
+><td><select name="senior_bank_name" id = "senior_bank_name" style="float:left; width:70%; margin:5px;" class="custom-select">
 <option class="bank_name"></option>
 <option value="004">KB국민은행</option>
 <option value="023">SC제일은행</option>
@@ -193,33 +163,23 @@ if(${dto.senior_crno!=""}){
 <option value="287">메리츠증권</option>
 <option value="289">엔에이치투자증권</option>
 <option value="290">부국증권</option>
-</select>
-</li>
-
-<li>
-<label>예금주</label>
-<input type="text" id="senior_account_name" name="senior_account_name" required="required" class="form-control" style="width:20%;">
-</li>
-
-<li>
-<label>계좌번호</label>
-<input type="text" id="senior_account_num" name="senior_account_num" required="required" class="form-control" style="width:20%;">
-</li>
-
-
-<li>
-<input type="button"  class="ej_btn2" value="계좌 실명 확인" onclick="checkBankHolder();" >
-</li>
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
- 
+</select></td></tr>
+<tr><td><b>예금주</b></td><td><input type="text" id="senior_account_name" name="senior_account_name" required="required" class="form-control" style="width:70%; margin:5px;""></td></tr>
+<tr><td><b>계좌번호</b></td><td><input type="text" id="senior_account_num" name="senior_account_num" required="required" class="form-control" style="width:70%;display:inline-block;float:left; margin:5px;"">
+<input type="button"  class="ej_btn2" value="계좌 실명 확인" onclick="checkBankHolder();" ></td></tr>
+</table>
+<ul style="margin-left:40%; margin-top: 40px;">
  <li>
-<input type="submit" class="ej_btn" value="전송">
+<input type="submit" class="ej_btn" value="전송" id="submit">
 <input type="reset"  class="ej_btn2"  value="취소">
 </li>
 
 </ul>
+<input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}">
+<input type="hidden" id="token" name="token" value="${token}">
+
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
 </div>
-
 </body>
 </html>

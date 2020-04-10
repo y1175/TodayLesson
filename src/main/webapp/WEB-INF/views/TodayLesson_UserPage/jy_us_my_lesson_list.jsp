@@ -18,31 +18,39 @@
 <!-- CSSstyle -->
 
 
-   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list.css">
+   <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list.css?ver=2">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
 </head>
 <body>
+<div id="jy_container">
 
 
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: center;"><b>나의 레슨관리</b></h2>
  </div>
  
- 
-
-
- <form method ="get" action="${pageContext.request.contextPath}/todaylessonmypage/my_lesson_list" style="text-align: center;  margin-top: 40px;">
- <select name="search">
+ <!-- 검색 --> 
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:29%; margin:40px auto;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+ <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/total_lesson_list?currPage=${page.startBlock }"
+ style="margin:0px auto;">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
  <option value="all">전체</option>
  <option value="lesson_title">제목</option>
  <option value="lesson_content">내용</option>
- </select>
- <input type="text" name="searchtxt">
- <input type="submit" value="검색">
- </form>
+</select>
+ <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+      <button class="ej_btn" style="background-color: rgb(224, 62, 82); padding:3px 15px;" type="submit">검색</button>
+    </form>
+  </div>
+</nav>
+<!-- 검색완료 -->
+ 
+
+
  
  
  
@@ -179,7 +187,7 @@ success : function(result){
 
 
 </c:forEach>
-
+</div>
 
 
 

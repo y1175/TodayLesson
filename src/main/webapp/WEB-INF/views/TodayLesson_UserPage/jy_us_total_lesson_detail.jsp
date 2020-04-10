@@ -215,31 +215,40 @@ $('document').ready(function() {
 	</c:choose>
 	
 	
-<h3 id="lt"><c:out value="${dto.lesson_title}"></c:out></h3>
+<h2 id="lt"><c:out value="${dto.lesson_title}"></c:out></h2>
 
 
-	<jsp:useBean id="now" class="java.util.Date"  />
+    <div class="hs_user_store_newprodct_cost">
+     <jsp:useBean id="now" class="java.util.Date"  />
 	<div style="display: none;">
 	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
 	<fmt:parseDate value="${dto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
 	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
 	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
 	</div>
-	<c:if test="${item.lesson_earlybird eq 1 }">
 	
+<span class="ej_top font">가격   </span>
+<div id="ej_cost">
+	<c:if test="${dto.lesson_earlybird eq 1 }">
+	
+
 	<c:if test="${itDate - isDate <= 7}">
-	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost * 0.82}"/>원
+	<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.82}"/>원</h3>
 	</c:if>
 	
 	<c:if test="${itDate - isDate > 7 }">
-	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
+<span class="ej_top font middle logintxt"></span>		<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost}"/>원	</h3>
 	</c:if>
 	
 	</c:if>
 	
-	<c:if test="${item.lesson_earlybird eq 0}">
-	<fmt:formatNumber type="number" maxFractionDigits="3" value="${item.lesson_cost }"/>원
-	</c:if>
+	<c:if test="${dto.lesson_earlybird eq 0}">
+<span class="ej_top font middle logintxt"></span>	<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost}"/>원	</h3>
+		</c:if>
+
+</div>
+	
+	<br>
 	
 <span class="ej_top font middle logintxt"></span>로그인 후, 적립혜택이 제공됩니다.<br>
 
@@ -264,7 +273,7 @@ $('document').ready(function() {
 <div class="ej_grid third">
 <a href="#"><div class="fa fa-shopping-cart insert_my_cart" ></div></a></div>
 
-
+</div>
 
 
 <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
@@ -594,6 +603,7 @@ $(".insert_my_cart").click(function(){
 		
 					<label>제목</label>
                         <input type="text" id="lreview_title" name="lreview_title" class="form-control" placeholder="리뷰 제목을 입력하세요">
+                        <br>
 						<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
 								<br>
 								<a href='#' onClick="fn_review('${dto.lesson_no }')" class="ej_btn">리뷰 등록</a>
@@ -717,7 +727,7 @@ function getCommentList(){
                         	html += "<li class='ans'>";
 				            html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
                            	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control'>"; 
                         	html += "<input type ='button' onClick='fn_answer("+data[i].lesson_qa_no+")' class='ej_btn' value='등록'></li></ul></li>"; 
 							 
                         	}  else { 
@@ -739,7 +749,7 @@ function getCommentList(){
 	                        html += "<li class='ans'>";
 				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
                            	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control'>"; 
                         	html += "<input type='button' onClick='fn_answer("+ data[i].lesson_qa_no +")'  class='ej_btn' value='등록'></li></ul></li></ul></div>"; 
                         
                         }  else { 
@@ -761,7 +771,7 @@ function getCommentList(){
 	                         html += "<li class='ans'>";
 				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
 			                 html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-		                     html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요'>"; 
+		                     html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control'>"; 
                         	 html += "<input type='button' onClick='fn_answer(" +data[i].lesson_qa_no+")'  class='ej_btn' value='등록'></li></ul></li>"; 
                         
                         }  else { 

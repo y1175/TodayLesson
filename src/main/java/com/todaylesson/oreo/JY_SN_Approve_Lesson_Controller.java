@@ -57,12 +57,15 @@ public class JY_SN_Approve_Lesson_Controller {
 				,page.getStartRow()
 				,page.getEndRow());
 		
+		int list_size = list.size();
 		
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 		model.addAttribute("order",order);
+		model.addAttribute("list_size",list_size);
+
 		
 		return"TodayLesson_SeniorPage/jy_sn_approve_list.sn_main_section";
 	}
