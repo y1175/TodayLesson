@@ -23,7 +23,7 @@
 </span> --%>
 
 <!--메인 슬라이더  -->
-<div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
+<%-- <div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
       <div class="hs_us_home_mainBannerbox">
 	     <div class="hs_us_home_mainBannerslide">
 		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
@@ -32,7 +32,27 @@
 			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
 	     </div>
 	  </div>
+   </div> --%>
+     <!-- Main Slider -->
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+      <div class="carousel-inner" >
+         <c:forEach var="mainBannerSlider" items="${banner}" varStatus="status">
+            <c:choose>
+               <c:when test="${status.count == 1}">
+                  <div class="carousel-item active">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100"  alt="...">
+                  </div>
+               </c:when>
+               <c:otherwise>
+                  <div class="carousel-item">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100" alt="...">
+                  </div>
+               </c:otherwise>
+            </c:choose>
+         </c:forEach>
+      </div>
    </div>
+   <!-- Main Slider -->
    <br>	
    <br>	
    
