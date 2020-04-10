@@ -60,8 +60,8 @@ text-decoration: none;
 <c:when test="${lesson_title==null}"><!--상품정보  -->
 <td><a href="#" class="delete_product_cart" id="${item.product_no}" ><i class="fas fa-times" style="font-size:20px; color:black;"></i></a></td>
 <td>상품</td>
-<td><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
-<td style="color:black;"><a href="${pageContext.request.contextPath}/ej_store_detail/${item.product_no}" class="ej_link"><span class="ej_link">${item.product_name }</span></a></td>
+<td><a href="${pageContext.request.contextPath}/todaylesson/ej_store_detail/${item.product_no}"><img src="${item.product_thumb}" alt="thumb"></a></td>
+<td style="color:black;"><a href="${pageContext.request.contextPath}/todaylesson/ej_store_detail/${item.product_no}" class="ej_link"><span class="ej_link">${item.product_name }</span></a></td>
 <td><fmt:formatNumber value="${item.product_after_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>${item.cart_amount }</td>
 </c:when>
@@ -69,8 +69,8 @@ text-decoration: none;
 <c:when test="${product_name==null}"><!--레슨정보  -->
 <td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" ><i class="fas fa-times" style="font-size:20px;color:black;"></i></a></td>
 <td>레슨</td>
-<td><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
-<td style="color:black;"><a href="${pageContext.request.contextPath}/lesson_detail/${item.lesson_no}">${item.lesson_title}</a></td>
+<td><a href="${pageContext.request.contextPath}todaylesson//lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td style="color:black;"><a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}">${item.lesson_title}</a></td>
 <td><fmt:formatNumber value="${item.lesson_cost }" type="number" maxFractionDigits="3"/>원</td>
 <td>1</td>
 </c:when>

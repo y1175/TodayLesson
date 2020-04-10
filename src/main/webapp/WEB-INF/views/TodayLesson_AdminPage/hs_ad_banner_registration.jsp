@@ -39,6 +39,7 @@
 		             <option value="1">Main Event Banner Slider</option>
 		             <option value="2">Main Img Banner</option>
 		             <option value="3">Event Main Banner Slider</option>
+		              <option value="4">Store Main Banner Slider</option>
 		          </select>
 		       </div>      
 		    </div>
