@@ -79,7 +79,7 @@
 <c:forEach var="item" items="${list }">
 <tr><td>${item.orderlist_no }</td><td>${item.orderlist_date }</td><td>${item.member_phone }</td>
 <td>${item.product_name }${item.lesson_title }<br>
-<span>(<c:if test='${item.senior_nick==null }'>투데이레슨</c:if>${item.senior_nick}</span>)</td>
+<span>(<c:if test='${item.senior_nick==null }'>오늘의레슨</c:if>${item.senior_nick}</span>)</td>
 <td rowspan="2">${item.orderlist_cost }</td>
 <td rowspan="2">
 <select name="calculate_status" class="calculate_select calculate_select-${item.orderlist_no}" id="c${item.orderlist_no}">

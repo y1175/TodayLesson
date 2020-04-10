@@ -59,6 +59,11 @@ public class User_YI_OrderList_Controller {
 		int pageSize=5;
 		int blockSize=5;
 		
+		if(totalCount==0)
+		{
+			return "/no_order";
+		}
+		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderlist(member_id,start_date,end_date

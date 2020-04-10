@@ -48,6 +48,7 @@ public class Admin_YI_Orderlist_Controller {
 		int pageSize=15;
 		int blockSize=5;
 		
+
 		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
@@ -55,6 +56,12 @@ public class Admin_YI_Orderlist_Controller {
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderlist(orderlist_orderstatus,orderlist_category,orderlist_search,start_date,end_date
 				,page.getStartRow()
 				,page.getEndRow());
+		
+		if(list.isEmpty())
+		{
+			return "/no_order";
+		}
+		
 		System.out.println("list:"+list.get(0).getOrderlist_no());
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
@@ -110,12 +117,20 @@ public class Admin_YI_Orderlist_Controller {
 		int blockSize=5;
 		System.out.println("paystatus:"+orderlist_paystatus);
 		
+
+		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
+
 		
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.refundlist(orderlist_category,orderlist_search,start_date,end_date,orderlist_paystatus
 				,page.getStartRow()
 				,page.getEndRow());
+		if(list.isEmpty())
+		{
+			return "/no_order";
+		}
+		
 		System.out.println("list:"+list.get(0).getOrderlist_no());
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);

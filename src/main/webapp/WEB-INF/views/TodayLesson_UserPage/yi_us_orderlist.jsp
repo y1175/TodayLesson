@@ -22,6 +22,10 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+
+
+
+
 $(document).ready(function(){
 	$.ajax({
 		url:'/todaylessonmypage/myorderlist_detail/'
@@ -111,6 +115,10 @@ $(document).ready(function(){
 </form>
 
 <c:forEach var="orderlist" items="${list}">
+
+
+
+
 <div class="container"></div>
 주문일자:<span class="data_info">${orderlist.orderlist_date }</span>	
 주문번호:<span class="data_info"> ${orderlist.orderlist_no }</span> 
