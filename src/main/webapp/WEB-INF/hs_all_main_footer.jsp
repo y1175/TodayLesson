@@ -17,13 +17,13 @@
          <a href="#0" class="c-link c-link--facebook c-tooltip" aria-label="Facebook">
             <svg class="c-icon"><use xlink:href="#icon--facebook"></use></svg>
          </a>
-         <a href="#0" class="c-link c-link--twitter c-tooltip" aria-label="Twitter">
+         <a href="https://twitter.com/Today_Lesson_" class="c-link c-link--twitter c-tooltip" aria-label="Twitter">
             <svg class="c-icon"><use xlink:href="#icon--twitter"></use></svg>
          </a>
          <a href="#0" class="c-link c-link--google c-tooltip" aria-label="Google+">
             <svg class="c-icon"><use xlink:href="#icon--google"></use></svg>
          </a>
-         <a href="#0" class="c-link c-link--instagram c-tooltip" aria-label="Instagram">
+         <a href="https://www.instagram.com/tod_aylesson/" class="c-link c-link--instagram c-tooltip" aria-label="Instagram">
             <svg class="c-icon"><use xlink:href="#icon--instagram"></use></svg>
          </a>
          <svg style="display: none">
