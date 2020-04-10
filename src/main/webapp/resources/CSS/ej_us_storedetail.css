@@ -108,14 +108,15 @@ color: white;
 /* 슬라이더 */
 
 #ej_sdetail_topimg{
-width:550px;
+width:650px;
 
 }
 .ej_top{
 	display:inline-block;
 }
 .ej_top.imgbox{
-	height:600px;
+	height:500px;
+	margin-top:30px;
 }
 .ej_top.right{
 /* border: 1px solid silver; */
