@@ -23,7 +23,7 @@
 <div id="jy_container">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: left;"><b>수락된 레슨</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>승인레슨</b></h2>
  </div>
  
  

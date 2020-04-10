@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data2.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css">  
 
 <script>
 
@@ -45,8 +45,8 @@ $(document).ready(function() {
 
 <div id="jy_container">
 
-<h1><b>레슨 상세보기</b></h1>
-
+<h2><b>레슨 상세보기</b></h2>
+<br>
 <ul>
 <li>
 <b>레슨번호</b>
@@ -222,7 +222,7 @@ ${dto.lesson_content}
 
 <table class="table" style="width: 50%; margin: 40px auto 40px;">
 		<thead>
-			<tr class="table-warning ">
+			<tr class="table-warning " style="background-color: #fff2f2;">
 				<th scope="col" >챕터</th>
 				<th scope="col">제목</th>
 				<th scope="col">수정</th>
@@ -247,7 +247,7 @@ ${dto.lesson_content}
 
 <c:if test="${dto.lesson_type == 3}">
 
-<button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson_upload/${dto.lesson_no}'">레슨 업로드</button>
+<button id="reward_point" class="ej_btn2" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson_upload/${dto.lesson_no}'">레슨 업로드</button>
 
 </c:if>
 

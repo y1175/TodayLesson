@@ -41,8 +41,8 @@ $('document').ready(function(){
 	         if (bank_name[i].code == bank_code) {
 	            let senior_bank_name = bank_name[i].name;
 	            console.log(senior_bank_name);
-	            $('.bank_name').append(senior_bank_name);
-	            //$('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
+	            //$('.bank_name').append(senior_bank_name);
+	            $('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
 	            console.log("dddd");
 	            break;
 	         }
@@ -127,8 +127,7 @@ function checkDisable()
 
 </script>
 
-<div id="jy_container" style="padding 20px; width:30%; 	margin : 0px auto;
-">
+<div id="jy_container" style="padding 20px;  width: 80%; margin:0px auto;">
 
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: center;">시니어 정보 수정</h2>
@@ -141,17 +140,17 @@ function checkDisable()
 
 <li>
 <label>시니어 닉네임</label>
-<input type="text" id="senior_nick" name="senior_nick" required="required" value="${dto.senior_nick }">
+<input type="text" id="senior_nick" name="senior_nick" required="required" value="${dto.senior_nick }" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>이메일</label>
-<input type="text" id="senior_email" name="senior_email" required="required" value="${dto.senior_email }">
+<input type="text" id="senior_email" name="senior_email" required="required" value="${dto.senior_email }" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>연락처</label>
-<input type="text" id="senior_phone" name="senior_phone" required="required" value="${dto.senior_phone }">
+<input type="text" id="senior_phone" name="senior_phone" required="required" value="${dto.senior_phone }" class="form-control" style="width:20%;">
 </li>
 
 <li>
@@ -160,12 +159,12 @@ function checkDisable()
 
 <li>
 <label>사업자번호</label>
-<input type="text" id="senior_crno" name="senior_crno" value="${dto.senior_crno}">
+<input type="text" id="senior_crno" name="senior_crno" value="${dto.senior_crno}" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>상호명</label>
-<input type="text" id="senior_crno_name" name="senior_crno_name" value="${dto.senior_crno_name}">
+<input type="text" id="senior_crno_name" name="senior_crno_name" value="${dto.senior_crno_name}" class="form-control" style="width:20%;">
 </li>
 
 <h3 style="text-align: center; margin: 10px auto;" >계좌정보</h3>
@@ -224,12 +223,12 @@ function checkDisable()
 
 <li>
 <label>예금주</label>
-<input type="text" id="senior_account_name" name="senior_account_name" required="required" value="${dto.senior_account_name }">
+<input type="text" id="senior_account_name" name="senior_account_name" required="required" value="${dto.senior_account_name }" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>계좌번호</label>
-<input type="text" id="senior_account_num" name="senior_account_num" required="required" value="${dto.senior_account_num }">
+<input type="text" id="senior_account_num" name="senior_account_num" required="required" value="${dto.senior_account_num }" class="form-control" style="width:20%;">
 </li>
 
 

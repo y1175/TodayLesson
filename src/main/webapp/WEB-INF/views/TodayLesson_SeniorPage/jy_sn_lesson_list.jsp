@@ -25,7 +25,7 @@
 
 <div id="jy_container">
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: left;"><b>레슨 관리</b></h2>
+ <h2 style="margin-top:40px; text-align: left;"><b>전체레슨</b></h2>
  </div>
  
  

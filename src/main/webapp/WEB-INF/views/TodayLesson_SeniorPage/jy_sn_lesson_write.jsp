@@ -252,7 +252,7 @@ function multiple_time_lesson_date(){
 <input type="hidden" id="senior_no" name="senior_no" value="${senior_no}">
  
 <li><label for="lesson_title">레슨명</label><br>
-<input type="text" id="lesson_title" name="lesson_title" required="required"><br>
+<input type="text" id="lesson_title" name="lesson_title" required="required"  class="form-control" style="width :50%;"><br>
 </li>
 
 <li>
@@ -282,13 +282,13 @@ function multiple_time_lesson_date(){
  <li>
  
 <label for="lesson_member_max">수강생수</label><br>
-<input type="number" id="lesson_member_max" name="lesson_member_max" required="required"><br>
+<input type="number" id="lesson_member_max" name="lesson_member_max" required="required" class="form-control" style="width:10%;"><br>
 
 </li>
 
 <li>
 <label for="lesson_category">카테고리</label><br>
-<select name="lesson_category">
+<select name="lesson_category" class="form-control">
   <option value="0" selected="selected">---</option>
   <option value="1">운동</option>
   <option value="2">교육</option>
@@ -302,7 +302,7 @@ function multiple_time_lesson_date(){
 
 <li>
 <label for="lesson_cost">가격</label><br>
-<input type="number" id="lesson_cost" name="lesson_cost" required="required"><br>
+<input type="number" id="lesson_cost" name="lesson_cost" required="required" class="form-control" style="width:10%;"><br>
 </li>
 
 <li>
@@ -328,13 +328,13 @@ function multiple_time_lesson_date(){
 <li>
 <br>
 <label for="lesson_open_period">시작일</label> / <label for="lesson_close_period">종료일</label><br>
-<input type="text" class="lesson_date" id="lesson_open_period" name="lesson_open_period" required="required">
+<input type="text" class="lesson_date" id="lesson_open_period" name="lesson_open_period" required="required" >
 / <input type="text" class="lesson_date" id="lesson_close_period" name="lesson_close_period" required="required">
 </li>
 
 <li>
 <label for="lesson_type">레슨타입</label><br>
-<select id="lesson_type" name="lesson_type">
+<select id="lesson_type" name="lesson_type" class="form-control">
   <option value="0" selected="selected">---</option>
   <option value="1">원데이 레슨</option>
   <option value="2">다회성 레슨</option>
@@ -344,7 +344,7 @@ function multiple_time_lesson_date(){
 
 <div class="offline_lesson">
 
-<input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name="">
+<input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name=""  class="ej_btn">
 
 <div id="lesson_d_t">
 
@@ -370,12 +370,12 @@ function multiple_time_lesson_date(){
 
 <li>
 <label for="lesson_number">총강의수</label><br>
-<input type="number" id="lesson_number" name="lesson_number"><br>
+<input type="number" id="lesson_number" name="lesson_number" class="form-control" style="width:10%;"><br>
 </li>
 
 <li>
 <label for="lesson_senior_title">시니어명</label><br>
-<input type="text" id="lesson_senior_title" name="lesson_senior_title" required="required"><br>
+<input type="text" id="lesson_senior_title" name="lesson_senior_title" required="required" class="form-control" style="width:20%;"><br>
 </li>
 
 <li>

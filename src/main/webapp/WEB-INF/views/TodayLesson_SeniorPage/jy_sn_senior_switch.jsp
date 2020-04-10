@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css?ver=1">  
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -84,8 +84,7 @@ function checkDisable()
 
 
 <!-- 시니어 모드에 있는 시니어 정보 관리로 이동하기 -->
-<div id="jy_container" style="padding 20px; width:30%; 	margin : 0px auto;
-">
+<div id="jy_container" >
 
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: center;"><b>시니어 지원 하기</b></h2>
@@ -102,17 +101,17 @@ function checkDisable()
 
 <li>
 <label>시니어 닉네임</label>
-<input type="text" id="senior_nick" name="senior_nick" required="required" ">
+<input type="text" id="senior_nick" name="senior_nick" required="required" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>이메일</label>
-<input type="text" id="senior_email" name="senior_email" required="required" ">
+<input type="text" id="senior_email" name="senior_email" required="required"  class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>연락처</label>
-<input type="text" id="senior_phone" name="senior_phone" required="required" >
+<input type="text" id="senior_phone" name="senior_phone" required="required"  class="form-control" style="width:20%;">
 </li>
 
 <script>
@@ -135,12 +134,12 @@ if(${dto.senior_crno!=""}){
 
 <li>
 <label>사업자번호</label>
-<input type="text" id="senior_crno" name="senior_crno" >
+<input type="text" id="senior_crno" name="senior_crno" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>상호명</label>
-<input type="text" id="senior_crno_name" name="senior_crno_name">
+<input type="text" id="senior_crno_name" name="senior_crno_name" class="form-control" style="width:20%;">
 </li>
 
 <h3 style="text-align: center; margin: 10px auto;">계좌정보</h3>
@@ -199,12 +198,12 @@ if(${dto.senior_crno!=""}){
 
 <li>
 <label>예금주</label>
-<input type="text" id="senior_account_name" name="senior_account_name" required="required" >
+<input type="text" id="senior_account_name" name="senior_account_name" required="required" class="form-control" style="width:20%;">
 </li>
 
 <li>
 <label>계좌번호</label>
-<input type="text" id="senior_account_num" name="senior_account_num" required="required" >
+<input type="text" id="senior_account_num" name="senior_account_num" required="required" class="form-control" style="width:20%;">
 </li>
 
 

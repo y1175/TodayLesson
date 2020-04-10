@@ -554,10 +554,10 @@ $(".insert_my_cart").click(function(){
 	<form id="commentForm" name="commentForm" method="post">
 	    <div class="jy_left">
         <label>궁금한 게 있으신가요?</label><br>
-          <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요">
+          <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요" class="form-control">
          </div>
 								<textarea rows="3" cols="140" id="lesson_qa_reply_content"
-									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요"></textarea>
+									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요" class="form-control"></textarea>
 									<br><br>
 									
 		<div class="jy_right">
@@ -593,7 +593,7 @@ $(".insert_my_cart").click(function(){
 			<br>
 		
 					<label>제목</label>
-                        <input type="text" id="lreview_title" name="lreview_title">
+                        <input type="text" id="lreview_title" name="lreview_title" class="form-control" placeholder="리뷰 제목을 입력하세요">
 						<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
 								<br>
 								<a href='#' onClick="fn_review('${dto.lesson_no }')" class="ej_btn">리뷰 등록</a>

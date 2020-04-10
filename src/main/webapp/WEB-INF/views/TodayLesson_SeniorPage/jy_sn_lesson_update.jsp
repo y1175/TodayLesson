@@ -7,7 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
-
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Member_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -258,7 +263,7 @@ function add_Lesson_Time(lesson_date_and_time){
  
  <li>
 <label for="lesson_title">레슨명</label><br>
-<input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title }><br>
+<input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title } class="form-control" style="width :50%;"><br>
 </li>
 
 
@@ -289,12 +294,12 @@ function add_Lesson_Time(lesson_date_and_time){
  
  <li>
 <label for="lesson_member_max">수강생수</label><br>
-<input type="number" id="lesson_member_max" name="lesson_member_max" value="${dto.lesson_member_max}"><br>
+<input type="number" id="lesson_member_max" name="lesson_member_max" value="${dto.lesson_member_max}" class="form-control" style="width:10%;"><br>
 </li>
 
 <li>
 <label for="lesson_category">카테고리</label><br>
-<select name="lesson_category">
+<select name="lesson_category" class="form-control">
   <option value="0" selected="selected">---</option>
   <option value="1">운동</option>
   <option value="2">교육</option>
@@ -308,7 +313,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_cost">가격</label><br>
-<input type="number" id="lesson_cost" name="lesson_cost" required="required" value="${dto.lesson_cost}"><br>
+<input type="number" id="lesson_cost" name="lesson_cost" required="required" value="${dto.lesson_cost}" class="form-control" style="width:10%;"><br>
 </li>
 
 <li>
@@ -340,7 +345,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_type">레슨타입</label><br>
-<select id="lesson_type" name="lesson_type">
+<select id="lesson_type" name="lesson_type" class="form-control">
   <option value="0" selected="selected">---</option>
   <option value="1">원데이 레슨</option>
   <option value="2">다회성 레슨</option>
@@ -352,7 +357,7 @@ function add_Lesson_Time(lesson_date_and_time){
 <h5> * 오프라인은 레슨 수정 시 레슨 일정을 다시 입력해주셔야 합니다.</h5>
 <div class="offline_lesson">
 
-<input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name="">
+<input type ="button" onclick="multiple_time_lesson_date();" value="날짜/시간 설정하기" name="" class="ej_btn">
 
 <div id="lesson_d_t">
 
@@ -378,12 +383,12 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_number">총강의수</label><br>
-<input type="number" id="lesson_number" name="lesson_number" value="${dto.lesson_number}"><br>
+<input type="number" id="lesson_number" name="lesson_number" value="${dto.lesson_number}" class="form-control" style="width:10%;"><br>
 </li>
 
 <li>
 <label for="lesson_senior_title">시니어명</label><br>
-<input type="text" id="lesson_senior_title" name="lesson_senior_title" required="required" value="${dto.lesson_senior_title}"><br>
+<input type="text" id="lesson_senior_title" name="lesson_senior_title" required="required" value="${dto.lesson_senior_title}" class="form-control" style="width:50%;"><br>
 </li>
 
 <li>

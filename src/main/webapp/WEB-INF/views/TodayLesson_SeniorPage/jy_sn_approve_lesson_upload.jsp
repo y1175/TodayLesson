@@ -7,7 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
-
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_Member_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -84,7 +89,7 @@ $('textarea').summernote({
  </script>
 
 <label for="lessondetail_running_time" style="margin-bottom : 20px;">러닝타임</label>
-<input type="text" id="rt" name="rt" placeholder="00:00:00" maxlength="8" required="required">
+<input type="text" id="rt" name="rt" placeholder="00:00:00" maxlength="8" required="required" class="form-control" style="width:10%;">
 <br>
 
 

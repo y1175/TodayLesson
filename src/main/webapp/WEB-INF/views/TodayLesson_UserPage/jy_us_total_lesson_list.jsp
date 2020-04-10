@@ -51,7 +51,7 @@ width:500px; height:auto;
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/total_lesson_list?currPage=${page.startBlock }"
  style="margin:0px auto;">
  
-  <select name="search" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+ <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
  <option value="all">전체</option>
 <option value="lesson_title">레슨명</option>
  <option value="lesson_content">레슨내용</option>
