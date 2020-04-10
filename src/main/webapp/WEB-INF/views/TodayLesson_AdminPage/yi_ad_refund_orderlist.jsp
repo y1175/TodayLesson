@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="yi_container">
-<h3>주문취소 관리</h3>
+<h2><b>주문취소 관리</b></h2>
 <form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
 <div class="form-group">
 <label>결제상태</label>

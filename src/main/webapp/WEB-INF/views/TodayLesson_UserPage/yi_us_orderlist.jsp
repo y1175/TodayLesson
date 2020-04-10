@@ -18,7 +18,7 @@
 <!-- CSSstyle -->
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=3">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist.css?ver=6">
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -27,7 +27,7 @@ $(document).ready(function(){
 		url:'/todaylessonmypage/myorderlist_detail/'
 		,dataType:'json'
 		,success:function(item){
-			
+			var span=1;
 			for(var i=0;i<item.length;i++)
 				{
 				let orderdetail1="";
@@ -59,13 +59,32 @@ $(document).ready(function(){
 				product_category="기타";
 				}
 				
-			orderdetail1+="<img src="+"'"+item[i].product_thumb+"'"+" alt='thumb'><br>";
-			orderdetail2+="[스토어>"+product_category+"]<br>";
-			orderdetail2+="상품명:"+item[i].product_name+"<br>";
+			orderdetail1+="<tr><td><img src="+"'"+item[i].product_thumb+"'"+" alt='thumb'></td>";
+			orderdetail1+="<td class='storeinfo'>[스토어>"+product_category+"]<br>";
+			orderdetail1+="상품명:"+item[i].product_name+"<br></td>";
+			if(i>0)
+				{
+			if(item[i].orderlist_no!=item[i-1].orderlist_no)
+				{
+				span=1;
+				orderdetail1+="<td class='cost' id="+"'"+"cost"+item[i].orderlist_no+"'"+">가격:"+item[i].orderlist_cost+"원"+"</td></tr>";
+				//orderdetail1+="<td rowspan='3'>가격:"+item[i].orderlist_cost+"원"+"</td></tr>";
+				
+				}
+			else
+				{
+				span++;
+				}
+			
+				}
+			else
+				{
+				orderdetail1+="<td valign='middle' class='cost' id="+"'"+"cost"+item[i].orderlist_no+"'"+">"+item[i].orderlist_cost+"원"+"</td></tr>";
+				}
 			/* orderdetail3+="가격:"+item[i].orderlist_cost+"원"+"<br>"; */
-				$("#a"+item[i].orderlist_no).append(orderdetail1);
-				$("#b"+item[i].orderlist_no).append(orderdetail2);
-				/* $("#c"+item[i].orderlist_no).append(orderdetail3); */
+				$("#"+item[i].orderlist_no).append(orderdetail1);
+				/* $("#"+item[i].orderlist_no).append(orderdetail2); */
+				$("#cost"+item[i].orderlist_no).attr('rowspan',span);
 				}
 			
 			
@@ -110,15 +129,11 @@ $(document).ready(function(){
 </c:when>
 </c:choose>
 <input type="button" class="order_detail_btn" value="상세보기" onclick="location.href='/todaylessonmypage/myorderlist_orderinfo/${orderlist.orderlist_no}'"><br>
- <div class="detailline"></div>
 <div class="no" >
-<div class="container">
-<div class="row">
-<div class="col order_thumb" id='a${orderlist.orderlist_no}'></div>
-<div class="col myproduct" id='b${orderlist.orderlist_no}'></div>
-<div class="col ordercost" id='c${orderlist.orderlist_no}'>${orderlist.orderlist_cost}원</div>
-</div>
-</div>
+<table class="table order" id='${orderlist.orderlist_no}'>
+
+
+</table>
  <div class="detailline"></div>
 </div>
 </c:forEach>

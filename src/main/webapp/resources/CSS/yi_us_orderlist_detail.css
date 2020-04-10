@@ -26,14 +26,17 @@ h4{
 	font-weight:600;
 	
 }
-.order_thumb{
-	
 
-	
-}
+
+
 .myproduct{
 	font-weight:600;
 }
+.order{
+	margin-top:15px;
+	text-align:center;
+}
+
 .ordercost{
 	
 	font-weight:600;

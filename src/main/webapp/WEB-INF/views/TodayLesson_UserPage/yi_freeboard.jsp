@@ -31,11 +31,11 @@ function orderSelect()
 </script>
 <script src="${pageContext.request.contextPath}/resources/JS/yi_freeboard.js?ver=1"></script>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_freeboard.css?ver=3">
 </head>
 <body>
 <div id="yi_container">
-<h2>자유 게시판 <i class='far fa-comments' style='font-size:36px'></i></h2>
+<h2><b>자유 게시판</b> <i class='far fa-comments' style='font-size:36px'></i></h2>
 <div class="bb">
 <b>자유롭게 대화를 나누세요!<sec:authorize access="isAnonymous()"> 게시물을 보려면<a href="/todaylessonlogin"> 로그인</a>이 필요합니다.</sec:authorize></b>
 </div>
@@ -43,7 +43,7 @@ function orderSelect()
 <table class="table table-hover">
 <thead class=" yi_thead">
 <tr><th><label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">카테고리</label>
-<select name="order" id="orderselect" class="yi_orderselect custom-select mr-sm-2" id="inlineFormCustomSelect"  onchange="orderSelect()">
+<select name="order" id="orderselect" class="yi_orderselect form-control" id="inlineFormCustomSelect"  onchange="orderSelect()">
 <option value="">카테고리 선택</option>
 <option value="">전체</option>
 <option value="1" >자유글</option>
@@ -102,19 +102,15 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 </table>
 <form method="get" class="form-inline my-2 my-lg-3" action="freeboard?currPage=${page.startBlock }">
 
-
-<div class="container">
-<div class="row">
-<div class="col-sm">
-<select name="search" class="custom-select mr-sm-4"  id="inlineFormCustomSelect">
+ <select name="search"  class="form-control" id="inlineFormCustomSelect" style="margin-right: 20px;">
 <option value="all">전체</option>
 <option value="member_nick">닉네임</option>
 <option value="freeboard_title">제목</option>
 <option value="freeboard_content">내용</option>
-</select>
-<input type="text" name="searchtxt" class="form-control mr-sm-2" >
-<input type="submit" value="검색" class="yi_search_btn">
-</div>
+ </select>
+ <input class="form-control mr-sm-2" name="searchtxt" type="search" placeholder="Search" aria-label="Search">
+ <button class="yi_search_btn" type="submit" style="background-color: rgb(224, 62, 82);">검색</button>
+
 
 <div class="col-sm"></div>
 
@@ -126,7 +122,7 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 </div>
 </div>
 
-</div>
+
 </div>
 </form>
 

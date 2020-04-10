@@ -35,12 +35,9 @@ on  orderlist.orderlist_no= order_detail.orderlist_no
 
 <select id="orderinfo" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO" parameterType="int">
 select *
-from member join (orderlist
-join(order_detail join product on order_detail.product_no=product.product_no)
-on  orderlist.orderlist_no= order_detail.orderlist_no)
+from member join orderlist
 on member.member_id= orderlist.member_id
 where orderlist.orderlist_no=#{orderlist_no}
-
 </select>
 
 <select id="orderinfo_detail" resultType="com.todaylesson.DTO.SQLjoin_OrderList_Order_detail_MemberDTO"

@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="yi_container">
-<h3>주문내역 관리</h3>
+<h2><b>주문내역 관리</b></h2>
 
 
 <form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">

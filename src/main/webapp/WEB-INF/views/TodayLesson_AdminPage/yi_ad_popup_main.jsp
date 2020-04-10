@@ -15,11 +15,11 @@
 <!-- CSSstyle -->
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_popup_main.css?ver=1">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_popup_main.css?ver=2">
 </head>
 <body>
 <div id="yi_container">
-<h2>popup 관리</h2>
+<h2><b>popup 관리</b></h2>
 
 <div class="recent-popup"><h3>현재 등록된 팝업</h3></div>
  <img src="${dto1.popup_filepath }" class="popupimg" id="popupimg1" alt="popupimg"/>

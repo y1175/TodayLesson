@@ -149,7 +149,7 @@ else
 <body>
 <div id="yi_container">
 <sec:authentication property="principal" var="pinfo"/>
-<span class="pagetitle">커뮤니티 관리</span>
+<span class="pagetitle"><b>커뮤니티 관리</b></span>
 <input type="button" class="notice_btn" value="공지등록" onclick="location.href='/todaylessonadmin/freeboard_noticewrite'">	
 
 <form method="get" class="form-inline my-2 my-lg-3" action="admin_freeboard?currPage=${page.startBlock }">

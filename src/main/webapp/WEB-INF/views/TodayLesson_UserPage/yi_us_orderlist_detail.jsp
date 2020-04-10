@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TodayLesson</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist_detail.css?ver=2">
+	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist_detail.css?ver=3">
 <script>
 function cancel(orderlist_orderstatus,orderlist_no)
 {
@@ -50,19 +51,42 @@ if(result)
 주문취소
 </c:when>
 </c:choose></span>
-<div class="detailline"></div>
-<c:forEach var="list" items="${list}">
-<div class="container">
+
+<div class="container order">
 <div class="row">
-<div class="col order_thumb"><img src='${list.product_thumb }' alt='thumb'></div>
+<div class="col-md-9">
+<table class="table">
+<c:forEach var="list" items="${list}">
+
+
+
+
+<tr>
+<td>
+<img src='${list.product_thumb }' alt='thumb'>
+</td>
+<td>
+[스토어>카테고리명:${list.product_category }]<br>
+상품명:${list.product_name }
+</td>
+</tr>
+
+<%-- <div class="col order_thumb"><img src='${list.product_thumb }' alt='thumb'></div>
 <div class="col myproduct" >[스토어>카테고리명:${list.product_category }]<br>
 상품명:${list.product_name }</div>
-<div class="col ordercost" >판매가격:${list.product_cost }원</div>
-</div>
-</div>
-
+<div class="col ordercost" >판매가격:${list.product_cost }원</div> --%>
 
 </c:forEach>
+
+
+</table>
+</div>
+<div class="col-md-3 ordercost">
+${dto.orderlist_cost }원
+</div>
+</div>
+</div>
+
 <div class="detailline"></div>
 
 <h4>배송 정보 </h4>
