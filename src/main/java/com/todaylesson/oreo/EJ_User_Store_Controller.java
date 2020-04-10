@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.todaylesson.service.EJ_All_Product_Service;
 import com.todaylesson.upload.UploadFileUtils;
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.EventDTO;
 import com.todaylesson.DTO.MemberDTO;
@@ -54,6 +55,9 @@ public class EJ_User_Store_Controller {
 			,@RequestParam(required=false, defaultValue="recent") String order
 			,Model model) {
 		System.out.println("product_category"+product_category);
+		
+		List<BannerDTO> banner = service.bannerlist();
+		model.addAttribute("banner",banner);
 		
 		if(product_category==0)
 		{

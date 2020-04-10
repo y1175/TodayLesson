@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.MemberDTO;
 import com.todaylesson.DTO.MyLikeDTO;
@@ -93,5 +94,7 @@ public interface EJ_US_ProductMapper {
 	public int totalCount2();
 
 	public List<ProductDTO> admin_productList(HashMap<String, Object> hm);
+
+	public List<BannerDTO> bannerlist();
 
 }
