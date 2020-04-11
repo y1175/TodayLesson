@@ -222,7 +222,7 @@
    <script>
    $(document).ready(function(){
 	     $.ajax({
-   
+ 
 	   		   type : "POST",
 		       url: "/todaylessonadmin/sales_statistics",
 		       success: function(data) {
@@ -268,7 +268,7 @@
 				           "graphLineColor":"#c2c2c2",
 				           "selectedGraphLineColor":"#888888",
 				           "selectedGraphLineAlpha":1
-  				       },
+				       },
 				       "chartCursor": {
 				           "categoryBalloonDateFormat": "YYYY-MM-DD", //카테고리를 데이터 나타내주는 형식
 				           "cursorAlpha": 0,
@@ -305,7 +305,7 @@
 				   }
 		       }
 		   })
-  	   })
+	   })
    </script>
 <!-- 매출통계(일별, 주별, 월별, 년별) -->
 

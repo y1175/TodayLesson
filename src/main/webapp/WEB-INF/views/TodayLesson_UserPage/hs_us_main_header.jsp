@@ -22,7 +22,7 @@
                <!-- 모든사람들이 다 -->
                <sec:authorize access="isAnonymous()">  
                   <a href="${pageContext.request.contextPath}/todaylessonlogin" class="hs_us_mainheader_login">로그인 </a>
-                  <span style="margin-left: 10px;">|</span><a href="/todaylesson/join">회원가입</a>
+                  <span style="margin-left: 10px;">|</span><a href="${pageContext.request.contextPath}/todaylesson/join">회원가입</a>
                   <a href=""><i class='fas fa-search'></i></a>
                </sec:authorize>
                <!-- 로그인한 사람들만  -->
@@ -62,11 +62,11 @@
                <button class="btn draw-border" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=253')" value="시니어 지원하기">시니어지원</button>
             </sec:authorize> 
             <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')">
-               <a href="${pageContext.request.contextPath}/todaylessonsenior" style="text-decoration:none;">
+               <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson" style="text-decoration:none;">
                   <button class="btn draw-border" value="시니어페이지">시니어페이지</button>
                </a>
             </sec:authorize> 
-            <a href="/todaylessonmypage/mycart/${pageContext.request.userPrincipal.name}" id="mycart">
+            <a href="${pageContext.request.contextPath}/todaylessonmypage/mycart/${pageContext.request.userPrincipal.name}" id="mycart">
                <button class="btn draw-border"><i class="fa fa-shopping-cart" style="margin-right: 5px;"></i>장바구니</button>
             </a>
          </div>

@@ -19,7 +19,6 @@
             <form action="/logout" method='post'  id="logout-form">
                <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>  <!-- 이걸  main 페이지에 넣어서 구분을   -->
                <span class="hs_sn_mainheader_namelogout">
-                  <%-- <a href="">${pageContext.request.userPrincipal.name}님</a><span style="margin-left: 10px; color: white;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a> --%>
                   <a href="">${seniorPageInfo.senior_nick}님</a><span style="margin-left: 10px; color: white;">|</span><a href="#"onclick="document.getElementById('logout-form').submit();">로그아웃</a>
                </span>
             </form>

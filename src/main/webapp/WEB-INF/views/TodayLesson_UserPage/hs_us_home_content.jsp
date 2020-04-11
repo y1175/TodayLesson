@@ -557,7 +557,7 @@
   }else{
  
   $.ajax({
-   url :"/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath}/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -608,7 +608,7 @@ $(".fa.fa-shopping-cart").click(function(){
   }else{
  
   $.ajax({
-   url :"/todaylesson/cartjson",
+   url :"${pageContext.request.contextPath}/todaylesson/cartjson",
    type : "post",
    data : data,
    success : function(result){

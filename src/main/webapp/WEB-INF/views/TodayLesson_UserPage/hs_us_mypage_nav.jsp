@@ -25,19 +25,17 @@ function member_level_1() {
       <div class="row">
          <div class="col-md-5">
             <div class="hs_us_mypage_imgbox">
-	             <c:choose>
-                     <c:when test="${myPageMyLevel_MyPoint.member_level == 1}">
-	           <img alt="user" src="${pageContext.request.contextPath}/resources/IMG/user.svg" class="hs_us_mypage_img">
-	           </c:when>
-	            <c:when test="${myPageMyLevel_MyPoint.member_level == 2}">
-	           <img alt="user" src="${pageContext.request.contextPath}/resources/IMG/senior.svg" class="hs_us_mypage_img">
-	           </c:when>
+	           <c:choose>
+                  <c:when test="${myPageMyLevel_MyPoint.member_level == 1}">
+	                 <img alt="user" src="${pageContext.request.contextPath}/resources/IMG/user.svg" class="hs_us_mypage_img">
+	              </c:when>
+	              <c:when test="${myPageMyLevel_MyPoint.member_level == 2}">
+	                 <img alt="user" src="${pageContext.request.contextPath}/resources/IMG/senior.svg" class="hs_us_mypage_img">
+	              </c:when>
 	           </c:choose>
 			</div>
 			<div class="hs_us_mypage_nickbox">
-			   <%-- <b class="hs_us_mypage_nick">${pageContext.request.userPrincipal.name}님</b> --%>
 			   <b class="hs_us_mypage_nick">${myPageMyLevel_MyPoint.member_nick}님</b>
-			  <!--  <input type="file" id="member_img" name="file"> -->
             </div>
          </div>
          <div class="col-md-7" style="text-align: center;">   
@@ -97,7 +95,7 @@ function member_level_1() {
                   <a href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question">1:1 문의</a>
                </li>
                <li style="float: right; width: 200px; background-color: rgb(224, 62, 82);  text-align: center; ">
-                  <a href="/todaylessonmypage/mylike/${pageContext.request.userPrincipal.name}" style="color: white;">
+                  <a href="${pageContext.request.contextPath}/todaylessonmypage/mylike/${pageContext.request.userPrincipal.name}" style="color: white;">
                      <i class='fas fa-heart'></i> 좋아요
                   </a>
                </li>

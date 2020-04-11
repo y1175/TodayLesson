@@ -86,6 +86,11 @@ $('document').ready(function(){
             ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)     
 	        ,nextText: '다음 달'
 	        ,prevText: '이전 달'
+	        , onClose: function( selectedDate ) {
+	        // 종료일(toDate) datepicker가 닫힐때
+	        // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+	        $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+	        }
 	    });	
 	
 	    
