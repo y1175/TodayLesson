@@ -46,7 +46,7 @@ public class JY_US_TotalLessonController {
 	@Resource(name = "totallesson_service")
 	private JY_US_TotalLessonService ttlesson_service;
 
-	@RequestMapping("total_lesson_list")
+	@RequestMapping("/total_lesson_list")
 	public String ttlesson_list(Model model, @RequestParam(required = false, defaultValue = "") String search,
 			@RequestParam(required = false, defaultValue = "") String searchtxt,
 			@RequestParam(required = false, defaultValue = "1") int currPage,
@@ -75,7 +75,7 @@ public class JY_US_TotalLessonController {
 		return "TodayLesson_UserPage/jy_us_total_lesson_list.us_main_section";
 	}
 
-	@RequestMapping("lesson_detail/{lesson_no}")
+	@RequestMapping("/lesson_detail/{lesson_no}")
 	public String ttlesson_detail(Model model, @PathVariable("lesson_no") int lesson_no) {
 
 		AllLessonDTO dto = ttlesson_service.ttlesson_select(lesson_no);
@@ -91,7 +91,7 @@ public class JY_US_TotalLessonController {
 		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
 
-	@RequestMapping("lesson_buy/{lesson_no}")
+	@RequestMapping("/lesson_buy/{lesson_no}")
 	public String lesson_buy(Model model, @PathVariable int lesson_no, Authentication authentication) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
@@ -106,7 +106,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping("lesson_like")
+	@RequestMapping("/lesson_like")
 	public String lesson_like(@RequestParam(value = "lesson_no") int lesson_no,
 			@RequestParam(value = "member_id") String member_id) {
 
@@ -127,7 +127,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping("lesson_cart")
+	@RequestMapping("/lesson_cart")
 	public String lesson_cart(@RequestParam(value = "lesson_no") int lesson_no,
 			@RequestParam(value = "member_id") String member_id) {
 
@@ -158,7 +158,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping("lesson_detail/{lesson_no}/lesson_reply_insert")
+	@RequestMapping("/lesson_detail/{lesson_no}/lesson_reply_insert")
 	public String lesson_reply_insert(@PathVariable int lesson_no, @RequestParam String member_id,
 			@RequestParam String lesson_qa_reply_secret, @RequestParam String lesson_qa_reply_content,
 			@RequestParam String lesson_qa_reply_title) {
@@ -181,7 +181,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "lesson_detail/{lesson_no}/lesson_reply_list", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/lesson_detail/{lesson_no}/lesson_reply_list", produces = "application/json; charset=utf8")
 	public ResponseEntity lesson_reply_list(@PathVariable int lesson_no, @RequestParam String member_id,
 			@RequestParam String senior_id) {
 
@@ -286,7 +286,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping("lesson_detail/{lesson_no}/lesson_answer_insert")
+	@RequestMapping("/lesson_detail/{lesson_no}/lesson_answer_insert")
 	public String lesson_answer_insert(@PathVariable int lesson_no, @RequestParam int lesson_qa_no,
 			@RequestParam String senior_id, @RequestParam String lesson_qa_answer_content,
 			@RequestParam String lesson_qa_reply_secret) {
@@ -387,7 +387,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "lesson_detail/{lesson_no}/lesson_lreview_list", produces = "application/json; charset=utf8")
+	@RequestMapping(value = "/lesson_detail/{lesson_no}/lesson_lreview_list", produces = "application/json; charset=utf8")
 	public ResponseEntity lesson_lreview_list(@PathVariable int lesson_no) {
 
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -414,7 +414,7 @@ public class JY_US_TotalLessonController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "lesson_detail/{lesson_no}/lesson_review_insert")
+	@RequestMapping(value = "/lesson_detail/{lesson_no}/lesson_review_insert")
 	public String lesson_review_insert(@PathVariable int lesson_no, Authentication authentication,
 			@RequestParam String lreview_title, @RequestParam String lreview_content) {
 

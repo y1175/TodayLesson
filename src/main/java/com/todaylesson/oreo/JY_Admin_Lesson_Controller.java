@@ -94,7 +94,7 @@ public class JY_Admin_Lesson_Controller {
 
 	
 	// 전체 레슨 조회
-	@RequestMapping("alllesson")
+	@RequestMapping("/alllesson")
 	public String all_lesson(Model model,
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
@@ -127,7 +127,7 @@ public class JY_Admin_Lesson_Controller {
 	
 	
 	// 신청 완료에서 심사중으로 넘기는 페이지
-	@RequestMapping("apply_lesson")
+	@RequestMapping("/apply_lesson")
 	public String apply_lesson(Model model) {
 		List<AllLessonDTO> list = adminservice.apply_lesson();
 		model.addAttribute("list", list);
@@ -136,7 +136,7 @@ public class JY_Admin_Lesson_Controller {
 	
 	
     // 레슨을 심사중으로 넘기기
-	@RequestMapping("admin_apply_exam")
+	@RequestMapping("/admin_apply_exam")
 	public String apply_exam(HttpServletRequest request, Model model) {
 	
 		String[] checkvalue = request.getParameterValues("check");
@@ -161,7 +161,7 @@ public class JY_Admin_Lesson_Controller {
 	
 	
 	// 심사 필요한 레슨들 조회
-	@RequestMapping("wait_lesson")
+	@RequestMapping("/wait_lesson")
 	public String wait_lesson(Model model, @RequestParam(required=false, defaultValue="lesson_no") String order) {
 		List<AllLessonDTO> list = adminservice.wait_lesson(order);
 		model.addAttribute("list",list);
@@ -174,7 +174,7 @@ public class JY_Admin_Lesson_Controller {
 
 
 	//승인 해줘야하는 레슨 디테일
-	@RequestMapping("admin_wait_lesson_detail/{lesson_no}")
+	@RequestMapping("/admin_wait_lesson_detail/{lesson_no}")
 	public String wait_lesson_detail(Model model, @PathVariable int lesson_no,HttpServletRequest request,HttpServletResponse response) throws Exception {	
 		// 선택한 레슨에 대한 정보
 		AllLessonDTO dto = adminservice.select_lesson(lesson_no);
@@ -200,7 +200,7 @@ public class JY_Admin_Lesson_Controller {
 	
 	
 	//레슨 디테일
-	@RequestMapping("admin_lesson_detail/{lesson_no}")
+	@RequestMapping("/admin_lesson_detail/{lesson_no}")
 	public String detail_lesson(Model model, @PathVariable int lesson_no) {	
 		// 선택한 레슨에 대한 정보
 		AllLessonDTO dto = adminservice.select_lesson(lesson_no);
@@ -215,14 +215,14 @@ public class JY_Admin_Lesson_Controller {
 	}
 	
     // 레슨 심사 팝업
-	@RequestMapping("lesson_result_update/{lesson_no}")
+	@RequestMapping("/lesson_result_update/{lesson_no}")
 	public String lesson_result_update(@PathVariable int lesson_no,Model model) {
 		model.addAttribute("lesson_no",lesson_no);
 		return "TodayLesson_AdminPage/jy_ad_lesson_result_update";
 	}
 	
 	// 레슨 수락
-	@RequestMapping("lesson_approve/{lesson_no}")
+	@RequestMapping("/lesson_approve/{lesson_no}")
 	public String lesson_approve(@PathVariable int lesson_no, Model model, HttpServletRequest request) {
 
 		AllLessonDTO dto = adminservice.select_lesson(lesson_no);
@@ -242,7 +242,7 @@ public class JY_Admin_Lesson_Controller {
 	
 	
     // 레슨 거절
-	@RequestMapping("lesson_reject/{lesson_no}")
+	@RequestMapping("/lesson_reject/{lesson_no}")
 	public String lesson_reject(@PathVariable int lesson_no, Model model, HttpServletRequest request) {
 		
 		AllLessonDTO dto = adminservice.select_lesson(lesson_no);

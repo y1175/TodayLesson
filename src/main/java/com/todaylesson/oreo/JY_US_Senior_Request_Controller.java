@@ -88,7 +88,7 @@ public class JY_US_Senior_Request_Controller {
 
 
 		return "TodayLesson_UserPage/jy_us_senior_form";
-
+ 
 	}
 	
 	// 시니어 지원 버튼 팝업에서 예 누르면 나오는 폼

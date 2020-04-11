@@ -81,7 +81,7 @@ public class JY_Admin_Senior_Controller {
 
 	
 	// 전체시니어 목록
-	@RequestMapping("all_senior")
+	@RequestMapping("/all_senior")
 	public String all_senior(Model model,			
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
@@ -110,7 +110,7 @@ public class JY_Admin_Senior_Controller {
 	}
 	
 	// 시니어 상세페이지
-	@RequestMapping("select_senior/{senior_no}")
+	@RequestMapping("/select_senior/{senior_no}")
 	public String select_senior(@PathVariable int senior_no,Model model, HttpServletRequest request,HttpServletResponse response) throws Exception {
 		
 		String imp_key 		=	"5422837446408379";

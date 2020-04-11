@@ -146,4 +146,17 @@ where senior_no = #{senior_no}
 
 </select>
 
+<select id="select_senior_nick" parameterType="int" resultType="java.lang.String">
+
+select ifnull(
+(select senior_nick from senior
+where senior_no = #{senior_no}),"null") as senior_nick;
+
+
+
+</select>
+
+
+
+
 </mapper>

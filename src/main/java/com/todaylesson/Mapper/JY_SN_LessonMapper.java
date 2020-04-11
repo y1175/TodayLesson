@@ -38,4 +38,7 @@ public interface JY_SN_LessonMapper {
 
 	public int totalCount(HashMap<String, Object> hm);
 
+
+	public String select_senior_nick(int senior_no);
+
 }

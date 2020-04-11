@@ -54,6 +54,13 @@ public class JY_SN_LessonServiceImple implements JY_SN_LessonService {
 		return mapper.select_senior_info(senior_no);
 	}
 
+	
+	@Override
+	public String select_senior_nick(int senior_no) {
+		return mapper.select_senior_nick(senior_no);
+	}
+	
+	
 	@Override
 	public List<LessonDTO> list(int senior_no, String search, String searchtxt, int order, int i, int j) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();

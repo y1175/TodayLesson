@@ -36,7 +36,7 @@ public class JY_SN_Approve_Lesson_Controller {
 	
 	  
 	
-	@RequestMapping("my_approve_lesson")
+	@RequestMapping("/my_approve_lesson")
 	public String approve_list(Model model,  Authentication authentication
 			,@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
@@ -71,7 +71,7 @@ public class JY_SN_Approve_Lesson_Controller {
 	}
 	
 	
-	@RequestMapping("approve_lesson_detail/{lesson_no}")
+	@RequestMapping("/approve_lesson_detail/{lesson_no}")
 	public String approve_lesson_detail(@PathVariable int lesson_no, Model model) {
 		
 		LessonDTO dto = approve_service.apl_detail(lesson_no);
@@ -99,7 +99,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_approve_lesson_upload.sn_main_section";
 	}
 	
-	@RequestMapping("mal_lesson_upload_result")
+	@RequestMapping("/mal_lesson_upload_result")
 	public String approve_lesson_upload(LessonDetailDTO dto, Model model, MultipartFile file, HttpServletRequest request, @RequestParam String rt) throws Exception{	
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
@@ -141,7 +141,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		
 	}
 	
-	@RequestMapping("select_lessondetail_chapter/{lessondetail_no}")
+	@RequestMapping("/select_lessondetail_chapter/{lessondetail_no}")
 	public String select_apld_chapter(@PathVariable int lessondetail_no, Model model) {
 		
 		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
@@ -155,7 +155,7 @@ public class JY_SN_Approve_Lesson_Controller {
 	}
 	
 	
-	@RequestMapping("update_lessondetail_chapter/{lessondetail_no}")
+	@RequestMapping("/update_lessondetail_chapter/{lessondetail_no}")
 	public String update_apld_chapter(@PathVariable int lessondetail_no, Model model) {
 		
 		LessonDetailDTO dto = approve_service.apld_select(lessondetail_no);
@@ -167,7 +167,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		return "TodayLesson_SeniorPage/jy_sn_apld_update.sn_main_section";
 	}
 	
-	@RequestMapping("mal_lesson_update_result")
+	@RequestMapping("/mal_lesson_update_result")
 	public String update_apld_chapter_result(LessonDetailDTO dto, Model model) {
 		
 		int result = approve_service.apld_update(dto);

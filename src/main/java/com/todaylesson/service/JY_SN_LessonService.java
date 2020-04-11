@@ -22,6 +22,8 @@ public interface JY_SN_LessonService {
 	public List<LessonDTO> reject_lesson_list(int senior_no);
 
 	public SeniorDTO select_senior_info(int senior_no);
+	
+	public String select_senior_nick(int senior_no);
 
 	public int insert_Lesson(LessonDTO dto);
 

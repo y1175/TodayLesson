@@ -38,7 +38,7 @@ public class JY_US_MyLesson_Controller {
 	
 	
 
-	@RequestMapping("my_lesson_list")
+	@RequestMapping("/my_lesson_list")
 	public String my_lesson_list(Model model, Authentication authentication) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
@@ -73,7 +73,7 @@ public class JY_US_MyLesson_Controller {
 		return "TodayLesson_UserPage/jy_us_my_lesson_list.us_my_section";
 	}
 
-	@RequestMapping("mylesson_detail/{lesson_no}")
+	@RequestMapping("/mylesson_detail/{lesson_no}")
 	public String my_lesson_detail(@PathVariable int lesson_no, Model model, Authentication authentication) {
 
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -94,7 +94,7 @@ public class JY_US_MyLesson_Controller {
 	}
 	
 
-	@RequestMapping("select_lessondetail_this_chapter/{lessondetail_no}")
+	@RequestMapping("/select_lessondetail_this_chapter/{lessondetail_no}")
 	public String my_lesson_detail_this_chapter(@PathVariable int lessondetail_no, Model model, Authentication authentication) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
@@ -137,7 +137,7 @@ public class JY_US_MyLesson_Controller {
 
 	}
 
-	@RequestMapping("update_lesson_comp")
+	@RequestMapping("/update_lesson_comp")
 	public String update_lesson_comp(@RequestParam int lessondetail_no, @RequestParam int time_change,
 			Authentication authentication, Model model, @RequestParam int lesson_no) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -174,7 +174,7 @@ public class JY_US_MyLesson_Controller {
 	
 	
 	@ResponseBody
-	@RequestMapping("reward_point")
+	@RequestMapping("/reward_point")
 	public String reward_point_to_member(Authentication authentication, @RequestParam int lesson_no) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();

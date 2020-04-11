@@ -84,12 +84,21 @@ public class JY_SN_Lesson_Controller {
 		String member_id = userDetails.getUsername();
 		int senior_no = lesson_service.select_senior_no(member_id);
 		List<LessonDTO> list = lesson_service.reject_lesson_list(senior_no);
+		SeniorDTO dto = lesson_service.select_senior_info(senior_no);
+		String result;
 		
+		String nick = lesson_service.select_senior_nick(senior_no);
+		
+		if (nick.equals("null")) {
+			return "TodayLesson_SeniorPage/jy_sn_senior_info_null.sn_main_section";
+
+		} else {
 		if (list.size() > 5) {
 			return "TodayLesson_SeniorPage/jy_sn_you_cant_write_lesson";
 		} else {
 			model.addAttribute("senior_no",senior_no);
 			return "TodayLesson_SeniorPage/jy_sn_lesson_write.sn_main_section";
+		}
 		}
 	}
 	
