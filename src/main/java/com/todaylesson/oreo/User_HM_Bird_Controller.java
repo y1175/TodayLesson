@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.CartDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.DTO.MyLikeDTO;
@@ -29,10 +30,14 @@ public class User_HM_Bird_Controller {
 	@RequestMapping("/hm_us_bird")
 	public String hm_us_bird(Model model)
 	{
+		BannerDTO main = service.mainbanner();
+		BannerDTO mini = service.minibanner();
 		List<LessonDTO> list = service.bestlesson();
 		List<LessonDTO> newbird = service.newbirdlesson();
 		List<LessonDTO> endbird = service.endbirdlesson();
 		
+		model.addAttribute("main",main);
+		model.addAttribute("mini",mini);
 		model.addAttribute("list",list);
 		model.addAttribute("newbird",newbird);
 		model.addAttribute("endbird",endbird);

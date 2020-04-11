@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.todaylesson.DTO.BannerDTO;
 import com.todaylesson.DTO.LessonDTO;
 import com.todaylesson.Mapper.User_HM_Bird_Mapper;
 
@@ -31,6 +32,18 @@ public class User_HM_Bird_ServiceImple implements User_HM_Bird_Service {
 	public List<LessonDTO> endbirdlesson() {
 		// TODO Auto-generated method stub
 		return mapper.endbirdlesson();
+	}
+
+	@Override
+	public BannerDTO mainbanner() {
+		// TODO Auto-generated method stub
+		return mapper.mainbanner();
+	}
+
+	@Override
+	public BannerDTO minibanner() {
+		// TODO Auto-generated method stub
+		return mapper.minibanner();
 	}
 
 	

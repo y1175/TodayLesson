@@ -4,6 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.todaylesson.Mapper.User_HM_Bird_Mapper">
 
+<!-- 메인 이미지 -->
+<select id="mainbanner" resultType="com.todaylesson.DTO.BannerDTO">
+select banner_filepath
+from banner
+where banner_group = '5'
+</select>
+
+<!-- 미니 배너 -->
+<select id="minibanner" resultType="com.todaylesson.DTO.BannerDTO">
+select banner_filepath
+from banner
+where banner_group ='6'
+</select>
+
+
 <!-- 베스트 얼리버드 레슨 -->
 <select id="bestlesson" resultType="com.todaylesson.DTO.LessonDTO">
 select lesson_no,lesson_title,lesson_thumb,lesson_category,senior_nick,lesson_type,lesson_like

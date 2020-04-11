@@ -40,6 +40,8 @@
 		             <option value="2">Main Img Banner</option>
 		             <option value="3">Event Main Banner Slider</option>
 		              <option value="4">Store Main Banner Slider</option>
+		              <option value="5">Ealry Bird Main</option>
+		              <option value="6">Ealry Bird Mini Banner</option>
 		          </select>
 		       </div>      
 		    </div>

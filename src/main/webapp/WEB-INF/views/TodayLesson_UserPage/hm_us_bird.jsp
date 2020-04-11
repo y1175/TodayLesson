@@ -18,14 +18,16 @@
 </head>
 <body>
 
-	<img src="/resources/IMG/earlybird.png" alt="얼리버드 메인 이미지"
+	<img src="${main.banner_filepath}" alt="얼리버드 메인 이미지"
 		class="birdmainimg">
+	
 
 
 	<div class="earlybirdtotal">
-		<img src="/resources/IMG/earlybirdmini.png" alt="얼리버드 미니 배너"
+		<img src="${mini.banner_filepath}" alt="얼리버드 미니 배너"
 			class="birdminiimg">
 	</div>
+	
 
 
 

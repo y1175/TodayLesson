@@ -63,6 +63,12 @@
                      <c:when test="${adminBannerList.banner_group eq '4'}">
                         <c:out value="Store Main Banner Slider"/>
                      </c:when>
+                      <c:when test="${adminBannerList.banner_group eq '5'}">
+                        <c:out value="Ealry Bird Main"/>
+                     </c:when>
+                      <c:when test="${adminBannerList.banner_group eq '6'}">
+                        <c:out value="Ealry Bird Mini Banner"/>
+                     </c:when>
                   </c:choose>  
                   
                </p> 
