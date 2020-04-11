@@ -79,7 +79,7 @@ if ( ${list_size} == 0 ) {
 
 
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/todaylessonsenior/approve_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="${pageContext.request.contextPath }/todaylessonsenior/approve_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
 
 <c:choose>

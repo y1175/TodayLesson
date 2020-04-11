@@ -16,7 +16,7 @@
 <!--summernote css/js/ko-kr-->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-   <script src="/resources/JS/summernote-ko-KR.js"></script>
+   <script src="${pageContext.request.contextPath }/resources/JS/summernote-ko-KR.js"></script>
 <!--summernote css/js/ko-kr-->
 <!--owl carousel css, js-->
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/owl.carousel.css">
@@ -321,7 +321,7 @@ $(".insert_my_like").click(function(){
   } else {
  
   $.ajax({
-   url :"/todaylesson/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath }/todaylesson/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -358,7 +358,7 @@ $(".insert_my_cart").click(function(){
  }else{
 
  $.ajax({
-  url :"/todaylesson/lesson_cart",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+  url :"${pageContext.request.contextPath }/todaylesson/lesson_cart",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
   //request mapping value랑 맞추면되는듯
   type : "post",
   data : data,
@@ -655,7 +655,7 @@ function fn_comment(lesson_no){
 	 
     $.ajax({
         type:'POST',
-        url : "<c:url value='/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_insert'/>",
+        url : "<c:url value='${pageContext.request.contextPath }/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_insert'/>",
         data:$("#commentForm").serialize(),
         success : function(data){
             if(data=="success")
@@ -701,7 +701,7 @@ function getCommentList(){
 	//console.log(senior_id);
     $.ajax({
         type:'get',
-        url : "<c:url value='/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
+        url : "<c:url value='${pageContext.request.contextPath }/todaylesson/lesson_detail/${dto.lesson_no}/lesson_reply_list'/>",
         dataType : "json",
         data:$("#commentForm").serialize(),
         contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
@@ -850,7 +850,7 @@ function fn_answer(lesson_qa_no){
 	
  $.ajax({
      type:'post',
-     url : '/todaylesson/lesson_detail/${dto.lesson_no}/lesson_answer_insert',
+     url : '${pageContext.request.contextPath }/todaylesson/lesson_detail/${dto.lesson_no}/lesson_answer_insert',
      data : data,
      success : function(result){
          if(result=="success")
@@ -900,7 +900,7 @@ function fn_review(lesson_no){
 	 
     $.ajax({
         type:'POST',
-        url : '/todaylesson/lesson_detail/${dto.lesson_no}/lesson_review_insert',
+        url : '${pageContext.request.contextPath }/todaylesson/lesson_detail/${dto.lesson_no}/lesson_review_insert',
         data:$("#reviewForm").serialize(),
         success : function(data){
             if(data=="success")
@@ -929,7 +929,7 @@ function getLreviewList(){
 	
     $.ajax({
         type:'get',
-        url : '/todaylesson/lesson_detail/${dto.lesson_no}/lesson_lreview_list',
+        url : '${pageContext.request.contextPath }/todaylesson/lesson_detail/${dto.lesson_no}/lesson_lreview_list',
         dataType : 'json',
         data:$("#reviewForm").serialize(),
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 

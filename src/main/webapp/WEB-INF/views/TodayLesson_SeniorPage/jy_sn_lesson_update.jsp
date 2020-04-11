@@ -22,7 +22,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
 <!-- include summernote-ko-KR -->
-<script src="/resources/JS/summernote-ko-KR.js"></script>
+<script src="${pageContext.request.contextPath }/resources/JS/summernote-ko-KR.js"></script>
 
 <script>
 	$(document).ready(function() {

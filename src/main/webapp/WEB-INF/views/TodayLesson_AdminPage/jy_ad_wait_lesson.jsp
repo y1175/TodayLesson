@@ -52,7 +52,7 @@
 <c:forEach var="item" items="${list}">
 <tr>
 <td><c:out value="${item.lesson_no}"/></td>
-<td><a href="/todaylessonadmin/admin_wait_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
+<td><a href="${pageContext.request.contextPath }/todaylessonadmin/admin_wait_lesson_detail/${item.lesson_no}"><c:out value="${item.lesson_title}"/></a></td>
 
 
 <c:choose>
