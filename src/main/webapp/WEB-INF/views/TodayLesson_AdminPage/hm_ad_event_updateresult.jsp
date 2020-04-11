@@ -12,11 +12,13 @@ var result = ${result}
 if(result>0)
 {
 alert('이벤트 수정이 완료되었습니다..');
-location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage";
+window.location=document.referrer;
+/* location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage"; */
 }
 else{
 	alert('이벤트 수정을 실패하였습니다.');
-location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage";
+	window.location=document.referrer;
+/* location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage"; */
 }
 </script>
 </body>
