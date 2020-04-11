@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- CSSstyle --> 
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=6">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_sales_list.css?ver=7">
    <style type="text/css">
       .hs_sn_main_asidenav_nav_salestitle>a{
          color: rgb(224, 62, 82);
@@ -311,11 +311,16 @@
          </table>
       </div>
    </div>
-   
-<div class="">
+
+
+<div class="paging">
+<div class="paginginside">
+<ul class="pagination pagination-danger">
 <!-- 이전페이지블럭 -->
 <c:if test="${Totalpage.prev }">
-<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.startBlock-1}&search=${search}&searchtxt=${searchtxt }"><c:out value="이전"/></a>
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.startBlock-1}&search=${search}&searchtxt=${searchtxt }">PREV
+</a></li>
 </c:if>
 
 <!-- 현재 페이지블럭 -->
@@ -323,20 +328,30 @@
 
 <!-- if 인덱스가 현재페이지가 아니면 a태그 -->
 <c:if test="${index!= Totalpage.currPage }">
-<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${index }&search=${search}&searchtxt=${searchtxt}">${index }</a>
+</li>
 </c:if>
 
 <!--  if 인덱스가 현재페이지면 현재페이지 출력 -->
 <c:if test="${index==Totalpage.currPage }">
-${index }
+<li class="active page-item"><a href="javascript:void(0);" class="page-link">${index }</a></li>
 </c:if>
 </c:forEach>
 
 <!-- 다음페이지블럭 -->
 <c:if test="${Totalpage.next }">
-<a href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.endBlock+1 }&search=${search}&searchtxt=${searchtxt}"><c:out value="다음"/></a>
+<li class="page-item">
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonsenior/senior_sales_list/${senior_no}?currPage=${Totalpage.endBlock+1 }&search=${search}&searchtxt=${searchtxt}">NEXT
+</a></li>
 </c:if>
+</ul>
+
+
 </div>
+</div>
+
+   
    
    
 </body>
