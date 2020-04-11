@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-에러화면임. 권한이 없습니다.
+
+<script type="text/javascript">
+   alert("접근 권한이 없습니다.");
+   location.href="${pageContext.request.contextPath}/todaylesson";
+</script>
+
+
 </body>
 </html>

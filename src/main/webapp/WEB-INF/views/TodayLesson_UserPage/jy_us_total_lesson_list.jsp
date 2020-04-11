@@ -249,14 +249,14 @@ width:500px; height:auto;
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="total_lesson_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&lesson=${order}">PREV
+<a class="page-link" href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&lesson=${order}">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="total_lesson_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">${index }
+<a class="page-link" href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?currPage=${index }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">${index }
 </a></li>
 </c:if>
 
@@ -269,7 +269,7 @@ width:500px; height:auto;
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">NEXT
+<a class="page-link" href="${pageContext.request.contextPath }/todaylesson/total_lesson_list?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&lesson=${order}">NEXT
 </a></li>
 </c:if>
 </ul>
@@ -296,7 +296,7 @@ width:500px; height:auto;
   }else{
  
   $.ajax({
-   url :"/todaylesson/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath }/todaylesson/lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -310,7 +310,7 @@ width:500px; height:auto;
     	if(result=="success")
     		{
     		alert('♥');
-    	    location.href = "/todaylesson/total_lesson_list";
+    	    location.href = "${pageContext.request.contextPath }/todaylesson/total_lesson_list";
   		}
     	else{
     		alert('이미 좋아요에 추가된 상품입니다.');
@@ -345,7 +345,7 @@ $(".fa.fa-shopping-cart").click(function(){
   }else{
  
   $.ajax({
-   url :"/todaylesson/lesson_cart",
+   url :"${pageContext.request.contextPath }/todaylesson/lesson_cart",
    type : "post",
    data : data,
    success : function(result){
@@ -358,7 +358,7 @@ $(".fa.fa-shopping-cart").click(function(){
     	if(result=="success")
     		{
     		alert('장바구니에 추가되었습니다.');
-    	    location.href = "/todaylesson/total_lesson_list";
+    	    location.href = "${pageContext.request.contextPath }/todaylesson/total_lesson_list";
     		}
     	else if(result=="soldout")
 		{
