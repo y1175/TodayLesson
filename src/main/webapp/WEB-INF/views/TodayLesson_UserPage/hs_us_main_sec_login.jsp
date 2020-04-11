@@ -74,18 +74,17 @@
                <!-- 네이버-->
                <!-- 구글 -->
                <form method="post" action="/todaylesson">
-               <input type="hidden" name="username" value="${googleId }">
-               <input type="hidden" name="password" value="${googlePwd }">
-                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                 <c:if test="${googleId==null }">
-               <a href="${google_url}">
-                 <img alt="구글" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png" style="width: 222px; margin-top: 10px;">
-               </a> 
-                                 </c:if>
-                                 <c:if test="${googleId!=null }">
- 				<input type="image" name="submit" class="google-submit-btn" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png">                     
-                                 </c:if>
-
+                  <input type="hidden" name="username" value="${googleId }">
+                  <input type="hidden" name="password" value="${googlePwd }">
+                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                     <c:if test="${googleId==null }">
+                        <a href="${google_url}">
+                           <img alt="구글" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png" style="width: 222px; margin-top: 10px;">
+                        </a> 
+                     </c:if>
+                     <c:if test="${googleId!=null }">
+ 				        <input type="image" name="submit" class="google-submit-btn"  style="width: 222px; margin-top: 10px;" src="${pageContext.request.contextPath}resources/IMG/btn_google_signin_light_normal_web.png">                     
+                     </c:if>
                </form>
                <!-- 구글 -->
             </div>
