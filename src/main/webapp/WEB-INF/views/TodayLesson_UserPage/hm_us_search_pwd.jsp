@@ -19,7 +19,7 @@ if (result>0)
 else
 	{
 	alert('메일 전송 실패');
-	location.href="${pageContext.request.contextPath}/hm_find_pwd";
+	location.href="${pageContext.request.contextPath}/findPw";
 	}
 </script>
 </body>

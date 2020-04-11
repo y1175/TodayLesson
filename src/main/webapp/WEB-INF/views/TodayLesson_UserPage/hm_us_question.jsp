@@ -134,13 +134,13 @@ pageEncoding="UTF-8"%>
 		<ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${page.startBlock-1}">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question?currPage=${page.startBlock-1}">PREV
 </a></li>
 </c:if>
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${index }">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question?currPage=${index }">${index }
 </a></li>
 </c:if>
 <c:if test="${index==page.currPage }">
@@ -150,7 +150,7 @@ pageEncoding="UTF-8"%>
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${page.endBlock+1 }">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question?currPage=${page.endBlock+1 }">NEXT
 </a></li>
 </c:if>
 </ul>

@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script> 
    <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
-   <script src="${pageContext.request.contextPath}/resources/JS/yi_member_statistics.js?ver=2" type="text/javascript"></script>
+   <script src="${pageContext.request.contextPath}/resources/JS/yi_member_statistics.js?ver=4" type="text/javascript"></script>
 <!-- CSSstyle --> 
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/yi_ad_member_statistics.css?ver=1">
@@ -35,7 +35,7 @@
        width		: 100%;
        height		: 465px;
 	   font-size	: 16px;
-	   font-weight : bold;
+	   font-weight  : bold;
     }
    </style>
 

@@ -33,7 +33,7 @@ $(document).ready(function(){
 function bad_check(){
    
 
-   var YokList = new Array('개새끼','개색기','바보','김진영바보','멍청이','script','iframe');
+   var YokList = new Array('개새끼','개색기','바보','김진영바보','이은지바보','국쌤바보','멍청이','script','iframe');
    var Tmp;
    var Tmp2;
    var Yok=0;
