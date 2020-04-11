@@ -38,12 +38,12 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		todaylessonService.loginCount(id);
 		if(roleNames.contains("ROLE_ADMIN")) {
 			//ADMIN권한이 있을시 로그인 후 이동경로
-			response.sendRedirect("/TodayLesson/todaylesson");
+			response.sendRedirect("/todaylesson");
 			return;
 		}
 		
 		//나머지 권한의 로그인후 이동경로
-		response.sendRedirect("/TodayLesson//todaylesson");
+		response.sendRedirect("/todaylesson");
 	}
 
 }
