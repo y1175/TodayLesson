@@ -36,9 +36,10 @@
 			lang : 'ko-KR'
 		});	
 
+		let lesson_type = ${dto.lesson_type};
+		console.log(lesson_type);
 
-
-		if ('#lesson_type' == 3) {
+		if (lesson_type == 3) {
 			
 		$('.offline_lesson').hide();
 
@@ -57,10 +58,16 @@
 		}
 		});	
 		
+		let earb = ${dto.lesson_earlybird};
+		if (earb == 1) {
+			$('#ear_yes').attr("checked", true);			
+		} else {
+			$('#ear_no').attr("checked", true);			
+
+		}
 		
-		
-		
-		
+
+
 		
 		document.form.lesson_category.value = ${dto.lesson_category};
 		document.form.lesson_type.value = ${dto.lesson_type};
@@ -278,11 +285,11 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_thumb">썸네일</label>
-<input type="file" id="lesson_thumb" name="file" />
+<input type="file" id="lesson_thumb" name="file" value="${dto.lesson_thumb }" />
  </li>
  
  
- <div class="select_img"><img src="" /></div>
+ <div class="select_img"><img src="${dto.lesson_thumb }" /></div>
  
  <script>
   $("#lesson_thumb").change(function(){
@@ -323,9 +330,9 @@ function add_Lesson_Time(lesson_date_and_time){
 <li>
 <label for="lesson_earlybird">얼리버드 할인</label>
 네
-<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="1">
+<input type="radio" id="ear_yes" name="lesson_earlybird" class="lesson_earlybird" value="1">
 아니요
-<input type="radio" name="lesson_earlybird" class="lesson_earlybird" value="0"> 
+<input type="radio" id="ear_no" name="lesson_earlybird" class="lesson_earlybird" value="0"> 
 </li>
 
 
