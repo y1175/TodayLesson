@@ -32,14 +32,17 @@ color:black;} */
 .ej_link:hover{
 text-decoration: none;
 }
+.hs_us_mypage_nav{
+display:none;}
 
 </style>
+
 </head>
 <body>
 
 <div id="ej_container">
-<h2>${memberid }님의 장바구니<br></h2>
-
+<!-- <h2 style="text-align:center;"><b>장바구니 <i class="fas fa-shopping-cart" style="color: rgb(224, 62, 82) ;"></i></b></h2><br><br> -->
+<img src="${pageContext.request.contextPath}/resources/IMG/cartbanner.png" alt="cart" style="width:105%;" >
 <input type="hidden" name="member_id" value="${memberid }" id="member_id"> 
 <table class="table" style="border:none;">
 <thead>

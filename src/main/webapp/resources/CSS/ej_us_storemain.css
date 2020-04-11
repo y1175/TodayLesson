@@ -1,4 +1,7 @@
 @charset "utf-8";
+.hs_user_store_product:hover .hs_user_store_product_social li>a{
+    text-decoration: none;
+   }
 #ej_category_box{
 	padding: 0px 100px;
 	text-align: center;
@@ -294,6 +297,9 @@ body{
         display: none !important;
     }
 }
+.hs_user_store_product:hover .hs_user_store_product_social li>a{
+    text-decoration: none;
+   }
 
 .noselect {
     -webkit-touch-callout: none;
@@ -337,7 +343,7 @@ body{
    margin:0;
    list-style:none;
    position:absolute;
-   bottom:110px;/*난 120햇슴 */
+   bottom:115px;/*난 120햇슴 */
    right:13px;
    z-index:1
    }
