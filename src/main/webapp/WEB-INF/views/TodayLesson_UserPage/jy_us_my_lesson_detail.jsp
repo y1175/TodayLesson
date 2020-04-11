@@ -8,13 +8,16 @@
 <title>Insert title here</title>
    <link rel ="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_my_lesson_list2.css">
 <!-- CSSstyle -->
-   <style type="text/css">
+   <style>
+      
       .hs_us_mypage_mylesson>a{
          color: white;
       }
+      
       .hs_us_mypage_mymanage>a{
 	     color : #757575;
        }
+       
    </style>
 <!-- CSSstyle -->
 </head>
