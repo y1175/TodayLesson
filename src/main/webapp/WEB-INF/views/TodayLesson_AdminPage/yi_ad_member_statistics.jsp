@@ -35,7 +35,7 @@
        width		: 100%;
        height		: 465px;
 	   font-size	: 16px;
-	   font-weight : bold;
+	   font-weight  : bold;
     }
    </style>
 
