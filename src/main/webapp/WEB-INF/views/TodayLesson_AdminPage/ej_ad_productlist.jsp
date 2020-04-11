@@ -115,7 +115,7 @@ text-decoration: none;
                   <c:out value="${item.product_no}"/>
                </td>
                <td>
-                  <a href="${pageContext.request.contextPath}/ej_ad_productdetail/${item.product_no}" class="ej_link">${item.product_name}</a>
+                  <a href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productdetail/${item.product_no}" class="ej_link">${item.product_name}</a>
                </td>
                <td>
                 <c:set var="category" value="${item.product_category }"/>

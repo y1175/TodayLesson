@@ -276,7 +276,7 @@ $("#sameaddr").on('click', function() {
  
   <button id="check_module" type="button" class='ej_btn' >결제하기</button> </div>
   </div>
-  <button id="test">테스트버튼 지워지워</button>
+<!--   <button id="test">테스트버튼 지워지워</button> -->
   <br>
 
 
