@@ -18,7 +18,7 @@ pageEncoding="UTF-8"%>
 <!-- CSSstyle -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question.css?ver=2">                               
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_us_question.js?ver=4"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_us_question.js?ver=5"></script>
 </head>
 <body>
 
@@ -46,12 +46,12 @@ pageEncoding="UTF-8"%>
 	<table class="table" style="text-align:center; width: 80%; margin: 0px auto 100px;">
 		<thead>
 			<tr class="table-warning">
-				<th scope="col" style="text-align:center;">#</th>
-				<th scope="col" style="text-align:center;">문의유형</th>
-				<th scope="col" style="text-align:center;">제목</th>
-				<th scope="col" style="text-align:center;">처리상태</th>
-				<th scope="col" style="text-align:center;">문의일</th>
-				<th scope="col" style="text-align:center;">상세보기</th>
+				<th scope="col" style="background-color:#fff2f2; text-align:center;">#</th>
+				<th scope="col" style="background-color:#fff2f2; text-align:center;">문의유형</th>
+				<th scope="col" style="background-color:#fff2f2; text-align:center;">제목</th>
+				<th scope="col" style="background-color:#fff2f2; text-align:center;">처리상태</th>
+				<th scope="col" style="background-color:#fff2f2; text-align:center;">문의일</th>
+				<th scope="col" style="background-color:#fff2f2; text-align:center;">상세보기</th>
 			</tr>
 		</thead>
 		<tbody>

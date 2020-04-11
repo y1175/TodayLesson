@@ -59,5 +59,8 @@ function bad_check(){
       {
    document.hmquestionform.submit();
    alert('문의가 등록됐습니다.');
+  /* window.location=document.referrer;*/
+   location.reload();
+   /*location.href="/todaylessonmypage/hm_us_question";*/
       }
 };

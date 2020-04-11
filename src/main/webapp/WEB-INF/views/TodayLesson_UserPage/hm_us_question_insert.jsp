@@ -11,7 +11,16 @@ pageEncoding="UTF-8"%>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js?ver=5"></script> 
 </head>
 <body>
-
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_us_mypage_my1_1question>a{
+         color: white;
+      }
+      .hs_us_mypage_mymanage>a{
+	     color : #757575;
+       }
+   </style>
+<!-- CSSstyle -->
 
 <div class="usfaqmain">
 <h2>1:1문의 등록

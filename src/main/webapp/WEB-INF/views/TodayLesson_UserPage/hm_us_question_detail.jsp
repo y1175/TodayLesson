@@ -6,6 +6,18 @@
 <head>
  <meta charset="utf-8">
 <title>오늘의 레슨 1:1문의 상세페이지</title>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_us_mypage_my1_1question>a{
+         color: white;
+      }
+      .hs_us_mypage_mymanage>a{
+	     color : #757575;
+       }
+   </style>
+<!-- CSSstyle -->
+
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question_detail.css?ver=3">  
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_us_question_detail.js?ver=2"></script> 
