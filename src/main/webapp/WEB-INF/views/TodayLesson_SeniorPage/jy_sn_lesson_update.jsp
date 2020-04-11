@@ -254,7 +254,7 @@ function add_Lesson_Time(lesson_date_and_time){
 <div id="jy_container">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>레슨 수정</b></h2>
+ <h2 style="margin-top:40px; text-align: center; font-weight: bold;" >레슨 수정</h2>
  </div>
  
  

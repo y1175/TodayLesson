@@ -46,3 +46,16 @@ color: white;
 	padding : 20px;
 	width:95%;
 }
+
+
+.ej_btn2{
+	border: 1px transparent;
+padding: 5px 15px; 
+/* border-radius : 3px; */
+background-color: #6c757d ;
+height:40px;
+font-weight : 600;
+font-size : 14px;
+color: white;
+
+}

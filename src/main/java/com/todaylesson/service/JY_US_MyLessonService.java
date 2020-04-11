@@ -19,7 +19,8 @@ public interface JY_US_MyLessonService {
 
 	public List<LessonDetailDTO> my_lesson_select(int lesson_no, String member_id);
 
-	public int i_click_this_lesson_chapter(int lessondetail_no, String member_id);
+	public Integer i_click_this_lesson_chapter(int lessondetail_no, String member_id);
+	public Integer i_click_this_lesson_chapter2(int lessondetail_no, String member_id);
 
 	public void click_this_lesson_chapter(int lessondetail_no, String member_id, int lesson_no);
 

@@ -29,6 +29,9 @@ public interface JY_US_MyLessonMapper {
 
 	public int i_click_this_lesson_chapter(HashMap<String, Object> hm);
 
+	public int i_click_this_lesson_chapter2(HashMap<String, Object> hm);
+
+	
 	public void click_this_lesson_chapter(HashMap<String, Object> hm);
 
 	public List<LessonDetailDTO> my_lesson_select2(HashMap<String, Object> hm);

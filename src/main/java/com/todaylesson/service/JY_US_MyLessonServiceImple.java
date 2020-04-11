@@ -71,13 +71,22 @@ public class JY_US_MyLessonServiceImple implements JY_US_MyLessonService{
 
 
 	@Override
-	public int i_click_this_lesson_chapter(int lessondetail_no, String member_id) {
+	public Integer i_click_this_lesson_chapter(int lessondetail_no, String member_id) {
 		HashMap<String, Object> hm = new HashMap<>();
 		hm.put("lessondetail_no", lessondetail_no);
 		hm.put("member_id", member_id);
 		return mapper.i_click_this_lesson_chapter(hm);
 	}
 
+	
+	@Override
+	public Integer i_click_this_lesson_chapter2(int lessondetail_no, String member_id) {
+		HashMap<String, Object> hm = new HashMap<>();
+		hm.put("lessondetail_no", lessondetail_no);
+		hm.put("member_id", member_id);
+		return mapper.i_click_this_lesson_chapter2(hm);
+	}
+	
 
 	@Override
 	public void click_this_lesson_chapter(int lessondetail_no, String member_id, int lesson_no) {

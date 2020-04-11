@@ -126,9 +126,8 @@
 
 					
 <c:if test="${item.lesson_type == 3 }">
+
 <li id="l_pro">
-
-
 수강률 <c:out value="${item.lesson_procent }"/>%
 </li>
 

@@ -101,22 +101,36 @@ public class JY_US_MyLesson_Controller {
 	
 		LessonDetailDTO dto = mlservice.mylesson_detail_this_chapter(lessondetail_no);
 
-		int result = mlservice.i_click_this_lesson_chapter(lessondetail_no, member_id);
+		Integer result = mlservice.i_click_this_lesson_chapter(lessondetail_no, member_id);
 
+		Integer result2 = mlservice.i_click_this_lesson_chapter2(lessondetail_no, member_id);
+
+		
 		int lesson_no = dto.getLesson_no();
+		
+		if (result2 != 0) {
+			AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);
+
+			model.addAttribute("dto", dto);
+			model.addAttribute("ldto", ldto);	
+		} else {
 		
 		if (result == 0) {
 			
 			mlservice.click_this_lesson_chapter(lessondetail_no, member_id, lesson_no);
-						
-		} 
-		
-		
-		AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);
+			AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);
 
-		model.addAttribute("dto", dto);
-		model.addAttribute("ldto", ldto);
+			model.addAttribute("dto", dto);
+			model.addAttribute("ldto", ldto);	
+		
+		} else {
+			
+			AllLessonDTO ldto = ttlesson_service.ttlesson_select(lesson_no);
 
+			model.addAttribute("dto", dto);
+			model.addAttribute("ldto", ldto);	
+		}
+		}
 
 
 		return "TodayLesson_UserPage/jy_us_select_lessondetail_this_chapter.us_my_section";

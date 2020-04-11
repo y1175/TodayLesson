@@ -10,7 +10,13 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css">  
-
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_sn_approveLessonList_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle --> 
 <script>
 
 $(document).ready(function() {
@@ -68,6 +74,15 @@ $(document).ready(function() {
 <div class="summer">
 ${dto.lesson_content}
 </div>
+
+</li>
+
+<li>
+<b>총 강의 수</b>
+
+<span class="jy_text">
+<c:out value="${dto.lesson_number}"/>
+</span><br>
 
 </li>
 
@@ -222,7 +237,7 @@ ${dto.lesson_content}
 
 <table class="table" style="width: 50%; margin: 40px auto 40px;">
 		<thead>
-			<tr class="table-warning " style="background-color: #fff2f2;">
+			<tr style="background-color: #fff2f2;">
 				<th scope="col" >챕터</th>
 				<th scope="col">제목</th>
 				<th scope="col">수정</th>

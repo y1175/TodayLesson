@@ -11,7 +11,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data2.css">  
 
-
+   <style type="text/css">
+      .hs_sn_AllLessonList_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
 <script>
 
 $(document).ready(function() {
@@ -50,7 +54,7 @@ $(document).ready(function() {
 <div id="jy_container">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>레슨 상세보기</b></h2>
+ <h2 style="margin-top:40px; text-align: center; font-weight: bold;" >레슨 상세보기</h2>
  </div><br> 
 
 <ul>

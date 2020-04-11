@@ -8,7 +8,13 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data2.css">  
-
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_sn_approveLessonList_Title>a{
+         color: rgb(224, 62, 82);
+      }
+   </style>
+<!-- CSSstyle --> 
 <script>
 
 $(document).ready(function(){

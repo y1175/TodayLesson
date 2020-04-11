@@ -33,7 +33,7 @@ if ( ${list_size} == 0) {
 <div id="jy_container">
 
  <div stlye="width:100%;">
- <h2 style="margin-top:40px; text-align: center;"><b>온라인 레슨</b></h2>
+ <h2 style="margin-top:40px; text-align: center;"><b>레슨 상세 보기</b></h2>
  </div>
 
    
@@ -42,7 +42,7 @@ if ( ${list_size} == 0) {
       <div id="lesson_div" class= "lesson_div">
    <div class="my_lesson_line"></div>
         <span class="lessonimg">
-<img alt="레슨 썸네일" src="${list.lessondetail_thumb}">
+		<img alt="레슨 썸네일" src="${list.lessondetail_thumb}">
 		</span>
 
                   <ul class="lesson_text">

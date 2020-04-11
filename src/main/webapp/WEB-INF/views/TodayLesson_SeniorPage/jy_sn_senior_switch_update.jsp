@@ -19,7 +19,8 @@
 
 $('document').ready(function(){
 	
-	
+	$('#submit').hide();
+
 	
 	
 	
@@ -73,7 +74,7 @@ function checkBankHolder(){
 	   let bank_num = $('#senior_account_num').val();
 	   let token = $('#token').val();
 	   let account_name = $('#senior_account_name').val();
-	  // let se_name = $('#se_name').val();
+	   let se_name = $('#se_bank').val();
 
 	   
 /*    let bank_code = document.getElementById('senior_bank_name').value;
@@ -109,8 +110,9 @@ function checkBankHolder(){
                   
                   if (account_name == bank_holder) {
                      alert("실명 인증 성공");
-                     $('#se_name').val() = 1;
-                     se_bank();
+                 	$('#submit').show();
+
+					
                   } else {
                      alert("실명 인증 실패");
                   }
@@ -249,6 +251,8 @@ function checkDisable()
 </li>
 
 </ul> --%>
+
+<input type="hidden" id="se_bank" name="se_bank"  >
 
 <table style="width:60%; text-align:center; margin:0 auto; border:none;">
 <tr><td><b>시니어 닉네임</b></td>

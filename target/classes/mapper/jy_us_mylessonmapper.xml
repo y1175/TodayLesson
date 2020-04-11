@@ -16,7 +16,7 @@ where member_id = #{member_id}
 
 <select id="my_lesson_select" resultType="com.todaylesson.DTO.LessonDetailDTO">
 
-select lessondetail_no, lessondetail_title, lessondetail_content, lessondetail_chapter, lessondetail_running_time,
+select lessondetail_no, lessondetail_title, lessondetail_content, lessondetail_chapter, lessondetail_running_time, lessondetail_thumb,
 ifnull((select lessondetail_comp 
 from lessondetail d join lessoncomp c 
 on d.lessondetail_no = c.lessondetail_no 
@@ -64,11 +64,27 @@ and lessondetail_no = #{lessondetail_no}
 select count(lessoncomp_no)
 from lessoncomp
 where member_id = #{member_id}
+and lessondetail_comp = 0
+and lessondetail_no = #{lessondetail_no}
+
+
+
+</select>
+
+
+<select id="i_click_this_lesson_chapter2" parameterMap="hashmap" resultType="integer">
+
+
+select count(lessoncomp_no)
+from lessoncomp
+where member_id = #{member_id}
 and lessondetail_comp = 1
 and lessondetail_no = #{lessondetail_no}
 
 
+
 </select>
+
 
 
 <insert id="click_this_lesson_chapter" >
@@ -87,9 +103,10 @@ ifnull((select lessondetail_comp
 from lessondetail d join lessoncomp c 
 on d.lessondetail_no = c.lessondetail_no 
 where c.lessondetail_no = k.lessondetail_no 
-and c.member_id = #{member_id}),0), 1, null) )  / 
-(select lesson_number from lesson where lesson_no = #{lesson_no}) * 100, 1) as procent 
+and lessondetail_comp = 1
+and c.member_id = #{member_id}),0), 1, null)  ) / (select lesson_number from lesson where lesson_no = #{lesson_no}) * 100, 1) as procent 
 from lessondetail k
+where lesson_no = #{lesson_no} 
 
 </select>
 
