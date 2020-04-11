@@ -28,7 +28,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
  
 		response.setStatus(HttpServletResponse.SC_OK);
         //redirect to login
-		response.sendRedirect("/todaylesson");
+		response.sendRedirect("/TodayLesson/todaylesson");
 		
 	}
 

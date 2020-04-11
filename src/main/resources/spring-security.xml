@@ -28,7 +28,7 @@
       
       <security:access-denied-handler error-page="/error"/>
 
-      <security:form-login login-page="/todaylessonlogin" login-processing-url="/todaylesson" default-target-url="/todaylesson"
+      <security:form-login login-page="/todaylessonlogin" login-processing-url="/TodayLesson/todaylesson" default-target-url="/TodayLesson/todaylesson"
       authentication-success-handler-ref="customLoginSuccess"/> 
       <!-- <security:logout logout-success-url="/todaylesson" logout-url="/logout" invalidate-session="true"  delete-cookies="id" /> -->
       <security:logout success-handler-ref="CustomLogoutSuccessHandler" logout-url="/logout" invalidate-session="true"  delete-cookies="id" />
@@ -37,7 +37,7 @@
       
       <!-- 로그인 중복방지 // 자동로그아웃되어 로그인창가게 했음 나중에 로그아웃됐다고 알림띄우기 -->
       <security:session-management invalid-session-url="/todaylesson"> <!-- invalid-session-url="/todaylessonlogin" 세션이 끊겼을때 이동할 페이지 -->
-         <security:concurrency-control max-sessions="1" expired-url="/todaylessonlogin"/> <!-- expired-url="/todaylessonlogin" 중복로그인이 일어났을경우 이동 할 페이지 -->
+         <security:concurrency-control max-sessions="1" expired-url="/TodayLesson/todaylessonlogin"/> <!-- expired-url="/todaylessonlogin" 중복로그인이 일어났을경우 이동 할 페이지 -->
       </security:session-management>
       
       <security:csrf request-matcher-ref="ifpCsrfRequestMatcher"/>
