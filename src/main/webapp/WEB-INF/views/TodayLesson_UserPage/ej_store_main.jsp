@@ -40,12 +40,12 @@
             <c:choose>
                <c:when test="${status.count == 1}">
                   <div class="carousel-item active">
-                     <img src="${mainBannerSlider.banner_filepath}" class="w-100"  alt="...">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100 h-30"  alt="...">
                   </div>
                </c:when>
                <c:otherwise>
                   <div class="carousel-item">
-                     <img src="${mainBannerSlider.banner_filepath}" class="w-100" alt="...">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100 h-30" alt="...">
                   </div>
                </c:otherwise>
             </c:choose>

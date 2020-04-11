@@ -145,11 +145,11 @@ where member_id=#{member_id}
 	values (#{orderlist_no},#{member_id},#{orderlist_receiver},#{orderlist_phone},#{orderlist_addr},
 	now(),1,#{orderlist_cost},1,1,#{orderlist_usepoint},#{orderlist_zipcode},#{orderlist_msg})
 	</insert>
-	<!--  -->
-
+	
+	<!--주문시 오더디테일에넣기 -->
 	<insert id="insertorderdetail" parameterType="com.todaylesson.DTO.OrderDetailDTO">
-	insert into order_detail (orderlist_no,product_no,order_count)
-	 values(#{orderlist_no},#{product_no},#{order_count})
+	insert into order_detail (orderlist_no,product_no,order_count,lesson_no)
+	 values(#{orderlist_no},#{product_no},#{order_count},#{lesson_no})
 	</insert>
 	
 	<insert id="insertmylike" parameterType="com.todaylesson.DTO.MyLikeDTO">

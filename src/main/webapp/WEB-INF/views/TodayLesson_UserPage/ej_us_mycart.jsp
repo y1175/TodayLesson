@@ -274,11 +274,15 @@ $("#sameaddr").on('click', function() {
  
   <button id="check_module" type="button" class='ej_btn' >결제하기</button> </div>
   </div>
-  
+  <button id="test">테스트버튼 지워지워</button>
   <br>
 
 
-
+<script>
+$("#test").click(function () {
+$("form").attr("action", "/todaylessonmypage/order_cart");
+	$("form").submit();  });
+</script>
  <script>
     $("#check_module").click(function () {
     	  $("#check_module").click(function () {
@@ -358,6 +362,7 @@ $("#sameaddr").on('click', function() {
       alert(msg);
        });
        });
+    });
 
     </script>
     

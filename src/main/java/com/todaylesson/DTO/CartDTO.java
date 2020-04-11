@@ -15,16 +15,16 @@ import lombok.ToString;
 public class CartDTO {
 	
 
-	private int cart_no;
-	private int cart_amount;
+	private Integer cart_no;
+	private Integer cart_amount;
 	private Integer product_no;
-	private int product_cost;
-	private int product_after_cost;
+	private Integer product_cost;
+	private Integer product_after_cost;
 	private String product_thumb;
 	private String product_name;
 	private Integer lesson_no;
 	private String lesson_title;
-	private int lesson_cost;
+	private Integer lesson_cost;
 	private String lesson_thumb;
 	private String member_id;
 }
