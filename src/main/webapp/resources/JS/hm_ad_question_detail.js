@@ -13,13 +13,6 @@ $("#hm_answercancel").click(function(){
 	location.reload(true);
 });
 
-$(".hm_ad_questionbtn2").on('click',function(){
-	
-	
-	var no = $(this).prop("id");
-	location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question_delete/"+no;
-	
-	
-});
+
 
 });

@@ -16,7 +16,7 @@
    </style>
 <!-- CSSstyle -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_detail.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_detail.js"></script> --%>
 </head>
 <body>
 	<jsp:useBean id="now" class="java.util.Date" />
@@ -55,11 +55,23 @@
 	</div>
 			<div class="eventdetailbtn">
 			<button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_manage'" class="hmeventdetailbtn">목록으로</button>
-			<button class="eventdetailupdatebtn">수정</button>
-			<button class="eventdetaildeletebtn">삭제</button>
+			<button class="eventdetailupdatebtn" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_update/'+${dto.event_no}">수정</button>
+			<button class="eventdetaildeletebtn" onclick="deleteevent();">삭제</button>
 			</div>
 			
 			
 			
 </body>
+
+<script>
+function deleteevent(){
+	
+	if(confirm("이벤트를 삭제하시겠습니까?")){
+		var no = $(".event_no").val();
+		location.href="${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_delete/"+no;
+	}
+	
+	
+}
+</script>
 </html>

@@ -15,7 +15,7 @@
    </style>
 <!-- CSSstyle -->
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question_detail.js?ver=4"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question_detail.js?ver=3"></script>
 </head>
 <body>
 
@@ -86,7 +86,7 @@ ${dto.question_title}
 
 
 <div class="hmfaqdetailbtn">
-<input type="button" id="${dto.question_no}" class="hm_ad_questionbtn2" value="답변삭제">
+<input type="button" id="${dto.question_no}" class="hm_ad_questionbtn2" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question_delete/'+${dto.question_no}" value="답변삭제">
 <input type="button" id="hm_faq_answerupdate" class="hm_ad_questionbtn" value="답변수정">
 <button onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question'" class="hm_ad_questionbtn">목록으로</button>
 </div>
