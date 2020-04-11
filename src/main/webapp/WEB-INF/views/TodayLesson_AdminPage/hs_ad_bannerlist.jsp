@@ -41,9 +41,7 @@
          <input type="hidden" value="${adminBannerList.banner_no}" class="banner_no">
          <div class="row" style="height: 200px;">
             <div class="col-md-6">
-               <a href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_detail/${adminBannerList.banner_no}">
-                  <img src="${adminBannerList.banner_filepath}" alt="banner_filepath" style="height: 200px;" >
-               </a>
+               <img src="${adminBannerList.banner_filepath}" alt="banner_filepath" style="height: 200px;" >
             </div>
             <div class="col-md-4">
                <p style="font-weight: 600;">

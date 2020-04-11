@@ -95,7 +95,7 @@
 	  productchart.data = [
 		    {
 		      category: "운동",
-		      value: '${productHandmadeCount}'
+		      value: '${productSportCount}'
 		    },
 		    {
 			  category: "외국어",

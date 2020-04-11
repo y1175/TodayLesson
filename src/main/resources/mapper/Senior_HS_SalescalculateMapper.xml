@@ -129,15 +129,6 @@
 
 	<!-- 정산신청 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 -->
 	<select id="cal_RequestList" resultMap="salesCalculateMap" parameterType="int">
-	   <!-- select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period, 
-	          o.orderlist_date, o.orderlist_orderstatus
-	   from calculate c right join orderlist o on c.orderlist_no=o.orderlist_no
-	                    join order_detail od on od.orderlist_no=o.orderlist_no
-	                    join lesson l on l.lesson_no=od.lesson_no
-	   where l.senior_no=#{senior_no}
-	   group by o.orderlist_calculatestatus,o.orderlist_date
-       order by orderlist_date desc -->
-       
        select l.lesson_no,c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, o.member_id,
 	          o.orderlist_date, o.orderlist_orderstatus
        from calculate c right join lesson l  on c.lesson_no=l.lesson_no   
@@ -146,7 +137,6 @@
        where l.senior_no=#{senior_no}
 	   group by o.orderlist_calculatestatus,o.orderlist_date, l.lesson_no
        order by orderlist_date desc
-       
 	</select>
 
     <!-- 정산계좌 사업자번호 -->	
@@ -164,14 +154,6 @@
 	
 	<!-- 정산신청 리스트 결제건수 -->
 	<select id="calPayCount" resultMap="salesCalculateMap" parameterType="int">
-	   <!-- select count(*) as orderdate_count
-       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
-                        join lesson l on od.lesson_no=l.lesson_no
-                        join senior s on l.senior_no=s.senior_no
-                        join member m on m.member_id=o.member_id
-	   where l.senior_no=#{senior_no}
-	   group by o.orderlist_calculatestatus,o.orderlist_date
-       order by orderlist_date desc -->
        select count(*) as orderdate_count
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
@@ -185,14 +167,6 @@
 	
 	<!-- 정산신청 리스트 레스수익금액 -->
 	<select id="calRevenueCost" resultMap="salesCalculateMap" parameterType="int">
-	   <!-- select sum(orderlist_cost) as orderlist_cost 
-       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
-                        join lesson l on od.lesson_no=l.lesson_no
-                        join senior s on l.senior_no=s.senior_no
-                        join member m on m.member_id=o.member_id
-       where l.senior_no=#{senior_no}
-       group by o.orderlist_calculatestatus,o.orderlist_date
-       order by orderlist_date desc -->
        select sum(orderlist_cost) as orderlist_cost 
        from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
                         join lesson l on od.lesson_no=l.lesson_no
@@ -217,17 +191,6 @@
 	
 	<!-- 정산신청 정산금액 정산수수료 세금계산서 및 부가세 -->
 	<select id="cal_CommSurtax" resultMap="salesCalculateMap" parameterType="int">
-	   <!-- select sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1))) as calculate_cost_nosurtax
-	        , sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1)+((orderlist_cost/1.1)*0.1))) as calculate_cost_surtax
-	        , sum(orderlist_cost*0.1) as calculate_comm
-	        , sum((orderlist_cost/1.1)*0.1) as calculate_surtax
-       from orderlist o join order_detail od on od.orderlist_no=o.orderlist_no
-                        join lesson l on od.lesson_no=l.lesson_no
-                        join senior s on l.senior_no=s.senior_no
-                        join member m on m.member_id=o.member_id
-       where l.senior_no=#{senior_no}
-       group by o.orderlist_calculatestatus,o.orderlist_date, l.lesson_no
-       order by orderlist_date desc -->
        select floor(sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1)))) as calculate_cost_nosurtax
 	        , floor(sum(orderlist_cost-(orderlist_usepoint+(orderlist_cost*0.1)+((orderlist_cost/1.1)*0.1)))) as calculate_cost_surtax
 	        , floor(sum(orderlist_cost*0.1)) as calculate_comm
@@ -280,8 +243,10 @@
     </select>
     
     <insert id="calculateRequestResult" parameterType="com.todaylesson.DTO.CalculateDTO" >
-       insert into calculate(calculate_no, calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num , calculate_name, calculate_phone)                     
-              values (#{calculate_no}, now(), #{calculate_bank_name},#{calculate_account_name}, #{calculate_account_num},#{calculate_name} ,#{calculate_phone})
+       insert into calculate(calculate_no, calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num 
+                           , calculate_name, calculate_phone, calculate_crno, calculate_crno_name)                     
+              values (#{calculate_no}, now(), #{calculate_bank_name},#{calculate_account_name}, #{calculate_account_num},
+                      #{calculate_name} ,#{calculate_phone}, #{calculate_crno,jdbcType=VARCHAR},#{calculate_crno_name,jdbcType=VARCHAR})
               
     </insert>
     
@@ -295,16 +260,6 @@
 
     <!-- 정산내역 목록 리스트 정산번호 / 정산상태 / 정산신청일 / 정산기간 / 정산계좌  -->
     <select id="calStatementList" resultMap="salesCalculateMap" parameterType="java.lang.String">
-       <!-- select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
-	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
-	   from calculate c join orderlist o on c.orderlist_no=o.orderlist_no
-	                    join order_detail od on od.orderlist_no=o.orderlist_no
-	                    join lesson l on l.lesson_no=od.lesson_no
-                        join member m on m.member_id=o.member_id
-                        join senior s on s.member_id=m.member_id
-	   where m.member_id=#{member_id}
-	   group by o.orderlist_date
-       order by orderlist_date desc -->
        select c.calculate_no, o.orderlist_calculatestatus, c.calculate_date, l.lesson_open_period, l.lesson_close_period,
 	          s.senior_bank_name, s.senior_account_num, s.senior_account_name
        from calculate c right join lesson l  on c.lesson_no=l.lesson_no 
@@ -315,7 +270,6 @@
 	   where m.member_id=#{member_id}
 	   group by o.orderlist_date
        order by orderlist_date desc
-       
    </select>
    
    	<!-- 정산내역 리스트 결제건수 -->

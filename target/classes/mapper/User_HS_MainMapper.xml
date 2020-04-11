@@ -35,19 +35,18 @@
        where lesson_result=2
        and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
 	   and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
-       ORDER By l.lesson_like DESC LIMIT 0,16
+       ORDER By l.lesson_readno DESC LIMIT 0,16
        ]]>
     </select> 
     
-    <!-- 신규레슨 -->
+    <!-- 추천레슨 -->
     <select id="referenceLessonList" resultMap="userMAinMap">
        <![CDATA[
        select l.lesson_thumb, l.lesson_category, s.senior_nick ,l.lesson_like
 	         ,l.lesson_title, l.lesson_cost, l.lesson_open_period, lesson_no
        from lesson l join senior s on l.senior_no=s.senior_no
        where lesson_result=2 and lesson_earlybird = 1
-       and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
-	   and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
+       and lesson_open_period >= DATE_ADD(now(), INTERVAL -7 day)
        ORDER BY l.lesson_register_date desc ,RAND() LIMIT 16;
        ]]>
     </select> 
