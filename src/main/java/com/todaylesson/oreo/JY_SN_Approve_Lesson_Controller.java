@@ -78,8 +78,12 @@ public class JY_SN_Approve_Lesson_Controller {
 		
 		List<LessonDetailDTO> list = approve_service.apld_list(lesson_no);
 		
+		int list_size = list.size();
+		
 		model.addAttribute("dto",dto);
 		model.addAttribute("list",list);
+		model.addAttribute("list_size",list_size);
+
 		
 		
 		return "TodayLesson_SeniorPage/jy_sn_approve_detail.sn_main_section";
