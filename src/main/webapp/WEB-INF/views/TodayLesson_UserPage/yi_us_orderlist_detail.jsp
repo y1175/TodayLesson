@@ -7,6 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>TodayLesson</title>
+<!-- CSSstyle -->
+   <style type="text/css">
+      .hs_us_mypage_myorderlist>a{
+         color: white;
+      }
+      .hs_us_mypage_mymanage>a{
+	     color : #757575;
+       }
+   </style>
+<!-- CSSstyle -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist_detail.css?ver=3">
 <script>

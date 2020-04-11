@@ -137,7 +137,6 @@ pageEncoding="UTF-8"%>
 <a class="page-link" href="/todaylessonmypage/hm_us_question?currPage=${page.startBlock-1}">PREV
 </a></li>
 </c:if>
-
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">

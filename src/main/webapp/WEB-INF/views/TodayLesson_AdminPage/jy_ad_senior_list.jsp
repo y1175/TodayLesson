@@ -29,6 +29,9 @@
  </div>
 
 
+
+
+
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:23%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
  <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonadmin/all_senior?currPage=${page.startBlock }"

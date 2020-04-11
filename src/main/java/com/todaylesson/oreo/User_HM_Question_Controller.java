@@ -66,6 +66,7 @@ public class User_HM_Question_Controller {
 			,@RequestParam("question_group") int question_group
 			,@RequestParam("question_title") String question_title
 			,@RequestParam("question_content") String question_content
+			,@RequestParam(required=false, defaultValue="1") int currPage
 			,Model model)
 	{
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
@@ -78,9 +79,16 @@ public class User_HM_Question_Controller {
 		
 		service.hm_question_insert(map);
 		
-		List<Question_1_1DTO> list = service.hm_question_list(member_id);
-		model.addAttribute("list",list);
+		int totalCount= service.totalCount(member_id);
+		int pageSize=15;
+		int blockSize=5;
+		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
 		
+List<Question_1_1DTO> list = service.hm_question_list(member_id
+		,page.getStartRow()
+		,page.getEndRow());
+model.addAttribute("list",list);
+model.addAttribute("page",page);
 		
 		return "/TodayLesson_UserPage/hm_us_question.us_my_section";
 

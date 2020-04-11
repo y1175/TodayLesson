@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_sn_lesson_write.css?ver=1">  
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -338,8 +338,8 @@ function multiple_time_lesson_date(){
 <li>
 <br>
 <label for="lesson_open_period">시작일</label> / <label for="lesson_close_period">종료일</label><br>
-<input type="text" class="lesson_date" id="lesson_open_period" name="lesson_open_period" required="required" >
-/ <input type="text" class="lesson_date" id="lesson_close_period" name="lesson_close_period" required="required">
+<input type="text" class="lesson_date" id="lesson_open_period" name="lesson_open_period" required="required" placeholder="YYYY-MM-DD" >
+/ <input type="text" class="lesson_date" id="lesson_close_period" name="lesson_close_period" required="required" placeholder="YYYY-MM-DD" >
 </li>
 
 <li>

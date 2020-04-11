@@ -23,11 +23,13 @@ public class JY_US_SeniorServiceImple implements JY_US_SeniorService {
 		
 		// 멤버 테이블에서 시니어로 등급 변경
 		mapper.member_level_up(member_id);
-		// user role 삭제
-		//mapper.member_auth_up(member_id);
+
 		// 시니어 role 추가
-		//mapper.member_levelup(member_id);
-		mapper.member_auth(member_id);
+		mapper.member_levelup(member_id);
+		// user role 삭제
+		mapper.member_auth_up(member_id);
+		
+		//mapper.member_auth(member_id);
 
 	}
 

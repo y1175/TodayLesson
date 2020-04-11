@@ -99,9 +99,11 @@ public class JY_Admin_Lesson_Controller {
 			@RequestParam(required=false, defaultValue="") String search
 			,@RequestParam(required=false, defaultValue="") String searchtxt
 			,@RequestParam(required=false, defaultValue="1") int currPage
-			,@RequestParam(required=false, defaultValue="lesson_no") String order) {
+			,@RequestParam(required=false, defaultValue="lesson_no") String order
+			 ,@RequestParam(required=false, defaultValue="") String start_date
+             ,@RequestParam(required=false, defaultValue="") String end_date) {
 		
-		int totalCount= adminservice.totalCount(search, searchtxt);
+		int totalCount= adminservice.totalCount(search, searchtxt,  start_date, end_date);
 		int pageSize=15;
 		int blockSize=5;
 		
@@ -109,13 +111,15 @@ public class JY_Admin_Lesson_Controller {
 
 		List<AllLessonDTO> list = adminservice.all_lesson(search, searchtxt,order
 				,page.getStartRow()
-				,page.getEndRow());
+				,page.getEndRow(),  start_date, end_date);
 		
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 		model.addAttribute("order",order);
+		model.addAttribute("start_date",start_date);
+		model.addAttribute("end_date",end_date);
 		
 
 		return "TodayLesson_AdminPage/jy_ad_all_lesson.hs_ad_main_section";

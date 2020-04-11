@@ -43,11 +43,27 @@
                            <c:when test="${adminBannerDatail.banner_group eq '2'}">
                               <c:out value="Main Img Banner"/>
                            </c:when>
-                        </c:choose>
+                             <c:when test="${adminBannerList.banner_group eq '3'}">
+                           <c:out value="Event Main Banner Slider"/>
+                     		</c:when>
+                     		<c:when test="${adminBannerList.banner_group eq '4'}">
+                        	<c:out value="Store Main Banner Slider"/>
+                     		</c:when>
+                      		<c:when test="${adminBannerList.banner_group eq '5'}">
+                       		 <c:out value="Ealry Bird Main"/>
+                     		</c:when>
+                      		<c:when test="${adminBannerList.banner_group eq '6'}">
+                      		  <c:out value="Ealry Bird Mini Banner"/>
+                     		</c:when>
+                        		</c:choose>
 		             </option>
 		             <option value="0">Main Banner Slider</option>
 		             <option value="1">Main Event Banner Slider</option>
 		             <option value="2">Main Img Banner</option>
+		             <option value="3">Event Main Banner Slider</option>
+		             <option value="4">Store Main Banner Slider</option>
+		             <option value="5">Ealry Bird Main</option>
+		             <option value="6">Ealry Bird Mini Banner</option>
 		          </select>
 		       </div> 
 		    </div>

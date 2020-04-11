@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>TodayLessonAdmin</title>
+   <style type="text/css">
+      .hs_ad_main_asidenav_nav_FreeBoard_Title>a{
+         color: rgb(224, 62, 82);
+      }
+
+   </style>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/yi_admin_freeboard_insert.css?ver=1">
 </head>

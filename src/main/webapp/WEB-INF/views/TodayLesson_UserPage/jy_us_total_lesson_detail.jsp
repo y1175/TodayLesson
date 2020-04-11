@@ -365,10 +365,14 @@ $(".insert_my_cart").click(function(){
   success : function(result){
 	  if(result=="success"){
   		alert("장바구니에 레슨이 담겼습니다!");
-   	} else {
-		alert("레슨은 장바구니에 딱 한번만 담을 수 있습니다.");   
-   	} 
-   	}
+   	}    	else if(result=="soldout")
+		{
+		alert('품절된 레슨은 장바구니에 추가할 수 없습니다.');
+		}
+    	else{
+    		alert('이미 장바구니에 추가된 상품입니다.');
+    	}
+  }
   ,error: function(){
      console.log('error');
      }

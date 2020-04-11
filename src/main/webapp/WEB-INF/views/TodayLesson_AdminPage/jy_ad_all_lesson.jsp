@@ -13,9 +13,60 @@
       }
    </style>
      <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_all_lesson.css?ver=5">   
+	href="${pageContext.request.contextPath}/resources/CSS/jy_ad_all_lesson.css?ver=6">   
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- CSSstyle -->
+   
+   <script type="text/javascript">
+   $(document).ready(function(){
+		
+	   $( "#lesson_open_period" ).datepicker({
+			dateFormat:"yy-mm-dd" //Input Display Format 변경
+		    	,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+	            ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+		    	,changeMonth: false  //콤보박스에서 월 선택 가능 
+		        ,changeYear: false  //콤보박스에서 년 선택 가능
+		        ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+	            ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+	            ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+	            ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트  
+	            ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+	            ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+	            ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip 텍스트
 
+	         onClose: function( selectedDate ) {
+	        	  $("#lesson_close_period").datepicker( "option", "minDate", selectedDate );
+	       	}
+	    });	
+	  
+	  $( "#lesson_close_period" ).datepicker({
+	    	dateFormat:"yy-mm-dd"
+	    	,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+           ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+	    	,changeMonth: false  //콤보박스에서 월 선택 가능 
+	        ,changeYear: false  //콤보박스에서 년 선택 가능
+	        ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+           ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+           ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+           ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트  
+           ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+           ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip 텍스트
+	         onClose: function( selectedDate ) {
+                // 종료일(toDate) datepicker가 닫힐때
+                // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+                $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+            }                
+
+
+	    });	
+	  
+	  
+	 
+});
+   </script>
 
 </head>
 <body>
@@ -23,7 +74,7 @@
  <div stlye="width:100%;">
  <h2 style="margin-top:40px; text-align: left;"><b>레슨 관리</b></h2>
  </div>
- 
+<%--  
  <!-- 검색 --> 
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:31.5%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin:0px auto;">
@@ -40,9 +91,37 @@
   </div>
 </nav>
 <!-- 검색완료 -->
- 
+  --%>
 
- 
+          <div class="hs_admin_sales_searchbox">
+            <form method="post" action="${pageContext.request.contextPath}/todaylessonadmin/alllesson?search=${search}&searchtxt=${searchtxt}&st">
+               <label class="hs_admin_sales_DatesearchTitle">기간검색</label>
+               <div class="hs_admin_sales_Datesearchbox">
+                  <input type="text" name="start_date" id="lesson_open_period" placeholder="YYYY-MM-DD" >  <!-- value="${salesList_form.sales_search_enddate}" -->
+                  <span class="hs_admin_sales_Date-"> - </span>
+                  <input type="text" name="end_date" id="lesson_close_period" placeholder="YYYY-MM-DD" >
+                  <input type="button" name="" id="hs_admin_sales_Datesearch_AllBtn" value="전체">
+                  <input type="button" name="" id="hs_admin_sales_Datesearch_TodayBtn" value="오늘">
+                  <input type="button" name="" id="hs_admin_sales_Datesearch_WeeklyBtn" value="일주일">
+                  <input type="button" name="" id="hs_admin_sales_Datesearch_MonthBtn" value="1개월">
+               </div>
+               <label class="hs_admin_sales_TextsearchTitle">검색기준</label>
+               <div class="hs_admin_sales_Textsearchbox">   
+                  <label for=""></label>
+                  <select name="search" class="hs_admin_sales_TextsearchOP">
+                     <option value="all">전체</option>
+                     <option value="lesson_title">레슨명</option>
+                     <option value="senior_nick">시니어</option>
+                  </select> 
+                  <input type="text" id="hs_admin_sales_Textsearch" name="searchtxt" placeholder="검색어를 입력해주세요">
+               </div>
+               <div class="hs_admin_Sales_BtnBox">
+                  <input type="reset" id="hs_admin_Sales_ResetBtn" value="초기화" class="ej_btn2">
+                  <input type="submit" id="hs_admin_Sales_SearchBtn" value="검색" class="ej_btn">
+               </div>
+               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+           </form>    
+               </div>
  
 
 

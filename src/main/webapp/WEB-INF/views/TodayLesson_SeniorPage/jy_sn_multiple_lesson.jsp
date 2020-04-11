@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_senior_form.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_senior_form.css?ver=2">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -56,11 +56,11 @@ $(document).ready(function(){
 <td><input type="text" id="lesson_max_number" name="lesson_max_number" placeholder="총 강의 수를 입력하세요."  class="form-control" style="width:100%;"></td></tr>
 
 <tr><td>레슨일</td>
-<td><input type="text" id="lesson_date" name="lesson_date" required="required"  class="form-control" style="width:90%;">  </td>
+<td><input type="text" id="lesson_date" name="lesson_date" required="required"  class="form-control" style="width:100%;" placeholder="YYYY-MM-DD">  </td>
 </tr>
 
 <tr><td>강의 시작시간</td>
-<td><input type="time" id="lesson_time" name="lesson_time" required="required" class="form-control" style="width:100%;"> </td>
+<td><input type="time" id="lesson_time" name="lesson_time" required="required" class="form-control" style="width:100%;" > </td>
 
 <td><input type="button" value="추가" onclick="add_Lesson_Time();" class="ej_btn"></td>
 </tr>

@@ -11,8 +11,13 @@ from lesson l join senior s
 on l.senior_no = s.senior_no
 
 <include refid="search_select"></include>
-
-<if test="order = 'lesson_register_date'">
+       <if test='start_date!="" and start_date!=null'>	
+	      and l.lesson_open_period<![CDATA[>=]]>#{start_date}
+	   </if>
+	   <if test='end_date!="" and end_date!=null'>	
+	      and l.lesson_open_period<![CDATA[<=]]>#{end_date}
+	   </if>
+<if test="order == 'lesson_register_date'">
 order by ${order} desc
 </if>
 <if test="order != 'lesson_register_date'">
@@ -20,6 +25,8 @@ order by ${order} asc
 </if>
 
 limit   #{startrow}, 15
+
+
 </select>
 
 
@@ -121,6 +128,12 @@ where senior_no = #{senior_no}
 		on l.senior_no = s.senior_no
 		<!-- WHERE절을 include 태그로 삽입 -->
 <include refid="search_select"></include>
+       <if test='start_date!="" and start_date!=null'>	
+	      and l.lesson_open_period<![CDATA[>=]]>#{start_date}
+	   </if>
+	   <if test='end_date!="" and end_date!=null'>	
+	      and l.lesson_open_period<![CDATA[<=]]>#{end_date}
+	   </if>
 
 </select>
 

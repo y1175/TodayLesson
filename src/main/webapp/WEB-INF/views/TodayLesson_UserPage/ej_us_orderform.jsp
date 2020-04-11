@@ -43,7 +43,7 @@ style="width:40px; display:inline;"></h2>
 </thead>
 <tbody>
 <tr>
-<td><img src="${pdto.product_img}" id="ej_order_topimg" width="200"></td>
+<td><img src="${pdto.product_thumb}" id="ej_order_topimg" s"></td>
 <td><h4>${product_name }</h4></td>
 <td><fmt:formatNumber value="${pdto.product_after_cost}" type="number" maxFractionDigits="3"/>원 </td>
  <td> ${pdcount} 개</td>
@@ -127,7 +127,7 @@ console.log('val',hh);
     </script>
 
 <br><br>
- <form role="form" method="post" autocomplete="off"> 
+ <form role="form" method="post"> 
  <h4><b>주문자 정보</b></h4><hr>
  <b>주문자명</b>   <input type="text" style="border:none; width="300" value=${mdto.member_name } readonly="readonly"><br>
  <b>이메일</b>  <input type="text" style="border:none; name="member_email"    value=${mdto.member_email } readonly="readonly"><br>
@@ -323,6 +323,7 @@ $("#sameaddr").on('click', function() {
       
        			
        			$("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlistdetail");
+    
        			$("form").submit();  
        			
        		} else {

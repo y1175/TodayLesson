@@ -13,6 +13,8 @@ order by question_no desc
 <select id="totalCount" parameterType="java.util.HashMap" resultType="int">
 select count(*)
 from question_1_1
+where member_id = #{member_id}
+order by question_no desc
 </select>
 
 <select id="hm_question_listhm" parameterType="java.util.HashMap" resultType="com.todaylesson.DTO.Question_1_1DTO">
