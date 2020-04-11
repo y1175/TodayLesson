@@ -34,7 +34,7 @@
 	  </div>
    </div> --%>
      <!-- Main Slider -->
-   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
       <div class="carousel-inner" >
          <c:forEach var="mainBannerSlider" items="${banner}" varStatus="status">
             <c:choose>
