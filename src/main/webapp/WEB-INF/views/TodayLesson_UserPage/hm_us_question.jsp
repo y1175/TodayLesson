@@ -18,7 +18,6 @@ pageEncoding="UTF-8"%>
 <!-- CSSstyle -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question.css?ver=2">                               
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_us_question.js?ver=5"></script>
 </head>
 <body>
 
@@ -34,7 +33,7 @@ pageEncoding="UTF-8"%>
 <h5>고객센터 연결이 힘드신 경우 1:1문의를 이용하시면 빠르게 답변드리겠습니다</h5>
 <p>CALL CENTER  010-9988-2728</p>
 <p>서비스 운영시간 : 오전 9시 ~ 오후 6시 월 ~ 금(토,일 ,공휴일 제외)</p>
-<input type ="button" class="question_btn" id="question_btn" value="문의하기">
+<input type ="button" onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/hm_question_insert'" class="question_btn" id="question_btn" value="문의하기">
 </div>
 </div>
 
@@ -124,7 +123,7 @@ pageEncoding="UTF-8"%>
 		${item.question_writedate}
 		</td>
 		<td>
-		<input type ="button" class ="hm_us_questiondetailbtn" id="${item.question_no}" value="상세보기">
+		<input type ="button" onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/hm_us_question_detail/'+${item.question_no}" class ="hm_us_questiondetailbtn" id="${item.question_no}" value="상세보기">
 		</td>
 		</tr>
 		</c:forEach>
