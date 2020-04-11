@@ -16,23 +16,35 @@
 	
 	function senior_switch(){
 		
-		var logoutform = document.seniorlogoutform;
+		//var logoutform = document.seniorlogoutform;
 		
-		if (${mem_level}==1) {
-			alert("시니어 전환 시 한번 더 로그인 하셔야합니다!");
+		//if (${mem_level}==1) {
+
+			location.href="${pageContext.request.contextPath}/todaylesson/senior_up";
+ 			//alert("시니어 전환 시 한번 더 로그인 하셔야합니다!");
+			/* self.close();
 			logoutform.submit();
-			self.close();
-			opener.document.location.reload();
+			opener.document.location.reload();  */
+
+		/*	
 		}
 		
 		else {
 			opener.location.href="${pageContext.request.contextPath}/todaylessonsenior/you_are_senior";
 			self.close();
 		}
+		*/
 				
 		
 	}	
 
+	 let memberid='${pageContext.request.userPrincipal.name}';
+	 if(memberid=='')
+	  {
+	  alert('로그인이 필요합니다.');
+	  }
+
+	
 </script>
 
 <div class="jy_container">
@@ -44,12 +56,12 @@
 <input type="button" value="아니요" onclick="self.close();" class="ej_btn2">
 </div>
 
-<div style="display: none">
+<%-- <div style="display: none">
    <form action="${pageContext.request.contextPath}/logout" name="seniorlogoutform" method='post' id="logout-form">
       <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
       <input type="submit" onclick="senior_switch()">
    </form>
-</div>
+</div> --%>
 </div>
 
 </body>

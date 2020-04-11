@@ -83,18 +83,8 @@ public class JY_US_Senior_Request_Controller {
 	public String senior_Request_Button(Authentication authentication, Model model) {
 		
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		String member_id = userDetails.getUsername();
-		
-		int mem_level=seniorservice.check_senior(member_id);
-		
-		if (mem_level == 1) {
-			// 시니어로 레벨업됨
-			seniorservice.new_senior(member_id);
-			model.addAttribute("mem_level",mem_level);
-
-		} else {
-			model.addAttribute("mem_level",mem_level);
-		}
+		String member_id = userDetails.getUsername();	
+		model.addAttribute("member_id",member_id);
 
 
 		return "TodayLesson_UserPage/jy_us_senior_form";
@@ -118,6 +108,20 @@ public class JY_US_Senior_Request_Controller {
 		String token = getToken(request, response, json, "https://api.iamport.kr/users/getToken"); 
 		model.addAttribute("token",token);
 		
+/*		int mem_level=seniorservice.check_senior(member_id);
+		
+		//if (mem_level == 1) {
+			// 시니어로 레벨업됨
+			seniorservice.new_senior(member_id);
+			model.addAttribute("mem_level",mem_level);*/
+
+		//} 
+		
+		/*else {
+			model.addAttribute("mem_level",mem_level);
+		}*/
+
+		
 		return "TodayLesson_SeniorPage/jy_sn_senior_switch.sn_main_section";
 	}
 	
@@ -126,6 +130,22 @@ public class JY_US_Senior_Request_Controller {
 	public String you_are_senior() {
 		return "TodayLesson_SeniorPage/jy_sn_you_are_senior";
 	}
+	
+	
+	@RequestMapping("/todaylesson/senior_up")
+	public String senior_up(Model model, Authentication authentication) {	
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		String member_id = userDetails.getUsername();
+		
+		int mem_level=seniorservice.check_senior(member_id);
+		
+		//if (mem_level == 1) {
+			// 시니어로 레벨업됨
+			seniorservice.new_senior(member_id);
+			model.addAttribute("mem_level",mem_level);
+		return "TodayLesson_UserPage/jy_us_senior_up";
+	}
+	
 	
 	
 	// 관련 정보 입력하면 시니어 정보 업데이트
