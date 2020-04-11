@@ -29,6 +29,68 @@ $(document).ready(function(){
 });
 </script>
 <style type="text/css">
+      .hs_ad_main_asidenav_nav_Product_Title>a{
+         color: rgb(224, 62, 82);
+      }
+      #ej_container{
+      width:80%;
+      margin:0 auto;
+      }
+/*page*/
+.pagination .page-link:focus{
+    box-shadow: none;
+}
+.pagination>.page-item>.page-link, .pagination>.page-item>span {
+    border: 0;
+    border-radius: 30px!important;
+    transition: all .3s;
+    padding: 0 11px !important;
+    margin: 0 3px !important;
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    background: 0 0;
+    text-align: center;
+}
+
+.pagination>.page-item.active>a, .pagination>.page-item.active>a:focus, .pagination>.page-item.active>a:hover, .pagination>.page-item.active>span, .pagination>.page-item.active>span:focus, .pagination>.page-item.active>span:hover {
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(156,39,176,.14), 0 1px 10px 0 rgba(156,39,176,.12), 0 2px 4px -1px rgba(156,39,176,.2);
+}
+
+
+.pagination.pagination-info>.page-item.active>a, .pagination.pagination-info>.page-item.active>a:focus, .pagination.pagination-info>.page-item.active>a:hover, .pagination.pagination-info>.page-item.active>span, .pagination.pagination-info>.page-item.active>span:focus, .pagination.pagination-info>.page-item.active>span:hover {
+    background-color: #00bcd4;
+    border-color: #00bcd4;
+    box-shadow: 0 4px 5px 0 rgba(0,188,212,.14), 0 1px 10px 0 rgba(0,188,212,.12), 0 2px 4px -1px rgba(0,188,212,.2);
+}
+
+
+.pagination.pagination-success>.page-item.active>a, .pagination.pagination-success>.page-item.active>a:focus, .pagination.pagination-success>.page-item.active>a:hover, .pagination.pagination-success>.page-item.active>span, .pagination.pagination-success>.page-item.active>span:focus, .pagination.pagination-success>.page-item.active>span:hover {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    box-shadow: 0 4px 5px 0 rgba(76,175,80,.14), 0 1px 10px 0 rgba(76,175,80,.12), 0 2px 4px -1px rgba(76,175,80,.2);
+}
+
+.pagination.pagination-warning>.page-item.active>a, .pagination.pagination-warning>.page-item.active>a:focus, .pagination.pagination-warning>.page-item.active>a:hover, .pagination.pagination-warning>.page-item.active>span, .pagination.pagination-warning>.page-item.active>span:focus, .pagination.pagination-warning>.page-item.active>span:hover {
+    background-color: #ff9800;
+    border-color: #ff9800;
+    box-shadow: 0 4px 5px 0 rgba(255,152,0,.14), 0 1px 10px 0 rgba(255,152,0,.12), 0 2px 4px -1px rgba(255,152,0,.2);
+}
+
+.pagination.pagination-danger>.page-item.active>a, .pagination.pagination-danger>.page-item.active>a:focus, .pagination.pagination-danger>.page-item.active>a:hover, .pagination.pagination-danger>.page-item.active>span, .pagination.pagination-danger>.page-item.active>span:focus, .pagination.pagination-danger>.page-item.active>span:hover {
+    background-color: #f44336;
+    border-color: #f44336;
+    box-shadow: 0 4px 5px 0 rgba(244,67,54,.14), 0 1px 10px 0 rgba(244,67,54,.12), 0 2px 4px -1px rgba(244,67,54,.2);
+}
+
+
 #ej_container{
       width:80%;
       margin:0 auto;
@@ -55,7 +117,7 @@ float:right;}
 <body>
 
 <div id="ej_container">
-<h2 style="text-align: center;">상품 관리</h2>
+<h2 style="text-align: center;"><b>상품 관리</b></h2>
 <h4><b>제품번호</b> <c:out value="${dto.product_no}"></c:out></h4><br>
 <h4><b>제품명</b> <c:out value="${dto.product_name}"></c:out></h4><br>
 <h4><b>카테고리</b>
@@ -86,7 +148,7 @@ ${dto.product_content}
 <button id="product_detail_deletebtn" class="ej_btn">삭제</button>
 </div><br>
 
-<a href="${pageContext.request.contextPath }todaylessonadmin/ej_ad_productlist" class="ej_link" style="font-size:15px; font-weight:bold;">목록으로</a>
+<a href="${pageContext.request.contextPath }/todaylessonadmin/ej_ad_productlist" class="ej_link" style="font-size:15px; font-weight:bold;">목록으로</a>
 </div>
 </body>
 </html>

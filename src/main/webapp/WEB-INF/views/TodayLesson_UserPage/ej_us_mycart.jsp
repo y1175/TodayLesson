@@ -69,7 +69,7 @@ text-decoration: none;
 <c:when test="${product_name==null}"><!--·¹½¼Á¤º¸  -->
 <td><a href="#" class="delete_lesson_cart" id="${item.lesson_no}" ><i class="fas fa-times" style="font-size:20px;color:black;"></i></a></td>
 <td>·¹½¼</td>
-<td><a href="${pageContext.request.contextPath}todaylesson//lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
+<td><a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb}" alt="thumb"></a></td>
 <td style="color:black;"><a href="${pageContext.request.contextPath}/todaylesson/lesson_detail/${item.lesson_no}">${item.lesson_title}</a></td>
 <td><fmt:formatNumber value="${item.lesson_cost }" type="number" maxFractionDigits="3"/>¿ø</td>
 <td>1</td>

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--style-->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=4">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storemain.css?ver=5">
 <!--style-->
 </head>
 
@@ -81,13 +81,16 @@
 <br>
 <br>
          <c:forEach var="storenewproductlist" items="${list}">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6" style="display:inline-block; float:left;">
+            
+            
                <div class="hs_user_store_newproduct">
                   <div class="hs_user_store_newproduct_img">
-                 <!--  <div class="hs_user_store_newproduct_img2"> -->
                      <a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${storenewproductlist.product_no}">
                         <img src="${storenewproductlist.product_thumb}"/>
-                     </a><!-- /div> -->
+                     </a>
+                     
+                     
                      <ul class="hs_user_store_newproduct_social" >
                         <li>
                            <a href="#" ><div class="fas fa-heart" id="${storenewproductlist.product_no}"></div></a>

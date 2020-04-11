@@ -50,7 +50,7 @@
 </c:if>
 <c:if test="${product_name==null }"><!--상품정보  -->
 <tr>
-<td><a href="${pageContext.request.contextPath }/todaylesson/ej_store_detail/${item.lesson_no}"><img src="${item.lesson_thumb }" alt="thumb"></a></td>
+<td><a href="${pageContext.request.contextPath }/todaylesson/lesson_detail/${item.lesson_no}"><img src="${item.lesson_thumb }" alt="thumb"></a></td>
 <td>${item.lesson_title }</td>
 <td>${item.lesson_cost }</td>
 <td> 1</td></tr>

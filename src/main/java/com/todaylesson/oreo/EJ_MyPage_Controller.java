@@ -20,10 +20,16 @@ import com.todaylesson.DTO.OrderDetailDTO;
 import com.todaylesson.DTO.OrderListDTO;
 import com.todaylesson.DTO.ProductDTO;
 import com.todaylesson.service.EJ_All_Product_Service;
+import com.todaylesson.service.JY_US_TotalLessonService;
 
 @RequestMapping("/todaylessonmypage/")
 @Controller
 public class EJ_MyPage_Controller {
+	
+	
+	@Resource(name = "totallesson_service")
+	private JY_US_TotalLessonService ttlesson_service;
+	
 	
 	@Resource(name="us_store_service")
 	private EJ_All_Product_Service service;
@@ -151,18 +157,29 @@ public class EJ_MyPage_Controller {
 		System.out.println("cart객체"+cart);
 		//각각의 상품 및 재품 stock  update하기
 		//Product테이블에 stock update  ..pdcount받아와야함
-		ProductDTO productdto=new ProductDTO();
-	    int product_no=cart.getProduct_no();
-	   // int lesson_no=cart.getLesson_no();
-		int orderamount=cart.getCart_amount();
 		
-		int oldstock=service.selectstock(product_no);//기존 재고 받아오기...레슨도해야되는데 ㅋ
-		int newstock=oldstock-orderamount;
 		
-		productdto.setProduct_no(product_no);
-		productdto.setProduct_stock(newstock);
+		if(cart.getLesson_no()== null || cart.getLesson_no().equals(""))//상품의 경우 재고 update
+		{
+			ProductDTO productdto=new ProductDTO();
+		    int product_no=cart.getProduct_no();
+		   // int lesson_no=cart.getLesson_no();
+			int orderamount=cart.getCart_amount();
+			
+			int oldstock=service.selectstock(product_no);//기존 재고 받아오기...레슨도해야되는데 ㅋ
+			int newstock=oldstock-orderamount;
+			
+			productdto.setProduct_no(product_no);
+			productdto.setProduct_stock(newstock);
 
-		service.updatestock(productdto);
+			service.updatestock(productdto);
+		}else {//레슨의 경우 주니어수 update
+			ttlesson_service.add_lesson_junior(cart.getLesson_no());
+
+		}
+
+
+		
 		/*System.out.println("pdcount"+order_count);
 		
 		int newstock=oldstock-order_count;
