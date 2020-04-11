@@ -62,7 +62,7 @@
                <button class="btn draw-border" onclick="window.open('${pageContext.request.contextPath}/todaylesson/senior_request_form','senior_form','width=570,height=253')" value="시니어 지원하기">시니어지원</button>
             </sec:authorize> 
             <sec:authorize access="hasAnyRole('ROLE_SENIOR','ROLE_ADMIN')">
-               <a href="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson" style="text-decoration:none;">
+               <a href="${pageContext.request.contextPath}/todaylessonsenior" style="text-decoration:none;">
                   <button class="btn draw-border" value="시니어페이지">시니어페이지</button>
                </a>
             </sec:authorize> 

@@ -37,7 +37,7 @@
       <div style="width: 35%; margin: auto; text-align: center;" id="todaaylesson">
          <h3 class="hs_us_logintitle">로그인</h3>
 		    <div class="col-xs-12 col-sm-6">	
-			   <form method="post" action="${pageContext.request.contextPath}/TodayLesson/todaylesson">
+			   <form method="post" action="${pageContext.request.contextPath}/todaylesson">
 			      <div class="input-group" style="margin-bottom: 10px; height: 48px;">
 				     <span class="input-group-addon"><i class="fa fa-user" style="width: 2em;"></i></span>
 					 <input type="text" class="form-control" name='username' placeholder="아이디" required="required" style="height: 48px;">
@@ -73,7 +73,7 @@
                </a>
                <!-- 네이버-->
                <!-- 구글 -->
-               <form method="post" action="/todaylesson">
+               <form method="post" action="${pageContext.request.contextPath}/todaylesson">
                   <input type="hidden" name="username" value="${googleId }">
                   <input type="hidden" name="password" value="${googlePwd }">
                   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
