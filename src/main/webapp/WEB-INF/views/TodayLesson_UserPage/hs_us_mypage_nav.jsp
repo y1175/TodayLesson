@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 
 <!--mypage nav style-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_mypage_nav.css?ver=3">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_us_mypage_nav.css?ver=4">
 <!--mypage nav style-->
 <script type="text/javascript">
 function member_level_1() {

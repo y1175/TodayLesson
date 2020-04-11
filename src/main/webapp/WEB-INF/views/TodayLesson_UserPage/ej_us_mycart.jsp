@@ -282,7 +282,7 @@ $("#sameaddr").on('click', function() {
 
 <script>
 $("#test").click(function () {
-$("form").attr("action", "/todaylessonmypage/order_cart");
+$("form").attr("action", "${pageContext.request.contextPath}/todaylessonmypage/order_cart");
 	$("form").submit();  });
 </script>
  <script>
@@ -354,7 +354,7 @@ $("form").attr("action", "/todaylessonmypage/order_cart");
        msg += '결제 금액 : ' + rsp.paid_amount;
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
        			
-       			$("form").attr("action", "/todaylessonmypage/order_cart");
+       			$("form").attr("action", "${pageContext.request.contextPath}/todaylessonmypage/order_cart");
        			$("form").submit();  
        		} else {
     	   

@@ -13,26 +13,6 @@
 </head>
 
 <body>
-<!--회원의 좋아요와 장바구니  -->
-<%-- <span id="ej_like_cart">
- <c:set var="member_id" value="${pageContext.request.userPrincipal.name}"></c:set>
- ${member_id }회원님의
-<a href="/todaylessonmypage/mycart/${pageContext.request.userPrincipal.name}" id="mycart">내장바구니</a>
-<a href="/todaylessonmypage/mylike/${pageContext.request.userPrincipal.name}" id="mylike">내 좋아요</a><br>
-<br>
-</span> --%>
-
-<!--메인 슬라이더  -->
-<%-- <div id="hs_us_home_mainBanner" class="hs_us_home_mainBanner">
-      <div class="hs_us_home_mainBannerbox">
-	     <div class="hs_us_home_mainBannerslide">
-		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
-		    <a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
-			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
-			<a><img src="${pageContext.request.contextPath }/resources/Banner/main_banner5.jpg" alt="s"></a>
-	     </div>
-	  </div>
-   </div> --%>
      <!-- Main Slider -->
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top:-10px;">
       <div class="carousel-inner" >
@@ -75,7 +55,7 @@
       <div class="" style="margin-top: 30px;margin:0 auto;">
       <span id="ej_right">
       <a href="?order=like" ><button class="ej_btn order">좋아요순</button></a>
-<a href="?order=recent"><button class="ej_btn order">최신순</button></a>
+	<a href="?order=recent"><button class="ej_btn order">최신순</button></a>
 </span>
 <br>
 <br>
@@ -225,7 +205,7 @@ $("#mycart").click(function(){
   }else{
  
   $.ajax({
-   url :"/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath}/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -276,7 +256,7 @@ $(".fa.fa-shopping-cart").click(function(){
   }else{
  
   $.ajax({
-   url :"/todaylesson/cartjson",
+   url :"${pageContext.request.contextPath}/todaylesson/cartjson",
    type : "post",
    data : data,
    success : function(result){
