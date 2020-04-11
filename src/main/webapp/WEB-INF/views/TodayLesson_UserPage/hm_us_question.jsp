@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
 <div class="usquestionmain">
 
 
-<img alt="faq" src="/resources/IMG/faq.png" class="usquestionimg">
+<img alt="faq" src="${pageContext.request.contextPath}/resources/IMG/faq.png" class="usquestionimg">
 <h2>1:1 문의하기</h2>
 <div>
 <h3>궁금하신 사항이 있으시다면 언제든지 문의해주시기 바랍니다</h3>

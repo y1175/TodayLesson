@@ -69,7 +69,7 @@ ${dto.question_title}
 
 <c:if test="${empty dto.question_answer }">
 <div class="emptyanswerdiv" >
-<img alt="emptyanswer" src="/resources/IMG/emptyanswer.png">
+<img alt="emptyanswer" src="${pageContext.request.contextPath}/resources/IMG/emptyanswer.png">
 </div>
 </c:if>
 

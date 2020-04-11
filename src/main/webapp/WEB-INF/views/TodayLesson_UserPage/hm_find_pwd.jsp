@@ -30,7 +30,7 @@
 <div class="pwdline">
 
 <div style="width:70%; margin:40px auto;">
-<form id="searchP" method="post" action="/findPassword">
+<form id="searchP" method="post" action="${pageContext.request.contextPath}/findPassword">
 
   <div class="form-group" style="margin-bottom:20px;">
     <label for="exampleInputEmail1">아이디</label>

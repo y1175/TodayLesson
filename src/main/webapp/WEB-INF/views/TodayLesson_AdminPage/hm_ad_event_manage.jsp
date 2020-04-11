@@ -17,7 +17,7 @@
 <!-- CSSstyle -->
 
 
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event.js?ver=2"></script>
 </head>
 <body>
 
@@ -51,7 +51,7 @@
 
 <div>
    <div style="width: 100%; height: 50px; margin-top:40px; margin-bottom:80px;">
-      <input type="button" id="eventinsertbtn" class="eventinsertbtn" value="이벤트등록" >
+      <input type="button" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_event_insert';" id="eventinsertbtn" class="eventinsertbtn" value="이벤트등록" >
    </div>
    
    

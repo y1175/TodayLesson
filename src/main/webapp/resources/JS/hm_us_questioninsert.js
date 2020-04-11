@@ -33,7 +33,7 @@ $(document).ready(function(){
 function bad_check(){
    
 
-   var YokList = new Array('개새끼','개색기','바보','script','iframe');
+   var YokList = new Array('개새끼','개색기','바보','김진영바보','멍청이','script','iframe');
    var Tmp;
    var Tmp2;
    var Yok=0;
@@ -59,7 +59,6 @@ function bad_check(){
       {
    document.hmquestionform.submit();
    alert('문의가 등록됐습니다.');
-  /* window.location=document.referrer;*/
-   /*location.href="/todaylessonmypage/hm_us_question";*/
+
       }
 };

@@ -94,7 +94,7 @@
 
 
 					<!-- 회원등급 & 권한 조정 -->
-					<form method="post" action="adminmember_levelupdate">
+					<form method="post" action="${pageContext.request.contextPath}/todaylessonadmin/adminmember_levelupdate">
 						<td><input type="hidden" name="member_id" value="${item.member_id}"> <select id="member_level"
 							name="member_level">
 								<option value="">${item.member_level}레벨</option>

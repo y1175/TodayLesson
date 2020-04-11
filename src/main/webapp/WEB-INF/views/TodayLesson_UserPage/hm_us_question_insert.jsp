@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <title>오늘의 레슨 1:1문의 등록페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_us_question_insert.css?ver=4">  
 <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js?ver=5"></script> 
+<script src="${pageContext.request.contextPath}/resources/JS/hm_us_questioninsert.js?ver=4"></script> 
 </head>
 <body>
 <!-- CSSstyle -->

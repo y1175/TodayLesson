@@ -22,7 +22,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
- <script src="/resources/JS/summernote-ko-KR.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/JS/summernote-ko-KR.js"></script>
 <title>관리자 이벤트 수정페이지</title>
 
 <!-- 썸머노트 -->

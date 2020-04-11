@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>오늘의 레슨 관리자 1:1문의</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hm_ad_question.css?ver=5">
-<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/hm_ad_question.js?ver=4"></script>
 
 <!-- CSSstyle --> 
    <style type="text/css">
@@ -101,7 +101,7 @@ pageEncoding="UTF-8"%>
 					
 					<td><span>${item.question_writedate}</span></td>
 					
-					<td><input type="button" name="questionbtn" id="questionbtn"
+					<td><input type="button" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/hm_ad_question_detail/${item.question_no}'" name="questionbtn" id="questionbtn"
 						class="questionbtn" value="상세보기"></td>
 				</tr>
 				

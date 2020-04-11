@@ -410,7 +410,7 @@
   }else{
  
   $.ajax({
-   url :"/todaylesson/hm_lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath}/todaylesson/hm_lesson_like",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -424,7 +424,7 @@
     	if(result=="success")
 		{
 		alert('♥');
-	    location.href = "/todaylesson/hm_us_bird";
+	    location.href = "${pageContext.request.contextPath}/todaylesson/hm_us_bird";
 		}
 	else{
 		alert('이미 좋아요에 추가된 상품입니다.');
@@ -459,7 +459,7 @@ $(".fa.fa-shopping-cart").click(function(){
   }else{
  
   $.ajax({
-   url :"/todaylesson/hm_lesson_cart",
+   url :"${pageContext.request.contextPath}/todaylesson/hm_lesson_cart",
    type : "post",
    data : data,
    success : function(result){
@@ -472,7 +472,7 @@ $(".fa.fa-shopping-cart").click(function(){
     	if(result=="success")
     		{
     		alert('장바구니에 추가되었습니다.');
-    		location.href = "/todaylesson/hm_us_bird";
+    		location.href = "${pageContext.request.contextPath}/todaylesson/hm_us_bird";
     		}
     	else{
     		alert('이미 장바구니에 추가된 상품입니다.');

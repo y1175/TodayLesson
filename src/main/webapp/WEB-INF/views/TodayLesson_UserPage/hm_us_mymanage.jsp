@@ -20,7 +20,7 @@
 
 <h1 style="margin-top:40px; text-align: center; color: rgb(53, 54, 58); ">내 정보 관리</h1>
 <div class="hmpwdimg">
-<img alt="내정보관리 이미지" src="/resources/IMG/password.png">
+<img alt="내정보관리 이미지" src="${pageContext.request.contextPath}/resources/IMG/password.png">
 </div>
 
 

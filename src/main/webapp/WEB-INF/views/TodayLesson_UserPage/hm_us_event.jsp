@@ -70,7 +70,7 @@
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:420px; margin:0 auto 40; ">
  
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center; background-color: #fff2f2; padding: 10px;">
- <form class="form-inline my-2 my-lg-0" method ="get" action="hm_us_event?currPage=${page.startBlock }">
+ <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/hm_us_event?currPage=${page.startBlock }">
  <select name="search"  class="form-control" id="inlineFormCustomSelect" style="margin-right: 20px;">
      <option value="all">전체</option>
      <option value="event_title">제목</option>

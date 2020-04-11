@@ -16,7 +16,7 @@ $(document).ready(function(){
       
         console.log("문자를 전송합니다.");
          console.log(" 인증번호:"+result);
-         $("#smsForm").attr("action",  "hm_us_mymanagesms"); //위에 있는 폼태그를 컨트롤러로 전송한다.
+         $("#smsForm").attr("action", "hm_us_mymanagesms"); //위에 있는 폼태그를 컨트롤러로 전송한다.
          $("#smsForm").submit();  
          
          

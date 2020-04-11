@@ -20,7 +20,7 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
- <script src="/resources/JS/summernote-ko-KR.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/JS/summernote-ko-KR.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_insert.js"></script>
 <title>오늘의 레슨 이벤트 등록</title>
 

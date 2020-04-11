@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	$('#question_btn').click(function(){
 		
-		location.href="/todaylessonmypage/hm_question_insert";
+		location.href="${pageContext.request.contextPath}/todaylessonmypage/hm_question_insert";
 	});
 	
 	
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 		var no = $(this).prop("id");
 	
-		location.href="/todaylessonmypage/hm_us_question_detail/"+no;
+		location.href="${pageContext.request.contextPath}/todaylessonmypage/hm_us_question_detail/"+no;
 		
 		
 	});
