@@ -484,7 +484,7 @@ body{
 	margin:0 auto;
 	list-style:none;
 	position:absolute;
-	bottom:110px;
+	bottom:115px;
 	right:13px;
 	z-index:1;
 	vertical-align: center;
@@ -522,7 +522,11 @@ body{
 .hs_user_store_product:hover .hs_user_store_product_social li{
 	margin:0 0 10px;
 	opacity:1;
-	transform:translateY(0)
+	transform:translateY(0);
+	
+	}
+.hs_user_store_product:hover .hs_user_store_product_social li>a{
+	 text-decoration: none;
 	}
 .hs_user_store_product:hover .hs_user_store_product_social li:nth-child(1){
 	transition-delay:.2s  /* 트랜지션 지연시간(애니메이션을 지연시킬 때) */
@@ -544,7 +548,8 @@ body{
 	}
 .hs_user_store_product_social li a div:hover{
 	color:rgb(224, 62, 82);
-	border-color:rgb(224, 62, 82)
+	border-color:rgb(224, 62, 82);
+	
 	}
 
 /* 세일% 라벨 */		
