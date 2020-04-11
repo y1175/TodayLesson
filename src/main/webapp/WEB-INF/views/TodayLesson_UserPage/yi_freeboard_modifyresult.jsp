@@ -17,12 +17,12 @@ var freeboard_no=${freeboard_no}
 if (result>0)
 	{
 	alert('수정완료');
-	location.href="/todaylesson/freeboard_detail/"+freeboard_no;
+	location.href="${pageContext.request.contextPath}/todaylesson/freeboard_detail/"+freeboard_no;
 	}
 else
 	{
 	alert('수정실패');
-	location.href="/todaylesson/freeboard_detail/"+freeboard_no;
+	location.href="${pageContext.request.contextPath}/todaylesson/freeboard_detail/"+freeboard_no;
 	}
 </script>
 </body>

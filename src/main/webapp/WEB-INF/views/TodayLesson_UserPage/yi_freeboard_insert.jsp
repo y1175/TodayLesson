@@ -35,7 +35,7 @@
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <div class="form-group">
 <input type="submit" class="write_btn" value="작성">
-<input type="button" class="goback" onclick="location.href='/todaylesson/freeboard'" value="목록으로">
+<input type="button" class="goback" onclick="location.href='${pageContext.request.contextPath}/todaylesson/freeboard'" value="목록으로">
 </div>
 </form>
 </div>

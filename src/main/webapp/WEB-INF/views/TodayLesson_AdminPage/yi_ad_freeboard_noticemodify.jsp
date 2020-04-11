@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="yi_container">
-<form action="/todaylessonadmin/admin_noticemodifyresult/" method="post">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/admin_noticemodifyresult/" method="post">
 
 <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <input type="hidden" name="notice_category" value="0">
@@ -29,7 +29,7 @@ ${dto.notice_content }
 </div>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <input type="submit" class="write_btn" value="수정">
-<input type="button" class="goback" onclick="location.href='/todaylessonadmin/admin_freeboard'" value="목록으로">
+<input type="button" class="goback" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard'" value="목록으로">
 
 </form>
 </div>

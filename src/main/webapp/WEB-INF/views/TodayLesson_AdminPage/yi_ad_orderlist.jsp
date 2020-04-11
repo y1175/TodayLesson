@@ -24,7 +24,7 @@
 <h2><b>주문내역 관리</b></h2>
 
 
-<form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
 
 <div class="form-group">
 <label>주문상태</label>
@@ -59,7 +59,7 @@
 </form>
 
 
-<form action="/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
 <select name="orderlist_category">
 <option value="1" selected="selected">스토어</option>
 <option value="2">레슨</option>
@@ -68,7 +68,7 @@
 </form>
 
 
-<form action="/todaylessonadmin/admin_order_modify">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/admin_order_modify">
 <table class="table table-hover">
 <thead class="thead-dark">
 <tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명(판매자)</th><th rowspan="2">금액합계</th><th rowspan="2">정산상태</th></tr>
@@ -121,14 +121,14 @@ $('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calc
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">${index }
 </a></li>
 </c:if>
 
@@ -140,7 +140,7 @@ $('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calc
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_orderstatus=${orderstatus}">NEXT
 </a></li>
 </c:if>
 </ul>
@@ -170,7 +170,7 @@ $('.status_select').on("change",function(){
 		return false;
 	}
 	else
-	{location.href="/todaylessonadmin/admin_order_modify/"+orderlist_no+"/"+selected;} 
+	{location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_order_modify/"+orderlist_no+"/"+selected;} 
 });
 
 
@@ -199,7 +199,7 @@ $('.calculate_select').on("change",function(){
 			return false;
 			}
 		else
-		{location.href="/todaylessonadmin/admin_order_calculate/"+orderlist_no+"/"+selected;}
+		{location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_order_calculate/"+orderlist_no+"/"+selected;}
 	}
 })
 </script>

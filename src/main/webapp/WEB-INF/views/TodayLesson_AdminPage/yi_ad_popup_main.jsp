@@ -25,7 +25,7 @@
  <img src="${dto1.popup_filepath }" class="popupimg" id="popupimg1" alt="popupimg"/>
 
 
-<form role="form" method="post" autocomplete="off" enctype="multipart/form-data" action="/todaylessonadmin/popup_adminresult/1">
+<form role="form" method="post" autocomplete="off" enctype="multipart/form-data" action="${pageContext.request.contextPath}/todaylessonadmin/popup_adminresult/1">
 <div class="form-group">
 <label for="popup_title1">팝업 타이틀</label>
 
@@ -60,7 +60,7 @@
  <script>
  if($('#popupimg1').attr("src")=="")
 	 {
-	 $('#popupimg1').attr("src",'http://localhost:8080/resources/imgUpload/2020/04/03/s/s_94c01447-a293-49ba-8bba-136824252ceb_popupdefault.png');
+	 $('#popupimg1').attr("src",'${pageContext.request.contextPath}/resources/imgUpload/2020/04/03/s/s_94c01447-a293-49ba-8bba-136824252ceb_popupdefault.png');
 	 }
  if(${dto1.popup_use}==1)
 	 {
@@ -87,7 +87,7 @@
 <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 <div class="form-group">
 <input type="submit" class="popup-submit-btn" value="팝업등록">
-<input type="button" class="popup-delete-btn" value="팝업삭제" onclick="location.href='/todaylessonadmin/popup_admin_delete/1'">
+<input type="button" class="popup-delete-btn" value="팝업삭제" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/popup_admin_delete/1'">
 </div>
 </form>
 </div>

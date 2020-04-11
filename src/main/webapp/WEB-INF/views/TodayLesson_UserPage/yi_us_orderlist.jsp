@@ -28,7 +28,7 @@
 
 $(document).ready(function(){
 	$.ajax({
-		url:'/todaylessonmypage/myorderlist_detail/'
+		url:'${pageContext.request.contextPath}/todaylessonmypage/myorderlist_detail/'
 		,dataType:'json'
 		,success:function(item){
 			var span=1;
@@ -102,7 +102,7 @@ $(document).ready(function(){
 <body>
 <div id="yi_container">
 <h3><span class="memberid">${member_id }</span>님의 주문내역</h3>
-<form action="/todaylessonmypage/user_myorderlist">
+<form action="${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist">
 <div class="row order_period">
 <div class="col-sm-5">
 <input class="form-control" type="date" name="start_date">
@@ -136,7 +136,7 @@ $(document).ready(function(){
 <span class="data_info">배송취소</span>
 </c:when>
 </c:choose>
-<input type="button" class="order_detail_btn" value="상세보기" onclick="location.href='/todaylessonmypage/myorderlist_orderinfo/${orderlist.orderlist_no}'"><br>
+<input type="button" class="order_detail_btn" value="상세보기" onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/myorderlist_orderinfo/${orderlist.orderlist_no}'"><br>
 <div class="no" >
 <table class="table order" id='${orderlist.orderlist_no}'>
 
@@ -149,14 +149,14 @@ $(document).ready(function(){
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="user_myorderlist?currPage=${page.startBlock-1}&start_date=${start_date}&end_date=${end_date}">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist?currPage=${page.startBlock-1}&start_date=${start_date}&end_date=${end_date}">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="user_myorderlist?currPage=${index }&start_date=${start_date}&end_date=${end_date}">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist?currPage=${index }&start_date=${start_date}&end_date=${end_date}">${index }
 </a></li>
 </c:if>
 
@@ -168,7 +168,7 @@ $(document).ready(function(){
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="user_myorderlist?currPage=${page.endBlock+1 }&start_date=${start_date}&end_date=${end_date}">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist?currPage=${page.endBlock+1 }&start_date=${start_date}&end_date=${end_date}">NEXT
 </a></li>
 </c:if>
 </ul>

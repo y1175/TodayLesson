@@ -16,12 +16,12 @@ var result=${insertResult}
 if (result>0)
 	{
 	alert('댓글 작성완료');
-	location.href="/todaylesson/freeboard_detail/"+${freeboard_no};
+	location.href="${pageContext.request.contextPath}/todaylesson/freeboard_detail/"+${freeboard_no};
 	}
 else
 	{
 	alert('댓글 입력실패');
-	location.href="/todaylesson/freeboard_detail/"+${freeboard_no};
+	location.href="${pageContext.request.contextPath}/todaylesson/freeboard_detail/"+${freeboard_no};
 	}
 </script>
 </body>

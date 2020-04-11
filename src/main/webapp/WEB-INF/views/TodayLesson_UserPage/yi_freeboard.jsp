@@ -37,7 +37,7 @@ function orderSelect()
 <div id="yi_container">
 <h2><b>자유 게시판</b> <i class='far fa-comments' style='font-size:36px'></i></h2>
 <div class="bb">
-<b>자유롭게 대화를 나누세요!<sec:authorize access="isAnonymous()"> 게시물을 보려면<a href="/todaylessonlogin"> 로그인</a>이 필요합니다.</sec:authorize></b>
+<b>자유롭게 대화를 나누세요!<sec:authorize access="isAnonymous()"> 게시물을 보려면<a href="${pageContext.request.contextPath}/todaylessonlogin"> 로그인</a>이 필요합니다.</sec:authorize></b>
 </div>
 <sec:authentication property="principal" var="pinfo"/>	
 <table class="table table-hover">
@@ -64,7 +64,7 @@ function orderSelect()
 <td style="font-weight:600;">공지사항</td>
 <td>${notice.notice_no }</td>
 <td>			
-<a href="notice_detail/${notice.notice_no }" >${notice.notice_title }</a>
+<a href="${pageContext.request.contextPath}/todaylesson/notice_detail/${notice.notice_no }" >${notice.notice_title }</a>
 </td>
 <td>${notice.member_nick }</td>
 <td>${notice.notice_writedate }</td>
@@ -87,7 +87,7 @@ function orderSelect()
 <td>${item.freeboard_no}</td>
 <td>
 <sec:authorize access="isAuthenticated()">
-<a href="freeboard_detail/${item.freeboard_no }">${item.freeboard_title }		</a><span class="yi_replycount">[${replist[status.index]}]</span>
+<a href="${pageContext.request.contextPath}/todaylesson/freeboard_detail/${item.freeboard_no }">${item.freeboard_title }		</a><span class="yi_replycount">[${replist[status.index]}]</span>
 </sec:authorize>
 <sec:authorize access="isAnonymous()">
 ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]</span>
@@ -100,7 +100,7 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 </c:forEach>
 </tbody>
 </table>
-<form method="get" class="form-inline my-2 my-lg-3" action="freeboard?currPage=${page.startBlock }">
+<form method="get" class="form-inline my-2 my-lg-3" action="${pageContext.request.contextPath}/todaylesson/freeboard?currPage=${page.startBlock }">
 
  <select name="search"  class="form-control" id="inlineFormCustomSelect" style="margin-right: 20px;">
 <option value="all">전체</option>
@@ -117,7 +117,7 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 <div class="col-sm">
 <div class="yi_write">
 <sec:authorize access="isAuthenticated()">
-<input type="button" id="write" class="yi_freeboard_btn" value="글쓰기" onclick="location.href='/todaylesson/freeboard_insert'">
+<input type="button" id="write" class="yi_freeboard_btn" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/todaylesson/freeboard_insert'">
 </sec:authorize>
 </div>
 </div>
@@ -136,7 +136,7 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 <!-- 이전페이지블럭 -->
 <c:if test="${page.prev }">
 <li class="page-item">
-<a href="freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}" class="page-link">PREV
+<a href="${pageContext.request.contextPath}/todaylesson/freeboard?currPage=${page.startBlock-1}&search=${search}&searchtxt=${searchtxt }&order=${order}" class="page-link">PREV
 </a></li>
 </c:if>
 
@@ -146,7 +146,7 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 <!-- if 인덱스가 현재페이지가 아니면 a태그 -->
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a href="freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}&order=${order}" class="page-link">${index }
+<a href="${pageContext.request.contextPath}/todaylesson/freeboard?currPage=${index }&search=${search}&searchtxt=${searchtxt}&order=${order}" class="page-link">${index }
 </a></li>
 </c:if>
 
@@ -159,7 +159,7 @@ ${item.freeboard_title }		<span class="yi_replycount">[${replist[status.index]}]
 <!-- 다음페이지블럭 -->
 <c:if test="${page.next }">
 <li class="page-item">
-<a href="freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&order=${order}" class="page-link">NEXT
+<a href="${pageContext.request.contextPath}/todaylesson/freeboard?currPage=${page.endBlock+1 }&search=${search}&searchtxt=${searchtxt}&order=${order}" class="page-link">NEXT
 </a></li>
 </c:if>
 </ul>

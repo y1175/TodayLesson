@@ -16,12 +16,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('삭제완료');
-	location.href="/todaylessonadmin/admin_freeboard";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard";
 	}
 else
 	{
 	alert('삭제실패');
-	location.href="/todaylessonadmin/admin_freeboard";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard";
 	}
 </script>
 </body>

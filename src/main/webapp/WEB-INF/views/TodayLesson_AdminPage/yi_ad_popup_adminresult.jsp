@@ -16,12 +16,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('입력완료');
-	location.href="/todaylessonadmin/popup_admin";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/popup_admin";
 	}
 else
 	{
 	alert('입력실패');
-	location.href="/todaylessonadmin/popup_admin";
+	location.href="${pageContext.request.contextPath}/todaylessonadmin/popup_admin";
 	}
 </script>
 </body>

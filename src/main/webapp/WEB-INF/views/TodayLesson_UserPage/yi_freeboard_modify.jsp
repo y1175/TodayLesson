@@ -35,7 +35,7 @@ $(document).ready(function(){
 </sec:authorize>		
 <sec:authorize access="isAuthenticated()">
 
-<form action="/todaylesson/freeboard_modifyresult" method="post">
+<form action="${pageContext.request.contextPath}/todaylesson/freeboard_modifyresult" method="post">
 
 <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}">
 <input type="hidden" name="freeboard_no" value="${item.freeboard_no}">
@@ -64,7 +64,7 @@ ${item.freeboard_content }</textarea>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <div class="form-group">
 <input type="submit" class="write_btn" value="작성">
-<input type="button" class="goback"  onclick="location.href='/todaylesson/freeboard'" value="목록으로">
+<input type="button" class="goback"  onclick="location.href='${pageContext.request.contextPath}/todaylesson/freeboard'" value="목록으로">
 </div>
 </form>
 

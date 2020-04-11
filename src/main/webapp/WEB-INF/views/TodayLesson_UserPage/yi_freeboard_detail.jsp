@@ -36,7 +36,7 @@ ${item.freeboard_content } <br>
 
 </div>
 <div class="rep_form">
-<form method='post' action='/todaylesson/insert_boardreply/' id='repdetail'>
+<form method='post' action='${pageContext.request.contextPath}/todaylesson/insert_boardreply/' id='repdetail'>
 <input type='hidden' name='freeboard_no' value="${item.freeboard_no }"><br>
 <input type='hidden' id='member_id' name='member_id' value='${pageContext.request.userPrincipal.name}'><br>
 <label for='boardreply_content'>Comment</label>
@@ -61,7 +61,7 @@ ${item.freeboard_content } <br>
 <td>
 <c:if test="${rep_list.member_id eq pageContext.request.userPrincipal.name }">
 <input type="button" class="reply_delete" value="삭제" 
-onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/todaylesson/boardreply_delete/${rep_list.boardreply_no}'">
+onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='${pageContext.request.contextPath}/todaylesson/boardreply_delete/${rep_list.boardreply_no}'">
 </c:if>
 </td></tr>
 </c:forEach>
@@ -70,11 +70,11 @@ onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href=
 </table><br>
 <c:if test="${item.member_id eq pageContext.request.userPrincipal.name }">
 <input type="button" class="freeboard_modify" value="글수정" 
-onclick="location.href='/todaylesson/freeboard_modify/${item.freeboard_no}'">
+onclick="location.href='${pageContext.request.contextPath}/todaylesson/freeboard_modify/${item.freeboard_no}'">
 <input type="button" class="freeboard_delete" value="글삭제"
-onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='/todaylesson/freeboard_delete/${item.freeboard_no}'">
+onclick="if(!confirm('삭제 하시겠습니까?')){return false;}location.href='${pageContext.request.contextPath}/todaylesson/freeboard_delete/${item.freeboard_no}'">
 </c:if>
-<a class="goback" href="/todaylesson/freeboard">목록으로</a>
+<a class="goback" href="${pageContext.request.contextPath}/todaylesson/freeboard">목록으로</a>
 </sec:authorize>
 
 </div>

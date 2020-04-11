@@ -20,7 +20,7 @@
 <body>
 <div id="yi_container">
 <h2><b>주문취소 관리</b></h2>
-<form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
 <div class="form-group">
 <label>결제상태</label>
 <div class="form-check">
@@ -51,7 +51,7 @@
  <input type="submit" class="order_search_btn" value="조회">
 </form>
 
-<form action="/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
 <select name="orderlist_category">
 <option value="1" selected="selected">스토어</option>
 <option value="2">레슨</option>
@@ -60,7 +60,7 @@
 </form>
 
 
-<form action="/todaylessonadmin/admin_order_refund">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/admin_order_refund">
 <table class="table table-hover">
 <thead class="thead-dark">
 <tr><th>주문번호</th><th>주문일자</th><th>주문자 연락처</th><th>상품명(판매자)</th><th rowspan="2">금액합계</th></tr>
@@ -107,14 +107,14 @@ console.log($('.status_select option[value=${item.orderlist_paystatus }]').val()
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.startBlock-1}&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${index }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">${index }
 </a></li>
 </c:if>
 
@@ -126,7 +126,7 @@ console.log($('.status_select option[value=${item.orderlist_paystatus }]').val()
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.endBlock+1 }&orderlist_category=${orderlist_category}&orderlist_search=${search}&start_date=${start_date}&end_date=${end_date}&orderlist_paystatus=${paystatus}">NEXT
 </a></li>
 </c:if>
 </ul>
@@ -154,7 +154,7 @@ $('.status_select').on("change",function(){
 		return false;
 	}
 	else
-	{location.href="/todaylessonadmin/admin_order_refund/"+orderlist_no+"/"+selected;} 
+	{location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_order_refund/"+orderlist_no+"/"+selected;} 
 })
 </script>
 </body>

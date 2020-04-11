@@ -34,7 +34,7 @@
 	</div>
     </form>
     
-<form method="post" action="/joinresult">
+<form method="post" action="${pageContext.request.contextPath}/joinresult">
 <input type="hidden" name="phone" value="${to }"/>
 
 <div class="form-group row">

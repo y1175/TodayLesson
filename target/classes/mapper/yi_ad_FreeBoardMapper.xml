@@ -62,7 +62,7 @@ where notice_no=#{notice_no}
 </update>
 
 <delete id="notice_delete" parameterType="int">
-delete notice
+delete from notice
 where notice_no=#{notice_no}
 </delete>
 

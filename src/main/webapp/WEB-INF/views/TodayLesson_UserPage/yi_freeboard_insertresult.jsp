@@ -16,12 +16,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('작성완료');
-	location.href="/todaylesson/freeboard";
+	location.href="${pageContext.request.contextPath}/todaylesson/freeboard";
 	}
 else
 	{
 	alert('입력실패');
-	location.href="/todaylesson/freeboard";
+	location.href="${pageContext.request.contextPath}/todaylesson/freeboard";
 	}
 </script>
 </body>

@@ -123,7 +123,7 @@
 </section>
 <h2>접속자 통계</h2>
 <div class="detailline"></div>
-<form action="/todaylessonadmin/member_statistics">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/member_statistics">
 
 <div class="form-group row">
 <label for="start_date end_date" class="col-sm-1 col-form-label">기간선택</label>
@@ -173,7 +173,7 @@
 
 <h2>신규회원 통계</h2>
 <div class="detailline"></div>
-<form action="/todaylessonadmin/member_statistics">
+<form action="${pageContext.request.contextPath}/todaylessonadmin/member_statistics">
 
 <div class="form-group row">
 <label for="countdate" class="col-sm-1 col-form-label">날짜선택</label>

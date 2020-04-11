@@ -27,7 +27,7 @@ if(result)
 	{
 	if(orderlist_orderstatus<3)
 		{
-			location.href='/todaylessonmypage/user_myorderlist_cancel/'+orderlist_no;
+			location.href='${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist_cancel/'+orderlist_no;
 		}
 	else if(orderlist_orderstatus==5)
 		{
@@ -115,7 +115,7 @@ ${dto.orderlist_cost }원
 <div class="pay_info">총 결제 금액: ${dto.orderlist_cost }원</div>
 <div class="detailline"></div>
 <input type="button" class="ordercancel-btn" name="order_cancel" value="주문취소" onclick="cancel(${dto.orderlist_orderstatus},${dto.orderlist_no })">
-<input type="button" class="goback-btn" name="go_previous" value="돌아가기" onclick="location.href='/todaylessonmypage/user_myorderlist'">
+<input type="button" class="goback-btn" name="go_previous" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist'">
 </div>
 </body>
 </html>

@@ -130,7 +130,7 @@ public class Admin_YI_FreeBoard_Controller {
 		return "/TodayLesson_AdminPage/yi_ad_freeboard_modifyresult.hs_ad_main_section";
 	}
 	
-	@RequestMapping("/admin_noticedelete/{freeboard_no}")
+	@RequestMapping("/admin_noticedelete/{notice_no}")
 	public String admin_noticedelete(@PathVariable int notice_no
 			,Model model)
 	{

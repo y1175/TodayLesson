@@ -31,7 +31,7 @@ ${item.notice_content } <br>
 
 </div>
 <div class="notice_end">
-<a class="goback" href="/todaylesson/freeboard">목록으로</a>
+<a class="goback" href="${pageContext.request.contextPath}/todaylesson/freeboard">목록으로</a>
 </div>
 
 

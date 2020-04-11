@@ -43,7 +43,7 @@ if(obj.hasChildNodes()!=true)
 document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style");
  
 	$.ajax({
-		url:'/todaylessonadmin/freeboard_replyjson/'+freeboard_no
+		url:'${pageContext.request.contextPath}/todaylessonadmin/freeboard_replyjson/'+freeboard_no
 		,dataType:'json'
 		,success:function(item){
 
@@ -101,7 +101,7 @@ document.getElementById("add_reply_thead-"+freeboard_no).removeAttribute("style"
 		        	$(this).parent().parent().remove();	
 					let reno=$(this).attr('id');
 						$.ajax({
-					        url: "/todaylessonadmin/del_replyajax/"+reno
+					        url: "${pageContext.request.contextPath}/todaylessonadmin/del_replyajax/"+reno
 					        ,type:"post"
 					        ,success: function(){
 					        
@@ -150,9 +150,9 @@ else
 <div id="yi_container">
 <sec:authentication property="principal" var="pinfo"/>
 <span class="pagetitle"><b>커뮤니티 관리</b></span>
-<input type="button" class="notice_btn" value="공지등록" onclick="location.href='/todaylessonadmin/freeboard_noticewrite'">	
+<input type="button" class="notice_btn" value="공지등록" onclick="location.href='${pageContext.request.contextPath}/todaylessonadmin/freeboard_noticewrite'">	
 
-<form method="get" class="form-inline my-2 my-lg-3" action="admin_freeboard?currPage=${page.startBlock }">
+<form method="get" class="form-inline my-2 my-lg-3" action="${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard?currPage=${page.startBlock }">
 <div align="right" class="container yi_searchbar">
 <div class="row">
 <div class="col-sm">
@@ -199,10 +199,10 @@ else
   
    
   ${notice.notice_content}<br>
-  <form action="/todaylessonadmin/admin_noticemodify/${notice.notice_no }" method="post">
+  <form action="${pageContext.request.contextPath}/todaylessonadmin/admin_noticemodify/${notice.notice_no }" method="post">
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
   <input type="submit" class="noticemodify-btn" value="수정"><input type="button" class="noticedelete-btn" value="삭제"
-  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='/todaylessonadmin/admin_noticedelete/${notice.notice_no}'">
+  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='${pageContext.request.contextPath}/todaylessonadmin/admin_noticedelete/${notice.notice_no}'">
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
   </form>
 
@@ -264,14 +264,14 @@ ${item.freeboard_title }		<span class="replycount">[${replist[status.index]}]</s
 </table>
 
 
-  <form action="admin_replyinsert/${item.freeboard_no}" method="post">
+  <form action="${pageContext.request.contextPath}/todaylessonadmin/admin_replyinsert/${item.freeboard_no}" method="post">
   <div class="form-group">
   <textarea class="form-control" style="resize: none;" rows="5" cols="100" name="boardreply_content" required="required"></textarea><br>
   </div>
   <input type="hidden" name="member_id" value="${pageContext.request.userPrincipal.name}"><br>
   <input type="submit" class="boardreply-insert" value="답변" name="admin_reply">
   <input type="button" class="board-delete" value="삭제" name="admin_delete" 
-  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='admin_delete/${item.freeboard_no}'">
+  onclick="if(!confirm('글을 삭제 하시겠습니까?')){return false;}location.href='${pageContext.request.contextPath}/todaylessonadmin/admin_delete/${item.freeboard_no}'">
   <input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
    </form>
   
@@ -294,14 +294,14 @@ ${item.freeboard_title }		<span class="replycount">[${replist[status.index]}]</s
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="admin_freeboard?currPage=${page.startBlock-1}&category=${category}&search=${search}&searchtxt=${searchtxt }">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard?currPage=${page.startBlock-1}&category=${category}&search=${search}&searchtxt=${searchtxt }">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="admin_freeboard?currPage=${index }&category=${category}&search=${search}&searchtxt=${searchtxt}">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard?currPage=${index }&category=${category}&search=${search}&searchtxt=${searchtxt}">${index }
 </a></li>
 </c:if>
 <c:if test="${index==page.currPage }">
@@ -311,7 +311,7 @@ ${item.freeboard_title }		<span class="replycount">[${replist[status.index]}]</s
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="admin_freeboard?currPage=${page.endBlock+1 }&category${category}&search=${search}&searchtxt=${searchtxt}">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/admin_freeboard?currPage=${page.endBlock+1 }&category${category}&search=${search}&searchtxt=${searchtxt}">NEXT
 </a></li>
 </c:if>
 </ul>
