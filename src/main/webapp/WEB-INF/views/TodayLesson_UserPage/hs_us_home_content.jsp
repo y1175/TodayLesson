@@ -14,18 +14,18 @@
 </head>
 <body>
    <!-- Main Slider -->
-   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 100px;">
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: -10px;">
       <div class="carousel-inner">
          <c:forEach var="mainBannerSlider" items="${mainBannerSlider}" varStatus="status">
             <c:choose>
                <c:when test="${status.count == 1}">
                   <div class="carousel-item active">
-                     <img src="${mainBannerSlider.banner_filepath}" class="w-100"  alt="...">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100 h-50"  alt="...">
                   </div>
                </c:when>
                <c:otherwise>
                   <div class="carousel-item">
-                     <img src="${mainBannerSlider.banner_filepath}" class="w-100" alt="...">
+                     <img src="${mainBannerSlider.banner_filepath}" class="w-100 h-50" alt="...">
                   </div>
                </c:otherwise>
             </c:choose>

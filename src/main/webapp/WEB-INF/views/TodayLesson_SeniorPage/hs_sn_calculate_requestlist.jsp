@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=4">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=5">  
    <style type="text/css">
       .hs_sn_main_asidenav_nav_calRequest_title>a{
          color: rgb(224, 62, 82);
@@ -24,46 +24,10 @@
 
 <script type="text/javascript">
 /* 은행명 */
-/* $(document).ready(function() {
-
-	let bank_code= "${accountdetalidto.senior_bank_name}";
-	let token = "${token}";
-
-	console.log(bank_code);
-	console.log(token);
-
-	$.ajax({
-		method: 'get',
-		url: 'https://api.iamport.kr/banks',
-	    headers: { 
-	    	"Authorization": token
-		}
-	}).done(function(msg) {
-			console.log(msg);
-			let bank_name = msg.response;
-			
-			for (var i = 0; i < bank_name.length; i++) {
-				console.log(bank_name[i]);
-				console.log(bank_name[i].code);
-				console.log(bank_name[i].name);
-				//console.log(bank_code);
-				
-				if (bank_name[i].code == bank_code) {
-					let senior_bank_name = bank_name[i].name;
-					$('.bank_name').append(senior_bank_name);
-					break;
-				}
-			}
-			
-		});
-	
-	
-});
-  */
   $('document').ready(function(){
 		
 		
-		let bank_code= "${dto.senior_bank_name}";
+		let bank_code= "${accountdetalidto.senior_bank_name}";
 		let token = "${token}";
 
 		console.log(bank_code);
@@ -81,10 +45,11 @@
 			 console.log(bank_name.length);
 		      for (var i = 0; i < bank_name.length; i++) {   
 		         if (bank_name[i].code == bank_code) {
-		            let senior_bank_name = bank_name[i].name;
+		            let senior_bank_name = bank_name[i].code;
+		            
 		            console.log(senior_bank_name);
-		            $('.bank_name').append(senior_bank_name);
-		            //$('select[name="senior_bank_name"]').find('option[value='+i+']').attr("selected",true);
+		            //$('.bank_name').append(senior_bank_name);
+		            $('select[name="senior_bank_name"]').find('option[value='+senior_bank_name+']').attr("selected",true);
 		            console.log("dddd");
 		            break;
 		         }
@@ -93,9 +58,43 @@
 		   });
 		
 	});
- 
-  
 </script>
+<script>
+	$('document').ready(function() {
+
+		let bank_code = "${accountdetalidto.senior_bank_name}";
+		let token = "${token}";
+
+		console.log(bank_code);
+		console.log(token);
+
+		$.ajax({
+			method : 'get',
+			url : 'https://api.iamport.kr/banks',
+			headers : {
+				"Authorization" : token
+			}
+		}).done(function(msg) {
+			console.log(msg);
+			let bank_name = msg.response;
+
+			for (var i = 0; i < bank_name.length; i++) {
+				console.log(bank_name[i]);
+				console.log(bank_name[i].code);
+				console.log(bank_name[i].name);
+				//console.log(bank_code);
+
+				if (bank_name[i].code == bank_code) {
+					let senior_bank_name = bank_name[i].name;
+					$('.bank_name').append(senior_bank_name);
+					break;
+				}
+			}
+
+		})
+	});
+</script>
+
 </head>
 <body>
 
@@ -118,12 +117,11 @@
                         </c:choose>
                      </b> <!-- 정산가능 금액 나타내는거... 누르면 매출내역뜨는건 고민좀... -->
                      <br>
-                     <div class = "bank_name"></div>
-                     <br>
-                     <span>
+                     <div class = "bank_name" style="font-size: 15px; font-weight: 600; margin: 10px 0px 0px 0px; color: rgba(53, 54, 58, 0.5);"></div>
+                     <span style="font-size: 15px; font-weight: 600; margin: 10px 0px 0px 0px; color: rgba(53, 54, 58, 0.5);">
                         <c:out value="${accountdetalidto.senior_account_num}"/>
                      </span>
-                     <span>
+                     <span style="font-size: 15px; font-weight: 600; margin: 10px 0px 0px 0px; color: rgba(53, 54, 58, 0.5);">
                         <c:out value="${accountdetalidto.senior_account_name}"/>
                      </span>
                         <br>
@@ -303,8 +301,8 @@
                                           <table class="table table-hover" style="border-top: 2px solid rgb(53, 54, 58); border-bottom: 2px solid rgb(53, 54, 58);">
                                              <tr class="hs_senior_CulateRequestModal_accountdetail_tr">
                                                 <th>은행</th>
-                                                <td>
-                                                   <c:out value="${accountdetalidto.senior_bank_name}"/> 
+                                                <td class = "bank_name">
+                                                   
                                                 </td>
                                              </tr>
                                              <tr class="hs_senior_CulateRequestModal_accountdetail_tr">
@@ -338,7 +336,7 @@
                                              <br>
                                              <label for="hs_sn_cal_calculate_bank_name_o" style="width: 120px; font-weight: 600;">정산신청은행</label>
                                              <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_o" style="font-size: 15px; margin-bottom: 10px;">
-                                                <option class="bank_name"></option>
+                                                <option class=""></option>
                                                 <option value="KB국민은행">KB국민은행</option>
                                                 <option value="023">SC제일은행</option>
                                                 <option value="039">경남은행</option>
@@ -403,7 +401,7 @@
                                           <div id="hs_senior_CulateRequestModal_crno_x_detail" style="display: none;">
                                              <label for="hs_sn_cal_calculate_bank_name_x" style="width: 120px; font-weight: 600;">정산신청은행</label>
                                              <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_x">
-                                                <option class="bank_name"></option>
+                                                <option class=""></option>
                                                 <option value="KB국민은행">KB국민은행</option>
                                                 <option value="SC제일은행">SC제일은행</option>
                                                 <option value="경남은행">경남은행</option>
@@ -627,7 +625,7 @@
                      <!-- 정산계좌 -->
                      <c:set var = "calculate_bank_name1" value = "${cal_SeniorInfo[status.index].calculate_bank_name}"/>
                      <c:set var = "length1" value = "${fn:length(calculate_bank_name1)}"/>
-                     <c:set var = "calculate_bank_name2" value = "${fn:substring(calculate_bank_name1, 1, length)}" />
+                     <c:set var = "calculate_bank_name2" value = "${fn:substring(calculate_bank_name1, 1, length1)}" />
                      
                      <c:set var = "calculate_account_num1" value = "${cal_SeniorInfo[status.index].calculate_account_num}"/>
                      <c:set var = "length2" value = "${fn:length(calculate_account_num1)}"/>
@@ -636,16 +634,14 @@
                      <c:set var = "calculate_account_name1" value = "${cal_SeniorInfo[status.index].calculate_account_name}"/>
                      <c:set var = "length3" value = "${fn:length(calculate_account_name1)}"/>
                      <c:set var = "calculate_account_name2" value = "${fn:substring(calculate_account_name1, 1, length3)}" />
-                     <td>
+                     <td style="vertical-align: middle;">
                         <c:choose>
                            <c:when test="${cal_requestlist.orderlist_calculatestatus == 1 || cal_requestlist.orderlist_calculatestatus == 2 }">
                               <c:out value=" - "/>
                            </c:when>
                            <c:when test="${cal_requestlist.orderlist_calculatestatus == 3 || cal_requestlist.orderlist_calculatestatus == 4 }">
                               <c:out value="${calculate_bank_name2}"/>
-                              <br>
                               <c:out value="${calculate_account_num2}"/>
-                              <br>
                               <c:out value="${calculate_account_num2}"/>
                            </c:when>
                         </c:choose>

@@ -17,7 +17,7 @@
     <select id="memberJoinCount" resultType="int">
        select count(*) 
        from member
-       where member_join_date > DATE_ADD(now(), INTERVAL -1 month)
+       where member_join_date > DATE_ADD(now(), INTERVAL -24 hour)
     </select>
     <!-- 일일 회원가입현황 -->
     
@@ -25,7 +25,7 @@
     <select id="seniorChangeCount" resultType="int">
        select count(*) 
        from senior
-       where senior_register_date > DATE_ADD(now(), INTERVAL -1 month)
+       where senior_register_date > DATE_ADD(now(), INTERVAL -24 hour)
     </select>
     <!-- 일일 시니어전환자 집계 -->
     
@@ -33,7 +33,7 @@
     <select id="freeboardWriteCount" resultType="int">
        select count(*) 
        from freeboard
-       where freeboard_writedate > DATE_ADD(now(), INTERVAL -1 month)
+       where freeboard_writedate > DATE_ADD(now(), INTERVAL -24 hour)
     </select>
     <!-- 일일게시글수 집계 -->
     
@@ -41,7 +41,7 @@
     <select id="orderlistCostSum" resultType="int">
        select sum(orderlist_cost) 
        from orderlist 
-       where orderlist_date > DATE_ADD(now(), INTERVAL -1 month)
+       where orderlist_date > DATE_ADD(now(), INTERVAL -24 hour)
     </select>
     <!-- 일일 판매금액 집계 -->
     

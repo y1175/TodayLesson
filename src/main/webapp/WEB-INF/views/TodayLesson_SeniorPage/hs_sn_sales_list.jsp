@@ -268,7 +268,7 @@
                   <c:set var="sales_sum" value="${sales_sum+senior_sales}"/> <!-- 시니어매출합계 -->
                   
                      <!-- 결제금액합계 -->
-                     <c:set var="cost_sum" value="${cost_sum+salesList.orderlist_cost}"/>
+                     <c:set var="cost_sum" value="${cost_sum+salesList.lesson_cost}"/>
                      <!-- 포인트사용합계 -->
                      <c:set var="usepoint_sum" value="${usepoint_sum+salesList.orderlist_usepoint}"/>
                      <!-- 정산수수료합계 -->
@@ -310,10 +310,7 @@
             </tfoot>
          </table>
       </div>
-   </div>
-
-
-<div class="paging">
+   <div class="paging">
 <div class="paginginside">
 <ul class="pagination pagination-danger">
 <!-- 이전페이지블럭 -->
@@ -350,6 +347,14 @@
 
 </div>
 </div>
+   
+   
+   
+   
+   </div>
+
+
+
 
    
    
