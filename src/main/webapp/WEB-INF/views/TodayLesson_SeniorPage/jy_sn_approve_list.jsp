@@ -39,7 +39,7 @@ if ( ${list_size} == 0 ) {
  
  
  <!-- 검색 --> 
- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:31.5%; margin:40px auto;">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:32%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin:0px auto;">
 <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonsenior/my_approve_lesson?currPage=${page.startBlock }"
  style="margin:0px auto;">

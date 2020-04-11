@@ -358,6 +358,10 @@ $(".fa.fa-shopping-cart").click(function(){
     		alert('장바구니에 추가되었습니다.');
     	    location.href = "/todaylesson/total_lesson_list";
     		}
+    	else if(result=="soldout")
+		{
+		alert('품절된 레슨은 장바구니에 추가할 수 없습니다.');
+		}
     	else{
     		alert('이미 장바구니에 추가된 상품입니다.');
     	}

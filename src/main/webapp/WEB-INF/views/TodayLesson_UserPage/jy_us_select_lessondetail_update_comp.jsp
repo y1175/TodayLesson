@@ -11,7 +11,7 @@
 <script>
 
 if (${result} > 0) {
-	alert("업데이트 완료");
+	alert("수강률 업데이트 완료");
 
 	location.href="${pageContext.request.contextPath}/todaylessonmypage/mylesson_detail/${lesson_no}";
 
