@@ -19,7 +19,7 @@ where a.member_id = #{member_id}
 
 </update>
 
-<!-- <insert id="member_levelup">
+<insert id="member_levelup">
 
 insert into member_auth(member_auth, member_id)
 value('ROLE_SENIOR', #{member_id})
@@ -28,9 +28,9 @@ value('ROLE_SENIOR', #{member_id})
 
 <delete id="member_auth_up">
 
-delete from member_auth where member_id = (#{member_id})
+delete from member_auth where member_id = #{member_id} and member_auth = 'ROLE_USER'
 
-</delete> -->
+</delete> 
 
 <update id="member_auth">
 

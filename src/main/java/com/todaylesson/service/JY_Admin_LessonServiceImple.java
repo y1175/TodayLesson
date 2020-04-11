@@ -75,22 +75,26 @@ public class JY_Admin_LessonServiceImple implements JY_Admin_LessonService {
 
 
 	@Override
-	public int totalCount(String search, String searchtxt) {
+	public int totalCount(String search, String searchtxt,  String start_date, String end_date) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
 		return mapper.getCount(hm);
 	}
 
 
 	@Override
-	public List<AllLessonDTO> all_lesson(String search, String searchtxt, String order, int startrow, int endrow) {
+	public List<AllLessonDTO> all_lesson(String search, String searchtxt, String order, int startrow, int endrow,  String start_date, String end_date) {
 		HashMap<String, Object> hm=new HashMap<String, Object>();
 		hm.put("search", search);
 		hm.put("searchtxt", searchtxt);
 		hm.put("startrow", startrow);
 		hm.put("endrow", endrow);
 		hm.put("order", order);
+		hm.put("start_date", start_date);
+		hm.put("end_date", end_date);
 		return mapper.all_lesson(hm);
 	}
 
