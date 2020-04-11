@@ -216,7 +216,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 	  
 function multiple_time_lesson_date(){
 	
-	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=520, scrollbars=yes, resizable=yes");
+	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=790, scrollbars=yes, resizable=yes");
 
 	
 }	

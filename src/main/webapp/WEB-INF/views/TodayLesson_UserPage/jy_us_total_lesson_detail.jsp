@@ -543,6 +543,9 @@ $(".insert_my_cart").click(function(){
 
 
 	</div>
+	
+	<br>
+	<br>
 	<h4>안녕하세요, 시니어 <c:out value="${dto.lesson_senior_title}" /> 입니다.</h4>
 	<br>
 	<div class="summer" style="margin-bottom: 30px;"><h4>${dto.lesson_senior_content}</h4></div>
@@ -731,7 +734,7 @@ function getCommentList(){
                         	html += "<li class='ans'>";
 				            html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
                            	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control'>"; 
+	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control' >"; 
                         	html += "<input type ='button' onClick='fn_answer("+data[i].lesson_qa_no+")' class='ej_btn' value='등록'></li></ul></li>"; 
 							 
                         	}  else { 
@@ -753,7 +756,7 @@ function getCommentList(){
 	                        html += "<li class='ans'>";
 				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
                            	html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control'>"; 
+	                        html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control' >"; 
                         	html += "<input type='button' onClick='fn_answer("+ data[i].lesson_qa_no +")'  class='ej_btn' value='등록'></li></ul></li></ul></div>"; 
                         
                         }  else { 
@@ -775,7 +778,7 @@ function getCommentList(){
 	                         html += "<li class='ans'>";
 				             html += "<input type ='hidden' id = 'lesson_qa_reply_secret"+ data[i].lesson_qa_no +"' name='lesson_qa_reply_secret' value="+data[i].lesson_qa_reply_secret+">";
 			                 html += "<input type ='hidden' name='lesson_qa_no' value="+data[i].lesson_qa_no+">";
-		                     html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control'>"; 
+		                     html += "<input type = 'text' class='lesson_qa_answer_content' id = 'lesson_qa_answer_content"+data[i].lesson_qa_no+"' name='lesson_qa_answer_content' placeholder='댓글을 입력하세요' class='form-control' >"; 
                         	 html += "<input type='button' onClick='fn_answer(" +data[i].lesson_qa_no+")'  class='ej_btn' value='등록'></li></ul></li>"; 
                         
                         }  else { 

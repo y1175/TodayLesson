@@ -260,7 +260,7 @@ ${dto.lesson_content}
 
 <button id="reward_point" class="ej_btn" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson'">목록으로</button>
 
-<c:if test="${dto.lesson_type == 3}">
+<c:if test="${dto.lesson_type == 3 && dto.lesson_number > list_size}">
 
 <button id="reward_point" class="ej_btn2" onclick="location.href='${pageContext.request.contextPath }/todaylessonsenior/my_approve_lesson_upload/${dto.lesson_no}'">레슨 업로드</button>
 
