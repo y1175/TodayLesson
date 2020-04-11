@@ -96,7 +96,7 @@ console.log('val',hh);
  
 
   $.ajax({
-   url :"/todaylesson/ej_us_orderform/applypointjson",
+   url :"${pageContext.request.contextPath}/todaylesson/ej_us_orderform/applypointjson",
    type : "post",
    data : data,
    success : function(){

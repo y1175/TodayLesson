@@ -115,7 +115,7 @@ text-decoration: none;
                   <c:out value="${item.product_no}"/>
                </td>
                <td>
-                  <a href="ej_ad_productdetail/${item.product_no}" class="ej_link">${item.product_name}</a>
+                  <a href="${pageContext.request.contextPath}/ej_ad_productdetail/${item.product_no}" class="ej_link">${item.product_name}</a>
                </td>
                <td>
                 <c:set var="category" value="${item.product_category }"/>
@@ -148,14 +148,14 @@ text-decoration: none;
 <ul class="pagination pagination-danger" >
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonadmin/ej_ad_productlist?currPage=${page.startBlock-1}">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist?currPage=${page.startBlock-1}">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonadmin/ej_ad_productlist?currPage=${index }">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist?currPage=${index }">${index }
 </a></li>
 </c:if>
 <c:if test="${index==page.currPage }">
@@ -165,7 +165,7 @@ text-decoration: none;
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonadmin/ej_ad_productlist?currPage=${page.endBlock+1 }">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/ej_ad_productlist?currPage=${page.endBlock+1 }">NEXT
 </a></li>
 </c:if>
 </ul>

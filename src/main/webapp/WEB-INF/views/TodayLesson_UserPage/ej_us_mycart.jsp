@@ -16,7 +16,6 @@
 <!--my style  -->	
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_orderform.css">
   <!--my style/  -->
-<title>Insert title here</title>
 <style>
 .orderInfo{
 display:none;}
@@ -126,7 +125,7 @@ display:none;}
  
 
   $.ajax({
-   url :"/todaylesson/ej_us_orderform/applypointjson",
+   url :"${pageContext.request.contextPath}/todaylesson/ej_us_orderform/applypointjson",
    type : "post",
    data : data,
    success : function(){
@@ -400,14 +399,14 @@ $(".delete_product_cart").on('click',function(){
 	}
 	
 	$.ajax({
-	      url:"/todaylessonmypage/deletecart_json",
+	      url:"${pageContext.request.contextPath}/todaylessonmypage/deletecart_json",
 	      type:"post",
 	      data: data,
 	      success: function(result){
 	    	 if(result>0)
 	    		 {
 	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
-	    	  location.href="/todaylessonmypage/mycart/"+'${memberid}';
+	    	  location.href="${pageContext.request.contextPath}/todaylessonmypage/mycart/"+'${memberid}';
 	    		 }
 	    	 else{
 	    		 alert('삭제 실패되었습니다.');
@@ -435,14 +434,14 @@ $(".delete_lesson_cart").on('click',function(){
 	}
 	
 	$.ajax({
-	      url:"/todaylessonmypage/deletecart_json",
+	      url:"${pageContext.request.contextPath}/todaylessonmypage/deletecart_json",
 	      type:"post",
 	      data: data,
 	      success: function(result){
 	    	 if(result>0)
 	    		 {
 	    		// alert('해당상품을 장바구니에서 삭제 하시겠습니까?');
-	    	  location.href="/todaylessonmypage/mycart/"+'${memberid}';
+	    	  location.href="${pageContext.request.contextPath}/todaylessonmypage/mycart/"+'${memberid}';
 	    		 }
 	    	 else{
 	    		 alert('삭제 실패되었습니다.');

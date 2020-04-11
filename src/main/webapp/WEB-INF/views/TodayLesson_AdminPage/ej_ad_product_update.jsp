@@ -12,7 +12,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
- <script src="/resources/JS/summernote-ko-KR.js"></script>
+ <script src="${pageContext.request.contextPath}/resources/JS/summernote-ko-KR.js"></script>
 <%--  <script src = "https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/JS/hm_ad_event_update.js"></script> --%>
 <title>Insert title here</title>
@@ -139,10 +139,7 @@ color: white;
 			
 				 <label>수량</label><br>
 				 <input type="text" name="product_stock" style="width: 40%;" value="${dto.product_stock }" placeholder="수량" required="required"/>개<br><br>
-				<%-- 
-				<label>상세설명</label><br>
-				<textarea id="summernote" name="product_content"  value="${dto.product_content }"></textarea>
-	 --%>
+				
 	 
 	 <textarea id="summernote" name="product_content" style="display:none"><c:out value="${dto.product_content}"/></textarea>
 			<div class="inputArea">

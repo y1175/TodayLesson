@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>TodayLessonAdmin</title>
 
-<script src="resources/JS/summernote-lite.js"></script>
-<script src="resources/JS/summernote-ko-KR.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/summernote-lite.js"></script>
+<script src="${pageContext.request.contextPath}/resources/JS/summernote-ko-KR.js"></script>
 
 <!-- CSSstyle --> 
    <style type="text/css">
@@ -142,14 +142,14 @@ float:right;}
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonadmin/ad_product_reviewlist?currPage=${page.startBlock-1}">PREV
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewlist?currPage=${page.startBlock-1}">PREV
 </a></li>
 </c:if>
 
 <c:forEach var="index" begin="${page.startBlock }" end="${page.endBlock }">
 <c:if test="${index!= page.currPage }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonadmin/ad_product_reviewlist?currPage=${index }">${index }
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewlist?currPage=${index }">${index }
 </a></li>
 </c:if>
 <c:if test="${index==page.currPage }">
@@ -159,7 +159,7 @@ float:right;}
 
 <c:if test="${page.next }">
 <li class="page-item">
-<a class="page-link" href="/todaylessonadmin/ad_product_reviewlist?currPage=${page.endBlock+1 }">NEXT
+<a class="page-link" href="${pageContext.request.contextPath}/todaylessonadmin/ad_product_reviewlist?currPage=${page.endBlock+1 }">NEXT
 </a></li>
 </c:if>
 </ul>

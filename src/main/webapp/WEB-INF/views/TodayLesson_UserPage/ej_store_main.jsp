@@ -239,7 +239,7 @@ $("#mycart").click(function(){
     	if(result=="success")
     		{
     		alert('♥');
-    	    location.href = "/todaylesson/ej_store_main/0";
+    	    location.href = "${pageContext.request.contextPath}/todaylesson/ej_store_main/0";
 
     		}
     	else{
@@ -289,7 +289,7 @@ $(".fa.fa-shopping-cart").click(function(){
     	if(result=="success")
     		{
     		alert('장바구니에 추가되었습니다.');
-    	    location.href = "/todaylesson/ej_store_main/0";
+    	    location.href = "${pageContext.request.contextPath}/todaylesson/ej_store_main/0";
 
     		}
     	else{

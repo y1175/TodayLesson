@@ -13,7 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <!-- <script src="TodayLesson\src\main\webapp\resources\JS\summernote-ko-KR.js"></script> -->
- <script src="/resources/JS/summernote-ko-KR.js"></script> 
+ <script src="${pageContext.request.contextPath}/resources/JS/summernote-ko-KR.js"></script> 
 <title>글쓰기</title>
 <style>
  .hs_ad_main_asidenav_nav_Product_Title>a{

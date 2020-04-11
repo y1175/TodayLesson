@@ -17,7 +17,7 @@
 <!--summernote css/js/ko-kr-->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
-   <script src="/resources/JS/summernote-ko-KR.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/JS/summernote-ko-KR.js"></script>
 <!--summernote css/js/ko-kr-->
 
 <!--owl carousel css, js-->
@@ -157,7 +157,7 @@ $('#summernote').summernote({
   }else{
  
   $.ajax({
-   url :"/todaylesson/cartwith_amount_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath}/todaylesson/cartwith_amount_json",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -204,7 +204,7 @@ $('#summernote').summernote({
   }else{
  
   $.ajax({
-   url :"/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath}/todaylesson/likejson",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
@@ -358,7 +358,7 @@ $(".reviewCon").slideUp();$(".reviewTitle").click(function(){
 
   
   $.ajax({
-   url :"/todaylesson/ej_store_detail/registReply",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+   url :"${pageContext.request.contextPath}/todaylesson/ej_store_detail/registReply",// 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
    //request mapping value랑 맞추면되는듯
    type : "post",
    data : data,
