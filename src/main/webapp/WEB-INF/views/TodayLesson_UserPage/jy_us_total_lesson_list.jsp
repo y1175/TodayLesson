@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=2">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=6">
 
 <style>
  
@@ -243,8 +243,9 @@ width:500px; height:auto;
 
 
  
-
+<div class="dim"></div>
 <div class="paging">
+<div class="paginginside">
 <ul class="pagination pagination-danger">
 <c:if test="${page.prev }">
 <li class="page-item">
@@ -272,6 +273,7 @@ width:500px; height:auto;
 </a></li>
 </c:if>
 </ul>
+</div>
 </div>
 
 </div>
