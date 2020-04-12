@@ -87,6 +87,7 @@
 
 <div class= "ej_cost">
 <b>보유 포인트</b> <fmt:formatNumber value= "${mdto.member_point}" type="number" maxFractionDigits="3"/>원<br>
+
 <b>포인트 사용</b> 
 <input type="text" id="usepoint" value=0 name="usepoint">
 <button class="ej_btn point" id="pointbtn">적용</button>
