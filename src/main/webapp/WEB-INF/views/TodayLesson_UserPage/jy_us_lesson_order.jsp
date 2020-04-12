@@ -332,7 +332,7 @@ $("#sameaddr").on('click', function() {
        참고하세요.
        나중에 포스팅 해볼게요.
        */
-       name: '주문상품:${product_name}',
+       name: '${product_name}',
        //결제창에서 보여질 이름
        amount: cost,
        //가격
@@ -341,7 +341,7 @@ $("#sameaddr").on('click', function() {
        buyer_tel: '${mdto.member_phone}',
        buyer_addr: '${mdto.member_addr}',
        buyer_postcode: '${mdto.member_zipcode}',
-       m_redirect_url: '/orderlistdetail'
+       m_redirect_url: '${pageContext.request.contextPath}/todaylesson/orderlistdetail'
        /*
        모바일 결제시,
        결제가 끝나고 랜딩되는 URL을 지정
@@ -359,7 +359,7 @@ $("#sameaddr").on('click', function() {
        msg += '카드 승인번호 : ' + rsp.apply_num;  */
       
        			
-       			$("form").attr("action", "/todaylesson/orderlist_detail");
+       			$("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlist_detail");
        			$("form").submit();  
        		} else {
     	   
@@ -382,7 +382,7 @@ $("#sameaddr").on('click', function() {
     <script>
    $("#ordersuccess_btn").hide();
     $("#ordersuccess_btn").click(function () {
-    $("form").attr("action", "/orderlist_detail");
+    $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/orderlist_detail");
     });
     </script>
     

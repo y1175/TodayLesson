@@ -36,7 +36,8 @@ function senior_switch(){
 			self.close();
 			opener.document.location.reload();  
 			//location.href="${pageContext.request.contextPath}/todaylesson/senior_request_form";
-
+			opener.document.location.reload();  
+			location.reload();
 			//logoutform.submit();
 			//self.close();
 			//opener.document.location.reload();

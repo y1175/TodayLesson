@@ -292,7 +292,7 @@ function multiple_time_lesson_date(){
  <li>
  
 <label for="lesson_member_max">수강생수</label><br>
-<input type="number" id="lesson_member_max" name="lesson_member_max" required="required" class="form-control" style="width:10%;"><br>
+<input type="number" id="lesson_member_max" name="lesson_member_max" required="required" class="form-control" style="width:10%;" required="required"><br>
 
 </li>
 
@@ -312,7 +312,7 @@ function multiple_time_lesson_date(){
 
 <li>
 <label for="lesson_cost">가격</label><br>
-<input type="number" id="lesson_cost" name="lesson_cost" required="required" class="form-control" style="width:10%;"><br>
+<input type="number" id="lesson_cost" name="lesson_cost" required="required" class="form-control" style="width:10%;" required="required"><br>
 </li>
 
 <li>
@@ -371,7 +371,7 @@ function multiple_time_lesson_date(){
 	
 <li>
 도로명주소<br>
-<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" class="form-control" >
+<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" class="form-control"  >
 <p class="map"></p>
 
 </div>

@@ -570,7 +570,7 @@ $(".insert_my_cart").click(function(){
 	<form id="commentForm" name="commentForm" method="post">
 	    <div class="jy_left">
         <label>궁금한 게 있으신가요?</label><br>
-          <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요" class="form-control">
+          <input type="text" id="lesson_qa_reply_title" name="lesson_qa_reply_title" placeholder="제목을 입력하세요" class="form-control" required="required">
          </div>
 								<textarea rows="3" cols="140" id="lesson_qa_reply_content"
 									name="lesson_qa_reply_content" placeholder="댓글을 입력하세요" class="form-control"></textarea>
@@ -596,11 +596,10 @@ $(".insert_my_cart").click(function(){
 <span class="ej_left"><h3>후기</h3></span>
 <hr>
 </div>
-<div class="container">
 		<form id="reviewListForm" name="reviewListForm" method="post">
 			<div id="reviewList"></div>
 		</form>
-	</div>
+	
 	<button id="jy_openbtn" class="ej_btn">후기남기기</button>
 	
 
@@ -609,7 +608,7 @@ $(".insert_my_cart").click(function(){
 			<br>
 		
 					<label>제목</label>
-                        <input type="text" id="lreview_title" name="lreview_title" class="form-control" placeholder="리뷰 제목을 입력하세요">
+                        <input type="text" id="lreview_title" name="lreview_title" class="form-control" placeholder="리뷰 제목을 입력하세요" required="required">
                         <br>
 						<textarea rows="3" cols="30" id="summernote" name="lreview_content" placeholder="리뷰 내용을 입력하세요"></textarea>
 								<br>
@@ -947,16 +946,16 @@ function getLreviewList(){
                 for(i=0; i<data.length; i++){
                    if (i == 0) {
                    	    html += "<div id='accordian'>";
-                   	    html += "<ul><li><h5><b>"+data[i].member_id+"</b> " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li><div class='summer'>"+data[i].lreview_content+"</div></li></ul></li>";
+                   	    html += "<ul><li><h5><b>"+data[i].member_id+"</b> " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h5>";
+                        html += "<ul><div class='summer'><li>"+data[i].lreview_content+"</li></div></ul></li>";
                        
            			 }else if(i == data.length-1){
                          
-                   		html += "<li><h5><b>"+data[i].member_id+" </b>   " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li><div class='summer'>"+data[i].lreview_content +"</div></li></ul></li></ul></div>";
+                   		html += "<li><h5><b>"+data[i].member_id+" </b>   " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h5>";
+                        html += "<ul><div class='summer'><li>"+data[i].lreview_content +"</li></div></ul></li></ul></div>";
            			 } else {
-           				html += "<li><h5><b>"+data[i].member_id+"</b>    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h6>";
-                        html += "<ul><li><div class='summer'>"+data[i].lreview_content +"</div></li></ul></li>";
+           				html += "<li><h5><b>"+data[i].member_id+"</b>    " +data[i].lreview_title + " "+data[i].lreview_date+"<span class='ico_ar'>▼</span></h5>";
+                        html += "<ul><div class='summer'><li>"+data[i].lreview_content +"</li></div></ul></li>";
 
            			 }
                 }
