@@ -200,7 +200,7 @@ public class User_YI_FreeBoard_Controller {
 		model.addAttribute("insertResult",insertResult);
 		model.addAttribute("freeboard_no",freeboard_no);
 		
-		return "/TodayLesson_UserPage/yi_boardreply_insertresult";
+		return "TodayLesson_UserPage/yi_boardreply_insertresult";
 	}
 	//댓글 삭제
 	@RequestMapping("/boardreply_delete/{boardreply_no}")
@@ -209,7 +209,7 @@ public class User_YI_FreeBoard_Controller {
 		int deleteResult=service.delete_reply(boardreply_no);
 		model.addAttribute("deleteResult",deleteResult);
 		
-		return "/TodayLesson_UserPage/yi_boardreply_delresult";
+		return "TodayLesson_UserPage/yi_boardreply_delresult";
 	}
 	//공지 보기
 	@RequestMapping("/notice_detail/{notice_no}")
