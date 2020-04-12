@@ -83,7 +83,7 @@ public class Admin_YI_Statistics_Controller {
 		model.addAttribute("year_joinCount",year_joinCount);
 		model.addAttribute("countdate",countdate);
 		
-		return "/TodayLesson_AdminPage/yi_ad_member_statistics.hs_ad_main_section";
+		return "TodayLesson_AdminPage/yi_ad_member_statistics.hs_ad_main_section";
 	}
 	
 	//AmChart1

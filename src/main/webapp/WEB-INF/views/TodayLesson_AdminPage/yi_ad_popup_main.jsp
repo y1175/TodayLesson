@@ -60,7 +60,7 @@
  <script>
  if($('#popupimg1').attr("src")=="")
 	 {
-	 $('#popupimg1').attr("src",'${pageContext.request.contextPath}/resources/imgUpload/2020/04/03/s/s_94c01447-a293-49ba-8bba-136824252ceb_popupdefault.png');
+	 $('#popupimg1').attr("src",'${pageContext.request.contextPath}/resources/IMG/popupdefault.png');
 	 }
  if(${dto1.popup_use}==1)
 	 {

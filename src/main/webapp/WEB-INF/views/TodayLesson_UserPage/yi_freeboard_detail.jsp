@@ -41,6 +41,7 @@ ${item.freeboard_content } <br>
 <input type='hidden' id='member_id' name='member_id' value='${pageContext.request.userPrincipal.name}'><br>
 <label for='boardreply_content'>Comment</label>
 <textarea rows="5"  name='boardreply_content' id='boardreply_content' class='form-control yi_replycontent' placeholder="댓글 내용을 입력하세요."></textarea>
+ <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
 <!-- <input type='button' class='reply_submit' value='입력'> -->
 <input type='submit' class="comment_btn" value='입력'>
 </form>

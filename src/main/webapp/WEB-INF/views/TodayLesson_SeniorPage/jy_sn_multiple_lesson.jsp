@@ -95,7 +95,7 @@ function add_Lesson_Time(){
 	    }
 	   	
 	}  else  {
-		  $('tbody').append("<tr>"+"<td>"+lesson_date+"</td>"+"<td>"+lesson_time+"</td>"+"<td>"+"<input type='button' value='삭제' onclick='delete_lesson_date(this);' class= 'ej_btn2' >"+"</td>"+"</tr>");
+		  $('#lessontable>tbody').append("<tr>"+"<td>"+lesson_date+"</td>"+"<td>"+lesson_time+"</td>"+"<td>"+"<input type='button' value='삭제' onclick='delete_lesson_date(this);' class= 'ej_btn2' >"+"</td>"+"</tr>");
 		lesson_date_and_time.push(
 				{lesson_date : lesson_date, 
 				lesson_time : lesson_time}

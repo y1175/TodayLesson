@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=6">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson.css?ver=12">
 
 <style>
  

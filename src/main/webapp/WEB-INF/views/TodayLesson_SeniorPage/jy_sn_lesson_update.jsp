@@ -225,7 +225,7 @@ function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
 
 function multiple_time_lesson_date(){
 	
-	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=420, scrollbars=yes, resizable=yes");
+	window.open("${pageContext.request.contextPath }/multiple_time_lesson_date", "pop","width=570,height=790, scrollbars=yes, resizable=yes");
 
 	
 }	
@@ -274,7 +274,7 @@ function add_Lesson_Time(lesson_date_and_time){
  
  <li>
 <label for="lesson_title">레슨명</label><br>
-<input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title } class="form-control" style="width :50%;"><br>
+<input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title } class="form-control" style="width :50%;" ><br>
 </li>
 
 
@@ -285,7 +285,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_thumb">썸네일</label>
-<input type="file" id="lesson_thumb" name="file" value="${dto.lesson_thumb }" />
+<input type="file" id="lesson_thumb" name="file" />
  </li>
  
  

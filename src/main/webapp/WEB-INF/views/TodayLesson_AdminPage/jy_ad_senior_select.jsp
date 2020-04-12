@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_mul_ad_sn_data3.css?ver=1">  
 <!-- CSSstyle -->
    <style type="text/css">
-      .hs_ad_main_asidenav_nav_NewLessonAccept_Title>a{
+      .hs_ad_main_asidenav_nav_Senior_Title>a{
          color: rgb(224, 62, 82);
       }
    </style>
@@ -97,7 +97,7 @@
 <br>
 		<table class="table ">
 			<thead>
-				<tr class="table-warning" style="background-color: #fff2f2;">
+				<tr  style="background-color: #fff2f2;">
 					<th scope="col">#</th>
 					<th scope="col">레슨 제목</th>
 					<th scope="col">레슨 타입</th>

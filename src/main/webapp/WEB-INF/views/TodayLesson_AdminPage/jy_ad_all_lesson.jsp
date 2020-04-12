@@ -116,7 +116,7 @@
                   <input type="text" id="hs_admin_sales_Textsearch" name="searchtxt" placeholder="검색어를 입력해주세요">
                </div>
                <div class="hs_admin_Sales_BtnBox">
-                  <input type="reset" id="hs_admin_Sales_ResetBtn" value="초기화" class="ej_btn2">
+                  <input type="reset" id="hs_admin_Sales_ResetBtn" value="초기화" class="ej_btn2" style="margin-top: 10px;">
                   <input type="submit" id="hs_admin_Sales_SearchBtn" value="검색" class="ej_btn">
                </div>
                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

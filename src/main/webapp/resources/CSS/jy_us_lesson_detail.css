@@ -126,7 +126,7 @@ color: rgb(53, 54, 58);
 .ej_btn{
 	border: 1px transparent;
 padding: 5px 15px; 
-/* border-radius : 3px; */
+border-radius : 3px; 
 background-color: rgb(224, 62, 82);
 height:40px;
 font-weight : 600;
@@ -385,3 +385,12 @@ h4{
 	margin: 0px;
 	padding: 0px;
 }
+
+
+.ej_grid.second>a{
+    text-decoration: none;
+   }
+   .ej_grid.third>a{
+    text-decoration: none;
+   }
+

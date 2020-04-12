@@ -171,7 +171,12 @@ public class JY_SN_Approve_Lesson_Controller {
 	public String update_apld_chapter_result(LessonDetailDTO dto, Model model) {
 		
 		int result = approve_service.apld_update(dto);
+		int d_no = dto.getLessondetail_no();
+		LessonDetailDTO ldto = approve_service.apld_select(d_no);
+		int lesson_no = ldto.getLesson_no();
 		model.addAttribute("result",result);
+		System.out.println(lesson_no);
+		model.addAttribute("lesson_no",lesson_no);
 		
 		return "TodayLesson_SeniorPage/jy_sn_mal_lesson_update_result";
 	}

@@ -109,7 +109,7 @@ public class JY_SN_Lesson_Controller {
 	
 
 	
-	@RequestMapping("multiple_time_lesson_date")
+	@RequestMapping("/multiple_time_lesson_date")
 	public String multiple_lesson() {
 		return "TodayLesson_SeniorPage/jy_sn_multiple_lesson";
 	}	
