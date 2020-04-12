@@ -61,7 +61,7 @@ public class User_YI_OrderList_Controller {
 		
 		if(totalCount==0)
 		{
-			return "/no_order";
+			return "no_order";
 		}
 		
 		PageMaker page=new PageMaker(currPage,totalCount,pageSize,blockSize);
@@ -84,7 +84,7 @@ public class User_YI_OrderList_Controller {
 		
 		model.addAttribute("detailList",detailList);*/
 		
-		return "/TodayLesson_UserPage/yi_us_orderlist.us_my_section";
+		return "TodayLesson_UserPage/yi_us_orderlist.us_my_section";
 	}
 	
 	@ResponseBody
@@ -106,7 +106,7 @@ public class User_YI_OrderList_Controller {
 		model.addAttribute("dto",dto);
 	model.addAttribute("list",list);
 		
-		return "/TodayLesson_UserPage/yi_us_orderlist_detail.us_my_section";
+		return "TodayLesson_UserPage/yi_us_orderlist_detail.us_my_section";
 	}
 	
 	@RequestMapping("/user_myorderlist_cancel/{orderlist_no}")
@@ -114,7 +114,7 @@ public class User_YI_OrderList_Controller {
 	{
 		int result=service.order_cancel(orderlist_no);
 		model.addAttribute("result",result);
-		return"/TodayLesson_UserPage/yi_us_orderlist_cancel";
+		return"TodayLesson_UserPage/yi_us_orderlist_cancel";
 	}
 	
 }

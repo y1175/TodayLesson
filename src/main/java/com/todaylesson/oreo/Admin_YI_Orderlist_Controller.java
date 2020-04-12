@@ -59,7 +59,7 @@ public class Admin_YI_Orderlist_Controller {
 		
 		if(list.isEmpty())
 		{
-			return "/no_order";
+			return "no_order";
 		}
 		
 		System.out.println("list:"+list.get(0).getOrderlist_no());
@@ -72,7 +72,7 @@ public class Admin_YI_Orderlist_Controller {
 		model.addAttribute("end_date",end_date);
 		
 		
-		return "/TodayLesson_AdminPage/yi_ad_orderlist.hs_ad_main_section";
+		return "TodayLesson_AdminPage/yi_ad_orderlist.hs_ad_main_section";
 	}
 	
 	//배송상태 수정

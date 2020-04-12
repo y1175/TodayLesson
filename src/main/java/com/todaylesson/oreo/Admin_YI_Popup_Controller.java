@@ -31,7 +31,7 @@ public class Admin_YI_Popup_Controller {
  		model.addAttribute("dto1",dto1);
  		
  		
- 		return "/TodayLesson_AdminPage/yi_ad_popup_main.hs_ad_main_section";
+ 		return "TodayLesson_AdminPage/yi_ad_popup_main.hs_ad_main_section";
  	}
  	
  	@RequestMapping("/popup_adminresult/{popup_no}")
@@ -70,7 +70,7 @@ public class Admin_YI_Popup_Controller {
  		
  		int result=service.popup_submit(dto);
  		model.addAttribute("result",result);
- 		return "/TodayLesson_AdminPage/yi_ad_popup_adminresult";
+ 		return "TodayLesson_AdminPage/yi_ad_popup_adminresult";
  	}
  
  	@RequestMapping("/popup_admin_delete/{popup_no}")
@@ -89,7 +89,7 @@ public class Admin_YI_Popup_Controller {
  		PopUpDTO dto1=service.popupinfo(1);
  		model.addAttribute("dto1",dto1);
  		
- 		return "/TodayLesson_UserPage/yi_popup";
+ 		return "TodayLesson_UserPage/yi_popup";
  	}
  	
 }
