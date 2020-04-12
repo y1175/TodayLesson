@@ -553,3 +553,12 @@ color: white;
 
 }
 
+
+
+/* .hs_user_store_newproduct>a:link { color: black; text-decoration: none;}
+.hs_user_store_newproduct>a:visited { color: black; text-decoration: none;}
+.hs_user_store_newproduct>a:hover { color: black; text-decoration: none;}
+ */
+.hs_user_store_newproduct:hover .hs_user_store_newproduct_social li>a{
+    text-decoration: none;
+   }

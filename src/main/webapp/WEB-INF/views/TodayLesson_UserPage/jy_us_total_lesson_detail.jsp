@@ -24,7 +24,7 @@
    <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.js"></script>
    <script src="${pageContext.request.contextPath}/resources/JS/owl.carousel.min.js"></script>
 <!--owl carousel css, js-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson_detail.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/jy_us_lesson_detail.css?ver=2">  
 
 
 <style>

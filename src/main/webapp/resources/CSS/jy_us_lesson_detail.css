@@ -385,3 +385,12 @@ h4{
 	margin: 0px;
 	padding: 0px;
 }
+
+
+.ej_grid.second>a{
+    text-decoration: none;
+   }
+   .ej_grid.third>a{
+    text-decoration: none;
+   }
+
