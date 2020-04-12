@@ -56,8 +56,8 @@
 	
 
 	<c:if test="${itDate - isDate <= 7}">
-	<fmt:formatNumber type="number" maxFractionDigits="3" value="${ldto.lesson_cost * 0.82}"/>원
-<c:set var="cost" value="${ldto.lesson_cost* 0.82 }"/>
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${ldto.lesson_cost * 0.73}"/>원
+<c:set var="cost" value="${ldto.lesson_cost* 0.73 }"/>
 	</c:if>
 	
 	<c:if test="${itDate - isDate > 7 }">
@@ -68,7 +68,7 @@
 	
 	</c:if>
 	
-	<c:if test="${dto.lesson_earlybird eq 0}">
+	<c:if test="${ldto.lesson_earlybird eq 0}">
 <span class="ej_top font middle logintxt"></span>	
 <fmt:formatNumber type="number" maxFractionDigits="3" value="${ldto.lesson_cost}"/>원
 		<c:set var="cost" value="${ldto.lesson_cost}"/>
@@ -83,6 +83,8 @@
 <hr>
 
 
+
+
 <div class= "ej_cost">
 <b>보유 포인트</b> <fmt:formatNumber value= "${mdto.member_point}" type="number" maxFractionDigits="3"/>원<br>
 <b>포인트 사용</b> 
@@ -90,7 +92,16 @@
 <button class="ej_btn point" id="pointbtn">적용</button>
 <div class="ej_cost right">
  <b style="font-size:25px;">결제금액</b>
-<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px; background-color:transparent;" value="${cost }" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
+ 
+ 
+<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px; background-color:transparent;" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
+
+ <script>
+let cost = ${cost};
+let totco = Math.floor(cost);
+document.getElementById("orderlist_cost1").value= totco;
+ </script>
+
 </div>
 </div>
 <script>
@@ -116,19 +127,24 @@ $('#all_point').change(function() {
 
 
  -->
-    
+
+
+
     
     $("#pointbtn").click(function(){
   
 
     
-      
+
+    	
+    	
   var memberpoint=${mdto.member_point};
   var usepoint=$("#usepoint").val();
   console.log('usepoint: ',usepoint);
   var member_id='${pageContext.request.userPrincipal.name}';
-  var totalcost=${cost};
-  var paymentcost=${cost}-usepoint;
+  var totalcost= totco;
+  console.log(totalcost);
+  var paymentcost=totalcost-usepoint;
   var remainpoint=memberpoint-usepoint;
   var data = {
         memberpoint: memberpoint,
@@ -140,7 +156,7 @@ $('#all_point').change(function() {
     };
 
   $.ajax({
-//   url :"/ej_us_orderform/applypointjson",
+   url :"${pageContext.request.contextPath}/todaylesson/ej_us_orderform/applypointjson",
    type : "post",
    data : data,
    success : function(){
@@ -197,9 +213,12 @@ $('#all_point').change(function() {
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
 <input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
 <input type="hidden" name="order_count" value=1>
-<input type="hidden" name="orderlist_cost" id="orderlist_cost" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">
+
+<input type="hidden" name="orderlist_cost" id="orderlist_cost" value="${totalcost }" class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= "${mdto.member_point}">
+
+
 <b>수령자명</b><br><input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value='${mdto.member_name }' readonly="readonly"><br>
 <b>휴대전화</b><br><input type="text"  name="orderlist_phone" class="form-control"  id="phone" value="${mdto.member_phone }" readonly="readonly"><br>
 <b>주소</b><input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
@@ -303,7 +322,8 @@ $("#sameaddr").on('click', function() {
  배송비 무료<br>
  <div class="ej_cost2_right">
  <b>결제금액</b><br>
- <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px;  background-color:transparent" name="paymentt2" value="${cost}" id="cost" class="paymentcost" readonly="readonly">원
+
+ <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px;  background-color:transparent" name="paymentt2" value="${totalcost }" id="cost" class="paymentcost" readonly="readonly">원
  ${totalcost } ${totalcost } ${totalcost }
   <button id="check_module" type="button" class='ej_btn'>결제하기</button>
   </div>
@@ -324,8 +344,8 @@ $("#sameaddr").on('click', function() {
     	 
     if (inputValue!=null) {
         var IMP = window.IMP; // 생략가능
-        var cost= $('#cost').val();
-console.log(cost);
+  	  var cost= $('#cost').val();
+		console.log(cost);
         if(inputValue=='card')
            {IMP.init('imp57388060');//이니시스
            }

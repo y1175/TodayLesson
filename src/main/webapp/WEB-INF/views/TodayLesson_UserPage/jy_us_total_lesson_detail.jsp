@@ -233,7 +233,7 @@ $('document').ready(function() {
 	
 
 	<c:if test="${itDate - isDate <= 7}">
-	<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.82}"/>원</h3>
+	<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost * 0.73}"/>원</h3>
 	</c:if>
 	
 	<c:if test="${itDate - isDate > 7 }">
