@@ -22,10 +22,6 @@
    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- jQuery DatePicker -->
-<!-- JS -->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/JS/hs_ad_calculate_list.js"></script>
-<!-- JS -->
  <script>
 
 $('document').ready(function(){
@@ -265,5 +261,20 @@ $('document').ready(function(){
       </div>
    </div>      
    
+   <script type="text/javascript">
+   $(document).ready(function(){
+	   $(".hs_admin_calculate_Btn").on('click',function(){
+			
+
+			if(confirm("정산지급하시겠습니까?")){
+				var calculate_no = $(".calculate_no").val();
+				location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_calculate_give/"+calculate_no;
+			}
+		
+			
+		});
+		
+	});
+   </script>
 </body>
 </html>

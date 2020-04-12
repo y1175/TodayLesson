@@ -16,9 +16,6 @@
    </style>
 <!-- CSSstyle -->
 
-<!-- Banner JS -->
-   <script src="${pageContext.request.contextPath}/resources/JS/hs_ad_bannerlist.js?ver=2"></script>
-<!-- Banner JS -->
 </head>
 <body>
    <div class="hs_Admin_Banner">
@@ -115,6 +112,37 @@
       </div>
       
    </div>  
+   
+   <script type="text/javascript">
+   $(document).ready(function(){
+		
+		$('#hs_ad_bannerRegistrationrBtn').on('click',function(){
+			
+		location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_registration";	
+			
+		});
+		
+	    $(".hs_admin_bannerupdateBtn").on('click',function(){
+			
+			var banner_no = $(".banner_no").val();
+			location.href = "${pageContext.request.contextPath}/todaylessonadmin/admin_banner_modify/"+banner_no;
+			
+		});
+		
+		$(".hs_admin_bannerdeleteBtn").on('click',function(){
+			
+
+			if(confirm("배너를 삭제하시겠습니까?")){
+				var banner_no = $(".banner_no").val();
+				location.href="${pageContext.request.contextPath}/todaylessonadmin/admin_banner_delete/"+banner_no;
+			}
+		
+			
+		});
+		
+	});
+   
+   </script> 
    
    
 </body>
