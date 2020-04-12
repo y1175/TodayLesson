@@ -237,13 +237,15 @@ $('document').ready(function() {
 	</c:if>
 	
 	<c:if test="${itDate - isDate > 7 }">
-<span class="ej_top font middle logintxt"></span>		<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost}"/>원	</h3>
+<span class="ej_top font middle logintxt"></span>		
+<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost}"/>원	</h3>
 	</c:if>
 	
 	</c:if>
 	
 	<c:if test="${dto.lesson_earlybird eq 0}">
-<span class="ej_top font middle logintxt"></span>	<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost}"/>원	</h3>
+<span class="ej_top font middle logintxt"></span>	
+<h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.lesson_cost}"/>원	</h3>
 		</c:if>
 
 </div>

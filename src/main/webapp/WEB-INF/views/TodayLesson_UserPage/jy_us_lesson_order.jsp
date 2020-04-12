@@ -33,7 +33,7 @@
 <input type="hidden" name="lesson_no" value=${ldto.lesson_no }>
 <table class="table">
 <thead>
-<tr><th></th><th>상품명</th><th>개당금액</th><th>수량</th><th>배송비</th><th>주문금액</th></tr>
+<tr><th></th><th>상품명</th><th>정상금액</th><th>수량</th><th>배송비</th><th>주문금액</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -42,8 +42,42 @@
 <td><fmt:formatNumber value= "${ldto.lesson_cost}" type="number" maxFractionDigits="3"/> </td>
 <td> 1개</td>
  <td>배송비 무료</td>
- <td><fmt:formatNumber value="${ldto.lesson_cost}" type="number" maxFractionDigits="3"/>원 </td>
- </tr>
+ <td>
+ 
+ <jsp:useBean id="now" class="java.util.Date"  />
+	<div style="display: none;">
+	<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
+	<fmt:parseDate value="${ldto.lesson_open_period}" var="dateFmt" pattern="yyyy-MM-dd"/>
+	<fmt:parseNumber value="${dateFmt.time / (1000*60*60*24)}" integerOnly="true" var="isDate"  /> 
+	<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="itDate" /> 
+	</div>
+
+	<c:if test="${ldto.lesson_earlybird eq 1 }">
+	
+
+	<c:if test="${itDate - isDate <= 7}">
+	<fmt:formatNumber type="number" maxFractionDigits="3" value="${ldto.lesson_cost * 0.82}"/>원
+<c:set var="cost" value="${ldto.lesson_cost* 0.82 }"/>
+	</c:if>
+	
+	<c:if test="${itDate - isDate > 7 }">
+<span class="ej_top font middle logintxt"></span>		
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${ldto.lesson_cost}"/>원	
+<c:set var="cost" value="${ldto.lesson_cost}"/>
+	</c:if>
+	
+	</c:if>
+	
+	<c:if test="${dto.lesson_earlybird eq 0}">
+<span class="ej_top font middle logintxt"></span>	
+<fmt:formatNumber type="number" maxFractionDigits="3" value="${ldto.lesson_cost}"/>원
+		<c:set var="cost" value="${ldto.lesson_cost}"/>
+		</c:if>
+	
+	</td>
+<%-- 	 <td><fmt:formatNumber value="${ldto.lesson_cost}" type="number" maxFractionDigits="3"/>원 </td>
+  --%></tr>
+ 
 </tbody>
 </table>
 <hr>
@@ -56,7 +90,7 @@
 <button class="ej_btn point" id="pointbtn">적용</button>
 <div class="ej_cost right">
  <b style="font-size:25px;">결제금액</b>
-<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px; background-color:transparent;" value="${ldto.lesson_cost }" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
+<input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px; background-color:transparent;" value="${cost }" id="orderlist_cost1" class="paymentcost" readonly="readonly">원 
 </div>
 </div>
 <script>
@@ -93,8 +127,8 @@ $('#all_point').change(function() {
   var usepoint=$("#usepoint").val();
   console.log('usepoint: ',usepoint);
   var member_id='${pageContext.request.userPrincipal.name}';
-  var totalcost=${ldto.lesson_cost}
-  var paymentcost=totalcost-usepoint;
+  var totalcost=${cost};
+  var paymentcost=${cost}-usepoint;
   var remainpoint=memberpoint-usepoint;
   var data = {
         memberpoint: memberpoint,
@@ -269,7 +303,7 @@ $("#sameaddr").on('click', function() {
  배송비 무료<br>
  <div class="ej_cost2_right">
  <b>결제금액</b><br>
- <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px;  background-color:transparent" name="paymentt2" value="${ldto.lesson_cost }" class="paymentcost" readonly="readonly">원
+ <input type="text" style="border:none; font-size:30px; font-weight:bolder; width:125px;  background-color:transparent" name="paymentt2" value="${cost}" id="cost" class="paymentcost" readonly="readonly">원
  ${totalcost } ${totalcost } ${totalcost }
   <button id="check_module" type="button" class='ej_btn'>결제하기</button>
   </div>
@@ -290,8 +324,8 @@ $("#sameaddr").on('click', function() {
     	 
     if (inputValue!=null) {
         var IMP = window.IMP; // 생략가능
-        var cost=$(".paymentcost").val();
-
+        var cost= $('#cost').val();
+console.log(cost);
         if(inputValue=='card')
            {IMP.init('imp57388060');//이니시스
            }
