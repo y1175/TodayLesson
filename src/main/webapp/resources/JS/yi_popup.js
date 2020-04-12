@@ -18,7 +18,7 @@ function pevent(){
         return "";
     }
     if (getCookie("popname") != "done"){
-        var popUrl = "popupOpen";
+        var popUrl = "/popupOpen";
         var popOption = "width=400%, height=235%, resizable=no, scrollbars=no, status=no;";
         window.open(popUrl,"",popOption);
     }
