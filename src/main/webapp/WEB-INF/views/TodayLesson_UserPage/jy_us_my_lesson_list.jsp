@@ -22,6 +22,16 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<script type="text/javascript">
+
+
+if (${list_size} == 0) {
+	alert("수강중인 레슨이 없습니다! 마음에 드는 레슨을 찾아보세요!");
+	location.href="${pageContext.request.contextPath}/todaylesson/total_lesson_list";
+}
+
+
+</script>
 
 </head>
 <body>
@@ -35,7 +45,7 @@
  <!-- 검색 --> 
  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width:29%; margin:40px auto;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
- <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylesson/total_lesson_list?currPage=${page.startBlock }"
+ <form class="form-inline my-2 my-lg-0" method ="get" action="${pageContext.request.contextPath}/todaylessonmypage/my_lesson_list?currPage=${page.startBlock }"
  style="margin:0px auto;">
  <select name="search" class="custom-select mr-sm-3" id="inlineFormCustomSelect" style="height:34px; font-size: 1em;">
  <option value="all">전체</option>

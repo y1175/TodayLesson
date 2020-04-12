@@ -25,6 +25,7 @@ import com.todaylesson.DTO.LessonDetailDTO;
 import com.todaylesson.DTO.MyLessonDTO;
 import com.todaylesson.service.JY_US_MyLessonService;
 import com.todaylesson.service.JY_US_TotalLessonService;
+import com.todaylesson.service.User_HS_MyPageService;
 
 @Controller
 @RequestMapping("/todaylessonmypage/")
@@ -42,8 +43,11 @@ public class JY_US_MyLesson_Controller {
 	public String my_lesson_list(Model model, Authentication authentication) {
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		String member_id = userDetails.getUsername();
+	
 		
 		List<LessonDTO> lesson_list = mlservice.mylesson_list(member_id);
+		int list_size = lesson_list.size();
+		
 		
 		List<Float> lesson_procent = new ArrayList();
 		List<Integer> lesson_reward = new ArrayList();
@@ -69,6 +73,8 @@ public class JY_US_MyLesson_Controller {
 		System.out.println(lesson_procent.toString());
 		
 		model.addAttribute("list", lesson_list);
+		model.addAttribute("list_size", lesson_list);
+
 		
 		return "TodayLesson_UserPage/jy_us_my_lesson_list.us_my_section";
 	}
