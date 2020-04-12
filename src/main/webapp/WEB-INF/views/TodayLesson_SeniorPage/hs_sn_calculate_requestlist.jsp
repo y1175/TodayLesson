@@ -335,7 +335,7 @@
                                              <input type="text" id="hs_sn_cal_calculate_crno_name_o" name="calculate_crno_name">
                                              <br>
                                              <label for="hs_sn_cal_calculate_bank_name_o" style="width: 120px; font-weight: 600;">정산신청은행</label>
-                                             <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_o" style="font-size: 15px; margin-bottom: 10px;">
+                                             <select name="calculate_bank_name" id="hs_sn_cal_calculate_bank_name_o" style="font-size: 15px; margin-bottom: 10px;"> 
                                                 <option class=""></option>
                                                 <option value="KB국민은행">KB국민은행</option>
                                                 <option value="023">SC제일은행</option>
@@ -386,10 +386,10 @@
                                              <!-- <input type="text" id="hs_sn_cal_calculate_bank_name_o" name="calculate_bank_name">  -->
                                              <br>
                                              <label for="hs_sn_cal_calculate_account_name_o" style="width: 120px; font-weight: 600;">예금주</label>
-                                             <input type="text" id="hs_sn_cal_calculate_account_name_o" name="calculate_account_name"> 
+                                             <input type="text" id="hs_sn_cal_calculate_account_name_o" name="calculate_account_name" > 
                                              <br>
                                              <label for="hs_sn_cal_calculate_account_num_o" style="width: 120px; font-weight: 600;">계좌번호</label>
-                                             <input type="text" id="hs_sn_cal_calculate_account_num_o" name="calculate_account_num">
+                                             <input type="text" id="hs_sn_cal_calculate_account_num_o" name="calculate_account_num" >
                                              <br>
                                              <label for="hs_sn_cal_calculate_name_o" style="width: 120px; font-weight: 600;">신청자</label>
                                              <input type="text" id="hs_sn_cal_calculate_name_o" name="calculate_name">
@@ -457,10 +457,10 @@
                                              <input type="text" id="hs_sn_cal_calculate_account_num_x" name="calculate_account_num">
                                              <br>
                                              <label for="hs_sn_cal_calculate_name_x" style="width: 120px; font-weight: 600;">신청자</label>
-                                             <input type="text" id="hs_sn_cal_calculate_name_x" name="calculate_name">
+                                             <input type="text" id="hs_sn_cal_calculate_name_x" name="calculate_name" >
                                              <br>
                                              <label for="hs_sn_cal_calculate_phone_x" style="width: 120px; font-weight: 600;">연락처</label>
-                                             <input type="text" id="hs_sn_cal_calculate_phone_x" name="calculate_phone">
+                                             <input type="text" id="hs_sn_cal_calculate_phone_x" name="calculate_phone" >
                                           </div>
                                        </div>
                                        <div id="hs_senior_CulateRequestModal_calculateguide_detail1" class="card-block" style="padding: 20px 0px; font-size: 13px;">
