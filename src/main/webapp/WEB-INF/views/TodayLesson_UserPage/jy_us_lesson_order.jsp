@@ -332,7 +332,7 @@ $("#sameaddr").on('click', function() {
        참고하세요.
        나중에 포스팅 해볼게요.
        */
-       name: '${product_name}',
+       name: '주문상품:${product_name}',
        //결제창에서 보여질 이름
        amount: cost,
        //가격
