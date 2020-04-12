@@ -172,10 +172,15 @@ public class Senior_HS_Salescalculate_ServuceImple implements Senior_HS_Salescal
 		return salescalculateMapper.updateOrderCalculateStatus(orderdto);
 	}
 
+	//시니어 신청완료된 계좌정보
 	@Override
-	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo(int senior_no) {
+	/*public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo(int senior_no) {
 		// TODO Auto-generated method stub
 		return salescalculateMapper.cal_SeniorInfo(senior_no);
+	}*/
+	public List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo() {
+		// TODO Auto-generated method stub
+		return salescalculateMapper.cal_SeniorInfo();
 	}
 
 

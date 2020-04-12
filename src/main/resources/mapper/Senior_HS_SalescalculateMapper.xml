@@ -141,7 +141,7 @@
 
     <!-- 정산계좌 사업자번호 -->	
 	<select id="cal_SeniorInfo" resultMap="salesCalculateMap">
-       select calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num, calculate_crno, calculate_no
+      <!-- select calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num, calculate_crno, calculate_no
        from calculate c right join lesson l  on c.lesson_no=l.lesson_no  
        group by l.lesson_no
        union
@@ -149,7 +149,18 @@
        from calculate c left join lesson l  on c.lesson_no=l.lesson_no 
        where l.senior_no=#{senior_no} and c.calculate_no=#{calculate_no}
        group by l.lesson_no
+       order by calculate_date desc -->
+       
+       select calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num, calculate_crno, calculate_no,l.senior_no
+       from calculate c left join lesson l  on c.lesson_no=l.lesson_no 
+       group by l.lesson_no
+       union
+       select calculate_date, calculate_bank_name, calculate_account_name, calculate_account_num, calculate_crno, calculate_no,l.senior_no
+       from calculate c right join lesson l  on c.lesson_no=l.lesson_no 
+       where l.senior_no=#{senior_no} and c.calculate_no=#{calculate_no}
+       group by l.lesson_no
        order by calculate_date desc
+       
 	</select>
 	
 	<!-- 정산신청 리스트 결제건수 -->

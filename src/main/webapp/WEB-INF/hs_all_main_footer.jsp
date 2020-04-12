@@ -59,12 +59,12 @@
             <p>서울특별시 서초구 강남대로 459 백암빌딩 4층 403호</p>
             <p>대표 : 하화수 | 사업자등록번호 : 219-86-10146</p>
             <p>통신판매 신고번호 : 2019-서울강남-0403호</p>
-            <p>고객센터 : 02-1014-0317 (문의시간 : 09:10 ~ 18:10 / 점심시간 : 13:10 ~ 14:10)</p>
+            <p>고객센터 : 02-1014-0417 (문의시간 : 09:10 ~ 18:10 / 점심시간 : 13:10 ~ 14:10)</p>
             <p>개발자 : 하화수 김진영 김혜미 이은지 정용인 </p>
          </div>
          
          <div class="col-md-12" id="hs_foot_content" style="color: rgba(224,224,224,0.5);">
-            <p>Copyright © 2019-2020 by VinylHouse, inc.All rights reserved</p> 
+            <p>Copyright © 2019-2020 by TodayLesson, inc.All rights reserved</p> 
          </div>      
       
       </div>       

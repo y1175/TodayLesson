@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 <!-- CSSstyle -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=5">  
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/hs_sn_calculate_requestlist.css?ver=6">  
    <style type="text/css">
       .hs_sn_main_asidenav_nav_calRequest_title>a{
          color: rgb(224, 62, 82);
@@ -562,7 +562,7 @@
                   <th style=" border-bottom: 2px solid rgb(53, 54, 58); border-right: none;">세금계산서부가세</th>
                </tr>
             </thead>
-            <tbody style="border-bottom: 2px solid rgb(53, 54, 58);">
+            <tbody style="border-bottom: 2px solid rgb(53, 54, 58); ">
                <c:forEach var="cal_requestlist" items="${cal_requestlist}" varStatus="status">
                <c:if test="${cal_requestlist.orderlist_orderstatus!=4}">
                   <tr>
@@ -641,7 +641,9 @@
                            </c:when>
                            <c:when test="${cal_requestlist.orderlist_calculatestatus == 3 || cal_requestlist.orderlist_calculatestatus == 4 }">
                               <c:out value="${calculate_bank_name2}"/>
-                              <c:out value="${calculate_account_num2}"/>
+                              <br>
+                              <c:out value="${calculate_account_name2}"/>
+                              <br>
                               <c:out value="${calculate_account_num2}"/>
                            </c:when>
                         </c:choose>
