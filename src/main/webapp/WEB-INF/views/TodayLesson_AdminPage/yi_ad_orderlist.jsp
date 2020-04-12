@@ -29,7 +29,7 @@
 <div class="form-group">
 <label>주문상태</label>
 <div class="form-check">
-<input class="form-check-input orderlist_orderstatus" type="radio" id="order_all" name="orderlist_orderstatus" value="0">
+<input class="form-check-input orderlist_orderstatus" type="radio" id="order_all" name="orderlist_orderstatus" value="0" checked="checked">
 <label class="form-check-label" for="order_all">전체</label>
 <input class="form-check-input orderlist_orderstatus" type="radio" id="order_complete" name="orderlist_orderstatus" value="1">
 <label class="form-check-label" for="order_complete">주문완료</label>
@@ -55,17 +55,21 @@
 <input class="form-control" id="end_date" type="date" name="end_date" aria-describedby="orderend">
 <small id="orderend" class="form-text text-muted" >검색범위를 입력하세요(마지막날)</small>
 </div>
+<select name="orderlist_category">
+<option value="1" id="categoryselect1">스토어</option>
+<option value="2" id="categoryselect2">레슨</option>
+</select>
 <input type="submit" class="order_search_btn" value="조회">
 </form>
 
 
-<form action="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
+<%-- <form action="${pageContext.request.contextPath}/todaylessonadmin/admin_orderlist?currPage=${page.startBlock }">
 <select name="orderlist_category">
-<option value="1" selected="selected">스토어</option>
-<option value="2">레슨</option>
+<option value="1" id="categoryselect1">스토어</option>
+<option value="2" id="categoryselect2">레슨</option>
 </select>
 <input type="submit" class="storeselect-btn" value="스토어/레슨 선택">
-</form>
+</form> --%>
 
 
 <form action="${pageContext.request.contextPath}/todaylessonadmin/admin_order_modify">
@@ -105,6 +109,28 @@ $('.status_select-'+${item.orderlist_no}+' option[value=${item.orderlist_orderst
 $('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calculatestatus }]').attr('selected',true);
 
 
+var emptyalert=${emptyalert};
+
+if(${orderlist_category}==1)
+	{
+	$('#categoryselect1').attr('selected',true);
+	}
+else if(${orderlist_category}==2)
+	{
+	$(document).ready(function(){
+		
+		if(emptyalert==true)
+		{
+		emptyalert=false;
+		alert("스토어에 주문내역이 없습니다. 레슨 주문내역을 출력합니다.");
+		}
+		
+	});
+
+	
+	$('#categoryselect2').attr('selected',true);
+	}
+	
 
 
 </script>
@@ -151,9 +177,6 @@ $('.calculate_select-'+${item.orderlist_no}+' option[value=${item.orderlist_calc
 
 
 <script>
-$(document).ready(function() {
-    $('body').bootstrapMaterialDesign();
-});
 
 /*주문배송상태 변경 셀렉터*/
 var before

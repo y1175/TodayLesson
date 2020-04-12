@@ -42,7 +42,7 @@ public class Admin_YI_Orderlist_Controller {
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,Model model)
 	{
-		
+		boolean emptyalert=false;
 		//ÃÑ °Ô½Ã±Û ¼ö
 		int totalCount= service.totalCount(orderlist_orderstatus,orderlist_category,start_date,end_date,orderlist_search);
 		int pageSize=15;
@@ -59,10 +59,19 @@ public class Admin_YI_Orderlist_Controller {
 		
 		if(list.isEmpty())
 		{
-			return "no_order";
+			orderlist_category=2;
+			list=service.orderlist(orderlist_orderstatus,orderlist_category,orderlist_search,start_date,end_date
+					,page.getStartRow()
+					,page.getEndRow());
+			emptyalert=true;
+		}
+		if(list.isEmpty())
+		{
+			return "/no_order";
 		}
 		
 		System.out.println("list:"+list.get(0).getOrderlist_no());
+		model.addAttribute("emptyalert",emptyalert);
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",orderlist_search);
@@ -110,7 +119,7 @@ public class Admin_YI_Orderlist_Controller {
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,Model model)
 	{
-		
+		boolean emptyalert=false;
 		//ÃÑ °Ô½Ã±Û ¼ö
 		int totalCount= service.refundTotalCount(orderlist_category,start_date,end_date,orderlist_paystatus,orderlist_search);
 		int pageSize=15;
@@ -126,12 +135,22 @@ public class Admin_YI_Orderlist_Controller {
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.refundlist(orderlist_category,orderlist_search,start_date,end_date,orderlist_paystatus
 				,page.getStartRow()
 				,page.getEndRow());
+		
+		if(list.isEmpty())
+		{
+			orderlist_category=2;
+			list=service.refundlist(orderlist_category,orderlist_search,start_date,end_date,orderlist_paystatus
+					,page.getStartRow()
+					,page.getEndRow());
+			emptyalert=true;
+		}
 		if(list.isEmpty())
 		{
 			return "/no_order";
 		}
 		
 		System.out.println("list:"+list.get(0).getOrderlist_no());
+		model.addAttribute("emptyalert",emptyalert);
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("search",orderlist_search);

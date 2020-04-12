@@ -8,7 +8,7 @@
 </head>
 <body>
 <script>
-alert("주문내역이 없습니다.");
+alert("내역이 없습니다.");
 window.location = document.referrer;
 </script>
 </body>

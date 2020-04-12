@@ -24,7 +24,7 @@
 <div class="form-group">
 <label>결제상태</label>
 <div class="form-check">
-<input class="form-check-input orderlist_orderstatus"  type="radio" id="order_all" name="orderlist_paystatus" value="0">
+<input class="form-check-input orderlist_orderstatus"  type="radio" id="order_all" name="orderlist_paystatus" value="0" checked="checked">
 <label class="form-check-label" for="order_all">전체</label>
 <input class="form-check-input orderlist_orderstatus"  type="radio" id="pay_complete" name="orderlist_paystatus" value="1">
 <label class="form-check-label" for="pay_complete">결제완료</label>
@@ -48,16 +48,20 @@
 <input class="form-control" type="date" name="end_date" aria-describedby="orderend">
 <small id="orderend" class="form-text text-muted" >검색범위를 입력하세요(마지막날)</small>
 </div>
+<select name="orderlist_category">
+<option value="1" id="categoryselect1">스토어</option>
+<option value="2" id="categoryselect2">레슨</option>
+</select>
  <input type="submit" class="order_search_btn" value="조회">
 </form>
 
-<form action="${pageContext.request.contextPath}/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
+<%-- <form action="${pageContext.request.contextPath}/todaylessonadmin/refund_orderlist?currPage=${page.startBlock }">
 <select name="orderlist_category">
-<option value="1" selected="selected">스토어</option>
-<option value="2">레슨</option>
+<option value="1" id="categoryselect1">스토어</option>
+<option value="2" id="categoryselect2">레슨</option>
 </select>
 <input type="submit" class="storeselect-btn" value="스토어/레슨 선택">
-</form>
+</form> --%>
 
 
 <form action="${pageContext.request.contextPath}/todaylessonadmin/admin_order_refund">
@@ -88,7 +92,27 @@
 $('.status_select-'+${item.orderlist_no}+' option[value=${item.orderlist_paystatus }]').attr('selected',true);
 console.log($('.status_select option[value=${item.orderlist_paystatus }]').val());
 
+var emptyalert=${emptyalert};
 
+if(${orderlist_category}==1)
+	{
+	$('#categoryselect1').attr('selected',true);
+	}
+else if(${orderlist_category}==2)
+	{
+	$(document).ready(function(){
+		
+		if(emptyalert==true)
+		{
+		emptyalert=false;
+		alert("스토어에 취소내역이 없습니다. 레슨 취소내역을 출력합니다.");
+		}
+		
+	});
+
+	
+	$('#categoryselect2').attr('selected',true);
+	}
 
 
 

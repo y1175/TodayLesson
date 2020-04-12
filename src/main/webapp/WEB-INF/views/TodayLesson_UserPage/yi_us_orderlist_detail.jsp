@@ -108,10 +108,8 @@ ${dto.orderlist_cost }원
 <div class="detailline"></div>
 <h4> 결제 금액 </h4>
 <div class="detailline"></div>
-<div class="pay_info">상품 가격 : ${dto.product_cost }원</div>
 <div class="pay_info">배송료: 무료</div>
 <div class="pay_info">사용 포인트: ${dto.orderlist_usepoint }</div>
-<div class="pay_info">할인금액 : ${dto.product_cost*dto.product_sale/100}원</div>
 <div class="pay_info">총 결제 금액: ${dto.orderlist_cost }원</div>
 <div class="detailline"></div>
 <input type="button" class="ordercancel-btn" name="order_cancel" value="주문취소" onclick="cancel(${dto.orderlist_orderstatus},${dto.orderlist_no })">
