@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+    
 <html>
 <head>
 <meta>
@@ -43,7 +45,7 @@ ${orderlistdto.orderlist_date }<br>
 ${orderlistdto.orderlist_receiver }<br>
 ${orderlistdto.orderlist_addr }<br>
 ${orderlistdto.orderlist_cost }원<br>
-${orderlistdto.orderlist_usepoint  }<br>
+${orderlistdto.orderlist_usepoint  } 포인트<br>
 
 <c:set var="cost" value="${orderlistdto.orderlist_cost }"> </c:set>
 <fmt:parseNumber var="addpoint" value="${(cost*0.1)}" integerOnly="true" /> <b style="color:rgb(224, 62, 82)">${addpoint }포인트가 적립되었습니다!<br>
