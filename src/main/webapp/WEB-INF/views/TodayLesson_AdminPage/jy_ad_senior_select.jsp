@@ -97,7 +97,7 @@
 <br>
 		<table class="table ">
 			<thead>
-				<tr class="table-warning" style="background-color: #fff2f2;">
+				<tr  style="background-color: #fff2f2;">
 					<th scope="col">#</th>
 					<th scope="col">레슨 제목</th>
 					<th scope="col">레슨 타입</th>

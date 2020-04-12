@@ -39,8 +39,8 @@ b{
 
 .ej_btn{
 	border: 1px transparent;
-padding: 5px 15px; 
-/* border-radius : 3px; */
+padding: 5px 15px;
+border-radius : 3px; 
 background-color: rgb(224, 62, 82);
 height:40px;
 font-weight : 600;
@@ -52,7 +52,7 @@ color: white;
 .ej_btn2{
 	border: 1px transparent;
 padding: 5px 15px; 
-/* border-radius : 3px; */
+border-radius : 3px;
 background-color: #6c757d;
 height:40px;
 font-weight : 600;

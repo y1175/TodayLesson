@@ -285,7 +285,7 @@ function add_Lesson_Time(lesson_date_and_time){
 
 <li>
 <label for="lesson_thumb">썸네일</label>
-<input type="file" id="lesson_thumb" name="file" value="${dto.lesson_thumb }" />
+<input type="file" id="lesson_thumb" name="file" />
  </li>
  
  
