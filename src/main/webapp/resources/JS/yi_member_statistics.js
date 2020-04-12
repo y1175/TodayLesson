@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$.ajax({
 
 		type : "POST",
-	    url: "/todaylessonadmin/member_statistics",
+	    url: "todaylessonadmin/member_statistics",
 	    success: function(data) {
 			console.log(data)
 			var chart = AmCharts.makeChart("chartOutput", {
@@ -98,7 +98,7 @@ $(document).ready(function(){
 	  $.ajax({
 
 			type : "POST",
-		    url: "/todaylessonadmin/join_statistics",
+		    url: "todaylessonadmin/join_statistics",
 		    success: function(data) {
 				console.log(data)
 				var chart = AmCharts.makeChart("chartOutput2", {
