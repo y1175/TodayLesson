@@ -379,14 +379,14 @@ function add_Lesson_Time(lesson_date_and_time){
 <label>레슨주소</label><br>
 우편번호<br>
 <input type="hidden" id="confmKey" name="confmKey" value="devU01TX0FVVEgyMDIwMDIyNzEwMzUzNTEwOTUwMDM="> 
-<input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px"> 
-<input type="button"value="주소검색" onclick="goPopup();">
+<input type="text" id="lesson_zipno" name="lesson_zipno" readonly style="width: 100px" class="form-control" > 
+<input type="button"value="주소검색" onclick="goPopup();" class="ej_btn">
 <br>	
 </li>	
 	
 <li>
 도로명주소<br>
-<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly">
+<input type="text" id="lesson_addr" name="lesson_addr" style="width: 50%" readonly="readonly" class="form-control" >
 <p class="map"></p>
 
 </div>

@@ -169,8 +169,8 @@ data : data,
 success : function(result){
    if(result=="success"){
 		alert("10,000 포인트가 적립 되었습니다.");
-		location.reload();
-} else {
+		window.location.href=window.location.href;
+		} else {
 	alert("포인트가 적립되지 않았습니다.");   
 }
 }  
