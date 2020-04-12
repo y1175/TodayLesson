@@ -135,7 +135,7 @@
        order by calculate_date desc
 	</select>
 	
-	<update id="admin_Calculate_Give" parameterType="com.todaylesson.DTO.OrderListDTO">
+	<update id="admin_Calculate_Give" parameterMap="hashmap">
 	   update orderlist
 	   set
 	   orderlist_calculatestatus=3

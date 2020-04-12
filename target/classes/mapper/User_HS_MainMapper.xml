@@ -32,7 +32,7 @@
        SELECT  l.lesson_thumb, l.lesson_category, s.senior_nick
 	          ,l.lesson_title, l.lesson_cost, l.lesson_open_period, l.lesson_like, l.lesson_no
        FROM  lesson l join senior s on l.senior_no=s.senior_no
-       where lesson_result=2
+       where lesson_result=2 and lesson_earlybird = 0
        and DATE_FORMAT(now(),"%Y-%m-%d") >= date(lesson_open_period) 
 	   and DATE_FORMAT(now(),"%Y-%m-%d") <= date(lesson_close_period)
        ORDER By l.lesson_readno DESC LIMIT 0,16

@@ -78,6 +78,7 @@ public class Senior_HS_Salescalculate_Controller {
 			                          , Authentication authentication
 			                          , HttpServletRequest request,HttpServletResponse response
 			                          ,@PathVariable int senior_no
+			                         // ,@RequestParam(required=false, defaultValue="1") int calculate_no //추가
 			                          ) throws Exception {
 		
 		//시큐리티 멤버아이디
@@ -136,8 +137,11 @@ public class Senior_HS_Salescalculate_Controller {
 		model.addAttribute("calculate_waitingcost", calculate_waitingcost );
 		
 		//시니어 지급계좌 및 신청정보
+		/*List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo
+		            =salescalculateService.cal_SeniorInfo(senior_no);*/
 		List<SQLjoin_Member_Senior_Lesson_OrderList_OrderDetail_CalculateDTO> cal_SeniorInfo
-		            =salescalculateService.cal_SeniorInfo(senior_no);
+        =salescalculateService.cal_SeniorInfo();
+		
 		model.addAttribute("cal_SeniorInfo", cal_SeniorInfo);
 		
 		return "/TodayLesson_SeniorPage/hs_sn_calculate_requestlist.sn_main_section";

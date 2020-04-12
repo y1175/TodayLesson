@@ -251,7 +251,7 @@
 }
 #hs_senior_calculate_requestList_Table th,td{
 	text-align: center;
-	vertical-align: middle;
+	vertical-align : middle;
 	font-size: 14px;
 }
 #hs_senior_calculate_requestList_Table th{
