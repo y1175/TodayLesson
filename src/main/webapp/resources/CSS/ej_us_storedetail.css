@@ -6,6 +6,13 @@
 	text-decoration: none;
 	color:black;
 } */
+.ej_grid.second>a{
+    text-decoration: none;
+   }
+   .ej_grid.third>a{
+    text-decoration: none;
+   }
+   
 .ej_font.bold{
 	font-weight:bolder;
 }

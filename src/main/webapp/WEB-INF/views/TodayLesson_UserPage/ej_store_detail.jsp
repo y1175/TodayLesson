@@ -28,7 +28,7 @@
 <!--owl carousel css, js-->
     
     
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css?ver=4"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/ej_us_storedetail.css?ver=5"> 
 
 <script>
 $(document).ready(function(){ 
