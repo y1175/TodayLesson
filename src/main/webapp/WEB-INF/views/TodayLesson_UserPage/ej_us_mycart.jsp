@@ -157,9 +157,9 @@ display:none;}
 
  <form role="form" method="post" autocomplete="off"> 
  <h4><b>주문자 정보</b></h4><hr>
- <b>주문자명</b>   <input type="text"   class="form-control" width="300" value=${mdto.member_name } readonly="readonly"><br>
- <b>이메일</b>   <input type="text" name="member_email" class="form-control"  value=${mdto.member_email } readonly="readonly"><br>
-<b>연락처</b>   <input type="text"  class="form-control" value=${mdto.member_phone } readonly="readonly"><br>
+ <b>주문자명</b>   <input type="text"   class="form-control" width="300"readonly="readonly"  value=${mdto.member_name } ><br>
+ <b>이메일</b>   <input type="text" name="member_email" class="form-control"  readonly="readonly" value=${mdto.member_email } ><br>
+<b>연락처</b>   <input type="text"  class="form-control" readonly="readonly" value=${mdto.member_phone } ><br>
 <input type="hidden" name="member_id" value='${memberid}'>
  <h4><b>배송지 정보</b></h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
@@ -169,9 +169,9 @@ display:none;}
 <input type="hidden" name="orderlist_cost" id="orderlist_cost" value="${total_cart}" class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= ${mdto.member_point}>
-<b>수령자명</b><input type="text"  name="orderlist_receiver" class="form-control"  id="rec" value=${mdto.member_name } readonly="readonly"><br>
-<b>휴대전화</b><input type="text"  name="orderlist_phone" class="form-control"  id="phone" value=${mdto.member_phone } readonly="readonly"><br>
-<b>주소</b><input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" value="${mdto.member_addr }" readonly="readonly"><br>
+<b>수령자명</b><input type="text"  name="orderlist_receiver" class="form-control"  id="rec" readonly="readonly" value=${mdto.member_name } ><br>
+<b>휴대전화</b><input type="text"  name="orderlist_phone" class="form-control"  id="phone" readonly="readonly" value=${mdto.member_phone }><br>
+<b>주소</b><input type="text" name="orderlist_addr" size="150"  id="addr" class="form-control" readonly="readonly" value="${mdto.member_addr }"><br>
 
 
    <input type="radio"  name="addrselect" value=0 id="sameaddrselect" checked="checked">

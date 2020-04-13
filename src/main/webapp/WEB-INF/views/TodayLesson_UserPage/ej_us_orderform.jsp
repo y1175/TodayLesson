@@ -130,8 +130,8 @@ console.log('val',hh);
  <form role="form" method="post"> 
  <h4><b>주문자 정보</b></h4><hr>
  <b>주문자명</b>   <input type="text" style="border:none; width="300" value=${mdto.member_name } readonly="readonly"><br>
- <b>이메일</b>  <input type="text" style="border:none; name="member_email"    value=${mdto.member_email } readonly="readonly"><br>
-<b>연락처</b>   <input type="text"   style="border:none;"  value=${mdto.member_phone } readonly="readonly"><br><br>
+ <b>이메일</b>  <input type="text" style="border:none; name="member_email"   readonly="readonly"  value=${mdto.member_email } ><br>
+<b>연락처</b>   <input type="text"   style="border:none;"  readonly="readonly"  value=${mdto.member_phone }><br><br>
 <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'>
 <h4><b>배송지 정보</b></h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일    
@@ -141,9 +141,9 @@ console.log('val',hh);
 <input type="hidden" name="orderlist_cost" id="orderlist_cost" value=${totalcost } class="paymentcost">
 <input type="hidden" name="orderlist_usepoint" id="orderlist_usepoint" value=0>
 <input type="hidden" name="remainpoint" class="remainpoint" value= ${mdto.member_point}>
-<b>수령자명</b><br><input type="text"  name="orderlist_receiver"    id="rec" value=${mdto.member_name } readonly="readonly"><br>
-<b>휴대전화</b><br><input type="text"  name="orderlist_phone"    id="phone" value=${mdto.member_phone } readonly="readonly"><br>
-<b>주소</b><br><input type="text" name="orderlist_addr" size="150"  id="addr"   value="${mdto.member_addr }" readonly="readonly"><br>
+<b>수령자명</b><br><input type="text"  name="orderlist_receiver"    id="rec"  readonly="readonly" value=${mdto.member_name }><br>
+<b>휴대전화</b><br><input type="text"  name="orderlist_phone"    id="phone" readonly="readonly" value=${mdto.member_phone } ><br>
+<b>주소</b><br><input type="text" name="orderlist_addr" size="150"  id="addr"   readonly="readonly" value="${mdto.member_addr }"><br>
 
 
    <input type="radio"  name='addrselect' value="0" id="sameaddrselect" checked="checked">

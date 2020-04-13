@@ -366,20 +366,14 @@ $(".reviewCon").slideUp();$(".reviewTitle").click(function(){
     console.log(data.product_no+" "+data.pdreview_content+" "+data.member_id);
     $(".repCon").val("");
     $(".pdreview_title").val("");
-	 /* 
-    if(data.member_id!=null)
-    	{
-    	alert('hello');
-    	} */
-    var str = "";
+	
+   /*  var str = "";
 	str+="<tr><td>"+data.member_id+"</td>"
 	str+="<td>"+data.pdreview_title+"</tr>"
-	/* str+="<td>"+data.pdreview_content+"</td></tr>" */
-   
-
-  
   $("section.replyList ol").append(str);
-  
+   */
+   alert('후기등록이 완료되었습니다.');
+   location.reload();
     } 
    ,error: function(){
 	   console.log(data);
