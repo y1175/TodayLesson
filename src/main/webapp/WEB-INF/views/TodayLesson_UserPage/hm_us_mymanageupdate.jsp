@@ -108,10 +108,11 @@ $(document).ready(function(){
 
 
 <label>비밀번호</label>
-<input type="password"  name="member_pwd" id="member_pwd" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"
-style="width:35%; height:34px; font-size : 14px; padding: 0px; position: relative; right: 10px; "><br>
+<input type="password"  name="member_pwd" id="member_pwd" minlength="8" maxlength="12" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호"
+style="width:35%; height:34px; font-size : 14px; padding: 0px; position: relative; right: 10px; " aria-describedby="pwdHelp"><br>
+<small id="pwdHelp" class="form-text text-muted" style="margin-bottom:10px;">비밀번호는 8자~12자 사이로 설정해주십시오.</small>
 <label>비밀번호확인</label>
-<input type="password" name="pwdcheck" id="pwdcheck" class="form-control mx-sm-3" aria-describedby="passwordHelpInline" required="required" placeholder="비밀번호확인"
+<input type="password" name="pwdcheck" id="pwdcheck" class="form-control mx-sm-3" aria-describedby="passwordHelpInline"  minlength="8" maxlength="12" required="required" placeholder="비밀번호확인"
 onkeyup="passwordCheckFunction();" style="width:35%; height:34px; font-size : 14px; position: relative; right: 10px; ;"><br>
 <div class="alert alert-success" id="alert-success">비밀번호가일치합니다.</div>
 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지않습니다.</div>

@@ -30,7 +30,7 @@
 <br>비밀번호는 타인에게 노출되지 않도록 주의해 주세요</p>
 <form method="post" action="${pageContext.request.contextPath}/todaylessonmypage/hm_us_mymanage2">
 <input type="hidden" id="member_id" name="member_id" value="${pageContext.request.userPrincipal.name}"> 
-<input type="password" id="member_pwd" name="member_pwd" placeholder="8~20자 영문숫자 조합" required="required">
+<input type="password" id="member_pwd" name="member_pwd" placeholder="8~12자 영문숫자 조합" required="required">
 <input type ="submit" class="managebtn" value="확인">
 <input type ="reset" class="managebtn" value="취소">
 </form>
