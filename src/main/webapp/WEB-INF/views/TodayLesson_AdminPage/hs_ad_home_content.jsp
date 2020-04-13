@@ -340,7 +340,7 @@
          </div>
          <div class="col-sm-4" style="display: inline-block; text-align: center; position: relative; top: 30px;">
             <b>
-               <fmt:formatNumber value="${memberJoinCount}" type="number" maxFractionDigits="3"/>명
+               <fmt:formatNumber value="${memberJoinCount}" type="number" maxFractionDigits="3"/>
             </b>
          </div>
       </div>
