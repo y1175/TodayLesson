@@ -209,6 +209,7 @@ $('#all_point').change(function() {
  <b>이메일</b>   <input type="text" style="border:none;name="member_email" class="form-control"  value="${mdto.member_email }" readonly="readonly"><br>
 <b>연락처</b>   <input type="text" style="border:none; class="form-control" value="${mdto.member_phone }" readonly="readonly"><br>
 <!-- <input type="hidden" name="member_id" value='${pageContext.request.userPrincipal.name}'> -->
+<br>
  <h4>배송지 정보</h4><hr>
  <input type="radio" name="deliveryaddr" value="same" checked="checked" id="sameaddr"  >주문자정보와 동일
 <input type="radio" name="deliveryaddr" value="newaddr" id="newaddr" >새로운 배송지<br>
