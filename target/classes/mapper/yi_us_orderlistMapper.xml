@@ -57,6 +57,19 @@ set orderlist_orderstatus=4
 where orderlist_no=#{orderlist_no}
 </update>
 
+<select id="my_member_point" parameterType="int" resultType="int">
+select member_point
+from member join orderlist
+on member.member_id=orderlist.member_id
+where orderlist_no=#{orderlist_no}
+</select>
+
+<update id="cancelPoint" parameterType="java.util.HashMap">
+update member
+set member_point=#{my_member_point}
+where member_id=#{member_id}
+</update>
+
 	<!-- 검색기능 -->
 	<sql id="orderlist_search">
 

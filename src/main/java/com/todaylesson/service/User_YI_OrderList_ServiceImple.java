@@ -65,4 +65,20 @@ public class User_YI_OrderList_ServiceImple implements User_YI_OrderList_Service
 		// TODO Auto-generated method stub
 		return mapper.orderlist_cancel(orderlist_no);
 	}
+
+	@Override
+	public int my_member_point(int orderlist_no) {
+		// TODO Auto-generated method stub
+		return mapper.my_member_point(orderlist_no);
+	}
+
+	@Override
+	public void cancelPoint(int my_member_point,String member_id) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> hm=new HashMap<>();
+		hm.put("my_member_point",my_member_point);
+		hm.put("member_id",member_id);
+		
+		mapper.cancelPoint(hm);
+	}
 }

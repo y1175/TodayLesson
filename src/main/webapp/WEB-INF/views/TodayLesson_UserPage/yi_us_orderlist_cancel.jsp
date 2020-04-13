@@ -16,12 +16,12 @@ var result=${result}
 if (result>0)
 	{
 	alert('주문이 취소되었습니다.');
-	history.go(-2);
+	location.href="${pageContext.request.contextPath}/todaylessonmypage/";
 	}
 else
 	{
 	alert('주문을 취소할 수 없습니다.');
-	location.href="${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist";
+	location.href="${pageContext.request.contextPath}/todaylessonmypage/";
 	}
 </script>
 </body>

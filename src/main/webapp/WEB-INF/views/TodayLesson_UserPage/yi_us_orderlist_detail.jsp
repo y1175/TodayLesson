@@ -20,22 +20,26 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/CSS/yi_us_orderlist_detail.css?ver=3">
 <script>
+
+
 function cancel(orderlist_orderstatus,orderlist_no)
 {
+	var my_member_point=${my_member_point-Math.round(dto.orderlist_cost/10) }
+	var member_id="${dto.member_id}";
 	var result=confirm("주문을 취소하시겠습니까?");
 if(result)
 	{
 	if(orderlist_orderstatus<3)
 		{
-			location.href='${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist_cancel/'+orderlist_no;
+			location.href='${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist_cancel/'+orderlist_no+'/'+my_member_point+'/'+member_id;
 		}
-	else if(orderlist_orderstatus==5)
+	else if(orderlist_orderstatus==4)
 		{
 			alert("이미 취소된 주문입니다.");
 		}
 	else
 		{
-			alert("배송중에는 주문을 취소할 수 없습니다.");
+			alert("배송단계의 주문은 취소할 수 없습니다.");
 		}
 	}
 
@@ -112,7 +116,8 @@ ${dto.orderlist_cost }원
 <div class="pay_info">사용 포인트: ${dto.orderlist_usepoint }</div>
 <div class="pay_info">총 결제 금액: ${dto.orderlist_cost }원</div>
 <div class="detailline"></div>
-<input type="button" class="ordercancel-btn" name="order_cancel" value="주문취소" onclick="cancel(${dto.orderlist_orderstatus},${dto.orderlist_no })">
+<input type="button" class="ordercancel-btn" name="order_cancel" value="주문취소"
+ onclick="cancel(${dto.orderlist_orderstatus},${dto.orderlist_no })">
 <input type="button" class="goback-btn" name="go_previous" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/todaylessonmypage/user_myorderlist'">
 </div>
 </body>

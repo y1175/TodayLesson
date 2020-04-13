@@ -20,4 +20,8 @@ public interface User_YI_OrderList_Service {
 
 	public int order_cancel(int orderlist_no);
 
+	public int my_member_point(int orderlist_no);
+
+	public void cancelPoint(int my_member_point,String member_id);
+
 }

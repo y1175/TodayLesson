@@ -102,16 +102,21 @@ public class User_YI_OrderList_Controller {
 	{
 		SQLjoin_OrderList_Order_detail_MemberDTO dto=service.orderinfo(orderlist_no);
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderinfo_detail(orderlist_no);
+		int my_member_point=service.my_member_point(orderlist_no);
 		
 		model.addAttribute("dto",dto);
+		model.addAttribute("my_member_point",my_member_point);
 	model.addAttribute("list",list);
 		
 		return "TodayLesson_UserPage/yi_us_orderlist_detail.us_my_section";
 	}
 	
-	@RequestMapping("/user_myorderlist_cancel/{orderlist_no}")
-	public String myorderlist_cancel(@PathVariable int orderlist_no,Model model)
+	@RequestMapping("/user_myorderlist_cancel/{orderlist_no}/{my_member_point}/{member_id}")
+	public String myorderlist_cancel(@PathVariable int orderlist_no,
+			@PathVariable int my_member_point,
+			@PathVariable String member_id, Model model)
 	{
+		service.cancelPoint(my_member_point,member_id);
 		int result=service.order_cancel(orderlist_no);
 		model.addAttribute("result",result);
 		return"TodayLesson_UserPage/yi_us_orderlist_cancel";

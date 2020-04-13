@@ -23,4 +23,8 @@ public interface User_YI_OrderList_Mapper {
 
 	public int orderlist_cancel(int orderlist_no);
 
+	public int my_member_point(int orderlist_no);
+
+	public void cancelPoint(HashMap<String, Object> hm);
+
 }
