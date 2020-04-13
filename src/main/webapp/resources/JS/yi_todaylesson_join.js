@@ -33,7 +33,7 @@
 				
 				
 				type :'POST',
-				url : '${pageContext.request.contextPath}/idCheck',
+				url : '/idCheck',
 				data : {"id" : $('#id').val()},
 
 				success : function(data) {

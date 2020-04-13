@@ -14,7 +14,7 @@
    <form method="post" id="smsForm">
  	<div class="form-group row">
       <label for="text1" class="col-sm-2 col-form-label">연락처</label>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
       <input type="text" class="form-control" name="to" id="text1" placeholder=" 전화번호 입력 " required="required" value="${to}"/>
       <input type="hidden" name="text" id="text2" > 
       </div>
@@ -25,7 +25,7 @@
     
     <div class="form-group row">
       <label for="numcheck" class="col-sm-2 col-form-label">인증번호</label>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
       <input type="text" class="form-control" name="numcheck" id="numcheck" required="required" placeholder="인증번호 입력" onkeyup="smscheckfunction()"><br>
       </div>
       <div class="alert alert-success" id="alert-success2">인증번호가 일치합니다.</div>
@@ -39,7 +39,7 @@
 
 <div class="form-group row">
 <label for="id" class="col-sm-2 col-form-label">아이디</label>
-<div class="col-sm-3">
+<div class="col-sm-4">
 <input type="text" class="form-control" name="id" id="id" required="required" placeholder="아이디">
 </div>
  <div class="col-sm-2">
@@ -50,15 +50,16 @@
 
 <div class="form-group row">
 <label for="pwd" class="col-sm-2 col-form-label">비밀번호</label>
-<div class="col-sm-3">
-<input type="password" class="form-control" name="pwd" id="pwd" required="required" placeholder="비밀번호">
+<div class="col-sm-4">
+<input type="password" class="form-control" name="pwd" id="pwd" minlength="8" maxlength="12" required="required" placeholder="비밀번호"  aria-describedby="pwdhelp">
+<small id="pwdhelp" class="form-text text-muted">8~12자리 문자</small>
 </div>
 
 </div>
 
 <div class="form-group row">
 <label for="pwdcheck" class="col-sm-2 col-form-label">비밀번호확인</label>
-<div class="col-sm-3">
+<div class="col-sm-4">
 <input type="password" class="form-control" name="pwdcheck" id="pwdcheck" required="required" placeholder="비밀번호확인"
 onkeyup="passwordCheckFunction();">
 </div>
@@ -70,35 +71,35 @@ onkeyup="passwordCheckFunction();">
 
 <div class="form-group row">
 <label for="name" class="col-sm-2 col-form-label">이름</label>
-<div class="col-sm-3">
+<div class="col-sm-4">
 <input type="text" class="form-control" name="name" id="name" placeholder="이름">
 </div>
 </div>
 
 <div class="form-group row">
 <label for="nick" class="col-sm-2 col-form-label">닉네임</label>
-<div class="col-sm-3">
+<div class="col-sm-4">
 <input type="text" class="form-control" name="nick" placeholder="닉네임">
 </div>
 </div>
 
 <div class="form-group row">
 <label for="birth" class="col-sm-2 col-form-label">생년월일</label>
-<div class="col-sm-3">
+<div class="col-sm-4">
 <input type="date" class="form-control" name="birth" id="birth" ><br>
  </div>
  </div>
  
  <div class="form-group row">
  <label for="email" class="col-sm-2 col-form-label">e-mail</label>
- <div class="col-sm-3">
+ <div class="col-sm-4">
 <input type="email" class="form-control" name="email" id="email" placeholder="example@email.com">
  </div>
  </div>
 
  <div class="form-group row">
 <label for='addr' class="col-sm-2 col-form-label">주소</label>				
-						<div class="col-sm-3">
+						<div class="col-sm-4">
 							<input type="text" id="sample4_postcode" name='zipcode'
 								placeholder="우편번호" class='form-control'>
 						</div>
@@ -148,7 +149,7 @@ onkeyup="passwordCheckFunction();">
 <!-- Join JS -->
    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_findAddr.js"></script>
-   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_todaylesson_join.js?ver=1"></script>
+   <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/yi_todaylesson_join.js?ver=2"></script>
    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/JS/ej_smscheck.js"></script>
 <!-- Join JS -->
 </div>
