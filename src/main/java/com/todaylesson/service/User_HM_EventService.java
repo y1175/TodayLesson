@@ -14,7 +14,6 @@ public interface User_HM_EventService {
 
 	public EventDTO hm_us_event_detail(int event_no);
 
-	public List<SQLjoin_Member_EventDTO> eventreply_list(int event_no);
 
 	public List<BannerDTO> hm_us_bannerlist();
 

@@ -24,7 +24,7 @@ order by event_startperiod desc
  </when>
 <when test='event == "end" ||event.equals("end")'> 
 where <![CDATA[ event_endperiod >= now() ]]>	
-order by event_endperiod desc
+order by event_endperiod
  </when>
 </choose>
 <!-- order by event_no desc  -->
@@ -39,13 +39,7 @@ from event
 where event_no = #{event_no}
 </select>
 
-<select id="eventreply_list" parameterType="int" resultType="com.todaylesson.DTO.SQLjoin_Member_EventDTO">
-select event_reply_no,event_no,event_reply_content,event_reply_date,eventreply.member_id
-from eventreply join member
-on eventreply.member_id = member.member_id
-where eventreply.event_no=#{event_no}
-order by event_reply_no
-</select>
+
 
 
 <select id="hm_us_bannerlist" resultType="com.todaylesson.DTO.BannerDTO">
