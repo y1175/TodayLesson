@@ -22,6 +22,15 @@ $('document').ready(function(){
 	$('#submit').hide();
 
 	
+	let cr = "${dto.senior_crno}";
+	
+	if(cr == "" ){
+		$("input:checkbox[id='no_crno']").prop("checked", true); 
+	      senior_crno.disabled = true;
+	      senior_crno_name.disabled = true;
+	 } 
+
+	
 	
 	
 	let bank_code= "${dto.senior_bank_name}";

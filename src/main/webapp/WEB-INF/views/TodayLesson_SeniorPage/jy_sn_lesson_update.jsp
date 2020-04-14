@@ -274,7 +274,7 @@ function add_Lesson_Time(lesson_date_and_time){
  
  <li>
 <label for="lesson_title">레슨명</label><br>
-<input type="text" id="lesson_title" name="lesson_title" value=${dto.lesson_title } class="form-control" style="width :50%;" ><br>
+<input type="text" id="lesson_title" name="lesson_title" value="${dto.lesson_title }" class="form-control" style="width :50%;" ><br>
 </li>
 
 
