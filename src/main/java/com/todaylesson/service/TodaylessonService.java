@@ -23,11 +23,11 @@ public class TodaylessonService {
 	
 	@Transactional
 	public int insert(MemberDTO dto){
-	   ///System.out.println(dto);
+	   /////System.out.println(dto);
        String changepwd= encoder.encode(dto.getMember_pwd());
        dto.setMember_pwd(changepwd);
 	   mapper.insertMember(dto);
-       //System.out.println(dto.getAuthList().get(0).getMember_id());
+       ////System.out.println(dto.getAuthList().get(0).getMember_id());
 	   int r=mapper.insertMemberSub(dto);
 	   return r;
 	}
@@ -44,7 +44,7 @@ public class TodaylessonService {
 		String changepwd= encoder.encode(dto.getMember_pwd());
 	       dto.setMember_pwd(changepwd);
 		   mapper.oauth2insert(dto);
-	       //System.out.println(dto.getAuthList().get(0).getMember_id());
+	       ////System.out.println(dto.getAuthList().get(0).getMember_id());
 		   mapper.insertMemberSub(dto);
 		
 	}

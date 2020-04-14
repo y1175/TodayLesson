@@ -33,7 +33,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			roleNames.add(authority.getAuthority());
 		});
 		String id=auth.getName();
-		System.out.println("id:"+id);
+		//System.out.println("id:"+id);
 		//stat_log에 로그인 기록 남김
 		todaylessonService.loginCount(id);
 		if(roleNames.contains("ROLE_ADMIN")) {
