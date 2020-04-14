@@ -352,7 +352,7 @@ function add_Lesson_Time(lesson_date_and_time){
 <label for="lesson_open_period">시작일</label> / <label for="lesson_close_period">종료일</label><br>
 <input type="text" class="lesson_date" id="lesson_open_period" name="lesson_open_period" required="required" value="${dto.lesson_open_period}">
 / <input type="text" class="lesson_date" id="lesson_close_period" name="lesson_close_period" required="required" value="${dto.lesson_close_period}">
-</li>
+</li> 
 
 <li>
 <label for="lesson_type">레슨타입</label><br>
