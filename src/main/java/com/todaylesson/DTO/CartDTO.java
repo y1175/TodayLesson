@@ -27,4 +27,7 @@ public class CartDTO {
 	private Integer lesson_cost;
 	private String lesson_thumb;
 	private String member_id;
+	
+	private String lesson_open_period;
+	private int lesson_earlybird;
 }
