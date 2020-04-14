@@ -932,7 +932,7 @@ function fn_review(lesson_no){
                 $("#lreview_title").val("");
                 $("#lreview_content").val("");
 
-            }
+            } 
         },
         error:function(request,status,error){
      	   console.log('error');
