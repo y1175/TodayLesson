@@ -65,7 +65,7 @@ public class JY_US_Senior_Request_Controller {
 
 			if((Long)jsonObj.get("code")  == 0){
 				JSONObject getToken = (JSONObject) jsonObj.get("response");
-				System.out.println("getToken==>>"+getToken.get("access_token") );
+				//("getToken==>>"+getToken.get("access_token") );
 				_token = (String)getToken.get("access_token");
 			}
  
@@ -152,7 +152,7 @@ public class JY_US_Senior_Request_Controller {
 	@RequestMapping("/todaylessonsenior/plus_senior")
 	public String plus_senior(SeniorDTO dto, Model model) {
 		
-		System.out.println(dto.toString());
+		//(dto.toString());
 		int result = seniorservice.plus_senior(dto);
 		model.addAttribute("result",result);
 		

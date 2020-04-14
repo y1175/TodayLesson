@@ -53,7 +53,7 @@ public class JY_US_TotalLessonController {
 			@RequestParam(required = false, defaultValue = "lesson_no") String order,
 			@RequestParam(required = false, defaultValue = "0") int cate) {
 
-		System.out.println(order);
+
 
 		// 총 게시글 수
 		int totalCount = ttlesson_service.totalCount(search, searchtxt, cate);
@@ -85,8 +85,7 @@ public class JY_US_TotalLessonController {
 		List<AllLessonDTO> list = ttlesson_service.ttlesson_cat_select(lesson_cat);
 		model.addAttribute("list", list);
 
-		System.out.println(list.toString());
-		System.out.println(dto.toString());
+
 
 		return "TodayLesson_UserPage/jy_us_total_lesson_detail.us_main_section";
 	}
@@ -185,7 +184,7 @@ public class JY_US_TotalLessonController {
 	public ResponseEntity lesson_reply_list(@PathVariable int lesson_no, @RequestParam String member_id,
 			@RequestParam String senior_id) {
 
-		System.out.println(member_id + "        " + senior_id);
+		
 
 		HttpHeaders responseHeaders = new HttpHeaders();
 
@@ -338,7 +337,7 @@ public class JY_US_TotalLessonController {
 			oldto.setOrderlist_addr(fulladdr + " " + detailaddr);
 		} // 주소
 
-		System.out.println(orderlist_cost);
+		
 
 		MemberDTO memberdto = new MemberDTO();
 		int updatedpoint = (int) (remainpoint + (0.1 * orderlist_cost));
@@ -354,10 +353,10 @@ public class JY_US_TotalLessonController {
 		String year2 = Integer.toString(year1);
 		String year = year2.substring(2, 4);
 
-		System.out.println("두자릿수년도:" + year);
+		
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-		System.out.println();
-		System.out.println(ym);
+		
+		
 		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		String subNum = "";
 
@@ -366,10 +365,9 @@ public class JY_US_TotalLessonController {
 		}
 
 		String orderId = ymd + subNum;
-		System.out.println("오더아이디:" + orderId);
-		System.out.println("데이터타입확인:" + orderId instanceof String);
+
 		int orderlist_no = Integer.parseInt(orderId);
-		System.out.println("orderlist_NO:" + orderlist_no);
+
 		oldto.setOrderlist_no(orderlist_no);
 		ttlesson_service.insertorderlist(oldto);
 		oddto.setOrderlist_no(orderlist_no);

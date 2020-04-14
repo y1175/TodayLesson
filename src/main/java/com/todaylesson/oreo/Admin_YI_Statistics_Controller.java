@@ -33,7 +33,7 @@ public class Admin_YI_Statistics_Controller {
 			,@RequestParam(required=false,defaultValue="") String countdate
 			,Model model)
 	{
-		System.out.println(ymd);
+		//System.out.println(ymd);
 		//접속 목록
 		List<Stat_LogDTO> list=service.allLog(ymd,start_date,end_date);
 		
@@ -75,7 +75,7 @@ public class Admin_YI_Statistics_Controller {
 		int month_joinCount=service.joinCount(month,countdate);
 		int year_joinCount=service.joinCount(year,countdate);
 		
-		System.out.println("countdate:"+countdate);
+		//System.out.println("countdate:"+countdate);
 		
 		model.addAttribute("today_joinCount",today_joinCount);
 		model.addAttribute("week_joinCount",week_joinCount);
@@ -97,10 +97,10 @@ public class Admin_YI_Statistics_Controller {
 	    map.put("date", chartOutput.get(i).getRegYear()+"-"+chartOutput.get(i).getRegMonth()+"-"+chartOutput.get(i).getRegDay());
 	    map.put("output", chartOutput.get(i).getTotal());
 	    response.add(map);
-	    System.out.println(map);
-	    System.out.println(response);
+	    //System.out.println(map);
+	    //System.out.println(response);
 	  }
-	  System.out.println(response);
+	  //System.out.println(response);
 	  return response;
 
 	}
@@ -116,10 +116,10 @@ public class Admin_YI_Statistics_Controller {
 		    map.put("date", chartOutput.get(i).getRegYear()+"-"+chartOutput.get(i).getRegMonth()+"-"+chartOutput.get(i).getRegDay());
 		    map.put("output", chartOutput.get(i).getTotal());
 		    response.add(map);
-		    System.out.println(map);
-		    System.out.println(response);
+		    //System.out.println(map);
+		    //System.out.println(response);
 		  }
-		  System.out.println(response);
+		  //System.out.println(response);
 		  return response;
 
 		}

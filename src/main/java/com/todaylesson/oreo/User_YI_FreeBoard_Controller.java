@@ -41,7 +41,7 @@ public class User_YI_FreeBoard_Controller {
 			,Model model)  {
 		
 		
-		System.out.println(order);
+		//System.out.println(order);
 		
 		//ÃÑ °Ô½Ã±Û ¼ö
 		int totalCount= service.totalCount(search, searchtxt);

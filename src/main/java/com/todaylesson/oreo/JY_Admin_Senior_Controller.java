@@ -67,7 +67,7 @@ public class JY_Admin_Senior_Controller {
 
 			if((Long)jsonObj.get("code")  == 0){
 				JSONObject getToken = (JSONObject) jsonObj.get("response");
-				System.out.println("getToken==>>"+getToken.get("access_token") );
+				//System.out.println("getToken==>>"+getToken.get("access_token") );
 				_token = (String)getToken.get("access_token");
 			}
  
@@ -88,7 +88,7 @@ public class JY_Admin_Senior_Controller {
 			,@RequestParam(required=false, defaultValue="1") int currPage
 			,@RequestParam(required=false, defaultValue="senior_no") String order) {
 		
-		System.out.println(order);
+		//System.out.println(order);
 
 		int totalCount= ad_senior_service.totalCount(search, searchtxt);
 		int pageSize=15;

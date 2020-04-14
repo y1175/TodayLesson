@@ -51,7 +51,7 @@ public class Admin_YI_Popup_Controller {
 
  		
 			String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-			System.out.println("uploadPath:"+uploadPath);
+			//System.out.println("uploadPath:"+uploadPath);
 			String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 			String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 			String fileName = null;
@@ -65,7 +65,7 @@ public class Admin_YI_Popup_Controller {
 
 			dto.setPopup_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		      String imgthumb=dto.getPopup_filepath();
-		      System.out.println("썸네일이미지경로: "+imgthumb);
+		      //System.out.println("썸네일이미지경로: "+imgthumb);
 		      
  		
  		int result=service.popup_submit(dto);

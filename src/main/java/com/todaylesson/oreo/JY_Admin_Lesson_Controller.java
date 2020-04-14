@@ -79,7 +79,7 @@ public class JY_Admin_Lesson_Controller {
 
 			if((Long)jsonObj.get("code")  == 0){
 				JSONObject getToken = (JSONObject) jsonObj.get("response");
-				System.out.println("getToken==>>"+getToken.get("access_token") );
+				//("getToken==>>"+getToken.get("access_token") );
 				_token = (String)getToken.get("access_token");
 			}
  
@@ -148,7 +148,7 @@ public class JY_Admin_Lesson_Controller {
 			list.add(num);
 		}
 		
-		System.out.println(list);
+		//(list);
 			
 		int result = adminservice.apply_lesson_result(list);
 		model.addAttribute("result",result);
@@ -181,7 +181,7 @@ public class JY_Admin_Lesson_Controller {
 		// 레슨을 신청한 사람에 대한 정보
 		int senior_no = dto.getSenior_no();
 		List<LessonDTO> list = adminservice.select_lesson_list(senior_no);
-		System.out.println(list);
+		//(list);
 		
 		String imp_key 		=	"5422837446408379";
 		String imp_secret	=	"FhzhNcakGqAxLiWaXndMLWKpsouBVOQB5pTTC3eitOPe6Mp39CPVyAl1YPCUEtwJTpDvsSOWGEaNqzQz";
@@ -234,7 +234,7 @@ public class JY_Admin_Lesson_Controller {
 		model.addAttribute("result",result);
 		
 		mailSender.mailSendLessonApprove(member_id,senior_email, lesson_title, request);
- 		System.out.println(senior_email);
+ 		//(senior_email);
  		
  		
 		return "TodayLesson_AdminPage/jy_ad_lesson_approve";
@@ -252,7 +252,7 @@ public class JY_Admin_Lesson_Controller {
 		
 		int result = adminservice.reject(lesson_no);
 		mailSender.mailSendLessonReject(lesson_no,member_id,senior_email, lesson_title,request);
- 		System.out.println(senior_email);
+ 		//(senior_email);
  		
 		model.addAttribute("result",result);
 		return "TodayLesson_AdminPage/jy_ad_lesson_reject";

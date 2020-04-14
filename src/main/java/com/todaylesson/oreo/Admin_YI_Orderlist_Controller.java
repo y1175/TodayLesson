@@ -70,7 +70,7 @@ public class Admin_YI_Orderlist_Controller {
 			return "/no_order";
 		}
 		
-		System.out.println("list:"+list.get(0).getOrderlist_no());
+		//System.out.println("list:"+list.get(0).getOrderlist_no());
 		model.addAttribute("emptyalert",emptyalert);
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
@@ -124,7 +124,7 @@ public class Admin_YI_Orderlist_Controller {
 		int totalCount= service.refundTotalCount(orderlist_category,start_date,end_date,orderlist_paystatus,orderlist_search);
 		int pageSize=15;
 		int blockSize=5;
-		System.out.println("paystatus:"+orderlist_paystatus);
+		//System.out.println("paystatus:"+orderlist_paystatus);
 		
 
 		
@@ -149,7 +149,7 @@ public class Admin_YI_Orderlist_Controller {
 			return "/no_order";
 		}
 		
-		System.out.println("list:"+list.get(0).getOrderlist_no());
+		//System.out.println("list:"+list.get(0).getOrderlist_no());
 		model.addAttribute("emptyalert",emptyalert);
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);

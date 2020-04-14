@@ -136,7 +136,7 @@ public class JY_SN_Lesson_Controller {
 				}
 			}
 			dto.setLesson_date_time(l_d_t.toString());
-			System.out.println(dto.getLesson_date_time());
+			//(dto.getLesson_date_time());
 		}
 	
 		
@@ -147,7 +147,7 @@ public class JY_SN_Lesson_Controller {
 		
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -162,15 +162,15 @@ public class JY_SN_Lesson_Controller {
 		//dto.set(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setLesson_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		String imgthumb = dto.getLesson_thumb();
-		//System.out.println("이미지경로: "+img);
-		System.out.println("썸네일이미지경로: "+imgthumb);
+		////("이미지경로: "+img);
+		//("썸네일이미지경로: "+imgthumb);
 		
 		
 
 		int result =lesson_service.insert_Lesson(dto);
 		model.addAttribute("result",result);
 		
-		System.out.println(dto.toString());
+		//(dto.toString());
 					
 		return "TodayLesson_SeniorPage/jy_sn_insert_result";
 		
@@ -228,13 +228,13 @@ public class JY_SN_Lesson_Controller {
 				}
 			}
 			dto.setLesson_date_time(l_d_t.toString());
-			System.out.println(dto.getLesson_date_time());
+			//(dto.getLesson_date_time());
 		}
 		
 		
 
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -251,7 +251,7 @@ public class JY_SN_Lesson_Controller {
 		
 		} else {
 			 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-			 System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+			 //("썸네일 경로가 안들어와야 정상"+fileName);
 			 int result = lesson_service.update_lesson(dto);
 			 model.addAttribute("result",result);
 				return "TodayLesson_SeniorPage/jy_sn_update_result";

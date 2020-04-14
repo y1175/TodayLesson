@@ -103,7 +103,7 @@ public class JY_SN_Approve_Lesson_Controller {
 	public String approve_lesson_upload(LessonDetailDTO dto, Model model, MultipartFile file, HttpServletRequest request, @RequestParam String rt) throws Exception{	
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -118,8 +118,8 @@ public class JY_SN_Approve_Lesson_Controller {
 		//dto.set(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		dto.setLessondetail_thumb(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 		String imgthumb = dto.getLessondetail_thumb();
-		//System.out.println("이미지경로: "+img);
-		System.out.println("썸네일이미지경로: "+imgthumb);
+		////("이미지경로: "+img);
+		//("썸네일이미지경로: "+imgthumb);
 		
 		int running_time = approve_service.apl_rt(rt);
 
@@ -130,7 +130,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		
 		model.addAttribute("result",result);
 		
-		System.out.println(dto.toString());
+		//(dto.toString());
 					
 		int lesson_no = dto.getLesson_no();
 	
@@ -175,7 +175,7 @@ public class JY_SN_Approve_Lesson_Controller {
 		LessonDetailDTO ldto = approve_service.apld_select(d_no);
 		int lesson_no = ldto.getLesson_no();
 		model.addAttribute("result",result);
-		System.out.println(lesson_no);
+		//(lesson_no);
 		model.addAttribute("lesson_no",lesson_no);
 		
 		return "TodayLesson_SeniorPage/jy_sn_mal_lesson_update_result";

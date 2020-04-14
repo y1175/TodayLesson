@@ -49,7 +49,7 @@ public class User_YI_OrderList_Controller {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails=(UserDetails)principal;
 		String member_id=userDetails.getUsername();
-		System.out.println("id:"+member_id);
+		//System.out.println("id:"+member_id);
 		model.addAttribute("member_id",member_id);
 		
 
@@ -69,7 +69,7 @@ public class User_YI_OrderList_Controller {
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> list=service.orderlist(member_id,start_date,end_date
 				,page.getStartRow()
 				,page.getEndRow());
-		System.out.println("list:"+list.get(0).getOrderlist_no());
+		//System.out.println("list:"+list.get(0).getOrderlist_no());
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
 		model.addAttribute("start_date",start_date);
@@ -92,7 +92,7 @@ public class User_YI_OrderList_Controller {
 	public List<SQLjoin_OrderList_Order_detail_MemberDTO> orderdetail()
 	{
 		List<SQLjoin_OrderList_Order_detail_MemberDTO> detailList=service.orderdetail();
-		System.out.println("length:"+detailList.size());
+		//System.out.println("length:"+detailList.size());
 		return detailList;
 	}
 	

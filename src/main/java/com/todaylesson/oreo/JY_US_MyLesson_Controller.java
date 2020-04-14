@@ -70,7 +70,7 @@ public class JY_US_MyLesson_Controller {
 
 		}
 		
-		System.out.println(lesson_procent.toString());
+		//(lesson_procent.toString());
 		
 		model.addAttribute("list", lesson_list);
 		model.addAttribute("list_size", lesson_list);
@@ -89,7 +89,7 @@ public class JY_US_MyLesson_Controller {
 				
 		int list_size = list.size();
 		
-		System.out.println(list.toString().toString());
+		//(list.toString().toString());
 		
 		model.addAttribute("list", list);
 		model.addAttribute("list_size",list_size);
