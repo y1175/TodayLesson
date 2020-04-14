@@ -273,7 +273,8 @@ order by orderlist_date desc limit 1
 <select id="ttlesson_cat_select" resultType="com.todaylesson.DTO.AllLessonDTO">
 		<![CDATA[
 
-		select * from lesson join senior
+		select lesson_no, lesson_title, lesson_thumb, lesson_cost
+		from lesson join senior
 		on lesson.senior_no =
 		senior.senior_no
 		where lesson_category = #{lesson_cat}

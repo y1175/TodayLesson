@@ -67,16 +67,6 @@ public class User_HM_Event_Controller {
 	}
 	
 	
-	@ResponseBody
-	@RequestMapping("/event_replyjson/{event_no}")
-	public List<SQLjoin_Member_EventDTO> detailjson(@PathVariable int event_no
-			,Model model)
-	{
-		List<SQLjoin_Member_EventDTO> list = service.eventreply_list(event_no);
-		model.addAttribute("rep_list",list);
-		
-		return list;
-	}
-	
+
 }
 

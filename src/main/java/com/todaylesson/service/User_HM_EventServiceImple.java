@@ -45,11 +45,6 @@ public class User_HM_EventServiceImple implements User_HM_EventService {
 		return mapper.eventdetail(event_no);
 	}
 
-	@Override
-	public List<SQLjoin_Member_EventDTO> eventreply_list(int event_no) {
-		// TODO Auto-generated method stub
-		return mapper.eventreply_list(event_no);
-	}
 
 	@Override
 	public List<BannerDTO> hm_us_bannerlist() {
