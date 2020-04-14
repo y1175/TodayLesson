@@ -56,9 +56,9 @@ public class User_HS_KakaoLoginService {
 			final HttpResponse response = client.execute(post);
 			final int responseCode = response.getStatusLine().getStatusCode();  //결과코드
 
-			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-			System.out.println("Post parameters : " + postParams);
-			System.out.println("Response Code : " + responseCode);
+			//System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
+			//System.out.println("Post parameters : " + postParams);
+			//System.out.println("Response Code : " + responseCode);
 
 			// JSON 형태 반환값 처리
 			ObjectMapper mapper = new ObjectMapper();
@@ -95,9 +95,9 @@ public class User_HS_KakaoLoginService {
 			final int responseCode = response.getStatusLine().getStatusCode(); //결과코드
 			final String responseMSG = response.getStatusLine().getReasonPhrase(); //결과 메세지
 
-			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-			System.out.println("Response Code : " + responseCode);
-			System.out.println("Response MSG : " + responseMSG);
+			//System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
+			//System.out.println("Response Code : " + responseCode);
+			//System.out.println("Response MSG : " + responseMSG);
 			
 			//이 주석처리 되어있는 코드 = 오류가 나는 상황이라면 없애고 실행하기 무슨오류인지 알려준다
 			/*HttpEntity entity = response.getEntity();  

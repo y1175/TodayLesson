@@ -30,7 +30,7 @@ public class PageMaker {
 		{
 			startRow=(currPage-1)*pageSize;
 			endRow=startRow+pageSize;
-			System.out.println(endRow+","+startRow);
+			//System.out.println(endRow+","+startRow);
 			if(endRow>totalCount)
 			{
 				endRow=totalCount;
