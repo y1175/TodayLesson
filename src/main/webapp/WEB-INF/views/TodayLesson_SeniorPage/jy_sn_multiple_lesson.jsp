@@ -60,7 +60,7 @@ $(document).ready(function(){
 </tr>
 
 <tr><td>강의 시작시간</td>
-<td><input type="time" id="lesson_time" name="lesson_time" required="required" class="form-control" style="width:100%;" > </td>
+<td><input type="time" id="lesson_time" name="lesson_time" required="required" class="form-control" style="width:100%;"> </td>
 
 <td><input type="button" value="추가" onclick="add_Lesson_Time();" class="ej_btn"></td>
 </tr>
@@ -109,7 +109,6 @@ function add_Lesson_Time(){
     
     function delete_lesson_date(obj) {
         let tr = $(obj).parent().parent();
-     
         //라인 삭제
         tr.remove();
     }
