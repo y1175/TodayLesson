@@ -287,6 +287,8 @@ $('document').ready(function() {
 
 	<script>
 	
+	
+	
     // 풀캘
 
 	
@@ -294,10 +296,20 @@ $('document').ready(function() {
 	let pos = $("#is_it_possible").val();
 	
 	 $("#to_orderform").click(function(){
+
+		 let member_id='${pageContext.request.userPrincipal.name}';
+
+		 
 		 if (pos > 0) {
+			 if(member_id==''){
+				  alert('로그인이 필요합니다.');
+				   	  
+		 	} else {
+			 
 		 $("form").attr("action", "${pageContext.request.contextPath}/todaylesson/lesson_buy/${dto.lesson_no}");
 		 $("form").submit();  	
-		} else {
+		 	}
+		 } else {
 			alert("품절된 레슨은 수강하실 수 없습니다.");
 		}
 	 });
@@ -460,8 +472,12 @@ $(".insert_my_cart").click(function(){
 			<c:out value="it" />
 		</c:when>
 
-		<c:otherwise>
+		<c:when test="${dto.lesson_category == 5}">
 			<c:out value="요리" />
+		</c:when>
+		
+		<c:otherwise>
+			<c:out value="기타" />
 		</c:otherwise>
 	</c:choose>
 	</div>
