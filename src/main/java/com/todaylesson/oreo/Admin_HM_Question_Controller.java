@@ -47,9 +47,9 @@ public class Admin_HM_Question_Controller {
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 		
-		System.out.println(search);
-		System.out.println(searchtxt);
-		System.out.println(totalCount);
+		//(search);
+		//(searchtxt);
+		//(totalCount);
 		
 		return "/TodayLesson_AdminPage/hm_ad_question.hs_ad_main_section";
 	}
@@ -58,7 +58,7 @@ public class Admin_HM_Question_Controller {
 	private String hm_ad_question_detail(@PathVariable int no, Model model)
 	{
 		int question_no = no;
-		System.out.println(question_no);
+		//(question_no);
 		Question_1_1DTO dto = service.hm_ad_question_detail(question_no);
 		model.addAttribute("dto",dto);
 		

@@ -62,7 +62,7 @@ public class User_HM_Bird_Controller {
 		} else {
 			result = "false";
 		}
-		System.out.println(result);
+		//(result);
 		return result;
 
 	}

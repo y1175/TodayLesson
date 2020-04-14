@@ -70,7 +70,7 @@ public class User_HM_Mymanage_Controller {
 
 			if((Long)jsonObj.get("code")  == 0){
 				JSONObject getToken = (JSONObject) jsonObj.get("response");
-				System.out.println("getToken==>>"+getToken.get("access_token") );
+				//("getToken==>>"+getToken.get("access_token") );
 				_token = (String)getToken.get("access_token");
 			}
  
@@ -157,25 +157,25 @@ public class User_HM_Mymanage_Controller {
         model.addAttribute("to",(String)request.getParameter("to"));
         model.addAttribute("auth_num",text);
        
-        System.out.println(set);
+        //(set);
 
         JSONObject result = coolsms.send(set); // 보내기&전송결과받기
 
         if ((boolean)result.get("status") == true) {
 
           // 메시지 보내기 성공 및 전송결과 출력
-          System.out.println("성공");
-          System.out.println(result.get("group_id")); // 그룹아이디
-          System.out.println(result.get("result_code")); // 결과코드
-          System.out.println(result.get("result_message")); // 결과 메시지
-          System.out.println(result.get("success_count")); // 메시지아이디
-          System.out.println(result.get("에러메세지수: error_count")); // 여러개 보낼시 오류난 메시지 수
+          //("성공");
+          //(result.get("group_id")); // 그룹아이디
+          //(result.get("result_code")); // 결과코드
+          //(result.get("result_message")); // 결과 메시지
+          //(result.get("success_count")); // 메시지아이디
+          //(result.get("에러메세지수: error_count")); // 여러개 보낼시 오류난 메시지 수
         } else {
 
           // 메시지 보내기 실패
-          System.out.println("실패");
-          System.out.println(result.get("code")); // REST API 에러코드
-          System.out.println(result.get("message")); // 에러메시지
+          //("실패");
+          //(result.get("code")); // REST API 에러코드
+          //(result.get("message")); // 에러메시지
         }
         
         
@@ -228,7 +228,7 @@ public class User_HM_Mymanage_Controller {
 		dto.setMember_phone(member_phone);
 		dto.setMember_zipcode(member_zipcode);
 		dto.setMember_nick(member_nick);
-		System.out.println(member_phone);
+		//(member_phone);
 		
 		if(member_account_name == null) {
 			String fulladdr= "";	
@@ -267,7 +267,7 @@ public class User_HM_Mymanage_Controller {
 	public String memberwithdraw(Authentication authentication,@PathVariable int no,Model model) {
 		
 		int member_no = no;
-		System.out.println("탈퇴"+member_no);
+		//("탈퇴"+member_no);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal(); 
 		String member_id = userDetails.getUsername();
 		
@@ -300,8 +300,8 @@ public class User_HM_Mymanage_Controller {
 	
 
 
-		System.out.println(member_pwd);
-		System.out.println(result);
+		//(member_pwd);
+		//(result);
 
 		if(result==true)
 		{

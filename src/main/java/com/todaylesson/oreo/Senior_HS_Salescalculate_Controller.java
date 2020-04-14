@@ -180,7 +180,7 @@ public class Senior_HS_Salescalculate_Controller {
 
 			if((Long)jsonObj.get("code")  == 0){
 				JSONObject getToken = (JSONObject) jsonObj.get("response");
-				System.out.println("getToken==>>"+getToken.get("access_token") );
+				//("getToken==>>"+getToken.get("access_token") );
 				_token = (String)getToken.get("access_token");
 			}
  

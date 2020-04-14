@@ -59,7 +59,7 @@ public class Admin_HS_Banner_Controller {
 			                             , MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -76,7 +76,7 @@ public class Admin_HS_Banner_Controller {
 		
 		dto.setBanner_filepath(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 		String imgthumb=dto.getBanner_filepath();
-		System.out.println("썸네일이미지경로: "+imgthumb);
+		//("썸네일이미지경로: "+imgthumb);
 	    int bannerRegistrationResult = adminBannerService.bannerRegistrationResult(dto);
 	    model.addAttribute("bannerRegistrationResult", bannerRegistrationResult);
 		
@@ -98,7 +98,7 @@ public class Admin_HS_Banner_Controller {
 	public String bannerModifyResult(Model model, BannerDTO dto, MultipartFile file,HttpServletRequest request) throws IOException, Exception {
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -117,7 +117,7 @@ public class Admin_HS_Banner_Controller {
 		
 		} else {
 		    fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		    System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+		    //("썸네일 경로가 안들어와야 정상"+fileName);
 		    
 		    int bannerModifyResult = adminBannerService.bannerModifyNOBannerResult(dto);
 		    

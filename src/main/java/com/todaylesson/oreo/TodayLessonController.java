@@ -325,10 +325,10 @@ public class TodayLessonController {
   		    map.put("date", chartOutput.get(i).getRegYear()+"-"+chartOutput.get(i).getRegMonth()+"-"+chartOutput.get(i).getRegDay());
   		    map.put("output", chartOutput.get(i).getCostTotal());
   		    response.add(map);
-  		    System.out.println(map);
-  		    System.out.println(response);
+  		    //(map);
+  		    //(response);
   		  }
-  		  System.out.println(response);
+  		  //(response);
   		  return response;
 
   		}
@@ -417,7 +417,7 @@ public class TodayLessonController {
   	public String likemain(@RequestParam(value="product_no") int product_no
   			,@RequestParam(value="member_id") String member_id)
   	{
-  		System.out.println("productno:"+product_no+member_id);
+  		//("productno:"+product_no+member_id);
   		MyLikeDTO likedto=new MyLikeDTO();
   		likedto.setMember_id(member_id);
   		likedto.setProduct_no(product_no);
@@ -442,8 +442,8 @@ public class TodayLessonController {
   	public String cartmain(@RequestParam(value="product_no") int product_no
   			,@RequestParam(value="member_id") String member_id)
   	{
-  		System.out.println("cart임");
-  		System.out.println("productno:"+product_no+member_id);
+  		//("cart임");
+  		//("productno:"+product_no+member_id);
   		CartDTO cartdto=new CartDTO();
   		cartdto.setMember_id(member_id);
   		cartdto.setProduct_no(product_no);
@@ -511,8 +511,8 @@ public class TodayLessonController {
     	   //accessToken에 사용자가 로그인한 모든 정보가 들어있음
     	   JsonNode accessToken = node.get("access_token");
     	   
-    	   System.out.println("Kakao_Code = " +code);
-    	   System.out.println("Kakao_AccessToken = " + accessToken);
+    	   //("Kakao_Code = " +code);
+    	   //("Kakao_AccessToken = " + accessToken);
     	   
     	   //사용자 정보
     	   JsonNode KakaoUserInfo=hs_kakaologinservice.getKakaoUserInfo(accessToken);
@@ -530,7 +530,7 @@ public class TodayLessonController {
  	          kakao_birthday = kakao_account.path("birthday").asText();
  	          kakao_age = kakao_account.path("age").asText();
  	          
- 	          System.out.println("kakao_name = "+kakao_name);
+ 	          //("kakao_name = "+kakao_name);
 
  	       session.setAttribute("kakao_email", kakao_email);
  	       session.setAttribute("kakao_name", kakao_name);
@@ -562,7 +562,7 @@ public class TodayLessonController {
            
            //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
            //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-           //System.out.println("네이버:" + naverAuthUrl);
+           ////("네이버:" + naverAuthUrl);
            
            //네이버 
            model.addAttribute("naverlogin_URL", naverAuthUrl);
@@ -570,7 +570,7 @@ public class TodayLessonController {
            //구글
          //URL을 생성한다.
            String url = googleOAuth2Template.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-           System.out.println("/googleLogin, url : " + url);
+           //("/googleLogin, url : " + url);
            model.addAttribute("google_url", url);
            
           
@@ -583,14 +583,14 @@ public class TodayLessonController {
        @RequestMapping(value = "navercallback", method = { RequestMethod.GET, RequestMethod.POST })
        public String naverlogincallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
                throws IOException {
-           System.out.println("여기는 callback");
+           //("여기는 callback");
            OAuth2AccessToken oauthToken;
            oauthToken = naverLoginBO.getAccessToken(session, code, state);
            //로그인 사용자 정보를 읽어온다.
            apiResult = naverLoginBO.getUserProfile(oauthToken);
-           System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
+           //(naverLoginBO.getUserProfile(oauthToken).toString());
            model.addAttribute("result", apiResult);
-           System.out.println("result"+apiResult);
+           //("result"+apiResult);
            /* 네이버 로그인 성공 페이지 View 호출 */
 //         JSONObject jsonobj = jsonparse.stringToJson(apiResult, "response");
 //         String snsId = jsonparse.JsonToString(jsonobj, "id");
@@ -600,7 +600,7 @@ public class TodayLessonController {
 //         vo.setUser_snsId(snsId);
 //         vo.setUser_name(name);
    //
-//         System.out.println(name);
+//         //(name);
 //         try {
 //             vo = service.naverLogin(vo);
 //         } catch (Exception e) {
@@ -620,7 +620,7 @@ public class TodayLessonController {
        public ModelAndView doSessionAssignActionPage(HttpServletRequest request,Model model) throws Exception {
     	   ModelAndView view = new ModelAndView();
            String code = request.getParameter("code");
-           System.out.println(code);
+           //(code);
            
            //RestTemplate을 사용하여 Access Token 및 profile을 요청한다.
            RestTemplate restTemplate = new RestTemplate();
@@ -646,15 +646,15 @@ public class TodayLessonController {
            Base64 base64 = new Base64(true);
            String body = new String(base64.decode(tokens[1]));
            
-           System.out.println("정보1"+tokens.length);
-           System.out.println("정보2"+new String(Base64.decodeBase64(tokens[0]), "utf-8"));
-           System.out.println("정보3"+new String(Base64.decodeBase64(tokens[1]), "utf-8"));
+           //("정보1"+tokens.length);
+           //("정보2"+new String(Base64.decodeBase64(tokens[0]), "utf-8"));
+           //("정보3"+new String(Base64.decodeBase64(tokens[1]), "utf-8"));
     
            //Jackson을 사용한 JSON을 자바 Map 형식으로 변환
            ObjectMapper mapper = new ObjectMapper();
            Map<String, String> result = mapper.readValue(body, Map.class);
-           System.out.println("구글 이메일 : "+result.get("email"));
-           System.out.println("구글 sub : "+result.get("sub"));
+           //("구글 이메일 : "+result.get("email"));
+           //("구글 sub : "+result.get("sub"));
            
            if(todaylessonService.oauth2idcheck(result.get("email"))==0)
            {
@@ -698,23 +698,23 @@ public class TodayLessonController {
               model.addAttribute("to",(String)request.getParameter("to"));
               model.addAttribute("auth_num",text);
              
-              System.out.println(set);
+              //(set);
 
               JSONObject result = coolsms.send(set); // 보내기&전송결과받기
 
               if ((boolean)result.get("status") == true) {
                 // 메시지 보내기 성공 및 전송결과 출력
-                System.out.println("성공");
-                System.out.println(result.get("group_id")); // 그룹아이디
-                System.out.println(result.get("result_code")); // 결과코드
-                System.out.println(result.get("result_message")); // 결과 메시지
-                System.out.println(result.get("success_count")); // 메시지아이디
-                System.out.println(result.get("에러메세지수: error_count")); // 여러개 보낼시 오류난 메시지 수
+                //("성공");
+                //(result.get("group_id")); // 그룹아이디
+                //(result.get("result_code")); // 결과코드
+                //(result.get("result_message")); // 결과 메시지
+                //(result.get("success_count")); // 메시지아이디
+                //(result.get("에러메세지수: error_count")); // 여러개 보낼시 오류난 메시지 수
               } else {
                 // 메시지 보내기 실패
-                System.out.println("실패");
-                System.out.println(result.get("code")); // REST API 에러코드
-                System.out.println(result.get("message")); // 에러메시지
+                //("실패");
+                //(result.get("code")); // REST API 에러코드
+                //(result.get("message")); // 에러메시지
               }
            return "TodayLesson_UserPage/todaylesson_joinform.us_main_section";
        }
@@ -771,7 +771,7 @@ public class TodayLessonController {
        @RequestMapping(value="/idCheck", method= RequestMethod.POST)
        public int idCheck(@RequestParam("id") String member_id,Model model)
        {
-           System.out.println(member_id);
+           //(member_id);
            int row = loginService.idCheck(member_id);
            model.addAttribute("data",row);
            return row;
@@ -783,13 +783,13 @@ public class TodayLessonController {
        public String userIdSearch(@RequestParam("inputName_1") String member_name, 
                                   @RequestParam("inputPhone_1") String member_phone) {
             HashMap<String,Object> map=new HashMap<>();
-            System.out.println(member_name);
-            System.out.println(member_phone);
+            //(member_name);
+            //(member_phone);
             map.put("member_name", member_name);
             map.put("member_phone", member_phone);
             String result = loginService.get_searchId(map);
             
-            System.out.println(result);
+            //(result);
 
             return result;
        }
@@ -806,7 +806,7 @@ public class TodayLessonController {
                                   @RequestParam("inputEmail_2") String member_email
                                   ,HttpServletRequest request, Model model){
      		int result = mailSender.mailSendWithPassword(member_id, member_email, request);
-     		System.out.println(member_email);
+     		//(member_email);
      		model.addAttribute("result",result);
      		return "/TodayLesson_UserPage/hm_us_search_pwd";
        }

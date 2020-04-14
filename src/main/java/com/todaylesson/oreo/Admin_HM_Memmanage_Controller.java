@@ -50,9 +50,9 @@ public class Admin_HM_Memmanage_Controller {
 		model.addAttribute("search",search);
 		model.addAttribute("searchtxt",searchtxt);
 		
-		System.out.println(search);
-		System.out.println(searchtxt);
-		System.out.println(totalCount);
+		//(search);
+		//(searchtxt);
+		//(totalCount);
 		
 		return "/TodayLesson_AdminPage/hm_ad_user_memmanage.hs_ad_main_section";
 		

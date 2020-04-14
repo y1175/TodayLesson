@@ -62,8 +62,8 @@ public class EJ_MyPage_Controller {
 			,@RequestParam(value="lesson_no")int lesson_no
 			,@RequestParam(value="member_id")String member_id)
 	{
-		System.out.println("deletecart_prono:"+product_no);
-		System.out.println("deletecart_lesson no:"+lesson_no);
+		//("deletecart_prono:"+product_no);
+		//("deletecart_lesson no:"+lesson_no);
 		
 		CartDTO cartdto=new CartDTO();
 		cartdto.setMember_id(member_id);
@@ -97,7 +97,7 @@ public class EJ_MyPage_Controller {
 			, Model model)
 	{
 		
-		System.out.println("addrselect"+addrselect);
+		//("addrselect"+addrselect);
 		 
 	if(addrselect>0)
 		{
@@ -125,10 +125,10 @@ public class EJ_MyPage_Controller {
 		 String year2=Integer.toString(year1);
 		 String year=year2.substring(2, 4);
 		 
-		 System.out.println("두자릿수년도:"+year);
+		 //("두자릿수년도:"+year);
 		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-		 System.out.println();
-		 System.out.println(ym);
+		 //();
+		 //(ym);
 		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		 String subNum = "";
 		 
@@ -137,10 +137,10 @@ public class EJ_MyPage_Controller {
 		 }
 		 
 		 String orderId =ymd+subNum;
-		 System.out.println("오더아이디:"+orderId);
-		 System.out.println("데이터타입확인:"+orderId instanceof String);
+		 //("오더아이디:"+orderId);
+		 //("데이터타입확인:"+orderId instanceof String);
 		int orderlist_no=Integer.parseInt(orderId);
-			System.out.println("orderlist_NO:"+orderlist_no);
+			//("orderlist_NO:"+orderlist_no);
 		oldto.setOrderlist_no(orderlist_no); //주문번호지정
 		service.insertorderlist(oldto);//주문정보 등록
 		
@@ -154,7 +154,7 @@ public class EJ_MyPage_Controller {
 		{
 		service.insertorder_cart(cart, orderlist_no);
 		//받아온 리스트를 order_detail테이블에 insert하기
-		System.out.println("cart객체"+cart);
+		//("cart객체"+cart);
 		//각각의 상품 및 재품 stock  update하기
 		//Product테이블에 stock update  ..pdcount받아와야함
 		
@@ -180,10 +180,10 @@ public class EJ_MyPage_Controller {
 
 
 		
-		/*System.out.println("pdcount"+order_count);
+		/*//("pdcount"+order_count);
 		
 		int newstock=oldstock-order_count;
-		System.out.println("newstock"+newstock);
+		//("newstock"+newstock);
 		productdto.setProduct_no(product_no);
 		productdto.setProduct_stock(newstock);*/
 		}

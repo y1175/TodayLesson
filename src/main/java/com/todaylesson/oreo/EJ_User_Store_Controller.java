@@ -54,7 +54,7 @@ public class EJ_User_Store_Controller {
 	public String slist(@PathVariable("product_category") int product_category
 			,@RequestParam(required=false, defaultValue="recent") String order
 			,Model model) {
-		System.out.println("product_category"+product_category);
+		//system.out.println("product_category"+product_category);
 		
 		List<BannerDTO> banner = service.bannerlist();
 		model.addAttribute("banner",banner);
@@ -86,7 +86,7 @@ public class EJ_User_Store_Controller {
 		model.addAttribute("list",list);
 		
 		List<PdReviewDTO> reply = service.replyList(product_no);
-		 System.out.println("reply object:"+reply);
+		 //system.out.println("reply object:"+reply);
 		 model.addAttribute("reply",reply);
 			ProductDTO dto = service.select(product_no);
 			model.addAttribute("dto",dto);
@@ -118,7 +118,7 @@ public class EJ_User_Store_Controller {
 		pdreviewdto.setPdreview_content(pdreview_content);
 		
 		int result=service.registReply(pdreviewdto);
-	 System.out.println("registReply Controller");
+	 //system.out.println("registReply Controller");
 
 }
 	
@@ -132,7 +132,7 @@ public class EJ_User_Store_Controller {
 	public String likemain(@RequestParam(value="product_no") int product_no
 			,@RequestParam(value="member_id") String member_id)
 	{
-		System.out.println("productno:"+product_no+member_id);
+		//system.out.println("productno:"+product_no+member_id);
 		MyLikeDTO likedto=new MyLikeDTO();
 		likedto.setMember_id(member_id);
 		likedto.setProduct_no(product_no);
@@ -157,8 +157,8 @@ public class EJ_User_Store_Controller {
 	public String cartmain(@RequestParam(value="product_no") int product_no
 			,@RequestParam(value="member_id") String member_id)
 	{
-		System.out.println("cart임");
-		System.out.println("productno:"+product_no+member_id);
+		//system.out.println("cart임");
+		//system.out.println("productno:"+product_no+member_id);
 		CartDTO cartdto=new CartDTO();
 		cartdto.setMember_id(member_id);
 		cartdto.setProduct_no(product_no);
@@ -211,8 +211,8 @@ public class EJ_User_Store_Controller {
 			,@RequestParam("product_after_cost") int product_after_cost
 			,@RequestParam("member_id") String member_id
 			,Model model){
-		System.out.println("주문페이지에서 상풍번호:"+product_no);
-		System.out.println("주문페이지에서 수량:"+pdcount);
+		//system.out.println("주문페이지에서 상풍번호:"+product_no);
+		//system.out.println("주문페이지에서 수량:"+pdcount);
 		model.addAttribute("product_no",product_no);
 		model.addAttribute("product_name",product_name);
 		model.addAttribute("product_after_cost",product_after_cost);
@@ -240,7 +240,7 @@ public class EJ_User_Store_Controller {
 			,@RequestParam(value="paymentcost") int paymentcost)
 	{
 		
-		System.out.println("");
+		//system.out.println("");
 	}
 	
 	
@@ -282,10 +282,10 @@ public class EJ_User_Store_Controller {
 	
 	//Product테이블에 stock update  ..pdcount받아와야함
 	ProductDTO productdto=new ProductDTO();
-	System.out.println("pdcount"+order_count);
+	//system.out.println("pdcount"+order_count);
 	int oldstock=service.selectstock(product_no);
 	int newstock=oldstock-order_count;
-	System.out.println("newstock"+newstock);
+	//system.out.println("newstock"+newstock);
 	productdto.setProduct_no(product_no);
 	productdto.setProduct_stock(newstock);
 
@@ -297,10 +297,10 @@ public class EJ_User_Store_Controller {
 		 String year2=Integer.toString(year1);
 		 String year=year2.substring(2, 4);
 		 
-		 System.out.println("두자릿수년도:"+year);
+		 //system.out.println("두자릿수년도:"+year);
 		 String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
-		 System.out.println();
-		 System.out.println(ym);
+		 //system.out.println();
+		 //system.out.println(ym);
 		 String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		 String subNum = "";
 		 

@@ -51,10 +51,10 @@ public class Admin_HS_Statsales_Controller {
 		    map.put("date", chartOutput.get(i).getRegYear()+"-"+chartOutput.get(i).getRegMonth()+"-"+chartOutput.get(i).getRegDay());
 		    map.put("output", chartOutput.get(i).getCostTotal());
 		    response.add(map);
-		    System.out.println(map);
-		    System.out.println(response);
+		    //(map);
+		    //(response);
 		  }
-		  System.out.println(response);
+		  //(response);
 		  return response;
 
 		}

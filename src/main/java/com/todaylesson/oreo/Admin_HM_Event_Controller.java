@@ -76,7 +76,7 @@ public class Admin_HM_Event_Controller {
 	      
 
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//system.out.println("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -90,7 +90,7 @@ public class Admin_HM_Event_Controller {
 
 		dto.setEvent_thumbnail(File.separator+ "resources"+File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
 	      String imgthumb=dto.getEvent_thumbnail();
-	      System.out.println("썸네일이미지경로: "+imgthumb);
+	      //system.out.println("썸네일이미지경로: "+imgthumb);
 	      int result = service.eventinsert(dto);
 	      model.addAttribute("result", result);
 	      
@@ -122,7 +122,7 @@ public class Admin_HM_Event_Controller {
 		
 
 		String uploadPath=request.getSession().getServletContext().getRealPath("/"); 
-		System.out.println("uploadPath:"+uploadPath);
+		//system.out.println("uploadPath:"+uploadPath);
 		String imgUploadPath = uploadPath + File.separator+ "resources"+ File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -139,7 +139,7 @@ public class Admin_HM_Event_Controller {
 		 
 		} else {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		 System.out.println("썸네일 경로가 안들어와야 정상"+fileName);
+		 //system.out.println("썸네일 경로가 안들어와야 정상"+fileName);
 		 int result = service.eventupdatenothumbnail(dto);
 		  model.addAttribute("result", result);
 		  return "TodayLesson_AdminPage/hm_ad_event_updateresult";	      
