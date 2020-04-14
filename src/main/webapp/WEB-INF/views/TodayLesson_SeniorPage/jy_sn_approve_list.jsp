@@ -100,7 +100,7 @@ if ( ${list_size} == 0 ) {
 <td><c:out value="it"/></td>
 </c:when>
 
-<c:when test="${item.lesson_category == 4}">
+<c:when test="${item.lesson_category == 5}">
 <td><c:out value="요리"/></td>
 </c:when>
 
