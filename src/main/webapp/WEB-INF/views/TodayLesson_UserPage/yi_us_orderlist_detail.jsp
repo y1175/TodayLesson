@@ -80,7 +80,29 @@ if(result)
 <img src='${list.product_thumb }' alt='thumb'>
 </td>
 <td>
-[스토어>카테고리명:${list.product_category }]<br>
+[스토어>카테고리명:
+<c:choose>
+<c:when test='${list.product_category==1 }'>
+운동
+</c:when>
+<c:when test='${list.product_category==2 }'>
+교육
+</c:when>
+<c:when test='${list.product_category==3 }'>
+핸드메이드
+</c:when>
+<c:when test='${list.product_category==4 }'>
+IT
+</c:when>
+<c:when test='${list.product_category==5 }'>
+요리
+</c:when>
+<c:when test='${list.product_category==6 }'>
+기타
+</c:when>
+</c:choose>
+
+]<br>
 상품명:${list.product_name }
 </td>
 </tr>
