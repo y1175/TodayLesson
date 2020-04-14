@@ -262,6 +262,7 @@ $('document').ready(function() {
 <c:set var="possible_junior" value="${dto.lesson_member_max - dto.lesson_junior_count}" />
 최대 주니어 수 / 현재 수강 가능한 주니어 수 <br>
 <c:out value="${dto.lesson_member_max}" /> / <c:out value="${possible_junior}" /><br>
+<br>
 <div class="ej_line top_right"></div>
 
 
@@ -312,6 +313,7 @@ $('document').ready(function() {
 		 } else {
 			alert("품절된 레슨은 수강하실 수 없습니다.");
 		}
+		 
 	 });
 
 	
